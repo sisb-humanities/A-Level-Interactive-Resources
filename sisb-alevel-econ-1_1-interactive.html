@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1.1 Scarcity, Choice and Opportunity Cost | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS Level Economics · 1.1 Scarcity, Choice and Opportunity Cost</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📘 Define It Precisely</div>
+  <div class="tab" data-tab="oc">💸 Opportunity Cost in Numbers</div>
+  <div class="tab" data-tab="three">🏛️ What / How / For Whom</div>
+  <div class="tab" data-tab="judge">🤔 Evaluate the Claim</div>
+  <div class="tab" data-tab="mcq">📝 Exam-Style MCQ</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1: DEFINITIONS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · AO1 Knowledge and understanding</div>
+      <h1>Match each term to its precise definition</h1>
+      <p>AS answers live or die on definitions. A vague opening sentence caps your marks before you have written any analysis. Drag each definition onto the term it belongs to, then press <b>Check answers</b>.</p>
+      <p>Watch for the pairs that students routinely swap: <b>wants and needs</b>, <b>scarcity and shortage</b>, and <b>the cost of a choice</b> versus <b>the opportunity cost of a choice</b>.</p>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these definitions</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the right term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">Exam tip: scarcity is a permanent condition (wants exceed resources); a shortage is a temporary market situation (quantity demanded exceeds quantity supplied at the current price). Never use them as synonyms.</p>
+  </div>
+
+  <!-- ============ TAB 2: OPPORTUNITY COST NUMBERS ============ -->
+  <div class="panel" id="panel-oc">
+    <div class="intro">
+      <div class="kicker">Activity 2 · AO1 + AO2 Application and analysis</div>
+      <h1>Work out the opportunity cost</h1>
+      <p>Opportunity cost is <b>the benefit of the next best alternative forgone</b> — one alternative, not all of them, and not the option that was actually chosen. Read each Thai scenario, pick your answer, then check the reasoning.</p>
+    </div>
+    <div id="ocList"></div>
+    <div class="done-banner" id="ocDone">✓ All five scenarios attempted. Now write this out in one sentence: <i>"The opportunity cost of X is Y, because Y was the highest-valued alternative given up when X was chosen."</i> That sentence structure earns the definition mark in almost any 9708 question on this topic.</div>
+    <div class="foot-card">
+      <h3>Three traps that cost marks every year</h3>
+      <p><b>1. Adding up all the alternatives.</b> If three options are given up, the opportunity cost is only the <i>best</i> one, not the sum.</p>
+      <p><b>2. Quoting the price of what was chosen.</b> The ฿1,500 you spent is the money cost. The opportunity cost is what that ฿1,500 could have bought instead.</p>
+      <p><b>3. Forgetting non-money costs.</b> Time, effort and forgone earnings are opportunity costs even when no money changes hands.</p>
+    </div>
+  </div>
+
+  <!-- ============ TAB 3: THREE FUNDAMENTAL QUESTIONS ============ -->
+  <div class="panel" id="panel-three">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Section 1.4 of the coursebook</div>
+      <h1>What to produce, how to produce, for whom to produce?</h1>
+      <p>Every economy must answer the same three questions, because scarcity forces resources to be allocated. Sort each Thai example into the question it is really answering.</p>
+      <p><b>What</b> = which goods and services, and in what quantities. <b>How</b> = which combination of factors of production and which methods. <b>For whom</b> = how output is distributed between people.</p>
+    </div>
+    <div class="sort-grid cols-3" id="grid-three"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkThree()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildThree()">Reset</button>
+      <span class="score" id="score-three"></span>
+    </div>
+    <p class="tip">Exam tip: a decision about <i>which technique</i> to use is always a "how" question, even when it changes who gets employed. The employment effect is a consequence — the decision itself is about method.</p>
+  </div>
+
+  <!-- ============ TAB 4: EVALUATION ============ -->
+  <div class="panel" id="panel-judge">
+    <div class="intro">
+      <div class="kicker">Activity 4 · AO3 Evaluation</div>
+      <h1>Is the claim true, false, or does it depend?</h1>
+      <p>AO3 is worth 25% of the qualification and 30% of Papers 2 and 4 — and it is where most AS candidates lose marks. Evaluation is not "on the other hand"; it is <b>recognising the assumption a claim rests on</b> and saying when the claim holds and when it does not.</p>
+      <p>Judge each statement, reveal the economist's view, then read the purple line — that shows you how the same point would be written in an essay.</p>
+    </div>
+    <div id="judgeList"></div>
+    <div class="done-banner" id="judgeDone">✓ All five judged. Notice the pattern: nearly every strong evaluation point named an <b>assumption</b>, a <b>timescale</b>, or a <b>group of people affected</b>. Those three are your fastest route to AO3 marks under exam pressure.</div>
+    <div class="foot-card">
+      <h3>Scarcity is universal; its severity is not</h3>
+      <p>The fundamental economic problem applies to every economic agent in every economy, at every income level — a billionaire, a Bangkok street vendor, and the Royal Thai Government all face limited resources against unlimited wants.</p>
+      <p>But universality is not equality. The <i>consequences</i> of scarcity fall very unevenly, which is exactly why economics studies inequality, living standards and development rather than stopping at the abstract idea of choice. Saying both things in an essay — universal condition, unequal consequences — is worth more than saying either one alone.</p>
+    </div>
+  </div>
+
+  <!-- ============ TAB 5: MCQ ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Paper 1 is 30 questions in 60 minutes — two minutes each. These six come from the coursebook's own end-of-chapter set, with the reasoning for every option spelled out, including why the tempting wrong answers are wrong.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All six attempted. On Paper 1, if a question is taking longer than two minutes, mark your best guess, flag it and move on — an unanswered question scores zero, a guess scores 25% on average.</div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 1.1</div>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ---------- tab switching ---------- */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('1.1', activity, detail); }
+
+/* ================= TAB 1 — DEFINITION MATCH ================= */
+const TERMS = [
+  {id:'t1', term:'Fundamental economic problem', def:'Scarce resources set against unlimited wants — the condition that forces every economic agent to choose.'},
+  {id:'t2', term:'Resources', def:'The inputs available for the production of goods and services.'},
+  {id:'t3', term:'Wants', def:'Goods and services people would like to have but which are not necessary for survival.'},
+  {id:'t4', term:'Needs', def:'Things that are necessary for survival, such as food, shelter and clothing.'},
+  {id:'t5', term:'Scarcity', def:'A situation in which wants and needs are greater than the resources available to satisfy them.'},
+  {id:'t6', term:'Choice', def:'Because resources are scarce, individuals, firms and governments must consider and select between alternatives.'},
+  {id:'t7', term:'Opportunity cost', def:'The cost expressed in terms of the next best alternative forgone when a choice is made.'},
+];
+
+function buildTerms(){
+  const pool = document.getElementById('pool-terms');
+  const slots = document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  [...TERMS].sort(()=>Math.random()-0.5).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok = el.dataset.aim === slot.dataset.aim;
+      el.classList.toggle('correct', ok);
+      el.classList.toggle('wrong', !ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key term definitions', correct+'/'+total+' correct'); }
+  else { sc.textContent=correct+' / '+total+' correct — green = right, pink = try again'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* ================= TAB 2 — OPPORTUNITY COST ================= */
+const OC = [
+  {id:'oc1', icon:'🎫', bg:'#008BCC', name:'Nan’s ฿1,500',
+   stem:'Nan has ฿1,500 to spend. She ranks her options: <b>1st</b> a concert ticket (฿1,500), <b>2nd</b> new football boots (฿1,200), <b>3rd</b> a weekend trip to Ayutthaya (฿900). She buys the concert ticket.<br><br>What is the opportunity cost of the concert ticket?',
+   opts:['฿1,500 — the money she spent','The football boots','The football boots and the Ayutthaya trip together','฿2,100 — the boots plus the trip'],
+   ans:1,
+   fb:'Opportunity cost is the <strong>next best alternative forgone</strong> — a single alternative, the one ranked immediately below the option chosen. That is the football boots.',
+   why:'Why not the others? A is the money cost, not the opportunity cost. C and D add up everything she gave up — but she could only ever have had one of them, so counting them all double-counts the sacrifice.'},
+
+  {id:'oc2', icon:'🏪', bg:'#FF8F1C', name:'Somsak at Songkran',
+   stem:'Khun Somsak owns a som tum stall. Over Songkran week he can either keep the stall open and make ฿12,000 profit, or close it and take a temporary hotel job paying ฿9,000, or close it and rest at home. He keeps the stall open.<br><br>What is the opportunity cost of keeping the stall open?',
+   opts:['฿12,000','฿9,000','฿3,000','฿21,000'],
+   ans:1,
+   fb:'He gave up the hotel job, which was worth <strong>฿9,000</strong>. That was the highest-valued alternative available once the stall was chosen.',
+   why:'฿12,000 is what he gained, not what he sacrificed. ฿3,000 is the net gain from choosing correctly (12,000 − 9,000) — a useful figure, but it is not the definition of opportunity cost.'},
+
+  {id:'oc3', icon:'🖌️', bg:'#6B4E9E', name:'The teacher’s holiday',
+   stem:'A teacher normally marks external examination papers during the school break and is paid ฿9,000 for doing so. This year she decides instead to repaint her condominium herself. Hiring a painter would have cost ฿6,000.<br><br>What is the opportunity cost of painting the condominium herself?',
+   opts:['฿6,000','฿3,000','฿9,000','฿15,000'],
+   ans:2,
+   fb:'By painting herself she gave up the marking work, so the opportunity cost is the <strong>฿9,000 of forgone earnings</strong>.',
+   why:'฿6,000 is what she avoided paying — a saving, not a sacrifice. This is the classic Paper 1 structure: when someone does a job themselves, the opportunity cost is the income they could have earned in that time.'},
+
+  {id:'oc4', icon:'🌱', bg:'#28A745', name:'The Nonthaburi farmer',
+   stem:'A farmer owns 10 rai of land beside the Chao Phraya. Over five years he could earn ฿800,000 growing durian, ฿600,000 from rental units, or ฿150,000 growing rice. He builds the rental units.<br><br>What is the opportunity cost of building the rental units?',
+   opts:['฿600,000 — the return he chose','฿800,000 — the durian','฿150,000 — the rice','฿950,000 — durian plus rice'],
+   ans:1,
+   fb:'The best alternative he gave up was the durian crop, worth <strong>฿800,000</strong>. That is the opportunity cost — and notice it is <em>larger</em> than what he chose.',
+   why:'This scenario is deliberately awkward: on these figures the farmer has chosen badly, which is exactly why economists calculate opportunity cost. If the opportunity cost of a choice exceeds its return, the resources are not being allocated to their highest-valued use.'},
+
+  {id:'oc5', icon:'🚄', bg:'#002F6C', name:'The government budget',
+   stem:'The government has ฿20 billion of capital spending available. The cabinet ranks its options: <b>1st</b> extending an MRT line, <b>2nd</b> building 30 new district hospitals, <b>3rd</b> purchasing a submarine. It funds the MRT extension.<br><br>What is the opportunity cost of the MRT extension?',
+   opts:['฿20 billion of taxpayers’ money','The 30 district hospitals','The hospitals and the submarine','Nothing — the money was already budgeted'],
+   ans:1,
+   fb:'The opportunity cost is the <strong>30 district hospitals</strong>: the next best use of that ฿20 billion.',
+   why:'D is the trap. Money already being in a budget changes nothing — the resources it commands still have alternative uses. This is why "we have the budget for it" is never, on its own, an economic justification for a project.'},
+];
+
+function buildOC(){
+  const list=document.getElementById('ocList'); list.innerHTML='';
+  OC.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML =
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+'<div class="why">'+q.why+'</div></div>';
+    list.appendChild(c);
+  });
+  wireOpts('#ocList', OC, 'ocDone', 'Numeric: Opportunity cost scenarios');
+}
+
+/* shared option-wiring for tabs 2 and 5 */
+function wireOpts(sel, bank, doneId, label){
+  const answered = new Set();
+  document.querySelectorAll(sel+' .opt').forEach(o=>{
+    o.addEventListener('click', ()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      const row=o.parentElement;
+      [...row.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick');
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length){
+        document.getElementById(doneId).classList.add('show');
+        trk(label, answered.size+'/'+bank.length+' attempted');
+      }
+    });
+  });
+}
+buildOC();
+
+/* ================= TAB 3 — THREE QUESTIONS ================= */
+const THREE = {
+  bins:[
+    {id:'what', name:'WHAT TO PRODUCE', desc:'Which goods and services, and how much', color:'#008BCC'},
+    {id:'how',  name:'HOW TO PRODUCE',  desc:'Which resources and methods are used', color:'#FF8F1C'},
+    {id:'whom', name:'FOR WHOM TO PRODUCE', desc:'How output is distributed between people', color:'#002F6C'},
+  ],
+  items:[
+    {id:'q1', bin:'what', text:'The cabinet decides to fund an MRT extension rather than a new naval submarine'},
+    {id:'q2', bin:'how',  text:'A sugar producer replaces hand-cutting crews with mechanical cane harvesters'},
+    {id:'q3', bin:'whom', text:'The 30-baht universal healthcare scheme is funded from general taxation'},
+    {id:'q4', bin:'what', text:'A Rayong car plant converts a pickup line to produce electric vehicles'},
+    {id:'q5', bin:'how',  text:'A Bangkok restaurant chain switches from waiting staff to tablet ordering'},
+    {id:'q6', bin:'whom', text:'A developer prices a riverside condominium so only high-income buyers can afford it'},
+    {id:'q7', bin:'what', text:'A Nonthaburi farmer clears a rice paddy to plant durian trees instead'},
+    {id:'q8', bin:'how',  text:'A firm builds its factory in Thailand for lower labour costs rather than automating in Japan'},
+    {id:'q9', bin:'whom', text:'The government raises the top rate of income tax to fund cash transfers to low-income households'},
+  ],
+};
+
+function buildThree(){
+  const grid=document.getElementById('grid-three');
+  grid.innerHTML='';
+  const poolCol=document.createElement('div');
+  poolCol.innerHTML='<div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-three"></div>';
+  grid.appendChild(poolCol);
+  const pool=poolCol.querySelector('#pool-three');
+  [...THREE.items].sort(()=>Math.random()-0.5).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.textContent=it.text;
+    pool.appendChild(d);
+  });
+  THREE.bins.forEach(b=>{
+    const col=document.createElement('div');
+    col.innerHTML='<div class="col-lbl">&nbsp;</div>';
+    const slot=document.createElement('div');
+    slot.className='bin'; slot.dataset.bin=b.id;
+    slot.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.color+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    col.appendChild(slot); grid.appendChild(col);
+  });
+  document.getElementById('score-three').textContent='';
+}
+function checkThree(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#grid-three .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok = el.dataset.bin === bin.dataset.bin;
+      el.classList.toggle('correct', ok);
+      el.classList.toggle('wrong', !ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-three'), total=THREE.items.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Sort: What / How / For whom', correct+'/'+total+' correct'); }
+  else { sc.textContent=correct+' / '+total+' correct — green = right, pink = try again'; sc.style.color='#002F6C'; }
+}
+buildThree();
+
+/* ================= TAB 4 — EVALUATION ================= */
+const JUDGE = [
+  {id:'j1', icon:'🏥', bg:'#28A745', name:'The 30-baht scheme',
+   q:'"A visit to a public hospital under the universal healthcare scheme costs the patient almost nothing, so its opportunity cost is zero."',
+   verdict:'bad', vlabel:'False',
+   note:'The <strong>private cost</strong> to the patient is near zero; the <strong>opportunity cost to society</strong> is not. The doctors’ time, the building, the drugs and the tax revenue funding them all had alternative uses — more school places, better roads, lower taxes. A low price never means a low opportunity cost; it means the cost has been shifted onto someone else.',
+   exam:'<b>In an essay:</b> "Although the private cost to the user is negligible, the opportunity cost to the government is the alternative public spending forgone — for example the schools that the same budget could have funded."'},
+
+  {id:'j2', icon:'🛠️', bg:'#008BCC', name:'Resources with no alternative use',
+   q:'"If a resource genuinely has no alternative use, its opportunity cost is zero."',
+   verdict:'good', vlabel:'True',
+   note:'This follows directly from the definition. If nothing is forgone, there is no opportunity cost. Free goods behave this way — breathing air on a Krabi beach does not deprive anyone else of it. So do highly specialised assets with no second-best use: a disused rail cutting through a mountain, for example, may sit idle because no alternative user values it at all.',
+   exam:'<b>In an essay:</b> use this as a limitation. "The concept of opportunity cost assumes an alternative use exists; where a resource is genuinely immobile or unwanted, the concept adds little to the analysis."'},
+
+  {id:'j3', icon:'⏰', bg:'#6B4E9E', name:'Money and cost',
+   q:'"Opportunity cost only matters for decisions that involve spending money."',
+   verdict:'bad', vlabel:'False',
+   note:'<strong>Time</strong> is the clearest counter-example. Choosing to spend Sunday revising rather than at Chatuchak involves no transaction, but the market day is still forgone. This is precisely why the concept applies to a student, a firm and a government alike — the constraint is resources, and time is a resource.',
+   exam:'<b>In an essay:</b> "Because opportunity cost is measured in forgone alternatives rather than money, it applies to non-market decisions such as the allocation of a worker’s time."'},
+
+  {id:'j4', icon:'📈', bg:'#FF8F1C', name:'Growth and scarcity',
+   q:'"Since wants are unlimited, scarcity can never be eliminated — so economic growth does not really solve anything."',
+   verdict:'both', vlabel:'Partly true',
+   note:'The first half is right: growth does not abolish scarcity, because wants expand as incomes rise. But the conclusion does not follow. Growth <strong>relaxes the constraint</strong> — Thailand’s output per head today supports levels of healthcare, education and nutrition that were unattainable in 1970. Scarcity remaining is not the same as nothing improving.',
+   exam:'<b>In an essay:</b> this is a strong conclusion line. "Growth therefore changes the terms of the trade-off rather than removing it — the choices become less painful even though choice itself remains unavoidable."'},
+
+  {id:'j5', icon:'🌏', bg:'#002F6C', name:'Rich country, less scarcity?',
+   q:'"Singapore is far richer than Laos, so scarcity is a smaller problem there and opportunity cost matters less."',
+   verdict:'both', vlabel:'Partly true',
+   note:'The <strong>severity</strong> differs enormously: in a low-income economy the cost of choosing wrongly can be measured in malnutrition rather than in lost convenience. But the <strong>condition</strong> is universal, and Singapore faces an acute scarcity of its own — land — which is precisely why it reclaims territory and builds upward at very high cost. High income shifts which resource binds; it does not remove the binding constraint.',
+   exam:'<b>In an essay:</b> "Scarcity is universal but its consequences are unequally distributed; the relevant question is not whether a country faces scarcity but which resource is the binding constraint."'},
+];
+
+function buildJudge(){
+  const list=document.getElementById('judgeList'); list.innerHTML='';
+  JUDGE.forEach(w=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+w.bg+'">'+w.icon+'</div><div class="q-name">'+w.name+'</div></div>'+
+      '<div class="q-stem">'+w.q+'</div>'+
+      '<div class="choice-row">'+
+        '<div class="choice" data-v="good" data-id="'+w.id+'">✅ True</div>'+
+        '<div class="choice" data-v="bad" data-id="'+w.id+'">❌ False</div>'+
+        '<div class="choice" data-v="both" data-id="'+w.id+'">🤔 It depends</div>'+
+      '</div>'+
+      '<div class="reveal" id="rev-'+w.id+'"><span class="verdict v-'+w.verdict+'">'+w.vlabel+'</span><br>'+w.note+
+        '<div class="exam-line">'+w.exam+'</div></div>';
+    list.appendChild(c);
+  });
+  document.querySelectorAll('#judgeList .choice').forEach(ch=>{
+    ch.addEventListener('click', ()=>{
+      ch.parentElement.querySelectorAll('.choice').forEach(s=>s.classList.remove('sel-good','sel-bad','sel-both'));
+      ch.classList.add('sel-'+ch.dataset.v);
+      document.getElementById('rev-'+ch.dataset.id).classList.add('show');
+      const n=document.querySelectorAll('#judgeList .reveal.show').length;
+      if(n===JUDGE.length){
+        document.getElementById('judgeDone').classList.add('show');
+        trk('Evaluation: Scarcity and opportunity cost claims', n+'/'+JUDGE.length+' judged');
+      }
+    });
+  });
+}
+buildJudge();
+
+/* ================= TAB 5 — MCQ ================= */
+const MCQ = [
+  {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+   stem:'The fundamental economic problem exists because:',
+   opts:['resources are scarce in relation to unlimited wants','a business does not know how much it can sell','resources are scarce in relation to needs','we cannot always have what we want'],
+   ans:0,
+   fb:'The problem is defined as scarce resources set against <strong>unlimited wants</strong>.',
+   why:'C is the near-miss most candidates fall for: needs are finite and, in most economies, largely satisfiable. It is the unlimited nature of wants that makes the problem permanent. D describes a consequence, not the cause.'},
+
+  {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2',
+   stem:'Wants are unlimited because:',
+   opts:['there will always be something we would like to have','there will always be something we need','our income is limited','we are never aware of what we might want in the future'],
+   ans:0,
+   fb:'Wants expand continually as incomes rise, as new products appear and as people observe others consuming.',
+   why:'B confuses wants with needs. C explains why we must choose, not why wants are unlimited — limited income is the constraint, not the appetite.'},
+
+  {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3',
+   stem:'A government has limited resources to fund the wants of its population. This means that:',
+   opts:['the government has to make choices','the government is unable to provide any goods free of charge','the government has to cut the pay of government workers','the government is unable to borrow more funds'],
+   ans:0,
+   fb:'Scarcity forces choice — for a government exactly as for a household or a firm.',
+   why:'B, C and D are all specific policy claims that may or may not follow. Scarcity implies choice; it does not dictate which choice is made.'},
+
+  {id:'m4', icon:'4', bg:'#28A745', name:'Paper 1 · Question 4',
+   stem:'A teacher usually marks examination papers during the school break and receives ฿9,000. Instead, this time, she has decided to do maintenance work on her apartment. To get someone else to do the work would cost ฿6,000.<br><br>What is the opportunity cost if the teacher does the maintenance work herself rather than marking examination papers?',
+   opts:['฿3,000','฿6,000','฿9,000','฿15,000'],
+   ans:2,
+   fb:'She gives up ฿9,000 of marking income, so that is the opportunity cost.',
+   why:'฿6,000 is money she does not have to spend — a benefit of her choice, not a sacrifice. ฿3,000 is the net position. Under time pressure, ask only: "what did she give up?"'},
+
+  {id:'m5', icon:'5', bg:'#002F6C', name:'Paper 1 · Question 5',
+   stem:'You are a student preparing for an assessment. A friend calls round and asks you to play a game of football. You decide to stay at home to prepare your assessment.<br><br>What is the opportunity cost?',
+   opts:['your friend’s team loses the football match','you save money on bus fares by not playing','the healthy exercise you will get by playing football','a higher mark for your assessment'],
+   ans:2,
+   fb:'The benefit given up is the exercise from the game you did not play.',
+   why:'D is the trap: the higher mark is what you <em>gained</em> by choosing to revise. B is a saving, and A is a cost falling on someone else, not on you. Opportunity cost is always the benefit of the alternative <em>you</em> rejected.'},
+
+  {id:'m6', icon:'6', bg:'#D63864', name:'Paper 1 · Question 6',
+   stem:'Which of these questions is <b>not</b> one that an economy has to address?',
+   opts:['how resources are used','for what resources are used','where resources are used','for whom resources are used'],
+   ans:2,
+   fb:'The three fundamental questions are <strong>what</strong>, <strong>how</strong> and <strong>for whom</strong> to produce. Location is not one of them.',
+   why:'"Where" can matter enormously in practice — but it is a sub-question of "how", not one of the three allocation questions. Watch for the word "not" in Paper 1 stems; it is easy to answer the opposite question at speed.'},
+];
+
+function buildMCQ(){
+  const list=document.getElementById('mcqList'); list.innerHTML='';
+  MCQ.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+'<div class="why">'+q.why+'</div></div>';
+    list.appendChild(c);
+  });
+  wireOpts('#mcqList', MCQ, 'mcqDone', 'Exam-style MCQ (Paper 1)');
+}
+buildMCQ();
+</script>
+</body>
+</html>

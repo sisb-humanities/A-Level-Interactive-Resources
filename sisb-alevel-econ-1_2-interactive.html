@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1.2 Economic Methodology | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS Level Economics · 1.2 Economic Methodology</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="pn">⚖️ Positive or Normative?</div>
+  <div class="tab" data-tab="mm">🔬 Micro or Macro?</div>
+  <div class="tab" data-tab="rewrite">✍️ Rewrite It</div>
+  <div class="tab" data-tab="time">⏳ Short, Long, Very Long Run</div>
+  <div class="tab" data-tab="mcq">📝 Exam-Style MCQ</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1: POSITIVE VS NORMATIVE ============ -->
+  <div class="panel active" id="panel-pn">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Coursebook 2.3</div>
+      <h1>Positive or normative?</h1>
+      <p>A <b>positive statement</b> is based on facts or actual evidence and can, in principle, be tested against the real world. A <b>normative statement</b> contains a value judgement — it says what <i>ought</i> to happen — and cannot be proven right or wrong.</p>
+      <p>The trap that costs the most marks: <b>a positive statement does not have to be correct.</b> "Raising the minimum wage will increase youth unemployment" is positive even if the evidence turns out to disagree, because evidence <i>could</i> settle it. Drag each statement into the right bin.</p>
+    </div>
+    <div class="sort-grid cols-2" id="grid-pn"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkSort('pn')">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildSort('pn')">Reset</button>
+      <span class="score" id="score-pn"></span>
+    </div>
+    <p class="tip">Quick test: could two economists with the same data settle this by looking harder at the evidence? If yes it is positive. If they would still disagree because they value different things, it is normative.</p>
+  </div>
+
+  <!-- ============ TAB 2: MICRO VS MACRO ============ -->
+  <div class="panel" id="panel-mm">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Coursebook 2.1</div>
+      <h1>Microeconomics or macroeconomics?</h1>
+      <p><b>Microeconomics</b> is the study of individual markets — the behaviour and decisions of households and firms, and how they interact. <b>Macroeconomics</b> is the study of the whole economy, or a group of economies, usually with some form of government involvement.</p>
+      <p>Sort each Thai example. Then read the tip — because the boundary is genuinely blurred, and knowing <i>why</i> is itself an AS-level point.</p>
+    </div>
+    <div class="sort-grid cols-2" id="grid-mm"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkSort('mm')">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildSort('mm')">Reset</button>
+      <span class="score" id="score-mm"></span>
+    </div>
+    <p class="tip">The division is not clean, and the coursebook says so explicitly: a rise in Thai households' demand for imported cars is a micro decision that feeds straight into the macro trade balance. Ask which <i>level</i> the question is set at, not which topic the word belongs to.</p>
+  </div>
+
+  <!-- ============ TAB 3: REWRITE ============ -->
+  <div class="panel" id="panel-rewrite">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Coursebook Activity 2.1, extended</div>
+      <h1>Turn a normative statement into a positive one</h1>
+      <p>This is the single most useful drill in the whole topic, because it forces you to strip out the value judgement and leave behind a claim that evidence could actually test. Type your version, then reveal a model answer and compare.</p>
+      <p>You are not aiming for identical wording. You are checking three things: has the "should / best / unfair / too much" gone? Is there a <b>measurable variable</b>? Could someone in principle <b>collect data</b> to check it?</p>
+    </div>
+    <div id="rewriteList"></div>
+    <div class="done-banner" id="rewriteDone">✓ All five revealed. Notice what every model answer does: it names a variable, a direction of change and — where possible — a size or a timeframe. That is the skeleton of a positive statement.</div>
+  </div>
+
+  <!-- ============ TAB 4: TIME PERIODS ============ -->
+  <div class="panel" id="panel-time">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Coursebook 2.5</div>
+      <h1>Short run, long run, or very long run?</h1>
+      <p>Time periods in economics are defined by <b>what can be varied</b>, not by a number of months. There is no rule that says the short run is a year.</p>
+    </div>
+    <div class="strip">
+      <div class="cell"><div class="h">Short run</div><div class="b">At least one factor input can be changed, but <b>not all</b>. Typically labour varies while capital is fixed.</div></div>
+      <div class="cell"><div class="h">Long run</div><div class="b">All factors of production are variable, but the <b>state of technology is constant</b>.</div></div>
+      <div class="cell"><div class="h">Very long run</div><div class="b">All key inputs vary — including <b>technology, regulation and social attitudes</b>.</div></div>
+    </div>
+    <div class="sort-grid cols-3" id="grid-time"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkSort('time')">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildSort('time')">Reset</button>
+      <span class="score" id="score-time"></span>
+    </div>
+    <p class="tip">Exam tip: whenever a question says "in the short run" it is telling you something is fixed. Say what is fixed in your answer — that sentence alone often unlocks the analysis mark.</p>
+  </div>
+
+  <!-- ============ TAB 5: MCQ ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Methodology questions appear early in Paper 1 and are free marks if your definitions are sharp. Two of these are the coursebook's own; the rest are in the same style.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All six attempted. Methodology also shows up inside data-response questions — Paper 2 Section A often asks you to identify a normative statement in the source material and explain why it is one. "Because it contains a value judgement and cannot be tested against evidence" is the answer that scores.</div>
+    <div class="foot-card">
+      <h3>Why the examiner cares about methodology</h3>
+      <p>Every evaluation mark you will ever earn depends on this topic. Recognising that a claim rests on an assumption, that a model is a simplification, or that a statement is a value judgement dressed up as a fact — that <i>is</i> AO3.</p>
+      <p>So when you write "assuming <i>ceteris paribus</i>…" or "this depends on the time period considered…", you are not padding. You are doing exactly what the mark scheme rewards.</p>
+    </div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 1.2</div>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('1.2', activity, detail); }
+
+/* ================= GENERIC DRAG-SORT ENGINE ================= */
+const SORTS = {
+  pn: {
+    cols: 2,
+    label: 'Sort: Positive or Normative?',
+    bins: [
+      {id:'pos', name:'POSITIVE', desc:'Based on facts or evidence — testable', color:'#008BCC'},
+      {id:'norm', name:'NORMATIVE', desc:'Contains a value judgement — cannot be proven', color:'#FF8F1C'},
+    ],
+    items: [
+      {id:'p1', bin:'pos',  text:'Thailand’s headline inflation rate was 1.2% in 2024'},
+      {id:'p2', bin:'norm', text:'The government should raise the daily minimum wage to ฿400'},
+      {id:'p3', bin:'pos',  text:'Raising the daily minimum wage to ฿400 would increase unemployment among workers aged under 25'},
+      {id:'p4', bin:'norm', text:'Too much of the national budget is spent on defence'},
+      {id:'p5', bin:'pos',  text:'A 10% depreciation of the baht is likely to raise the volume of Thai exports'},
+      {id:'p6', bin:'norm', text:'A Bangkok congestion charge would be unfair on low-income drivers'},
+      {id:'p7', bin:'pos',  text:'Tourism contributed around 12% of Thailand’s GDP before 2020'},
+      {id:'p8', bin:'norm', text:'Free public transport is the best way to cut PM2.5 in Chiang Mai'},
+      {id:'p9', bin:'pos',  text:'The number of Thais aged over 60 will exceed 20 million by 2040'},
+      {id:'p10', bin:'norm', text:'Rice farmers deserve more government support than exporters do'},
+    ],
+  },
+  mm: {
+    cols: 2,
+    label: 'Sort: Micro or Macro?',
+    bins: [
+      {id:'micro', name:'MICROECONOMICS', desc:'Individual markets, households and firms', color:'#008BCC'},
+      {id:'macro', name:'MACROECONOMICS', desc:'The whole economy, or a group of economies', color:'#002F6C'},
+    ],
+    items: [
+      {id:'m1', bin:'micro', text:'The price of durian rises sharply after a poor harvest in Nonthaburi'},
+      {id:'m2', bin:'macro', text:'The Bank of Thailand changes its policy interest rate'},
+      {id:'m3', bin:'micro', text:'A Bangkok coffee chain decides how many baristas to hire this quarter'},
+      {id:'m4', bin:'macro', text:'Thailand’s current account of the balance of payments moves into surplus'},
+      {id:'m5', bin:'micro', text:'A tax on sugary drinks reduces sales of soft drinks in 7-Eleven'},
+      {id:'m6', bin:'macro', text:'The national unemployment rate falls to 1.0%'},
+      {id:'m7', bin:'micro', text:'A household chooses the BTS over a Grab ride to save money'},
+      {id:'m8', bin:'macro', text:'The government runs a budget deficit of 3% of GDP'},
+      {id:'m9', bin:'macro', text:'The overall rate of inflation across the Thai economy accelerates'},
+    ],
+  },
+  time: {
+    cols: 3,
+    label: 'Sort: Short, long and very long run',
+    bins: [
+      {id:'sr', name:'SHORT RUN', desc:'At least one factor is fixed', color:'#008BCC'},
+      {id:'lr', name:'LONG RUN', desc:'All factors variable, technology constant', color:'#FF8F1C'},
+      {id:'vlr', name:'VERY LONG RUN', desc:'Technology and other key inputs also change', color:'#6B4E9E'},
+    ],
+    items: [
+      {id:'t1', bin:'sr',  text:'An Ayutthaya factory hires 20 extra workers for the peak season but cannot extend the building'},
+      {id:'t2', bin:'lr',  text:'The same firm buys land and opens a second factory in Chonburi'},
+      {id:'t3', bin:'vlr', text:'Solar panels become cheap enough to replace diesel generators across the industry'},
+      {id:'t4', bin:'sr',  text:'A riverside restaurant opens for longer hours using the same kitchen and equipment'},
+      {id:'t5', bin:'lr',  text:'A hotel group acquires a site and constructs a new resort in Phuket'},
+      {id:'t6', bin:'vlr', text:'A ban on single-use plastics forces every producer to redesign its packaging'},
+      {id:'t7', bin:'sr',  text:'A farmer applies more fertiliser to the same 10 rai of land'},
+      {id:'t8', bin:'vlr', text:'AI translation removes the need for large human translation departments'},
+      {id:'t9', bin:'lr',  text:'An airline orders 12 more aircraft and opens a new hub at U-Tapao'},
+    ],
+  },
+};
+
+function buildSort(key){
+  const cfg=SORTS[key];
+  const grid=document.getElementById('grid-'+key);
+  grid.className='sort-grid cols-'+cfg.cols;
+  grid.innerHTML='';
+  const poolCol=document.createElement('div');
+  poolCol.innerHTML='<div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-'+key+'"></div>';
+  grid.appendChild(poolCol);
+  const pool=poolCol.querySelector('#pool-'+key);
+  [...cfg.items].sort(()=>Math.random()-0.5).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.textContent=it.text;
+    pool.appendChild(d);
+  });
+  cfg.bins.forEach(b=>{
+    const col=document.createElement('div');
+    col.innerHTML='<div class="col-lbl">&nbsp;</div>';
+    const slot=document.createElement('div');
+    slot.className='bin'; slot.dataset.bin=b.id;
+    slot.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.color+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    col.appendChild(slot); grid.appendChild(col);
+  });
+  document.getElementById('score-'+key).textContent='';
+}
+function checkSort(key){
+  const cfg=SORTS[key];
+  let correct=0, placed=0;
+  document.querySelectorAll('#grid-'+key+' .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok = el.dataset.bin === bin.dataset.bin;
+      el.classList.toggle('correct', ok);
+      el.classList.toggle('wrong', !ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-'+key), total=cfg.items.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk(cfg.label, correct+'/'+total+' correct'); }
+  else { sc.textContent=correct+' / '+total+' correct — green = right, pink = try again'; sc.style.color='#002F6C'; }
+}
+buildSort('pn'); buildSort('mm'); buildSort('time');
+
+/* ================= TAB 3 — REWRITE ================= */
+const REWRITE = [
+  {id:'r1', icon:'🧅', bg:'#FF8F1C', name:'Coursebook Activity 2.1a',
+   norm:'"The price of onions should increase because of the prolonged drought."',
+   model:'<b>Positive version:</b> "A prolonged drought reduces the supply of onions and therefore increases their market price." <br><br>What changed: <i>should</i> became a causal claim about what happens. The claim can now be checked against price data after a drought.'},
+
+  {id:'r2', icon:'🚆', bg:'#008BCC', name:'Coursebook Activity 2.1b',
+   norm:'"An increase in government spending on the railways is the best way to increase employment in India."',
+   model:'<b>Positive version:</b> "An increase in government spending on the railways would raise employment in India by more than an equivalent increase in spending on road construction."<br><br>What changed: <i>best</i> is a ranking based on values. Replacing it with a specific comparison against a named alternative makes it testable.'},
+
+  {id:'r3', icon:'⚖️', bg:'#6B4E9E', name:'Coursebook Activity 2.1c',
+   norm:'"It is wrong to always assume a more equal distribution of income in a planned economy compared to a market economy."',
+   model:'<b>Positive version:</b> "Income inequality, measured by the Gini coefficient, is not always lower in planned economies than in market economies."<br><br>What changed: <i>wrong</i> became a measurable claim with a named indicator. Notice that adding the measure is what makes it testable — "inequality" alone is too vague.'},
+
+  {id:'r4', icon:'🛵', bg:'#28A745', name:'Thai context',
+   norm:'"The government ought to cap food delivery commission rates, because 30% is far too much for riders to bear."',
+   model:'<b>Positive version:</b> "Capping food delivery commission rates at 20% would raise average rider earnings and reduce the number of restaurants listed on the platform."<br><br>What changed: <i>ought</i> and <i>too much</i> both go. The rewritten claim names two variables that would move in opposite directions — which is also the beginning of a good evaluation paragraph.'},
+
+  {id:'r5', icon:'🏭', bg:'#002F6C', name:'Thai context',
+   norm:'"Thailand relies too heavily on tourism and should diversify into high-technology manufacturing."',
+   model:'<b>Positive version:</b> "Tourism accounts for around 12% of Thai GDP, and a fall in tourist arrivals of 10% reduces GDP by approximately 1.2%."<br><br>What changed: <i>too heavily</i> and <i>should</i> are value judgements about an acceptable level of dependence. The positive version simply states the size of the dependence and its effect — and it is that figure a policy argument would then have to rest on.'},
+];
+
+function buildRewrite(){
+  const list=document.getElementById('rewriteList'); list.innerHTML='';
+  REWRITE.forEach(r=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+r.bg+'">'+r.icon+'</div><div class="q-name">'+r.name+'</div></div>'+
+      '<div class="q-stem">'+r.norm+'</div>'+
+      '<div class="write-lbl">Your positive version</div>'+
+      '<textarea class="write-box" placeholder="Rewrite it so the value judgement is gone and evidence could test it…"></textarea>'+
+      '<button class="mini-btn" data-id="'+r.id+'">Reveal model answer</button>'+
+      '<div class="model" id="mod-'+r.id+'">'+r.model+'</div>';
+    list.appendChild(c);
+  });
+  document.querySelectorAll('#rewriteList .mini-btn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.getElementById('mod-'+b.dataset.id).classList.add('show');
+      b.textContent='Model answer shown';
+      const n=document.querySelectorAll('#rewriteList .model.show').length;
+      if(n===REWRITE.length){
+        document.getElementById('rewriteDone').classList.add('show');
+        trk('Writing: Normative → positive rewrites', n+'/'+REWRITE.length+' completed');
+      }
+    });
+  });
+}
+buildRewrite();
+
+/* ================= TAB 5 — MCQ ================= */
+const MCQ = [
+  {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+   stem:'Which of these is a <b>positive</b> statement?',
+   opts:['Wages in Indonesia are likely to be unevenly distributed','In 2019, the average wage in Indonesia was 3.8 million Indonesian Rupiah per month','The average hourly wage rate in Jakarta should be higher than elsewhere in Indonesia','The average wage in Indonesia depends on how it is measured'],
+   ans:1,
+   fb:'B states a measured fact with a figure and a date — exactly what a positive statement looks like.',
+   why:'C contains "should" and is plainly normative. A and D are vague rather than value-laden, but neither states something evidence could confirm or refute as it stands.'},
+
+  {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2',
+   stem:'Insert the correct words into this sentence:<br><br>"A … (1) … statement in economics is one that is subjective and … (2) … be tested by using real world evidence."',
+   opts:['(1) normative  (2) cannot','(1) normative  (2) can','(1) positive  (2) cannot','(1) positive  (2) can'],
+   ans:0,
+   fb:'Subjective means it rests on a value judgement — that is normative, and it cannot be settled by evidence.',
+   why:'D describes a positive statement correctly but does not fit the word "subjective" in the stem. Read both gaps together before choosing.'},
+
+  {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3',
+   stem:'Economists use the term <i>ceteris paribus</i> in order to:',
+   opts:['prove that a theory is correct','isolate the effect of a change in one variable by assuming other influences are unchanged','show that all economic variables move together','avoid making value judgements in their analysis'],
+   ans:1,
+   fb:'<i>Ceteris paribus</i> means "other things equal". It lets economists model one change at a time.',
+   why:'A is the opposite: assumptions do not prove anything, and the need for them is a standard limitation you can use in evaluation. D confuses methodology with the positive/normative distinction.'},
+
+  {id:'m4', icon:'4', bg:'#28A745', name:'Paper 1 · Question 4',
+   stem:'Which statement best describes the <b>short run</b>?',
+   opts:['a period of less than one year','a period in which at least one factor of production is fixed','a period in which all factors of production can be varied','a period in which the state of technology changes'],
+   ans:1,
+   fb:'Time periods are defined by what can be varied, not by the calendar.',
+   why:'A is the most common wrong answer. The coursebook is explicit that time periods have no exact timescale — for a street food stall the long run may be weeks; for a power station it may be a decade. C describes the long run and D the very long run.'},
+
+  {id:'m5', icon:'5', bg:'#002F6C', name:'Paper 1 · Question 5',
+   stem:'An economist writes: "Inflation in Thailand was 0.8% in 2024, which is far too low to be healthy for the economy."<br><br>This statement is:',
+   opts:['entirely positive','entirely normative','positive in the first part and normative in the second','neither, because inflation cannot be measured accurately'],
+   ans:2,
+   fb:'The measured rate is a fact; "far too low to be healthy" is a value judgement about what the rate ought to be.',
+   why:'Mixed statements are common in Paper 2 source material. If a question asks you to identify a normative statement in an extract, quote only the judgement clause — not the whole sentence.'},
+
+  {id:'m6', icon:'6', bg:'#D63864', name:'Paper 1 · Question 6',
+   stem:'In economics, a <b>model</b> is best described as:',
+   opts:['a simplified representation of reality used to explain economic problems','a set of rules that governments must follow','a forecast of what will happen to an economy','a statement that cannot be tested against evidence'],
+   ans:0,
+   fb:'Models simplify deliberately so that a relationship can be tested repeatedly in different contexts.',
+   why:'Being a simplification is a model’s strength and its weakness at once — which is why "the model assumes…" is such a reliable evaluation opening. C confuses a model with a forecast produced using one.'},
+];
+
+function buildMCQ(){
+  const list=document.getElementById('mcqList'); list.innerHTML='';
+  MCQ.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+'<div class="why">'+q.why+'</div></div>';
+    list.appendChild(c);
+  });
+  const answered=new Set();
+  document.querySelectorAll('#mcqList .opt').forEach(o=>{
+    o.addEventListener('click', ()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=MCQ.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick');
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===MCQ.length){
+        document.getElementById('mcqDone').classList.add('show');
+        trk('Exam-style MCQ (Paper 1)', answered.size+'/'+MCQ.length+' attempted');
+      }
+    });
+  });
+}
+buildMCQ();
+</script>
+</body>
+</html>

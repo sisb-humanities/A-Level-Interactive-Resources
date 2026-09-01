@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1.3 Factors of Production | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS Level Economics · 1.3 Factors of Production</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="fop">🧩 Which Factor?</div>
+  <div class="tab" data-tab="rewards">💰 Rewards &amp; Capital</div>
+  <div class="tab" data-tab="dol">🏭 Division of Labour</div>
+  <div class="tab" data-tab="judge">🤔 Evaluate the Claim</div>
+  <div class="tab" data-tab="mcq">📝 Exam-Style MCQ</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 ============ -->
+  <div class="panel active" id="panel-fop">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Coursebook 3.1</div>
+      <h1>Land, labour, capital or enterprise?</h1>
+      <p><b>Land</b> is natural resources — not just the ground, but minerals, forests, rivers, climate, sea and sun. <b>Labour</b> is human resources. <b>Capital</b> is anything made by humans that aids production. <b>Enterprise</b> organises the other three and takes the risk.</p>
+      <p>Sort each Thai example into the right bin. The awkward ones are deliberate — most exam errors on this topic come from the boundary between land and capital.</p>
+    </div>
+    <div class="fop-grid">
+      <div><div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-fop"></div></div>
+      <div><div class="col-lbl">Into the right factor</div><div class="fop-bins" id="bins-fop"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkFop()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildFop()">Reset</button>
+      <span class="score" id="score-fop"></span>
+    </div>
+    <p class="tip">The classic boundary case: a rice paddy is land, but the irrigation channel dug across it is capital. The natural resource is land; anything humans built to make that resource productive is capital.</p>
+  </div>
+
+  <!-- ============ TAB 2 ============ -->
+  <div class="panel" id="panel-rewards">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Coursebook 3.1 and 3.2</div>
+      <h1>Rewards, and the two kinds of capital</h1>
+      <p>Every factor of production earns a payment when it is used by someone else. Naming the right reward is a routine one-mark question — and getting it wrong signals to an examiner that the underlying concept is shaky.</p>
+    </div>
+
+    <div class="sub-h">Task A — match each factor to its reward</div>
+    <div class="sub-p">Drag the reward onto the factor that earns it.</div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these rewards</div><div class="drop-pool" id="pool-rew"></div></div>
+      <div><div class="col-lbl">Onto the factor that earns it</div><div id="slots-rew"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkRew()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildRew()">Reset</button>
+      <span class="score" id="score-rew"></span>
+    </div>
+
+    <div class="sub-h">Task B — human capital or physical capital?</div>
+    <div class="sub-p"><b>Physical capital</b> is the machinery, buildings and infrastructure made by firms and governments. <b>Human capital</b> is the value of labour to the future productive potential of an economy — the skills, knowledge and experience embodied in people. Both are investments; only one of them can walk out of the door.</div>
+    <div class="sort-grid cols-2" id="grid-cap"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkCap()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildCap()">Reset</button>
+      <span class="score" id="score-cap"></span>
+    </div>
+    <p class="tip">Exam tip the coursebook makes explicitly: the <i>quality</i> of a factor is often more important than its <i>quantity</i>. A country with a large workforce but little training may be poorer than one with a smaller, highly skilled one. Write about quality and you separate yourself from most of the cohort.</p>
+  </div>
+
+  <!-- ============ TAB 3 ============ -->
+  <div class="panel" id="panel-dol">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Coursebook 3.3</div>
+      <h1>Specialisation and the division of labour</h1>
+      <p><b>Specialisation</b> is individuals, firms, regions or whole economies concentrating on producing some goods rather than others. The <b>division of labour</b> is the version inside a workplace: splitting a production process into a sequence of separate tasks.</p>
+      <p>Adam Smith's pin factory made the point in 1776 — 18 separate operations raised output from a few dozen pins per worker per day to around 5,000. Ford's conveyor belt did the same for cars in the 1920s. Work through the numbers first, then weigh it up.</p>
+    </div>
+
+    <div class="sub-h">Task A — calculate the gain from specialising</div>
+    <div class="sub-p">Three workers in a Bangkok shoe workshop currently divide their time equally between the three stages of production. The table shows how many units of each component each worker completes per week under this arrangement.</div>
+    <div class="tscroll">
+      <table class="dtable">
+        <tr><th></th><th>Soles</th><th>Uppers</th><th>Finishing &amp; polishing</th></tr>
+        <tr><td>Worker A</td><td>60</td><td>20</td><td>20</td></tr>
+        <tr><td>Worker B</td><td>20</td><td>60</td><td>20</td></tr>
+        <tr><td>Worker C</td><td>20</td><td>20</td><td>60</td></tr>
+      </table>
+    </div>
+    <div class="sub-p">A completed shoe needs one sole, one upper and one finishing operation. Each worker is now asked to spend <b>all</b> their time on the stage where they are strongest.</div>
+    <div id="calcList"></div>
+
+    <div class="sub-h">Task B — advantage or disadvantage?</div>
+    <div class="sub-p">The division of labour raises output, but the coursebook is careful to give both sides. Sort each consequence.</div>
+    <div class="sort-grid cols-2" id="grid-dol"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkDol()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildDol()">Reset</button>
+      <span class="score" id="score-dol"></span>
+    </div>
+    <p class="tip">Exam tip: "the division of labour raises output" is an AO1 statement. "The division of labour raises output <i>because</i> workers repeat one task, become faster at it, and lose no time switching between tools — so output per worker rises and unit costs fall" is AO2. The word <i>because</i> is where analysis marks live.</p>
+  </div>
+
+  <!-- ============ TAB 4 ============ -->
+  <div class="panel" id="panel-judge">
+    <div class="intro">
+      <div class="kicker">Activity 4 · AO3 Evaluation</div>
+      <h1>Is the claim true, false, or does it depend?</h1>
+      <p>Judge each statement, then reveal the economist's view. The purple line each time shows how the point would be phrased inside an essay — copy that register, not the bullet points.</p>
+    </div>
+    <div id="judgeList"></div>
+    <div class="done-banner" id="judgeDone">✓ All five judged. Every one of these turned on the same move: distinguishing the <b>quantity</b> of a factor from its <b>quality</b>, or a <b>short-run</b> effect from a <b>long-run</b> one. Those two distinctions will carry you through most AO3 marks in Section 1.</div>
+    <div class="foot-card">
+      <h3>Why enterprise is treated as a separate factor</h3>
+      <p>Labour is hired at an agreed wage — a contractual payment, owed whether or not the firm succeeds. Enterprise is different: the entrepreneur organises the other three factors and is paid only out of what is left over. That residual is <b>profit</b>, and it may be negative.</p>
+      <p>That is the whole reason enterprise gets its own category. It is not a type of work; it is the bearing of uninsurable risk. When Dyson abandoned his electric car after a very large investment, that loss fell on the entrepreneur — not on the engineers, who had already been paid.</p>
+    </div>
+  </div>
+
+  <!-- ============ TAB 5 ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>These six are from the coursebook's end-of-chapter set, with the reasoning for the tempting wrong answers spelled out.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All six attempted. Factors of production feed into almost every later topic — production possibility curves, costs, market structures, economic growth and development. Time spent getting the definitions exact now pays back for two years.</div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 1.3</div>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('1.3', activity, detail); }
+
+/* generic bin builder: renders into `host`, returns nothing */
+function renderBins(host, bins){
+  host.innerHTML='';
+  bins.forEach(b=>{
+    const slot=document.createElement('div');
+    slot.className='bin'; slot.dataset.bin=b.id;
+    slot.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.color+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    host.appendChild(slot);
+  });
+}
+function renderPool(pool, items){
+  pool.innerHTML='';
+  [...items].sort(()=>Math.random()-0.5).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.textContent=it.text;
+    pool.appendChild(d);
+  });
+}
+function gradeBins(scope, total, scoreEl, label){
+  let correct=0, placed=0;
+  document.querySelectorAll(scope+' .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok = el.dataset.bin === bin.dataset.bin;
+      el.classList.toggle('correct', ok);
+      el.classList.toggle('wrong', !ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById(scoreEl);
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk(label, correct+'/'+total+' correct'); }
+  else { sc.textContent=correct+' / '+total+' correct — green = right, pink = try again'; sc.style.color='#002F6C'; }
+}
+
+/* ================= TAB 1 — FOUR FACTORS ================= */
+const FOP_BINS=[
+  {id:'land',  name:'LAND',       desc:'Natural resources', color:'#5B8C5A'},
+  {id:'labour',name:'LABOUR',     desc:'Human resources', color:'#008BCC'},
+  {id:'cap',   name:'CAPITAL',    desc:'Made by humans to aid production', color:'#FF8F1C'},
+  {id:'ent',   name:'ENTERPRISE', desc:'Organises the others and takes risk', color:'#6B4E9E'},
+];
+const FOP_ITEMS=[
+  {id:'f1', bin:'land',   text:'Natural gas reserves in the Gulf of Thailand'},
+  {id:'f2', bin:'labour', text:'A nurse working a night shift at a Bangkok hospital'},
+  {id:'f3', bin:'cap',    text:'The rice-milling machinery in a Suphanburi mill'},
+  {id:'f4', bin:'ent',    text:'Khun Nok risking her own savings to open a second café branch'},
+  {id:'f5', bin:'land',   text:'The fertile soil of the Chao Phraya delta'},
+  {id:'f6', bin:'cap',    text:'The MRT tunnels beneath Bangkok'},
+  {id:'f7', bin:'labour', text:'Assembly workers on a pickup truck line in Rayong'},
+  {id:'f8', bin:'land',   text:'The sun and sand at Railay beach used by the tourism industry'},
+  {id:'f9', bin:'ent',    text:'A skincare start-up founder borrowing to scale up production'},
+  {id:'f10', bin:'cap',   text:'The fibre-optic network carrying Thailand’s internet traffic'},
+  {id:'f11', bin:'land',  text:'Teak forest in the northern highlands'},
+  {id:'f12', bin:'labour', text:'A software developer writing code for a Thai fintech firm'},
+];
+function buildFop(){
+  renderPool(document.getElementById('pool-fop'), FOP_ITEMS);
+  renderBins(document.getElementById('bins-fop'), FOP_BINS);
+  document.getElementById('score-fop').textContent='';
+}
+function checkFop(){ gradeBins('#bins-fop', FOP_ITEMS.length, 'score-fop', 'Sort: Four factors of production'); }
+buildFop();
+
+/* ================= TAB 2A — REWARDS MATCH ================= */
+const REW=[
+  {id:'w1', term:'Land',       def:'Rent — the income received by the owner for its use (or a payment for minerals once extracted)'},
+  {id:'w2', term:'Labour',     def:'Wages or earnings — paid for the worker’s services, and depending on the value of that labour to the hirer'},
+  {id:'w3', term:'Capital',    def:'Interest — the financial return earned, or the income received if the capital is rented out'},
+  {id:'w4', term:'Enterprise', def:'Profit — whatever remains after the other factors have been paid, and it may be negative'},
+];
+function buildRew(){
+  const pool=document.getElementById('pool-rew'), slots=document.getElementById('slots-rew');
+  pool.innerHTML=''; slots.innerHTML='';
+  [...REW].sort(()=>Math.random()-0.5).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  REW.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-rew').textContent='';
+}
+function checkRew(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-rew .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok = el.dataset.aim === slot.dataset.aim;
+      el.classList.toggle('correct', ok);
+      el.classList.toggle('wrong', !ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-rew'), total=REW.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Rewards to factors', correct+'/'+total+' correct'); }
+  else { sc.textContent=correct+' / '+total+' correct'; sc.style.color='#002F6C'; }
+}
+buildRew();
+
+/* ================= TAB 2B — HUMAN VS PHYSICAL CAPITAL ================= */
+const CAP_BINS=[
+  {id:'human', name:'HUMAN CAPITAL', desc:'Skills, knowledge and experience embodied in people', color:'#008BCC'},
+  {id:'phys',  name:'PHYSICAL CAPITAL', desc:'Machinery, buildings and infrastructure', color:'#FF8F1C'},
+];
+const CAP_ITEMS=[
+  {id:'c1', bin:'human', text:'Three years of training for a nurse'},
+  {id:'c2', bin:'phys',  text:'A CNC cutting machine in an Amata Nakorn factory'},
+  {id:'c3', bin:'human', text:'On-the-job English training for hotel front-desk staff'},
+  {id:'c4', bin:'phys',  text:'A new hospital building in Nonthaburi'},
+  {id:'c5', bin:'human', text:'Twenty years of experience of a master Thai chef'},
+  {id:'c6', bin:'phys',  text:'The delivery vans owned by a logistics firm'},
+  {id:'c7', bin:'human', text:'A coding course retraining factory technicians'},
+  {id:'c8', bin:'phys',  text:'The high-speed rail line under construction to Nakhon Ratchasima'},
+];
+function buildCap(){
+  const grid=document.getElementById('grid-cap');
+  grid.className='sort-grid cols-2';
+  grid.innerHTML='';
+  const poolCol=document.createElement('div');
+  poolCol.innerHTML='<div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-cap"></div>';
+  grid.appendChild(poolCol);
+  renderPool(poolCol.querySelector('#pool-cap'), CAP_ITEMS);
+  CAP_BINS.forEach(b=>{
+    const col=document.createElement('div');
+    col.innerHTML='<div class="col-lbl">&nbsp;</div>';
+    const holder=document.createElement('div');
+    col.appendChild(holder); grid.appendChild(col);
+    renderBins(holder,[b]);
+  });
+  document.getElementById('score-cap').textContent='';
+}
+function checkCap(){ gradeBins('#grid-cap', CAP_ITEMS.length, 'score-cap', 'Sort: Human vs physical capital'); }
+buildCap();
+
+/* ================= TAB 3A — SPECIALISATION CALCULATION ================= */
+const CALC=[
+  {id:'k1', icon:'🧮', bg:'#008BCC', name:'Step 1 — output before specialising',
+   stem:'Adding each column, how many <b>complete shoes</b> can the workshop produce per week under the current arrangement?',
+   opts:['60','100','180','300'],
+   ans:1,
+   fb:'Each column totals 100 (60 + 20 + 20). With 100 soles, 100 uppers and 100 finishing operations, the workshop completes <strong>100 shoes</strong>.',
+   why:'Output is limited by whichever component is scarcest — here all three are equal at 100. If one column had totalled only 80, output would be 80 shoes and the other components would pile up unused.'},
+
+  {id:'k2', icon:'⚙️', bg:'#FF8F1C', name:'Step 2 — output after specialising',
+   stem:'Each worker now spends all their time on their strongest stage instead of one third of it, so their output at that stage triples. How many complete shoes can the workshop now produce?',
+   opts:['100','120','180','360'],
+   ans:2,
+   fb:'Worker A produces 60 × 3 = 180 soles, B produces 180 uppers, C produces 180 finishing operations — so <strong>180 complete shoes</strong>.',
+   why:'Notice no new resources were added. The same three workers, the same week, the same workshop — the gain comes purely from reallocating existing labour to where each worker has an advantage.'},
+
+  {id:'k3', icon:'📈', bg:'#28A745', name:'Step 3 — the gain',
+   stem:'What is the increase in weekly output of complete shoes as a result of the division of labour?',
+   opts:['80 shoes','100 shoes','180 shoes','280 shoes'],
+   ans:0,
+   fb:'180 − 100 = <strong>80 extra shoes per week</strong>, an 80% increase.',
+   why:'This is the number to quote in an essay. "The division of labour can raise output substantially" is worth little; "in this example output rose by 80%, with no increase in the quantity of any factor of production" is analysis the examiner can credit.'},
+];
+
+/* ================= TAB 3B — ADVANTAGES / DISADVANTAGES ================= */
+const DOL_BINS=[
+  {id:'adv', name:'ADVANTAGE', desc:'A benefit of the division of labour', color:'#28A745'},
+  {id:'dis', name:'DISADVANTAGE', desc:'A cost or risk of the division of labour', color:'#D63864'},
+];
+const DOL_ITEMS=[
+  {id:'d1', bin:'adv', text:'Output per worker rises, so unit costs fall'},
+  {id:'d2', bin:'dis', text:'Repetitive work leaves employees bored and de-motivated'},
+  {id:'d3', bin:'adv', text:'Workers become highly skilled at their single task'},
+  {id:'d4', bin:'dis', text:'Workers become de-skilled and less able to move between occupations'},
+  {id:'d5', bin:'adv', text:'No time is lost moving between different tools and tasks'},
+  {id:'d6', bin:'dis', text:'If one stage stops, the whole production line halts'},
+  {id:'d7', bin:'adv', text:'Specialised machinery can be used for each separate stage'},
+  {id:'d8', bin:'dis', text:'Specialist skills can become redundant as technology changes'},
+  {id:'d9', bin:'adv', text:'A surplus is produced that can be exchanged for other goods'},
+  {id:'d10', bin:'dis', text:'No one is self-sufficient any more, so exchange becomes essential'},
+];
+function buildDol(){
+  const grid=document.getElementById('grid-dol');
+  grid.className='sort-grid cols-2';
+  grid.innerHTML='';
+  const poolCol=document.createElement('div');
+  poolCol.innerHTML='<div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-dol"></div>';
+  grid.appendChild(poolCol);
+  renderPool(poolCol.querySelector('#pool-dol'), DOL_ITEMS);
+  DOL_BINS.forEach(b=>{
+    const col=document.createElement('div');
+    col.innerHTML='<div class="col-lbl">&nbsp;</div>';
+    const holder=document.createElement('div');
+    col.appendChild(holder); grid.appendChild(col);
+    renderBins(holder,[b]);
+  });
+  document.getElementById('score-dol').textContent='';
+}
+function checkDol(){ gradeBins('#grid-dol', DOL_ITEMS.length, 'score-dol', 'Sort: Division of labour — advantages and disadvantages'); }
+buildDol();
+
+/* ================= TAB 4 — EVALUATION ================= */
+const JUDGE=[
+  {id:'j1', icon:'👔', bg:'#6B4E9E', name:'Is enterprise really separate?',
+   q:'"Enterprise is just a type of labour, so there is no good reason to treat it as a separate factor of production."',
+   verdict:'bad', vlabel:'False',
+   note:'Labour is paid a <strong>contractual wage</strong>, owed whether the firm succeeds or fails. Enterprise is paid only out of what is left over — <strong>profit</strong> — which can be negative. The entrepreneur also performs a distinct function: organising the other three factors into a business opportunity. Different function, different reward, different risk.',
+   exam:'<b>In an essay:</b> "Enterprise is distinguished from labour by the residual and uncertain nature of its reward: profit accrues only after the other factors have been paid."'},
+
+  {id:'j2', icon:'🔌', bg:'#008BCC', name:'Dyson’s abandoned car',
+   q:'"James Dyson abandoned his electric car project despite a huge investment. That proves he is not a good entrepreneur."',
+   verdict:'both', vlabel:'It depends',
+   note:'Risk-taking is the defining function of enterprise, and failure is therefore a <strong>normal outcome</strong>, not evidence of incompetence — the reward for enterprise is precisely the compensation for bearing that risk. Abandoning a project once it is clear it will not be commercially viable is arguably good decision-making, not bad. The fair criticism is about the <i>scale</i> of the commitment before viability was tested, not about failing at all.',
+   exam:'<b>In an essay:</b> "Since the entrepreneurial function involves bearing uninsurable risk, the incidence of failure is not in itself evidence of poor entrepreneurship."'},
+
+  {id:'j3', icon:'🏪', bg:'#FF8F1C', name:'Millions of small businesses',
+   q:'"Thailand has millions of small business owners, so it must have a very strong entrepreneurial base."',
+   verdict:'both', vlabel:'It depends',
+   note:'This confuses <strong>quantity with quality</strong> — the exact error the coursebook warns about for every factor. Many micro-enterprises are necessity-driven: a stall opened because no formal employment was available, with little innovation, no scale and no risk capital. A smaller number of firms that innovate, employ others and grow may contribute far more to productive potential.',
+   exam:'<b>In an essay:</b> "The number of enterprises is a weak indicator; what matters for growth is the quality of enterprise — its innovation, willingness to bear risk and capacity to scale."'},
+
+  {id:'j4', icon:'🏗️', bg:'#002F6C', name:'Capital and growth',
+   q:'"A country’s economic growth depends mainly on how much physical capital it has."',
+   verdict:'both', vlabel:'Partly true',
+   note:'Physical capital is described as one of the most important sources of growth in low-income and lower middle-income countries, so the claim is not empty. But <strong>quality matters more than quantity</strong>, and human capital may matter more still: capital that no one is trained to operate or maintain adds little. India’s growth in IT services came from investment in skills at least as much as in machinery.',
+   exam:'<b>In an essay:</b> "The contribution of capital to growth depends on its quality and on the complementary human capital available to operate it, so quantity alone is an unreliable predictor."'},
+
+  {id:'j5', icon:'🎓', bg:'#28A745', name:'Spending on education',
+   q:'"Because human capital raises future productivity, more government spending on education is always worthwhile."',
+   verdict:'both', vlabel:'It depends',
+   note:'Human capital genuinely is an investment in future growth. But the spending has an <strong>opportunity cost</strong> — the same budget could fund infrastructure or healthcare. The returns take years, so a government facing a short-run crisis may reasonably prioritise differently. And the gain depends on whether the skills produced actually match what employers need: training graduates for jobs that do not exist, or who then emigrate, yields far less than the model assumes.',
+   exam:'<b>In an essay:</b> "The return on investment in human capital depends on the time horizon considered, the opportunity cost of the funds, and the match between the skills created and labour demand."'},
+];
+
+function buildJudge(){
+  const list=document.getElementById('judgeList'); list.innerHTML='';
+  JUDGE.forEach(w=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+w.bg+'">'+w.icon+'</div><div class="q-name">'+w.name+'</div></div>'+
+      '<div class="q-stem">'+w.q+'</div>'+
+      '<div class="choice-row">'+
+        '<div class="choice" data-v="good" data-id="'+w.id+'">✅ True</div>'+
+        '<div class="choice" data-v="bad" data-id="'+w.id+'">❌ False</div>'+
+        '<div class="choice" data-v="both" data-id="'+w.id+'">🤔 It depends</div>'+
+      '</div>'+
+      '<div class="reveal" id="rev-'+w.id+'"><span class="verdict v-'+w.verdict+'">'+w.vlabel+'</span><br>'+w.note+
+        '<div class="exam-line">'+w.exam+'</div></div>';
+    list.appendChild(c);
+  });
+  document.querySelectorAll('#judgeList .choice').forEach(ch=>{
+    ch.addEventListener('click', ()=>{
+      ch.parentElement.querySelectorAll('.choice').forEach(s=>s.classList.remove('sel-good','sel-bad','sel-both'));
+      ch.classList.add('sel-'+ch.dataset.v);
+      document.getElementById('rev-'+ch.dataset.id).classList.add('show');
+      const n=document.querySelectorAll('#judgeList .reveal.show').length;
+      if(n===JUDGE.length){
+        document.getElementById('judgeDone').classList.add('show');
+        trk('Evaluation: Factors of production claims', n+'/'+JUDGE.length+' judged');
+      }
+    });
+  });
+}
+buildJudge();
+
+/* ================= TAB 5 — MCQ ================= */
+const MCQ=[
+  {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+   stem:'What are the factors of production?',
+   opts:['natural resources that are available for production','another term for resources in an economy','what are required in the future to produce goods and services','the human resources used in the production of goods and services'],
+   ans:1,
+   fb:'"Factors of production" is simply the economist’s term for the resources available in an economy.',
+   why:'A describes land only and D describes labour only — each names one factor and calls it all four. Watch for options that are true of a part but not of the whole.'},
+
+  {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2',
+   stem:'The factor of production <b>capital</b> means:',
+   opts:['what is combined with land and labour to produce goods and services','the value of assets owned by a firm','money needed to set up a firm','money provided by shareholders to expand production in a firm'],
+   ans:0,
+   fb:'In economics capital is a <strong>physical</strong> resource made by humans that aids production, combined with land and labour to produce output.',
+   why:'C and D are the everyday, accountant’s sense of "capital" — money. That meaning is not the economic one, and using it in an answer will cost you the mark. Money is not a factor of production; it is a claim on factors.'},
+
+  {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3',
+   stem:'Which of these is the best explanation of how an economist describes an <b>entrepreneur</b>?',
+   opts:['someone who is lucky and makes a lot of money','someone who succeeds in some but not all business activities','someone who is in charge of a firm','someone who seeks out business opportunities and is willing to take risks'],
+   ans:3,
+   fb:'Two functions define the entrepreneur: <strong>spotting the opportunity</strong> and <strong>bearing the risk</strong>.',
+   why:'C is the trap — being in charge of a firm is management, and a salaried chief executive who risks none of their own money is supplying labour, not enterprise.'},
+
+  {id:'m4', icon:'4', bg:'#5B8C5A', name:'Paper 1 · Question 4',
+   stem:'Which of these is an example of <b>land</b> as a factor of production?',
+   opts:['an airline pilot','an airfield','an aeroplane','aircraft fuel'],
+   ans:3,
+   fb:'Land means natural resources. Aircraft fuel comes from <strong>crude oil</strong> — a mineral deposit, and the only item here that originates as a natural resource.',
+   why:'B is the tempting answer because of the word "field". But an airfield is built infrastructure, and the coursebook lists infrastructure explicitly under capital. A pilot is labour and an aeroplane is capital. Ask "did nature supply this, or did humans make it?"'},
+
+  {id:'m5', icon:'5', bg:'#002F6C', name:'Paper 1 · Question 5',
+   stem:'Specialisation can only occur when:',
+   opts:['a price has been agreed to buy and sell a product','a firm has modern methods of production','a firm is more efficient than all others in making a product','an entrepreneur sees a business opportunity'],
+   ans:0,
+   fb:'Once you specialise you are no longer self-sufficient, so you must be able to <strong>exchange</strong> your surplus for everything else you need — and exchange requires an agreed price.',
+   why:'This question is really testing whether you understood the consequence of specialisation, not its cause. C describes absolute advantage, which is sufficient but not necessary; specialisation happens between parties who are not the most efficient in the world.'},
+
+  {id:'m6', icon:'6', bg:'#D63864', name:'Paper 1 · Question 6',
+   stem:'Which reason is most likely to explain why an entrepreneur is prepared to take risks?',
+   opts:['to secure a large bank loan','to realise a business ambition','to justify giving up a safe job','to increase their self-esteem'],
+   ans:1,
+   fb:'Entrepreneurs take risks in pursuit of an <strong>ambition</strong> — an opportunity they believe they can turn into profit.',
+   why:'A reverses the logic: the loan is a means of financing the risk, not a reason for taking it. C and D are consequences or personal motives rather than economic explanations.'},
+];
+
+function buildCards(list, bank, doneId, label){
+  const host=document.getElementById(list); host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+'<div class="why">'+q.why+'</div></div>';
+    host.appendChild(c);
+  });
+  const answered=new Set();
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click', ()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick');
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length){
+        if(doneId) document.getElementById(doneId).classList.add('show');
+        trk(label, answered.size+'/'+bank.length+' attempted');
+      }
+    });
+  });
+}
+buildCards('calcList', CALC, null, 'Calculation: Gains from the division of labour');
+buildCards('mcqList', MCQ, 'mcqDone', 'Exam-style MCQ (Paper 1)');
+</script>
+</body>
+</html>
