@@ -37,7 +37,7 @@
   "use strict";
 
   // ====================== CONFIG — EDIT THESE TWO LINES ======================
-  const ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwi9n1HzsRC9N6XE1uQHPZBBl4juu_lKBA0xbatvjs-IyElbY5ZeVtqhEgBrqa1k-UB/exec";
   const COURSE   = "AS & A Level Economics 9708";
   // ==========================================================================
 
