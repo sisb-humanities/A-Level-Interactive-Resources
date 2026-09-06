@@ -242,3 +242,23 @@ body{font-family:'Lato',sans-serif;background:var(--grey-bg);color:var(--text);m
 @media(max-width:600px){.searchbox{margin-left:0;width:100%}.searchbox input{width:100%}}
 .no-results{background:#fff;border:1px dashed var(--grey-3);border-radius:var(--radius);padding:26px;
   text-align:center;color:var(--text-3);font-size:13.5px}
+
+/* ==== DIAGRAM FIGURES (PPCs and other economic diagrams) ==== */
+.fig{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:14px 16px 12px;margin-bottom:20px}
+.fig svg{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.fig .ft{font-size:12.5px;font-weight:900;color:var(--navy);text-align:center;margin-bottom:4px;
+  letter-spacing:.02em}
+.fig .figcap{font-size:12.2px;color:var(--text-3);text-align:center;margin-top:8px;line-height:1.5;
+  max-width:560px;margin-left:auto;margin-right:auto}
+.fig .figcap b{color:var(--text-2)}
+.figrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.figrow .fig{margin-bottom:0}
+@media(max-width:760px){.figrow{grid-template-columns:1fr}}
+.figrow4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.figrow4 .fig{padding:11px 10px 9px;margin-bottom:0}
+.figrow4 .fig svg{max-width:100%}
+.figrow4 .figcap{font-size:11.2px;margin-top:5px;line-height:1.4}
+@media(max-width:880px){.figrow4{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.figrow4{grid-template-columns:1fr}}
+.q-card .fig{box-shadow:none;border-color:var(--grey-2);background:#FBFDFF}
