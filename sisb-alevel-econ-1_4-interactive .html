@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1.4 Resource Allocation in Different Economic Systems | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+  /* small additions specific to this page — the shared stylesheet has no
+     ready-made class for a two-step decision picker or a 5-point band scale */
+  .steppick{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+  .who-grid{margin-top:10px}
+  .who-grid .dtable td{vertical-align:top}
+  .cellchip{display:inline-block;font-size:11.5px;border-radius:999px;padding:3px 9px;margin:2px 4px 2px 0;border:1px solid}
+  .cellchip.g{background:var(--green-bg);border-color:var(--green);color:var(--green-txt)}
+  .cellchip.a{background:var(--orange-bg);border-color:var(--orange);color:var(--orange-txt)}
+  .cellchip.r{background:var(--red-bg);border-color:var(--red);color:var(--red-txt)}
+  .band5{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .band5 button{font:inherit;border:1.5px solid var(--grey-3);background:#fff;border-radius:8px;padding:9px 10px;cursor:pointer;font-size:12.3px;text-align:center;line-height:1.3;flex:1;min-width:110px;color:var(--text-2)}
+  .band5 button:hover{border-color:var(--blue);color:var(--blue)}
+  .band5 button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .band5 button:disabled{cursor:default}
+  .scalecaps{display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);font-weight:700;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 1.4 Resource Allocation in Different Economic Systems</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="who">🤔 Who Decides?</div>
+  <div class="tab" data-tab="chain">🔗 The Price Mechanism</div>
+  <div class="tab" data-tab="spec">📊 The Spectrum</div>
+  <div class="tab" data-tab="sector">🏛️ Public or Private?</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1: KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Coursebook 1.4</div>
+      <h1>Match each term to its meaning</h1>
+      <p>Every economic system has to answer the same three questions — <b>what</b>, <b>how</b> and <b>for whom</b> to produce. These ten terms are the vocabulary you need before you can compare how different systems answer them.</p>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">Notice that four of these ten terms — market, planned, mixed economy, and price mechanism — do almost all the analytical work in this topic. The other six describe things systems do or contain.</p>
+  </div>
+
+  <!-- ============ TAB 2: WHO DECIDES? ============ -->
+  <div class="panel" id="panel-who">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Coursebook 1.4</div>
+      <h1>What kind of decision — and who makes it?</h1>
+      <p>Every economic system has to make three decisions: <b>what to produce</b>, <b>how to produce</b> it, and <b>for whom to produce</b> it. For each statement below, say which of the three decisions it is, then say which system is making it. Six of the twelve are set in Thailand.</p>
+      <p>The table beneath the statements fills in as you go — by the end it is a revision grid for the three questions against the three systems.</p>
+    </div>
+    <div id="whoList"></div>
+    <div class="done-banner" id="whoDone"></div>
+    <div class="who-grid">
+      <h4 style="color:var(--navy);font-size:15px;font-weight:900;margin:22px 0 2px">The three fundamental questions</h4>
+      <p class="sub-p" style="margin-bottom:8px">Green = both right first time · orange = one right · red = neither.</p>
+      <div class="tscroll"><table class="dtable" id="whoGridTbl"></table></div>
+    </div>
+  </div>
+
+  <!-- ============ TAB 3: THE PRICE MECHANISM ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Coursebook 1.4</div>
+      <h1>Build the chain: how a market corrects itself</h1>
+      <p>The price mechanism reallocates resources without anyone giving an order. Click the six steps in the order they occur — starting with what goes wrong in the market, and finishing with what producers actually do about it.</p>
+    </div>
+    <div id="chainHost"></div>
+  </div>
+
+  <!-- ============ TAB 4: THE SPECTRUM ============ -->
+  <div class="panel" id="panel-spec">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Coursebook 1.4</div>
+      <h1>Place each economy on the spectrum</h1>
+      <p>No real economy is purely planned or purely market. Read the evidence for each of these ten countries, then place it on the five-point scale. An exact match scores 2; one band either side still scores 1 — there is no sharp line between systems, which is the point of the activity.</p>
+    </div>
+    <div id="specList"></div>
+    <div class="done-banner" id="specDone">✓ All ten placed. Notice that even the two extremes — North Korea and Hong Kong SAR — are not absolute: North Korea allows some private trade, and Hong Kong's government still regulates and provides some public services. "Mixed" is a matter of degree, not a fourth category.</div>
+  </div>
+
+  <!-- ============ TAB 5: PUBLIC OR PRIVATE? ============ -->
+  <div class="panel" id="panel-sector">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Coursebook 1.4</div>
+      <h1>Sort ten organisations into their sector</h1>
+      <p>Five Thai, five international. Ownership — not what an organisation does — decides its sector: a state-owned enterprise like EGAT can behave commercially, and a privately owned firm like the NHS's UK equivalent can be regulated tightly. Look at <i>who owns it</i>.</p>
+    </div>
+    <div class="sort-grid cols-2" id="grid-sector"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkSector()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildSector()">Reset</button>
+      <span class="score" id="score-sector"></span>
+    </div>
+  </div>
+
+  <!-- ============ TAB 6: EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Five Paper 1 style questions built around the most commonly tested confusions in this topic — mixed economies, price controls, and the short-run effect of reallocating resources towards capital goods.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All five attempted. This topic feeds straight into Section 2 — demand, supply and the price mechanism are about to get a lot more detail, but the logic you used here (price rations, signals and provides an incentive) does not change.</div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 1.4</div>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('1.4', activity, detail); }
+
+/* ================= TAB 1 — KEY TERMS (match) ================= */
+const TERMS=[
+ {id:'t1', term:'Economic system',       def:'The way a country decides what to produce, how to produce it, and who receives it.'},
+ {id:'t2', term:'Market economy',        def:'Resources are allocated by demand and supply, with little direct government involvement.'},
+ {id:'t3', term:'Planned economy',       def:'The government owns most productive resources and makes the decisions centrally.'},
+ {id:'t4', term:'Mixed economy',         def:'Both the private sector and the public sector take part in allocating resources.'},
+ {id:'t5', term:'Price mechanism',       def:'Changes in price bring the plans of buyers and sellers into line without anyone giving an order.'},
+ {id:'t6', term:'Privatisation',         def:'Moving resources from public ownership into private ownership.'},
+ {id:'t7', term:'State-owned enterprise',def:'A business owned by the government, such as EGAT.'},
+ {id:'t8', term:'Excess demand',         def:'People want to buy more than is being supplied at the current price.'},
+ {id:'t9', term:'Excess supply',         def:'More is being supplied than people want to buy at the current price.'},
+ {id:'t10',term:'Consumer sovereignty',  def:'Consumers decide what is produced through the way they spend their money.'},
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  [...TERMS].sort(()=>Math.random()-0.5).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); }
+  else { sc.textContent=correct+' / '+total+' correct'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* ================= TAB 2 — WHO DECIDES? ================= */
+const QUESTIONS=['What to produce','How to produce','For whom to produce'];
+const SYSTEMS=['Market','Planned','Mixed'];
+/* [statement, question 0-2, system 0-2, grid tag, explanation] */
+const WHO=[
+ {s:"The price of durian rises after new export deals, so Thai farmers plant more durian and less cassava.",q:0,sy:0,tag:'Durian prices',
+  fb:"The price told farmers which crop to grow. Nobody instructed them — signalling and incentive decided what to produce."},
+ {s:"After Britain privatised its railways, loss-making rural routes were more likely to be cut.",q:0,sy:0,tag:'UK rural rail',
+  fb:"Private owners produce what is profitable. The market decided what to produce — and what to stop producing."},
+ {s:"A Bangkok noodle shop buys a machine to cut its labour costs, because the shop opposite did the same and undercut its prices.",q:1,sy:0,tag:'Noodle shop machine',
+  fb:"Competition and the search for lower costs decided the production method — that is the how to produce decision."},
+ {s:"In Hong Kong SAR, the flats with a harbour view go to whoever is willing to pay the highest rent.",q:2,sy:0,tag:'HK harbour flats',
+  fb:"Price rations the scarce good. Ability and willingness to pay decides for whom to produce."},
+ {s:"Before 1986, Vietnam’s planning boards set production targets for each industry.",q:0,sy:1,tag:'Vietnam targets',
+  fb:"Central production targets are the state answering what to produce directly."},
+ {s:"In the former Soviet Union, factory managers were told which inputs to use and how many workers to employ.",q:1,sy:1,tag:'Soviet factory inputs',
+  fb:"The state, not the manager, chose the combination of land, labour and capital — how to produce."},
+ {s:"In North Korea, the state decides how much of the country’s steel each factory receives.",q:1,sy:1,tag:'N. Korean steel',
+  fb:"Allocating inputs between producers is a decision about how to produce, taken centrally."},
+ {s:"In Cuba, basic foods are sold at a low fixed price and rationed, so households receive similar amounts.",q:2,sy:1,tag:'Cuban food rations',
+  fb:"Distribution is decided by the state rather than by income — for whom to produce, answered by planning."},
+ {s:"Thai farmers choose which crops to grow, but the government supports the price of rice so that the country keeps producing it.",q:0,sy:2,tag:'Thai rice support',
+  fb:"Both mechanisms answer what to produce here: farmers respond to prices, and the state tilts those prices deliberately."},
+ {s:"The BTS Skytrain is built and run by a private company, but the government sets the safety standards it must build to.",q:1,sy:2,tag:'BTS safety rules',
+  fb:"A private firm chooses the method; the state constrains it. Both are deciding how to produce."},
+ {s:"Rich and poor Thais pay the same government-approved electricity tariff, rather than whatever the market would charge.",q:2,sy:2,tag:'EGAT tariff',
+  fb:"A regulated price changes who can afford the good. The state and the market together decide for whom to produce."},
+ {s:"Someone who can pay goes to a private Bangkok hospital; someone who cannot uses the 30-baht scheme.",q:2,sy:2,tag:'30-baht vs private',
+  fb:"Two distribution mechanisms running side by side — income in one, entitlement in the other. That is a mixed answer to for whom to produce."},
+];
+const whoPlaced=[];
+function buildWho(){
+  const host=document.getElementById('whoList'); host.innerHTML='';
+  WHO.forEach((d,i)=>{
+    const c=document.createElement('div'); c.className='q-card'; c.dataset.i=i;
+    c.innerHTML=
+      '<div class="q-stem">'+d.s+'</div>'+
+      '<div class="write-lbl">STEP 1 — what kind of decision is this?</div>'+
+      '<div class="steppick s1">'+QUESTIONS.map((q,qi)=>'<button class="lvl" data-q="'+qi+'">'+q+'</button>').join('')+'</div>'+
+      '<div class="write-lbl s2lbl" style="display:none">STEP 2 — and who makes that decision?</div>'+
+      '<div class="steppick s2" style="display:none">'+SYSTEMS.map((sy,si)=>'<button class="lvl" data-sy="'+si+'">'+sy+'</button>').join('')+'</div>'+
+      '<div class="reveal" id="who-rev-'+i+'"></div>';
+    host.appendChild(c);
+  });
+  wireWho();
+  drawWhoGrid();
+}
+function wireWho(){
+  document.querySelectorAll('#whoList .q-card').forEach(card=>{
+    const i=Number(card.dataset.i), d=WHO[i];
+    let qPick=null;
+    card.querySelectorAll('.s1 .lvl').forEach(b=>{
+      b.addEventListener('click',()=>{
+        if(qPick!==null) return;
+        qPick=Number(b.dataset.q);
+        card.querySelectorAll('.s1 .lvl').forEach(x=>{x.classList.remove('active'); x.disabled=true;});
+        b.classList.add('active');
+        card.querySelector('.s2lbl').style.display='block';
+        card.querySelector('.s2').style.display='flex';
+      });
+    });
+    card.querySelectorAll('.s2 .lvl').forEach(b=>{
+      b.addEventListener('click',()=>{
+        card.querySelectorAll('.s2 .lvl').forEach(x=>{x.classList.remove('active'); x.disabled=true;});
+        b.classList.add('active');
+        const syPick=Number(b.dataset.sy);
+        const okQ=(qPick===d.q), okS=(syPick===d.sy);
+        const verdict = (okQ&&okS)?'good':((okQ||okS)?'both':'bad');
+        const vlabel  = (okQ&&okS)?'Both right':((okQ||okS)?'One right':'Neither right');
+        let note;
+        if(okQ&&okS) note='';
+        else if(okQ) note='Right decision, wrong decider — here it is the <b>'+SYSTEMS[d.sy].toLowerCase()+' system</b> that makes it. ';
+        else if(okS) note='Right decider, wrong decision — this one is about <b>'+QUESTIONS[d.q].toLowerCase()+'</b>. ';
+        else note='This is a decision about <b>'+QUESTIONS[d.q].toLowerCase()+'</b>, and here it is made by the <b>'+SYSTEMS[d.sy].toLowerCase()+' system</b>. ';
+        const rev=document.getElementById('who-rev-'+i);
+        rev.innerHTML='<span class="verdict v-'+verdict+'">'+vlabel+'</span><br>'+note+d.fb;
+        rev.classList.add('show');
+        whoPlaced.push({q:d.q, sy:d.sy, tag:d.tag, cls:verdict==='good'?'g':(verdict==='both'?'a':'r')});
+        drawWhoGrid();
+        const done=document.querySelectorAll('#whoList .reveal.show').length;
+        if(done===WHO.length){
+          document.getElementById('whoDone').classList.add('show');
+          document.getElementById('whoDone').innerHTML='✓ All twelve judged. Copy the grid below into your workbook — every cell in it is correct, whatever you originally answered.';
+          trk('Who decides?', done+'/'+WHO.length+' statements judged');
+        }
+      });
+    });
+  });
+}
+function drawWhoGrid(){
+  const tbl=document.getElementById('whoGridTbl');
+  let html='<tr><th></th>'+SYSTEMS.map(sy=>'<th>'+sy+'</th>').join('')+'</tr>';
+  QUESTIONS.forEach((q,qi)=>{
+    html+='<tr><td style="background:var(--grey-bg);color:var(--navy);font-weight:900">'+q+'</td>';
+    SYSTEMS.forEach((_,si)=>{
+      let inner='';
+      whoPlaced.forEach(pl=>{ if(pl.q===qi && pl.sy===si) inner+='<span class="cellchip '+pl.cls+'">'+pl.tag+'</span>'; });
+      html+='<td>'+inner+'</td>';
+    });
+    html+='</tr>';
+  });
+  tbl.innerHTML=html;
+}
+buildWho();
+
+/* ================= TAB 3 — THE PRICE MECHANISM (chain builder) ================= */
+const CHAIN={
+  id:'pm', icon:'📉', bg:'#008BCC', name:'Excess supply and the price mechanism',
+  steps:[
+    "Excess supply of the good from producers",
+    "The price falls",
+    "Producing the good becomes less profitable",
+    "Some producers leave the market",
+    "Supply of the good falls",
+    "The price recovers",
+  ]
+};
+function buildChain(){
+  const host=document.getElementById('chainHost'); host.innerHTML='';
+  const shuffled=CHAIN.steps.map((s,i)=>({s,i})).sort(()=>Math.random()-0.5);
+  const c=document.createElement('div'); c.className='q-card';
+  c.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+CHAIN.bg+'">'+CHAIN.icon+'</div><div class="q-name">'+CHAIN.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src" id="src-'+CHAIN.id+'">'+
+      shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+
+    '</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq" id="seq-'+CHAIN.id+'"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary" id="chk-'+CHAIN.id+'">Check chain</button>'+
+      '<button class="btn btn-ghost" id="rst-'+CHAIN.id+'">Reset</button>'+
+      '<span class="score" id="cscore-'+CHAIN.id+'"></span>'+
+    '</div>';
+  host.appendChild(c);
+  wireChain();
+}
+let chainSeq=[];
+function wireChain(){
+  chainSeq=[];
+  document.querySelectorAll('#src-'+CHAIN.id+' .chain-chip').forEach(b=>{
+    b.addEventListener('click',()=>{
+      chainSeq.push(Number(b.dataset.i));
+      b.classList.add('used');
+      renderChainSeq();
+    });
+  });
+  document.getElementById('chk-'+CHAIN.id).addEventListener('click',checkChain);
+  document.getElementById('rst-'+CHAIN.id).addEventListener('click',()=>{
+    chainSeq=[];
+    document.querySelectorAll('#src-'+CHAIN.id+' .chain-chip').forEach(c=>c.classList.remove('used'));
+    document.getElementById('cscore-'+CHAIN.id).textContent='';
+    renderChainSeq();
+  });
+}
+function renderChainSeq(){
+  const host=document.getElementById('seq-'+CHAIN.id);
+  if(!chainSeq.length){ host.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+  host.innerHTML=chainSeq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+CHAIN.steps[idx]+'</div></div>').join('');
+}
+function checkChain(){
+  const sc=document.getElementById('cscore-'+CHAIN.id);
+  if(chainSeq.length<CHAIN.steps.length){
+    sc.textContent='Add all '+CHAIN.steps.length+' steps first ('+chainSeq.length+'/'+CHAIN.steps.length+')';
+    sc.style.color='#FF8F1C'; return;
+  }
+  let right=0;
+  document.querySelectorAll('#seq-'+CHAIN.id+' .chain-step').forEach((el,pos)=>{
+    const ok=Number(el.dataset.idx)===pos;
+    el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+    if(ok) right++;
+  });
+  if(right===CHAIN.steps.length){
+    sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+    const host=document.getElementById('chainHost');
+    if(!document.getElementById('chain-note')){
+      const note=document.createElement('div'); note.className='foot-card'; note.id='chain-note';
+      note.innerHTML='<h3>Notice where the chain ends</h3><p>It ends at a change in what producers do with their resources, not at the price. Every analysis paragraph you write about the price mechanism should travel this far — price changing is the middle of the story, not the end of it.</p>';
+      host.appendChild(note);
+    }
+    trk('Chain: The price mechanism', 'correct');
+  } else {
+    sc.textContent=right+' / '+CHAIN.steps.length+' in the right place'; sc.style.color='#002F6C';
+  }
+}
+buildChain();
+
+/* ================= TAB 4 — THE SPECTRUM ================= */
+const BANDS=['Strongly planned','Mostly planned','Mixed','Mostly market','Strongly market'];
+const SPECTRUM=[
+ {name:'North Korea', band:1, ev:['Almost every farm, factory and shop is owned by the state.','A government planning office sets production targets.','Private trade is heavily restricted.'],
+  note:'State ownership of nearly all productive resources plus central production targets is as close to a pure planned economy as exists today.'},
+ {name:'Cuba', band:1, ev:['Most enterprises are owned by the state.','The government controls the prices of many goods.','Small private restaurants and hairdressers are now allowed, but nothing larger.'],
+  note:'Price control and near-total state ownership. The small private sector is the exception, not the rule.'},
+ {name:'Vietnam', band:2, ev:['Until 1986 the state planned the whole economy.','Since the Doi Moi reforms, foreign firms have been welcomed and private business allowed.','The largest companies are still state-owned.'],
+  note:'A planned economy that has moved a long way towards the market, but has not arrived. Better described as socialist than as fully planned.'},
+ {name:'China', band:2, ev:['Very rapid growth, with real opportunities for private and foreign investors.','The government still directs the economy tightly.','The largest banks and energy firms are state-owned.'],
+  note:'Controlled management of the economy, with clear space for the market inside it.'},
+ {name:'France', band:3, ev:['Firms compete freely and most prices are set by supply and demand.','The state has a large role in energy, rail and healthcare.','Public spending is around half of national income.'],
+  note:'A market economy with an unusually large public sector — firmly mixed.'},
+ {name:'Thailand', band:3, ev:['Food, retail and banking are dominated by large private firms.','The state owns the electricity company and most of the oil and gas company.','The government funds universal healthcare, and regulates BTS and MRT fares.'],
+  note:'Clearly mixed, and a little right of centre: the state is concentrated in energy, transport and health, while the rest is private.'},
+ {name:'United Kingdom', band:4, ev:['Electricity, water, telecoms and the railways were all sold to private owners from the 1980s.','Healthcare is still provided by the state and is free when you use it.','Most other goods and services are allocated by price.'],
+  note:'Extensive privatisation has pushed it well towards the market end, but a large state-funded health service keeps it short of the extreme.'},
+ {name:'Singapore', band:4, ev:['The government has deliberately built an economy that encourages free enterprise.','Almost all business is privately owned and rewards can be high.','But over 70% of people live in flats built by the state.'],
+  note:'Strongly market-oriented in business, with one very large exception in housing.'},
+ {name:'Hong Kong SAR', band:5, ev:['All businesses are privately owned.','Even the buses, the underground railway and the road tunnels are run by private companies.','The government’s role is mostly to watch rather than to intervene.'],
+  note:'The closest large example of a market economy anywhere — services that are public almost everywhere else are private here.'},
+ {name:'United States of America', band:5, ev:['One of the most market-oriented large economies in the world.','Prices are set by supply and demand in almost every market.','Federal and state governments still provide schools, roads and defence.'],
+  note:'Market-dominated, but not pure: no real economy is, because public goods would otherwise go unprovided.'},
+];
+let specScore=0;
+function buildSpec(){
+  const host=document.getElementById('specList'); host.innerHTML=''; specScore=0;
+  SPECTRUM.forEach((d,i)=>{
+    const c=document.createElement('div'); c.className='q-card'; c.dataset.i=i;
+    c.innerHTML=
+      '<div class="q-stem">'+d.name+'</div>'+
+      '<div class="clue" style="background:var(--grey-bg);border-left:4px solid var(--blue);border-radius:8px;padding:10px 14px;margin:8px 0 12px">'+
+        '<div style="font-size:11px;letter-spacing:.1em;font-weight:900;color:var(--navy);margin-bottom:6px">EVIDENCE</div>'+
+        '<ul style="margin:0;padding-left:18px">'+d.ev.map(e=>'<li style="font-size:13px;color:var(--text-2);margin-bottom:3px">'+e+'</li>').join('')+'</ul>'+
+      '</div>'+
+      '<div class="scalecaps"><span>← PLANNED</span><span>MARKET →</span></div>'+
+      '<div class="band5">'+BANDS.map((b,bi)=>'<button data-b="'+(bi+1)+'">'+(bi+1)+'<br>'+b+'</button>').join('')+'</div>'+
+      '<div class="score" id="spec-score-'+i+'"></div>'+
+      '<div class="reveal" id="spec-rev-'+i+'"></div>';
+    host.appendChild(c);
+  });
+  wireSpec();
+}
+function wireSpec(){
+  document.querySelectorAll('#specList .q-card').forEach(card=>{
+    const i=Number(card.dataset.i), d=SPECTRUM[i];
+    card.querySelectorAll('.band5 button').forEach(b=>{
+      b.addEventListener('click',()=>{
+        card.querySelectorAll('.band5 button').forEach(x=>{x.classList.remove('on'); x.disabled=true;});
+        b.classList.add('on');
+        const pick=Number(b.dataset.b);
+        const diff=Math.abs(pick-d.band);
+        let pts=0, verdict, head;
+        if(diff===0){ pts=2; verdict='good'; head='Exactly right (+2). '; }
+        else if(diff===1){ pts=1; verdict='both'; head='Close — one band out (+1). The usual placement is <b>'+BANDS[d.band-1]+'</b>. '; }
+        else { pts=0; verdict='bad'; head='Too far. The usual placement is <b>'+BANDS[d.band-1]+'</b>. '; }
+        specScore+=pts;
+        document.getElementById('spec-score-'+i).textContent='+'+pts+' point'+(pts===1?'':'s');
+        const rev=document.getElementById('spec-rev-'+i);
+        rev.innerHTML='<span class="verdict v-'+verdict+'">'+(pts===2?'Exact':(pts===1?'Close':'Too far'))+'</span><br>'+head+d.note;
+        rev.classList.add('show');
+        const done=document.querySelectorAll('#specList .reveal.show').length;
+        if(done===SPECTRUM.length){
+          document.getElementById('specDone').classList.add('show');
+          trk('The spectrum', specScore+'/'+(SPECTRUM.length*2)+' points');
+        }
+      });
+    });
+  });
+}
+buildSpec();
+
+/* ================= TAB 5 — PUBLIC OR PRIVATE? ================= */
+const SECTOR=[
+ {id:'o1', name:'EGAT', bin:'public', note:'Generates and transmits Thailand’s electricity. A state-owned enterprise.'},
+ {id:'o2', name:'PTT', bin:'public', note:'Thailand’s oil and gas company. It is listed on the stock exchange, but the state holds the majority.'},
+ {id:'o3', name:'Government Lottery Office', bin:'public', note:'A state monopoly — the government is the only legal supplier.'},
+ {id:'o4', name:'CP Group', bin:'private', note:'Privately owned Thai conglomerate dominating food and retail.'},
+ {id:'o5', name:'Bangkok Bank', bin:'private', note:'A privately owned Thai commercial bank.'},
+ {id:'o6', name:'The National Health Service (UK)', bin:'public', note:'State-funded healthcare, free at the point of use. A merit good provided by the public sector.'},
+ {id:'o7', name:'Housing & Development Board (Singapore)', bin:'public', note:'The state body that builds the flats most Singaporeans live in.'},
+ {id:'o8', name:'Toyota (Japan)', bin:'private', note:'A privately owned manufacturer, answerable to its shareholders.'},
+ {id:'o9', name:'Apple (USA)', bin:'private', note:'Privately owned. Its resources are allocated by what consumers will pay for.'},
+ {id:'o10',name:'Nestlé (Switzerland)', bin:'private', note:'A privately owned multinational food and drink company.'},
+];
+const SECTOR_BINS=[
+ {id:'public',  name:'PUBLIC SECTOR',  desc:'Owned or funded by the state', color:'#008BCC'},
+ {id:'private', name:'PRIVATE SECTOR', desc:'Owned by shareholders or private individuals', color:'#FF8F1C'},
+];
+function buildSector(){
+  const grid=document.getElementById('grid-sector');
+  grid.className='sort-grid cols-2'; grid.innerHTML='';
+  const poolCol=document.createElement('div');
+  poolCol.innerHTML='<div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-sector"></div>';
+  grid.appendChild(poolCol);
+  const pool=poolCol.querySelector('#pool-sector');
+  [...SECTOR].sort(()=>Math.random()-0.5).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.textContent=it.name;
+    pool.appendChild(d);
+  });
+  SECTOR_BINS.forEach(b=>{
+    const col=document.createElement('div');
+    col.innerHTML='<div class="col-lbl">&nbsp;</div>';
+    const slot=document.createElement('div');
+    slot.className='bin'; slot.dataset.bin=b.id;
+    slot.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.color+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    col.appendChild(slot); grid.appendChild(col);
+  });
+  document.getElementById('score-sector').textContent='';
+}
+function checkSector(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#grid-sector .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.bin===bin.dataset.bin;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-sector'), total=SECTOR.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Sort: Public or private sector', correct+'/'+total+' correct'); }
+  else { sc.textContent=correct+' / '+total+' correct'; sc.style.color='#002F6C'; }
+}
+buildSector();
+
+/* ================= TAB 6 — EXAM MCQ ================= */
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+  stem:'A government fixes the retail price of cooking gas below the market price and fixes the quantity a state enterprise may supply each month. Which outcome is most likely?',
+  opts:['Excess supply of cooking gas','Queues and rationing at retailers','More private suppliers entering the market','A fall in the quantity demanded'], ans:1,
+  fb:'A price held below equilibrium creates excess demand. With quantity fixed, the good has to be rationed in some non-price way — usually queueing.',
+  why:'C and D describe responses the price control prevents: private suppliers are unlikely to enter a price-controlled market, and demand does not fall when the price is held artificially low.'},
+ {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2',
+  stem:'EGAT is owned by the Thai state, while CP Group and Thai Beverage are privately owned. Thailand is best described as',
+  opts:['a market economy','a planned economy','a mixed economy','an economy without a price mechanism'], ans:2,
+  fb:'Both ownership and allocation involve the private and the public sector.',
+  why:'Note that having some state enterprises does not make an economy planned — planning requires the state to set production targets, not merely to own some firms.'},
+ {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3',
+  stem:'Demand for Thai durian rises sharply after a new export agreement. In a market economy, what is the role of the resulting price change?',
+  opts:['It rations the available durian and signals producers to supply more','It is set by the government to protect domestic consumers','It falls in order to clear the excess supply','It has no effect on how resources are allocated'], ans:0,
+  fb:'Signalling, incentive and rationing working together.',
+  why:'Weak exam answers describe the demand rise and stop there — the marks are in the link to reallocation, not in restating the question.'},
+ {id:'m4', icon:'4', bg:'#5B8C5A', name:'Paper 1 · Question 4',
+  stem:'A mixed economy privatises its national railway. Which consequence is most likely?',
+  opts:['Fares fall on every route','Loss-making rural routes are more likely to be cut','The railway stops responding to consumer demand','Government spending on the railway must rise'], ans:1,
+  fb:'Private owners allocate according to profitability, so unprofitable services are first at risk.',
+  why:'C inverts the effect — private firms respond to demand more sharply, not less.'},
+ {id:'m5', icon:'5', bg:'#002F6C', name:'Paper 1 · Question 5',
+  stem:'A planned economy raises the share of national output devoted to capital goods. What is the most likely short-run consequence?',
+  opts:['A rise in current consumption','A fall in the economy’s productive potential','Shortages of consumer goods','A movement to a point inside the production possibility curve'], ans:2,
+  fb:'This is a movement ALONG the PPC towards capital goods: consumer goods are given up now in exchange for an outward shift later.',
+  why:'B is the opposite of the long-run effect — more capital goods should raise, not lower, productive potential over time.'},
+];
+function buildMcq(){
+  const host=document.getElementById('mcqList'); host.innerHTML='';
+  MCQ.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+'<div class="why">'+q.why+'</div></div>';
+    host.appendChild(c);
+  });
+  const answered=new Set();
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=MCQ.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick');
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===MCQ.length){
+        document.getElementById('mcqDone').classList.add('show');
+        trk('Exam-style MCQ (Paper 1)', answered.size+'/'+MCQ.length+' attempted');
+      }
+    });
+  });
+}
+buildMcq();
+</script>
+</body>
+</html>
