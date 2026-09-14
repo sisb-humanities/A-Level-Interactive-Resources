@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1.5 Production Possibility Curves | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 1.5 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   ===================================================================== */
+.hidden{display:none !important}
+.th{font-family:'Noto Sans Thai','Sukhumvit Set',sans-serif}
+.intro.hook{border-left:6px solid var(--orange);background:var(--orange-bg)}
+.intro.hook p{color:var(--text)}
+.src{font-size:11.8px;color:var(--text-3);margin-top:10px;line-height:1.5}
+
+/* inline feedback (not the .fb reveal used on MCQ cards) */
+.msg{margin-top:12px;padding:11px 14px;border-radius:8px;font-weight:700;font-size:13.3px;line-height:1.55}
+.msg.good{background:var(--green-bg);color:var(--green-txt);border:1.5px solid var(--green)}
+.msg.bad{background:var(--red-bg);color:var(--red-txt);border:1.5px solid var(--red)}
+.qq{font-weight:700;color:var(--navy);font-size:14px;margin:14px 0 0;line-height:1.5}
+.btn-sm{font-size:12.5px;padding:8px 15px}
+.btn.right{background:var(--green)!important;color:#fff!important;border-color:var(--green)!important}
+.btn.wrong{background:var(--red-bg)!important;color:var(--red-txt)!important;border-color:var(--red)!important}
+
+/* glossary */
+.dtable td.thai{color:var(--orange-txt);font-weight:700;white-space:nowrap}
+@media(max-width:640px){.dtable td.thai{white-space:normal}}
+
+/* capital-or-consumer rows */
+.sortrow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--grey-2)}
+.sortrow:last-of-type{border-bottom:0}
+.sortrow .item{font-size:13.6px;font-weight:700;color:var(--text)}
+.sortrow .item small{display:block;font-weight:400;margin-top:4px;font-size:12.6px;line-height:1.45}
+.sortrow .opts2{display:flex;gap:7px}
+@media(max-width:640px){.sortrow{grid-template-columns:1fr}}
+
+/* PPC explorer */
+.explorer{display:grid;grid-template-columns:1fr 250px;gap:16px;align-items:start}
+@media(max-width:860px){.explorer{grid-template-columns:1fr}}
+#ppcSvg{width:100%;height:auto;display:block;touch-action:pan-y;border-radius:8px}
+.readout{background:var(--navy);color:#fff;border-radius:var(--radius);padding:14px}
+.readout h4{font-size:11px;letter-spacing:.1em;font-weight:900;color:#8FCBEA;margin-bottom:8px}
+.readout .r{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.readout .r:last-child{border:0}
+.readout .r b{font-weight:900;color:#FFD9A8}
+.ocbox{background:var(--orange-bg);border:2px solid var(--orange);border-radius:var(--radius);padding:11px 13px;margin-top:10px;font-size:13px;font-weight:700;color:var(--orange-txt);line-height:1.5}
+.movelog{overflow-x:auto;margin-top:16px}
+.movelog table{width:100%;border-collapse:collapse;font-size:12.8px;background:#fff}
+.movelog th,.movelog td{border:1px solid var(--grey-2);padding:8px 9px;text-align:center}
+.movelog th{background:var(--navy);color:#fff;font-size:11.5px;font-weight:700}
+.movelog td:first-child{font-weight:900;color:var(--navy);white-space:nowrap}
+.movelog td.cap{color:var(--orange-txt);font-weight:900}
+.movelog td.con{color:var(--blue);font-weight:900}
+.movelog tr.now td{background:var(--orange-bg)}
+.movelog .qm{color:var(--grey-3);font-weight:900}
+
+/* answer panel */
+.qpanel{border:2px solid var(--blue);background:#EAF6FC;border-radius:var(--radius);padding:16px;margin-top:16px}
+.qpanel h3{font-size:14.5px;font-weight:900;color:var(--navy);margin-bottom:4px}
+.qpanel .part{margin-top:12px;padding-top:12px;border-top:1px dashed #9FCDE8}
+.qpanel .part:first-of-type{border-top:0;padding-top:0}
+.ansline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:9px;font-size:14px;font-weight:700;color:var(--navy)}
+.ansline input{width:96px;font:900 15px 'Lato',sans-serif;padding:8px 10px;border:2px solid var(--grey-3);border-radius:8px;color:var(--navy);text-align:center}
+.ansline select{font:700 14px 'Lato',sans-serif;padding:8px 10px;border:2px solid var(--grey-3);border-radius:8px;color:var(--navy);background:#fff}
+.ansline input.ok,.ansline select.ok{border-color:var(--green);background:var(--green-bg)}
+.hintline{font-size:12.5px;color:var(--text-2);margin-top:7px}
+.hintline b{color:var(--navy)}
+
+/* cloze */
+.cz-bank{display:flex;flex-wrap:wrap;gap:8px;padding:13px;background:var(--grey-2);border:2px dashed var(--grey-3);border-radius:var(--radius);min-height:54px;position:sticky;top:104px;z-index:100}
+.cz-chip{background:#fff;border:2px solid var(--grey-3);border-radius:8px;padding:7px 12px;font-size:13.3px;font-weight:700;color:var(--navy);cursor:grab;touch-action:none;transition:box-shadow .12s,border-color .12s;user-select:none;-webkit-user-select:none}
+.cz-chip.sel{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-bg)}
+.cz-chip.used{display:none}
+.cz-chip.drag{position:fixed;z-index:999;pointer-events:none;box-shadow:0 10px 24px rgba(0,47,108,.28);transform:rotate(-2deg)}
+.cz-passage{font-size:14.5px;line-height:2.1;margin-top:16px;max-width:78ch;color:var(--text)}
+.cz-passage p{margin:0 0 14px}
+.cz-gap{display:inline-block;min-width:106px;padding:0 10px;border-bottom:3px solid var(--blue);background:#EAF6FC;border-radius:6px 6px 0 0;text-align:center;font-weight:900;color:var(--navy);line-height:1.6;cursor:pointer;vertical-align:baseline}
+.cz-gap:empty::before{content:attr(data-n);color:#9FB3CC;font-weight:700;font-size:12.5px}
+.cz-gap.hot{background:var(--orange-bg);border-bottom-color:var(--orange)}
+.cz-gap.ok{background:var(--green-bg);border-bottom-color:var(--green);color:var(--green-txt)}
+.cz-gap.no{background:var(--red-bg);border-bottom-color:var(--red);color:var(--red-txt)}
+.cz-gap.rev{background:var(--grey-2);border-bottom-color:var(--text-3);color:var(--text-2)}
+
+/* stretch writing */
+.starters{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.starters span{background:var(--grey-2);color:var(--navy);font-size:12.4px;font-weight:700;padding:5px 9px;border-radius:6px}
+.model .ss{color:var(--orange-txt);font-weight:900;background:#FFE2BE;border-radius:4px;padding:0 3px}
+.model .whybox{background:#fff;border-left:3px solid var(--green);padding:10px 12px;border-radius:0 6px 6px 0;margin-top:11px;font-size:12.9px;line-height:1.6;color:var(--text-2)}
+.model .whybox b{color:var(--green-txt)}
+
+/* sticky progress */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS Level Economics · 1.5 Production Possibility Curves</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="choice">🇹🇭 Thailand's Choice</div>
+  <div class="tab" data-tab="read">📈 Read the Curve</div>
+  <div class="tab" data-tab="drag">🎯 Drag the Curve</div>
+  <div class="tab" data-tab="why">📐 Why It Bends</div>
+  <div class="tab" data-tab="shift">↔️ Shift, Pivot or Neither?</div>
+  <div class="tab" data-tab="judge">🤔 Evaluate the Claim</div>
+  <div class="tab" data-tab="mcq">📝 Exam-Style MCQ</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · THAILAND'S CHOICE ============ -->
+  <div class="panel active" id="panel-choice">
+    <div class="intro hook">
+      <div class="kicker">Activity 1 · The choice behind the curve</div>
+      <h1>Build for tomorrow, or spend today?</h1>
+      <p>Every robot arm in a Rayong car plant, every new BTS carriage and every container crane at Laem Chabang uses land, labour and materials that could have made things Thai households enjoy right now — phones, motorbikes, clothes, a mookata dinner on Friday night.</p>
+      <p>In the decades before the 1997 crisis, Thailand put around <b>40% of GDP</b> into investment — new capital goods — and the economy grew by more than 7% a year on average. In April 2026, Finance Minister Ekniti Nitithanprapas said investment is now only about <b>24% of GDP</b>, and warned that it is not enough to keep up with a changing world. Growth in recent years has been closer to 2–3%.</p>
+      <p style="font-weight:900;color:var(--navy)">More capital goods today means fewer consumer goods today. How much fewer? That is what you will measure on the curve.</p>
+      <div class="src">Figures: Ekniti Nitithanprapas, reported by VNA, 13 April 2026; pre-1997 growth from Ammar Siamwalla, <i>Out of the Frying Pan: The Thai Economy Between Two Crises</i>.</div>
+    </div>
+
+    <div class="sub-h">Key words</div>
+    <div class="sub-p">Read these before you start. You will need every one of them in the <b>Why It Bends</b> tab.</div>
+    <div class="tscroll">
+      <table class="dtable">
+        <tr><th>Term</th><th>Meaning</th><th>ภาษาไทย</th></tr>
+        <tr><td>Capital goods</td><td>Goods used to produce other goods — machines, factories, trucks, infrastructure</td><td class="thai th">สินค้าทุน</td></tr>
+        <tr><td>Consumer goods</td><td>Goods and services households buy to enjoy now</td><td class="thai th">สินค้าอุปโภคบริโภค</td></tr>
+        <tr><td>Opportunity cost</td><td>The next best alternative given up when a choice is made</td><td class="thai th">ค่าเสียโอกาส</td></tr>
+        <tr><td>PPC</td><td>The maximum combinations of two goods an economy can produce when all its resources are used fully and efficiently</td><td class="thai th">เส้นความเป็นไปได้ในการผลิต</td></tr>
+        <tr><td>Increasing opportunity cost</td><td>Each extra unit of one good costs more of the other good than the unit before</td><td class="thai th">ค่าเสียโอกาสเพิ่มขึ้น</td></tr>
+      </table>
+    </div>
+
+    <div class="sub-h">Capital or consumer?</div>
+    <div class="sub-p">It depends on <b>who uses it and why</b>, not on what it is. Choose one answer for each.</div>
+    <div class="q-card" style="padding-top:6px;padding-bottom:8px">
+      <div id="sortBox"></div>
+    </div>
+    <div id="sortFb"></div>
+
+    <div class="sub-h">Think first</div>
+    <div class="q-card">
+      <div class="q-stem">Thailand moves workers and factories out of making capital goods and into making consumer goods. It has exactly the same resources as before. What happens?</div>
+      <div class="btn-row" id="thinkQ" style="margin-top:4px">
+        <button class="btn btn-ghost" data-a="0">Output of both goods rises</button>
+        <button class="btn btn-ghost" data-a="1">Consumer goods rise, but capital goods fall</button>
+        <button class="btn btn-ghost" data-a="0">The PPC shifts outwards</button>
+        <button class="btn btn-ghost" data-a="0">Nothing changes, because the resources are the same</button>
+      </div>
+      <div id="thinkFb"></div>
+    </div>
+  </div>
+
+  <!-- ============ TAB 2 · READ THE CURVE ============ -->
+  <div class="panel" id="panel-read">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Coursebook 5.1</div>
+      <h1>What every point on the diagram means</h1>
+      <p>A <b>production possibility curve (PPC)</b> shows the maximum combinations of two goods an economy can produce with its current resources and its current state of technology, when all those resources are fully employed. It is sometimes called the production possibility <i>frontier</i>, because it draws a boundary between what can be produced and what cannot.</p>
+      <p>The diagram below is the coursebook's economy: it makes only cars and televisions. Four positions are marked. Work out what each one tells you before you look at the answer.</p>
+    </div>
+
+    <div class="fig">
+      <div id="fig-main"></div>
+      <div class="figcap"><b>Figure 1:</b> The production possibility curve for cars and televisions. Points A and B lie on the curve, C lies inside it, D lies outside it.</div>
+    </div>
+
+    <div class="strip">
+      <div class="cell"><div class="h">On the curve</div><div class="b"><b>Efficient.</b> Every resource is employed and used in its best combination — the economy is getting all it can from what it has.</div></div>
+      <div class="cell"><div class="h">Inside the curve</div><div class="b"><b>Inefficient.</b> Output is less than the available resources could produce. Possible, but wasteful.</div></div>
+      <div class="cell"><div class="h">Outside the curve</div><div class="b"><b>Unattainable.</b> Not possible with current resources and technology — this is scarcity.</div></div>
+    </div>
+
+    <div id="readList"></div>
+    <div class="done-banner" id="readDone">✓ All five done. The single most common Paper 2 error on this topic is describing a point <i>inside</i> the curve as "impossible". It is entirely possible — it is just wasteful. Only points <i>outside</i> are impossible.</div>
+    <p class="tip">Notice the axes. A PPC always has a good on <b>each</b> axis — never price, never quantity of one good against time. If you label one axis "price" you have drawn a demand diagram by mistake, and no marks follow.</p>
+  </div>
+
+  <!-- ============ TAB 3 · DRAG THE CURVE ============ -->
+  <div class="panel" id="panel-drag">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Measuring opportunity cost</div>
+      <h1>Drag Thailand from A to D</h1>
+      <p>Three moves. Every move gives Thailand <b>100m more units of consumer goods</b>. Your job is to work out what each move costs — first as a total, then as a rate per unit. The rate is what examiners reward: "0.3 units of capital goods per unit of consumer goods" can be compared; "some capital goods" cannot.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="explorer">
+        <div>
+          <svg id="ppcSvg" viewBox="0 0 540 380" tabindex="0" role="application" aria-label="Thailand PPC for capital goods and consumer goods. Use the left and right arrow keys to move the dot."></svg>
+        </div>
+        <div>
+          <div class="readout">
+            <h4>THAILAND'S OUTPUT</h4>
+            <div class="r"><span>Point</span><b id="roPt">A</b></div>
+            <div class="r"><span>Consumer goods</span><b><span id="roCon">—</span>m units</b></div>
+            <div class="r"><span>Capital goods</span><b><span id="roCap">—</span>m units</b></div>
+          </div>
+          <div class="ocbox" id="stepBox"></div>
+        </div>
+      </div>
+
+      <div class="movelog">
+        <table>
+          <thead><tr><th>Move</th><th>Start<br>(consumer, capital)</th><th>End<br>(consumer, capital)</th><th>Consumer goods gained</th><th>Capital goods given up</th><th>Opportunity cost of 1 unit of consumer goods</th></tr></thead>
+          <tbody id="logBody"></tbody>
+        </table>
+      </div>
+
+      <div class="qpanel hidden" id="qPanel"></div>
+    </div>
+
+    <div class="q-card hidden" id="patternCard">
+      <div class="q-name" style="font-size:16px;margin-bottom:8px">Spot the pattern</div>
+      <div class="q-stem">Look down the <b>capital goods given up</b> column of your table.</div>
+      <div class="qq">1. Each move gained the same 100m units of consumer goods. As Thailand produces more consumer goods, the opportunity cost of each extra 100m units…</div>
+      <div class="btn-row" id="pat1">
+        <button class="btn btn-ghost" data-a="1">rises</button>
+        <button class="btn btn-ghost" data-a="0">stays the same</button>
+        <button class="btn btn-ghost" data-a="0">falls</button>
+      </div>
+      <div id="pat1Fb"></div>
+
+      <div id="pat2Wrap" class="hidden">
+        <div class="btn-row"><button class="btn btn-primary" id="straightBtn">Add a straight-line PPC to the diagram</button></div>
+        <div id="pat2" class="hidden">
+          <div class="qq">2. Look at the grey dashed line on the diagram. On that straight-line PPC, what is the opportunity cost of each extra 100m units of consumer goods?</div>
+          <div class="btn-row" id="pat2Opts">
+            <button class="btn btn-ghost" data-a="0">30m, then 50m, then 70m units of capital goods</button>
+            <button class="btn btn-ghost" data-a="1">50m units of capital goods every time</button>
+            <button class="btn btn-ghost" data-a="0">Zero — a straight line has no opportunity cost</button>
+          </div>
+          <div id="pat2Fb"></div>
+        </div>
+      </div>
+    </div>
+    <p class="tip">A trade-off and an opportunity cost are not quite the same thing. The <b>trade-off</b> is the decision to give up some of one good for more of another; the <b>opportunity cost</b> is the benefit of the next best alternative actually given up — here, the capital goods measured on the orange line.</p>
+  </div>
+
+  <!-- ============ TAB 4 · WHY IT BENDS ============ -->
+  <div class="panel" id="panel-why">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Coursebook 5.3</div>
+      <h1>Why is the curve bowed outwards?</h1>
+      <p>A PPC can be drawn as a straight line or as a curve that bows outwards from the origin. The shape is not decoration — it tells you whether opportunity cost stays the same or rises as production is reallocated, and that difference is a standard four-mark question.</p>
+    </div>
+    <div class="figrow">
+      <div class="fig">
+        <div class="ft">Constant opportunity cost</div>
+        <div id="fig-straight"></div>
+        <div class="figcap">A straight line. The gradient is the same everywhere, so each extra unit of Good A always costs the same amount of Good B.</div>
+      </div>
+      <div class="fig">
+        <div class="ft">Increasing opportunity cost</div>
+        <div id="fig-curved"></div>
+        <div class="figcap">Bowed outwards. The curve gets steeper as you move right, so each extra unit of Good A costs more Good B than the one before.</div>
+      </div>
+    </div>
+
+    <div class="sub-h">Complete the explanation</div>
+    <div class="sub-p">Tap a word, then tap a gap — or drag the word onto the gap. Tap a filled gap to send its word back. Four words are not needed.</div>
+    <div class="cz-bank" id="clozeBank"></div>
+    <div class="cz-passage" id="passage">
+      <p>On the curve, every move gave Thailand the same gain — 100m units of consumer goods — but the cost kept rising: 30m, then 50m, then 70m units of capital goods. This is called <span class="cz-gap" data-a="increasing"></span> opportunity cost. It is the reason the PPC is <span class="cz-gap" data-a="concave"></span> to the origin (bowed outwards) rather than a <span class="cz-gap" data-a="straight"></span> line.</p>
+      <p>Why does the cost rise? Factors of production are not equally <span class="cz-gap" data-a="suited"></span> to making both goods. At first, Thailand switches the resources that are <span class="cz-gap" data-a="least"></span> productive in capital goods — general workers and simple tools that can make household fans just as easily as factory parts. Later, it has to switch resources that are highly <span class="cz-gap" data-a="specialised"></span> in capital goods, such as the robot welding lines and trained engineers at car-parts plants in the Eastern Economic Corridor. Moved into consumer goods, they add very little output, while a large amount of capital goods output is <span class="cz-gap" data-a="lost"></span>. There is a second reason too: as more and more workers crowd into consumer goods factories with a fixed number of machines, each extra worker adds less output than the one before. This is <span class="cz-gap" data-a="diminishing"></span> returns.</p>
+      <p>If every resource were equally good at making both goods, each 100m units of consumer goods would cost the same amount of capital goods. Opportunity cost would be <span class="cz-gap" data-a="constant"></span>, and the PPC would be a straight line — like the dashed line you added in the <b>Drag the Curve</b> tab.</p>
+      <p style="margin-bottom:0">The choice also has a cost in the <span class="cz-gap" data-a="future"></span>. Capital goods are used to make other goods. If Thailand chooses point D rather than point A, it produces fewer capital goods, so its stock of capital grows more <span class="cz-gap" data-a="slowly"></span> and its PPC shifts <span class="cz-gap" data-a="outwards"></span> by less in the years ahead. This is why the Finance Minister is worried that investment has fallen from about 40% of GDP before 1997 to about 24% today.</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="clozeCheck">Check my answers</button>
+      <button class="btn btn-ghost" id="clozeReset">Start again</button>
+      <button class="btn btn-ghost hidden" id="clozeShow">Show the answers</button>
+    </div>
+    <div id="clozeFb"></div>
+
+    <div class="sub-h">Sort each statement under the shape it describes</div>
+    <div class="sub-p">The underlying question in every case is the same: are the economy's resources equally good at producing both goods, or not?</div>
+    <div class="sort-grid cols-2" id="grid-shape"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkShape()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildShape()">Reset</button>
+      <span class="score" id="score-shape"></span>
+    </div>
+
+    <div class="foot-card">
+      <h3>The reason in one sentence</h3>
+      <p>Factors of production are not perfectly <b>substitutable</b> between uses. When Thailand shifts resources out of rice and into electronics, the first workers and land to move are the ones least suited to farming and most suited to assembly — so little rice is lost for a lot of electronics. Keep going and you are eventually moving skilled paddy farmers and prime delta land into circuit boards, giving up a great deal of rice for very little extra output.</p>
+      <p>That rising sacrifice is exactly what a curve bowing outwards draws. A straight line would say a rice farmer and an electronics technician are interchangeable — true for two similar styles of trainers made in the same factory, and almost never true across whole industries.</p>
+    </div>
+
+    <div class="sub-h">Stretch: write it up</div>
+    <div class="sub-p">Write about 100 words using figures from your table in the <b>Drag the Curve</b> tab. Then compare with the model answer.</div>
+    <div class="q-card">
+      <div class="q-stem"><b>Using the PPC, explain why choosing point D rather than point A could reduce Thailand's future productive capacity. [4]</b></div>
+      <div class="starters">
+        <span>At point D, Thailand produces … but only …</span>
+        <span>Capital goods are …, so …</span>
+        <span>As a result, the PPC …</span>
+        <span>However, households …</span>
+      </div>
+      <div class="write-lbl" style="margin-top:12px">Your answer</div>
+      <textarea class="write-box" id="stretchTxt" style="min-height:150px" placeholder="Write your answer here…"></textarea>
+      <button class="mini-btn" id="revealBtn">Show the model answer</button>
+      <div class="model" id="model">
+        <div class="write-lbl" style="margin-bottom:8px">Model answer — 4 marks — data → definition → chain → trade-off</div>
+        <p><span class="ss">At point D,</span> Thailand produces 400m units of consumer goods but only 90m units of capital goods, compared with 240m at point A. Capital goods, such as machinery and infrastructure, are used to produce other goods, <span class="ss">so</span> producing fewer of them means less investment. As existing machines wear out, the capital stock grows slowly or may even fall. <span class="ss">Because</span> productive capacity depends on the quantity and quality of capital, Thailand's PPC will shift outwards by less in future. <span class="ss">However,</span> households gain more consumer goods and higher living standards now — the opportunity cost is lower potential output later.</p>
+        <div class="whybox"><b>Why this scores well:</b> it quotes the diagram (400 / 90 / 240), defines capital goods in the answer, links fewer capital goods → less investment → slower growth of capacity → smaller outward shift, and names the trade-off in the last sentence. It also keeps the two ideas apart: choosing D is a movement <i>along</i> today's curve; the smaller outward <i>shift</i> happens later.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TAB 5 · SHIFTS ============ -->
+  <div class="panel" id="panel-shift">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Coursebook 5.4</div>
+      <h1>Does the whole curve move — or not at all?</h1>
+      <p>A PPC shifts only when <b>productive capacity</b> changes: the total ability of the economy to produce. That happens for two reasons — more or better resources become available, or technology changes. Anything else moves you <i>along</i> the curve, or towards it, but leaves the curve exactly where it was.</p>
+      <p>This distinction earns and loses more marks than any other part of the topic. Sort each Thai scenario carefully.</p>
+    </div>
+    <div class="figrow4">
+      <div class="fig"><div class="ft">Shifts right</div><div id="fig-right"></div><div class="figcap">Capacity rises — more of both goods possible</div></div>
+      <div class="fig"><div class="ft">Shifts left</div><div id="fig-left"></div><div class="figcap">Capacity falls — less of both possible</div></div>
+      <div class="fig"><div class="ft">Pivots</div><div id="fig-pivot"></div><div class="figcap">Capacity rises for one good only</div></div>
+      <div class="fig"><div class="ft">No shift</div><div id="fig-none"></div><div class="figcap">Movement along or towards the same curve</div></div>
+    </div>
+    <div class="fop-grid">
+      <div><div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-shift"></div></div>
+      <div><div class="col-lbl">Into the right outcome</div><div class="fop-bins" id="bins-shift"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkShift()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildShift()">Reset</button>
+      <span class="score" id="score-shift"></span>
+    </div>
+    <div class="foot-card">
+      <h3>The choice that decides how far the curve shifts next year</h3>
+      <p>Put <b>capital goods</b> on one axis and <b>consumer goods</b> on the other and the PPC shows the hardest choice a lower-income economy faces. Producing almost entirely consumer goods leaves so little for capital goods that new investment barely replaces the machinery wearing out — so the curve does not move, and next year the same choice returns.</p>
+      <p>Give up a relatively small amount of consumer goods and the gain in capital goods can be proportionally much larger, because the curve is steep at that end. That extra capital raises productive capacity, shifting the whole curve outwards. The cost is paid now, by people consuming less today; the benefit arrives years later. That is why the decision is genuinely difficult rather than obvious.</p>
+    </div>
+  </div>
+
+  <!-- ============ TAB 6 · EVALUATION ============ -->
+  <div class="panel" id="panel-judge">
+    <div class="intro">
+      <div class="kicker">Activity 6 · AO3 Evaluation</div>
+      <h1>Is the claim true, false, or does it depend?</h1>
+      <p>Each of these is a statement a student might write without thinking. Judge it, then read the economist's view. The purple line shows the sentence as it would appear in an essay — that register is what separates a Level 3 answer from a Level 2 one.</p>
+    </div>
+    <div id="judgeList"></div>
+    <div class="done-banner" id="judgeDone">✓ All five judged. Look back at what did the work each time: separating <b>capacity</b> from <b>actual output</b>, separating the <b>short run</b> from the <b>long run</b>, and asking <b>who</b> bears the cost. Those three moves will carry most of your AO3 marks in Section 1.</div>
+  </div>
+
+  <!-- ============ TAB 7 · MCQ ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>These six are the coursebook's end-of-chapter set. Two of them come with a diagram — read the axis labels before you read the question.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All six attempted. Production possibility curves reappear all the way through the course — in economic growth, in the trade-off between unemployment and inflation, and in development economics. The habit of asking "has the curve moved, or have we moved on it?" is worth building now.</div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 1.5</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 10 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('1.5', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={sort:false,think:false,read:false,moves:false,pattern:false,cloze:false,shape:false,shift:false,judge:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities';
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 1.5 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function markBtn(b,ok){ b.classList.add(ok?'right':'wrong'); }
+function say(id,good,html){ const el=document.getElementById(id); el.className='msg '+(good?'good':'bad'); el.innerHTML=html; }
+
+/* =====================================================================
+   SVG DIAGRAM ENGINE — coursebook figures
+   All figures are drawn from data so the marked points always sit
+   exactly on the curve — nothing is hand-positioned.
+   ===================================================================== */
+const NAVY='#002F6C', BLUE='#008BCC', ORANGE='#FF8F1C', GREY='#C8D8E8',
+      TXT3='#8098B0', GREEN='#28A745', RED='#D63864', PURPLE='#6B4E9E';
+
+/* the coursebook economy: a cubic through (0,1000) (1200,700) (1500,500) (2000,0) */
+function cars(tv){
+  const u=tv/1000;
+  return -69.4444*u*u*u - 90.2778*u*u - 41.6667*u + 1000;
+}
+function svgOpen(w,h){ return '<svg viewBox="0 0 '+w+' '+h+'" role="img" xmlns="http://www.w3.org/2000/svg">'; }
+function line(x1,y1,x2,y2,c,w,dash){
+  return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(w||1)+'"'+
+    (dash?' stroke-dasharray="'+dash+'"':'')+' stroke-linecap="round"/>';
+}
+function txt(x,y,s,c,size,anchor,weight){
+  return '<text x="'+x+'" y="'+y+'" fill="'+(c||TXT3)+'" font-family="Lato,sans-serif" font-size="'+(size||11)+
+    '" text-anchor="'+(anchor||'middle')+'" font-weight="'+(weight||400)+'">'+s+'</text>';
+}
+function dot(x,y,c,r){ return '<circle cx="'+x+'" cy="'+y+'" r="'+(r||4.5)+'" fill="'+c+'"/>'; }
+function poly(pts,c,w,dash){
+  return '<polyline points="'+pts+'" fill="none" stroke="'+c+'" stroke-width="'+(w||2.4)+
+    '" stroke-linejoin="round" stroke-linecap="round"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>';
+}
+
+/* ---------- Figure 1: the cars-and-televisions PPC ---------- */
+function mainPPC(showAB){
+  const W=470,H=330, x0=62,x1=442, yTop=28,y1=262;
+  const sx=tv=>x0+(tv/2000)*(x1-x0);
+  const sy=c=>y1-(c/1000)*(y1-yTop);
+  let s=svgOpen(W,H);
+  for(let c=200;c<=1000;c+=200) s+=line(x0,sy(c),x1,sy(c),'#EDF3F9',1);
+  for(let t=500;t<=2000;t+=500) s+=line(sx(t),yTop,sx(t),y1,'#EDF3F9',1);
+  let pts=[];
+  for(let tv=0;tv<=2000;tv+=20) pts.push(sx(tv).toFixed(1)+','+sy(cars(tv)).toFixed(1));
+  s+=poly(pts.join(' '),BLUE,2.6);
+  s+=line(x0,yTop-4,x0,y1,NAVY,1.8);
+  s+=line(x0,y1,x1+8,y1,NAVY,1.8);
+  for(let t=0;t<=2000;t+=500){ s+=line(sx(t),y1,sx(t),y1+4,NAVY,1.4); s+=txt(sx(t),y1+17,t,TXT3,10.5); }
+  for(let c=0;c<=1000;c+=200){ if(c>0){s+=line(x0-4,sy(c),x0,sy(c),NAVY,1.4);} s+=txt(x0-9,sy(c)+3.5,c,TXT3,10.5,'end'); }
+  s+=txt((x0+x1)/2,y1+36,'Televisions',NAVY,12.5,'middle',700);
+  s+='<text x="18" y="'+((yTop+y1)/2)+'" fill="'+NAVY+'" font-family="Lato,sans-serif" font-size="12.5" font-weight="700" text-anchor="middle" transform="rotate(-90 18 '+((yTop+y1)/2)+')">Cars</text>';
+  const P=[
+    {t:1200,c:700,l:'A',col:GREEN,dx:9,dy:-8},
+    {t:1500,c:500,l:'B',col:GREEN,dx:10,dy:-6},
+    {t:500, c:250,l:'C',col:ORANGE,dx:10,dy:5},
+    {t:1750,c:900,l:'D',col:RED,dx:10,dy:4},
+  ];
+  if(showAB){
+    [P[0],P[1]].forEach(p=>{
+      s+=line(x0,sy(p.c),sx(p.t),sy(p.c),GREY,1.3,'4 4');
+      s+=line(sx(p.t),sy(p.c),sx(p.t),y1,GREY,1.3,'4 4');
+    });
+    s+='<defs><marker id="ah" markerWidth="7" markerHeight="7" refX="5.5" refY="3" orient="auto">'+
+       '<path d="M0,0 L6,3 L0,6 z" fill="'+PURPLE+'"/></marker></defs>';
+    s+='<line x1="'+(sx(1200)+7)+'" y1="'+(sy(700)+6)+'" x2="'+(sx(1500)-6)+'" y2="'+(sy(500)-5)+
+       '" stroke="'+PURPLE+'" stroke-width="2" marker-end="url(#ah)"/>';
+    s+=txt(sx(1570),sy(690),'−200 cars',PURPLE,10.5,'start',700);
+    s+=txt(sx(1570),sy(690)+13,'+300 TVs',PURPLE,10.5,'start',700);
+  }
+  P.forEach(p=>{
+    s+=dot(sx(p.t),sy(p.c),p.col);
+    s+=txt(sx(p.t)+p.dx,sy(p.c)+p.dy,p.l,p.col,14,'start',900);
+  });
+  return s+'</svg>';
+}
+
+/* ---------- schematic quarter-arc curves for the smaller figures ---------- */
+function arc(x0,y1,W,H,kx,ky){
+  let pts=[];
+  for(let i=0;i<=40;i++){
+    const u=i/40;
+    pts.push((x0+kx*u*W).toFixed(1)+','+(y1-ky*Math.sqrt(Math.max(0,1-u*u))*H).toFixed(1));
+  }
+  return pts.join(' ');
+}
+function frame(W,H,xLab,yLab){
+  const x0=42,x1=W-16,yTop=16,y1=H-40;
+  let s=line(x0,yTop,x0,y1,NAVY,1.6)+line(x0,y1,x1,y1,NAVY,1.6);
+  s+=txt((x0+x1)/2,y1+32,xLab,NAVY,11,'middle',700);
+  s+='<text x="14" y="'+((yTop+y1)/2)+'" fill="'+NAVY+'" font-family="Lato,sans-serif" font-size="11" font-weight="700" text-anchor="middle" transform="rotate(-90 14 '+((yTop+y1)/2)+')">'+yLab+'</text>';
+  return {s:s,x0:x0,x1:x1,yTop:yTop,y1:y1,W:x1-x0,H:y1-yTop};
+}
+function straightFig(){
+  const W=300,H=210, fr=frame(W,H,'Good A','Good B');
+  let s=svgOpen(W,H)+fr.s;
+  s+=poly((fr.x0)+','+(fr.y1-0.92*fr.H)+' '+(fr.x0+0.92*fr.W)+','+fr.y1, BLUE,2.6);
+  const gx=v=>fr.x0+v*0.92*fr.W, gy=v=>fr.y1-(0.92-0.92*v)*fr.H;
+  [0.25,0.5,0.75].forEach(v=>{
+    s+=line(gx(v),gy(v),gx(v),fr.y1,GREY,1.2,'3 3');
+    s+=line(fr.x0,gy(v),gx(v),gy(v),GREY,1.2,'3 3');
+    s+=dot(gx(v),gy(v),ORANGE,3.4);
+  });
+  s+=txt(fr.x0+fr.W*0.62,fr.yTop+34,'equal steps',ORANGE,10.5,'start',700);
+  s+=txt(fr.x0+fr.W*0.62,fr.yTop+46,'all the way down',ORANGE,10.5,'start',700);
+  return s+'</svg>';
+}
+function curvedFig(){
+  const W=300,H=210, fr=frame(W,H,'Good A','Good B');
+  let s=svgOpen(W,H)+fr.s;
+  s+=poly(arc(fr.x0,fr.y1,fr.W*0.94,fr.H*0.94,1,1),BLUE,2.6);
+  const qx=u=>fr.x0+u*fr.W*0.94, qy=u=>fr.y1-Math.sqrt(Math.max(0,1-u*u))*fr.H*0.94;
+  [0.3,0.75].forEach(u=>{ s+=dot(qx(u),qy(u),ORANGE,3.4); });
+  s+=line(qx(0.15),qy(0.15),qx(0.45),qy(0.45),ORANGE,1.8);
+  s+=line(qx(0.6),qy(0.6),qx(0.9),qy(0.9),ORANGE,1.8);
+  s+=txt(fr.x0+0.28*fr.W,fr.y1-0.60*fr.H,'flat here',ORANGE,11,'middle',700);
+  s+=txt(fr.x0+0.46*fr.W,fr.y1-0.26*fr.H,'steep here',ORANGE,11,'middle',700);
+  return s+'</svg>';
+}
+function miniFig(kind){
+  const W=210,H=160, fr=frame(W,H,'Good A','Good B');
+  let s=svgOpen(W,H)+fr.s;
+  const base=arc(fr.x0,fr.y1,fr.W*0.78,fr.H*0.78,1,1);
+  if(kind==='right'){
+    s+=poly(base,GREY,2.2);
+    s+=poly(arc(fr.x0,fr.y1,fr.W*0.78,fr.H*0.78,1.2,1.2),BLUE,2.6);
+    s+=txt(fr.x0+fr.W*0.5,fr.yTop+16,'→',ORANGE,20,'middle',900);
+  } else if(kind==='left'){
+    s+=poly(base,GREY,2.2);
+    s+=poly(arc(fr.x0,fr.y1,fr.W*0.78,fr.H*0.78,0.78,0.78),RED,2.6);
+    s+=txt(fr.x0+fr.W*0.42,fr.yTop+16,'←',ORANGE,20,'middle',900);
+  } else if(kind==='pivot'){
+    s+=poly(base,GREY,2.2);
+    s+=poly(arc(fr.x0,fr.y1,fr.W*0.78,fr.H*0.78,1.22,1),BLUE,2.6);
+    s+=dot(fr.x0,fr.y1-fr.H*0.78,NAVY,3.2);
+    s+=txt(fr.x0+fr.W*0.60,fr.y1-10,'→',ORANGE,18,'middle',900);
+  } else {
+    s+=poly(base,BLUE,2.6);
+    const qx=u=>fr.x0+u*fr.W*0.78, qy=u=>fr.y1-Math.sqrt(Math.max(0,1-u*u))*fr.H*0.78;
+    s+=dot(fr.x0+fr.W*0.22,fr.y1-fr.H*0.22,ORANGE,3.8);
+    s+=dot(qx(0.55),qy(0.55),GREEN,3.8);
+    s+='<defs><marker id="ah2'+kind+'" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">'+
+       '<path d="M0,0 L5,3 L0,6 z" fill="'+NAVY+'"/></marker></defs>';
+    s+='<line x1="'+(fr.x0+fr.W*0.25)+'" y1="'+(fr.y1-fr.H*0.24)+'" x2="'+(qx(0.55)-5)+'" y2="'+(qy(0.55)+5)+
+       '" stroke="'+NAVY+'" stroke-width="1.6" marker-end="url(#ah2'+kind+')"/>';
+  }
+  return s+'</svg>';
+}
+
+/* ---------- exam question diagrams ---------- */
+function examFig5(){
+  const W=330,H=240, fr=frame(W,H,'Phones','Cars');
+  let s=svgOpen(W,H)+fr.s;
+  const kIn=0.66, kOut=0.90, cLev=0.75;
+  s+=poly(arc(fr.x0,fr.y1,fr.W,fr.H,kIn,1),BLUE,2.4);
+  s+=poly(arc(fr.x0,fr.y1,fr.W,fr.H,kOut,1),BLUE,2.4);
+  const uC=Math.sqrt(Math.max(0,1-cLev*cLev));
+  const yC=fr.y1-cLev*fr.H;
+  const xP=fr.x0+kIn*uC*fr.W, xQ=fr.x0+kOut*uC*fr.W;
+  const xM=fr.x0+kIn*fr.W, xN=fr.x0+kOut*fr.W;
+  s+=line(fr.x0,yC,xQ,yC,GREY,1.3,'4 4');
+  s+=line(xP,yC,xP,fr.y1,GREY,1.3,'4 4');
+  s+=line(xQ,yC,xQ,fr.y1,GREY,1.3,'4 4');
+  s+=txt(fr.x0-8,fr.y1-fr.H+4,'D',NAVY,13,'end',900);
+  s+=txt(fr.x0-8,yC+4,'C',NAVY,13,'end',900);
+  [[xP,'P'],[xQ,'Q'],[xM,'M'],[xN,'N']].forEach(p=>{ s+=txt(p[0],fr.y1+16,p[1],NAVY,12,'middle',900); });
+  s+=txt(fr.x0-8,fr.y1+4,'0',NAVY,11,'end');
+  return s+'</svg>';
+}
+function examFig6(){
+  const W=330,H=240, fr=frame(W,H,'Phones','Cars');
+  let s=svgOpen(W,H)+fr.s;
+  const yC=fr.y1-0.90*fr.H, x1a=fr.x0+0.60*fr.W, x2a=fr.x0+0.86*fr.W;
+  s+=poly(fr.x0+','+yC+' '+x1a+','+fr.y1,BLUE,2.4);
+  s+=poly(fr.x0+','+yC+' '+x2a+','+fr.y1,BLUE,2.4);
+  s+=txt(fr.x0-8,yC+4,'C',NAVY,13,'end',900);
+  s+=txt(fr.x0-8,fr.y1+4,'0',NAVY,11,'end');
+  s+=txt(x1a,fr.y1+16,'MP₁',NAVY,11.5,'middle',900);
+  s+=txt(x2a,fr.y1+16,'MP₂',NAVY,11.5,'middle',900);
+  s+=txt(fr.x0+0.20*fr.W,fr.y1-0.40*fr.H,'PPC₁',BLUE,11.5,'middle',900);
+  s+=txt(fr.x0+0.64*fr.W,fr.y1-0.40*fr.H,'PPC₂',BLUE,11.5,'middle',900);
+  return s+'</svg>';
+}
+
+document.getElementById('fig-main').innerHTML     = mainPPC(false);
+document.getElementById('fig-straight').innerHTML = straightFig();
+document.getElementById('fig-curved').innerHTML   = curvedFig();
+document.getElementById('fig-right').innerHTML    = miniFig('right');
+document.getElementById('fig-left').innerHTML     = miniFig('left');
+document.getElementById('fig-pivot').innerHTML    = miniFig('pivot');
+document.getElementById('fig-none').innerHTML     = miniFig('none');
+
+/* =====================================================================
+   SHARED HELPERS (same conventions as topics 1.1 – 1.4)
+   ===================================================================== */
+function renderBins(host, bins){
+  host.innerHTML='';
+  bins.forEach(b=>{
+    const slot=document.createElement('div');
+    slot.className='bin'; slot.dataset.bin=b.id;
+    slot.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.color+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    host.appendChild(slot);
+  });
+}
+function renderPool(pool, items){
+  pool.innerHTML='';
+  [...items].sort(()=>Math.random()-0.5).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.textContent=it.text;
+    pool.appendChild(d);
+  });
+}
+function gradeBins(scope, total, scoreEl, label, key){
+  let correct=0, placed=0;
+  document.querySelectorAll(scope+' .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok = el.dataset.bin === bin.dataset.bin;
+      el.classList.toggle('correct', ok);
+      el.classList.toggle('wrong', !ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById(scoreEl);
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk(label, correct+'/'+total+' correct'); if(key) mark(key); }
+  else { sc.textContent=correct+' / '+total+' correct — green = right, pink = try again'; sc.style.color='#002F6C'; }
+}
+function buildSort(gridId, poolId, items, bins, scoreId, cls){
+  const grid=document.getElementById(gridId);
+  grid.className='sort-grid '+cls;
+  grid.innerHTML='';
+  const poolCol=document.createElement('div');
+  poolCol.innerHTML='<div class="col-lbl">Drag these</div><div class="drop-pool" id="'+poolId+'"></div>';
+  grid.appendChild(poolCol);
+  renderPool(poolCol.querySelector('#'+poolId), items);
+  bins.forEach(b=>{
+    const col=document.createElement('div');
+    col.innerHTML='<div class="col-lbl">&nbsp;</div>';
+    const holder=document.createElement('div');
+    col.appendChild(holder); grid.appendChild(col);
+    renderBins(holder,[b]);
+  });
+  document.getElementById(scoreId).textContent='';
+}
+function buildCards(list, bankArr, doneId, label, key){
+  const host=document.getElementById(list); host.innerHTML='';
+  bankArr.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      (q.fig?'<div class="fig" style="margin:2px 0 14px">'+q.fig+'</div>':'')+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+'<div class="why">'+q.why+'</div></div>';
+    host.appendChild(c);
+  });
+  const answered=new Set();
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click', ()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bankArr.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick');
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bankArr.length){
+        if(doneId) document.getElementById(doneId).classList.add('show');
+        trk(label, answered.size+'/'+bankArr.length+' attempted');
+        if(key) mark(key);
+      }
+    });
+  });
+}
+
+/* ================= TAB 1a — CAPITAL OR CONSUMER ================= */
+const SORT=[
+  {t:'A rice cooker bought by a family in Nonthaburi',k:'con',why:'The family uses it at home to enjoy meals now.'},
+  {t:'The same rice cooker bought by a khao man gai stall',k:'cap',why:'Same object — but the stall uses it to produce meals for sale.'},
+  {t:'A welding robot at a car plant in Rayong',k:'cap',why:'It is used to make cars.'},
+  {t:'A songthaew pick-up carrying passengers in Chiang Mai',k:'cap',why:'The driver uses it to produce a transport service.'},
+  {t:'A mookata dinner with friends',k:'con',why:'It is enjoyed now and used up.'},
+  {t:'A new BTS train carriage',k:'cap',why:'Infrastructure that produces transport services for years.'}
+];
+const sortBox=document.getElementById('sortBox');
+let sortRight=0;
+SORT.forEach(s=>{
+  const row=document.createElement('div'); row.className='sortrow';
+  row.innerHTML='<div class="item">'+s.t+'<small class="hidden"></small></div>'+
+    '<div class="opts2"><button class="btn btn-ghost btn-sm" data-k="cap">Capital good</button><button class="btn btn-ghost btn-sm" data-k="con">Consumer good</button></div>';
+  row.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b||row.dataset.done) return;
+    const why=row.querySelector('small');
+    if(b.dataset.k===s.k){
+      row.dataset.done='1'; markBtn(b,true);
+      why.textContent='✓ '+s.why; why.classList.remove('hidden'); why.style.color='var(--green-txt)';
+      sortRight++;
+      if(sortRight===SORT.length){
+        say('sortFb',true,'All six correct. Notice the two rice cookers: the object is identical — what matters is whether it is used to produce something else.');
+        trk('Sort: Capital vs consumer goods','6/6 correct'); mark('sort');
+      }
+    } else {
+      markBtn(b,false); why.classList.remove('hidden'); why.style.color='var(--red-txt)';
+      why.textContent='Not quite — ask: is it used to make something else, or enjoyed for its own sake?';
+    }
+  });
+  sortBox.appendChild(row);
+});
+
+/* ================= TAB 1b — THINK FIRST ================= */
+document.getElementById('thinkQ').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.a==='1'){
+    markBtn(b,true);
+    say('thinkFb',true,'Yes. Same resources, pointed somewhere else: that is a movement ALONG the PPC, and it always has an opportunity cost. Now go to <b>Drag the Curve</b> and measure that cost.');
+    mark('think');
+  } else {
+    markBtn(b,false);
+    say('thinkFb',false, b.textContent.includes('shifts')
+      ? 'Careful — this is the most common PPC mistake. The curve only shifts when the quantity or quality of resources changes. Here the resources are the same.'
+      : 'Not quite. Resources are scarce: if they move into one good, they must leave the other.');
+  }
+});
+
+/* ================= TAB 2 — READING THE CURVE ================= */
+const READ=[
+  {id:'r1', icon:'A', bg:'#28A745', name:'Point A',
+   stem:'The economy is producing at <b>point A</b>: 1200 televisions and 700 cars. What does this position tell you?',
+   opts:['Resources are being wasted','All resources are fully employed and used efficiently','This combination is impossible to reach','The economy is producing only televisions'],
+   ans:1,
+   fb:'Point A lies <strong>on</strong> the curve, so the economy is getting everything it can from the resources it has, given current technology.',
+   why:'Every point on the frontier is efficient. That does not make it the <i>best</i> point — a country producing 2000 televisions and no cars is also on the curve, and also efficient. Efficiency is about waste, not about whether the mix is sensible.'},
+
+  {id:'r2', icon:'C', bg:'#FF8F1C', name:'Point C',
+   stem:'<b>Point C</b> is 500 televisions and 250 cars — well inside the curve. What is happening here?',
+   opts:['The economy is producing less than it could from the resources available','The economy has run out of resources','The economy has grown','This point cannot exist'],
+   ans:0,
+   fb:'Inside the curve means an <strong>inefficient allocation of resources</strong>: at 500 televisions the economy could have produced almost 950 cars, not 250.',
+   why:'The commonest causes are unemployed labour, idle factories or resources locked into the wrong industries. It is entirely possible to produce here — most real economies do — it is simply wasteful.'},
+
+  {id:'r3', icon:'D', bg:'#D63864', name:'Point D',
+   stem:'<b>Point D</b> lies outside the curve. Why can the economy not produce there?',
+   opts:['Because consumers do not want that combination','Because it does not have the resources or technology required','Because the government has not allowed it','Because it would be inefficient'],
+   ans:1,
+   fb:'D represents a <strong>position of scarcity</strong>: the wants exist, but the resources needed to satisfy them do not.',
+   why:'This is the whole subject in one point. Scarcity is not "we have run out"; it is "what we want exceeds what our resources can produce". Only an outward shift of the curve — more or better resources, or new technology — can ever make D attainable.'},
+
+  {id:'r4', icon:'↗', bg:'#008BCC', name:'From C to the curve',
+   stem:'Unemployment falls and the economy moves from point C to a point on the curve. What has happened to the curve itself?',
+   opts:['It has shifted outwards','It has shifted inwards','It has not moved at all','It has become a straight line'],
+   ans:2,
+   fb:'Nothing has changed about the economy\'s <strong>productive capacity</strong> — the same resources existed at C, they were simply not being used. The economy has moved <i>towards</i> the curve, not moved the curve.',
+   why:'This is the distinction examiners test most often. Using resources better gets you to the frontier; only more resources, better resources or better technology moves the frontier.'},
+
+  {id:'r5', icon:'?', bg:'#6B4E9E', name:'What the curve assumes',
+   stem:'A PPC is drawn on which set of assumptions?',
+   opts:['Resources are unlimited and technology is fixed','All existing resources are fully used and technology is given','Only two goods exist in the real economy','Opportunity cost is always zero'],
+   ans:1,
+   fb:'Two assumptions do the work: <strong>full employment</strong> of existing resources, and a <strong>given state of technology</strong>.',
+   why:'Both assumptions are why the curve is a boundary at all. Relax the first and points inside become possible; relax the second and the whole curve moves. C is a description of the model\'s simplification, not one of its assumptions about the economy.'},
+];
+buildCards('readList', READ, 'readDone', 'Diagram reading: Points on a PPC', 'read');
+
+/* =====================================================================
+   TAB 3 — DRAG THE CURVE (Thailand: capital vs consumer goods)
+   ===================================================================== */
+const SVG=document.getElementById('ppcSvg');
+const PL={x0:72,x1:500,y0:30,y1:320};
+const XMAX=550, YMAX=280;
+const fCap=x=>250-x*x/1000;                      // the PPC: capital = 250 - consumer^2 / 1000
+const px=v=>PL.x0+v/XMAX*(PL.x1-PL.x0);
+const py=v=>PL.y1-v/YMAX*(PL.y1-PL.y0);
+const PTS=[{id:'A',x:100},{id:'B',x:200},{id:'C',x:300},{id:'D',x:400}].map(p=>({...p,y:fCap(p.x)}));
+const MOVES=[0,1,2].map(i=>{const s=PTS[i],e=PTS[i+1];return{s,e,gain:e.x-s.x,oc:s.y-e.y};});
+
+let step=0;            // 0,1,2 = move in progress; 3 = all done
+let phase='drag';      // 'drag' | 'answer'
+let cur=PTS[0].x;
+let dragging=false;
+let showStraight=false;
+const solved=MOVES.map(()=>({a:false,b:false}));
+const reached=[true,false,false,false];
+
+function curvePath(){
+  let d='';
+  for(let x=0;x<=500;x+=4){ d+=(x?' L':'M')+px(x).toFixed(1)+' '+py(fCap(x)).toFixed(1); }
+  return d;
+}
+function arcPath(a,b){
+  let d='', n=Math.max(2,Math.ceil((b-a)/2));
+  for(let i=0;i<=n;i++){ const x=a+(b-a)*i/n; d+=(i?' L':'M')+px(x).toFixed(1)+' '+py(fCap(x)).toFixed(1); }
+  return d;
+}
+const T=(x,y,s,o='')=>`<text x="${x}" y="${y}" ${o}>${s}</text>`;
+
+function draw(){
+  let g='';
+  g+=`<defs><marker id="ahx" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#002F6C"/></marker></defs>`;
+  for(let v=100;v<=500;v+=100) g+=`<line x1="${px(v)}" y1="${PL.y1}" x2="${px(v)}" y2="${PL.y0}" stroke="#EDF3F9" stroke-width="1"/>`;
+  for(let v=50;v<=250;v+=50) g+=`<line x1="${PL.x0}" y1="${py(v)}" x2="${PL.x1}" y2="${py(v)}" stroke="#EDF3F9" stroke-width="1"/>`;
+  for(let v=0;v<=500;v+=100) g+=T(px(v),PL.y1+17,v,'text-anchor="middle" font-size="11.5" fill="#8098B0" font-weight="700"');
+  for(let v=50;v<=250;v+=50) g+=T(PL.x0-8,py(v)+4,v,'text-anchor="end" font-size="11.5" fill="#8098B0" font-weight="700"');
+  g+=`<line x1="${PL.x0}" y1="${PL.y1}" x2="${PL.x1+22}" y2="${PL.y1}" stroke="#002F6C" stroke-width="2.5" marker-end="url(#ahx)"/>`;
+  g+=`<line x1="${PL.x0}" y1="${PL.y1}" x2="${PL.x0}" y2="${PL.y0-18}" stroke="#002F6C" stroke-width="2.5" marker-end="url(#ahx)"/>`;
+  g+=T((PL.x0+PL.x1)/2,PL.y1+42,'Consumer goods (million units)','text-anchor="middle" font-size="13" font-weight="900" fill="#002F6C"');
+  g+=T(24,(PL.y0+PL.y1)/2,'Capital goods (million units)',`text-anchor="middle" font-size="13" font-weight="900" fill="#002F6C" transform="rotate(-90 24 ${(PL.y0+PL.y1)/2})"`);
+  if(showStraight){
+    g+=`<line x1="${px(0)}" y1="${py(250)}" x2="${px(500)}" y2="${py(0)}" stroke="#8C99A8" stroke-width="2.5" stroke-dasharray="7 6"/>`;
+    g+=`<line x1="${px(330)}" y1="${py(262)}" x2="${px(370)}" y2="${py(262)}" stroke="#8C99A8" stroke-width="2.5" stroke-dasharray="7 6"/>`;
+    g+=T(px(378),py(262)+4,'straight-line PPC','font-size="12" font-style="italic" font-weight="900" fill="#8098B0"');
+  }
+  g+=`<path d="${curvePath()}" fill="none" stroke="#002F6C" stroke-width="3.2"/>`;
+  g+=T(px(462)+6,py(fCap(462))-6,'PPC','font-size="13" font-style="italic" font-weight="900" fill="#002F6C"');
+  if(phase==='answer' && step<3){
+    const m=MOVES[step];
+    [m.s,m.e].forEach(p=>{
+      g+=`<line x1="${px(p.x)}" y1="${py(p.y)}" x2="${px(p.x)}" y2="${PL.y1}" stroke="#8098B0" stroke-width="1.2" stroke-dasharray="3 3"/>`;
+      g+=`<line x1="${px(p.x)}" y1="${py(p.y)}" x2="${PL.x0}" y2="${py(p.y)}" stroke="#8098B0" stroke-width="1.2" stroke-dasharray="3 3"/>`;
+    });
+  }
+  MOVES.forEach((m,i)=>{
+    if(!solved[i].a) return;
+    const xs=px(m.s.x), xe=px(m.e.x), ys=py(m.s.y), ye=py(m.e.y);
+    g+=`<line x1="${xs}" y1="${ys}" x2="${xs}" y2="${ye}" stroke="#FF8F1C" stroke-width="3.5"/>`;
+    g+=`<line x1="${xs}" y1="${ye}" x2="${xe}" y2="${ye}" stroke="#008BCC" stroke-width="3"/>`;
+    const ly=py(m.e.y+(m.s.y-m.e.y)*0.35)+4;
+    g+=T(xs-7,ly,'−'+m.oc,'text-anchor="end" font-size="13" font-weight="900" fill="#7A3D00" paint-order="stroke" stroke="#fff" stroke-width="4"');
+    g+=T((xs+xe)/2,ye+16,'+'+m.gain,'text-anchor="middle" font-size="13" font-weight="900" fill="#008BCC" paint-order="stroke" stroke="#fff" stroke-width="4"');
+  });
+  if(phase==='drag' && step<3 && cur>PTS[step].x+0.5){
+    g+=`<path d="${arcPath(PTS[step].x,cur)}" fill="none" stroke="#FF8F1C" stroke-width="7" stroke-linecap="round" opacity=".35"/>`;
+  }
+  PTS.forEach((p,i)=>{
+    const isTarget = step<3 && i===step+1 && phase==='drag';
+    g+=`<circle cx="${px(p.x)}" cy="${py(p.y)}" r="${isTarget?7:5}" fill="${reached[i]?'#002F6C':'#fff'}" stroke="#002F6C" stroke-width="2.2"/>`;
+    if(isTarget) g+=`<circle cx="${px(p.x)}" cy="${py(p.y)}" r="13" fill="none" stroke="#FF8F1C" stroke-width="2" stroke-dasharray="4 3"/>`;
+    const lbl = reached[i] ? `${p.id} (${p.x}, ${p.y})` : p.id;
+    g+=T(px(p.x)+10,py(p.y)-11,lbl,'font-size="13.5" font-weight="900" fill="#002F6C" paint-order="stroke" stroke="#fff" stroke-width="4"');
+  });
+  const hx=px(cur), hy=py(fCap(cur));
+  g+=`<circle id="handle" cx="${hx}" cy="${hy}" r="11" fill="#FF8F1C" stroke="#fff" stroke-width="3" style="cursor:${phase==='drag'&&step<3?'grab':'default'}"/>`;
+  SVG.innerHTML=g;
+
+  const exact=PTS.find(p=>Math.abs(p.x-cur)<0.5);
+  document.getElementById('roPt').textContent = exact ? exact.id : 'between '+PTS[step].id+' and '+PTS[Math.min(step+1,3)].id;
+  document.getElementById('roCon').textContent=Math.round(cur);
+  document.getElementById('roCap').textContent=Math.round(fCap(cur));
+}
+
+function stepText(){
+  const box=document.getElementById('stepBox');
+  if(step>=3){ box.innerHTML='All three moves done. Look at the last two columns of your table, then answer below.'; return; }
+  const m=MOVES[step];
+  box.innerHTML = phase==='drag'
+    ? `<b>Move ${step+1} of 3:</b> drag the orange dot along the curve from <b>${m.s.id}</b> to <b>${m.e.id}</b>.`
+    : `You are at <b>${m.e.id}</b>. Read the values for ${m.s.id} and ${m.e.id}, then answer the questions below the table.`;
+}
+function renderLog(){
+  const q='<span class="qm">?</span>';
+  document.getElementById('logBody').innerHTML=MOVES.map((m,i)=>{
+    const arrived = reached[i+1];
+    return `<tr class="${i===step?'now':''}">
+      <td>${m.s.id} → ${m.e.id}</td>
+      <td>${reached[i]?'('+m.s.x+', '+m.s.y+')':q}</td>
+      <td>${arrived?'('+m.e.x+', '+m.e.y+')':q}</td>
+      <td class="con">${arrived?'+'+m.gain+'m':q}</td>
+      <td class="cap">${solved[i].a?m.oc+'m':q}</td>
+      <td class="cap">${solved[i].b?(m.oc/m.gain).toFixed(1):q}</td></tr>`;
+  }).join('');
+}
+function svgXY(e){
+  const r=SVG.getBoundingClientRect();
+  return {x:(e.clientX-r.left)/r.width*540, y:(e.clientY-r.top)/r.height*380};
+}
+function valFromSvgX(sxv){ return (sxv-PL.x0)/(PL.x1-PL.x0)*XMAX; }
+function setCur(v){
+  if(step>=3||phase!=='drag') return;
+  const lo=PTS[step].x, hi=PTS[step+1].x;
+  cur=Math.max(lo,Math.min(hi,v));
+  if(cur>=hi-0.5){ cur=hi; arrive(); } else draw();
+}
+SVG.addEventListener('pointerdown',e=>{
+  if(step>=3) return;
+  if(phase!=='drag'){ flashStep('Answer the questions below the table first, then carry on.'); return; }
+  const p=svgXY(e), hx=px(cur), hy=py(fCap(cur));
+  if(Math.hypot(p.x-hx,p.y-hy)>46){ flashStep('Grab the <b>orange dot</b> and slide it along the curve.'); return; }
+  e.preventDefault(); try{ SVG.setPointerCapture(e.pointerId); }catch(_){} dragging=true;
+});
+SVG.addEventListener('pointermove',e=>{ if(!dragging) return; e.preventDefault(); setCur(valFromSvgX(svgXY(e).x)); });
+SVG.addEventListener('pointerup',()=>{ dragging=false; });
+SVG.addEventListener('pointercancel',()=>{ dragging=false; });
+SVG.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'){ e.preventDefault(); setCur(cur+10); }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); setCur(cur-10); }
+});
+let flashT=null;
+function flashStep(html){
+  const box=document.getElementById('stepBox'); box.innerHTML=html;
+  clearTimeout(flashT); flashT=setTimeout(stepText,2600);
+}
+function arrive(){
+  dragging=false; phase='answer'; reached[step+1]=true;
+  draw(); stepText(); renderLog(); buildQ();
+}
+function num(str){
+  let s=String(str).trim().replace(/,/g,'').replace(/\s+/g,'').replace(/m(units?)?$/i,'');
+  if(s==='') return NaN;
+  if(/^-?\d*\.?\d+\/\d*\.?\d+$/.test(s)){ const [a,b]=s.split('/').map(Number); return b?a/b:NaN; }
+  return /^-?\d*\.?\d+$/.test(s)?Number(s):NaN;
+}
+const near=(a,b,t=0.001)=>Math.abs(a-b)<=t;
+
+function buildQ(){
+  const m=MOVES[step], P=document.getElementById('qPanel');
+  P.classList.remove('hidden');
+  P.innerHTML=`
+    <h3>Move ${step+1}: ${m.s.id} → ${m.e.id}</h3>
+    <p style="font-size:13.5px;color:var(--text-2)">Thailand moves from <b>${m.s.id}</b> to <b>${m.e.id}</b> and gains <b>${m.gain}m units of consumer goods</b>.</p>
+    <div class="part">
+      <div class="qq" style="margin-top:0">(a) Moving from ${m.s.id} to ${m.e.id}, what is the opportunity cost of gaining ${m.gain}m units of consumer goods?</div>
+      <div class="ansline">
+        <input id="aNum" inputmode="decimal" autocomplete="off" aria-label="Amount given up">
+        <span>m units of</span>
+        <select id="aGood" aria-label="Which good"><option value="">choose…</option><option value="cap">capital goods</option><option value="con">consumer goods</option></select>
+        <button class="btn btn-primary btn-sm" id="aCheck">Check</button>
+      </div>
+      <button class="mini-btn hintBtn" data-h="hA">Need a hint?</button><div class="hintline hidden" id="hA">Opportunity cost = <b>capital goods at ${m.s.id}</b> − <b>capital goods at ${m.e.id}</b></div>
+      <div id="aFb"></div>
+    </div>
+    <div class="part hidden" id="partB">
+      <div class="qq" style="margin-top:0">(b) Moving from ${m.s.id} to ${m.e.id}, what is the opportunity cost of <u>one</u> extra unit of consumer goods?</div>
+      <div class="ansline">
+        <input id="bNum" inputmode="decimal" autocomplete="off" aria-label="Opportunity cost per unit">
+        <span>units of capital goods</span>
+        <button class="btn btn-primary btn-sm" id="bCheck">Check</button>
+      </div>
+      <button class="mini-btn hintBtn" data-h="hB">Need a hint?</button><div class="hintline hidden" id="hB">Capital goods given up ÷ consumer goods gained</div>
+      <div id="bFb"></div>
+    </div>
+    <div class="btn-row hidden" id="nextRow"><button class="btn btn-primary" id="nextBtn">${step<2?'Next move: '+m.e.id+' → '+PTS[step+2].id:'See the pattern'}</button></div>`;
+  document.getElementById('aCheck').onclick=checkA;
+  document.getElementById('bCheck').onclick=checkB;
+  document.getElementById('aNum').addEventListener('keydown',e=>{ if(e.key==='Enter') checkA(); });
+  document.getElementById('bNum').addEventListener('keydown',e=>{ if(e.key==='Enter') checkB(); });
+  document.getElementById('nextBtn').onclick=nextMove;
+  P.querySelectorAll('.hintBtn').forEach(h=>h.onclick=()=>{ document.getElementById(h.dataset.h).classList.remove('hidden'); h.remove(); });
+  setTimeout(()=>P.scrollIntoView({behavior:'smooth',block:'nearest'}),60);
+}
+function checkA(){
+  const m=MOVES[step], v=num(document.getElementById('aNum').value), good=document.getElementById('aGood').value;
+  if(isNaN(v)){ say('aFb',false,'Type a number in the box first.'); return; }
+  if(near(v,m.oc) && good==='cap'){
+    solved[step].a=true;
+    document.getElementById('aNum').classList.add('ok'); document.getElementById('aGood').classList.add('ok');
+    document.getElementById('aNum').disabled=true; document.getElementById('aGood').disabled=true; document.getElementById('aCheck').disabled=true;
+    say('aFb',true,`Correct: ${m.s.y} − ${m.e.y} = <b>${m.oc}m units of capital goods</b>. The orange line on the diagram shows what Thailand gave up; the blue line shows what it gained.`);
+    document.getElementById('partB').classList.remove('hidden');
+    draw(); renderLog(); return;
+  }
+  if(near(v,m.oc) && good==='con'){ say('aFb',false,'Right number, wrong good. Opportunity cost is measured in the good you <b>give up</b>, not the good you gain.'); return; }
+  if(near(v,-m.oc)){ say('aFb',false,'Right size, but write it as a positive amount: opportunity cost is the amount <b>given up</b>, so no minus sign.'); return; }
+  if(near(v,m.gain)){ say('aFb',false,`${m.gain}m is what Thailand <b>gained</b>. The opportunity cost is what it <b>gave up</b> — look at the capital goods column.`); return; }
+  if(near(v,m.e.y)){ say('aFb',false,`${m.e.y}m is how many capital goods Thailand still makes at ${m.e.id}. You need the <b>change</b>: subtract it from the amount at ${m.s.id}.`); return; }
+  if(near(v,m.s.y)){ say('aFb',false,`${m.s.y}m is the starting amount at ${m.s.id}. You need the <b>change</b> between ${m.s.id} and ${m.e.id}.`); return; }
+  if(near(v,m.s.x)||near(v,m.e.x)){ say('aFb',false,'That is a consumer goods figure. Opportunity cost here is measured on the capital goods (vertical) axis.'); return; }
+  if(good===''){ say('aFb',false,'Choose which good the cost is measured in.'); return; }
+  say('aFb',false,`Not quite. Read capital goods at ${m.s.id} and at ${m.e.id} in the table, then subtract.`);
+}
+function checkB(){
+  const m=MOVES[step], v=num(document.getElementById('bNum').value), ans=m.oc/m.gain;
+  if(isNaN(v)){ say('bFb',false,'Type a number, e.g. a decimal like 0.4 or a fraction like 4/10.'); return; }
+  if(near(v,ans,0.006)){
+    solved[step].b=true;
+    const i=document.getElementById('bNum'); i.classList.add('ok'); i.disabled=true; document.getElementById('bCheck').disabled=true;
+    say('bFb',true,`Correct: ${m.oc} ÷ ${m.gain} = <b>${ans.toFixed(1)} units of capital goods</b> for every extra unit of consumer goods.`);
+    renderLog(); document.getElementById('nextRow').classList.remove('hidden'); return;
+  }
+  if(near(v,m.gain/m.oc,0.02)){ say('bFb',false,'You divided the wrong way round. It is capital goods given up ÷ consumer goods gained.'); return; }
+  if(near(v,m.oc)){ say('bFb',false,`${m.oc}m is the cost of all ${m.gain}m units. Divide by ${m.gain} to find the cost of <b>one</b> unit.`); return; }
+  say('bFb',false,`Not quite. Divide the capital goods given up (${m.oc}) by the consumer goods gained (${m.gain}).`);
+}
+function nextMove(){
+  step++; phase='drag';
+  document.getElementById('qPanel').classList.add('hidden');
+  if(step>=3){
+    trk('Calculation: Opportunity cost on the Thai PPC','3/3 moves measured'); mark('moves');
+    document.getElementById('patternCard').classList.remove('hidden');
+    setTimeout(()=>document.getElementById('patternCard').scrollIntoView({behavior:'smooth',block:'start'}),60);
+  }
+  draw(); stepText(); renderLog();
+}
+document.getElementById('pat1').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b||document.getElementById('pat1').dataset.done) return;
+  if(b.dataset.a==='1'){
+    document.getElementById('pat1').dataset.done='1'; markBtn(b,true);
+    say('pat1Fb',true,'Yes — 30m, then 50m, then 70m. Each 100m units of consumer goods costs more capital goods than the one before (0.3 → 0.5 → 0.7 per unit). This is <b>increasing opportunity cost</b>, and it is why the curve bends.');
+    document.getElementById('pat2Wrap').classList.remove('hidden');
+  } else {
+    markBtn(b,false);
+    say('pat1Fb',false,'Look again at the capital goods given up column: compare the three numbers from top to bottom.');
+  }
+});
+document.getElementById('straightBtn').onclick=function(){
+  showStraight=true; draw(); this.disabled=true;
+  document.getElementById('pat2').classList.remove('hidden');
+  SVG.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>document.getElementById('pat2').scrollIntoView({behavior:'smooth',block:'nearest'}),900);
+};
+document.getElementById('pat2Opts').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b||document.getElementById('pat2Opts').dataset.done) return;
+  if(b.dataset.a==='1'){
+    document.getElementById('pat2Opts').dataset.done='1'; markBtn(b,true);
+    say('pat2Fb',true,'Correct. On a straight line every 100m units of consumer goods costs the same 50m units of capital goods: <b>constant opportunity cost</b>. That would only happen if every resource were equally good at making both goods. The next tab explains why Thailand\'s real curve bends instead.');
+    trk('Pattern: Increasing vs constant opportunity cost','2/2 correct'); mark('pattern');
+  } else {
+    markBtn(b,false);
+    say('pat2Fb',false,'Check the dashed line: from 0 to 100, 100 to 200, 200 to 300 — does the drop in capital goods change?');
+  }
+});
+renderLog(); draw(); stepText();
+
+/* ================= TAB 4a — CLOZE ================= */
+const WORDS=['increasing','concave','straight','suited','least','specialised','lost','diminishing','constant','future','slowly','outwards',
+             'decreasing','convex','most','inwards'];
+const czBank=document.getElementById('clozeBank');
+const gaps=[...document.querySelectorAll('#passage .cz-gap')];
+gaps.forEach((g,i)=>{ g.dataset.n=(i+1); g.tabIndex=0; g.setAttribute('role','button'); g.setAttribute('aria-label','Gap '+(i+1)); });
+let selChip=null, ghost=null, dragChip=null, csx=0, csy=0, moved=false;
+
+function buildBank(){
+  czBank.innerHTML='';
+  [...WORDS].sort(()=>Math.random()-0.5).forEach(w=>{
+    const c=document.createElement('div'); c.className='cz-chip'; c.textContent=w; c.dataset.w=w; c.tabIndex=0;
+    wireChip(c); czBank.appendChild(c);
+  });
+}
+function chipFor(w){ return czBank.querySelector('.cz-chip[data-w="'+w+'"]'); }
+function clearGapState(){ gaps.forEach(g=>g.classList.remove('ok','no')); }
+function place(chip,gap){
+  if(gap.classList.contains('rev')) return;
+  if(gap.dataset.w){ const old=chipFor(gap.dataset.w); if(old) old.classList.remove('used'); }
+  gap.textContent=chip.dataset.w; gap.dataset.w=chip.dataset.w;
+  chip.classList.add('used'); chip.classList.remove('sel'); selChip=null;
+  clearGapState(); document.getElementById('clozeFb').className=''; document.getElementById('clozeFb').textContent='';
+}
+function emptyGap(gap){
+  if(!gap.dataset.w||gap.classList.contains('rev')) return;
+  const c=chipFor(gap.dataset.w); if(c) c.classList.remove('used');
+  gap.textContent=''; delete gap.dataset.w; gap.classList.remove('ok','no');
+}
+function selectChip(chip){
+  if(selChip===chip){ chip.classList.remove('sel'); selChip=null; return; }
+  if(selChip) selChip.classList.remove('sel');
+  selChip=chip; chip.classList.add('sel');
+}
+function gapAt(x,y){ const el=document.elementFromPoint(x,y); return el?el.closest('.cz-gap'):null; }
+function wireChip(c){
+  c.addEventListener('pointerdown',e=>{ dragChip=c; moved=false; csx=e.clientX; csy=e.clientY; try{ c.setPointerCapture(e.pointerId); }catch(_){} });
+  c.addEventListener('pointermove',e=>{
+    if(dragChip!==c) return;
+    if(!moved && Math.hypot(e.clientX-csx,e.clientY-csy)<8) return;
+    if(!moved){
+      moved=true; const r=c.getBoundingClientRect();
+      ghost=c.cloneNode(true); ghost.classList.add('drag'); ghost.classList.remove('sel');
+      ghost.style.left=r.left+'px'; ghost.style.top=r.top+'px'; ghost._ox=e.clientX-r.left; ghost._oy=e.clientY-r.top;
+      document.body.appendChild(ghost); c.style.opacity='.35';
+    }
+    ghost.style.left=(e.clientX-ghost._ox)+'px'; ghost.style.top=(e.clientY-ghost._oy)+'px';
+    gaps.forEach(g=>g.classList.remove('hot')); const g=gapAt(e.clientX,e.clientY); if(g) g.classList.add('hot');
+  });
+  c.addEventListener('pointerup',e=>{
+    if(dragChip!==c) return;
+    if(moved){
+      ghost.remove(); ghost=null; c.style.opacity='';
+      gaps.forEach(g=>g.classList.remove('hot'));
+      const g=gapAt(e.clientX,e.clientY); if(g) place(c,g);
+    } else selectChip(c);
+    dragChip=null; moved=false;
+  });
+  c.addEventListener('pointercancel',()=>{ if(ghost){ghost.remove();ghost=null;} c.style.opacity=''; dragChip=null; moved=false; gaps.forEach(g=>g.classList.remove('hot')); });
+  c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selectChip(c); } });
+}
+gaps.forEach(g=>{
+  const act=()=>{ if(selChip) place(selChip,g); else emptyGap(g); };
+  g.addEventListener('click',act);
+  g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); act(); } });
+});
+let clozeTries=0;
+document.getElementById('clozeCheck').onclick=()=>{
+  const filled=gaps.filter(g=>g.dataset.w).length;
+  if(filled<gaps.length){ say('clozeFb',false,'Fill all '+gaps.length+' gaps first — '+(gaps.length-filled)+' still empty.'); return; }
+  let right=0;
+  gaps.forEach(g=>{ const ok=g.dataset.w===g.dataset.a; g.classList.toggle('ok',ok); g.classList.toggle('no',!ok); if(ok) right++; });
+  clozeTries++;
+  if(right===gaps.length){
+    say('clozeFb',true,'All '+gaps.length+' correct. You can now explain the shape of the PPC <b>and</b> why Thailand\'s choice between capital and consumer goods matters for future growth.');
+    trk('Cloze: Why opportunity cost increases', right+'/'+gaps.length+' correct'); mark('cloze');
+  } else {
+    say('clozeFb',false,right+' of '+gaps.length+' correct. Tap each red gap to send the word back, then try again. Read the whole sentence — the words around the gap are your clue.');
+    if(clozeTries>=2) document.getElementById('clozeShow').classList.remove('hidden');
+  }
+};
+document.getElementById('clozeReset').onclick=()=>{
+  gaps.forEach(g=>{ g.textContent=''; delete g.dataset.w; g.classList.remove('ok','no','rev','hot'); });
+  selChip=null; buildBank();
+  document.getElementById('clozeFb').className=''; document.getElementById('clozeFb').textContent='';
+};
+document.getElementById('clozeShow').onclick=()=>{
+  gaps.forEach(g=>{
+    if(g.dataset.w===g.dataset.a) return;
+    if(g.dataset.w){ const c=chipFor(g.dataset.w); if(c) c.classList.remove('used'); }
+    g.textContent=g.dataset.a; g.dataset.w=g.dataset.a; g.classList.remove('no'); g.classList.add('rev');
+    const c=chipFor(g.dataset.a); if(c) c.classList.add('used');
+  });
+  say('clozeFb',false,'Grey gaps show the answers you missed. Press Start again and complete it yourself to finish this activity.');
+};
+buildBank();
+
+/* ================= TAB 4b — SHAPE SORT ================= */
+const SHAPE_BINS=[
+  {id:'const', name:'STRAIGHT LINE', desc:'Constant opportunity cost', color:'#008BCC'},
+  {id:'inc',   name:'CURVED OUTWARDS', desc:'Increasing opportunity cost', color:'#FF8F1C'},
+];
+const SHAPE_ITEMS=[
+  {id:'s1',  bin:'const', text:'The gradient is exactly the same at every point on the boundary'},
+  {id:'s2',  bin:'inc',   text:'Each extra television costs more cars than the television before it'},
+  {id:'s3',  bin:'const', text:'The two goods need the same factors of production, equally well suited to both'},
+  {id:'s4',  bin:'inc',   text:'The boundary is fairly flat at one end and much steeper at the other'},
+  {id:'s5',  bin:'const', text:'Two similar styles of sports trainers made in the same factory'},
+  {id:'s6',  bin:'inc',   text:'As output of one good rises, resources less suited to it have to be transferred'},
+  {id:'s7',  bin:'const', text:'Giving up one unit of Good B always yields the same extra quantity of Good A'},
+  {id:'s8',  bin:'inc',   text:'Moving resources from rice farming in Suphanburi into electronics assembly'},
+  {id:'s9',  bin:'const', text:'The trade-off between the two goods never changes, wherever you are on the boundary'},
+  {id:'s10', bin:'inc',   text:'Factors of production are not perfectly substitutable between the two industries'},
+];
+function buildShape(){ buildSort('grid-shape','pool-shape',SHAPE_ITEMS,SHAPE_BINS,'score-shape','cols-2'); }
+function checkShape(){ gradeBins('#grid-shape', SHAPE_ITEMS.length, 'score-shape', 'Sort: Constant vs increasing opportunity cost', 'shape'); }
+buildShape();
+
+/* ================= TAB 4c — STRETCH ================= */
+document.getElementById('revealBtn').onclick=function(){
+  document.getElementById('model').classList.add('show');
+  trk('Stretch: 4-mark written answer (point D vs point A)','model answer revealed');
+  this.remove();
+};
+
+/* ================= TAB 5 — SHIFTS ================= */
+const SHIFT_BINS=[
+  {id:'right', name:'SHIFTS RIGHT', desc:'Productive capacity rises — more of both goods becomes possible', color:'#28A745'},
+  {id:'left',  name:'SHIFTS LEFT',  desc:'Productive capacity falls — less of both is possible', color:'#D63864'},
+  {id:'pivot', name:'PIVOTS',       desc:'Capacity rises for one good only — the curve turns on the other axis', color:'#008BCC'},
+  {id:'none',  name:'NO SHIFT',     desc:'A movement along the curve, or towards it — the curve itself stays put', color:'#8098B0'},
+];
+const SHIFT_ITEMS=[
+  {id:'p1',  bin:'right', text:'The Eastern Economic Corridor attracts heavy new investment in factories, ports and rail across many industries'},
+  {id:'p2',  bin:'right', text:'Large numbers of migrant workers from Myanmar and Cambodia join the Thai workforce'},
+  {id:'p3',  bin:'right', text:'A large new natural gas field is discovered in the Gulf of Thailand'},
+  {id:'p4',  bin:'left',  text:'The 2011 floods destroy factories and machinery across the industrial estates of Ayutthaya'},
+  {id:'p5',  bin:'left',  text:'Thailand’s working-age population falls year on year as the country ages'},
+  {id:'p6',  bin:'left',  text:'Prolonged drought and soil erosion permanently degrade farmland in Isan'},
+  {id:'p7',  bin:'pivot', text:'Advanced robots raise output per worker in car assembly plants, with no effect on any other industry'},
+  {id:'p8',  bin:'pivot', text:'A new rice strain raises yields per rai, but does nothing for manufacturing'},
+  {id:'p9',  bin:'pivot', text:'A hospitality training college sharply raises productivity in hotels only'},
+  {id:'p10', bin:'none',  text:'Unemployment falls as laid-off hotel staff return to work when tourists come back'},
+  {id:'p11', bin:'none',  text:'Consumers switch their spending from motorcycles to smartphones, so producers reallocate existing resources'},
+  {id:'p12', bin:'none',  text:'The government raises the sales tax on cars, so fewer cars are bought'},
+];
+function buildShift(){
+  renderPool(document.getElementById('pool-shift'), SHIFT_ITEMS);
+  renderBins(document.getElementById('bins-shift'), SHIFT_BINS);
+  document.getElementById('score-shift').textContent='';
+}
+function checkShift(){ gradeBins('#bins-shift', SHIFT_ITEMS.length, 'score-shift', 'Sort: Shifts, pivots and movements', 'shift'); }
+buildShift();
+
+/* ================= TAB 6 — EVALUATION ================= */
+const JUDGE=[
+  {id:'j1', icon:'📉', bg:'#FF8F1C', name:'Inside the curve',
+   q:'"If an economy is producing at a point inside its production possibility curve, it must be in a recession."',
+   verdict:'both', vlabel:'It depends',
+   note:'A point inside the curve tells you only that resources are <strong>not fully or efficiently employed</strong>. A recession is one cause, but so is structural unemployment when an industry declines, seasonal idleness in agriculture and tourism, capital left standing because no one is trained to run it, or resources trapped in low-productivity uses. An economy can also sit inside its frontier while growing.',
+   exam:'<b>In an essay:</b> "Production within the frontier indicates unemployed or misallocated resources; the cyclical explanation is only one of several, and the appropriate policy response depends on which applies."'},
+
+  {id:'j2', icon:'🚀', bg:'#28A745', name:'An outward shift',
+   q:'"An outward shift of the production possibility curve means living standards have risen."',
+   verdict:'both', vlabel:'It depends',
+   note:'The curve shows <strong>capacity, not actual output</strong>. Capacity can rise while the economy still produces well inside the new frontier. Even if output does rise, living standards depend on what is produced — a shift driven by armaments or capital goods raises no one\'s consumption today — on how the gains are distributed, and on output <strong>per person</strong>: if the shift came from population growth, output per head may be unchanged or lower.',
+   exam:'<b>In an essay:</b> "An outward shift raises potential rather than actual output, so any conclusion about living standards depends on the composition of production, its distribution and the change in output per capita."'},
+
+  {id:'j3', icon:'🏗️', bg:'#008BCC', name:'Capital goods first',
+   q:'"A low-income economy should always move resources out of consumer goods and into capital goods, because that shifts the curve outwards."',
+   verdict:'both', vlabel:'It depends',
+   note:'The mechanism is real: because the curve is steep at that end, a <strong>small</strong> reduction in consumer goods can buy a proportionally large increase in capital goods, and the extra capital raises future capacity. But the opportunity cost falls on consumption <strong>now</strong>, by people who may already be close to subsistence — a serious cost, not an accounting entry. The gain also assumes the new capital is well chosen, maintained, and matched by people trained to operate it.',
+   exam:'<b>In an essay:</b> "Reallocating towards capital goods raises future productive capacity, but the present-day opportunity cost falls on consumption, so the case depends on the time horizon adopted and on the current standard of living."'},
+
+  {id:'j4', icon:'✈️', bg:'#6B4E9E', name:'Migrant workers',
+   q:'"Migrant construction workers from Asia shift Qatar\'s production possibility curve outwards and shift their home countries\' curves inwards by exactly the same amount."',
+   verdict:'bad', vlabel:'False',
+   note:'The first half is sound — more labour raises Qatar\'s capacity. The second half is not symmetrical. If those workers were <strong>unemployed at home</strong>, the home economy was producing inside its frontier and loses very little capacity. Remittances finance investment and education, which can shift the home curve <i>outwards</i>. Returning workers bring skills back. The genuine inward pressure comes from losing the <b>skilled</b> workers an economy has already paid to train.',
+   exam:'<b>In an essay:</b> "The effect on the source economy depends on whether the migrating labour was previously employed, on the skill level lost, and on the scale of remittances relative to the productive capacity forgone."'},
+
+  {id:'j5', icon:'🧭', bg:'#002F6C', name:'Is the model too simple?',
+   q:'"The production possibility curve assumes only two goods and full employment, so it is too simple to be useful to policymakers."',
+   verdict:'both', vlabel:'It depends',
+   note:'The assumptions are real limitations: two goods, given technology, full employment, and no account of who receives the output. But a <strong>model is meant to simplify</strong> — that is what makes the mechanism visible. The PPC makes scarcity, choice, opportunity cost, efficiency and growth visible in one diagram, and planners genuinely use the underlying trade-off when deciding between investment and consumption. The fair criticism is about the conclusions people draw from it, not about the model existing.',
+   exam:'<b>In an essay:</b> "The simplifying assumptions limit the model\'s predictive use, but its purpose is analytical: it isolates the trade-off between competing uses of scarce resources, which more complex models still rest upon."'},
+];
+function buildJudge(){
+  const list=document.getElementById('judgeList'); list.innerHTML='';
+  JUDGE.forEach(w=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+w.bg+'">'+w.icon+'</div><div class="q-name">'+w.name+'</div></div>'+
+      '<div class="q-stem">'+w.q+'</div>'+
+      '<div class="choice-row">'+
+        '<div class="choice" data-v="good" data-id="'+w.id+'">✅ True</div>'+
+        '<div class="choice" data-v="bad" data-id="'+w.id+'">❌ False</div>'+
+        '<div class="choice" data-v="both" data-id="'+w.id+'">🤔 It depends</div>'+
+      '</div>'+
+      '<div class="reveal" id="rev-'+w.id+'"><span class="verdict v-'+w.verdict+'">'+w.vlabel+'</span><br>'+w.note+
+        '<div class="exam-line">'+w.exam+'</div></div>';
+    list.appendChild(c);
+  });
+  document.querySelectorAll('#judgeList .choice').forEach(ch=>{
+    ch.addEventListener('click', ()=>{
+      ch.parentElement.querySelectorAll('.choice').forEach(s=>s.classList.remove('sel-good','sel-bad','sel-both'));
+      ch.classList.add('sel-'+ch.dataset.v);
+      document.getElementById('rev-'+ch.dataset.id).classList.add('show');
+      const n=document.querySelectorAll('#judgeList .reveal.show').length;
+      if(n===JUDGE.length){
+        document.getElementById('judgeDone').classList.add('show');
+        trk('Evaluation: Production possibility curve claims', n+'/'+JUDGE.length+' judged');
+        mark('judge');
+      }
+    });
+  });
+}
+buildJudge();
+
+/* ================= TAB 7 — MCQ ================= */
+const MCQ=[
+  {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+   stem:'A production possibility curve is drawn on the assumption that:',
+   opts:['there are always opportunities to produce more of one good','all existing resources are being used and there is a given state of technology','all existing resources are being used','production never takes place within or outside the production possibility curve'],
+   ans:1,
+   fb:'Both conditions are required: <strong>full employment of existing resources</strong> and a <strong>given state of technology</strong>.',
+   why:'C is the trap — it is half of the right answer. If technology were free to change, the boundary would move and could not be drawn as a fixed line. D is simply false: production inside the curve happens constantly.'},
+
+  {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2',
+   stem:'A country produces at a <b>new point within</b> its production possibility curve when:',
+   opts:['new technology is being applied to increase production','there is an increase in capital investment by firms','more is needed of one good and not the other good','there is a fall in unemployment'],
+   ans:3,
+   fb:'A fall in unemployment brings previously idle resources into use, moving the economy to a <strong>new point closer to the curve but still inside it</strong>. Capacity has not changed, so the curve does not move.',
+   why:'A and B both increase productive capacity, so they shift the curve outwards rather than move a point within it. C describes a change in the mix of output — a movement <i>along</i> the curve, which is on it, not within it. Read the word "within" carefully.'},
+
+  {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3',
+   stem:'An economy produces two goods: cars and smartphones. Why is the production possibility frontier <b>curved outwards</b> from the origin?',
+   opts:['All resources are being fully used','The opportunity cost of producing cars or smartphones is constant','An increase in production of cars can only occur if there is a decrease in the production of smartphones','Some of the economy\'s resources are better suited to the production of cars, others better suited to the production of smartphones'],
+   ans:3,
+   fb:'The curve bows outwards because resources are <strong>not equally suited</strong> to both goods, so opportunity cost rises as more of one good is produced.',
+   why:'A is true of any point on any PPC, curved or straight — it explains why there is a frontier at all, not its shape. B describes a straight line, the opposite case. C is true of every downward-sloping PPC, so it cannot explain why this one curves.'},
+
+  {id:'m4', icon:'4', bg:'#28A745', name:'Paper 1 · Question 4',
+   stem:'An economy produces two goods: cars and smartphones. Its production possibility curve <b>shifts outwards</b>. What would have caused this shift?',
+   opts:['the discovery of a new valuable oil reserve','closure of an inefficient car assembly plant','an increase in sales tax on cars and smartphones','a fall in the rate of unemployment'],
+   ans:0,
+   fb:'A new oil reserve is an <strong>increase in the quantity of land</strong> available — more resources, so greater productive capacity and an outward shift.',
+   why:'B removes resources, if anything shifting the curve left. C changes what consumers buy, not what the economy is capable of producing. D is the classic distractor: falling unemployment moves the economy <i>towards</i> the frontier, but the frontier itself was always there.'},
+
+  {id:'m5', icon:'5', bg:'#002F6C', name:'Paper 1 · Question 5',
+   stem:'An economy produces two goods: cars and smartphones. The diagram shows that, as a result of a technological advance, more smartphones can be produced with the same resources. What is the change in the <b>opportunity cost of producing OC cars</b>?',
+   fig:'',
+   opts:['PN to PM','PM to QN','PQ to PM','QM to PM'],
+   ans:1,
+   fb:'The opportunity cost of producing OC cars is the phones <strong>forgone</strong>. Before the advance the economy could have made OM phones but makes only OP, so the cost is <strong>PM</strong>. After it, the maximum is ON while it makes OQ, so the cost is <strong>QN</strong>.',
+   why:'Work in two steps every time: first find the maximum possible on the axis (OM, then ON), then find what is actually produced (OP, then OQ), and subtract. Note that QN is <i>smaller</i> than PM — the technological advance made cars cheaper in terms of phones forgone.'},
+
+  {id:'m6', icon:'6', bg:'#D63864', name:'Paper 1 · Question 6',
+   stem:'The diagram shows that the production possibility curve for cars and smartphones has changed from PPC₁ to PPC₂. What has happened to the <b>opportunity cost of car production</b> and to the <b>returns to factors producing smartphones</b>?',
+   fig:'',
+   opts:['fallen · fallen','fallen · risen','risen · risen','risen · fallen'],
+   ans:2,
+   fb:'The curve pivots outwards on the phones axis, so the same resources now make more phones: <strong>returns to the factors producing smartphones have risen</strong>. Producing all C cars now means giving up MP₂ phones instead of MP₁ — a larger sacrifice — so the <strong>opportunity cost of car production has risen</strong>.',
+   why:'The trap is assuming that because the curve moved outwards, everything improved. Nothing changed in car production; what changed is what those same resources could have made instead. When one good becomes cheaper to produce, the other automatically becomes more expensive in opportunity-cost terms.'},
+];
+MCQ[4].fig = examFig5();
+MCQ[5].fig = examFig6();
+buildCards('mcqList', MCQ, 'mcqDone', 'Exam-style MCQ (Paper 1)', 'mcq');
+</script>
+</body>
+</html>
