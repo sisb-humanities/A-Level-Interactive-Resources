@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1.6 Classification of Goods and Services | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 1.6 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   New widgets use prefixed class names (gd- goods grid, sl- Soi Light
+   Game) so nothing collides with the shared CSS.
+   ===================================================================== */
+.hidden{display:none !important}
+
+/* two-step picker (same pattern as 1.4 "Who decides?") */
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.hintline{font-size:12.8px;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:8px 12px;margin:8px 0 4px;line-height:1.5}
+
+/* excludable / rival grid */
+.gd-grid td{vertical-align:top;width:42%}
+.gd-grid td:first-child{width:16%;background:var(--grey-bg)}
+.gd-lab{font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+.gd-chip{display:inline-block;font-size:11.5px;border-radius:999px;padding:3px 9px;margin:2px 4px 2px 0;border:1px solid}
+.gd-chip.g{background:var(--green-bg);border-color:var(--green);color:var(--green-txt)}
+.gd-chip.a{background:var(--orange-bg);border-color:var(--orange);color:var(--orange-txt)}
+.gd-chip.r{background:var(--red-bg);border-color:var(--red);color:var(--red-txt)}
+
+/* explanation list after a drag-sort check */
+.explain{margin-top:14px}
+.explain .reveal{display:block;background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);padding:12px 14px;margin-top:8px}
+
+/* Soi Light Game */
+.sl-rules p{font-size:13.8px;color:var(--text);line-height:1.6}
+.sl-rules p+p{margin-top:8px}
+.sl-rules .sl-formula{font-size:12.8px;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:8px 12px}
+.sl-gate{background:var(--navy);color:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:13.6px;line-height:1.55}
+.sl-decide{border:2px solid var(--orange);background:var(--orange-bg)}
+.sl-decide .q-name{font-size:17px;margin:2px 0 4px}
+.sl-tokens{display:grid;grid-template-columns:repeat(11,1fr);gap:6px;margin-top:12px}
+.sl-tokens button{font-family:'Lato',sans-serif;font-weight:900;font-size:14px;border:1.5px solid var(--grey-3);background:#fff;border-radius:8px;padding:10px 0;cursor:pointer;color:var(--navy)}
+.sl-tokens button:hover:not(:disabled){border-color:var(--blue)}
+.sl-tokens button.on{background:var(--orange);border-color:var(--orange);color:#fff}
+.sl-tokens button:disabled{cursor:default;opacity:.6}
+.sl-tokens button.on:disabled{opacity:1}
+@media(max-width:560px){.sl-tokens{grid-template-columns:repeat(6,1fr)}}
+.sl-res{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 16px}
+.sl-res div{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 8px;text-align:center}
+.sl-res b{display:block;font-size:21px;font-weight:900;color:var(--navy)}
+.sl-res span{font-size:11.5px;color:var(--text-3)}
+@media(max-width:560px){.sl-res{grid-template-columns:repeat(2,1fr)}}
+.sl-tbl td,.sl-tbl th{text-align:center}
+.sl-tbl tr.sl-total td{background:var(--grey-bg);font-weight:900;color:var(--navy)}
+
+/* sticky progress (same as 1.5) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 1.6 Classification of Goods and Services</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="grid">🔍 Excludable? Rival?</div>
+  <div class="tab" data-tab="sort">🗂️ What Kind of Good?</div>
+  <div class="tab" data-tab="soi">💡 The Soi Light Game</div>
+  <div class="tab" data-tab="chain">🔗 Information Failure</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Match each term to its meaning</h1>
+      <p>Ten terms carry this whole topic. Two pairs are easy to confuse: <b>free good</b> and <b>public good</b>, and <b>public good</b> and <b>merit good</b>. Read the meanings carefully before you drag.</p>
+      <p>Do activities 1–5 after the lessons, then activity 6 as a timed test. Missed the Soi Light Game in class? Play activity 4 first.</p>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">“Free” in economics means zero opportunity cost. It does not mean “provided free by the government”. A state school is free to use, but it is not a free good.</p>
+  </div>
+
+  <!-- ============ TAB 2 · EXCLUDABLE? RIVAL? ============ -->
+  <div class="panel" id="panel-grid">
+    <div class="intro">
+      <div class="kicker">Activity 2 · The two tests</div>
+      <h1>Excludable? Rival? Build the classification grid</h1>
+      <p>Every good can be tested on two characteristics. <b>Excludable:</b> can people who don’t pay be stopped from using it? <b>Rival:</b> does one person’s use reduce what is left for others?</p>
+      <p>Answer both steps for each of the twelve goods. Each correct step scores 1. The grid at the bottom fills in as you go, and every good is placed in its <b>correct</b> box, whatever you answered.</p>
+    </div>
+    <div id="goodsList"></div>
+    <div class="done-banner" id="goodsDone"></div>
+    <div class="sub-h">The classification grid</div>
+    <div class="sub-p">Green = both steps right · orange = one right · red = neither.</div>
+    <div class="tscroll"><table class="dtable gd-grid" id="goodsGrid"></table></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="buildGoods()">Start again</button></div>
+    <p class="tip">The two quasi-public boxes are each missing a <b>different</b> characteristic of a public good. Free goods such as sunlight and air sit outside this grid altogether, because they are not scarce.</p>
+  </div>
+
+  <!-- ============ TAB 3 · WHAT KIND OF GOOD? ============ -->
+  <div class="panel" id="panel-sort">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Five types of good</div>
+      <h1>Free, private, public, merit or demerit?</h1>
+      <p>Drag each good into its type. Two per type. The hardest ones are the goods that governments provide free of charge: ask whether they are <b>non-excludable and non-rival</b>, or whether they are provided free for a <b>different</b> reason.</p>
+    </div>
+    <div class="fop-grid">
+      <div><div class="col-lbl">Drag these</div><div class="drop-pool" id="pool-sort"></div></div>
+      <div><div class="col-lbl">Into the right type</div><div class="fop-bins" id="bins-sort"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkSort()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildSort()">Reset</button>
+      <span class="score" id="score-sort"></span>
+    </div>
+    <div class="explain" id="sortExplain"></div>
+    <div class="done-banner" id="sortDone">✓ All ten correct. Look at the merit goods bin: both goods are provided free by governments, but they are still rival and excludable, so they are <b>not</b> public goods. The free goods bin holds things that are not scarce, not things that are free to use.</div>
+  </div>
+
+  <!-- ============ TAB 4 · THE SOI LIGHT GAME ============ -->
+  <div class="panel" id="panel-soi">
+    <div class="intro">
+      <div class="kicker">Activity 4 · The free-rider problem</div>
+      <h1>Will anyone pay for the street light?</h1>
+      <p>Play five rounds against eleven neighbours. Watch what happens to payments as the rounds go on, and what changes when the soi committee installs a gate in round 5. Then explain what you saw.</p>
+    </div>
+    <div id="soiHost"></div>
+  </div>
+
+  <!-- ============ TAB 5 · INFORMATION FAILURE CHAINS ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Analysis chains</div>
+      <h1>Build the chain: from information failure to market failure</h1>
+      <p>Merit and demerit goods are market failures because of <b>information failure</b>. Click the six steps of each chain in causal order. Start with what consumers don’t know, and finish with what happens to resources.</p>
+    </div>
+    <div id="chainHost"></div>
+    <div class="done-banner" id="chainDone">✓ Both chains complete. The two chains are mirror images: underestimated harm → over-consumption → too many resources; underestimated benefit → under-consumption → too few resources. Every merit or demerit good answer should name information failure <b>and</b> reach the misallocation of resources.</div>
+  </div>
+
+  <!-- ============ TAB 6 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Eight Paper 1 style questions built around the confusions that cost the most marks in this topic: free goods versus public goods, public goods versus merit goods, and quasi-public goods.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All eight attempted. Public goods, merit goods and demerit goods come back in Topic 3.1 as reasons for government intervention. The classification you learned here is the first step of every one of those answers.</div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 1.6</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 6 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('1.6', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,grid:false,sort:false,soi:false,chain:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 1.6 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function rint(a,b){ return a+Math.floor(Math.random()*(b-a+1)); }
+function fmt(x){ return (Math.round(x*10)/10).toString(); }
+
+/* Shared MCQ card builder (same markup as 1.4 / 1.5) */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+
+/* ================= TAB 1 — KEY TERMS (match) ================= */
+const TERMS=[
+ {id:'t1', term:'Free good',           def:'A good that is not scarce and has zero opportunity cost.'},
+ {id:'t2', term:'Private good',        def:'A good that is excludable and rival: consumed by one person and not available to anyone else.'},
+ {id:'t3', term:'Public good',         def:'A good that is non-excludable and non-rival.'},
+ {id:'t4', term:'Quasi-public good',   def:'A good that has some, but not all, of the characteristics of a public good.'},
+ {id:'t5', term:'Excludable',          def:'It is possible to stop someone from consuming the good.'},
+ {id:'t6', term:'Non-rival',           def:'Consumption by one person does not reduce consumption by someone else.'},
+ {id:'t7', term:'Free rider',          def:'Someone who benefits from a good without paying for it.'},
+ {id:'t8', term:'Merit good',          def:'A desirable good that is underprovided by the market because of information failure.'},
+ {id:'t9', term:'Demerit good',        def:'An undesirable good that is overprovided by the market because of information failure.'},
+ {id:'t10',term:'Information failure', def:'Consumers do not have full or complete information when making decisions.'},
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); mark('terms'); }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* ================= TAB 2 — EXCLUDABLE? RIVAL? ================= */
+/* e: 1 = excludable, r: 1 = rival */
+const GOODS=[
+ {t:'Som tam from a street stall in Nonthaburi', e:1, r:1, tag:'Som tam',
+  hint:'Will the vendor hand it over if you don’t pay? Once you’ve eaten it, can anyone else?',
+  fb:'The vendor only serves paying customers (excludable), and once you have eaten it nobody else can (rival). A private good.'},
+ {t:'An iPhone bought in an Apple Store in New York', e:1, r:1, tag:'iPhone',
+  hint:'Can you walk out without paying? Can two people own the same phone at once?',
+  fb:'You must pay to take it (excludable), and the phone you own is not available to anyone else (rival). A private good.'},
+ {t:'A Grab ride across Bangkok', e:1, r:1, tag:'Grab ride',
+  hint:'Who gets in the car? Is the seat free for someone else during your ride?',
+  fb:'The driver only takes paying passengers (excludable), and while you are in the seat no one else can use it (rival). A private good.'},
+ {t:'Flood defences along the Chao Phraya', e:0, r:0, tag:'Flood defences',
+  hint:'Could you protect some houses behind the wall but not their neighbours?',
+  fb:'Every household behind the wall is protected whether it pays or not (non-excludable), and protecting one more house does not reduce the protection for others (non-rival). A public good.'},
+ {t:'A lighthouse on the coast of Scotland', e:0, r:0, tag:'Lighthouse',
+  hint:'Could you stop a ship that hasn’t paid from seeing the light?',
+  fb:'Every passing ship sees the light (non-excludable), and one ship seeing it leaves just as much light for the next (non-rival). A public good.'},
+ {t:'National defence in Japan', e:0, r:0, tag:'Defence',
+  hint:'Could the army protect some citizens but not others in the same city?',
+  fb:'Everyone in the country is protected, taxpayer or not (non-excludable), and protecting a newborn baby does not reduce protection for anyone else (non-rival). A public good.'},
+ {t:'A Netflix subscription', e:1, r:0, tag:'Netflix',
+  hint:'What happens without a password? Does one more viewer slow down everyone else?',
+  fb:'Without a paid account you cannot watch (excludable), but one more person streaming a film does not stop anyone else watching it (non-rival). A quasi-public good.'},
+ {t:'A Bangkok toll expressway at 3 a.m.', e:1, r:0, tag:'Expressway, 3 a.m.',
+  hint:'What do the toll gates do? At 3 a.m., is anyone slowed down by one more car?',
+  fb:'Toll gates stop non-payers (excludable), but at 3 a.m. the road is empty, so one more car reduces nobody’s use (non-rival). A quasi-public good. At rush hour it becomes rival too.'},
+ {t:'Watching Manchester City on a pay-TV sports channel', e:1, r:0, tag:'Man City on pay-TV',
+  hint:'Can you watch without subscribing? Does your watching take the match away from anyone else?',
+  fb:'Only subscribers can watch (excludable), and a million more viewers do not reduce anyone’s picture (non-rival). A quasi-public good.'},
+ {t:'Bang Saen beach on a Songkran holiday', e:0, r:1, tag:'Bang Saen, Songkran',
+  hint:'Is there a gate or a ticket? What happens to space on the sand as more people arrive?',
+  fb:'Anyone can walk onto the beach (non-excludable), but on a crowded holiday each extra person reduces the space for others (rival). A quasi-public good.'},
+ {t:'Fish in the Gulf of Thailand', e:0, r:1, tag:'Gulf fish',
+  hint:'Can you stop boats sailing into the sea? Can two boats catch the same fish?',
+  fb:'It is very hard to stop boats fishing the open sea (non-excludable), but every fish caught is one fewer for everyone else (rival). A quasi-public good (economists also call this a common resource).'},
+ {t:'Ueno Park in Tokyo during cherry-blossom season', e:0, r:1, tag:'Ueno Park',
+  hint:'Is there an entry charge? What happens to the best viewing spots as crowds grow?',
+  fb:'Entry is open to everyone (non-excludable), but when it is packed each extra visitor reduces space for others (rival). A quasi-public good.'},
+];
+let goodsPlaced=[], goodsScore=0;
+function buildGoods(){
+  const host=document.getElementById('goodsList'); host.innerHTML='';
+  goodsPlaced=[]; goodsScore=0;
+  document.getElementById('goodsDone').classList.remove('show');
+  shuffle(GOODS.map((_,i)=>i)).forEach((gi,pos)=>{
+    const d=GOODS[gi];
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(pos+1)+'</div><div class="q-name">'+d.t+'</div></div>'+
+      '<button class="mini-btn gd-hintbtn" style="margin-top:0">Need a clue?</button>'+
+      '<div class="hintline hidden">Clue: '+d.hint+'</div>'+
+      '<div class="write-lbl" style="margin-top:12px">STEP 1 — Can people who don’t pay be stopped from using it?</div>'+
+      '<div class="steppick s1"><button class="lvl" data-v="1">Excludable</button><button class="lvl" data-v="0">Non-excludable</button></div>'+
+      '<div class="write-lbl s2lbl hidden">STEP 2 — Does one person’s use reduce what is left for others?</div>'+
+      '<div class="steppick s2 hidden"><button class="lvl" data-v="1">Rival</button><button class="lvl" data-v="0">Non-rival</button></div>'+
+      '<div class="reveal"></div>';
+    host.appendChild(c);
+    const hb=c.querySelector('.gd-hintbtn');
+    hb.addEventListener('click',()=>{ c.querySelector('.hintline').classList.remove('hidden'); hb.remove(); });
+    let ePick=null;
+    c.querySelectorAll('.s1 .lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(ePick!==null) return;
+      ePick=Number(b.dataset.v);
+      c.querySelectorAll('.s1 .lvl').forEach(x=>x.disabled=true);
+      b.classList.add('active');
+      c.querySelector('.s2lbl').classList.remove('hidden');
+      c.querySelector('.s2').classList.remove('hidden');
+    }));
+    let rPick=null;
+    c.querySelectorAll('.s2 .lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(rPick!==null) return;
+      rPick=Number(b.dataset.v);
+      c.querySelectorAll('.s2 .lvl').forEach(x=>x.disabled=true);
+      b.classList.add('active');
+      const hbNow=c.querySelector('.gd-hintbtn'); if(hbNow) hbNow.remove();
+      const okE=ePick===d.e, okR=rPick===d.r, pts=(okE?1:0)+(okR?1:0);
+      goodsScore+=pts;
+      const verdict=pts===2?'good':(pts===1?'both':'bad');
+      const vlabel=pts===2?'Both right (+2)':(pts===1?(okE?'Excludability right, rivalry wrong (+1)':'Rivalry right, excludability wrong (+1)'):'Neither right');
+      const rev=c.querySelector('.reveal');
+      rev.innerHTML='<span class="verdict v-'+verdict+'">'+vlabel+'</span><br>'+d.fb;
+      rev.classList.add('show');
+      goodsPlaced.push({e:d.e, r:d.r, tag:d.tag, cls:pts===2?'g':(pts===1?'a':'r')});
+      drawGoodsGrid();
+      if(goodsPlaced.length===GOODS.length){
+        const max=GOODS.length*2, banner=document.getElementById('goodsDone');
+        banner.innerHTML='✓ All twelve tested — '+goodsScore+' / '+max+' points. Copy the grid below into your notes: every good in it is in the correct box.';
+        banner.classList.add('show');
+        trk('Excludable? Rival? grid', goodsScore+'/'+max+' points'); mark('grid');
+      }
+    }));
+  });
+  drawGoodsGrid();
+}
+function drawGoodsGrid(){
+  const cell=(e,r,label)=>'<td><div class="gd-lab">'+label+'</div>'+
+    goodsPlaced.filter(p=>p.e===e&&p.r===r).map(p=>'<span class="gd-chip '+p.cls+'">'+p.tag+'</span>').join('')+'</td>';
+  document.getElementById('goodsGrid').innerHTML=
+    '<tr><th></th><th>Excludable</th><th>Non-excludable</th></tr>'+
+    '<tr><td>Rival</td>'+cell(1,1,'Private good')+cell(0,1,'Quasi-public good')+'</tr>'+
+    '<tr><td>Non-rival</td>'+cell(1,0,'Quasi-public good')+cell(0,0,'Public good')+'</tr>';
+}
+buildGoods();
+
+/* ================= TAB 3 — WHAT KIND OF GOOD? (drag sort) ================= */
+const SORT_BINS=[
+ {id:'free',    name:'FREE GOOD',    desc:'Not scarce — zero opportunity cost', color:'#28A745'},
+ {id:'private', name:'PRIVATE GOOD', desc:'Excludable and rival', color:'#FF8F1C'},
+ {id:'public',  name:'PUBLIC GOOD',  desc:'Non-excludable and non-rival', color:'#008BCC'},
+ {id:'merit',   name:'MERIT GOOD',   desc:'Under-consumed because of information failure', color:'#6B4E9E'},
+ {id:'demerit', name:'DEMERIT GOOD', desc:'Over-consumed because of information failure', color:'#D63864'},
+];
+const SORT_ITEMS=[
+ {id:'k1',  bin:'free',    text:'Sunlight on Hua Hin beach', why:'Not scarce, so it has zero opportunity cost. “Free” in economics means no opportunity cost, not “provided free by the government”.'},
+ {id:'k2',  bin:'free',    text:'Air in the Swiss Alps', why:'Unlimited relative to wants, so there is no opportunity cost in breathing it.'},
+ {id:'k3',  bin:'public',  text:'Street lighting in central Paris', why:'Non-excludable and non-rival. It uses scarce resources, so it is NOT a free good, even though nobody pays at the point of use.'},
+ {id:'k4',  bin:'public',  text:'National defence of Thailand', why:'Non-excludable and non-rival: everyone in Thailand is protected, taxpayer or not.'},
+ {id:'k5',  bin:'private', text:'A smartphone bought at Siam Paragon', why:'Excludable (you must pay) and rival (it is yours alone).'},
+ {id:'k6',  bin:'private', text:'A latte from a café in Seoul', why:'Excludable and rival: once you drink it, no one else can.'},
+ {id:'k7',  bin:'merit',   text:'Education in a Thai government school', why:'Provided free by the government, but rival and excludable, so it is NOT a public good. It would be under-consumed in a free market because people underestimate its long-term benefits. This is one of the most common errors in exam answers.'},
+ {id:'k8',  bin:'merit',   text:'NHS healthcare in the United Kingdom', why:'Free at the point of use, but a doctor’s time is rival and patients can be excluded. Under-consumed without intervention because of information failure (and low income).'},
+ {id:'k9',  bin:'demerit', text:'Sugary bubble tea', why:'Over-consumed because consumers underestimate the harm of high sugar intake: information failure.'},
+ {id:'k10', bin:'demerit', text:'Cigarettes sold in Australia', why:'Over-consumed because smokers underestimate the long-term harm: information failure.'},
+];
+function buildSort(){
+  const pool=document.getElementById('pool-sort'), bins=document.getElementById('bins-sort');
+  pool.innerHTML=''; bins.innerHTML='';
+  shuffle([...SORT_ITEMS]).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.dataset.id=it.id; d.textContent=it.text;
+    pool.appendChild(d);
+  });
+  SORT_BINS.forEach(b=>{
+    const slot=document.createElement('div');
+    slot.className='bin'; slot.dataset.bin=b.id;
+    slot.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.color+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    bins.appendChild(slot);
+  });
+  document.getElementById('score-sort').textContent='';
+  document.getElementById('sortExplain').innerHTML='';
+}
+function checkSort(){
+  let correct=0, placed=0; const wrong=[];
+  document.querySelectorAll('#bins-sort .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.bin===bin.dataset.bin;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++; else wrong.push(SORT_ITEMS.find(x=>x.id===el.dataset.id));
+    });
+  });
+  const sc=document.getElementById('score-sort'), total=SORT_ITEMS.length, ex=document.getElementById('sortExplain');
+  ex.innerHTML='';
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; return; }
+  if(correct===total){
+    sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745';
+    document.getElementById('sortDone').classList.add('show');
+    trk('Sort: Five types of good', correct+'/'+total+' correct'); mark('sort');
+    return;
+  }
+  sc.textContent=correct+' / '+total+' correct — read why, then move the pink ones'; sc.style.color='#002F6C';
+  ex.innerHTML='<div class="write-lbl">Why the pink ones are wrong</div>'+wrong.map(w=>{
+    const b=SORT_BINS.find(x=>x.id===w.bin);
+    return '<div class="reveal"><strong>'+w.text+'</strong> — this is a <b>'+b.name.toLowerCase()+'</b>. '+w.why+'</div>';
+  }).join('');
+}
+buildSort();
+
+/* ================= TAB 4 — THE SOI LIGHT GAME ================= */
+const SOI_Q=[
+ {id:'s1', icon:'1', bg:'#008BCC', name:'The incentive to free ride',
+  stem:'In rounds 1–4, why did neighbours have an incentive to pay little or nothing?',
+  opts:['Each token paid in came back to them as only 2/12 of a token, but they still received a full share of everyone else’s payments','The street light was rival','The fund was not doubled','The light had zero opportunity cost'], ans:0,
+  fb:'Free riding pays individually: paying 0 while all eleven others pay 10 earns 28.3 tokens, compared with 20 when everyone pays 10.'},
+ {id:'s2', icon:'2', bg:'#FF8F1C', name:'The characteristic behind it',
+  stem:'Which characteristic of the street light made free riding possible in rounds 1–4?',
+  opts:['Rivalry','Non-excludability','Scarcity','Excludability'], ans:1,
+  fb:'Nobody could be stopped from benefiting from the light, so non-payers still received a share.'},
+ {id:'s3', icon:'3', bg:'#6B4E9E', name:'The outcome for the soi',
+  stem:'If every household reasons “I’ll pay nothing and let others pay”, what is the result?',
+  opts:['Everyone ends up better off','The soi stays dark and everyone ends with only their 10 tokens — the market fails to provide the light','The light is provided by a private firm','The light becomes a free good'], ans:1,
+  fb:'What is rational for each individual is worse for the group. No private firm will supply a good it cannot charge for: a missing market.'},
+ {id:'s4', icon:'4', bg:'#002F6C', name:'What the gate changed',
+  stem:'What did the gate in round 5 change?',
+  opts:['It made the light rival','It made the light excludable, so paying became the way to benefit','It made the light a merit good','It removed the opportunity cost'], ans:1,
+  fb:'Once non-payers can be excluded, the free-rider problem shrinks. The light now has only some public-good characteristics: quasi-public (or private).'},
+];
+function buildSoi(){
+  const host=document.getElementById('soiHost'); host.innerHTML='';
+  const N=12, R=5; let round=1; const rows=[], bots=[];
+  for(let i=0;i<11;i++){
+    const type=i<3?'fr':(i<9?'cc':'alt');
+    const start=type==='fr'?rint(0,3):type==='cc'?rint(4,7):rint(8,10);
+    bots.push({type:type, last:start, first:true});
+  }
+  const rules=document.createElement('div'); rules.className='q-card sl-rules';
+  rules.innerHTML='<p><b>Your soi in Nonthaburi has no street lights.</b> You and 11 neighbours each get <b>10 tokens (฿100)</b> every round. Choose how many to pay into the <b>Soi Light Fund</b>. The fund is <b>doubled</b> and then <b>shared equally among all 12 households, whether they paid or not</b>. You keep any tokens you didn’t pay in.</p>'+
+    '<p class="sl-formula">Share = (fund × 2) ÷ 12 · Round total = tokens kept + share · Goal: finish with as many tokens as you can.</p>';
+  const gate=document.createElement('div'); gate.className='sl-gate hidden';
+  gate.innerHTML='<b>Round 5: the gated soi.</b> The soi committee installs a gate with key cards. Only households that pay <b>at least 5 tokens</b> share the doubled fund. Anyone who pays less gets nothing from it.';
+  const decide=document.createElement('div'); decide.className='q-card sl-decide';
+  const dl=document.createElement('div'); dl.className='write-lbl';
+  const dq=document.createElement('div'); dq.className='q-name';
+  const dsub=document.createElement('div'); dsub.className='sub-p'; dsub.style.marginBottom='0';
+  const tk=document.createElement('div'); tk.className='sl-tokens';
+  [dl,dq,dsub,tk].forEach(e=>decide.appendChild(e));
+  const res=document.createElement('div');
+  const bar=document.createElement('div'); bar.className='btn-row'; bar.style.margin='0 0 16px';
+  const nb=document.createElement('button'); nb.className='btn btn-primary hidden'; bar.appendChild(nb);
+  const tbl=document.createElement('div'); tbl.className='tscroll';
+  const chart=document.createElement('div'); chart.className='fig hidden';
+  const after=document.createElement('div');
+  [rules,gate,decide,res,bar,tbl,chart,after].forEach(e=>host.appendChild(e));
+
+  function botPay(b, gated, avgPrev){
+    let v;
+    if(gated) return b.type==='fr' ? (Math.random()<0.5?5:0) : b.type==='cc' ? rint(5,8) : 10;
+    if(b.first){ b.first=false; return b.last; }
+    if(b.type==='fr') v=b.last-rint(0,2);
+    else if(b.type==='cc') v=Math.round(0.5*b.last+0.5*avgPrev-1+rint(-1,1));
+    else v = avgPrev<3 ? b.last-2 : b.last-rint(0,1);
+    v=Math.max(0,Math.min(10,v)); b.last=v; return v;
+  }
+  function drawTokens(){
+    decide.classList.remove('hidden');
+    dl.textContent='Your decision · Round '+round+' of '+R+(round===R?' · gated soi':'');
+    dq.textContent='How many of your 10 tokens will you pay into the Soi Light Fund?';
+    dsub.textContent= round===R ? 'Remember: only households paying at least 5 tokens get a share this round.' : 'Tap a number. Any tokens you don’t pay in, you keep.';
+    tk.innerHTML=''; res.innerHTML=''; nb.classList.add('hidden');
+    if(round>1) decide.scrollIntoView({behavior:'smooth',block:'start'});
+    for(let t=0;t<=10;t++){
+      const b=document.createElement('button'); b.type='button'; b.textContent=t;
+      b.onclick=()=>{ tk.querySelectorAll('button').forEach(x=>x.disabled=true); b.classList.add('on'); play(t); };
+      tk.appendChild(b);
+    }
+  }
+  function play(mine){
+    const gated=round===R;
+    const avgPrev=rows.length ? rows[rows.length-1].avgAll : 5;
+    const pays=bots.map(b=>botPay(b,gated,avgPrev));
+    const others=pays.reduce((a,b)=>a+b,0);
+    const fund=others+mine;
+    let myShare;
+    if(gated){
+      const q=pays.filter(p=>p>=5).length+(mine>=5?1:0);
+      const share=q ? fund*2/q : 0; myShare = mine>=5 ? share : 0;
+    } else myShare=fund*2/N;
+    const tot=10-mine+myShare;
+    const row={round:round, mine:mine, avgOthers:others/11, avgAll:fund/N, fund:fund, share:myShare, total:tot};
+    rows.push(row);
+    dsub.textContent='You paid '+mine+' token'+(mine===1?'':'s')+'. Your result is below.';
+    res.innerHTML='<div class="write-lbl">Round '+round+' result</div><div class="sl-res">'+
+      '<div><b>'+fmt(row.avgOthers)+'</b><span>Neighbours’ average payment</span></div>'+
+      '<div><b>'+fund+'</b><span>Total fund (× 2 = '+(fund*2)+')</span></div>'+
+      '<div><b>'+fmt(myShare)+'</b><span>Your share'+(gated&&mine<5?' (locked out!)':'')+'</span></div>'+
+      '<div><b>'+fmt(tot)+'</b><span>Your round total</span></div></div>';
+    drawTable(); drawChart();
+    nb.classList.remove('hidden');
+    nb.textContent = round<R ? (round===R-1 ? 'Round 5: the gated soi →' : 'Next round →') : 'What happened? →';
+  }
+  function drawTable(){
+    let sum=0;
+    let h='<table class="dtable sl-tbl"><tr><th>Round</th><th>You paid</th><th>Neighbours’ average</th><th>Total fund</th><th>Your share</th><th>Your total</th></tr>';
+    rows.forEach(r=>{ sum+=r.total; h+='<tr><td>'+(r.round===R?'5 (gated)':r.round)+'</td><td>'+r.mine+'</td><td>'+fmt(r.avgOthers)+'</td><td>'+r.fund+'</td><td>'+fmt(r.share)+'</td><td>'+fmt(r.total)+'</td></tr>'; });
+    h+='<tr class="sl-total"><td colspan="5">Running total</td><td>'+fmt(sum)+'</td></tr></table>';
+    tbl.innerHTML=h;
+  }
+  function drawChart(){
+    chart.classList.remove('hidden');
+    const W=520,H=210,pl=40,pb=34,pt=14,bw=(W-pl-10)/R;
+    let s='<div class="ft">Average tokens paid per household (out of 10)</div><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Average payment per household by round">';
+    for(let g=0;g<=10;g+=5){ const y=pt+(H-pt-pb)*(1-g/10); s+='<line x1="'+pl+'" x2="'+(W-6)+'" y1="'+y+'" y2="'+y+'" stroke="#E4EDF5"/><text x="'+(pl-8)+'" y="'+(y+4)+'" font-size="11" text-anchor="end" fill="#8098B0" font-family="Lato,sans-serif">'+g+'</text>'; }
+    rows.forEach((r,i)=>{
+      const h=(H-pt-pb)*r.avgAll/10, x=pl+i*bw+bw*0.2, y=H-pb-h;
+      s+='<rect x="'+x+'" y="'+y+'" width="'+(bw*0.6)+'" height="'+h+'" rx="4" fill="'+(r.round===R?'#FF8F1C':'#008BCC')+'"/>';
+      s+='<text x="'+(x+bw*0.3)+'" y="'+(y-4)+'" font-size="11" text-anchor="middle" fill="#002F6C" font-weight="700" font-family="Lato,sans-serif">'+fmt(r.avgAll)+'</text>';
+    });
+    for(let i=0;i<R;i++) s+='<text x="'+(pl+i*bw+bw/2)+'" y="'+(H-pb+16)+'" font-size="11" text-anchor="middle" fill="#8098B0" font-family="Lato,sans-serif">'+(i===R-1?'R5 gated':'Round '+(i+1))+'</text>';
+    chart.innerHTML=s+'</svg>';
+  }
+  nb.onclick=()=>{
+    if(round<R){ round++; if(round===R) gate.classList.remove('hidden'); drawTokens(); }
+    else { decide.classList.add('hidden'); bar.classList.add('hidden'); res.innerHTML=''; questions(); }
+  };
+  function questions(){
+    const a1=rows[0].avgAll, a4=rows[R-2].avgAll, a5=rows[R-1].avgAll;
+    const obs=document.createElement('div'); obs.className='foot-card'; obs.style.margin='0 0 18px';
+    obs.innerHTML='<h3>What your data shows</h3><p>Average payment went from <b>'+fmt(a1)+'</b> tokens in round 1 to <b>'+fmt(a4)+'</b> in round 4, then <b>'+fmt(a5)+'</b> in the gated round. '+
+      (a4<a1 ? 'Payments fell as more households free rode.' : 'Payments did not fall this time — but ask yourself whether that would last in a city of millions.')+
+      '</p><p>That is the <i>observation</i>. Now explain it.</p>';
+    host.insertBefore(obs, tbl);
+    const qs=document.createElement('div'); after.appendChild(qs);
+    const done=document.createElement('div'); done.className='done-banner'; after.appendChild(done);
+    buildCards(qs, SOI_Q, (right,total)=>{
+      done.innerHTML='✓ All four answered ('+right+'/'+total+' right first time). The gate is the key idea: public goods are under-provided because non-payers cannot be excluded. Change that, and the market can provide the good.';
+      done.classList.add('show');
+      trk('Game: Soi Light Game', right+'/'+total+' explanation questions correct'); mark('soi');
+      const again=document.createElement('div'); again.className='btn-row';
+      again.innerHTML='<button class="btn btn-ghost">Play again</button>';
+      again.querySelector('button').onclick=()=>{ buildSoi(); window.scrollTo({top:0,behavior:'smooth'}); };
+      after.appendChild(again);
+    });
+    obs.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  drawTokens();
+}
+buildSoi();
+
+/* ================= TAB 5 — INFORMATION FAILURE CHAINS ================= */
+const CHAINS=[
+ {id:'a', icon:'🧋', bg:'#D63864', name:'Chain A: sugary drinks in Thailand (demerit good)',
+  steps:['Advertising links sugary drinks with energy and fun, and few people read the label',
+         'Consumers underestimate the harm that sugar causes (information failure)',
+         'Demand is higher than it would be with full information',
+         'Sugary drinks are over-consumed',
+         'Too many resources are allocated to sugary drinks — a market failure',
+         'The government may intervene, e.g. Thailand’s tax on sugary drinks'],
+  done:'<h3>Notice the order</h3><p>Information failure comes first, then demand, then consumption, then resource allocation. An answer that stops at “over-consumed” has not finished the analysis — the chain must reach the misallocation of resources.</p>'},
+ {id:'b', icon:'💉', bg:'#6B4E9E', name:'Chain B: childhood vaccination (merit good)',
+  steps:['Parents do not realise how much a vaccination protects their child and others',
+         'They underestimate the benefit of the vaccination (information failure)',
+         'Demand is lower than it would be with full information',
+         'Vaccinations are under-consumed',
+         'Too few resources are allocated to vaccination — a market failure',
+         'The government may intervene, e.g. free vaccinations for all children'],
+  done:'<h3>The same chain, the other direction</h3><p>Underestimated benefit → lower demand → under-consumption → too few resources. Every merit good answer should mention information failure <b>and</b> under-consumption.</p>'},
+];
+const chainSolved={};
+function buildChain(ch){
+  const card=document.getElementById('chain-'+ch.id);
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s,i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary ch-check">Check chain</button>'+
+      '<button class="btn btn-ghost ch-reset">Reset</button>'+
+      '<span class="score"></span>'+
+    '</div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{
+    seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render();
+  }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{
+    seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render();
+  });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{
+      const ok=Number(el.dataset.idx)===pos;
+      el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+      if(ok) right++;
+    });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved[ch.id]){
+        chainSolved[ch.id]=true;
+        trk('Chain: '+ch.name, 'correct');
+        if(CHAINS.every(c=>chainSolved[c.id])){ document.getElementById('chainDone').classList.add('show'); mark('chain'); }
+      }
+    } else {
+      sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C';
+    }
+  });
+}
+(function(){
+  const host=document.getElementById('chainHost');
+  CHAINS.forEach(ch=>{ const c=document.createElement('div'); c.className='q-card'; c.id='chain-'+ch.id; host.appendChild(c); buildChain(ch); });
+})();
+
+/* ================= TAB 6 — EXAM MCQ ================= */
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+  stem:'A government builds a sea wall to protect a coastal town in Thailand. Why is the sea wall unlikely to be provided by the free market?',
+  opts:['The sea wall is rival in consumption.','People who do not pay cannot be prevented from benefiting from it.','Demand for the sea wall is price elastic.','The sea wall has zero opportunity cost.'], ans:1,
+  fb:'Non-excludability creates the <strong>free-rider problem</strong>, so a profit-seeking firm cannot collect revenue.',
+  why:'A is wrong: the sea wall is non-rival. D confuses a public good with a free good — building a sea wall uses scarce resources.'},
+ {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2',
+  stem:'Which pair of characteristics describes a pure public good?',
+  opts:['excludable and rival','excludable and non-rival','non-excludable and rival','non-excludable and non-rival'], ans:3,
+  fb:'A pure public good has <strong>both</strong> characteristics.',
+  why:'B and C are the two types of quasi-public good; A is a private good.'},
+ {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3',
+  stem:'A free good is best defined as a good that',
+  opts:['is provided free of charge by the government.','has zero opportunity cost.','is non-rival in consumption.','is funded through taxation.'], ans:1,
+  fb:'Free goods are not scarce, so using them gives up nothing.',
+  why:'A and D describe how some public and merit goods are financed. Confusing “free to use” with “free good” is one of the most common errors on this topic.'},
+ {id:'m4', icon:'4', bg:'#28A745', name:'Paper 1 · Question 4',
+  stem:'The Thai government provides free childhood vaccinations. What is the main economic justification?',
+  opts:['Vaccinations are public goods.','Without intervention, vaccinations would be under-consumed because parents may underestimate their benefits.','Vaccinations are free goods.','Vaccinations are over-provided by the market.'], ans:1,
+  fb:'Vaccination is a <strong>merit good</strong>: rival and excludable, but under-consumed because of information failure.',
+  why:'Government provision does not make it a public good (A). Who pays for a good does not change its characteristics.'},
+ {id:'m5', icon:'5', bg:'#002F6C', name:'Paper 1 · Question 5',
+  stem:'Which is the best example of information failure leading to over-consumption?',
+  opts:['People do not visit the dentist because charges are high.','Smokers underestimate the long-term harm of smoking.','A toll road becomes congested at rush hour.','Sunlight is available to everyone.'], ans:1,
+  fb:'B describes a <strong>demerit good</strong>: consumers underestimate the harm, so they consume too much.',
+  why:'A is under-consumption caused by low income, not information failure. C is about rivalry, not information.'},
+ {id:'m6', icon:'6', bg:'#D63864', name:'Paper 1 · Question 6',
+  stem:'A Bangkok toll expressway at 3 a.m. is best described as',
+  opts:['a pure public good, because anyone can drive on it.','a quasi-public good, because drivers can be excluded by the toll.','a demerit good, because cars cause pollution.','a free good, because the road is empty.'], ans:1,
+  fb:'Excludable (toll gates) but non-rival when empty: it has <strong>some but not all</strong> of the characteristics of a public good.',
+  why:'An empty road still uses scarce resources, so it is not a free good (D). And A is wrong on its own terms: the toll means not anyone can drive on it.'},
+ {id:'m7', icon:'7', bg:'#5B8C5A', name:'Paper 1 · Question 7',
+  stem:'Which statement about merit goods is correct?',
+  opts:['They are always provided by the government.','They are non-excludable.','They would be under-consumed in a free market.','They are substitutes for demerit goods.'], ans:2,
+  fb:'Under-consumption in a free market is what <strong>defines</strong> a merit good.',
+  why:'A and D are common exam errors. Merit goods can be provided privately (private hospitals and schools), and taxing a demerit good does not increase consumption of a merit good.'},
+ {id:'m8', icon:'8', bg:'#8098B0', name:'Paper 1 · Question 8',
+  stem:'Which policy is most likely to overcome the free-rider problem for street lighting on a soi?',
+  opts:['Lowering the price of electricity','Funding the lights through compulsory local taxes','Advertising the benefits of street lighting','Making the lights brighter'], ans:1,
+  fb:'Compulsory taxation means everyone pays whether or not they would volunteer, so <strong>free riding is no longer possible</strong>.',
+  why:'This is why public goods are usually financed by government. C would help with a merit good, where the problem is information — here the problem is non-excludability.'},
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  document.getElementById('mcqDone').classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
+  mark('mcq');
+});
+</script>
+</body>
+</html>
