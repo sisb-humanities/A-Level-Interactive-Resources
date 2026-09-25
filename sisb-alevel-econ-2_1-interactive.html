@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2.1 Demand and Supply Curves | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 2.1 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   New widgets use the ds- prefix (demand & supply lab) so nothing
+   collides with the shared CSS.
+   ===================================================================== */
+.hidden{display:none !important}
+
+/* two-step picker (same pattern as 1.6 "Excludable? Rival?") */
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.hintline{font-size:12.8px;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:8px 12px;margin:8px 0 4px;line-height:1.5}
+
+/* ---- THE DEMAND & SUPPLY LAB ---- */
+.ds-lab{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start;margin-bottom:18px}
+@media(max-width:880px){.ds-lab{grid-template-columns:1fr}}
+.ds-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.ds-row{margin-bottom:17px}
+.ds-row:last-child{margin-bottom:0}
+.ds-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ds-name em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--blue);text-align:right}
+.ds-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:11px 0 3px}
+.ds-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.ds-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.ds-sl.d-sl::-webkit-slider-thumb{background:#D63864}
+.ds-sl.d-sl::-moz-range-thumb{background:#D63864}
+.ds-sl.s-sl::-webkit-slider-thumb{background:#008BCC}
+.ds-sl.s-sl::-moz-range-thumb{background:#008BCC}
+.ds-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.ds-res{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.ds-res div{background:var(--grey-bg);border-radius:8px;padding:10px 6px;text-align:center}
+.ds-res b{display:block;font-size:20px;font-weight:900;color:var(--navy);line-height:1.2}
+.ds-res span{font-size:10.8px;color:var(--text-3)}
+.ds-res .up b{color:var(--green)}
+.ds-res .dn b{color:var(--red)}
+.ds-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.ds-say b{color:var(--navy)}
+.ds-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.ds-chip{background:#fff;border:1.5px solid var(--grey-3);border-radius:8px;padding:9px 12px;font-size:12.6px;cursor:pointer;
+  line-height:1.4;color:var(--text);transition:.12s;font-family:'Lato',sans-serif;text-align:left;max-width:100%}
+.ds-chip:hover{border-color:var(--blue)}
+.ds-chip.used{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.ds-chip.now{border-color:var(--orange);background:var(--orange-bg);color:var(--orange-txt)}
+.ds-legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:var(--text-2);margin-top:6px}
+.ds-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+
+/* resources strip */
+.res-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}
+.res-links a{font-size:12.5px;font-weight:700;text-decoration:none;color:var(--navy);background:#fff;
+  border:1.5px solid var(--grey-3);border-radius:20px;padding:7px 14px}
+.res-links a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* sticky progress (same as 1.5 / 1.6) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 2.1 Demand and Supply Curves</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="move">🎚️ Movement Lab</div>
+  <div class="tab" data-tab="shift">↔️ Shift Lab</div>
+  <div class="tab" data-tab="pick">🧭 Shift or Movement?</div>
+  <div class="tab" data-tab="chain">🔗 Analysis Chains</div>
+  <div class="tab" data-tab="write">✍️ Write It Up</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Match each term to its meaning</h1>
+      <p>Twelve terms carry this topic. Two pairs cost marks every year: <b>movement along</b> versus <b>shift in</b> a curve, and <b>normal</b> versus <b>inferior</b> goods. Read the meanings carefully before you drag.</p>
+      <p>Work through activities 1–6 after the lessons, then activity 7 as a timed test. The labs in activities 2 and 3 use the PC market from the coursebook (Chapter 7, Tables 7.1 and 7.2), so your notes and the screen should agree.</p>
+      <div class="res-links">
+        <a href="sisb-alevel-exam-skills.html">📐 Exam Skills Toolkit</a>
+        <a href="index.html">🗂️ All topics</a>
+        <!-- Paste this topic's video and notebook links here when they are ready:
+        <a href="VIDEO-URL-HERE" target="_blank" rel="noopener">▶️ Topic video</a>
+        <a href="NOTEBOOK-URL-HERE" target="_blank" rel="noopener">📓 Notebook</a>
+        <a href="QUIZ-URL-HERE" target="_blank" rel="noopener">✅ Quiz</a>
+        -->
+      </div>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">Demand is not the same as wanting something. Demand in economics is <b>effective</b> demand: backed by the ability to pay.</p>
+  </div>
+
+  <!-- ============ TAB 2 · MOVEMENT LAB ============ -->
+  <div class="panel" id="panel-move">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Movement along a curve</div>
+      <h1>Change the price and watch the curves stay still</h1>
+      <p>This is the PC market from the coursebook. Drag the price slider and watch the two dots slide <b>along</b> the curves. The curves themselves never move, because the only thing changing is the product’s own price.</p>
+      <p>An increase in quantity demanded or supplied is an <b>extension</b>; a decrease is a <b>contraction</b>. Get the vocabulary right here and the rest of the topic gets easier. The questions underneath are the coursebook’s own Activities 7.2 and 7.3 (pages 56 and 59), answered off a live diagram.</p>
+    </div>
+    <div class="ds-lab">
+      <div class="fig" style="margin-bottom:0">
+        <div class="ft">The market for PCs — movement along D and S</div>
+        <div id="moveFig"></div>
+        <div class="ds-legend">
+          <span><i style="background:#D63864"></i>Demand (D)</span>
+          <span><i style="background:#008BCC"></i>Supply (S)</span>
+        </div>
+        <div class="figcap" id="moveCap"></div>
+      </div>
+      <div class="ds-ctrl">
+        <div class="ds-row">
+          <div class="ds-name"><span>Price of a PC</span><em id="moveP">$1400</em></div>
+          <input type="range" class="ds-sl" id="moveSlider" min="800" max="2000" step="10" value="1400"
+                 aria-label="Price of a PC in dollars">
+          <div class="ds-ends"><span>$800</span><span>$2000</span></div>
+        </div>
+        <div class="ds-res">
+          <div><b id="moveQd">4000</b><span>Quantity demanded</span></div>
+          <div><b id="moveQs">4000</b><span>Quantity supplied</span></div>
+        </div>
+        <div class="ds-say" id="moveSay"></div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="btn btn-ghost" id="moveReset">Back to $1400</button>
+        </div>
+      </div>
+    </div>
+    <div class="sub-h">Read the diagram</div>
+    <div class="sub-p">Use the slider to find each answer before you choose. Drag slowly — the slider now moves in $10 steps, so you can land on the exact price each question needs.</div>
+    <div id="moveQ"></div>
+    <div class="done-banner" id="moveDone"></div>
+    <p class="tip">Careful with wording. <b>Demand</b> means the whole schedule — the entire curve. <b>Quantity demanded</b> means one point on it. A price change alters the quantity demanded, never demand itself.</p>
+  </div>
+
+  <!-- ============ TAB 3 · SHIFT LAB ============ -->
+  <div class="panel" id="panel-shift">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Shifting the curves</div>
+      <h1>Change something other than price and the curve moves</h1>
+      <p>Now drag the two shift sliders, or tap a real-world cause below. The original curves stay on screen as faint dashed lines so you can see the shift, and the readout shows what happens to the equilibrium price and quantity.</p>
+      <p>Tap all eight causes to complete this activity. For each one, ask yourself two questions before you read the explanation: <b>which curve?</b> and <b>which way?</b></p>
+    </div>
+    <div class="ds-lab">
+      <div class="fig" style="margin-bottom:0">
+        <div class="ft">The market for PCs — shifting D and S</div>
+        <div id="shiftFig"></div>
+        <div class="ds-legend">
+          <span><i style="background:#D63864"></i>Demand</span>
+          <span><i style="background:#008BCC"></i>Supply</span>
+          <span><i style="background:#C8D8E8"></i>Original position</span>
+        </div>
+        <div class="figcap">Equilibrium is where the two curves cross. You will study it properly in Topic 2.4 — here, just watch which way it travels.</div>
+      </div>
+      <div class="ds-ctrl">
+        <div class="ds-row">
+          <div class="ds-name"><span>Demand</span><em id="shiftDlab">No shift</em></div>
+          <input type="range" class="ds-sl d-sl" id="dSlider" min="-2000" max="2000" step="500" value="0"
+                 aria-label="Shift the demand curve left or right">
+          <div class="ds-ends"><span>← Decrease</span><span>Increase →</span></div>
+        </div>
+        <div class="ds-row">
+          <div class="ds-name"><span>Supply</span><em id="shiftSlab">No shift</em></div>
+          <input type="range" class="ds-sl s-sl" id="sSlider" min="-2000" max="2000" step="500" value="0"
+                 aria-label="Shift the supply curve left or right">
+          <div class="ds-ends"><span>← Decrease</span><span>Increase →</span></div>
+        </div>
+        <div class="ds-res">
+          <div id="eqPbox"><b id="eqP">$1400</b><span>Equilibrium price</span></div>
+          <div id="eqQbox"><b id="eqQ">4000</b><span>Equilibrium quantity</span></div>
+        </div>
+        <div class="ds-say" id="shiftSay">Both curves are in their original position. The market clears at $1400 and 4000 PCs per week.</div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="btn btn-ghost" id="shiftReset">Reset both curves</button>
+        </div>
+      </div>
+    </div>
+    <div class="sub-h">Tap a cause <span class="score" id="chipScore" style="font-size:13px">0 / 8 explored</span></div>
+    <div class="sub-p">Each of these is a non-price determinant from the coursebook. Predict the effect, then tap.</div>
+    <div class="ds-chips" id="causeChips"></div>
+    <div id="causeOut"></div>
+    <div class="done-banner" id="shiftDone">✓ All eight causes explored. Notice the pattern: anything that changes <b>willingness or ability to buy</b> shifts demand; anything that changes <b>costs or the number of sellers</b> shifts supply. The product’s own price shifts neither.</div>
+  </div>
+
+  <!-- ============ TAB 4 · SHIFT OR MOVEMENT? ============ -->
+  <div class="panel" id="panel-pick">
+    <div class="intro">
+      <div class="kicker">Activity 4 · The decision that earns the marks</div>
+      <h1>Shift or movement? Which curve? Which way?</h1>
+      <p>Twelve scenarios, two steps each. Step 1: does the cause shift a curve, or move you along one? Step 2: name the curve and the direction. Each correct step scores 1, so 24 points are available.</p>
+      <p>The rule underneath every answer: <b>only a change in the product’s own price moves you along a curve.</b> Everything else shifts one.</p>
+    </div>
+    <div id="pickList"></div>
+    <div class="done-banner" id="pickDone"></div>
+    <p class="tip">In an exam, write the decision down explicitly: “This is a shift of the supply curve to the left, not a movement along it, because the cause is a rise in costs and not a change in the price of the good itself.”</p>
+  </div>
+
+  <!-- ============ TAB 5 · ANALYSIS CHAINS ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Analysis chains</div>
+      <h1>Build the chain of reasoning</h1>
+      <p>Analysis marks are earned by linked steps, not by isolated statements. Click the six steps of each chain in causal order: start with the cause, and finish with what happens in the market.</p>
+      <p>Every chain here has the same skeleton: <b>cause → why buyers or sellers react → which curve shifts and which way → what happens to price and quantity</b>.</p>
+    </div>
+    <div id="chainHost"></div>
+    <div class="done-banner" id="chainDone">✓ Both chains complete. Chain A shifted demand, chain B shifted supply — and both reached price <b>and</b> quantity. An answer that stops at “the curve shifts left” has stopped one step too early.</div>
+  </div>
+
+  <!-- ============ TAB 6 · WRITE IT UP ============ -->
+  <div class="panel" id="panel-write">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Paper 2 style</div>
+      <h1>Turn the diagram into written analysis</h1>
+      <p>Two written tasks: an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis) and a 12-mark <b>discuss</b> answer (which also needs AO3 — evaluation). Type your answer first, then compare it with the model. Nothing you type is stored.</p>
+      <p>Full command-word guidance and mark-scheme bands are on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">Explain, with the help of a diagram, how a sharp rise in the price of petrol is likely to affect the market for cars. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Plan before you write: which curve, which way, why, and what happens to price and quantity. A labelled diagram with D, S, axes and both equilibria earns marks of its own.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:150px" placeholder="Petrol and cars are complements, which means..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> Petrol and cars are complements: they are in joint demand, so they are consumed together. A sharp rise in the price of petrol raises the cost of running a car, which makes consumers less willing and less able to buy cars at every price. The demand curve for cars therefore shifts to the left, from D to D₁, because the cause is not the price of cars themselves. At the original price there is now excess supply, so price falls. As price falls there is a contraction of supply, a movement along the supply curve, until a new equilibrium is reached at a lower price and a lower quantity. Fewer resources are then allocated to car production.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> it names the relationship (complements), explains the behaviour, identifies the shift <b>and</b> its direction, distinguishes the shift from the movement along supply, and finishes at the new equilibrium. Five linked steps, not five separate facts.</div>
+      </div>
+    </div>
+
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" id="w1band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 6 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
+        <div class="q-name">Discuss whether a change in income is always the most important influence on the demand for a product. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
+      <div class="q-stem">A 12-mark <b>discuss</b> question needs two-sided analysis and a supported judgement. Plan it here in note form — four or five bullet points is enough — then compare with the model plan.</div>
+      <div class="write-lbl">Your plan</div>
+      <textarea class="write-box" id="w2" style="min-height:130px" placeholder="Case FOR income being most important: ...&#10;Case AGAINST: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="w2btn">Compare with a model plan</button>
+      <div class="model" id="w2model">
+        <b>Model plan.</b><br>
+        <b>1 · Case for income.</b> For normal goods, higher income raises willingness and ability to pay, shifting demand right. Income effects are large for cars, foreign holidays and restaurant meals. Effective demand requires ability to pay, so income is always part of the story.<br>
+        <b>2 · Case against.</b> For inferior goods such as instant noodles, rising income shifts demand left, so the direction is not even fixed. Substitutes can matter more: a fall in the price of tablets can cut laptop demand sharply. Fashion and taste can outweigh both, and price itself still determines the quantity demanded along the curve.<br>
+        <b>3 · It depends on.</b> The type of good (normal, inferior, luxury, necessity); the size of the income change relative to price changes; the time period; how close the substitutes are.<br>
+        <b>4 · Judgement.</b> Income is usually the most important influence for goods with a high income elasticity of demand, such as luxury cars, but for necessities with close substitutes the price of those substitutes matters more. The honest conclusion is that it depends on the good — supported by an example, not asserted.
+        <div class="exam-line" style="margin-top:10px"><b>Evaluation sentence starters:</b> “This depends on whether…”, “In the short run… but in the long run…”, “This argument assumes… which may not hold because…”, “On balance, the stronger argument is… because…”</div>
+      </div>
+    </div>
+    <div class="done-banner" id="writeDone">✓ Both tasks attempted. Redraft the 8-mark answer using anything you left unticked, then bring both to the next lesson.</div>
+  </div>
+
+  <!-- ============ TAB 7 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Eight Paper 1 style questions built around the errors that cost the most marks in this topic: confusing a shift with a movement, getting inferior goods backwards, and mixing up substitutes with complements.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All eight attempted. Next: Topic 2.2 takes these same curves and asks <b>how much</b> quantity responds — elasticity. Everything you have done here is the foundation for it.</div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 2.1</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 7 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('2.1', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,move:false,shift:false,pick:false,chain:false,write:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 2.1 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function num(n){ return n.toLocaleString('en-GB'); }
+
+/* Shared MCQ card builder (same markup as 1.4 / 1.5 / 1.6) */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+
+/* =====================================================================
+   THE MARKET MODEL — coursebook Tables 7.1 and 7.2 (PCs, per week)
+   Demand:  Qd = 11000 − 5P   (P 2000 → 1000 units ... P 800 → 7000)
+   Supply:  Qs = 5P − 3000    (P 800 → 1000 units ... P 2000 → 7000)
+   Equilibrium with no shifts: P = $1400, Q = 4000
+   A shift value is a horizontal shift in units at every price.
+   ===================================================================== */
+const PL=56, PT=16, PW=448, PH=300, QMAX=10000, PMIN=600, PMAX=2200;
+const BASE_P=1400, BASE_Q=4000;
+const qdAt=(p,d)=>11000-5*p+(d||0);
+const qsAt=(p,s)=>5*p-3000+(s||0);
+const px=q=>PL+q/QMAX*PW;
+const py=p=>PT+(PMAX-p)/(PMAX-PMIN)*PH;
+const eqP=(d,s)=>(14000+(d||0)-(s||0))/10;
+
+function gridSVG(){
+  let g='';
+  for(let p=800;p<=2000;p+=200){
+    const y=py(p);
+    g+='<line x1="'+PL+'" x2="'+(PL+PW)+'" y1="'+y+'" y2="'+y+'" stroke="#E4EDF5"/>';
+    g+='<text x="'+(PL-8)+'" y="'+(y+4)+'" font-size="10.5" text-anchor="end" fill="#8098B0" font-family="Lato,sans-serif">'+p+'</text>';
+  }
+  for(let q=0;q<=QMAX;q+=2000){
+    const x=px(q);
+    g+='<line x1="'+x+'" x2="'+x+'" y1="'+PT+'" y2="'+(PT+PH)+'" stroke="#E4EDF5"/>';
+    g+='<text x="'+x+'" y="'+(PT+PH+16)+'" font-size="10.5" text-anchor="middle" fill="#8098B0" font-family="Lato,sans-serif">'+(q/1000)+'k</text>';
+  }
+  g+='<line x1="'+PL+'" x2="'+PL+'" y1="'+PT+'" y2="'+(PT+PH)+'" stroke="#456080" stroke-width="1.5"/>';
+  g+='<line x1="'+PL+'" x2="'+(PL+PW)+'" y1="'+(PT+PH)+'" y2="'+(PT+PH)+'" stroke="#456080" stroke-width="1.5"/>';
+  g+='<text x="14" y="'+(PT+PH/2)+'" font-size="11" fill="#456080" font-weight="700" text-anchor="middle" font-family="Lato,sans-serif" transform="rotate(-90 14 '+(PT+PH/2)+')">Price ($)</text>';
+  g+='<text x="'+(PL+PW/2)+'" y="'+(PT+PH+34)+'" font-size="11" fill="#456080" font-weight="700" text-anchor="middle" font-family="Lato,sans-serif">Quantity per week</text>';
+  return g;
+}
+function curve(fn, shift, colour, dash, w){
+  const x1=px(fn(PMIN,shift)), y1=py(PMIN), x2=px(fn(PMAX,shift)), y2=py(PMAX);
+  return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+colour+'" stroke-width="'+(w||2.4)+
+         '" stroke-linecap="round"'+(dash?' stroke-dasharray="6 5"':'')+'/>';
+}
+function svgOpen(label){
+  return '<svg viewBox="0 0 520 360" role="img" aria-label="'+label+'" xmlns="http://www.w3.org/2000/svg">'+
+    '<defs><clipPath id="plotclip"><rect x="'+PL+'" y="'+PT+'" width="'+PW+'" height="'+PH+'"/></clipPath>'+
+    '<marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">'+
+    '<path d="M 0 0 L 10 5 L 0 10 z" fill="#FF8F1C"/></marker></defs>';
+}
+function dot(q,p,colour){
+  return '<circle cx="'+px(q)+'" cy="'+py(p)+'" r="6" fill="'+colour+'" stroke="#fff" stroke-width="2"/>';
+}
+function guide(q,p){
+  return '<line x1="'+PL+'" y1="'+py(p)+'" x2="'+px(q)+'" y2="'+py(p)+'" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+         '<line x1="'+px(q)+'" y1="'+py(p)+'" x2="'+px(q)+'" y2="'+(PT+PH)+'" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>';
+}
+function tag(x,y,txt,colour){
+  return '<text x="'+x+'" y="'+y+'" font-size="12.5" font-weight="900" fill="'+colour+'" font-family="Lato,sans-serif">'+txt+'</text>';
+}
+
+/* ================= TAB 2 — MOVEMENT LAB ================= */
+const MOVE_Q=[
+ {id:'v1', icon:'1', bg:'#008BCC', name:'Coursebook Activity 7.2, question 1a',
+  stem:'How many PCs per week are people <b>willing and able to buy</b> if the price is <b>$1100</b>?',
+  opts:['2500','4500','5500','6500'], ans:2,
+  fb:'Set the slider to $1100. Quantity demanded is 5500 PCs per week.',
+  why:'Note the wording: at $1100 the <b>quantity demanded</b> is 5500. Demand itself has not changed — the whole curve is still in the same place.'},
+ {id:'v2', icon:'2', bg:'#008BCC', name:'Coursebook Activity 7.2, question 1b',
+  stem:'What price will persuade people to <b>buy 1350</b> PCs per week?',
+  opts:['$1730','$1830','$1930','$2030'], ans:2,
+  fb:'Slide up until quantity demanded reads 1350. That happens at $1930.',
+  why:'You are reading the same curve in the other direction: from a quantity across to a price. Figure 7.3 in the coursebook is the curve you are reading.'},
+ {id:'v3', icon:'3', bg:'#FF8F1C', name:'Coursebook Activity 7.3, question 1 (first part)',
+  stem:'How many PCs per week are companies <b>planning to supply</b> if the price is <b>$1100</b>?',
+  opts:['1500','2000','2500','3500'], ans:2,
+  fb:'At $1100 the quantity supplied is 2500 PCs per week.',
+  why:'Same price, very different number. At $1100 consumers want 5500 but firms will only offer 2500 — a shortage of 3000. That gap is what drives price back up towards $1400.'},
+ {id:'v4', icon:'4', bg:'#FF8F1C', name:'Coursebook Activity 7.3, question 1 (second part)',
+  stem:'What price would persuade companies to <b>supply 1350</b> PCs per week?',
+  opts:['$830','$870','$930','$1050'], ans:1,
+  fb:'Slide down until quantity supplied reads 1350. That happens at $870.',
+  why:'The supply curve slopes upwards because a higher price makes selling more profitable, so firms are willing and able to supply more.'},
+ {id:'v5', icon:'5', bg:'#6B4E9E', name:'Naming what happened',
+  stem:'The price of a PC rises from $1200 to $1600. Using the correct terms, what has happened?',
+  opts:['Demand has fallen and supply has risen',
+        'A contraction of demand and an extension of supply, both movements along the curves',
+        'The demand curve has shifted left and the supply curve has shifted right',
+        'A contraction of supply and an extension of demand'], ans:1,
+  fb:'A change in the product\u2019s own price causes a <strong>movement along</strong> both curves: quantity demanded contracts from 5000 to 3000, and quantity supplied extends from 3000 to 5000.',
+  why:'Option A uses the wrong words and option C is the classic error. Neither curve moves, because nothing other than the price of PCs has changed.'},
+ {id:'v6', icon:'6', bg:'#002F6C', name:'Coursebook Activity 7.2, question 1c',
+  stem:'What assumption are you making every time you read a value off one of these curves?',
+  opts:['That the market is in equilibrium',
+        'That all other influences on demand and supply are unchanged — ceteris paribus',
+        'That the curves are straight lines',
+        'That consumers have full information'], ans:1,
+  fb:'Both schedules are drawn <strong>ceteris paribus</strong>. Incomes, the prices of related goods, costs of production and everything else are held constant.',
+  why:'This is why a price change only moves you along the curve. The moment one of those other influences changes, the curve itself moves — which is activity 3.'}
+];
+function drawMove(){
+  const p=Number(document.getElementById('moveSlider').value);
+  const qd=qdAt(p,0), qs=qsAt(p,0);
+  let s=svgOpen('Demand and supply curves for PCs with a movable price line')+gridSVG();
+  s+='<g clip-path="url(#plotclip)">';
+  s+=curve(qdAt,0,'#D63864');
+  s+=curve(qsAt,0,'#008BCC');
+  s+='<line x1="'+PL+'" y1="'+py(p)+'" x2="'+(PL+PW)+'" y2="'+py(p)+'" stroke="#FF8F1C" stroke-width="1.6" stroke-dasharray="5 4"/>';
+  s+=guide(qd,p)+guide(qs,p);
+  s+=dot(qd,p,'#D63864')+dot(qs,p,'#008BCC');
+  s+='</g>';
+  s+=tag(px(qdAt(PMIN,0))-22, py(PMIN)-6, 'D', '#D63864');
+  s+=tag(px(qsAt(PMAX,0))-20, py(PMAX)+14, 'S', '#008BCC');
+  s+='<text x="'+(PL+4)+'" y="'+(py(p)-6)+'" font-size="11.5" font-weight="900" fill="#FF8F1C" font-family="Lato,sans-serif">$'+p+'</text>';
+  s+='</svg>';
+  document.getElementById('moveFig').innerHTML=s;
+  document.getElementById('moveP').textContent='$'+num(p);
+  document.getElementById('moveQd').textContent=num(qd);
+  document.getElementById('moveQs').textContent=num(qs);
+  const cap=document.getElementById('moveCap');
+  const say=document.getElementById('moveSay');
+  if(p===BASE_P){
+    cap.innerHTML='At <b>$1400</b> the plans of buyers and sellers match: 4000 PCs.';
+    say.innerHTML='At <b>$1400</b> quantity demanded and quantity supplied are equal at 4000. Move the slider and watch the two dots travel in opposite directions.';
+  } else if(p>BASE_P){
+    cap.innerHTML='Above $1400, firms plan to sell more than consumers plan to buy.';
+    say.innerHTML='Price is <b>above</b> $1400. Compared with $1400 there has been a <b>contraction of demand</b> and an <b>extension of supply</b> — both movements along the curves. Quantity supplied now exceeds quantity demanded by '+num(qs-qd)+' PCs.';
+  } else {
+    cap.innerHTML='Below $1400, consumers plan to buy more than firms plan to sell.';
+    say.innerHTML='Price is <b>below</b> $1400. Compared with $1400 there has been an <b>extension of demand</b> and a <b>contraction of supply</b> — both movements along the curves. Quantity demanded now exceeds quantity supplied by '+num(qd-qs)+' PCs.';
+  }
+}
+document.getElementById('moveSlider').addEventListener('input',drawMove);
+document.getElementById('moveReset').addEventListener('click',()=>{
+  document.getElementById('moveSlider').value=BASE_P; drawMove();
+});
+drawMove();
+buildCards(document.getElementById('moveQ'), MOVE_Q, (right,total)=>{
+  const b=document.getElementById('moveDone');
+  b.innerHTML='✓ All '+total+' answered ('+right+'/'+total+' right first time). Every one of those answers came from a <b>movement along</b> a curve — the price changed, the curves did not. In activity 3 the curves themselves start to move.';
+  b.classList.add('show');
+  trk('Movement Lab', right+'/'+total+' diagram questions correct'); mark('move');
+});
+
+/* ================= TAB 3 — SHIFT LAB ================= */
+const CAUSES=[
+ {id:'c1', t:'Average incomes in Bangkok rise', d:1500, s:0,
+  out:'<b>Demand shifts right.</b> PCs are a <b>normal good</b>: as income rises, more consumers are willing <i>and able</i> to buy at every price, so notional demand becomes effective demand. Income is a non-price determinant, so the curve moves.'},
+ {id:'c2', t:'A recession cuts household incomes', d:-1500, s:0,
+  out:'<b>Demand shifts left.</b> For a normal good, lower income reduces the ability to pay at every price. Careful: for an <b>inferior good</b> such as instant noodles, the same fall in income would shift demand to the <i>right</i>.'},
+ {id:'c3', t:'The price of tablets, a substitute, falls', d:-1000, s:0,
+  out:'<b>Demand shifts left.</b> A <b>substitute</b> satisfies the same want. When tablets get cheaper, some buyers switch, so fewer PCs are demanded at every price. Note what did <i>not</i> happen: the price of PCs is unchanged, so this is a shift and not a movement.'},
+ {id:'c4', t:'A viral review makes this PC model fashionable', d:1000, s:0,
+  out:'<b>Demand shifts right.</b> <b>Fashion, taste and attitudes</b> change willingness to buy at every price. This determinant is the hardest to measure, but it shifts the curve exactly like the others.'},
+ {id:'c5', t:'Component costs fall after a new supplier opens', d:0, s:1500,
+  out:'<b>Supply shifts right.</b> Lower <b>costs of production</b> make supplying profitable at every price, so firms are willing and able to supply more. Equilibrium price falls and quantity rises.'},
+ {id:'c6', t:'The government puts an indirect tax on PCs', d:0, s:-1000,
+  out:'<b>Supply shifts left.</b> An <b>indirect tax</b> is an extra cost per unit, so firms supply less at every price. The curve shifts upwards by the amount of the tax — and consumers pay part of it through the higher equilibrium price.'},
+ {id:'c7', t:'A subsidy is given to local PC assembly', d:0, s:1000,
+  out:'<b>Supply shifts right.</b> A <b>subsidy</b> is a direct payment to producers, which lowers their effective costs, so more is supplied at every price. Tax and subsidy are mirror images of each other.'},
+ {id:'c8', t:'Flooding in Pathum Thani closes two assembly plants', d:0, s:-2000,
+  out:'<b>Supply shifts left.</b> The <b>size of the industry</b> has shrunk: fewer firms are producing, so less is supplied at every price. The 2011 Thai floods did exactly this to the global market for hard disk drives, and prices rose sharply.'}
+];
+const chipsUsed=new Set();
+function shiftLabel(v){
+  if(v===0) return 'No shift';
+  return (v>0?'Increase · shift right ':'Decrease · shift left ')+num(Math.abs(v));
+}
+function drawShift(){
+  const d=Number(document.getElementById('dSlider').value);
+  const s=Number(document.getElementById('sSlider').value);
+  const P=eqP(d,s), Q=qsAt(P,s);
+  let g=svgOpen('Demand and supply curves for PCs that can be shifted left or right')+gridSVG();
+  g+='<g clip-path="url(#plotclip)">';
+  if(d!==0) g+=curve(qdAt,0,'#C8D8E8',true,2);
+  if(s!==0) g+=curve(qsAt,0,'#C8D8E8',true,2);
+  g+=curve(qdAt,d,'#D63864');
+  g+=curve(qsAt,s,'#008BCC');
+  g+=guide(Q,P);
+  g+=dot(Q,P,'#FF8F1C');
+  if(d!==0||s!==0){
+    g+='<line x1="'+px(BASE_Q)+'" y1="'+py(BASE_P)+'" x2="'+px(Q)+'" y2="'+py(P)+'" stroke="#FF8F1C" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arw)"/>';
+    g+='<circle cx="'+px(BASE_Q)+'" cy="'+py(BASE_P)+'" r="4" fill="#C8D8E8"/>';
+  }
+  g+='</g>';
+  g+=tag(px(qdAt(PMIN,d))-24, py(PMIN)-6, d===0?'D':'D₁', '#D63864');
+  g+=tag(px(qsAt(PMAX,s))-22, py(PMAX)+14, s===0?'S':'S₁', '#008BCC');
+  g+='</svg>';
+  document.getElementById('shiftFig').innerHTML=g;
+  document.getElementById('shiftDlab').textContent=shiftLabel(d);
+  document.getElementById('shiftSlab').textContent=shiftLabel(s);
+  document.getElementById('eqP').textContent='$'+num(P);
+  document.getElementById('eqQ').textContent=num(Q);
+  document.getElementById('eqPbox').className=P>BASE_P?'up':(P<BASE_P?'dn':'');
+  document.getElementById('eqQbox').className=Q>BASE_Q?'up':(Q<BASE_Q?'dn':'');
+  const say=document.getElementById('shiftSay');
+  if(d===0&&s===0){
+    say.innerHTML='Both curves are in their original position. The market clears at <b>$1400</b> and <b>4000</b> PCs per week.';
+  } else {
+    const phr=(v,base,fmtv)=> v>base ? 'has <b>risen</b> to '+fmtv : (v<base ? 'has <b>fallen</b> to '+fmtv : 'is <b>unchanged</b> at '+fmtv);
+    const pw=phr(P,BASE_P,'$'+num(P));
+    const qw=phr(Q,BASE_Q,num(Q));
+    let which=[];
+    if(d>0) which.push('demand has increased (shift right)');
+    if(d<0) which.push('demand has decreased (shift left)');
+    if(s>0) which.push('supply has increased (shift right)');
+    if(s<0) which.push('supply has decreased (shift left)');
+    say.innerHTML='Because '+which.join(' and ')+', equilibrium price '+pw+
+      ' and equilibrium quantity '+qw+'.'+
+      ((d!==0&&s!==0&&((d>0&&s>0)||(d<0&&s<0)))?' Notice that when both curves shift the same way, the change in price is <b>uncertain</b> — it depends on which shift is bigger. Here the two shifts are '+(Math.abs(d)===Math.abs(s)?'equal, so they cancel out exactly':'unequal, which is why price moves')+'. Try changing one slider without the other.':'');
+  }
+}
+['dSlider','sSlider'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',()=>{
+    document.querySelectorAll('.ds-chip').forEach(c=>c.classList.remove('now'));
+    document.getElementById('causeOut').innerHTML='';
+    drawShift();
+  });
+});
+document.getElementById('shiftReset').addEventListener('click',()=>{
+  document.getElementById('dSlider').value=0;
+  document.getElementById('sSlider').value=0;
+  document.querySelectorAll('.ds-chip').forEach(c=>c.classList.remove('now'));
+  document.getElementById('causeOut').innerHTML='';
+  drawShift();
+});
+(function(){
+  const host=document.getElementById('causeChips');
+  CAUSES.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='ds-chip'; b.type='button'; b.textContent=c.t; b.dataset.id=c.id;
+    b.addEventListener('click',()=>{
+      document.getElementById('dSlider').value=c.d;
+      document.getElementById('sSlider').value=c.s;
+      drawShift();
+      document.querySelectorAll('.ds-chip').forEach(x=>x.classList.remove('now'));
+      b.classList.add('now','used');
+      chipsUsed.add(c.id);
+      document.getElementById('chipScore').textContent=chipsUsed.size+' / '+CAUSES.length+' explored';
+      document.getElementById('causeOut').innerHTML='<div class="q-card" style="margin-top:14px"><div class="write-lbl">'+c.t+'</div><div class="q-stem" style="margin-bottom:0">'+c.out+'</div></div>';
+      if(chipsUsed.size===CAUSES.length){
+        document.getElementById('shiftDone').classList.add('show');
+        trk('Shift Lab', 'all '+CAUSES.length+' causes explored'); mark('shift');
+      }
+    });
+    host.appendChild(b);
+  });
+})();
+drawShift();
+
+/* ================= TAB 1 — KEY TERMS (match) ================= */
+const TERMS=[
+ {id:'t1', term:'Effective demand',      def:'Demand that is supported by the ability to pay.'},
+ {id:'t2', term:'Supply',                def:'The quantity of a product producers are willing and able to sell at different prices over a period of time, ceteris paribus.'},
+ {id:'t3', term:'Demand schedule',       def:'The data from which a demand curve is drawn on a graph.'},
+ {id:'t4', term:'Movement along a curve',def:'The change in quantity demanded or supplied caused by a change in the product’s own price.'},
+ {id:'t5', term:'Shift in a curve',      def:'A change in the quantity demanded or supplied at every price, caused by a non-price determinant.'},
+ {id:'t6', term:'Extension',             def:'An increase in the quantity demanded or the quantity supplied.'},
+ {id:'t7', term:'Contraction',           def:'A decrease in the quantity demanded or the quantity supplied.'},
+ {id:'t8', term:'Normal good',           def:'A good whose quantity demanded increases as income increases.'},
+ {id:'t9', term:'Inferior good',         def:'A good whose quantity demanded increases as income decreases.'},
+ {id:'t10',term:'Substitute',            def:'An alternative good that satisfies the same want or need.'},
+ {id:'t11',term:'Complement',            def:'A good that is consumed together with another, in joint demand.'},
+ {id:'t12',term:'Ceteris paribus',       def:'The assumption that all other influences remain unchanged.'}
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); mark('terms'); }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* ================= TAB 4 — SHIFT OR MOVEMENT? ================= */
+const SHIFT_OPTS=[
+ {v:'dr', label:'Demand shifts RIGHT'},
+ {v:'dl', label:'Demand shifts LEFT'},
+ {v:'sr', label:'Supply shifts RIGHT'},
+ {v:'sl', label:'Supply shifts LEFT'}
+];
+const MOVE_OPTS=[
+ {v:'ed', label:'Extension of demand'},
+ {v:'cd', label:'Contraction of demand'},
+ {v:'es', label:'Extension of supply'},
+ {v:'cs', label:'Contraction of supply'}
+];
+const PICKS=[
+ {t:'Average incomes in Chiang Mai rise. The market for <b>restaurant meals</b>, a normal good.', type:'shift', ans:'dr',
+  hint:'Has the price of a restaurant meal changed? If not, a curve must move.',
+  fb:'Income is a non-price determinant of demand. For a normal good, higher income means more is demanded at every price, so demand shifts right.'},
+ {t:'A recession cuts household incomes. The market for <b>instant noodles</b>, an inferior good.', type:'shift', ans:'dr',
+  hint:'Inferior goods work backwards. What happens to noodle sales when money is tight?',
+  fb:'For an inferior good, quantity demanded rises as income falls. Consumers switch away from more expensive alternatives, so demand shifts right. This is the one that catches people out.'},
+ {t:'The price of tablets falls. The market for <b>laptops</b> — tablets are a substitute.', type:'shift', ans:'dl',
+  hint:'The price that changed is not the price of a laptop.',
+  fb:'A cheaper substitute pulls buyers away, so fewer laptops are demanded at every price: demand shifts left. The price of laptops has not changed, so this is not a movement.'},
+ {t:'The price of petrol rises sharply. The market for <b>cars</b> — petrol and cars are complements.', type:'shift', ans:'dl',
+  hint:'Complements are in joint demand: they are bought and used together.',
+  fb:'A dearer complement raises the total cost of using a car, so demand for cars falls at every price: demand shifts left.'},
+ {t:'A popular Thai singer is seen wearing a particular brand of trainers. The market for <b>those trainers</b>.', type:'shift', ans:'dr',
+  hint:'Which of the three demand determinants is this?',
+  fb:'Fashion, taste and attitudes have changed in the product’s favour, so more is demanded at every price: demand shifts right.'},
+ {t:'New machinery cuts the cost of harvesting coffee beans. The market for <b>coffee</b>.', type:'shift', ans:'sr',
+  hint:'Who is affected by a change in costs — buyers or sellers?',
+  fb:'Lower costs of production make supplying more profitable at every price, so supply shifts right. The coursebook’s harvesting machines cut costs by 40–60%.'},
+ {t:'The wages of electronics assembly workers rise. The market for <b>PCs</b>.', type:'shift', ans:'sl',
+  hint:'Labour is a cost of production.',
+  fb:'Higher costs mean firms are willing and able to supply less at every price, so supply shifts left.'},
+ {t:'The government pays a subsidy to rice farmers. The market for <b>rice</b>.', type:'shift', ans:'sr',
+  hint:'A subsidy is a direct payment to producers.',
+  fb:'A subsidy lowers producers’ effective costs, so more is supplied at every price: supply shifts right.'},
+ {t:'A new indirect tax is placed on sugary drinks. The market for <b>sugary drinks</b>.', type:'shift', ans:'sl',
+  hint:'Who hands the tax to the government — the buyer or the seller?',
+  fb:'An indirect tax is an extra cost per unit for producers, so supply shifts left. Thailand’s sugar tax works exactly this way.'},
+ {t:'A drought damages the sugar cane crop. The market for <b>sugar</b>.', type:'shift', ans:'sl',
+  hint:'Weather is one of the “other factors” affecting supply in agricultural markets.',
+  fb:'Poor weather reduces output, so less is supplied at every price: supply shifts left.'},
+ {t:'The price of a PC falls from $1600 to $1200. Look at the <b>demand curve</b> for PCs.', type:'move', ans:'ed',
+  hint:'The cause is the product’s own price. That never shifts a curve.',
+  fb:'A fall in the product’s own price causes a movement down along the demand curve: quantity demanded rises from 3000 to 5000. That increase is an extension of demand.'},
+ {t:'The price of a PC falls from $1600 to $1200. Look at the <b>supply curve</b> for PCs.', type:'move', ans:'cs',
+  hint:'Same cause, other side of the market. Is selling more or less attractive now?',
+  fb:'A movement down along the supply curve: quantity supplied falls from 5000 to 3000. That decrease is a contraction of supply.'}
+];
+let pickScore=0, pickDoneCount=0;
+function buildPick(){
+  const host=document.getElementById('pickList'); host.innerHTML='';
+  pickScore=0; pickDoneCount=0;
+  document.getElementById('pickDone').classList.remove('show');
+  shuffle([...PICKS]).forEach((d,pos)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(pos+1)+'</div><div class="q-name">'+d.t+'</div></div>'+
+      '<button class="mini-btn pk-hintbtn" style="margin-top:0">Need a clue?</button>'+
+      '<div class="hintline hidden">Clue: '+d.hint+'</div>'+
+      '<div class="write-lbl" style="margin-top:12px">STEP 1 — Does this shift a curve, or move you along one?</div>'+
+      '<div class="steppick s1"><button class="lvl" data-v="shift">Shift of a curve</button><button class="lvl" data-v="move">Movement along a curve</button></div>'+
+      '<div class="write-lbl s2lbl hidden">STEP 2 — Which curve, and which way?</div>'+
+      '<div class="steppick s2 hidden"></div>'+
+      '<div class="reveal"></div>';
+    host.appendChild(c);
+    const hb=c.querySelector('.pk-hintbtn');
+    hb.addEventListener('click',()=>{ c.querySelector('.hintline').classList.remove('hidden'); hb.remove(); });
+    let step1=null;
+    c.querySelectorAll('.s1 .lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(step1!==null) return;
+      step1=b.dataset.v;
+      c.querySelectorAll('.s1 .lvl').forEach(x=>x.disabled=true);
+      b.classList.add('active');
+      const box=c.querySelector('.s2');
+      const opts=step1==='shift'?SHIFT_OPTS:MOVE_OPTS;
+      box.innerHTML=opts.map(o=>'<button class="lvl" data-v="'+o.v+'">'+o.label+'</button>').join('');
+      c.querySelector('.s2lbl').classList.remove('hidden');
+      box.classList.remove('hidden');
+      box.querySelectorAll('.lvl').forEach(x=>x.addEventListener('click',()=>{
+        if(x.disabled) return;
+        box.querySelectorAll('.lvl').forEach(y=>y.disabled=true);
+        x.classList.add('active');
+        const hbNow=c.querySelector('.pk-hintbtn'); if(hbNow) hbNow.remove();
+        const ok1=step1===d.type, ok2=x.dataset.v===d.ans;
+        const pts=(ok1?1:0)+(ok2?1:0);
+        pickScore+=pts; pickDoneCount++;
+        const verdict=pts===2?'good':(pts===1?'both':'bad');
+        const correctLabel=(d.type==='shift'?SHIFT_OPTS:MOVE_OPTS).find(o=>o.v===d.ans).label;
+        const vlabel=pts===2?'Both right (+2)':(pts===1?(ok1?'Step 1 right, step 2 wrong (+1)':'Step 2 right, step 1 wrong (+1)'):'Neither right');
+        const rev=c.querySelector('.reveal');
+        rev.innerHTML='<span class="verdict v-'+verdict+'">'+vlabel+'</span><br><strong>Correct answer: '+
+          (d.type==='shift'?'a shift — ':'a movement along a curve — ')+correctLabel.toLowerCase()+'.</strong> '+d.fb;
+        rev.classList.add('show');
+        if(pickDoneCount===PICKS.length){
+          const max=PICKS.length*2, banner=document.getElementById('pickDone');
+          banner.innerHTML='✓ All twelve done — '+pickScore+' / '+max+' points. If you lost marks on step 1, go back to activity 2 and 3 and watch what the curves do. If you lost them on step 2, write the four shift rules into your notes.';
+          banner.classList.add('show');
+          trk('Shift or movement?', pickScore+'/'+max+' points'); mark('pick');
+        }
+      }));
+    }));
+  });
+}
+buildPick();
+
+/* ================= TAB 5 — ANALYSIS CHAINS ================= */
+const CHAINS=[
+ {id:'a', icon:'⛽', bg:'#D63864', name:'Chain A: a rise in the price of petrol (demand side)',
+  steps:['The price of petrol in Thailand rises sharply',
+         'Petrol and cars are complements — they are in joint demand',
+         'The cost of running a car rises, so consumers are less willing and able to buy cars at every price',
+         'The demand curve for cars shifts to the left, from D to D₁',
+         'At the original price there is now excess supply, so price falls',
+         'Equilibrium price and quantity both fall, and fewer resources are allocated to cars'],
+  done:'<h3>Notice the shape of the chain</h3><p>Cause → relationship between the goods → effect on willingness and ability to buy → which curve, which way → new price and quantity. An answer that says only “demand falls” has skipped four of these steps, and four marks with them.</p>'},
+ {id:'b', icon:'🥤', bg:'#008BCC', name:'Chain B: a tax on sugary drinks (supply side)',
+  steps:['The government raises the excise tax on sugary drinks',
+         'The tax is an extra cost to producers on every bottle they sell',
+         'Firms are willing and able to supply less at each and every price',
+         'The supply curve shifts to the left, from S to S₁',
+         'Equilibrium price rises and the quantity traded falls',
+         'Resources move out of the sugary drinks industry'],
+  done:'<h3>The same skeleton, the supply side</h3><p>Note step 5: consumers end up paying part of the tax through a higher price. That is the link to indirect taxes and incidence later in the course — and it is the point most answers miss.</p>'}
+];
+const chainSolved={};
+function buildChain(ch){
+  const card=document.getElementById('chain-'+ch.id);
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s,i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary ch-check">Check chain</button>'+
+      '<button class="btn btn-ghost ch-reset">Reset</button>'+
+      '<span class="score"></span>'+
+    '</div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{
+    seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render();
+  }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{
+    seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render();
+  });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{
+      const ok=Number(el.dataset.idx)===pos;
+      el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+      if(ok) right++;
+    });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved[ch.id]){
+        chainSolved[ch.id]=true;
+        trk('Chain: '+ch.name, 'correct');
+        if(CHAINS.every(c=>chainSolved[c.id])){ document.getElementById('chainDone').classList.add('show'); mark('chain'); }
+      }
+    } else {
+      sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C';
+    }
+  });
+}
+(function(){
+  const host=document.getElementById('chainHost');
+  CHAINS.forEach(ch=>{ const c=document.createElement('div'); c.className='q-card'; c.id='chain-'+ch.id; host.appendChild(c); buildChain(ch); });
+})();
+
+/* ================= TAB 6 — WRITE IT UP ================= */
+const W1_CHECKS=[
+ 'I named the relationship between petrol and cars (complements / joint demand)',
+ 'I said which curve moves and in which direction',
+ 'I explained why buyers behave that way, rather than just asserting it',
+ 'I drew a labelled diagram: axes, D, S, D₁, both equilibria',
+ 'I reached the effect on equilibrium price AND quantity',
+ 'I used the terms shift and movement along correctly'
+];
+(function(){
+  const host=document.getElementById('w1checks');
+  W1_CHECKS.forEach((txt,i)=>{
+    const row=document.createElement('div');
+    row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{ row.classList.toggle('on'); updateBand(); });
+    host.appendChild(row);
+  });
+})();
+function updateBand(){
+  const on=document.querySelectorAll('#w1checks .chk.on').length, tot=W1_CHECKS.length;
+  document.getElementById('w1bv').textContent=on+' of '+tot+' ticked';
+  document.getElementById('w1bar').style.width=(on/tot*100)+'%';
+  const bd=document.getElementById('w1bd');
+  if(on<=2) bd.textContent='This would sit in the lower band: some knowledge, little analysis. Add the linked reasoning and the diagram.';
+  else if(on<=4) bd.textContent='Middle band. The economics is there but the chain is incomplete — most often the missing step is the effect on price and quantity.';
+  else if(on<tot) bd.textContent='Nearly a top-band answer. Add the one element you left unticked and redraft.';
+  else bd.textContent='Top band: knowledge, a correct labelled diagram, and a complete chain of analysis. Now time yourself doing it in 10 minutes.';
+}
+const writeSeen={w1:false,w2:false};
+[['w1btn','w1model','w1'],['w2btn','w2model','w2']].forEach(([btn,mod,key])=>{
+  document.getElementById(btn).addEventListener('click',()=>{
+    const box=document.getElementById(key);
+    if(box.value.trim().length<40){
+      box.focus();
+      document.getElementById(btn).textContent='Write your own attempt first — then compare';
+      return;
+    }
+    document.getElementById(mod).classList.add('show');
+    document.getElementById(btn).textContent='Model shown ✓';
+    document.getElementById(btn).disabled=true;
+    writeSeen[key]=true;
+    if(writeSeen.w1 && writeSeen.w2){
+      document.getElementById('writeDone').classList.add('show');
+      trk('Write It Up', 'both written tasks attempted'); mark('write');
+    }
+  });
+});
+
+/* ================= TAB 7 — EXAM MCQ ================= */
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+  stem:'The price of rice in Thailand rises. Ceteris paribus, what happens to the <b>demand curve</b> for rice?',
+  opts:['It shifts to the left.','It shifts to the right.','It stays where it is; there is a contraction of demand.','It becomes steeper.'], ans:2,
+  fb:'A change in the product’s own price causes a <strong>movement along</strong> the demand curve, not a shift.',
+  why:'This is the single most common error in the topic. Only a non-price determinant — income, related goods, fashion — can move the curve itself.'},
+ {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2',
+  stem:'Bubble tea and tapioca pearls are in joint demand. The price of bubble tea rises sharply. What happens in the market for <b>tapioca pearls</b>?',
+  opts:['The demand curve shifts to the left.','The demand curve shifts to the right.','There is an extension of demand.','The supply curve shifts to the left.'], ans:0,
+  fb:'Goods in joint demand are <strong>complements</strong>. Less bubble tea is bought, so less of the complement is demanded at every price.',
+  why:'C is wrong because the price of tapioca pearls has not changed, so there is no movement along their demand curve.'},
+ {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3',
+  stem:'During a recession incomes fall. Instant noodles are an inferior good. The demand curve for instant noodles will',
+  opts:['shift to the left.','shift to the right.','stay in the same position.','become perfectly inelastic.'], ans:1,
+  fb:'For an <strong>inferior good</strong>, quantity demanded rises as income falls, so demand shifts right.',
+  why:'The definition works in both directions: an inferior good is one where demand rises as income falls, and falls as income rises. Answer A would be right for a normal good.'},
+ {id:'m4', icon:'4', bg:'#28A745', name:'Paper 1 · Question 4',
+  stem:'A government removes the subsidy it previously paid to rice farmers. The market supply curve of rice will',
+  opts:['shift to the right.','shift to the left.','be unchanged, with an extension of supply.','be unchanged, with a contraction of supply.'], ans:1,
+  fb:'Removing a subsidy raises producers’ effective costs, so less is supplied at every price: the curve shifts left.',
+  why:'A subsidy is a direct payment to producers, so adding one shifts supply right and removing one shifts it back left.'},
+ {id:'m5', icon:'5', bg:'#002F6C', name:'Paper 1 · Question 5',
+  stem:'Which of the following would shift the supply curve of coffee to the <b>right</b>?',
+  opts:['A rise in the wages of coffee pickers','New harvesting machinery that lowers costs per tonne','A new indirect tax on coffee exports','A drought in the main growing region'], ans:1,
+  fb:'Lower costs of production make supplying profitable at every price, so supply increases.',
+  why:'A, C and D all raise costs or cut output, so each would shift supply to the left.'},
+ {id:'m6', icon:'6', bg:'#D63864', name:'Paper 1 · Question 6',
+  stem:'Tablets are a substitute for laptops. The price of tablets falls. In the market for <b>laptops</b>, this causes',
+  opts:['a shift of the demand curve to the left, lowering equilibrium price and quantity.',
+        'a shift of the demand curve to the right, raising equilibrium price and quantity.',
+        'a contraction of demand along the demand curve.',
+        'a shift of the supply curve to the left.'], ans:0,
+  fb:'A cheaper substitute draws buyers away, so fewer laptops are demanded at every price.',
+  why:'C describes a movement along the curve, which would need the price of laptops itself to change.'},
+ {id:'m7', icon:'7', bg:'#5B8C5A', name:'Paper 1 · Question 7',
+  stem:'Which of these causes a <b>movement along</b> the supply curve of durian?',
+  opts:['A rise in the wages paid to pickers','A fall in the market price of durian','A new government subsidy for durian growers','Storm damage to the durian crop'], ans:1,
+  fb:'Only a change in the product’s own price moves you along the curve — here, a contraction of supply.',
+  why:'A, C and D are all non-price determinants of supply, so each shifts the whole curve.'},
+ {id:'m8', icon:'8', bg:'#8098B0', name:'Paper 1 · Question 8',
+  stem:'In the market for cars, the price of petrol rises at the same time as the wages of car workers rise. What is the effect on the market for cars?',
+  opts:['Equilibrium price and quantity both rise.',
+        'Equilibrium price and quantity both fall.',
+        'Equilibrium quantity falls, but the effect on price is uncertain.',
+        'Equilibrium price falls, but the effect on quantity is uncertain.'], ans:2,
+  fb:'Demand shifts left (petrol is a complement) and supply shifts left (higher costs). Both reduce quantity, but they push price in opposite directions.',
+  why:'Whenever both curves shift, one variable moves definitely and the other depends on the relative size of the two shifts. Saying so is an evaluation point worth having in a written answer — try it on the sliders in activity 3.'}
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  document.getElementById('mcqDone').classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
+  mark('mcq');
+});
+</script>
+</body>
+</html>
