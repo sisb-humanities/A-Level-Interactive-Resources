@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2.2 Price, Income and Cross Elasticity of Demand | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 2.2 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   New widgets use the el- prefix (elasticity lab) so nothing collides
+   with the shared CSS.
+   ===================================================================== */
+.hidden{display:none !important}
+.hintline{font-size:12.8px;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:8px 12px;margin:8px 0 4px;line-height:1.5}
+
+/* ---- LAB SHELL (figure + control column) ---- */
+.el-lab{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start;margin-bottom:18px}
+@media(max-width:880px){.el-lab{grid-template-columns:1fr}}
+.el-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.el-row{margin-bottom:17px}
+.el-row:last-child{margin-bottom:0}
+.el-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.el-name em{font-style:normal;font-size:12px;font-weight:900;color:var(--blue);text-align:right}
+.el-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:11px 0 3px}
+.el-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.el-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.el-sl.a-sl::-webkit-slider-thumb{background:#FF8F1C}
+.el-sl.a-sl::-moz-range-thumb{background:#FF8F1C}
+.el-sl.b-sl::-webkit-slider-thumb{background:#002F6C}
+.el-sl.b-sl::-moz-range-thumb{background:#002F6C}
+.el-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.el-res{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.el-res div{background:var(--grey-bg);border-radius:8px;padding:10px 6px;text-align:center}
+.el-res b{display:block;font-size:19px;font-weight:900;color:var(--navy);line-height:1.2}
+.el-res span{font-size:10.8px;color:var(--text-3)}
+.el-res .up b{color:var(--green)}
+.el-res .dn b{color:var(--red)}
+.el-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.el-say b{color:var(--navy)}
+.el-legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:var(--text-2);margin-top:6px}
+.el-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+
+/* ---- BIG ELASTICITY READOUT ---- */
+.el-big{background:var(--navy);color:#fff;border-radius:var(--radius);padding:14px 16px;text-align:center;margin-bottom:14px}
+.el-big .lab{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#8FCBEA}
+.el-big .val{font-size:34px;font-weight:900;line-height:1.1;margin:2px 0 3px}
+.el-big .ver{font-size:12.5px;font-weight:700;color:#CADCFC}
+.el-big.is-el{background:#9E2150}
+.el-big.is-in{background:#00618F}
+.el-big.is-un{background:#5B4487}
+
+/* ---- WORKING-OUT BOX ---- */
+.el-work{background:#FBFDFF;border:1px solid var(--grey-2);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;
+  padding:11px 13px;font-size:13px;line-height:1.75;color:var(--text-2);margin-top:10px}
+.el-work b{color:var(--navy)}
+.el-work .fr{font-weight:900;color:var(--navy)}
+
+/* ---- REGION / CASE CHIPS ---- */
+.el-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.el-chip{background:#fff;border:1.5px solid var(--grey-3);border-radius:8px;padding:9px 12px;font-size:12.6px;cursor:pointer;
+  line-height:1.4;color:var(--text);transition:.12s;font-family:'Lato',sans-serif;text-align:left;max-width:100%}
+.el-chip:hover{border-color:var(--blue)}
+.el-chip.used{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.el-chip.now{border-color:var(--orange);background:var(--orange-bg);color:var(--orange-txt)}
+.el-track{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px}
+.el-tick{font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:14px;background:var(--grey-bg);color:var(--text-3);border:1.5px solid var(--grey-2)}
+.el-tick.on{background:var(--green-bg);border-color:var(--green);color:var(--green-txt)}
+
+/* ---- NUMERIC ANSWER FIELDS ---- */
+.el-ans{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.el-num{font-family:'Lato',sans-serif;font-size:16px;font-weight:900;color:var(--navy);width:132px;padding:9px 12px;
+  border:1.5px solid var(--grey-3);border-radius:8px;outline:none;background:#fff;text-align:center}
+.el-num:focus{border-color:var(--blue)}
+.el-num.ok{border-color:var(--green);background:var(--green-bg)}
+.el-num.no{border-color:var(--red);background:var(--red-bg)}
+.el-unit{font-size:12.5px;color:var(--text-3);font-weight:700}
+
+/* ---- SORTING (pool above, bins below) ---- */
+.el-pool{display:flex;flex-wrap:wrap;gap:9px;background:var(--grey-bg);border:2px dashed var(--grey-3);
+  border-radius:var(--radius);padding:12px;min-height:66px;margin-bottom:16px}
+.el-pool .item-card{margin-bottom:0}
+.el-bins4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.el-bins3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.el-bins4{grid-template-columns:1fr 1fr}.el-bins3{grid-template-columns:1fr}}
+@media(max-width:560px){.el-bins4{grid-template-columns:1fr}}
+
+/* ---- YED BAR ROWS ---- */
+.el-bars{display:grid;gap:11px;margin-top:4px}
+.el-brow{display:grid;grid-template-columns:130px 1fr 142px;gap:10px;align-items:center;font-size:12.6px}
+@media(max-width:620px){.el-brow{grid-template-columns:1fr;gap:4px}}
+.el-bname{font-weight:900;color:var(--navy);line-height:1.3}
+.el-bname span{display:block;font-weight:700;color:var(--text-3);font-size:11px}
+.el-btrack{height:24px;background:var(--grey-2);border-radius:5px;overflow:hidden;position:relative}
+.el-bfill{height:100%;border-radius:5px;transition:width .25s ease}
+.el-bmark{position:absolute;top:0;bottom:0;left:47.6%;width:2px;background:var(--navy);opacity:.55}
+.el-bval{text-align:right;font-weight:700;color:var(--text-2);line-height:1.35}
+.el-bval b{color:var(--navy)}
+
+/* ---- SPECIAL-CASE FIGURE GRID ---- */
+.el-case{display:grid;grid-template-columns:.95fr 1.05fr;gap:16px;align-items:center}
+@media(max-width:760px){.el-case{grid-template-columns:1fr}}
+.el-case svg{display:block;width:100%;height:auto;max-width:340px;margin:0 auto}
+
+/* resources strip */
+.res-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}
+.res-links a{font-size:12.5px;font-weight:700;text-decoration:none;color:var(--navy);background:#fff;
+  border:1.5px solid var(--grey-3);border-radius:20px;padding:7px 14px}
+.res-links a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* sticky progress */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 2.2 Elasticity of Demand</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="ped">🎚️ PED Lab</div>
+  <div class="tab" data-tab="calc">🧮 Calculations</div>
+  <div class="tab" data-tab="rev">💰 Revenue</div>
+  <div class="tab" data-tab="yed">📈 Income YED</div>
+  <div class="tab" data-tab="xed">🔀 Cross XED</div>
+  <div class="tab" data-tab="scen">🌏 Scenarios</div>
+  <div class="tab" data-tab="write">✍️ Write Up</div>
+  <div class="tab" data-tab="mcq">📝 Exam</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Match each term to its meaning</h1>
+      <p>Topic 2.1 asked <b>which way</b> quantity moves. Topic 2.2 asks <b>how much</b>. Three measures do the work: <b>PED</b> (own price), <b>YED</b> (income) and <b>XED</b> (the price of another good). All three are the same idea — a percentage change divided by a percentage change — so get the twelve terms below secure and the maths looks after itself.</p>
+      <p>Work through activities 1–8 after the lessons, then activity 9 as a timed test. Every calculation, table and figure on this page comes from coursebook Chapter 8 (pages 66–79), so your notes and the screen should agree.</p>
+      <div class="res-links">
+        <a href="sisb-alevel-exam-skills.html">📐 Exam Skills Toolkit</a>
+        <a href="sisb-alevel-econ-2_1-interactive.html">↩️ Topic 2.1 · Demand and supply</a>
+        <a href="index.html">🗂️ All topics</a>
+        <!-- Paste this topic's video and notebook links here when they are ready:
+        <a href="VIDEO-URL-HERE" target="_blank" rel="noopener">▶️ Topic video</a>
+        <a href="NOTEBOOK-URL-HERE" target="_blank" rel="noopener">📓 Notebook</a>
+        <a href="QUIZ-URL-HERE" target="_blank" rel="noopener">✅ Quiz</a>
+        -->
+      </div>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">Watch the three that are easiest to confuse: <b>perfectly inelastic</b> (PED = 0, a vertical curve), <b>perfectly elastic</b> (PED = infinity, a horizontal curve) and <b>unit elasticity</b> (PED = 1, where total spending never changes).</p>
+  </div>
+
+  <!-- ============ TAB 2 · PED LAB ============ -->
+  <div class="panel" id="panel-ped">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Price elasticity of demand</div>
+      <h1>Move the two prices and watch PED change</h1>
+      <p>This is the demand curve for bubble tea at a Bangkok stall. Set a <b>starting price</b> with the orange slider, then a <b>new price</b> with the navy one. The panel calculates the two percentage changes and divides one by the other, exactly as you must in the exam.</p>
+      <p>PED is <b>not</b> one number for a product. It changes as you move along the curve: elastic near the top, unit elastic at the midpoint, inelastic near the bottom. That is coursebook Figure 8.6, and you can see it happen by dragging the orange slider alone.</p>
+    </div>
+    <div class="el-lab">
+      <div class="fig" style="margin-bottom:0">
+        <div class="ft">Bubble tea in Bangkok — PED along a straight-line demand curve</div>
+        <div id="pedFig"></div>
+        <div class="el-legend">
+          <span><i style="background:#D63864"></i>Elastic half (PED &gt; 1)</span>
+          <span><i style="background:#008BCC"></i>Inelastic half (PED &lt; 1)</span>
+          <span><i style="background:#FF8F1C"></i>Start point A</span>
+          <span><i style="background:#002F6C"></i>New point B</span>
+        </div>
+        <div class="figcap" id="pedCap"></div>
+      </div>
+      <div class="el-ctrl">
+        <div class="el-big" id="pedBig">
+          <div class="lab">Price elasticity of demand</div>
+          <div class="val" id="pedVal">−2.00</div>
+          <div class="ver" id="pedVer">Price elastic</div>
+        </div>
+        <div class="el-row">
+          <div class="el-name"><span>A · Starting price</span><em id="p0lab">฿40</em></div>
+          <input type="range" class="el-sl a-sl" id="p0" min="5" max="55" step="1" value="40" aria-label="Starting price of bubble tea in baht">
+          <div class="el-ends"><span>฿5</span><span>฿55</span></div>
+        </div>
+        <div class="el-row">
+          <div class="el-name"><span>B · New price</span><em id="p1lab">฿44</em></div>
+          <input type="range" class="el-sl b-sl" id="p1" min="5" max="55" step="1" value="44" aria-label="New price of bubble tea in baht">
+          <div class="el-ends"><span>฿5</span><span>฿55</span></div>
+        </div>
+        <div class="el-res">
+          <div id="pedQbox"><b id="pedQ">−20.0%</b><span>% change in quantity</span></div>
+          <div id="pedPbox"><b id="pedP">+10.0%</b><span>% change in price</span></div>
+        </div>
+        <div class="el-work" id="pedWork"></div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="btn btn-ghost" id="pedReset">Reset to ฿40 → ฿44</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-h">Challenge · find all three regions</div>
+    <div class="sub-p">Move the <b>starting price</b> slider until you have found a price where demand is elastic, one where it is inelastic, and the single price where PED is exactly 1. Notice what happens to the <b>new price</b> slider: on a straight-line demand curve it changes the percentages but not the PED, because PED belongs to the point you start from.</div>
+    <div class="el-track">
+      <span class="el-tick" id="tk-el">Elastic · PED &gt; 1</span>
+      <span class="el-tick" id="tk-un">Unit elastic · PED = 1</span>
+      <span class="el-tick" id="tk-in">Inelastic · PED &lt; 1</span>
+    </div>
+
+    <div class="sub-h">Five special PED values <span class="score" id="caseScore" style="font-size:13px">0 / 5 explored</span></div>
+    <div class="sub-p">Coursebook Figures 8.3, 8.4 and 8.5 plus the two ordinary cases. Tap each one — the shape of the curve and the PED value have to go together in your head.</div>
+    <div class="el-chips" id="caseChips"></div>
+    <div class="q-card" id="caseOut"></div>
+    <div class="done-banner" id="pedDone"></div>
+    <p class="tip">It is accepted practice to <b>ignore the minus sign</b> when quoting PED, because the sign is always negative for a normal downward-sloping demand curve. Do not ignore it for YED or XED — there the sign is the whole point.</p>
+  </div>
+
+  <!-- ============ TAB 3 · CALCULATIONS ============ -->
+  <div class="panel" id="panel-calc">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Calculation practice</div>
+      <h1>Eleven elasticity calculations</h1>
+      <p>Every one comes from Chapter 8: Activities 8.1, 8.3, 8.4 and 8.5, Figure 8.8, and two of the exam-style questions. Type your answer to <b>two decimal places</b>, press Check, then read the working.</p>
+      <p>Two rules about signs. For <b>PED</b> the answer is always negative, so the marker accepts either −0.5 or 0.5. For <b>YED</b> and <b>XED</b> the sign carries the meaning, so you must type the minus sign when the answer is negative.</p>
+    </div>
+    <div id="calcList"></div>
+    <div class="done-banner" id="calcDone"></div>
+    <p class="tip">Always put the <b>percentage change in quantity demanded on top</b>. Putting the two changes the wrong way up is the single commonest arithmetic error in this topic — the coursebook warns about it in the tip box on page 73.</p>
+  </div>
+
+  <!-- ============ TAB 4 · PED & REVENUE ============ -->
+  <div class="panel" id="panel-rev">
+    <div class="intro">
+      <div class="kicker">Activity 4 · PED and total revenue</div>
+      <h1>Two products, one price rise, opposite results</h1>
+      <p>This is coursebook Figure 8.9. Both products currently sell at <b>$10</b> and both sell <b>100 units a day</b>, so both take $1000 a day. D<sub>e</sub> is price elastic (PED = 2 at this point) and D<sub>i</sub> is price inelastic (PED = 0.5). Drag the price and watch total revenue move in <b>opposite directions</b>.</p>
+      <p>Total expenditure by consumers = price × quantity = total revenue for the firm. This is the single most useful thing PED does for a business, and it is worth a whole evaluation paragraph in Paper 2.</p>
+    </div>
+    <div class="el-lab">
+      <div class="fig" style="margin-bottom:0">
+        <div class="ft">Price elastic and price inelastic demand curves</div>
+        <div id="revFig"></div>
+        <div class="el-legend">
+          <span><i style="background:#D63864"></i>D<sub>e</sub> · elastic</span>
+          <span><i style="background:#28A745"></i>D<sub>i</sub> · inelastic</span>
+          <span><i style="background:#FF8F1C"></i>Current price</span>
+        </div>
+        <div class="figcap" id="revCap"></div>
+      </div>
+      <div class="el-ctrl">
+        <div class="el-row">
+          <div class="el-name"><span>Price</span><em id="revPlab">$10.00</em></div>
+          <input type="range" class="el-sl" id="revP" min="6" max="14" step="0.5" value="10" aria-label="Price in dollars">
+          <div class="el-ends"><span>$6</span><span>$14</span></div>
+        </div>
+        <div class="el-row">
+          <div class="el-name" style="margin-bottom:8px"><span>Shade the revenue box for</span></div>
+          <div class="el-chips" style="margin-bottom:0">
+            <button class="lvl active" id="revTogE" type="button">D<sub>e</sub> · elastic</button>
+            <button class="lvl" id="revTogI" type="button">D<sub>i</sub> · inelastic</button>
+          </div>
+        </div>
+        <div class="el-res">
+          <div id="revEbox"><b id="revE">$1000</b><span>Revenue · elastic D<sub>e</sub></span></div>
+          <div id="revIbox"><b id="revI">$1000</b><span>Revenue · inelastic D<sub>i</sub></span></div>
+        </div>
+        <div class="el-say" id="revSay"></div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="btn btn-ghost" id="revReset">Back to $10</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="cell"><div class="h">Elastic · PED &gt; 1</div><div class="b">Quantity moves <b>proportionately more</b> than price. Raise price and revenue <b>falls</b>; cut price and revenue <b>rises</b>.</div></div>
+      <div class="cell"><div class="h">Inelastic · PED &lt; 1</div><div class="b">Quantity moves <b>proportionately less</b> than price. Raise price and revenue <b>rises</b>; cut price and revenue <b>falls</b>.</div></div>
+      <div class="cell"><div class="h">Unit elastic · PED = 1</div><div class="b">The two percentage changes cancel out, so total revenue is <b>unchanged</b> whichever way price moves.</div></div>
+      <div class="cell"><div class="h">Why firms advertise</div><div class="b">Persuasive advertising and branding aim to make demand <b>more price inelastic</b>, so the firm can raise price without losing many sales.</div></div>
+    </div>
+
+    <div class="sub-h">Read the lab</div>
+    <div class="sub-p">Use the slider to find each answer before you choose.</div>
+    <div id="revQ"></div>
+    <div class="done-banner" id="revDone"></div>
+    <p class="tip">Careful with the wording in Paper 1: “total expenditure”, “total spending”, “sales revenue” and “total revenue” all mean the same thing here — price × quantity.</p>
+  </div>
+
+  <!-- ============ TAB 5 · INCOME ELASTICITY ============ -->
+  <div class="panel" id="panel-yed">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Income elasticity of demand</div>
+      <h1>Change household income and watch four goods react</h1>
+      <p>Each of these four goods has been given a realistic YED estimate. Drag the income slider and watch what that number actually <b>does</b> to sales: the negative one moves the opposite way to the others, and the big positive one moves fastest of all.</p>
+      <p>Check the arithmetic as you go: <b>% change in quantity ÷ % change in income</b> should always give you back the YED in the second column. Then sort the eight goods underneath into the four categories.</p>
+    </div>
+    <div class="el-lab" style="grid-template-columns:1fr">
+      <div class="el-ctrl">
+        <div class="el-row">
+          <div class="el-name"><span>Average household income, baht per month</span><em id="yLab">฿40,000</em></div>
+          <input type="range" class="el-sl" id="ySlider" min="28000" max="56000" step="1000" value="40000" aria-label="Average household income in baht per month">
+          <div class="el-ends"><span>฿28,000 (−30%)</span><span>฿56,000 (+40%)</span></div>
+        </div>
+        <div class="el-say" id="ySay"></div>
+        <div class="el-bars" id="yBars" style="margin-top:14px"></div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="btn btn-ghost" id="yReset">Back to ฿40,000</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-h">Sort the goods by their YED</div>
+    <div class="sub-p">Drag each good into the right box. The thresholds are written into each box, so there is one right answer for each card. Two of them are the coursebook's own electricity estimates from Table 8.5 — the difference between them is the discussion in Activity 8.6.</div>
+    <div class="drop-pool el-pool" id="pool-yed"></div>
+    <div class="el-bins4" id="bins-yed"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkYed()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildYed()">Reset</button>
+      <span class="score" id="score-yed"></span>
+    </div>
+    <div class="done-banner" id="yedDone"></div>
+    <p class="tip">A good is not permanently one type. Rice is a <b>necessity</b> for a middle-income Bangkok family and can behave as an <b>inferior good</b> for a high-income one. The coursebook makes this point on page 71, and it is a ready-made evaluation sentence.</p>
+  </div>
+
+  <!-- ============ TAB 6 · CROSS ELASTICITY ============ -->
+  <div class="panel" id="panel-xed">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Cross elasticity of demand</div>
+      <h1>Change the price of a different good</h1>
+      <p>This is coursebook Figure 8.8. PCs sell at <b>$1000</b> and <b>100 units a day</b>. Pick a related good, then change <b>its</b> price and watch the demand curve for PCs shift. Nothing here moves you along the PC demand curve, because the price of PCs never changes.</p>
+      <p>The <b>sign</b> of XED tells you the relationship and the <b>size</b> tells you how strong it is. Get the sign the wrong way round and the economics is backwards, not just the arithmetic.</p>
+    </div>
+    <div class="el-lab">
+      <div class="fig" style="margin-bottom:0">
+        <div class="ft">A change in the demand for PCs</div>
+        <div id="xedFig"></div>
+        <div class="el-legend">
+          <span><i style="background:#002F6C"></i>Original demand D</span>
+          <span><i style="background:#D63864"></i>New demand</span>
+        </div>
+        <div class="figcap" id="xedCap"></div>
+      </div>
+      <div class="el-ctrl">
+        <div class="el-big" id="xedBig">
+          <div class="lab">Cross elasticity of demand</div>
+          <div class="val" id="xedVal">+2.00</div>
+          <div class="ver" id="xedVer">Substitutes</div>
+        </div>
+        <div class="el-row">
+          <div class="el-name" style="margin-bottom:8px"><span>Which related good?</span></div>
+          <div class="el-chips" id="xedPick" style="margin-bottom:0"></div>
+        </div>
+        <div class="el-row">
+          <div class="el-name"><span>% change in its price</span><em id="xLab">−2%</em></div>
+          <input type="range" class="el-sl" id="xSlider" min="-10" max="10" step="1" value="-2" aria-label="Percentage change in the price of the related good">
+          <div class="el-ends"><span>−10%</span><span>+10%</span></div>
+        </div>
+        <div class="el-res">
+          <div id="xQbox"><b id="xQ">96</b><span>PCs demanded per day</span></div>
+          <div id="xPCbox"><b id="xPC">−4.0%</b><span>% change in PC demand</span></div>
+        </div>
+        <div class="el-work" id="xedWork"></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Sort the pairs by their XED</div>
+    <div class="sub-p">Six pairs of goods, each with a measured XED. The sign decides the box.</div>
+    <div class="drop-pool el-pool" id="pool-xed"></div>
+    <div class="el-bins3" id="bins-xed"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkXed()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildXed()">Reset</button>
+      <span class="score" id="score-xed"></span>
+    </div>
+    <div class="done-banner" id="xedDone"></div>
+    <p class="tip">Put the good you are interested in <b>on top</b> and the other good's price <b>underneath</b>. Swapping them gives a different number, and the coursebook flags it as a common mistake on page 73.</p>
+  </div>
+
+  <!-- ============ TAB 7 · SCENARIOS ============ -->
+  <div class="panel" id="panel-scen">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Decisions that turn on an elasticity</div>
+      <h1>Eight real decisions</h1>
+      <p>Section 8.5 of the coursebook asks what firms and governments actually <b>do</b> with these numbers. Each card below is a decision. Choose, then read why — the reasoning matters far more than the click.</p>
+      <p>Notice how often the answer is “it depends on the elasticity value”. That sentence, with a number attached, is what turns description into evaluation.</p>
+    </div>
+    <div id="scenList"></div>
+    <div class="done-banner" id="scenDone"></div>
+    <p class="tip">All elasticity values are <b>estimates</b> drawn from past data, and past data may have been affected by things other than price. Saying so, once, with an example, is a genuine evaluation point — the coursebook makes it on page 76.</p>
+  </div>
+
+  <!-- ============ TAB 8 · WRITE IT UP ============ -->
+  <div class="panel" id="panel-write">
+    <div class="intro">
+      <div class="kicker">Activity 8 · Paper 2 style</div>
+      <h1>Turn an elasticity value into written analysis</h1>
+      <p>Build the chain of reasoning first, then write. An 8-mark <b>explain</b> answer needs AO1 and AO2 — knowledge and analysis. A 12-mark <b>discuss</b> answer also needs AO3, a two-sided judgement. Type your answer before you open the model. Nothing you type is stored.</p>
+      <p>Full command-word guidance and mark-scheme bands are on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
+    </div>
+
+    <div class="sub-h">Step 1 · Build the chain</div>
+    <div class="sub-p">Click the six steps in causal order. This chain is the reason governments tax some goods and not others.</div>
+    <div id="chainHost"></div>
+
+    <div class="sub-h">Step 2 · The 8-mark answer</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">Explain how knowledge of the price elasticity of demand for its product could help a firm decide whether to raise its price. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Plan before you write: define PED, state the two cases, explain the effect on total revenue in each, and use a numerical example. A labelled diagram with an elastic and an inelastic curve earns marks of its own.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:150px" placeholder="Price elasticity of demand measures..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> Price elasticity of demand measures the responsiveness of quantity demanded to a change in the product’s own price, and is calculated as the percentage change in quantity demanded divided by the percentage change in price. Its value tells the firm what will happen to total revenue, which is price multiplied by quantity. If demand is price inelastic, for example PED = −0.5, then a 10% rise in price causes only a 5% fall in quantity demanded, so revenue rises: a product selling 100 units at $10 takes $1000, but 95 units at $11 takes $1045. Raising price is therefore sensible. If demand is price elastic, for example PED = −2, the same 10% rise in price cuts quantity demanded by 20%, so revenue falls from $1000 to $880 and the firm should not raise price; cutting price would raise revenue instead. The firm should also check the value it is using, since PED changes along the demand curve and is only an estimate based on past data.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> it defines PED, gives the formula, splits into the two cases, attaches a number to each, follows each through to total revenue, and adds one limitation. That is knowledge plus a complete chain of analysis, not a list of facts.</div>
+      </div>
+    </div>
+
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" id="w1band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 6 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+
+    <div class="sub-h">Step 3 · The 12-mark answer</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
+        <div class="q-name">Discuss whether knowledge of income elasticity of demand is more useful to a business than knowledge of price elasticity of demand. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
+      <div class="q-stem">A 12-mark <b>discuss</b> question needs both sides and a supported judgement. Plan it here in note form — four or five bullet points is enough — then compare with the model plan.</div>
+      <div class="write-lbl">Your plan</div>
+      <textarea class="write-box" id="w2" style="min-height:130px" placeholder="Case FOR YED being more useful: ...&#10;Case FOR PED: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="w2btn">Compare with a model plan</button>
+      <div class="model" id="w2model">
+        <b>Model plan.</b><br>
+        <b>1 · The case for YED.</b> YED forecasts demand years ahead, which is what investment decisions need. A firm making luxury goods with YED = +2.5 knows that a 5% fall in incomes cuts its sales by 12.5%, so it can plan capacity and stock before the recession arrives. YED also guides the product mix: holding some goods with negative YED alongside superior goods protects the firm in a downturn, which is the point of Activity 8.6.<br>
+        <b>2 · The case for PED.</b> PED is about a decision the firm controls directly and can take this week — its own price. It converts straight into total revenue, which YED cannot do, and it also tells the firm how exposed it is to a price cut by a rival once XED is taken into account. Income is outside the firm’s control; price is not.<br>
+        <b>3 · It depends on.</b> The type of good — YED matters far more for luxury cars than for rice; the time horizon — PED for this quarter’s pricing, YED for a five-year investment; the stability of the economy; and the reliability of the estimates, which for YED need data over a long period and so are the less reliable of the two.<br>
+        <b>4 · Judgement.</b> Neither is “more useful” in general: they answer different questions. For a short-run pricing decision PED is more useful because it links directly to revenue; for a long-run investment decision in an economy with rapidly rising incomes, such as Thailand or Vietnam, YED matters more. A firm that used only one of them would misjudge either its pricing or its capacity.
+        <div class="exam-line" style="margin-top:10px"><b>Evaluation sentence starters:</b> “This depends on whether…”, “In the short run… but in the long run…”, “This estimate assumes… which may not hold because…”, “On balance, the stronger argument is… because…”</div>
+      </div>
+    </div>
+    <div class="done-banner" id="writeDone">✓ Chain built and both tasks attempted. Redraft the 8-mark answer using anything you left unticked, then bring both to the next lesson.</div>
+  </div>
+
+  <!-- ============ TAB 9 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 9 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>The coursebook’s own ten exam-style questions for this chapter (pages 77–79), with the reasoning explained. Do these last, under time: ten questions in twelve minutes.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone">✓ All ten attempted. Next: Topic 2.3 asks the same “how much” question about the <b>supply</b> side — price elasticity of supply. The formula is identical; only the top line changes.</div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 2.2</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 9 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('2.2', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,ped:false,calc:false,rev:false,yed:false,xed:false,scen:false,write:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 2.2 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function num(n){ return n.toLocaleString('en-GB'); }
+function sgn(n,d){ const k=(d===undefined?1:d); return (n>0?'+':(n<0?'\u2212':''))+Math.abs(n).toFixed(k); }
+function dash(n,d){ return (n<0?'\u2212':'')+Math.abs(n).toFixed(d); }
+
+/* Shared MCQ card builder (same markup as 2.1) */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+
+/* ================= SVG PLOT HELPERS ================= */
+const PL=56, PT=16, PW=448, PH=300;
+function mkPlot(o){
+  const px=q=>PL+q/o.qmax*PW;
+  const py=p=>PT+(o.pmax-p)/(o.pmax-o.pmin)*PH;
+  function grid(){
+    let g='';
+    for(let p=o.pmin;p<=o.pmax+1e-6;p+=o.pstep){
+      const y=py(p);
+      g+='<line x1="'+PL+'" x2="'+(PL+PW)+'" y1="'+y+'" y2="'+y+'" stroke="#E4EDF5"/>';
+      g+='<text x="'+(PL-8)+'" y="'+(y+4)+'" font-size="10.5" text-anchor="end" fill="#8098B0" font-family="Lato,sans-serif">'+o.pfmt(p)+'</text>';
+    }
+    for(let q=0;q<=o.qmax+1e-6;q+=o.qstep){
+      const x=px(q);
+      g+='<line x1="'+x+'" x2="'+x+'" y1="'+PT+'" y2="'+(PT+PH)+'" stroke="#E4EDF5"/>';
+      g+='<text x="'+x+'" y="'+(PT+PH+16)+'" font-size="10.5" text-anchor="middle" fill="#8098B0" font-family="Lato,sans-serif">'+o.qfmt(q)+'</text>';
+    }
+    g+='<line x1="'+PL+'" x2="'+PL+'" y1="'+PT+'" y2="'+(PT+PH)+'" stroke="#456080" stroke-width="1.5"/>';
+    g+='<line x1="'+PL+'" x2="'+(PL+PW)+'" y1="'+(PT+PH)+'" y2="'+(PT+PH)+'" stroke="#456080" stroke-width="1.5"/>';
+    g+='<text x="14" y="'+(PT+PH/2)+'" font-size="11" fill="#456080" font-weight="700" text-anchor="middle" font-family="Lato,sans-serif" transform="rotate(-90 14 '+(PT+PH/2)+')">'+o.ylab+'</text>';
+    g+='<text x="'+(PL+PW/2)+'" y="'+(PT+PH+34)+'" font-size="11" fill="#456080" font-weight="700" text-anchor="middle" font-family="Lato,sans-serif">'+o.xlab+'</text>';
+    return g;
+  }
+  return {px,py,grid};
+}
+function svgOpen(id,label){
+  return '<svg viewBox="0 0 520 360" role="img" aria-label="'+label+'" xmlns="http://www.w3.org/2000/svg">'+
+    '<defs><clipPath id="'+id+'"><rect x="'+PL+'" y="'+PT+'" width="'+PW+'" height="'+PH+'"/></clipPath></defs>';
+}
+function seg(P,q1,p1,q2,p2,colour,dash,w){
+  return '<line x1="'+P.px(q1)+'" y1="'+P.py(p1)+'" x2="'+P.px(q2)+'" y2="'+P.py(p2)+'" stroke="'+colour+
+    '" stroke-width="'+(w||2.4)+'" stroke-linecap="round"'+(dash?' stroke-dasharray="6 5"':'')+'/>';
+}
+function dot(P,q,p,colour,r){
+  return '<circle cx="'+P.px(q)+'" cy="'+P.py(p)+'" r="'+(r||6)+'" fill="'+colour+'" stroke="#fff" stroke-width="2"/>';
+}
+function guide(P,q,p){
+  return '<line x1="'+PL+'" y1="'+P.py(p)+'" x2="'+P.px(q)+'" y2="'+P.py(p)+'" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+         '<line x1="'+P.px(q)+'" y1="'+P.py(p)+'" x2="'+P.px(q)+'" y2="'+(PT+PH)+'" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>';
+}
+function tag(x,y,txt,colour,size){
+  return '<text x="'+x+'" y="'+y+'" font-size="'+(size||12.5)+'" font-weight="900" fill="'+colour+'" font-family="Lato,sans-serif">'+txt+'</text>';
+}
+
+/* =====================================================================
+   TAB 2 — PED LAB
+   Bubble tea:  Qd = 1200 − 20P   (P in baht, Q cups per week)
+   Midpoint (P = 30, Q = 600) is exactly unit elastic.
+   PED measured from a start point A is  −20 × P0 / Q0.
+   ===================================================================== */
+const PEDP=mkPlot({qmax:1200,pmin:0,pmax:60,qstep:200,pstep:10,
+  ylab:'Price (baht per cup)',xlab:'Quantity demanded (cups per week)',
+  pfmt:p=>p,qfmt:q=>q});
+const qBT=p=>1200-20*p;
+const regionsFound={el:false,un:false,in:false};
+
+function drawPed(){
+  const p0=Number(document.getElementById('p0').value);
+  const p1=Number(document.getElementById('p1').value);
+  const q0=qBT(p0), q1=qBT(p1);
+  let s=svgOpen('clip-ped','Demand curve for bubble tea with a start point and a new point')+PEDP.grid();
+  s+='<g clip-path="url(#clip-ped)">';
+  s+=seg(PEDP,1200,0,600,30,'#008BCC',false,2.8);      /* inelastic lower half */
+  s+=seg(PEDP,600,30,0,60,'#D63864',false,2.8);        /* elastic upper half */
+  s+=dot(PEDP,600,30,'#1A2B3C',4.5);
+  s+=guide(PEDP,q0,p0)+guide(PEDP,q1,p1);
+  s+=dot(PEDP,q0,p0,'#FF8F1C');
+  s+=dot(PEDP,q1,p1,'#002F6C');
+  s+='</g>';
+  s+=tag(PEDP.px(600)+8,PEDP.py(30)-8,'PED = 1','#1A2B3C',11);
+  s+=tag(PEDP.px(q0)+9,PEDP.py(p0)-8,'A','#FF8F1C');
+  s+=tag(PEDP.px(q1)+9,PEDP.py(p1)-8,'B','#002F6C');
+  s+=tag(PEDP.px(1030),PEDP.py(0)-10,'D','#008BCC');
+  s+='</svg>';
+  document.getElementById('pedFig').innerHTML=s;
+
+  document.getElementById('p0lab').textContent='฿'+p0;
+  document.getElementById('p1lab').textContent='฿'+p1;
+
+  const big=document.getElementById('pedBig');
+  const val=document.getElementById('pedVal');
+  const ver=document.getElementById('pedVer');
+  const work=document.getElementById('pedWork');
+  const cap=document.getElementById('pedCap');
+  big.classList.remove('is-el','is-in','is-un');
+
+  if(p1===p0){
+    document.getElementById('pedQ').textContent='—';
+    document.getElementById('pedP').textContent='—';
+    document.getElementById('pedQbox').className='';
+    document.getElementById('pedPbox').className='';
+    val.textContent='—';
+    ver.textContent='Move the new price away from the start price';
+    work.innerHTML='PED needs <b>two different prices</b>. Drag the navy slider so that point B sits somewhere else on the curve.';
+    cap.innerHTML='Point A and point B are on top of each other. Move the navy slider.';
+    return;
+  }
+
+  const pctQ=(q1-q0)/q0*100;
+  const pctP=(p1-p0)/p0*100;
+  const ped=pctQ/pctP;
+  const a=Math.abs(ped);
+
+  document.getElementById('pedQ').textContent=sgn(pctQ,1)+'%';
+  document.getElementById('pedP').textContent=sgn(pctP,1)+'%';
+  document.getElementById('pedQbox').className=pctQ>0?'up':'dn';
+  document.getElementById('pedPbox').className=pctP>0?'up':'dn';
+  val.textContent=dash(ped,2);
+
+  let label;
+  if(a>1.0005){ label='Price elastic — quantity moves proportionately more than price'; big.classList.add('is-el'); regionsFound.el=true; }
+  else if(a<0.9995){ label='Price inelastic — quantity moves proportionately less than price'; big.classList.add('is-in'); regionsFound.in=true; }
+  else { label='Unit elastic — the two percentage changes are equal'; big.classList.add('is-un'); regionsFound.un=true; }
+  ver.textContent=label;
+
+  const tr0=p0*q0, tr1=p1*q1;
+  const trWord = tr1>tr0 ? 'rises' : (tr1<tr0 ? 'falls' : 'is unchanged');
+  work.innerHTML=
+    '<b>% change in quantity demanded</b> = ('+num(q1)+' − '+num(q0)+') ÷ '+num(q0)+' × 100 = <span class="fr">'+sgn(pctQ,1)+'%</span><br>'+
+    '<b>% change in price</b> = (฿'+p1+' − ฿'+p0+') ÷ ฿'+p0+' × 100 = <span class="fr">'+sgn(pctP,1)+'%</span><br>'+
+    '<b>PED</b> = '+sgn(pctQ,1)+'% ÷ '+sgn(pctP,1)+'% = <span class="fr">'+dash(ped,2)+'</span><br>'+
+    '<b>Total revenue</b> ฿'+num(tr0)+' → ฿'+num(tr1)+', so revenue '+trWord+'.';
+
+  cap.innerHTML='Point <b>A</b> is where you start; the PED value belongs to that point. Point <b>B</b> is where the price moves to.';
+
+  ['el','un','in'].forEach(k=>{
+    document.getElementById('tk-'+k).classList.toggle('on',regionsFound[k]);
+  });
+  checkPedDone();
+}
+['p0','p1'].forEach(id=>document.getElementById(id).addEventListener('input',drawPed));
+document.getElementById('pedReset').addEventListener('click',()=>{
+  document.getElementById('p0').value=40; document.getElementById('p1').value=44; drawPed();
+});
+
+/* ---- five special PED values ---- */
+function mini(body){
+  return '<svg viewBox="0 0 300 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Special demand curve shape">'+
+    '<line x1="44" y1="18" x2="44" y2="180" stroke="#456080" stroke-width="1.5"/>'+
+    '<line x1="44" y1="180" x2="286" y2="180" stroke="#456080" stroke-width="1.5"/>'+
+    '<text x="16" y="99" font-size="10.5" fill="#456080" font-weight="700" text-anchor="middle" font-family="Lato,sans-serif" transform="rotate(-90 16 99)">Price</text>'+
+    '<text x="165" y="204" font-size="10.5" fill="#456080" font-weight="700" text-anchor="middle" font-family="Lato,sans-serif">Quantity demanded</text>'+
+    body+'</svg>';
+}
+const CASES=[
+ {id:'k1', t:'PED = 0 · perfectly inelastic',
+  fig:mini('<line x1="160" y1="26" x2="160" y2="180" stroke="#D63864" stroke-width="2.8"/>'+
+           '<line x1="44" y1="60" x2="160" y2="60" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<line x1="44" y1="110" x2="160" y2="110" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<text x="168" y="36" font-size="12.5" font-weight="900" fill="#D63864" font-family="Lato,sans-serif">D</text>'),
+  out:'<b>A vertical demand curve.</b> Whatever the price, consumers buy exactly the same amount. The coursebook works it through for a price rise from $10 to $11: the percentage change in quantity demanded is 0%, so PED = 0 ÷ (+10%) = <b>0</b>.<br><br>Nothing in the real world is perfectly inelastic over every price range, but life-saving medicine over a small price range comes close. Note what this means for a firm: it could raise price without losing a single sale.'},
+ {id:'k2', t:'PED = ∞ · perfectly elastic',
+  fig:mini('<line x1="44" y1="84" x2="284" y2="84" stroke="#D63864" stroke-width="2.8"/>'+
+           '<text x="262" y="74" font-size="12.5" font-weight="900" fill="#D63864" font-family="Lato,sans-serif">D</text>'+
+           '<text x="20" y="88" font-size="10.5" font-weight="700" fill="#456080" font-family="Lato,sans-serif">9</text>'),
+  out:'<b>A horizontal demand curve.</b> At $10 per unit consumers buy nothing at all; drop the price to $9 and they will buy everything the firm can produce. The percentage change in quantity demanded is infinite, so PED = ∞ ÷ (−10%) = <b>infinity</b>.<br><br>All that is produced is sold at the given price. You will meet this curve again in Topic 7.6, where it describes the demand facing one firm under perfect competition.'},
+ {id:'k3', t:'PED = 1 · unit elasticity',
+  fig:mini('<path d="M 70 34 Q 112 150 274 168" fill="none" stroke="#D63864" stroke-width="2.8" stroke-linecap="round"/>'+
+           '<text x="252" y="156" font-size="12.5" font-weight="900" fill="#D63864" font-family="Lato,sans-serif">D</text>'),
+  out:'<b>The percentage change in quantity exactly matches the percentage change in price.</b> The coursebook example: price rises from $1000 to $1050 (+5%) and quantity demanded falls from 10 000 to 9 500 (−5%), so PED = <b>(−)1</b>.<br><br>The consequence is the one Paper 1 asks about: <b>total spending on the product does not change</b>. 10 000 × $1000 = $10m, and 9 500 × $1050 = $9.975m — near enough identical, and exactly identical for the true curve above.'},
+ {id:'k4', t:'PED &gt; 1 · relatively elastic',
+  fig:mini('<line x1="58" y1="58" x2="282" y2="128" stroke="#D63864" stroke-width="2.8" stroke-linecap="round"/>'+
+           '<line x1="44" y1="72" x2="104" y2="72" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<line x1="104" y1="72" x2="104" y2="180" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<line x1="44" y1="93" x2="172" y2="93" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<line x1="172" y1="93" x2="172" y2="180" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<text x="262" y="118" font-size="12.5" font-weight="900" fill="#D63864" font-family="Lato,sans-serif">D</text>'),
+  out:'<b>A relatively shallow curve.</b> A small change in price produces a proportionately larger change in quantity demanded, so the PED value is greater than 1 in absolute terms.<br><br>This is the normal case where there are many close substitutes, where the product takes a large share of income, or where consumers have had time to adjust. For a firm, an elastic demand curve means <b>cutting price raises revenue</b>.'},
+ {id:'k5', t:'PED &lt; 1 · relatively inelastic',
+  fig:mini('<line x1="128" y1="26" x2="188" y2="178" stroke="#D63864" stroke-width="2.8" stroke-linecap="round"/>'+
+           '<line x1="44" y1="60" x2="141" y2="60" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<line x1="141" y1="60" x2="141" y2="180" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<line x1="44" y1="120" x2="165" y2="120" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<line x1="165" y1="120" x2="165" y2="180" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>'+
+           '<text x="192" y="170" font-size="12.5" font-weight="900" fill="#D63864" font-family="Lato,sans-serif">D</text>'),
+  out:'<b>A relatively steep curve.</b> A large change in price produces a proportionately smaller change in quantity demanded, so the PED value is less than 1 in absolute terms.<br><br>This is the normal case for necessities, for habit-forming products, for goods that take a tiny share of income, and in the short run before consumers can adapt. For a firm — or a finance minister choosing what to tax — an inelastic demand curve means <b>raising price raises revenue</b>.'}
+];
+const casesUsed=new Set();
+(function(){
+  const host=document.getElementById('caseChips');
+  CASES.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='el-chip'; b.type='button'; b.innerHTML=c.t;
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('#caseChips .el-chip').forEach(x=>x.classList.remove('now'));
+      b.classList.add('now','used');
+      casesUsed.add(c.id);
+      document.getElementById('caseScore').textContent=casesUsed.size+' / '+CASES.length+' explored';
+      document.getElementById('caseOut').innerHTML=
+        '<div class="el-case"><div>'+c.fig+'</div><div><div class="write-lbl">'+c.t+'</div><div class="q-stem" style="margin-bottom:0">'+c.out+'</div></div></div>';
+      checkPedDone();
+    });
+    host.appendChild(b);
+  });
+  document.getElementById('caseOut').innerHTML='<div class="q-stem" style="margin-bottom:0;color:var(--text-3)">Tap one of the five values above to see the demand curve that goes with it.</div>';
+})();
+function checkPedDone(){
+  if(DONE.ped) return;
+  const regions=regionsFound.el&&regionsFound.un&&regionsFound.in;
+  if(regions && casesUsed.size===CASES.length){
+    const b=document.getElementById('pedDone');
+    b.innerHTML='✓ All three regions found and all five special values explored. The point to take away: <b>PED is a property of a point on the curve, not of the product</b>. That is why the coursebook always says “over this particular range of prices”.';
+    b.classList.add('show');
+    trk('PED Lab','all regions found, all 5 special cases explored'); mark('ped');
+  }
+}
+drawPed();
+
+/* =====================================================================
+   TAB 3 — CALCULATION PRACTICE
+   ===================================================================== */
+const PED_OPTS=[{v:'e',label:'Price elastic'},{v:'i',label:'Price inelastic'},{v:'u',label:'Unit elastic'}];
+const YED_OPTS=[{v:'inf',label:'Inferior'},{v:'nec',label:'Necessity'},{v:'nor',label:'Normal'},{v:'sup',label:'Superior / luxury'}];
+const XED_OPTS=[{v:'sub',label:'Substitutes'},{v:'com',label:'Complements'},{v:'unr',label:'Unrelated'}];
+
+const CALC=[
+ {id:'c1', icon:'1', bg:'#008BCC', name:'Coursebook Activity 8.1, part a',
+  stem:'A product’s price rises from <b>$100 to $105</b>. Quantity demanded falls from <b>2000 units a week to 1950</b>. Calculate the PED.',
+  unit:'PED', ans:-0.5, tol:0.03, absOK:true, opts:PED_OPTS, oans:'i',
+  work:'<b>% change in quantity demanded</b> = (1950 − 2000) ÷ 2000 × 100 = <span class="fr">−2.5%</span><br>'+
+       '<b>% change in price</b> = (105 − 100) ÷ 100 × 100 = <span class="fr">+5%</span><br>'+
+       '<b>PED</b> = −2.5% ÷ +5% = <span class="fr">−0.5</span><br>'+
+       'The value is less than 1 in absolute terms, so demand is <b>price inelastic</b> over this range. Check the revenue: 2000 × $100 = $200,000 before, 1950 × $105 = $204,750 after. Raising price raised revenue, exactly as the inelastic rule predicts.'},
+ {id:'c2', icon:'2', bg:'#008BCC', name:'Coursebook Activity 8.1, part b',
+  stem:'A product’s price falls from <b>$55.50 to $54.95</b>. Quantity demanded rises from <b>5000 units a week to 6000</b>. Calculate the PED.',
+  unit:'PED', ans:-20.18, tol:0.35, absOK:true, opts:PED_OPTS, oans:'e',
+  work:'<b>% change in quantity demanded</b> = (6000 − 5000) ÷ 5000 × 100 = <span class="fr">+20%</span><br>'+
+       '<b>% change in price</b> = (54.95 − 55.50) ÷ 55.50 × 100 = <span class="fr">−0.99%</span><br>'+
+       '<b>PED</b> = +20% ÷ −0.99% = <span class="fr">−20.18</span><br>'+
+       'Extremely <b>price elastic</b>: a price cut of barely 1% lifted sales by a fifth. Revenue rose from $277,500 to $329,700. This is what the demand curve for one seller in a market of near-identical products looks like.'},
+ {id:'c3', icon:'3', bg:'#008BCC', name:'Exam-style question 3',
+  stem:'The price of a can of iced tea increases from <b>$1.00 to $1.10</b>. The quantity demanded falls from <b>300 cans a week to 240</b>. Calculate the price elasticity of demand.',
+  unit:'PED', ans:-2.0, tol:0.05, absOK:true, opts:PED_OPTS, oans:'e',
+  work:'<b>% change in quantity demanded</b> = (240 − 300) ÷ 300 × 100 = <span class="fr">−20%</span><br>'+
+       '<b>% change in price</b> = (1.10 − 1.00) ÷ 1.00 × 100 = <span class="fr">+10%</span><br>'+
+       '<b>PED</b> = −20% ÷ +10% = <span class="fr">−2.0</span> — the exam answer is <b>C</b>.<br>'+
+       'Weekly revenue falls from $300 to $264. The common wrong answer, −0.5, comes from dividing the percentages the wrong way up.'},
+ {id:'c4', icon:'4', bg:'#FF8F1C', name:'Coursebook Activity 8.3 · top of the curve',
+  stem:'For product R, as price falls from <b>$10 to $9</b> the quantity demanded rises from <b>500 to 1000 units a week</b>. Calculate the PED over this range.',
+  unit:'PED', ans:-10.0, tol:0.15, absOK:true, opts:PED_OPTS, oans:'e',
+  work:'<b>% change in quantity demanded</b> = (1000 − 500) ÷ 500 × 100 = <span class="fr">+100%</span><br>'+
+       '<b>% change in price</b> = (9 − 10) ÷ 10 × 100 = <span class="fr">−10%</span><br>'+
+       '<b>PED</b> = +100% ÷ −10% = <span class="fr">−10.0</span><br>'+
+       'Near the <b>top</b> of a demand curve the price is high and the quantity is low, so any given price cut is a small percentage while the sales gain is a large one. PED is therefore large. Now compare question 5.'},
+ {id:'c5', icon:'5', bg:'#FF8F1C', name:'Coursebook Activity 8.3 · bottom of the curve',
+  stem:'For the same product R, as price falls from <b>$3 to $2</b> the quantity demanded rises from <b>7000 to 8000 units a week</b>. Calculate the PED over this range.',
+  unit:'PED', ans:-0.43, tol:0.03, absOK:true, opts:PED_OPTS, oans:'i',
+  work:'<b>% change in quantity demanded</b> = (8000 − 7000) ÷ 7000 × 100 = <span class="fr">+14.29%</span><br>'+
+       '<b>% change in price</b> = (2 − 3) ÷ 3 × 100 = <span class="fr">−33.33%</span><br>'+
+       '<b>PED</b> = +14.29% ÷ −33.33% = <span class="fr">−0.43</span><br>'+
+       'Same product, same demand curve, and yet <b>−10.0 at the top and −0.43 at the bottom</b>. That is coursebook Figure 8.6, and it is why an exam answer must say “over this price range” rather than “the PED of product R is…”.'},
+ {id:'c6', icon:'6', bg:'#28A745', name:'Coursebook Activity 8.4, question 1 · YED',
+  stem:'At a guest house in Pakistan, rooms renting at <b>400 rupees</b> are taken <b>20 times</b> when household income is <b>20 000 rupees</b> and <b>30 times</b> when income is <b>24 000 rupees</b>. Calculate the YED.',
+  unit:'YED', ans:2.5, tol:0.05, absOK:false, opts:YED_OPTS, oans:'sup',
+  work:'<b>% change in quantity demanded</b> = (30 − 20) ÷ 20 × 100 = <span class="fr">+50%</span><br>'+
+       '<b>% change in income</b> = (24 000 − 20 000) ÷ 20 000 × 100 = <span class="fr">+20%</span><br>'+
+       '<b>YED</b> = +50% ÷ +20% = <span class="fr">+2.5</span><br>'+
+       'Positive, so these rooms are a <b>normal good</b>; greater than 1, so they behave as a <b>superior or luxury good</b>. Demand grows faster than income.'},
+ {id:'c7', icon:'7', bg:'#28A745', name:'Coursebook Activity 8.4, question 2 · YED',
+  stem:'At the same guest house, rooms renting at <b>1000 rupees</b> are taken <b>8 times</b> at an income of <b>20 000 rupees</b> and <b>18 times</b> at an income of <b>24 000 rupees</b>. Calculate the YED.',
+  unit:'YED', ans:6.25, tol:0.08, absOK:false, opts:YED_OPTS, oans:'sup',
+  work:'<b>% change in quantity demanded</b> = (18 − 8) ÷ 8 × 100 = <span class="fr">+125%</span><br>'+
+       '<b>% change in income</b> = <span class="fr">+20%</span><br>'+
+       '<b>YED</b> = +125% ÷ +20% = <span class="fr">+6.25</span><br>'+
+       'The expensive rooms have a far higher YED than the cheap ones. As incomes rise, guests do not just book more — they <b>trade up</b>. For the owner, that is an argument for investing in the better rooms in a growing economy.'},
+ {id:'c8', icon:'8', bg:'#6B4E9E', name:'Coursebook Figure 8.8 · XED with a substitute',
+  stem:'The price of laptop computers falls by <b>2%</b>. Demand for PCs at the original price falls from <b>100 to 96 units a day</b>. Calculate the XED of PCs with respect to the price of laptops.',
+  unit:'XED', ans:2.0, tol:0.05, absOK:false, opts:XED_OPTS, oans:'sub',
+  work:'<b>% change in quantity demanded of PCs</b> = (96 − 100) ÷ 100 × 100 = <span class="fr">−4%</span><br>'+
+       '<b>% change in the price of laptops</b> = <span class="fr">−2%</span><br>'+
+       '<b>XED</b> = −4% ÷ −2% = <span class="fr">+2.0</span><br>'+
+       'The sign is <b>positive</b>, so laptops and PCs are <b>substitutes</b>; the size shows they are reasonably close ones. Buyers switched to the cheaper alternative.'},
+ {id:'c9', icon:'9', bg:'#6B4E9E', name:'Coursebook Figure 8.8 · XED with a complement',
+  stem:'The average price of software falls by <b>5%</b>. Demand for PCs at the original price rises from <b>100 to 101 units a day</b>. Calculate the XED of PCs with respect to the price of software.',
+  unit:'XED', ans:-0.2, tol:0.03, absOK:false, opts:XED_OPTS, oans:'com',
+  work:'<b>% change in quantity demanded of PCs</b> = (101 − 100) ÷ 100 × 100 = <span class="fr">+1%</span><br>'+
+       '<b>% change in the price of software</b> = <span class="fr">−5%</span><br>'+
+       '<b>XED</b> = +1% ÷ −5% = <span class="fr">−0.2</span><br>'+
+       'The sign is <b>negative</b>, so software and PCs are <b>complements</b> — they are bought together. The small size says the relationship is weak: cheaper software helps PC sales, but not by much. If you typed 0.2 without the minus sign, you have just described the opposite relationship.'},
+ {id:'c10', icon:'10', bg:'#6B4E9E', name:'Coursebook Activity 8.5, question 2 · badminton',
+  stem:'A badminton centre hires out equipment to non-members. If the price of hire is reduced by <b>10%</b>, the number of non-members playing is expected to increase by <b>25%</b>. Calculate the XED and comment.',
+  unit:'XED', ans:-2.5, tol:0.05, absOK:false, opts:XED_OPTS, oans:'com',
+  work:'<b>% change in quantity demanded (games played)</b> = <span class="fr">+25%</span><br>'+
+       '<b>% change in the price of equipment hire</b> = <span class="fr">−10%</span><br>'+
+       '<b>XED</b> = +25% ÷ −10% = <span class="fr">−2.5</span><br>'+
+       'Negative, so hiring equipment and playing badminton are <b>complements</b> — in joint demand. The size, well above 1, says the relationship is strong. The commercial comment: the centre loses a little on hire charges but gains a quarter more court bookings, so cutting the hire price is very likely to raise its total revenue.'},
+ {id:'c11', icon:'11', bg:'#002F6C', name:'Exam-style question 9',
+  stem:'The cross elasticity of demand for Australian tourists visiting Indonesia is <b>2.4</b> when the price of visits to Malaysia increases by <b>5%</b>. What is the percentage change in the number of Australian tourists visiting Indonesia?',
+  unit:'%', ans:12, tol:0.2, absOK:false, opts:null, oans:null,
+  work:'Rearrange the formula: <b>% change in quantity demanded = XED × % change in the price of the other product</b>.<br>'+
+       '= 2.4 × 5% = <span class="fr">+12%</span> — the exam answer is <b>D</b>.<br>'+
+       'The positive XED confirms Indonesia and Malaysia are <b>substitute</b> destinations: Malaysia becoming dearer sends tourists to Indonesia. The tempting wrong answer, 2.08%, comes from dividing 5 by 2.4 instead of multiplying.'}
+];
+
+function parseNum(raw){
+  if(raw===null||raw===undefined) return NaN;
+  const cleaned=String(raw).replace(/[−–—]/g,'-').replace(/[%\s,]/g,'');
+  if(cleaned==='') return NaN;
+  return parseFloat(cleaned);
+}
+let calcDoneCount=0, calcScore=0, calcMax=0;
+CALC.forEach(q=>{ calcMax += q.opts ? 2 : 1; });
+
+(function buildCalc(){
+  const host=document.getElementById('calcList'); host.innerHTML='';
+  CALC.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="write-lbl">Your answer</div>'+
+      '<div class="el-ans">'+
+        '<input type="text" inputmode="text" class="el-num" id="in-'+q.id+'" placeholder="0.00" aria-label="Your answer for '+q.name+'">'+
+        '<span class="el-unit">'+(q.unit==='%'?'% change':q.unit+' value, to 2 d.p.')+'</span>'+
+        '<button class="mini-btn ck" style="margin-top:0">Check</button>'+
+      '</div>'+
+      (q.opts?'<div class="write-lbl" style="margin-top:14px">And what does that value tell you?</div>'+
+        '<div class="choice-row cr">'+q.opts.map(o=>'<button class="choice" data-v="'+o.v+'">'+o.label+'</button>').join('')+'</div>':'')+
+      '<div class="reveal rv"></div>';
+    host.appendChild(c);
+
+    const input=c.querySelector('.el-num');
+    const rv=c.querySelector('.rv');
+    let numDone=false, optDone=!q.opts;
+
+    function finishIfReady(){
+      if(numDone && optDone){
+        calcDoneCount++;
+        if(calcDoneCount===CALC.length){
+          const b=document.getElementById('calcDone');
+          b.innerHTML='✓ All eleven attempted — '+calcScore+' / '+calcMax+' points. If you lost marks on the <b>number</b>, check you put the quantity change on top. If you lost them on the <b>meaning</b>, write the three sign rules into your notes: PED is always negative; a positive YED means a normal good; a positive XED means substitutes.';
+          b.classList.add('show');
+          trk('Calculations', calcScore+'/'+calcMax+' points'); mark('calc');
+        }
+      }
+    }
+    function reveal(ok){
+      const shown=(q.ans>0&&q.unit!=='%')?'+'+q.ans.toFixed(2):(q.unit==='%'?'+'+q.ans+'%':dash(q.ans,2));
+      rv.innerHTML='<span class="verdict '+(ok?'v-good':'v-bad')+'">'+(ok?'Correct (+1)':'Not quite')+'</span>'+
+        '<br><strong>Answer: '+shown+(q.absOK?' (quoted as '+Math.abs(q.ans).toFixed(2)+' if you ignore the sign)':'')+'</strong>'+
+        '<div class="el-work" style="margin-top:9px">'+q.work+'</div>';
+      rv.classList.add('show');
+    }
+    c.querySelector('.ck').addEventListener('click',()=>{
+      if(numDone) return;
+      const v=parseNum(input.value);
+      if(isNaN(v)){ input.focus(); input.placeholder='Type a number'; return; }
+      const ok = q.absOK ? Math.abs(Math.abs(v)-Math.abs(q.ans))<=q.tol : Math.abs(v-q.ans)<=q.tol;
+      input.classList.add(ok?'ok':'no');
+      input.disabled=true;
+      if(ok) calcScore++;
+      numDone=true;
+      reveal(ok);
+      finishIfReady();
+    });
+    if(q.opts){
+      c.querySelectorAll('.cr .choice').forEach(b=>b.addEventListener('click',()=>{
+        if(optDone) return;
+        optDone=true;
+        const ok=b.dataset.v===q.oans;
+        if(ok) calcScore++;
+        c.querySelectorAll('.cr .choice').forEach(x=>{
+          x.disabled=true;
+          if(x.dataset.v===q.oans) x.classList.add('sel-good');
+        });
+        if(!ok) b.classList.add('sel-bad');
+        if(!numDone){ /* show working once the number has also been checked */ }
+        finishIfReady();
+      }));
+    }
+  });
+})();
+
+/* =====================================================================
+   TAB 4 — PED AND TOTAL REVENUE (coursebook Figure 8.9)
+   De: Q = 300 − 20P   (PED = −2 at P = 10)
+   Di: Q = 150 − 5P    (PED = −0.5 at P = 10)
+   Both pass through (P = 10, Q = 100), revenue $1000.
+   ===================================================================== */
+const REVP=mkPlot({qmax:320,pmin:0,pmax:16,qstep:50,pstep:2,
+  ylab:'Price ($)',xlab:'Quantity demanded per day',
+  pfmt:p=>p,qfmt:q=>q});
+const qE=p=>300-20*p, qI=p=>150-5*p;
+let revShow='e';
+const revSeen={up:false,down:false};
+
+function drawRev(){
+  const p=Number(document.getElementById('revP').value);
+  const qe=qE(p), qi=qI(p);
+  const tre=p*qe, tri=p*qi;
+  let s=svgOpen('clip-rev','An elastic and an inelastic demand curve through the same point')+REVP.grid();
+  s+='<g clip-path="url(#clip-rev)">';
+  if(revShow==='e'){
+    s+='<rect x="'+PL+'" y="'+REVP.py(p)+'" width="'+(REVP.px(qe)-PL)+'" height="'+(PT+PH-REVP.py(p))+'" fill="#D63864" fill-opacity="0.16"/>';
+  } else {
+    s+='<rect x="'+PL+'" y="'+REVP.py(p)+'" width="'+(REVP.px(qi)-PL)+'" height="'+(PT+PH-REVP.py(p))+'" fill="#28A745" fill-opacity="0.16"/>';
+  }
+  s+='<rect x="'+PL+'" y="'+REVP.py(10)+'" width="'+(REVP.px(100)-PL)+'" height="'+(PT+PH-REVP.py(10))+'" fill="none" stroke="#8098B0" stroke-width="1" stroke-dasharray="4 4"/>';
+  s+=seg(REVP,300,0,0,15,'#D63864');
+  s+=seg(REVP,150,0,70,16,'#28A745');
+  s+='<line x1="'+PL+'" y1="'+REVP.py(p)+'" x2="'+(PL+PW)+'" y2="'+REVP.py(p)+'" stroke="#FF8F1C" stroke-width="1.6" stroke-dasharray="5 4"/>';
+  s+=dot(REVP,qe,p,'#D63864')+dot(REVP,qi,p,'#28A745');
+  s+=dot(REVP,100,10,'#8098B0',4);
+  s+='</g>';
+  s+=tag(REVP.px(qE(3))-24,REVP.py(3)+2,'Dₑ','#D63864');
+  s+=tag(REVP.px(qI(3))+8,REVP.py(3)+2,'Dᵢ','#28A745');
+  s+='<text x="'+(PL+4)+'" y="'+(REVP.py(p)-6)+'" font-size="11.5" font-weight="900" fill="#FF8F1C" font-family="Lato,sans-serif">$'+p.toFixed(2)+'</text>';
+  s+='</svg>';
+  document.getElementById('revFig').innerHTML=s;
+
+  document.getElementById('revPlab').textContent='$'+p.toFixed(2);
+  document.getElementById('revE').textContent='$'+num(Math.round(tre));
+  document.getElementById('revI').textContent='$'+num(Math.round(tri));
+  document.getElementById('revEbox').className=tre>1000?'up':(tre<1000?'dn':'');
+  document.getElementById('revIbox').className=tri>1000?'up':(tri<1000?'dn':'');
+
+  const say=document.getElementById('revSay');
+  const cap=document.getElementById('revCap');
+  if(p===10){
+    say.innerHTML='Both products sell <b>100 units</b> at <b>$10</b>, so both take <b>$1000</b> a day. Move the price and the two revenues separate immediately.';
+    cap.innerHTML='The dashed grey box is the original revenue: $10 × 100 units = $1000.';
+  } else {
+    const dir=p>10?'rise':'cut';
+    const pct=((p-10)/10*100);
+    say.innerHTML='A '+Math.abs(pct).toFixed(0)+'% price '+dir+'. On the <b>elastic</b> curve Dₑ quantity moves to '+num(qe)+
+      ' and revenue '+(tre>1000?'<b>rises</b>':'<b>falls</b>')+' to $'+num(Math.round(tre))+
+      '. On the <b>inelastic</b> curve Dᵢ quantity moves to '+num(qi)+' and revenue '+(tri>1000?'<b>rises</b>':'<b>falls</b>')+
+      ' to $'+num(Math.round(tri))+'. Same price change, opposite results — and that is the whole practical value of PED.';
+    cap.innerHTML='The shaded box is total revenue at the new price; the dashed box is the original $1000.';
+    if(p>10) revSeen.up=true; else revSeen.down=true;
+  }
+}
+document.getElementById('revP').addEventListener('input',drawRev);
+document.getElementById('revReset').addEventListener('click',()=>{ document.getElementById('revP').value=10; drawRev(); });
+document.getElementById('revTogE').addEventListener('click',()=>{
+  revShow='e';
+  document.getElementById('revTogE').classList.add('active');
+  document.getElementById('revTogI').classList.remove('active'); drawRev();
+});
+document.getElementById('revTogI').addEventListener('click',()=>{
+  revShow='i';
+  document.getElementById('revTogI').classList.add('active');
+  document.getElementById('revTogE').classList.remove('active'); drawRev();
+});
+drawRev();
+
+const REV_Q=[
+ {id:'r1', icon:'1', bg:'#D63864', name:'Coursebook Figure 8.9, the elastic case',
+  stem:'Set the price to <b>$11</b>. On the elastic curve D<sub>e</sub>, what happens to quantity and to total revenue?',
+  opts:['Quantity falls to 95 and revenue rises to $1045','Quantity falls to 80 and revenue falls to $880',
+        'Quantity falls to 80 and revenue rises to $1080','Quantity rises to 120 and revenue rises to $1320'], ans:1,
+  fb:'A 10% price rise cuts quantity demanded by 20%, from 100 to 80. Revenue falls from $1000 to 80 × $11 = <strong>$880</strong>.',
+  why:'PED here is −2: the relative fall in sales is greater than the relative rise in price, so the firm loses revenue by raising price. It should be cutting price instead.'},
+ {id:'r2', icon:'2', bg:'#28A745', name:'Coursebook Figure 8.9, the inelastic case',
+  stem:'Still at <b>$11</b>. On the inelastic curve D<sub>i</sub>, what happens to quantity and to total revenue?',
+  opts:['Quantity falls to 95 and revenue rises to $1045','Quantity falls to 80 and revenue falls to $880',
+        'Quantity stays at 100 and revenue rises to $1100','Quantity falls to 95 and revenue falls to $950'], ans:0,
+  fb:'A 10% price rise cuts quantity demanded by only 5%, from 100 to 95. Revenue rises from $1000 to 95 × $11 = <strong>$1045</strong>.',
+  why:'Total expenditure rises even though less is traded, because the increase in price is the more powerful influence. PED here is −0.5.'},
+ {id:'r3', icon:'3', bg:'#FF8F1C', name:'Working backwards',
+  stem:'A firm cuts its price and finds that its <b>total revenue falls</b>. What must be true of demand for its product over that price range?',
+  opts:['It is price elastic','It is price inelastic','It is unit elastic','It is perfectly elastic'], ans:1,
+  fb:'If cutting price reduces revenue, the percentage gain in quantity must have been <strong>smaller</strong> than the percentage cut in price. Demand is price inelastic.',
+  why:'This is the version of the question Paper 1 prefers: you are given the revenue outcome and asked to infer the elasticity. Work it through with the slider — drop the price below $10 and watch Dᵢ.'},
+ {id:'r4', icon:'4', bg:'#002F6C', name:'The finance minister’s question',
+  stem:'A government wants to raise as much revenue as possible from an indirect tax, which pushes up the price paid by consumers. Which product should it tax?',
+  opts:['One with PED = −2.4, such as overseas holidays','One with PED = −1.6, such as restaurant meals',
+        'One with PED = −0.4, such as cigarettes','It makes no difference to revenue'], ans:2,
+  fb:'Taxing a product with <strong>inelastic</strong> demand means the higher price barely reduces the quantity traded, so revenue stays high.',
+  why:'This also explains why tobacco, fuel and alcohol are taxed almost everywhere — and why a tax designed to raise revenue and a tax designed to cut consumption pull in opposite directions. That tension is a ready-made evaluation paragraph.'}
+];
+buildCards(document.getElementById('revQ'), REV_Q, (right,total)=>{
+  const b=document.getElementById('revDone');
+  b.innerHTML='✓ All '+total+' answered ('+right+'/'+total+' right first time). The rule worth memorising: <b>price and revenue move in the same direction when demand is inelastic, and in opposite directions when demand is elastic</b>.';
+  b.classList.add('show');
+  trk('PED & Revenue', right+'/'+total+' correct'); mark('rev');
+});
+
+/* =====================================================================
+   TAB 5 — INCOME ELASTICITY OF DEMAND
+   ===================================================================== */
+const YGOODS=[
+ {n:'Instant noodles', u:'packets', yed:-0.8, base:400, col:'#D63864'},
+ {n:'Rice',            u:'kg',      yed: 0.2, base:250, col:'#008BCC'},
+ {n:'Restaurant meals',u:'meals',   yed: 0.9, base: 90, col:'#FF8F1C'},
+ {n:'Overseas air travel', u:'trips', yed:2.5, base:12, col:'#6B4E9E'}
+];
+const YBASE=40000;
+function drawYed(){
+  const y=Number(document.getElementById('ySlider').value);
+  const pctY=(y-YBASE)/YBASE*100;
+  document.getElementById('yLab').textContent='฿'+num(y);
+  const say=document.getElementById('ySay');
+  if(pctY===0){
+    say.innerHTML='Income is at its starting level of <b>฿40,000</b> a month. Drag the slider either way and watch the four bars separate.';
+  } else {
+    say.innerHTML='Income has '+(pctY>0?'<b>risen</b>':'<b>fallen</b>')+' by <b>'+Math.abs(pctY).toFixed(1)+'%</b>. '+
+      (pctY>0
+        ? 'Three bars grow and one shrinks — the one with the negative YED. That is the definition of an <b>inferior good</b>.'
+        : 'Three bars shrink and one grows. In a recession, sales of inferior goods <b>rise</b>, which is why they are worth holding in a product range.');
+  }
+  const host=document.getElementById('yBars');
+  host.innerHTML=YGOODS.map(g=>{
+    const pctQ=g.yed*pctY;
+    const q=g.base*(1+pctQ/100);
+    const w=Math.max(0,Math.min(100, q/(g.base*2.1)*100));
+    return '<div class="el-brow">'+
+      '<div class="el-bname">'+g.n+'<span>YED '+sgn(g.yed,1)+'</span></div>'+
+      '<div class="el-btrack"><div class="el-bfill" style="width:'+w.toFixed(1)+'%;background:'+g.col+'"></div><div class="el-bmark"></div></div>'+
+      '<div class="el-bval"><b>'+(Math.abs(q-Math.round(q))<0.05?q.toFixed(0):q.toFixed(1))+'</b> '+g.u+'<br>'+(pctY===0?'at the starting level':sgn(pctQ,1)+'% change')+'</div>'+
+    '</div>';
+  }).join('');
+}
+document.getElementById('ySlider').addEventListener('input',drawYed);
+document.getElementById('yReset').addEventListener('click',()=>{ document.getElementById('ySlider').value=YBASE; drawYed(); });
+drawYed();
+
+const YBINS=[
+ {id:'inf', name:'Inferior', dot:'#D63864', desc:'YED is negative'},
+ {id:'nec', name:'Necessity', dot:'#008BCC', desc:'YED between 0 and +0.5'},
+ {id:'nor', name:'Normal', dot:'#FF8F1C', desc:'YED between +0.5 and +1'},
+ {id:'sup', name:'Superior / luxury', dot:'#6B4E9E', desc:'YED above +1'}
+];
+const YITEMS=[
+ {t:'Instant noodles · YED −0.7', bin:'inf'},
+ {t:'Second-hand clothing · YED −0.4', bin:'inf'},
+ {t:'Rice · YED +0.15', bin:'nec'},
+ {t:'Cooking oil · YED +0.2', bin:'nec'},
+ {t:'Electricity in Australia · YED +0.60', bin:'nor'},
+ {t:'Restaurant meals · YED +0.9', bin:'nor'},
+ {t:'Electricity in Pakistan · YED +1.60', bin:'sup'},
+ {t:'Overseas holidays · YED +2.5', bin:'sup'}
+];
+function buildYed(){
+  const pool=document.getElementById('pool-yed'), bins=document.getElementById('bins-yed');
+  pool.innerHTML=''; bins.innerHTML='';
+  shuffle([...YITEMS]).forEach((it,i)=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.textContent=it.t;
+    pool.appendChild(d);
+  });
+  YBINS.forEach(b=>{
+    const el=document.createElement('div');
+    el.className='bin'; el.dataset.bin=b.id;
+    el.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.dot+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    bins.appendChild(el);
+  });
+  document.getElementById('score-yed').textContent='';
+}
+function checkYed(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#bins-yed .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.bin===bin.dataset.bin;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-yed'), total=YITEMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){
+    sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745';
+    const b=document.getElementById('yedDone');
+    b.innerHTML='✓ All eight sorted. The two electricity figures are the coursebook’s own (Table 8.5): <b>+0.60 in Australia, +1.60 in Pakistan</b>. In a high-income country almost every household already has what it needs, so extra income adds little; in a fast-growing lower-income country extra income buys appliances, air conditioning and connection itself. Same product, different stage of development, very different YED.';
+    b.classList.add('show');
+    trk('YED sort', correct+'/'+total+' correct'); mark('yed');
+  }
+  else { sc.textContent=correct+' / '+total+' correct — move the pink ones'; sc.style.color='#002F6C'; }
+}
+buildYed();
+
+/* =====================================================================
+   TAB 6 — CROSS ELASTICITY OF DEMAND (coursebook Figure 8.8)
+   PCs: Q = 200 − 0.1P, so P = $1000 gives Q = 100 per day.
+   ===================================================================== */
+const XEDP=mkPlot({qmax:240,pmin:0,pmax:2000,qstep:40,pstep:400,
+  ylab:'Price of a PC ($)',xlab:'Quantity demanded of PCs per day',
+  pfmt:p=>num(p),qfmt:q=>q});
+const XRELS=[
+ {id:'lap', t:'Price of laptops', sub:'a substitute', xed:2.0},
+ {id:'sof', t:'Price of software', sub:'a complement', xed:-0.2},
+ {id:'ric', t:'Price of rice', sub:'unrelated', xed:0}
+];
+let xRel='lap';
+function drawXed(){
+  const rel=XRELS.find(r=>r.id===xRel);
+  const dp=Number(document.getElementById('xSlider').value);
+  const pctQ=rel.xed*dp;
+  const q1=100*(1+pctQ/100);
+  const shift=q1-100;
+
+  let s=svgOpen('clip-xed','Demand curve for PCs shifting after a change in the price of a related good')+XEDP.grid();
+  s+='<g clip-path="url(#clip-xed)">';
+  s+=seg(XEDP,200,0,0,2000,'#002F6C');
+  if(Math.abs(shift)>0.001) s+=seg(XEDP,200+shift,0,shift,2000,'#D63864');
+  s+='<line x1="'+PL+'" y1="'+XEDP.py(1000)+'" x2="'+(PL+PW)+'" y2="'+XEDP.py(1000)+'" stroke="#FF8F1C" stroke-width="1.4" stroke-dasharray="5 4"/>';
+  s+=dot(XEDP,100,1000,'#002F6C',5.5);
+  if(Math.abs(shift)>0.001) s+=dot(XEDP,q1,1000,'#D63864',5.5);
+  s+='</g>';
+  s+=tag(XEDP.px(60)+9,XEDP.py(1400)+4,'D','#002F6C');
+  if(Math.abs(shift)>0.001) s+=tag(XEDP.px(140+shift)+(shift>0?9:-32),XEDP.py(600)+4,shift>0?'D₂':'D₁','#D63864');
+  s+='<text x="'+(PL+4)+'" y="'+(XEDP.py(1000)-6)+'" font-size="11" font-weight="900" fill="#FF8F1C" font-family="Lato,sans-serif">$1000</text>';
+  s+='</svg>';
+  document.getElementById('xedFig').innerHTML=s;
+
+  document.getElementById('xLab').textContent=sgn(dp,0)+'%';
+  document.getElementById('xQ').textContent=(Math.abs(q1-Math.round(q1))<0.05?q1.toFixed(0):q1.toFixed(1));
+  document.getElementById('xPC').textContent=sgn(pctQ,1)+'%';
+  document.getElementById('xQbox').className=q1>100?'up':(q1<100?'dn':'');
+  document.getElementById('xPCbox').className=pctQ>0?'up':(pctQ<0?'dn':'');
+
+  const big=document.getElementById('xedBig');
+  big.classList.remove('is-el','is-in','is-un');
+  document.getElementById('xedVal').textContent=(rel.xed>0?'+':'')+dash(rel.xed,2);
+  let verdict;
+  if(rel.xed>0){ verdict='Substitutes — a positive XED'; big.classList.add('is-el'); }
+  else if(rel.xed<0){ verdict='Complements — a negative XED'; big.classList.add('is-in'); }
+  else { verdict='No relationship — an XED of zero'; big.classList.add('is-un'); }
+  document.getElementById('xedVer').textContent=verdict;
+
+  const work=document.getElementById('xedWork');
+  if(dp===0){
+    work.innerHTML='The price of the related good has not changed, so there is nothing to divide by. Move the slider.';
+  } else if(rel.xed===0){
+    work.innerHTML='<b>% change in quantity demanded of PCs</b> = <span class="fr">0%</span><br>'+
+      '<b>% change in the price of rice</b> = <span class="fr">'+sgn(dp,0)+'%</span><br>'+
+      '<b>XED</b> = 0 ÷ '+sgn(dp,0)+'% = <span class="fr">0</span><br>'+
+      'An XED of zero means there is <b>no relationship</b> between the two products. The demand curve for PCs does not move at all. The coursebook’s example is a change in the price of a McDonald’s burger and the demand for international air travel.';
+  } else {
+    work.innerHTML='<b>% change in quantity demanded of PCs</b> = <span class="fr">'+sgn(pctQ,1)+'%</span><br>'+
+      '<b>% change in the price of '+(rel.id==='lap'?'laptops':'software')+'</b> = <span class="fr">'+sgn(dp,0)+'%</span><br>'+
+      '<b>XED</b> = '+sgn(pctQ,1)+'% ÷ '+sgn(dp,0)+'% = <span class="fr">'+(rel.xed>0?'+':'')+dash(rel.xed,2)+'</span><br>'+
+      (rel.xed>0
+        ? 'Positive, so the two are <b>substitutes</b>: cheaper laptops pull buyers away from PCs and demand shifts <b>left</b>; dearer laptops push buyers towards PCs and demand shifts <b>right</b>.'
+        : 'Negative, so the two are <b>complements</b>: cheaper software makes owning a PC more attractive and demand shifts <b>right</b>. The small size, 0.2, says the link is weak.');
+  }
+  document.getElementById('xedCap').innerHTML='The price of a PC stays at <b>$1000</b> throughout. Only the <b>whole curve</b> moves, because the cause is the price of a different good.';
+}
+(function(){
+  const host=document.getElementById('xedPick');
+  XRELS.forEach(r=>{
+    const b=document.createElement('button');
+    b.className='el-chip'+(r.id===xRel?' now':''); b.type='button';
+    b.innerHTML='<b>'+r.t+'</b><br><span style="font-size:11.5px;color:var(--text-3)">'+r.sub+'</span>';
+    b.addEventListener('click',()=>{
+      xRel=r.id;
+      host.querySelectorAll('.el-chip').forEach(x=>x.classList.remove('now'));
+      b.classList.add('now');
+      drawXed();
+    });
+    host.appendChild(b);
+  });
+})();
+document.getElementById('xSlider').addEventListener('input',drawXed);
+drawXed();
+
+const XBINS=[
+ {id:'sub', name:'Substitutes', dot:'#D63864', desc:'XED is positive'},
+ {id:'com', name:'Complements', dot:'#008BCC', desc:'XED is negative'},
+ {id:'unr', name:'Unrelated', dot:'#8098B0', desc:'XED is zero'}
+];
+const XITEMS=[
+ {t:'Pepsi and Coca-Cola · XED +1.4', bin:'sub'},
+ {t:'Bus fares and train fares in Bangkok · XED +0.9', bin:'sub'},
+ {t:'Printers and ink cartridges · XED −1.9', bin:'com'},
+ {t:'Cinema tickets and popcorn · XED −0.8', bin:'com'},
+ {t:'McDonald’s burgers and international air travel · XED 0', bin:'unr'},
+ {t:'Rice and badminton rackets · XED 0', bin:'unr'}
+];
+function buildXed(){
+  const pool=document.getElementById('pool-xed'), bins=document.getElementById('bins-xed');
+  pool.innerHTML=''; bins.innerHTML='';
+  shuffle([...XITEMS]).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='item-card'; d.dataset.bin=it.bin; d.textContent=it.t;
+    pool.appendChild(d);
+  });
+  XBINS.forEach(b=>{
+    const el=document.createElement('div');
+    el.className='bin'; el.dataset.bin=b.id;
+    el.innerHTML='<div class="bin-name"><span class="bin-dot" style="background:'+b.dot+'"></span>'+b.name+'</div>'+
+      '<div class="bin-desc">'+b.desc+'</div><div class="bin-drop"></div>';
+    bins.appendChild(el);
+  });
+  document.getElementById('score-xed').textContent='';
+}
+function checkXed(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#bins-xed .bin').forEach(bin=>{
+    [...bin.querySelector('.bin-drop').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.bin===bin.dataset.bin;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-xed'), total=XITEMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){
+    sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745';
+    const b=document.getElementById('xedDone');
+    b.innerHTML='✓ All six sorted. Two commercial uses to remember: a firm with a <b>high positive XED</b> against a rival is dangerously exposed to that rival’s price cuts, and a firm selling <b>complements</b> (printers and cartridges, consoles and games) can price one cheaply to sell the other — which is why XED shapes whole pricing strategies, not just single prices.';
+    b.classList.add('show');
+    trk('XED sort', correct+'/'+total+' correct'); mark('xed');
+  }
+  else { sc.textContent=correct+' / '+total+' correct — move the pink ones'; sc.style.color='#002F6C'; }
+}
+buildXed();
+
+/* =====================================================================
+   TAB 7 — SCENARIOS
+   ===================================================================== */
+const SCEN=[
+ {t:'A cinema in Siam Square estimates the PED for its tickets at <b>−1.8</b>. The manager wants higher box-office revenue.',
+  opts:['Raise the ticket price','Cut the ticket price','Leave the price where it is'], ans:1,
+  fb:'Demand is <b>price elastic</b>, so a price cut raises quantity demanded proportionately more and total revenue rises. Raising the price would lose more in sales than it gained per ticket.',
+  ev:'Evaluation: this assumes the estimate is reliable and that rival cinemas do not match the cut. If they all cut price, each may end up with the same market share at a lower price — and everyone loses.'},
+ {t:'The Thai government wants to raise as much tax revenue as possible. Three products are under consideration.',
+  opts:['Cigarettes, PED −0.4','Restaurant meals, PED −1.6','Overseas holidays, PED −2.4'], ans:0,
+  fb:'Tax the product with the most <b>inelastic</b> demand. Consumers cut back very little when the price rises, so the quantity taxed stays high and so does revenue.',
+  ev:'Evaluation: a tax that raises a lot of revenue is, by definition, one that barely changes behaviour. If the aim is public health rather than revenue, inelastic demand is the problem, not the solution.'},
+ {t:'A budget airline on the Bangkok–Chiang Mai route faces a PED of about <b>−3.0</b> in a quiet week and about <b>−0.6</b> in the week before Songkran.',
+  opts:['Charge the same fare all year','Charge more in the week before Songkran','Charge less in the week before Songkran'], ans:1,
+  fb:'When demand turns <b>inelastic</b> — families travelling home for the festival have to go, whatever the fare — a higher price raises revenue. In quiet weeks demand is elastic, so low fares fill the seats.',
+  ev:'This is the coursebook’s point about restaurant meals during religious festivals and about peak and off-peak rail fares. It is the same economics in three settings.'},
+ {t:'A drinks firm finds the XED between its brand and a rival’s is <b>+1.8</b>. The rival cuts its price by 10%.',
+  opts:['The firm’s sales fall by about 18%','The firm’s sales fall by about 5.6%','The firm’s sales rise by about 18%'], ans:0,
+  fb:'% change in quantity = XED × % change in the rival’s price = +1.8 × (−10%) = <b>−18%</b>. A positive XED means the goods are close substitutes, so a rival’s price cut hurts.',
+  ev:'A high positive XED is a measure of how exposed a firm is to its competitors. It is one reason firms brand heavily: a strong brand lowers the XED against rivals.'},
+ {t:'Forecasters expect Thai household incomes to fall by <b>5%</b> next year. A firm sells luxury watches with a YED of <b>+2.5</b>.',
+  opts:['Sales fall by about 12.5%','Sales fall by about 2%','Sales rise by about 12.5%'], ans:0,
+  fb:'% change in quantity = YED × % change in income = +2.5 × (−5%) = <b>−12.5%</b>. Superior goods fall faster than incomes do in a downturn.',
+  ev:'This is why YED matters for investment decisions rather than pricing decisions: it tells the firm what capacity and stock it will need a year or more ahead.'},
+ {t:'A supermarket chain wants a product range that will survive a recession without collapsing.',
+  opts:['Stock only superior goods','Stock a mix that includes some inferior goods','Stock only goods with a YED above +1'], ans:1,
+  fb:'Goods with a <b>negative YED</b> sell <i>more</i> when incomes fall. Holding some alongside the superior goods means the two move in opposite directions and total sales are steadier.',
+  ev:'This is coursebook Activity 8.6, question 2. The trade-off: inferior goods usually carry thinner profit margins, so the insurance is not free.'},
+ {t:'A soft drinks manufacturer spends heavily on persuasive advertising and on building its brand.',
+  opts:['It is trying to make demand more price elastic','It is trying to make demand more price inelastic','Advertising has no effect on PED'], ans:1,
+  fb:'Advertising and branding aim to persuade consumers that the product has no real substitute. The fewer the acceptable substitutes, the <b>more inelastic</b> demand becomes — and the more the firm can raise price without losing sales.',
+  ev:'The coursebook lists four routes to a more inelastic demand curve: persuasive advertising, branding, takeovers and mergers, and patents. All four reduce the substitutes available.'},
+ {t:'Airline tickets are usually cheaper when bought months ahead than a few days ahead.',
+  opts:['Costs are lower months ahead','Demand is more price elastic months ahead','Demand is more price elastic days ahead'], ans:1,
+  fb:'Months ahead, travellers have time to compare, to shift dates or to choose another airline, so demand is <b>elastic</b> and fares must be low. Days ahead, the buyer is usually a business traveller who must fly on that date, so demand is <b>inelastic</b> and the fare can be high.',
+  ev:'Time is one of the three factors affecting PED, alongside the availability of substitutes and the relative expense of the product. All three are worth naming by name in a written answer.'}
+];
+let scenDoneCount=0, scenScore=0;
+(function buildScen(){
+  const host=document.getElementById('scenList'); host.innerHTML='';
+  SCEN.forEach((d,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(i+1)+'</div><div class="q-name">'+d.t+'</div></div>'+
+      '<div class="choice-row cr">'+d.opts.map((o,j)=>'<button class="choice" data-i="'+j+'">'+o+'</button>').join('')+'</div>'+
+      '<div class="reveal rv"></div>';
+    host.appendChild(c);
+    c.querySelectorAll('.cr .choice').forEach(b=>b.addEventListener('click',()=>{
+      if(b.disabled) return;
+      const ok=Number(b.dataset.i)===d.ans;
+      c.querySelectorAll('.cr .choice').forEach(x=>{
+        x.disabled=true;
+        if(Number(x.dataset.i)===d.ans) x.classList.add('sel-good');
+      });
+      if(!ok) b.classList.add('sel-bad');
+      if(ok) scenScore++;
+      const rv=c.querySelector('.rv');
+      rv.innerHTML='<span class="verdict '+(ok?'v-good':'v-bad')+'">'+(ok?'Correct':'Not this one')+'</span><br>'+
+        '<strong>'+d.opts[d.ans]+'.</strong> '+d.fb+'<div class="exam-line" style="margin-top:10px">'+d.ev+'</div>';
+      rv.classList.add('show');
+      scenDoneCount++;
+      if(scenDoneCount===SCEN.length){
+        const bn=document.getElementById('scenDone');
+        bn.innerHTML='✓ All eight decisions made — '+scenScore+' / '+SCEN.length+' right first time. Every one turned on a single number. In Paper 2, quoting a plausible elasticity value and then reasoning from it is what separates a top-band answer from a description.';
+        bn.classList.add('show');
+        trk('Scenarios', scenScore+'/'+SCEN.length+' correct'); mark('scen');
+      }
+    }));
+  });
+})();
+
+/* =====================================================================
+   TAB 8 — WRITE IT UP
+   ===================================================================== */
+const CHAIN={
+  id:'a', icon:'🥤', bg:'#008BCC',
+  name:'An indirect tax on sugary drinks, where demand is price inelastic',
+  steps:['The government adds an excise tax of 5 baht to every bottle of sugary drink',
+         'The tax is an extra cost per unit for producers, so the supply curve shifts to the left and the price paid by consumers rises',
+         'Demand for sugary drinks is price inelastic — the PED is about −0.4 — because they are habit-forming, cheap relative to income and have few close substitutes',
+         'A given percentage rise in price therefore causes a proportionately smaller percentage fall in the quantity demanded',
+         'Most of the tax is passed on to consumers in the higher price, and the quantity traded falls only slightly',
+         'Tax revenue rises substantially, but the health objective of cutting consumption is only weakly met'],
+  done:'<h3>Read the chain backwards and you have the evaluation</h3><p>The government cannot have it both ways. The very inelasticity that makes sugary drinks a good source of tax revenue is what stops the tax from changing behaviour much. An answer that reaches that tension is doing AO3, not just AO2.</p><p>The same skeleton works for fuel duty, tobacco tax and alcohol duty. Change the product, keep the structure.</p>'
+};
+let chainSolved=false;
+(function buildChain(){
+  const host=document.getElementById('chainHost');
+  const card=document.createElement('div'); card.className='q-card'; card.id='chain-a';
+  host.appendChild(card);
+  const ch=CHAIN;
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s,i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary ch-check">Check chain</button>'+
+      '<button class="btn btn-ghost ch-reset">Reset</button>'+
+      '<span class="score"></span>'+
+    '</div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{
+    seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render();
+  }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{
+    seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render();
+  });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{
+      const ok=Number(el.dataset.idx)===pos;
+      el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+      if(ok) right++;
+    });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved){ chainSolved=true; trk('Analysis chain','correct'); checkWriteDone(); }
+    } else {
+      sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C';
+    }
+  });
+  render();
+})();
+
+const W1_CHECKS=[
+ 'I defined PED and gave the formula',
+ 'I explained the inelastic case and what it does to total revenue',
+ 'I explained the elastic case and what it does to total revenue',
+ 'I used a numerical example with actual figures, not just words',
+ 'I drew a labelled diagram showing an elastic and an inelastic curve',
+ 'I added a limitation — PED changes along the curve, or the value is only an estimate'
+];
+(function(){
+  const host=document.getElementById('w1checks');
+  W1_CHECKS.forEach(txt=>{
+    const row=document.createElement('div');
+    row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{ row.classList.toggle('on'); updateBand(); });
+    host.appendChild(row);
+  });
+})();
+function updateBand(){
+  const on=document.querySelectorAll('#w1checks .chk.on').length, tot=W1_CHECKS.length;
+  document.getElementById('w1bv').textContent=on+' of '+tot+' ticked';
+  document.getElementById('w1bar').style.width=(on/tot*100)+'%';
+  const bd=document.getElementById('w1bd');
+  if(on<=2) bd.textContent='Lower band: some knowledge, little analysis. The missing step is almost always the link from the elasticity value through to total revenue.';
+  else if(on<=4) bd.textContent='Middle band. The economics is there but it is being asserted rather than shown — add the numbers and the diagram.';
+  else if(on<tot) bd.textContent='Nearly a top-band answer. Add the one element you left unticked and redraft.';
+  else bd.textContent='Top band: definition, both cases, worked figures, a diagram and a limitation. Now time yourself doing it in 10 minutes.';
+}
+const writeSeen={w1:false,w2:false};
+function checkWriteDone(){
+  if(DONE.write) return;
+  if(chainSolved && writeSeen.w1 && writeSeen.w2){
+    document.getElementById('writeDone').classList.add('show');
+    trk('Write It Up','chain built and both written tasks attempted'); mark('write');
+  }
+}
+[['w1btn','w1model','w1'],['w2btn','w2model','w2']].forEach(([btn,mod,key])=>{
+  document.getElementById(btn).addEventListener('click',()=>{
+    const box=document.getElementById(key);
+    if(box.value.trim().length<40){
+      box.focus();
+      document.getElementById(btn).textContent='Write your own attempt first — then compare';
+      return;
+    }
+    document.getElementById(mod).classList.add('show');
+    document.getElementById(btn).textContent='Model shown ✓';
+    document.getElementById(btn).disabled=true;
+    writeSeen[key]=true;
+    checkWriteDone();
+  });
+});
+
+/* =====================================================================
+   TAB 1 — KEY TERMS (match)
+   ===================================================================== */
+const TERMS=[
+ {id:'t1', term:'Elasticity',                     def:'A numerical measure of the responsiveness of one variable to a change in another variable, ceteris paribus.'},
+ {id:'t2', term:'Price elasticity of demand (PED)',def:'Measures the responsiveness of the quantity demanded for a product following a change in the price of that product.'},
+ {id:'t3', term:'Price elastic',                  def:'Where the relative change in quantity demanded is greater than the change in price.'},
+ {id:'t4', term:'Price inelastic',                def:'Where the relative change in quantity demanded is less than the change in price.'},
+ {id:'t5', term:'Perfectly inelastic',            def:'Where a change in price has no effect at all on the quantity demanded, giving a value of 0.'},
+ {id:'t6', term:'Perfectly elastic',              def:'Where all that is produced is sold at a given price, giving a value of infinity.'},
+ {id:'t7', term:'Unit elasticity',                def:'Where the change in quantity demanded is relatively the same as the change in price, so total spending does not change.'},
+ {id:'t8', term:'Income elasticity of demand (YED)',def:'Measures the responsiveness of the quantity demanded for a product following a change in income.'},
+ {id:'t9', term:'Necessity good',                 def:'A type of normal good with a positive value that is close to zero.'},
+ {id:'t10',term:'Superior good',                  def:'A normal good with a value greater than 1, such as designer clothing or the latest electronic devices.'},
+ {id:'t11',term:'Inferior good',                  def:'A good whose quantity demanded falls as income rises, giving a negative value.'},
+ {id:'t12',term:'Cross elasticity of demand (XED)',def:'Measures the responsiveness of the quantity demanded for one product following a change in the price of another product.'}
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); mark('terms'); }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* =====================================================================
+   TAB 9 — EXAM-STYLE MULTIPLE CHOICE (coursebook pages 77–79)
+   ===================================================================== */
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1',
+  stem:'Price elasticity of demand is:',
+  opts:['the change in demand given a change in price.','how the price changes given a change in quantity demanded.',
+        'the percentage change in quantity demanded given a change in price.','the percentage change in quantity demanded given a percentage change in price.'], ans:3,
+  fb:'PED compares <strong>two percentage changes</strong>: quantity demanded on top, price underneath.',
+  why:'C is the trap. It gets the top line right but leaves the bottom line as an absolute change, which would make the answer depend on the units. Both lines must be percentages, which is exactly why elasticity has no units.'},
+ {id:'m2', icon:'2', bg:'#008BCC', name:'Paper 1 · Question 2',
+  stem:'Along a downward sloping demand curve, the value of price elasticity of demand:',
+  opts:['falls as the quantity demanded increases.','increases as the quantity demanded increases.',
+        'is the same along the demand curve.','varies with the level of expenditure.'], ans:0,
+  fb:'Moving down the curve, price falls and quantity rises, so a given price change is a larger percentage and a given quantity change is a smaller one. PED <strong>falls</strong>.',
+  why:'This is coursebook Figure 8.6 and it is exactly what the PED Lab shows: −10.0 near the top of product R’s curve, −0.43 near the bottom. Option C is the assumption most candidates make without checking.'},
+ {id:'m3', icon:'3', bg:'#FF8F1C', name:'Paper 1 · Question 3',
+  stem:'The price of a can of iced tea increases from $1.00 to $1.10. The quantity demanded falls from 300 cans a week to 240 cans a week. Calculate the price elasticity of demand.',
+  opts:['−0.5','−2.5','−2.0','−2.22'], ans:2,
+  fb:'−20% ÷ +10% = <strong>−2.0</strong>.',
+  why:'−0.5 comes from turning the fraction upside down. −2.22 comes from measuring the quantity change against the new quantity (60/240) instead of the original. Always measure both changes from the <b>original</b> figures.'},
+ {id:'m4', icon:'4', bg:'#FF8F1C', name:'Paper 1 · Question 4',
+  stem:'The price elasticity of demand for a product is 1. Which of the following changes is correct?',
+  opts:['A rise in price will result in total spending on the product rising and then falling.',
+        'A rise in price will result in no change in total spending on the product.',
+        'A fall in price will result in an increase in total spending on the product.',
+        'A fall in price will lead to an increase in quantity demanded but total spending on the product will fall.'], ans:1,
+  fb:'With <strong>unit elasticity</strong> the two percentage changes are equal and opposite, so price × quantity is unchanged whichever way price moves.',
+  why:'Coursebook example: $1000 × 10 000 = $10m, and after a 5% price rise and a 5% quantity fall, $1050 × 9 500 ≈ $10m. Unit elasticity is the dividing line at which a price change stops helping revenue and starts hurting it.'},
+ {id:'m5', icon:'5', bg:'#28A745', name:'Paper 1 · Question 5',
+  stem:'Why must total spending on a product increase when its price increases?',
+  opts:['if demand for the product is price elastic','if demand for the product is price inelastic',
+        'if the price of a substitute product increases','if the price of a complementary product increases'], ans:1,
+  fb:'With <strong>inelastic</strong> demand the quantity falls proportionately less than the price rises, so price × quantity goes up.',
+  why:'C and D would shift the demand curve rather than move along it, so neither guarantees what happens to spending on this product. Only the PED value answers the question.'},
+ {id:'m6', icon:'6', bg:'#6B4E9E', name:'Paper 1 · Question 6',
+  stem:'If pulses are an inferior good:',
+  opts:['demand will increase as income increases.','supply will increase to satisfy the increase in demand.',
+        'demand will fall as income increases.','demand will be unchanged as income increases.'], ans:2,
+  fb:'An inferior good has a <strong>negative YED</strong>: as income rises, consumers switch to better-quality substitutes and demand falls.',
+  why:'Test yourself both ways round. Inferior good, income falls → demand rises. Inferior good, income rises → demand falls. Candidates who learn only one direction get caught by the other.'},
+ {id:'m7', icon:'7', bg:'#6B4E9E', name:'Paper 1 · Question 7',
+  stem:'Given the value of income elasticity of demand, which of the following is likely to be a <b>necessity</b>?',
+  opts:['a new pair of trainers, +1.5','a visit to KFC or McDonald’s, +0.8','petrol for the motorcycle, +0.2',
+        'a trip to a Premier League cricket or football game, +2.5'], ans:2,
+  fb:'A necessity is a normal good with a YED that is <strong>positive but close to zero</strong>. +0.2 is the only value that fits.',
+  why:'A and D are above 1, so they are superior or luxury goods. B at +0.8 is a normal good but too responsive to be called a necessity. The sign tells you normal or inferior; the size tells you necessity or luxury.'},
+ {id:'m8', icon:'8', bg:'#002F6C', name:'Paper 1 · Question 8',
+  stem:'The cross elasticity of demand for the change in quantity of a brand of cooking oil compared to a change in price of another brand is +1.3. Which of the following best describes the relationship between the two brands?',
+  opts:['complement and elastic','complement and inelastic','substitute and elastic','substitute and inelastic'], ans:2,
+  fb:'The <strong>positive sign</strong> means substitutes; the <strong>size above 1</strong> means the response is elastic.',
+  why:'Two decisions in one question — always take them separately. Sign first: positive is substitutes, negative is complements. Then size: above 1 is elastic, below 1 is inelastic.'},
+ {id:'m9', icon:'9', bg:'#002F6C', name:'Paper 1 · Question 9',
+  stem:'The cross elasticity of demand for Australian tourists visiting Indonesia is 2.4 when the price of visits to Malaysia increases by 5%. What is the percentage change in the number of Australian tourists visiting Indonesia?',
+  opts:['5%','0.48%','2.08%','12%'], ans:3,
+  fb:'Rearranging the formula: % change in quantity = XED × % change in the other price = 2.4 × 5% = <strong>12%</strong>.',
+  why:'0.48% and 2.08% both come from dividing instead of multiplying. If the formula is a fraction with quantity on top, then quantity = elasticity × the bottom line. Practise rearranging it before the exam, not during it.'},
+ {id:'m10', icon:'10', bg:'#8098B0', name:'Paper 1 · Question 10',
+  stem:'A firm makes four products, A to D. Demand for the products is growing because incomes are rising. Which product should the producer spend most on to promote sales?<br><br><span style="font-size:12.6px;color:var(--text-2)"><b>A</b> PED −0.3, YED +2.5, XED +0.3 · <b>B</b> PED −1.5, YED +0.6, XED +1.4 · <b>C</b> PED −0.8, YED −0.6, XED +1.8 · <b>D</b> PED −2.0, YED −1.7, XED +2.4</span>',
+  opts:['Product A','Product B','Product C','Product D'], ans:0,
+  fb:'The stem tells you the growth is coming from <strong>rising incomes</strong>, so look at YED. Product A has much the highest at +2.5, so promotion there works with the income trend rather than against it. Its low XED (+0.3) also means the extra sales are unlikely to be stolen back by a rival’s price cut.',
+  why:'C and D have negative YEDs, so rising incomes are already pulling their sales down. B is the tempting answer — it is price elastic and exposed to rivals (XED +1.4) — but its YED of +0.6 means it gains far less from the income growth the question describes. Always read the stem for which elasticity is in play.'}
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  const b=document.getElementById('mcqDone');
+  b.innerHTML='✓ All ten attempted — '+right+'/'+total+' right first time. Next: Topic 2.3 asks the same “how much” question about the <b>supply</b> side — price elasticity of supply. The formula is identical; only the top line changes.';
+  b.classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
+  mark('mcq');
+});
+</script>
+</body>
+</html>
