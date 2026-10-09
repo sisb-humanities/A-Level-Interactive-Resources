@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3.1 Reasons for Government Intervention in Markets | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 3.1 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   New widgets use the prefix gi- (government intervention) so nothing
+   collides with the shared CSS.
+   ===================================================================== */
+.hidden{display:none !important}
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.lvl:disabled{cursor:default}
+.btn:disabled{opacity:.45;cursor:default}
+.lvl.gi-ok{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.lvl.gi-no{border-color:var(--red);background:var(--red-bg);color:var(--red-txt)}
+
+/* ---- Case files ---- */
+.gi-case{border-left:5px solid var(--navy)}
+.gi-stamp{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;background:var(--grey-bg);color:var(--text-2);border-radius:12px;padding:3px 10px;margin-bottom:6px}
+.gi-stamp.th{background:var(--orange-bg);color:var(--orange-txt)}
+.gi-stamp.cb{background:#E1F1FA;color:#00618F}
+.gi-case .q-stem{margin-bottom:8px}
+.gi-board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 14px}
+@media(max-width:860px){.gi-board{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.gi-board{grid-template-columns:1fr}}
+.gi-col{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 13px;min-height:118px;border-top:4px solid var(--blue)}
+.gi-col .h{font-size:12.5px;font-weight:900;color:var(--navy);line-height:1.3}
+.gi-col .s{font-size:11.2px;color:var(--text-3);margin:2px 0 8px;line-height:1.4}
+.gi-chip{display:inline-block;font-size:11.5px;border-radius:999px;padding:3px 9px;margin:2px 4px 2px 0;border:1px solid}
+.gi-chip.g{background:var(--green-bg);border-color:var(--green);color:var(--green-txt)}
+.gi-chip.a{background:var(--orange-bg);border-color:var(--orange);color:var(--orange-txt)}
+.gi-chip.r{background:var(--red-bg);border-color:var(--red);color:var(--red-txt)}
+.gi-tally{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.gi-tally div{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px 8px;text-align:center}
+.gi-tally b{display:block;font-size:20px;font-weight:900;color:var(--navy)}
+.gi-tally span{font-size:11.2px;color:var(--text-3)}
+
+/* ---- Diagram labs ---- */
+.gi-lab{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:start;margin-bottom:16px}
+@media(max-width:860px){.gi-lab{grid-template-columns:1fr}}
+.gi-lab .fig{margin-bottom:0}
+.gi-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.gi-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.gi-name em{font-style:normal;font-size:12px;font-weight:700;color:var(--blue);text-align:right}
+.gi-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:12px 0 4px}
+.gi-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.gi-res{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.gi-res div{background:var(--grey-bg);border-radius:8px;padding:10px 6px;text-align:center}
+.gi-res b{display:block;font-size:17px;font-weight:900;color:var(--navy);line-height:1.2}
+.gi-res span{font-size:10.8px;color:var(--text-3)}
+.gi-res .hot{background:var(--navy)}.gi-res .hot b{color:#fff}.gi-res .hot span{color:#CADCFC}
+.gi-res .warn{background:var(--orange-bg)}.gi-res .warn b{color:var(--orange-txt)}
+.gi-res .ok{background:var(--green-bg)}.gi-res .ok b{color:var(--green-txt)}
+.gi-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.gi-say b{color:var(--navy)}
+.gi-goals{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+.gi-goal{font-size:12px;font-weight:700;border:1.5px dashed var(--grey-3);background:#fff;color:var(--text-3);border-radius:18px;padding:6px 12px;transition:.2s}
+.gi-goal.met{border-style:solid;border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.gi-handle{cursor:ns-resize;touch-action:none}
+.gi-legend{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:var(--text-2);margin-top:6px}
+.gi-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+
+.explain .reveal{display:block;background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);padding:12px 14px;margin-top:8px}
+
+/* sticky progress (same as 1.5 / 1.6) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (max-width:560px){.topbar{padding:0 14px}.tb-title{font-size:11.5px}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 3.1 Reasons for Government Intervention</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="cases">🗂️ Policy Desk</div>
+  <div class="tab" data-tab="lab">📐 Diagram Lab</div>
+  <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
+  <div class="tab" data-tab="write">✍️ Write It Up</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Why do governments step into markets?</h1>
+      <p>Coursebook Chapter 12 gives two big reasons: to correct <b>market failure</b> (public goods, merit goods and demerit goods) and to <b>control prices</b>. Match each term to its meaning to lock in the vocabulary before the case files.</p>
+      <p>This topic builds directly on 1.6. If public, merit and demerit goods feel shaky, do <a href="sisb-alevel-econ-1_6-interactive.html" style="color:var(--blue);font-weight:700">Topic 1.6</a> first — the coursebook gives the same tip.</p>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">Market failure does not mean the market has collapsed. It means the price mechanism has produced an <b>inefficient allocation of resources</b> — too much of one thing, too little (or none) of another.</p>
+  </div>
+
+  <!-- ============ TAB 2 · POLICY DESK ============ -->
+  <div class="panel" id="panel-cases">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Policy Desk</div>
+      <h1>You are a policy adviser. Diagnose each case.</h1>
+      <p>Eight real interventions — six from Thailand, two from the coursebook. For each one, decide <b>which reason</b> the government has for intervening, then <b>why the free market gets it wrong</b>. Each correct step scores 1.</p>
+      <p>The policy board at the bottom fills in as you go. Every case is filed under its <b>correct</b> reason, whatever you answered, so the finished board is safe to copy into your notes.</p>
+    </div>
+    <div class="gi-tally">
+      <div><b id="ctDone">0 / 8</b><span>Cases closed</span></div>
+      <div><b id="ctPts">0</b><span>Points (max 16)</span></div>
+      <div><b id="ctAcc">–</b><span>First-step accuracy</span></div>
+    </div>
+    <div id="caseList"></div>
+    <div class="done-banner" id="casesDone"></div>
+    <div class="sub-h">The policy board</div>
+    <div class="sub-p">Green = both steps right · orange = one right · red = neither.</div>
+    <div class="gi-board" id="caseBoard"></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="buildCases()">Start again</button></div>
+    <p class="tip">The diesel and rice cases are about <b>why</b> governments control prices. <b>How</b> they do it — and the full diagrams of shortages and surpluses — is Topic 3.2.</p>
+  </div>
+
+  <!-- ============ TAB 3 · DIAGRAM LAB ============ -->
+  <div class="panel" id="panel-lab">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Diagram Lab</div>
+      <h1>Close the healthcare gap, then set a price control</h1>
+      <p>Part A is coursebook <b>Figure 12.2</b>, the under-production of a merit good, made interactive. Part B shows why a maximum price only matters <b>below</b> equilibrium and a minimum price only matters <b>above</b> it. Hit every target (the dashed tags turn green), then answer the four check questions.</p>
+    </div>
+
+    <div class="sub-h" style="margin-top:0">Part A · Healthcare as a merit good (coursebook Figure 12.2)</div>
+    <div class="sub-p">The private market provides <b>OX</b> at price <b>P</b>. The government thinks <b>OY</b> is needed — the vertical line S<sub>govt</sub>. Move OY, then choose how the government closes the gap. Figures are illustrative.</div>
+    <div class="gi-goals" id="goalsA"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft">The market for healthcare</div><div id="figA"></div>
+        <div class="gi-legend"><span><i style="background:#D63864"></i>Demand</span><span><i style="background:#008BCC"></i>Private supply</span><span><i style="background:#002F6C"></i>S<sub>govt</sub></span><span><i style="background:rgba(255,143,28,.45);height:10px"></i>Under-provision</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gi-name">Quantity the government thinks is needed (OY) <em id="aYv">75 m visits</em></div>
+        <input type="range" class="gi-sl" id="aY" min="50" max="90" step="1" value="75" aria-label="Quantity the government thinks is needed">
+        <div class="gi-ends"><span>Just above OX</span><span>Much more</span></div>
+        <div class="write-lbl" style="margin-top:14px">How will the government close the gap?</div>
+        <div class="steppick" id="aMode">
+          <button class="lvl" data-m="full">Full state provision</button>
+          <button class="lvl" data-m="top">Top-up: state provides OY − OX</button>
+        </div>
+        <div class="gi-res" id="aRes"></div>
+        <div class="gi-say" id="aSay"></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Part B · Maximum and minimum prices (coursebook section 12.3)</div>
+    <div class="sub-p">Switch between a <b>maximum price</b> on diesel and a <b>minimum price</b> for rice. Drag the orange line on the diagram, or use the slider. Figures are illustrative.</div>
+    <div class="gi-goals" id="goalsB"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft" id="bTitle">The market for diesel</div><div id="figB"></div>
+        <div class="gi-legend"><span><i style="background:#D63864"></i>Demand</span><span><i style="background:#008BCC"></i>Supply</span><span><i style="background:#FF8F1C"></i>Price control</span><span><i style="background:#6B4E9E;height:6px"></i>Shortage / surplus</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="steppick" id="bMode" style="margin-top:0">
+          <button class="lvl active" data-m="max">Maximum price · diesel</button>
+          <button class="lvl" data-m="min">Minimum price · rice</button>
+        </div>
+        <div class="gi-name"><span id="bLbl">Maximum price</span> <em id="bPv"></em></div>
+        <input type="range" class="gi-sl" id="bP" min="2" max="18" step="0.25" value="13" aria-label="Controlled price">
+        <div class="gi-ends"><span>Low</span><span>High</span></div>
+        <div class="gi-res" id="bRes"></div>
+        <div class="gi-say" id="bSay"></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Check your understanding</div>
+    <div id="labQ"></div>
+    <div class="done-banner" id="labDone"></div>
+  </div>
+
+  <!-- ============ TAB 4 · ANALYSIS & EVALUATION ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Analysis and evaluation</div>
+      <h1>Build the chain, then test the claim</h1>
+      <p>Part A: analysis marks come from <b>linked</b> steps. Click the steps of each chain in causal order. Part B: evaluation marks come from judging whether a claim is always true. Decide <b>Agree</b>, <b>Disagree</b> or <b>It depends</b>, then read the reasoning and the evaluation line you could use in an essay.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Analysis chains</div>
+    <div id="chainHost"></div>
+    <div class="sub-h">Part B · Agree, disagree or it depends? <span class="score" id="judgeScore" style="font-size:13px"></span></div>
+    <div class="sub-p">Six claims you could meet in a 12-mark question. Two come straight from the coursebook. Watch for <b>always</b>, <b>only</b> and <b>should</b>.</div>
+    <div id="judgeHost"></div>
+    <div class="done-banner" id="chainDone"></div>
+  </div>
+
+  <!-- ============ TAB 5 · WRITE IT UP ============ -->
+  <div class="panel" id="panel-write">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Paper 2 style</div>
+      <h1>Turn the reasons into written analysis and evaluation</h1>
+      <p>Two written tasks: an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis) and a 12-mark <b>discuss</b> answer (which also needs AO3 — evaluation). Type your answer first, then compare it with the model. Nothing you type is stored.</p>
+      <p>Full command-word guidance is on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">With the help of a diagram, explain why healthcare may be under-provided by the free market and how a government could correct this. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Plan before you write. Define a merit good, give the <b>two</b> reasons it is under-consumed (information failure and ability to pay), use Figure 12.2 to show OX and OY, then explain the government’s two options. Activity 3, Part A is the model to copy.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:160px" placeholder="A merit good is..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> Healthcare is a merit good: a good that is more beneficial to consumers than they realise. In a free market it is under-consumed for two reasons. First, there is <b>information failure</b>: people underestimate the benefits of check-ups, vaccinations and early treatment, so their demand is lower than it would be with full information. Second, private providers charge a price, so access is restricted to those who can afford it. On the diagram, the private market settles where demand meets supply, at quantity OX and price P. The government judges that OY is needed to meet the needs of the population, shown by the vertical supply line S<sub>govt</sub>. The gap OY − OX is under-provision: too few resources are allocated to healthcare, which is a market failure. The government could correct this in two ways. It could take over provision entirely and supply OY itself, free at the point of use and funded from taxation. Alternatively, it could let private hospitals continue to supply OX to those who can pay P, and provide only the difference, OY − OX, for those who cannot afford private fees — the approach behind Thailand’s Universal Coverage Scheme alongside private hospitals. The second option is cheaper, which matters because every baht spent on healthcare has an opportunity cost.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> it defines the term, gives two distinct causes rather than one, labels the diagram in the text (OX, OY, P, S<sub>govt</sub>), names the gap as a misallocation of resources, and explains <b>both</b> corrections with a real example.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 7 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
+        <div class="q-name">Discuss whether governments should set minimum prices for agricultural products such as rice. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
+      <div class="q-stem">A 12-mark <b>discuss</b> question needs two-sided analysis and a supported judgement. Plan it in note form — four or five bullet points — then compare with the model plan. Use Chain B from activity 4 and Part B of the Diagram Lab. Thailand’s 2011–14 rice scheme is ideal evidence.</div>
+      <div class="write-lbl">Your plan</div>
+      <textarea class="write-box" id="w2" style="min-height:140px" placeholder="Case FOR a minimum price: ...&#10;Case AGAINST: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="w2btn">Compare with a model plan</button>
+      <div class="model" id="w2model">
+        <b>Model plan.</b><br>
+        <b>1 · Case for.</b> Rice supply depends on the monsoon, and demand is price inelastic, so a good harvest causes a large fall in price. Farmers’ incomes are therefore unpredictable. A minimum price set above the equilibrium protects incomes, encourages farmers to keep planting and makes future food supplies more secure, with less need to buy on the world market (coursebook 12.3). Many low-income rural households depend on rice, so there is also an <b>equity</b> argument (Key Concept: equality and equity).<br>
+        <b>2 · Case against.</b> Consumers pay a higher price for a staple food, which hits low-income urban households hardest. At the higher price, quantity demanded falls while farmers extend supply, so there is a surplus that the government must buy and store — a large cost with an opportunity cost. Resources stay in rice that could be used elsewhere: an inefficient allocation. Evidence: in 2011–14 Thailand paid farmers well above the market price; huge stockpiles built up, the scheme made very large losses, and Thailand lost its place as the world’s largest rice exporter.<br>
+        <b>3 · It depends on.</b> How far above equilibrium the floor is set; how price elastic demand and supply are; whether the government can afford to buy the surplus; whether the problem is <b>unstable</b> incomes (a floor helps) or persistently <b>low</b> incomes (direct support may target better); short run versus long run.<br>
+        <b>4 · Judgement.</b> A minimum price is justified as a safety net set only slightly above the long-run average price, because it stabilises incomes and food supply at a manageable cost. A high floor held for years, as in 2011–14, costs more than it achieves; direct income support for poor farmers meets the equity aim without creating a surplus.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> both sides are analysed as chains, not lists; the evidence is specific; the “it depends” points lead straight into the judgement, which says <b>when</b> a minimum price is worth it.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 12-mark plan</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w2checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w2bv">0 of 6 ticked</div>
+        <div class="bar"><i id="w2bar"></i></div>
+        <div class="bd" id="w2bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+    <div class="done-banner" id="writeDone">✓ Both written tasks attempted. Redraft whichever one has the most unticked boxes, then try writing the 12-mark answer in full in 20 minutes.</div>
+  </div>
+
+  <!-- ============ TAB 6 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Questions 1–5 are the coursebook’s own end-of-chapter questions. Questions 6–9 test the same ideas in Paper 1 wording. Read the explanation after every answer, including the ones you get right.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone"></div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 3.1 · Coursebook Chapter 12</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 6 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('3.1', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,cases:false,lab:false,chain:false,write:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 3.1 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+const F='font-family="Lato,sans-serif"';
+
+/* Shared MCQ card builder (same markup as 1.6 / 2.5) */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+
+/* ================= TAB 1 — KEY TERMS (match) ================= */
+const TERMS=[
+ {id:'t1', term:'Market failure',      def:'An inefficient allocation of goods and services: the free market does not make the best use of scarce resources.'},
+ {id:'t2', term:'Public good',         def:'Consumed collectively: non-excludable and non-rival, so it is not provided at all by the free market.'},
+ {id:'t3', term:'Free-rider problem',  def:'People can enjoy the use of a good without contributing towards its cost.'},
+ {id:'t4', term:'Merit good',          def:'More beneficial to consumers than they realise, so it is under-consumed in a free market.'},
+ {id:'t5', term:'Demerit good',        def:'Undesirable for consumers, but over-provided and over-consumed in a free market.'},
+ {id:'t6', term:'Information failure', def:'Consumers lack full and proper information, so their choices do not reflect the true benefits or harms.'},
+ {id:'t7', term:'Maximum price',       def:'A legal price ceiling: sellers cannot charge more. To have any effect it must be set below the equilibrium price.'},
+ {id:'t8', term:'Minimum price',       def:'A price floor: the price cannot fall below it. To have any effect it must be set above the equilibrium price.'},
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); mark('terms'); }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* ================= TAB 2 — POLICY DESK ================= */
+const REASONS=[
+ {id:'pub',     name:'Public good not provided',   desc:'Non-excludable and non-rival', color:'#008BCC'},
+ {id:'merit',   name:'Merit good under-consumed',  desc:'Benefits underestimated',       color:'#6B4E9E'},
+ {id:'demerit', name:'Demerit good over-consumed', desc:'Harm underestimated',           color:'#D63864'},
+ {id:'price',   name:'Controlling prices',          desc:'Maximum or minimum price',      color:'#FF8F1C'},
+];
+const CASES=[
+ {id:'c1', src:'th', where:'Thailand', tag:'Chao Phraya flood walls', reason:'pub',
+  title:'Flood walls along the Chao Phraya',
+  text:'After the 2011 floods swamped homes and closed factories in Ayutthaya, Pathum Thani and Nonthaburi, residents asked why no private company would build higher flood walls along the river. The government built them instead.',
+  q:'Why will no private firm build the walls?',
+  opts:['Every household behind the wall is protected whether it pays or not, so a firm cannot charge — the free-rider problem','Residents underestimate how much the walls would benefit them','The walls would be over-consumed if they were free'], ans:0,
+  fb:'Flood walls are a <b>public good</b>: no household behind the wall can be excluded, and protecting one more house does not reduce protection for the others. Every household has an incentive to free ride, so a firm cannot earn revenue and the market is <b>missing altogether</b>. The government funds the walls from tax revenue — with an <b>opportunity cost</b>, because that money could have built schools or hospitals.',
+  exam:'“Because flood defences are non-excludable, people can free ride, so no firm can earn revenue from them and the free market fails to provide them at all.”'},
+ {id:'c2', src:'th', where:'Thailand', tag:'Andaman tsunami sirens', reason:'pub',
+  title:'Tsunami warning towers on the Andaman coast',
+  text:'After the 2004 tsunami, warning towers were built along the coasts of Phuket, Phang Nga and Krabi. One siren warns every resident, worker and tourist on the beach at the same moment.',
+  q:'Why does the government, not the market, provide the towers?',
+  opts:['Tourists lack information about tsunamis, so they under-consume warnings','No one on the beach can be stopped from hearing the siren, and one more listener takes nothing from anyone else — so no one can be charged','The price of a siren is too unstable for firms to supply it'], ans:1,
+  fb:'A warning siren is <b>non-excludable</b> and <b>non-rival</b> — a textbook public good, just like the coursebook’s lighthouse. Use an example this clean in an exam answer: it matches both characteristics exactly.',
+  exam:'“A tsunami siren is non-rival and non-excludable, so the free-rider problem means it would not be provided by the free market.”'},
+ {id:'c3', src:'th', where:'Thailand', tag:'Universal Coverage Scheme', reason:'merit',
+  title:'Healthcare for all: the Universal Coverage Scheme',
+  text:'Since 2002, Thailand’s Universal Coverage Scheme — first known as the “30-baht scheme” — has given millions of people hospital and clinic treatment at little or no charge. Private hospitals still operate alongside it.',
+  q:'Why would healthcare be under-consumed without the scheme?',
+  opts:['Doctors cannot stop non-payers from being treated, so no private hospital would open','People overestimate the benefits of healthcare, so they demand too much of it','People underestimate the benefits of check-ups and early treatment, and many on low incomes cannot afford private fees'], ans:2,
+  fb:'Healthcare is a <b>merit good</b>, not a public good: a doctor’s time is rival and private hospitals do exclude patients who cannot pay. Without intervention, information failure and the price charged mean the private sector supplies <b>OX</b>, not the <b>OY</b> the government thinks is needed. Explore this in the Diagram Lab, Part A (coursebook Figure 12.2).',
+  exam:'“Because of information failure, consumers underestimate the benefits of healthcare, so a free market under-provides it and too few resources are allocated to it.”'},
+ {id:'c4', src:'cb', where:'Coursebook · Pakistan', tag:'Pakistan immunisation', reason:'merit',
+  title:'Pakistan’s immunisation programme',
+  text:'Pakistan still struggles to contain polio and other preventable diseases because its immunisation programme is not effective. The government plans to widen free preventative healthcare, especially in rural areas.',
+  q:'What is the market failure here?',
+  opts:['Parents underestimate how much vaccination protects their children, so too few children are vaccinated','Vaccines are non-rival, so the private sector cannot charge for them','Vaccinations are over-consumed because they are cheap'], ans:0,
+  fb:'Vaccination is a <b>merit good</b> under-consumed because of information failure. The coursebook’s ‘Think like an economist’ case shows that the hard part is funding: with a limited tax base, every rupee spent on immunisation has an opportunity cost.',
+  exam:'“The benefits of vaccination are underestimated, so demand is below the socially desirable level; the government may provide it free, but must fund it from a limited tax base.”'},
+ {id:'c5', src:'th', where:'Thailand', tag:'Sugar tax on drinks', reason:'demerit',
+  title:'A tax on sugary drinks',
+  text:'Since 2017, Thailand has taxed sweetened drinks according to how much sugar they contain, with the rate rising in stages. Many brands cut the sugar in their recipes to pay less tax.',
+  q:'Why does the market get sugary drinks wrong?',
+  opts:['Bubble tea is non-excludable, so shops cannot charge for it','Consumers underestimate the long-term harm of high sugar intake, so too much is consumed','Firms cannot make a profit from selling drinks'], ans:1,
+  fb:'Sugary drinks are a <b>demerit good</b>. Consumers underestimate the harm to their health (information failure), so demand and consumption are higher than they would be with full information. Coursebook Activity 12.2 asks you to compare how governments restrict unhealthy food and drink — this is Thailand’s answer.',
+  exam:'“Consumers underestimate the harm of sugary drinks, so the free market over-provides them and too many resources are allocated to their production.”'},
+ {id:'c6', src:'th', where:'Thailand', tag:'Smoking bans & warnings', reason:'demerit',
+  title:'Smoking bans and graphic warnings',
+  text:'Thailand bans smoking in many public places, including some of its most popular beaches, and requires large graphic health warnings on cigarette packets. These measures cut tobacco sales — and tobacco tax revenue.',
+  q:'Why does the government intervene even though it loses tax revenue?',
+  opts:['To raise more tax revenue from tobacco','Because cigarettes are public goods','Smokers lack full information about the harm, so cigarettes are over-consumed; a healthier population is more productive and costs less to treat'], ans:2,
+  fb:'The coursebook gives three reasons governments restrict smoking: to protect health and well-being, to promote a <b>more productive workforce</b>, and to <b>save on healthcare spending</b>. These have tended to matter more than the <b>loss</b> of tax revenue — which is why “to raise more tax” is the trap answer.',
+  exam:'“The government accepts lower tobacco tax revenue because the gains — better health, higher productivity and lower healthcare costs — are judged to be greater.”'},
+ {id:'c7', src:'th', where:'Thailand', tag:'Rice price guarantee', reason:'price',
+  title:'A guaranteed price for rice',
+  text:'Rice prices swing with the monsoon and the world market. Between 2011 and 2014 the Thai government guaranteed farmers a price for their rice well above the market price.',
+  q:'What was the government trying to achieve?',
+  opts:['To protect low-income consumers from high rice prices','To protect farmers’ incomes from unpredictable prices and safeguard future food supplies','To reduce over-consumption of rice'], ans:1,
+  fb:'This is a <b>minimum price</b> (price floor), set above the equilibrium. It protects farmers’ incomes and makes future food supplies more secure. The downside: consumers pay more, a smaller quantity is bought, and the government may be left holding a surplus. Thailand’s scheme built up huge, costly stockpiles — evidence you can use in the 12-mark question in activity 5.',
+  exam:'“A minimum price above equilibrium raises and stabilises farmers’ incomes, but at the cost of higher prices for consumers and a surplus the government may have to buy.”'},
+ {id:'c8', src:'th', where:'Thailand', tag:'Diesel price cap', reason:'price',
+  title:'Holding down the price of diesel',
+  text:'When world oil prices jumped in 2022, the Thai government used the state Oil Fuel Fund to hold the pump price of diesel below the level the market would have set.',
+  q:'Why hold the price down?',
+  opts:['To protect households and firms — truck drivers, farmers, low-income families — from a sharp rise in the price of something they rely on','To raise the incomes of oil refiners','Because diesel is non-excludable'], ans:0,
+  fb:'The reason is the same as for a <b>maximum price</b>: to protect people on low incomes from the price of an essential. Strictly, Thailand used a subsidy from the fund rather than a legal ceiling — methods are Topic 3.2. Like rent controls in the coursebook, a maximum price only has an effect if it is set <b>below</b> the equilibrium price.',
+  exam:'“A maximum price below equilibrium keeps an essential affordable for low-income households, but may cause a shortage.”'},
+];
+let casePlaced=[], casePts=0, caseStep1Right=0;
+function buildCases(){
+  const host=document.getElementById('caseList'); host.innerHTML='';
+  casePlaced=[]; casePts=0; caseStep1Right=0; updTally();
+  document.getElementById('casesDone').classList.remove('show');
+  shuffle(CASES.map((_,i)=>i)).forEach((ci,pos)=>{
+    const d=CASES[ci];
+    const c=document.createElement('div'); c.className='q-card gi-case';
+    c.innerHTML=
+      '<span class="gi-stamp '+d.src+'">Case '+String(pos+1).padStart(2,'0')+' · '+d.where+'</span>'+
+      '<div class="q-name" style="margin-bottom:6px">'+d.title+'</div>'+
+      '<div class="q-stem">'+d.text+'</div>'+
+      '<div class="write-lbl">STEP 1 — Which reason does the government have for intervening?</div>'+
+      '<div class="steppick s1">'+REASONS.map(r=>'<button class="lvl" data-v="'+r.id+'">'+r.name+'</button>').join('')+'</div>'+
+      '<div class="s2 hidden"><div class="write-lbl">STEP 2 — '+d.q+'</div>'+
+        '<div class="opts">'+d.opts.map((o,i)=>'<div class="opt" data-i="'+i+'"><span class="lt">'+'ABC'[i]+'</span><span>'+o+'</span></div>').join('')+'</div></div>'+
+      '<div class="reveal"></div>';
+    host.appendChild(c);
+    let r1=null;
+    c.querySelectorAll('.s1 .lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(r1!==null) return;
+      r1=b.dataset.v;
+      c.querySelectorAll('.s1 .lvl').forEach(x=>{ x.disabled=true; if(x.dataset.v===d.reason) x.classList.add('gi-ok'); });
+      if(r1!==d.reason) b.classList.add('gi-no'); else caseStep1Right++;
+      c.querySelector('.s2').classList.remove('hidden');
+    }));
+    let r2=null;
+    c.querySelectorAll('.s2 .opt').forEach(o=>o.addEventListener('click',()=>{
+      if(r2!==null) return;
+      r2=Number(o.dataset.i);
+      c.querySelectorAll('.s2 .opt').forEach((el,i)=>{ el.classList.add('locked'); if(i===d.ans) el.classList.add('right'); });
+      if(r2!==d.ans) o.classList.add('wrongpick');
+      const ok1=r1===d.reason, ok2=r2===d.ans, pts=(ok1?1:0)+(ok2?1:0);
+      casePts+=pts;
+      const reason=REASONS.find(x=>x.id===d.reason);
+      const verdict=pts===2?'good':(pts===1?'both':'bad');
+      const vlabel=pts===2?'Case closed (+2)':(pts===1?(ok1?'Right reason, wrong cause (+1)':'Right cause, wrong reason (+1)'):'Neither step right');
+      const rev=c.querySelector('.reveal');
+      rev.innerHTML='<span class="verdict v-'+verdict+'">'+vlabel+'</span><br><strong>Filed under: '+reason.name+'.</strong> '+d.fb+'<div class="exam-line"><b>Exam line:</b> '+d.exam+'</div>';
+      rev.classList.add('show');
+      casePlaced.push({reason:d.reason, tag:d.tag, cls:pts===2?'g':(pts===1?'a':'r')});
+      drawBoard(); updTally();
+      if(casePlaced.length===CASES.length){
+        const b=document.getElementById('casesDone');
+        b.innerHTML='✓ All eight cases closed — '+casePts+' / 16 points. Look at the board: the first three reasons are all <b>market failure</b>. The fourth is different: price controls are about protecting incomes (of consumers or of producers), and they can create new problems of their own.';
+        b.classList.add('show');
+        trk('Policy Desk: 8 cases', casePts+'/16 points'); mark('cases');
+      }
+    }));
+  });
+  drawBoard();
+}
+function updTally(){
+  const n=casePlaced.length;
+  document.getElementById('ctDone').textContent=n+' / '+CASES.length;
+  document.getElementById('ctPts').textContent=casePts;
+  document.getElementById('ctAcc').textContent=n?Math.round(caseStep1Right/n*100)+'%':'–';
+}
+function drawBoard(){
+  document.getElementById('caseBoard').innerHTML=REASONS.map(r=>
+    '<div class="gi-col" style="border-top-color:'+r.color+'"><div class="h">'+r.name+'</div><div class="s">'+r.desc+'</div>'+
+    casePlaced.filter(p=>p.reason===r.id).map(p=>'<span class="gi-chip '+p.cls+'">'+p.tag+'</span>').join('')+'</div>').join('');
+}
+buildCases();
+
+/* ================= TAB 3 — DIAGRAM LAB ================= */
+const W=520, H=340, PL=58, PR=26, PT=20, PB=50;
+function axesSVG(xName, yName){
+  return '<line x1="'+PL+'" y1="'+PT+'" x2="'+PL+'" y2="'+(H-PB)+'" stroke="#1A2B3C" stroke-width="1.6"/>'+
+    '<line x1="'+PL+'" y1="'+(H-PB)+'" x2="'+(W-PR)+'" y2="'+(H-PB)+'" stroke="#1A2B3C" stroke-width="1.6"/>'+
+    '<text x="'+(PL-10)+'" y="'+(H-PB+16)+'" font-size="12" text-anchor="end" fill="#1A2B3C" '+F+'>O</text>'+
+    '<text x="'+((PL+W-PR)/2)+'" y="'+(H-6)+'" font-size="12" text-anchor="middle" fill="#456080" '+F+'>'+xName+'</text>'+
+    '<text x="16" y="'+((PT+H-PB)/2)+'" font-size="12" text-anchor="middle" fill="#456080" transform="rotate(-90 16 '+((PT+H-PB)/2)+')" '+F+'>'+yName+'</text>';
+}
+function lbl(x,y,t,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" font-size="'+(o.s||12)+'" text-anchor="'+(o.a||'middle')+'" fill="'+(o.c||'#1A2B3C')+'" font-weight="'+(o.w||700)+'" '+F+'>'+t+'</text>'; }
+
+/* ---------- Part A: Figure 12.2 ---------- */
+/* Model: Q 0..100, P 0..100.  D: P = 90 − 0.8Q   S: P = 10 + 1.2Q  → X = 40, P = 58 */
+const A={xq:q=>PL+(W-PL-PR)*q/100, yp:p=>H-PB-(H-PT-PB)*p/100, X:40, P:58, cost:0.6 /* ฿bn per million visits (฿600 a visit) */};
+let aMode=null; const aTried={full:false,top:false};
+function drawA(){
+  const Y=Number(document.getElementById('aY').value), x=A.xq, y=A.yp, X=A.X;
+  const dP=q=>90-0.8*q;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Merit good diagram: private market at X, government target at Y">';
+  /* under-provision shading under demand between X and Y */
+  s+='<polygon points="'+x(X)+','+y(0)+' '+x(X)+','+y(dP(X))+' '+x(Y)+','+y(dP(Y))+' '+x(Y)+','+y(0)+'" fill="rgba(255,143,28,.22)"/>';
+  s+=axesSVG('Quantity (million patient visits a year)','Price (฿ per visit)');
+  /* curves */
+  const sFade=aMode==='full'?' stroke-opacity=".3"':'';
+  s+='<line x1="'+x(0)+'" y1="'+y(10)+'" x2="'+x(70)+'" y2="'+y(94)+'" stroke="#008BCC" stroke-width="2.6"'+sFade+'/>';
+  s+=lbl(x(70)-8,y(94)+2,'S',{c:'#008BCC',a:'end'});
+  s+='<line x1="'+x(0)+'" y1="'+y(90)+'" x2="'+x(100)+'" y2="'+y(10)+'" stroke="#D63864" stroke-width="2.6"/>';
+  s+=lbl(x(98),y(10)-9,'D',{c:'#D63864'});
+  s+='<line x1="'+x(Y)+'" y1="'+y(0)+'" x2="'+x(Y)+'" y2="'+y(96)+'" stroke="#002F6C" stroke-width="2.6"/>';
+  s+=lbl(x(Y)+6,y(82),'S<tspan font-size="9" dy="3">govt</tspan>',{c:'#002F6C',a:'start'});
+  /* equilibrium guides */
+  s+='<line x1="'+x(0)+'" y1="'+y(A.P)+'" x2="'+x(X)+'" y2="'+y(A.P)+'" stroke="#8098B0" stroke-dasharray="4 4"/>';
+  s+='<line x1="'+x(X)+'" y1="'+y(A.P)+'" x2="'+x(X)+'" y2="'+y(0)+'" stroke="#8098B0" stroke-dasharray="4 4"/>';
+  s+='<circle cx="'+x(X)+'" cy="'+y(A.P)+'" r="4.5" fill="#002F6C"/>';
+  s+=lbl(PL-8,y(A.P)+4,'P',{a:'end'});
+  s+=lbl(x(X),y(0)+16,'X'); s+=lbl(x(Y),y(0)+16,'Y',{c:'#002F6C'});
+  if(Y-X>=12) s+=lbl((x(X)+x(Y))/2,y(dP((X+Y)/2)/2)+4,'OY − OX',{c:'#7A3D00',s:11});
+  s+='</svg>';
+  document.getElementById('figA').innerHTML=s;
+  document.getElementById('aYv').textContent=Y+' m visits';
+
+  const gap=Y-X;
+  let res, say;
+  if(!aMode){
+    res='<div><b>'+X+' m</b><span>Private market provides (OX)</span></div>'+
+        '<div><b>'+Y+' m</b><span>Government target (OY)</span></div>'+
+        '<div class="warn wide" style="grid-column:1/-1"><b>'+gap+' m visits</b><span>Under-provision (OY − OX)</span></div>';
+    say='At price <b>P</b> the private sector supplies only <b>OX</b>. Access is limited to people who can afford P, and many people underestimate the benefits of treatment. Choose how the government closes the gap of <b>'+gap+' million</b> visits.';
+  } else {
+    const govQ=aMode==='full'?Y:gap, privQ=aMode==='full'?0:X, bill=govQ*A.cost;
+    res='<div><b>'+privQ+' m</b><span>Private sector provides</span></div>'+
+        '<div><b>'+govQ+' m</b><span>Government provides</span></div>'+
+        '<div class="ok"><b>'+Y+' m</b><span>Total provided (OY)</span></div>'+
+        '<div class="hot"><b>฿'+bill.toFixed(1)+' bn</b><span>Cost to government a year</span></div>';
+    say= aMode==='full'
+      ? '<b>Full state provision.</b> The government takes over and supplies all <b>OY</b> with no private sector involvement. Everyone is covered, but the bill is the whole ฿'+bill.toFixed(1)+' bn — money that cannot also be spent on schools, roads or flood defences.'
+      : '<b>Top-up provision.</b> Private hospitals still supply <b>OX</b> to those who can pay P; the government provides only <b>OY − OX</b> for those who cannot. Same total, but the bill is ฿'+bill.toFixed(1)+' bn instead of ฿'+(Y*A.cost).toFixed(1)+' bn. This is the coursebook’s “less expensive option”.';
+  }
+  document.getElementById('aRes').innerHTML=res;
+  document.getElementById('aSay').innerHTML=say+' <span style="color:var(--text-3)">(Illustrative cost: ฿600 a visit.)</span>';
+}
+document.getElementById('aY').addEventListener('input',drawA);
+document.querySelectorAll('#aMode .lvl').forEach(b=>b.addEventListener('click',()=>{
+  aMode=b.dataset.m;
+  document.querySelectorAll('#aMode .lvl').forEach(x=>x.classList.toggle('active',x===b));
+  aTried[aMode]=true; drawA(); goals();
+}));
+
+/* ---------- Part B: maximum and minimum prices ---------- */
+/* Model: Q 0..100, P 0..20.  D: P = 20 − 0.2Q   S: P = 0.2Q  → equilibrium Q = 50, P = 10 */
+const B={xq:q=>PL+(W-PL-PR)*q/100, yp:p=>H-PB-(H-PT-PB)*p/20, PE:10, QE:50};
+const BMODE={
+ max:{title:'The market for diesel', good:'diesel', ctrl:'Maximum price', line:'Max price',
+      fp:p=>'฿'+(p*3.6).toFixed(1), unitP:'per litre', fq:q=>(q*1.3).toFixed(0)+' m litres', yName:'Price (฿ per litre)', xName:'Quantity (million litres a day)', start:13},
+ min:{title:'The market for rice', good:'rice', ctrl:'Minimum price', line:'Min price',
+      fp:p=>'฿'+Math.round(p*1200).toLocaleString(), unitP:'per tonne', fq:q=>(q*0.6).toFixed(0)+' m tonnes', yName:'Price (฿ per tonne)', xName:'Quantity (million tonnes a year)', start:7}
+};
+let bMode='max'; const bGoals={maxNo:false,maxYes:false,minNo:false,minYes:false};
+function drawB(rec){
+  const m=BMODE[bMode], Pc=Number(document.getElementById('bP').value), x=B.xq, y=B.yp;
+  const Qd=100-5*Pc, Qs=5*Pc;
+  const eff = bMode==='max' ? Pc<B.PE : Pc>B.PE;
+  const price = eff?Pc:B.PE;
+  const traded = eff ? (bMode==='max'?Qs:Qd) : B.QE;
+  const gap = eff ? Math.abs(Qd-Qs) : 0;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" id="svgB" role="img" aria-label="'+m.title+' with a '+m.ctrl.toLowerCase()+'">';
+  s+=axesSVG(m.xName,m.yName);
+  s+='<line x1="'+x(0)+'" y1="'+y(20)+'" x2="'+x(100)+'" y2="'+y(0)+'" stroke="#D63864" stroke-width="2.6"/>';
+  s+=lbl(x(96),y(0.8)-8,'D',{c:'#D63864'});
+  s+='<line x1="'+x(0)+'" y1="'+y(0)+'" x2="'+x(98)+'" y2="'+y(19.6)+'" stroke="#008BCC" stroke-width="2.6"/>';
+  s+=lbl(x(98)+4,y(19.6)+4,'S',{c:'#008BCC',a:'start'});
+  /* equilibrium */
+  s+='<line x1="'+x(0)+'" y1="'+y(B.PE)+'" x2="'+x(B.QE)+'" y2="'+y(B.PE)+'" stroke="#8098B0" stroke-dasharray="4 4"/>';
+  s+='<line x1="'+x(B.QE)+'" y1="'+y(B.PE)+'" x2="'+x(B.QE)+'" y2="'+y(0)+'" stroke="#8098B0" stroke-dasharray="4 4"/>';
+  s+='<circle cx="'+x(B.QE)+'" cy="'+y(B.PE)+'" r="4.5" fill="#002F6C"/>';
+  s+=lbl(PL-6,y(B.PE)+4,'Pe',{a:'end',s:11});
+  s+=lbl(x(B.QE),y(0)+16,'Qe',{s:11});
+  /* shortage / surplus */
+  if(eff){
+    const q1=Math.min(Qd,Qs), q2=Math.max(Qd,Qs);
+    s+='<line x1="'+x(q1)+'" y1="'+y(Pc)+'" x2="'+x(q1)+'" y2="'+y(0)+'" stroke="#6B4E9E" stroke-dasharray="3 3"/>';
+    s+='<line x1="'+x(q2)+'" y1="'+y(Pc)+'" x2="'+x(q2)+'" y2="'+y(0)+'" stroke="#6B4E9E" stroke-dasharray="3 3"/>';
+    s+='<line x1="'+x(q1)+'" y1="'+y(Pc)+'" x2="'+x(q2)+'" y2="'+y(Pc)+'" stroke="#6B4E9E" stroke-width="7" stroke-opacity=".55"/>';
+    const lo = bMode==='max' ? ['Qs','Qd'] : ['Qd','Qs'];
+    s+=lbl(x(q1),y(0)+30,lo[0],{c:'#6B4E9E',s:11}); s+=lbl(x(q2),y(0)+30,lo[1],{c:'#6B4E9E',s:11});
+    s+=lbl((x(q1)+x(q2))/2, y(Pc)+(bMode==='max'?20:-12), bMode==='max'?'Shortage':'Surplus',{c:'#3E2A66',s:12});
+  }
+  /* the control line + draggable handle */
+  s+='<line x1="'+x(0)+'" y1="'+y(Pc)+'" x2="'+(W-PR)+'" y2="'+y(Pc)+'" stroke="#FF8F1C" stroke-width="3"'+(eff?'':' stroke-dasharray="8 5"')+'/>';
+  s+=lbl(x(2),y(Pc)-7,m.line,{c:'#7A3D00',a:'start',s:11.5});
+  s+='<rect x="'+x(0)+'" y="'+(y(Pc)-14)+'" width="'+(W-PR-x(0))+'" height="28" fill="transparent" class="gi-handle" data-h="1"/>';
+  s+='<circle cx="'+(W-PR-10)+'" cy="'+y(Pc)+'" r="11" fill="#FF8F1C" stroke="#fff" stroke-width="3" class="gi-handle" data-h="1"/>';
+  s+='<text x="'+(W-PR-10)+'" y="'+(y(Pc)+4)+'" font-size="11" text-anchor="middle" fill="#fff" font-weight="900" pointer-events="none" '+F+'>↕</text>';
+  s+='</svg>';
+  document.getElementById('figB').innerHTML=s;
+  document.getElementById('bTitle').textContent=m.title;
+  document.getElementById('bLbl').textContent=m.ctrl;
+  document.getElementById('bPv').textContent=m.fp(Pc)+' '+m.unitP;
+
+  document.getElementById('bRes').innerHTML=
+    '<div class="'+(eff?'ok':'warn')+'"><b>'+(eff?'Effective':'No effect')+'</b><span>Is the control binding?</span></div>'+
+    '<div><b>'+m.fp(price)+'</b><span>Price actually paid</span></div>'+
+    '<div><b>'+m.fq(traded)+'</b><span>Quantity bought</span></div>'+
+    '<div class="hot"><b>'+(eff?m.fq(gap):'None')+'</b><span>'+(bMode==='max'?'Shortage (Qd − Qs)':'Surplus (Qs − Qd)')+'</span></div>';
+  let say;
+  if(bMode==='max'){
+    say = eff
+      ? 'The ceiling of <b>'+m.fp(Pc)+'</b> is below the equilibrium of '+m.fp(B.PE)+', so it binds. Drivers who can buy diesel pay less — the aim of protecting low incomes is met for them. But sellers offer less and buyers want more: a <b>shortage</b>. Who gets the scarce diesel? Topic 3.2 picks this up.'
+      : 'A ceiling of <b>'+m.fp(Pc)+'</b> is at or above the equilibrium of '+m.fp(B.PE)+'. The market price is already lower, so the ceiling changes nothing. <b>To be effective a maximum price must be below the equilibrium price.</b>';
+  } else {
+    say = eff
+      ? 'The floor of <b>'+m.fp(Pc)+'</b> is above the equilibrium of '+m.fp(B.PE)+', so it binds. Farmers who sell receive more and their income is more secure. But consumers pay more and buy less, while farmers grow more: a <b>surplus</b>. Unless the government buys it, some rice goes unsold — the problem Thailand faced in 2011–14.'
+      : 'A floor of <b>'+m.fp(Pc)+'</b> is at or below the equilibrium of '+m.fp(B.PE)+'. The market price is already higher, so the floor changes nothing. <b>To have an effect a minimum price must be above the equilibrium price.</b>';
+  }
+  document.getElementById('bSay').innerHTML=say;
+  if(rec){
+    if(bMode==='max'){ if(eff) bGoals.maxYes=true; else bGoals.maxNo=true; }
+    else { if(eff) bGoals.minYes=true; else bGoals.minNo=true; }
+  }
+  goals();
+  bindDrag();
+}
+document.getElementById('bP').addEventListener('input',()=>drawB(true));
+document.querySelectorAll('#bMode .lvl').forEach(b=>b.addEventListener('click',()=>{
+  bMode=b.dataset.m;
+  document.querySelectorAll('#bMode .lvl').forEach(x=>x.classList.toggle('active',x===b));
+  document.getElementById('bP').value=BMODE[bMode].start;
+  drawB(false);
+}));
+/* drag the control line on the diagram (pointer events: mouse, touch, stylus) */
+let bDragging=false;
+function bindDrag(){
+  const svg=document.getElementById('svgB');
+  svg.querySelectorAll('[data-h]').forEach(h=>h.addEventListener('pointerdown',e=>{ bDragging=true; e.preventDefault(); }));
+}
+function pFromEvent(e){
+  const svg=document.getElementById('svgB'); if(!svg) return null;
+  const r=svg.getBoundingClientRect();
+  const sy=(e.clientY-r.top)*(H/r.height);
+  const p=(H-PB-sy)/(H-PT-PB)*20;
+  return Math.max(2,Math.min(18,Math.round(p*4)/4));
+}
+window.addEventListener('pointermove',e=>{
+  if(!bDragging) return;
+  const p=pFromEvent(e); if(p===null) return;
+  const sl=document.getElementById('bP');
+  if(Number(sl.value)!==p){ sl.value=p; drawB(true); }
+});
+window.addEventListener('pointerup',()=>{ bDragging=false; });
+window.addEventListener('pointercancel',()=>{ bDragging=false; });
+
+/* targets */
+const GOALS_A=[{k:'full',t:'Try full state provision'},{k:'top',t:'Try top-up provision'}];
+const GOALS_B=[{k:'maxNo',t:'A maximum price with no effect'},{k:'maxYes',t:'An effective maximum price'},{k:'minNo',t:'A minimum price with no effect'},{k:'minYes',t:'An effective minimum price'}];
+let labQDone=false, labQRight=0;
+function goals(){
+  document.getElementById('goalsA').innerHTML=GOALS_A.map(g=>'<span class="gi-goal'+(aTried[g.k]?' met':'')+'">'+(aTried[g.k]?'✓ ':'○ ')+g.t+'</span>').join('');
+  document.getElementById('goalsB').innerHTML=GOALS_B.map(g=>'<span class="gi-goal'+(bGoals[g.k]?' met':'')+'">'+(bGoals[g.k]?'✓ ':'○ ')+g.t+'</span>').join('');
+  labCheck();
+}
+function labCheck(){
+  const allGoals=aTried.full&&aTried.top&&Object.values(bGoals).every(Boolean);
+  if(allGoals && labQDone && !DONE.lab){
+    const b=document.getElementById('labDone');
+    b.innerHTML='✓ Every target hit and all four questions answered ('+labQRight+'/4 right first time). Two diagrams, one lesson: the government chooses a target the market will not reach on its own — a quantity (OY) or a price (a ceiling or a floor) — and every choice has a cost.';
+    b.classList.add('show');
+    trk('Diagram Lab', 'targets hit; '+labQRight+'/4 check questions'); mark('lab');
+  }
+}
+const LABQ=[
+ {id:'l1', icon:'A', bg:'#6B4E9E', name:'Figure 12.2',
+  stem:'In coursebook Figure 12.2, what does the distance <b>OY − OX</b> show?',
+  opts:['The amount of healthcare that is over-consumed','The quantity of healthcare provided free by the government in every case','The fall in demand when the price rises to P','The under-provision of healthcare: the quantity the government thinks is needed but the private sector does not supply'], ans:3,
+  fb:'OX is what the private market supplies at price P; OY is what the government judges is needed. The gap is under-provision of a merit good.',
+  why:'B is only true for the top-up option. Under full state provision the government supplies the whole of OY.'},
+ {id:'l2', icon:'A', bg:'#6B4E9E', name:'Closing the gap',
+  stem:'Why is top-up provision cheaper for the government than full state provision?',
+  opts:['It reduces the target quantity OY','The government pays only for OY − OX, because people who can afford P still use private providers','Private hospitals are always more efficient than public hospitals','It removes information failure'], ans:1,
+  fb:'The total provided is the same; the government simply does not pay for the part the private sector already supplies.',
+  why:'C is an opinion the coursebook does not make. Cheaper does not mean better: a two-tier system can raise questions of equity and quality.'},
+ {id:'l3', icon:'B', bg:'#FF8F1C', name:'Maximum price',
+  stem:'A government sets a maximum price for diesel <b>above</b> the equilibrium price. What happens?',
+  opts:['A shortage of diesel','A surplus of diesel','Nothing: the market price is already below the ceiling','The price rises to the ceiling'], ans:2,
+  fb:'A ceiling only binds below equilibrium. Above it, the market settles at equilibrium as before.',
+  why:'D is a common slip: a maximum price is a limit, not a target. Nothing pushes the price up to it.'},
+ {id:'l4', icon:'B', bg:'#FF8F1C', name:'Minimum price',
+  stem:'When a minimum price for rice is set above the equilibrium price, which outcome is most likely?',
+  opts:['Farmers sell more rice to consumers','Consumers pay more and buy less, and farmers produce more than consumers buy','The price falls back to equilibrium','Rice becomes a merit good'], ans:1,
+  fb:'Quantity demanded falls and quantity supplied extends, so there is a surplus at the floor price.',
+  why:'This is the coursebook’s downside: consumers worse off and a smaller quantity traded. Who buys the surplus is a Topic 3.2 question.'},
+];
+buildCards(document.getElementById('labQ'), LABQ, (right)=>{ labQDone=true; labQRight=right; labCheck(); });
+drawA(); drawB();
+
+/* ================= TAB 4 — ANALYSIS CHAINS + JUDGEMENTS ================= */
+const CHAINS=[
+ {id:'a', icon:'🌊', bg:'#008BCC', name:'Chain A: why the government builds flood defences',
+  steps:['Flood walls protect every household behind them, whether or not it pays',
+         'Each household has an incentive to free ride and leave others to pay',
+         'A private firm cannot collect enough revenue to make a profit',
+         'No firm supplies the walls: a missing market, even though people value the protection',
+         'The government provides the walls, funded from tax revenue',
+         'This has an opportunity cost: the same revenue could have been spent on schools or hospitals'],
+  done:'<h3>From characteristic to cost</h3><p>Step 1 is the characteristic (non-excludable), step 4 is the market failure, step 6 is the bridge to evaluation. An answer that jumps from “public good” to “so the government provides it” skips the steps that earn analysis marks.</p>'},
+ {id:'b', icon:'🌾', bg:'#FF8F1C', name:'Chain B: why a government sets a minimum price for rice',
+  steps:['Rice output depends on the monsoon, so supply changes unpredictably from year to year',
+         'Demand for rice is price inelastic, so a good harvest causes a large fall in price',
+         'Farmers’ incomes become unstable, which threatens future food supplies',
+         'The government sets a minimum price above the equilibrium price',
+         'Farmers’ incomes are protected and future food supplies are more secure',
+         'But consumers pay more and a smaller quantity is bought — a possible inefficient use of resources'],
+  done:'<h3>Elasticity does the work</h3><p>Step 2 brings in PED from Topic 2.2: it explains <b>why</b> prices swing so far, which turns a description into analysis. Step 6 is the counter-argument you will need for evaluation.</p>'}
+];
+const chainSolved={};
+function buildChain(ch){
+  const card=document.getElementById('chain-'+ch.id);
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s:s,i:i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary ch-check">Check chain</button>'+
+      '<button class="btn btn-ghost ch-reset">Reset</button>'+
+      '<span class="score"></span>'+
+    '</div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{
+    seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render();
+  }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{
+    seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render();
+  });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{
+      const ok=Number(el.dataset.idx)===pos;
+      el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+      if(ok) right++;
+    });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved[ch.id]){ chainSolved[ch.id]=true; trk('Chain: '+ch.name, 'correct'); chainCheckDone(); }
+    } else {
+      sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C';
+    }
+  });
+}
+(function(){
+  const host=document.getElementById('chainHost');
+  CHAINS.forEach(ch=>{ const c=document.createElement('div'); c.className='q-card'; c.id='chain-'+ch.id; host.appendChild(c); buildChain(ch); });
+})();
+const JUDGE=[
+ {t:'“When left to the free market, public goods would not be provided.” (coursebook 12.2)', ans:'both',
+  why:'True for <b>pure</b> public goods such as national defence or a tsunami siren: no one can be charged. But where some exclusion is possible, private provision happens — toll expressways, gated-soi street lights (the 1.6 Soi Light Game), even lighthouses that were once funded by charges on ships using nearby ports.',
+  exam:'“The free market will not provide pure public goods, but quasi-public goods can be provided privately if a way can be found to exclude non-payers.”'},
+ {t:'“Information failure is the only reason merit goods are under-consumed.”', ans:'bad',
+  why:'Information failure is the coursebook’s main reason, but Figure 12.2 shows a second: <b>access is restricted to those who can afford to pay</b>. A family may know a check-up is valuable and still not afford it. (At A Level, positive externalities give a third reason.)',
+  exam:'“Merit goods are under-consumed because consumers underestimate their benefits and because low incomes limit access; the right policy depends on which cause matters more.”'},
+ {t:'“Governments should provide merit goods such as healthcare free of charge.”', ans:'both',
+  why:'Free provision tackles both information failure and ability to pay. But it has a large <b>opportunity cost</b>, especially with a limited tax base (the coursebook’s Pakistan case). Top-up provision, information campaigns or subsidies may reach the target more cheaply, and free services can be overcrowded or lower quality.',
+  exam:'“Free provision is most justified where low income is the main barrier; where the problem is mainly information, a cheaper campaign may be more cost-effective.”'},
+ {t:'“A maximum price always makes consumers better off.”', ans:'bad',
+  why:'If it is set above equilibrium it does nothing. If it is set below, consumers who buy pay less — but the shortage means some consumers cannot buy at all, and may face queues or black markets.',
+  exam:'“A maximum price helps the consumers who obtain the good, but not those left without it because of the shortage.”'},
+ {t:'“A minimum price for crops makes farmers better off.”', ans:'both',
+  why:'Farmers who sell at the floor price gain. But at the higher price consumers buy less, so unless the government buys the surplus some farmers cannot sell their crop. Thailand’s 2011–14 scheme shows the cost of buying and storing that surplus.',
+  exam:'“Farmers gain only if the government is willing and able to buy the surplus, which depends on its budget and how far above equilibrium the floor is set.”'},
+ {t:'“Additional funding is the only way education in Sub-Saharan Africa can be improved.” (coursebook Economics in Context)', ans:'bad',
+  why:'Funding matters, but the coursebook names other causes of education exclusion: corruption, conflict and, above all, poverty. Laws making school compulsory, free provision, subsidies for low-income families’ boarding fees (as in Kenya) and policies to raise girls’ enrolment all target different causes.',
+  exam:'“Extra funding is necessary but not sufficient: its effect depends on whether it reaches the causes of exclusion, such as household poverty and the lower enrolment of girls.”'}
+];
+const judgeDone={}; let judgeRight=0;
+(function(){
+  const host=document.getElementById('judgeHost');
+  const LBL={good:'Agree',bad:'Disagree',both:'It depends'};
+  JUDGE.forEach((j,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML='<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(i+1)+'</div><div class="q-name">'+j.t+'</div></div>'+
+      '<div class="choice-row">'+['good','bad','both'].map(v=>'<div class="choice" data-v="'+v+'">'+LBL[v]+'</div>').join('')+'</div>'+
+      '<div class="reveal"></div>';
+    c.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+      if(judgeDone[i]) return;
+      judgeDone[i]=true;
+      const v=ch.dataset.v, ok=v===j.ans;
+      if(ok) judgeRight++;
+      ch.classList.add('sel-'+v);
+      const r=c.querySelector('.reveal');
+      r.innerHTML='<span class="verdict v-'+j.ans+'">'+(ok?'Yes — ':'The best answer: ')+LBL[j.ans]+'</span><br>'+j.why+'<div class="exam-line"><b>Evaluation line:</b> '+j.exam+'</div>';
+      r.classList.add('show');
+      const n=Object.keys(judgeDone).length;
+      document.getElementById('judgeScore').textContent=n+' / '+JUDGE.length+' answered · '+judgeRight+' right';
+      if(n===JUDGE.length){ trk('Agree / disagree / depends', judgeRight+'/'+JUDGE.length+' correct'); chainCheckDone(); }
+    }));
+    host.appendChild(c);
+  });
+})();
+function chainCheckDone(){
+  if(CHAINS.every(c=>chainSolved[c.id]) && Object.keys(judgeDone).length===JUDGE.length && !DONE.chain){
+    const b=document.getElementById('chainDone');
+    b.innerHTML='✓ Both chains built and all six claims judged ('+judgeRight+'/6). Two of the claims came from the coursebook itself. Saying exactly <b>when</b> a claim holds — and when it does not — is what evaluation means.';
+    b.classList.add('show'); mark('chain');
+  }
+}
+
+/* ================= TAB 5 — WRITE IT UP ================= */
+const CHECKS={
+ w1:['I defined a merit good accurately',
+     'I explained information failure: consumers underestimate the benefits',
+     'I explained the second cause: access is limited to those who can afford the price',
+     'I drew (or described precisely) Figure 12.2 with D, S, P, OX, OY and S<sub>govt</sub>',
+     'I identified OY − OX as under-provision — too few resources allocated',
+     'I explained both ways to correct it: full state provision and top-up provision',
+     'I applied it to a real example (e.g. Thailand’s Universal Coverage Scheme, Pakistan)'],
+ w2:['I explained the case FOR as a chain: unstable supply → volatile prices and incomes → floor protects incomes and food security',
+     'I explained the case AGAINST: higher prices for consumers, a surplus, the cost of buying it',
+     'I used a diagram (or described one) with the minimum price above equilibrium',
+     'I used specific evidence, such as Thailand’s 2011–14 rice scheme',
+     'I said what the answer depends on — how high the floor is, PED and PES, the government’s budget',
+     'I ended with a supported judgement, not just a summary']
+};
+const BANDS={
+ w1:on=>on<=2?'Lower band: some knowledge, little analysis. Add the second cause and the diagram.':
+        on<=4?'Middle band. The economics is there but the chain is incomplete — most often the missing step is naming OY − OX as a misallocation of resources.':
+        on<7?'Nearly a top-band answer. Add what you left unticked and redraft.':'Top band: defined, drawn, explained and applied. Now do it in 12 minutes.',
+ w2:on=>on<=2?'Lower band: one-sided or descriptive. Add the other side and an “it depends”.':
+        on<=4?'Middle band: two sides, but the evaluation is thin. Make the judgement follow from your “it depends”.':
+        on<6?'Nearly top band. The missing element is usually the final judgement.':'Top band: balanced, applied and judged. Write it out in full.'
+};
+['w1','w2'].forEach(k=>{
+  const host=document.getElementById(k+'checks');
+  CHECKS[k].forEach(txt=>{
+    const row=document.createElement('div');
+    row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{
+      row.classList.toggle('on');
+      const on=host.querySelectorAll('.chk.on').length, tot=CHECKS[k].length;
+      document.getElementById(k+'bv').textContent=on+' of '+tot+' ticked';
+      document.getElementById(k+'bar').style.width=(on/tot*100)+'%';
+      document.getElementById(k+'bd').textContent=BANDS[k](on);
+    });
+    host.appendChild(row);
+  });
+});
+const writeSeen={w1:false,w2:false};
+[['w1btn','w1model','w1'],['w2btn','w2model','w2']].forEach(([btn,mod,key])=>{
+  document.getElementById(btn).addEventListener('click',()=>{
+    const box=document.getElementById(key);
+    if(box.value.trim().length<40){
+      box.focus();
+      document.getElementById(btn).textContent='Write your own attempt first — then compare';
+      return;
+    }
+    document.getElementById(mod).classList.add('show');
+    document.getElementById(btn).textContent='Model shown ✓';
+    document.getElementById(btn).disabled=true;
+    writeSeen[key]=true;
+    if(writeSeen.w1 && writeSeen.w2){
+      document.getElementById('writeDone').classList.add('show');
+      trk('Write It Up', 'both written tasks attempted'); mark('write');
+    }
+  });
+});
+
+/* ================= TAB 6 — EXAM MCQ ================= */
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1 (coursebook Q1)',
+  stem:'Why do governments provide public goods?',
+  opts:['Public goods are needed by the public.','Public goods are mostly consumed by lower-income families.','The private sector does not find it profitable to provide public goods.','The government allocates a fixed sum of its budget for public goods.'], ans:2,
+  fb:'Non-excludability creates the free-rider problem, so a firm cannot earn revenue and will not supply the good.',
+  why:'A is true of many goods the market supplies happily. The reason is the <b>missing market</b>, not the need.'},
+ {id:'m2', icon:'2', bg:'#6B4E9E', name:'Paper 1 · Question 2 (coursebook Q2)',
+  stem:'Healthcare is often provided by the government because:',
+  opts:['no private firm is prepared to do so.','healthcare is a merit good and people deserve it.','information failure means most people do not appreciate the benefits of staying healthy.','it is appropriate to fund healthcare from tax revenue.'], ans:2,
+  fb:'The economic reason is information failure, which leads to under-consumption of a merit good.',
+  why:'A is false — private hospitals exist. B is a value judgement (“deserve”), not an economic explanation. D describes how, not why.'},
+ {id:'m3', icon:'3', bg:'#FF8F1C', name:'Paper 1 · Question 3 (coursebook Q3)',
+  stem:'A government fixes a maximum price for bread. What is the most likely reason for this?',
+  opts:['Too much bread is being consumed.','Production of bread is less than consumption.','It is a way of supporting low-income families.','It is a way of reducing non-market transactions.'], ans:2,
+  fb:'Maximum prices on basic foods protect those on low incomes — the coursebook’s example from former socialist economies.',
+  why:'A maximum price below equilibrium actually <b>creates</b> the gap in B (a shortage), and tends to increase black-market (non-market) trade rather than reduce it.'},
+ {id:'m4', icon:'4', bg:'#28A745', name:'Paper 1 · Question 4 (coursebook Q4)',
+  stem:'Governments provide minimum prices for agricultural products in order to:',
+  opts:['reduce demand from consumers.','allow farmers to compete with imported agricultural products.','get farmers to produce as much as they can.','stabilise farmers’ incomes.'], ans:3,
+  fb:'Farm supply is unpredictable, so prices and incomes swing. A floor stabilises incomes and safeguards future food supply.',
+  why:'A happens as a side effect, but it is not the aim. C is not the aim either — a surplus is a cost to the government.'},
+ {id:'m5', icon:'5', bg:'#D63864', name:'Paper 1 · Question 5 (coursebook Q5)',
+  stem:'Governments restrict the consumption of demerit goods because:',
+  opts:['resources used in their production can be put to better use.','consumers of demerit goods are irresponsible in their consumption.','consumers lack proper information on the effects of consumption.','the value of imported demerit goods has an adverse effect on the balance of trade.'], ans:2,
+  fb:'Information failure is the defining cause of over-consumption of a demerit good.',
+  why:'A is a consequence of over-consumption, not its cause. B is a value judgement, not economics.'},
+ {id:'m6', icon:'6', bg:'#002F6C', name:'Paper 1 · Question 6',
+  stem:'A government sets a maximum price for cooking gas below the equilibrium price. What is the most likely result?',
+  opts:['Cooking gas is cheaper for those who can buy it, but there is a shortage.','Suppliers increase output of cooking gas.','There is a surplus of cooking gas.','The price of cooking gas rises to the equilibrium.'], ans:0,
+  fb:'Below equilibrium, quantity demanded exceeds quantity supplied: a shortage at the lower price.',
+  why:'B and C belong to a <b>minimum</b> price. D cannot happen legally while the ceiling is enforced.'},
+ {id:'m7', icon:'7', bg:'#5B8C5A', name:'Paper 1 · Question 7',
+  stem:'Which is the best example of a public good?',
+  opts:['A place at a government school','A lighthouse','A vaccination at a public hospital','A toll expressway'], ans:1,
+  fb:'A lighthouse is non-excludable and non-rival — the coursebook’s own recommended example.',
+  why:'A and C are merit goods: provided by the government, but rival and excludable. D is excludable, so at most quasi-public.'},
+ {id:'m8', icon:'8', bg:'#8098B0', name:'Paper 1 · Question 8',
+  stem:'A city introduces rent controls. According to the coursebook, which is a reason for doing so?',
+  opts:['To raise landlords’ incomes','To attract key workers such as nurses and teachers to areas where housing is expensive','To increase the supply of rented housing','To reduce over-consumption of housing'], ans:1,
+  fb:'Rent controls are a maximum price that keeps housing affordable for low-income families and key workers.',
+  why:'C is the opposite of the likely effect: a binding rent ceiling tends to <b>reduce</b> the quantity of rented housing supplied.'},
+ {id:'m9', icon:'9', bg:'#008BCC', name:'Paper 1 · Question 9',
+  stem:'A government spends tax revenue on new flood defences. What is the opportunity cost of this decision?',
+  opts:['The money spent on the flood defences','The damage the floods would have caused','The next best alternative use of that revenue, such as new hospitals','Nothing, because flood defences are a public good'], ans:2,
+  fb:'Opportunity cost is the next best alternative forgone — the coursebook stresses this for public goods in countries with a modest tax base.',
+  why:'A is the money cost, not the opportunity cost. D confuses a public good with a free good, which is the error you met in 1.6.'},
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  const b=document.getElementById('mcqDone');
+  b.innerHTML='✓ All nine attempted — '+right+' / '+total+' right first time. Topic 3.2 picks up exactly where this leaves off: <b>how</b> governments intervene (taxes, subsidies, price controls, direct provision) and what effects each method has.';
+  b.classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
+  mark('mcq');
+});
+</script>
+</body>
+</html>
