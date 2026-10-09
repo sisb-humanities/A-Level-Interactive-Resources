@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2.5 Consumer and Producer Surplus | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 2.5 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   New widgets use the sp- prefix (surplus) so nothing collides
+   with the shared CSS.
+   ===================================================================== */
+.hidden{display:none !important}
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.lvl:disabled{cursor:default}
+.btn:disabled{opacity:.45;cursor:default}
+.hintline{font-size:12.8px;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:8px 12px;margin:8px 0 4px;line-height:1.5}
+
+/* ---- lab layout: diagram left, controls right ---- */
+.sp-lab{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start;margin-bottom:18px}
+.sp-lab-fare{grid-template-columns:1.25fr .75fr}
+@media(max-width:880px){.sp-lab,.sp-lab-fare{grid-template-columns:1fr}}
+.sp-lab .fig{margin-bottom:0}
+.sp-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.sp-row{margin-bottom:14px}
+.sp-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sp-name em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--blue);text-align:right}
+.sp-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:11px 0 3px}
+.sp-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.sp-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.sp-sl.d-sl::-webkit-slider-thumb{background:#D63864}
+.sp-sl.d-sl::-moz-range-thumb{background:#D63864}
+.sp-sl.s-sl::-webkit-slider-thumb{background:#008BCC}
+.sp-sl.s-sl::-moz-range-thumb{background:#008BCC}
+.sp-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.sp-res{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.sp-res div{background:var(--grey-bg);border-radius:8px;padding:10px 6px;text-align:center}
+.sp-res b{display:block;font-size:18px;font-weight:900;color:var(--navy);line-height:1.2}
+.sp-res div>span{font-size:10.8px;color:var(--text-3)}
+.sp-res small{display:block;font-size:10.5px;font-weight:700;margin-top:2px;min-height:13px}
+.sp-res .wide{grid-column:1 / -1}
+.sp-res .cs{background:#FCE9EF}.sp-res .cs b{color:#A61E4D}
+.sp-res .ps{background:#E1F1FA}.sp-res .ps b{color:#00618F}
+.sp-res .tot{background:var(--navy)}.sp-res .tot b{color:#fff}.sp-res .tot>span{color:#CADCFC}.sp-res .tot small{color:#FFD08A}
+.sp-res .dw{background:#ECEFF3}.sp-res .dw b{color:#4A5A6C}
+.sp-up{color:var(--green)}.sp-dn{color:var(--red)}
+.sp-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.sp-say b{color:var(--navy)}
+.sp-legend{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:var(--text-2);margin-top:6px}
+.sp-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.sp-legend i.box{height:11px;width:14px;border-radius:2px}
+.sp-legend i.cs{background:rgba(214,56,100,.32)}
+.sp-legend i.ps{background:rgba(0,139,204,.32)}
+.sp-legend i.gain{background:repeating-linear-gradient(45deg,#28A745 0 2px,#E6F6E8 2px 5px)}
+.sp-legend i.loss{background:repeating-linear-gradient(45deg,#C0392B 0 2px,#FBE9E7 2px 5px)}
+.sp-legend i.dwl{background:repeating-linear-gradient(45deg,#6E7F91 0 2px,#EEF1F4 2px 5px)}
+.sp-handle{cursor:ns-resize;touch-action:none}
+.sp-seg{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 2px}
+.sp-seg .lvl{padding:6px 11px;font-size:11.5px}
+
+/* scenario chips */
+.sp-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.sp-chip{background:#fff;border:1.5px solid var(--grey-3);border-radius:8px;padding:9px 12px;font-size:12.6px;cursor:pointer;line-height:1.35;color:var(--text);transition:.12s;font-family:'Lato',sans-serif;text-align:left;font-weight:700}
+.sp-chip:hover{border-color:var(--blue)}
+.sp-chip.used{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.sp-chip.now{border-color:var(--orange);background:var(--orange-bg);color:var(--orange-txt)}
+
+/* stage pill above an animated diagram */
+.sp-stage{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:12px;padding:4px 11px;margin-bottom:6px}
+.sp-stagebar{display:flex;gap:4px;margin:2px 0 8px}
+.sp-stagebar i{flex:1;height:5px;border-radius:3px;background:var(--grey-2);transition:background .25s}
+.sp-stagebar i.on{background:var(--orange)}
+
+/* prediction rows */
+.sp-plbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-top:8px}
+.sp-pred .lvl{padding:7px 12px;font-size:12px}
+.sp-pred .lvl.sp-ok{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.sp-pred .lvl.sp-no{border-color:var(--red);background:var(--red-bg);color:var(--red-txt)}
+.sp-src{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:11px;background:#E1F1FA;color:#00618F;margin-bottom:7px}
+.sp-src.th{background:var(--orange-bg);color:var(--orange-txt)}
+.sp-cause{font-size:14px;font-weight:900;color:var(--navy);line-height:1.4;margin-bottom:4px}
+
+/* twin diagrams */
+.sp-twin{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 12px}
+.sp-twin .fig{margin-bottom:0;padding:10px 10px 8px}
+@media(max-width:760px){.sp-twin{grid-template-columns:1fr}}
+.sp-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.sp-mini div{background:var(--grey-bg);border-radius:7px;padding:7px 4px;text-align:center}
+.sp-mini b{display:block;font-size:15px;font-weight:900;color:var(--navy)}
+.sp-mini div>span{font-size:10.2px;color:var(--text-3)}
+
+/* people cards (night market) */
+.sp-ppl{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:6px 0 14px}
+@media(max-width:820px){.sp-ppl{grid-template-columns:repeat(4,1fr)}}
+.sp-pc{background:#fff;border:1.5px solid var(--grey-3);border-radius:8px;padding:7px 5px;text-align:center;font-size:11px;line-height:1.35;transition:.15s}
+.sp-pc .nm{font-weight:900;color:var(--navy);font-size:11.5px}
+.sp-pc .v{color:var(--text-3)}
+.sp-pc .st{font-weight:700;margin-top:3px;min-height:28px}
+.sp-pc.buy{border-color:#D63864;background:#FCE9EF}.sp-pc.buy .st{color:#A61E4D}
+.sp-pc.sell{border-color:#008BCC;background:#E1F1FA}.sp-pc.sell .st{color:#00618F}
+.sp-pc.wait{border-style:dashed;border-color:var(--orange);background:var(--orange-bg)}.sp-pc.wait .st{color:var(--orange-txt)}
+.sp-pc.out{opacity:.5;background:var(--grey-bg)}
+
+/* aircraft seats (fare game) */
+.sp-cabin{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;margin-bottom:12px}
+.sp-cabin .ch{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin:2px 0 7px}
+.sp-seats{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-bottom:10px}
+@media(max-width:700px){.sp-seats{grid-template-columns:repeat(3,1fr)}}
+.sp-seat{border:1.5px solid var(--grey-3);border-radius:9px;padding:7px 5px;text-align:center;font-size:11px;background:#fff;line-height:1.35;transition:.18s}
+.sp-seat .ic{font-size:18px;line-height:1.2}
+.sp-seat .nm{font-weight:900;color:var(--navy)}
+.sp-seat .v{color:var(--text-3)}
+.sp-seat .st{font-weight:700;margin-top:3px;min-height:28px;color:var(--text-3)}
+.sp-seat.fly{border-color:var(--green);background:var(--green-bg)}
+.sp-seat.fly .st{color:var(--green-txt)}
+.sp-seat.out{opacity:.55;background:var(--grey-bg)}
+
+/* missions */
+.sp-mis{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--grey-bg);font-size:13.2px;color:var(--text-2);line-height:1.5}
+.sp-mis:first-of-type{border-top:none}
+.sp-mis .bx{width:20px;height:20px;border:1.8px solid var(--grey-3);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;margin-top:1px}
+.sp-mis.done .bx{background:var(--green);border-color:var(--green)}
+.sp-mis.done{color:var(--text)}
+.sp-mis b{color:var(--navy)}
+
+/* area detective */
+.sp-reg{fill:rgba(0,0,0,0);cursor:pointer;transition:fill .12s}
+.sp-reg:hover{fill:rgba(0,139,204,.14)}
+.sp-reg.on{fill:rgba(255,143,28,.5)}
+.sp-reg.ok{fill:rgba(40,167,69,.45)}
+.sp-reg.no{fill:rgba(214,56,100,.42)}
+.sp-picked{font-size:13px;font-weight:700;color:var(--navy);margin:8px 0 2px;min-height:20px}
+.sp-in{font-family:'Lato',sans-serif;font-size:15px;font-weight:700;width:130px;padding:8px 11px;border:1.5px solid var(--grey-3);border-radius:8px;outline:none;color:var(--navy)}
+.sp-in:focus{border-color:var(--blue)}
+.sp-in.ok{border-color:var(--green);background:var(--green-bg)}
+.sp-in.no{border-color:var(--red);background:var(--red-bg)}
+.sp-calc{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.sp-pill{display:inline-block;font-size:11px;font-weight:900;padding:3px 10px;border-radius:12px;background:var(--grey-bg);color:var(--text-3);margin-left:8px;vertical-align:middle;letter-spacing:.02em}
+.sp-pill.ok{background:var(--green-bg);color:var(--green-txt)}
+
+/* self-evaluation rows */
+.sp-se-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--grey-bg)}
+.sp-se-row:first-of-type{border-top:none}
+@media(max-width:720px){.sp-se-row{grid-template-columns:1fr}}
+.sp-se-row .lbl{font-size:13.2px;color:var(--text-2);line-height:1.45}
+.sp-se-row .choice-row{margin:0;flex-wrap:nowrap}
+.sp-se-row .choice{min-width:0;padding:7px 10px;font-size:11.8px}
+.sp-golink{color:var(--blue);font-weight:700;cursor:pointer;text-decoration:underline}
+
+/* resources strip */
+.res-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}
+.res-links a{font-size:12.5px;font-weight:700;text-decoration:none;color:var(--navy);background:#fff;
+  border:1.5px solid var(--grey-3);border-radius:20px;padding:7px 14px}
+.res-links a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* sticky progress (same as 1.5 / 1.6 / 2.1 / 2.4) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 2.5 Consumer and Producer Surplus</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="wtp">🥭 Night Market</div>
+  <div class="tab" data-tab="lab">📐 Surplus Lab</div>
+  <div class="tab" data-tab="shift">🎬 Shift &amp; Measure</div>
+  <div class="tab" data-tab="elastic">📏 Elasticity Matters</div>
+  <div class="tab" data-tab="fare">✈️ Fare Game</div>
+  <div class="tab" data-tab="area">🔍 Area Detective</div>
+  <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
+  <div class="tab" data-tab="write">✍️ Write It Up</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Match each term to its meaning</h1>
+      <p>Topic 2.5 measures <b>who gains</b> from a market. Consumer surplus is the gain to buyers, producer surplus is the gain to sellers, and together they are the <b>net benefit to society</b>. Every diagram in this topic is about shading the right area — and saying what happens to it when something changes.</p>
+      <p>Work through activities 1–9 after the lessons, then activity 10 as a timed test. Everything here follows Chapter 11 of the coursebook (sections 11.1 and 11.2). Activities 2 and 6 build the ideas from real buyers and sellers; activities 3–5 are the diagrams; 7–10 are exam skills.</p>
+      <div class="res-links">
+        <a href="sisb-alevel-exam-skills.html">📐 Exam Skills Toolkit</a>
+        <a href="sisb-alevel-econ-2_4-interactive.html">⬅️ 2.4 Interaction of demand and supply</a>
+        <a href="sisb-alevel-econ-2_2-interactive.html">📊 2.2 Elasticity of demand</a>
+        <a href="sisb-alevel-econ-2_3-interactive.html">⏱️ 2.3 Elasticity of supply</a>
+        <a href="index.html">🗂️ All topics</a>
+        <!-- Paste this topic's video and notebook links here when they are ready:
+        <a href="VIDEO-URL-HERE" target="_blank" rel="noopener">▶️ Topic video</a>
+        <a href="NOTEBOOK-URL-HERE" target="_blank" rel="noopener">📓 Notebook</a>
+        <a href="QUIZ-URL-HERE" target="_blank" rel="noopener">✅ Quiz</a>
+        -->
+      </div>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">Consumer surplus sits <b>above</b> the price line and below the demand curve. Producer surplus sits <b>below</b> the price line and above the supply curve. If you remember only one thing from this topic, remember where the two areas are.</p>
+  </div>
+
+  <!-- ============ TAB 2 · NIGHT MARKET ============ -->
+  <div class="panel" id="panel-wtp">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Where surplus comes from</div>
+      <h1>Eight hungry customers, eight stalls, one price</h1>
+      <p>It is Friday at a Bangkok night market. Eight customers each want <b>one</b> portion of mango sticky rice, and each has a <b>maximum</b> they would pay. Eight stalls can each make one more portion, and each has a <b>minimum</b> they would accept — the extra cost of making it.</p>
+      <p>Everyone pays the same market price. <b>Drag the orange price line</b> (or use the slider). A customer’s consumer surplus is what they would have paid minus what they do pay; a stall’s producer surplus is what it receives minus its minimum. Put the bars side by side and you have built a demand curve and a supply curve — exactly the idea in section 11.1.</p>
+    </div>
+    <div class="sp-lab">
+      <div class="fig">
+        <div class="ft">Mango sticky rice — willingness to pay and minimum acceptable price</div>
+        <div id="nmFig"></div>
+        <div class="sp-legend">
+          <span><i style="background:#D63864"></i>Demand (willingness to pay)</span>
+          <span><i style="background:#008BCC"></i>Supply (minimum price)</span>
+          <span><i class="box cs"></i>Consumer surplus</span>
+          <span><i class="box ps"></i>Producer surplus</span>
+        </div>
+      </div>
+      <div class="sp-ctrl">
+        <div class="sp-row">
+          <div class="sp-name"><span>Market price of a portion</span><em id="nmPlab">฿90</em></div>
+          <input type="range" class="sp-sl" id="nmSlider" min="20" max="125" step="5" value="90" aria-label="Market price in baht">
+          <div class="sp-ends"><span>฿20</span><span>฿125</span></div>
+        </div>
+        <div class="sp-res">
+          <div><b id="nmQd">3</b><span>Customers who want one</span></div>
+          <div><b id="nmQs">6</b><span>Stalls willing to sell</span></div>
+          <div class="wide"><b id="nmSold">3 portions sold</b><span id="nmSoldSub">Trade happens on the short side</span></div>
+          <div class="cs"><b id="nmCS">฿0</b><span>Consumer surplus</span></div>
+          <div class="ps"><b id="nmPS">฿0</b><span>Producer surplus</span></div>
+          <div class="wide tot"><b id="nmTot">฿0</b><span>Net benefit to society (CS + PS)</span><small id="nmTotSub"></small></div>
+        </div>
+        <div class="sp-say" id="nmSay"></div>
+      </div>
+    </div>
+    <div class="sub-h">The customers</div>
+    <div class="sp-ppl" id="nmBuyers"></div>
+    <div class="sub-h" style="margin-top:6px">The stalls</div>
+    <div class="sp-ppl" id="nmSellers"></div>
+
+    <div class="sub-h">Read the market</div>
+    <div class="sub-p">Move the price to answer each question before you choose.</div>
+    <div id="nmQ"></div>
+    <div class="done-banner" id="nmDone"></div>
+    <p class="tip">The coursebook’s example is the final of a World Cup cricket match: some fans would pay almost any price for a ticket. They pay the same market price as everyone else, so they enjoy the largest consumer surplus — like Ploy here.</p>
+  </div>
+
+  <!-- ============ TAB 3 · SURPLUS LAB ============ -->
+  <div class="panel" id="panel-lab">
+    <div class="intro">
+      <div class="kicker">Activity 3 · The surplus lab</div>
+      <h1>Shift it, tilt it, fix the price — and watch the areas change</h1>
+      <p>Now the market is large, so the steps smooth into straight lines (coursebook Figure 11.7). Move the <b>demand</b> and <b>supply</b> sliders to shift the curves, and change their <b>slope</b> to make them more or less price elastic. Every area is recalculated as you move.</p>
+      <p>Then switch to <b>Fix the price</b> and drag the orange line away from equilibrium. Fewer units are traded, and some surplus goes to <b>nobody</b>. That grey triangle is the reason economists say a free market equilibrium maximises the net benefit to society — the idea you will use for taxes, subsidies and price controls in topic 3.2.</p>
+    </div>
+    <div class="sp-lab">
+      <div class="fig">
+        <div class="ft">Consumer and producer surplus</div>
+        <div id="labFig"></div>
+        <div class="sp-legend">
+          <span><i class="box cs"></i>Consumer surplus</span>
+          <span><i class="box ps"></i>Producer surplus</span>
+          <span><i class="box dwl"></i>Surplus lost (deadweight loss)</span>
+          <span><i style="background:#B8C9DA"></i>Starting point</span>
+        </div>
+      </div>
+      <div class="sp-ctrl">
+        <div class="sp-name"><span>How is the price set?</span></div>
+        <div class="sp-seg" id="labMode">
+          <button class="lvl active" data-v="mkt">Market price (equilibrium)</button>
+          <button class="lvl" data-v="fix">Fix the price</button>
+        </div>
+        <div class="sp-row hidden" id="labProw">
+          <div class="sp-name"><span>Fixed price</span><em id="labPlab">$6.00</em></div>
+          <input type="range" class="sp-sl" id="labP" min="0.5" max="15.5" step="0.25" value="8" aria-label="Fixed price">
+        </div>
+        <div class="sp-row">
+          <div class="sp-name"><span>Demand</span><em id="labDlab">No shift</em></div>
+          <input type="range" class="sp-sl d-sl" id="labD" min="-3" max="3" step="1" value="0" aria-label="Shift demand">
+          <div class="sp-ends"><span>← Decrease</span><span>Increase →</span></div>
+          <div class="sp-seg" id="labDs">
+            <button class="lvl" data-v="s">Steep (inelastic)</button><button class="lvl active" data-v="m">Medium</button><button class="lvl" data-v="f">Flat (elastic)</button>
+          </div>
+        </div>
+        <div class="sp-row">
+          <div class="sp-name"><span>Supply</span><em id="labSlab">No shift</em></div>
+          <input type="range" class="sp-sl s-sl" id="labS" min="-3" max="3" step="1" value="0" aria-label="Shift supply">
+          <div class="sp-ends"><span>← Decrease</span><span>Increase →</span></div>
+          <div class="sp-seg" id="labSs">
+            <button class="lvl" data-v="s">Steep (inelastic)</button><button class="lvl active" data-v="m">Medium</button><button class="lvl" data-v="f">Flat (elastic)</button>
+          </div>
+        </div>
+        <div class="sp-res">
+          <div><b id="labPr">$6.00</b><span>Price</span><small id="labPrD"></small></div>
+          <div><b id="labQ">6000</b><span>Quantity traded</span><small id="labQD"></small></div>
+          <div class="cs"><b id="labCS">—</b><span>Consumer surplus</span><small id="labCSD"></small></div>
+          <div class="ps"><b id="labPS">—</b><span>Producer surplus</span><small id="labPSD"></small></div>
+          <div class="tot"><b id="labTot">—</b><span>Net benefit to society</span><small id="labTotD"></small></div>
+          <div class="dw"><b id="labDW">$0</b><span>Deadweight loss</span><small></small></div>
+        </div>
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn btn-primary" id="labBase">📌 Save as starting point</button>
+          <button class="btn btn-ghost" id="labReset">Reset all</button>
+        </div>
+        <div class="sp-say" id="labSay"></div>
+      </div>
+    </div>
+    <div class="sub-h">Four challenges <span class="score" id="labSolved" style="font-size:13px">0 / 4 solved</span></div>
+    <div class="sub-p">Set up the diagram, then press <b>Check my diagram</b>. Each one teaches a rule you can use in an exam answer.</div>
+    <div id="labChal"></div>
+    <div class="done-banner" id="labDone">✓ All four solved. Three rules to keep: (1) the side of the market with the <b>less elastic</b> curve takes the larger share of the surplus; (2) a price change with one curve fixed is measured as a <b>rectangle plus a triangle</b>; (3) any price other than the equilibrium <b>loses</b> net benefit to society, even if one group gains.</div>
+  </div>
+
+  <!-- ============ TAB 4 · SHIFT & MEASURE ============ -->
+  <div class="panel" id="panel-shift">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Causes of changes in surplus</div>
+      <h1>Predict it, watch the curve move, then measure the change</h1>
+      <p>Six markets: the coursebook’s airline example and five from Thailand. For each one, make three predictions and lock them in. Then watch it in four stages: <b>starting surplus → the shift → the new equilibrium → measuring the change</b>.</p>
+      <p>The rule for stage 4: measure the change in surplus <b>along the curve that did not move</b>. When supply shifts, the demand curve still shows what consumers are willing to pay, so you can measure the change in consumer surplus exactly. When demand shifts, measure the change in producer surplus along the unchanged supply curve. This is how coursebook Figures 11.3 and 11.6 are drawn.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Choose a market <span class="score" id="shScore" style="font-size:13px">0 / 6 played · 0 / 18 predictions right</span></div>
+    <div class="sp-chips" id="shChips"></div>
+    <div class="sp-lab">
+      <div class="fig">
+        <span class="sp-stage" id="shStage">Choose a market above</span>
+        <div class="sp-stagebar" id="shBar"><i></i><i></i><i></i></div>
+        <div class="ft" id="shTitle">Demand and supply</div>
+        <div id="shFig"></div>
+        <div class="sp-legend">
+          <span><i class="box cs"></i>Consumer surplus</span>
+          <span><i class="box ps"></i>Producer surplus</span>
+          <span><i class="box gain"></i>Gain</span>
+          <span><i class="box loss"></i>Loss</span>
+        </div>
+      </div>
+      <div class="sp-ctrl" id="shPanel">
+        <div class="sp-say" style="margin-top:0">Pick one of the six markets to begin. Predict first: your three predictions are scored before the animation plays.</div>
+      </div>
+    </div>
+    <div id="shOut"></div>
+    <div class="done-banner" id="shDone"></div>
+    <p class="tip">The rectangle is the part that matters for <b>who</b> gains: when price rises it is surplus transferred from consumers to producers, not surplus destroyed. Only the triangle is lost by one side without being gained by the other.</p>
+  </div>
+
+  <!-- ============ TAB 5 · ELASTICITY MATTERS ============ -->
+  <div class="panel" id="panel-elastic">
+    <div class="intro">
+      <div class="kicker">Activity 5 · The significance of PED and PES</div>
+      <h1>Same price rise, two very different results</h1>
+      <p>Both diagrams start at the same point: a price of $4 and 6000 units a week. The only difference is elasticity. Raise the price with the slider and compare the shaded change in surplus on the left (inelastic) and the right (elastic).</p>
+      <p>Look at <b>two</b> numbers for each diagram: the change in dollars, and the change as a percentage of the surplus that was there before. They do not always point the same way — and that is an evaluation point waiting to be made.</p>
+    </div>
+    <div class="sp-seg" id="elMode" style="margin-bottom:10px">
+      <button class="lvl active" data-v="cs">Consumer surplus (PED) — coursebook Figure 11.4</button>
+      <button class="lvl" data-v="ps">Producer surplus (PES) — coursebook Figure 11.6</button>
+    </div>
+    <div class="sp-ctrl" style="margin-bottom:12px">
+      <div class="sp-name"><span>Rise in price</span><em id="elRlab">$4.00 → $5.00</em></div>
+      <input type="range" class="sp-sl" id="elR" min="0" max="2" step="0.1" value="1" aria-label="Rise in price">
+      <div class="sp-ends"><span>No change</span><span>+$2.00</span></div>
+    </div>
+    <div class="sp-twin">
+      <div class="fig"><div class="ft" id="elT1">a · Price inelastic demand</div><div id="elF1"></div>
+        <div class="sp-mini"><div><b id="el1o">—</b><span>Surplus before</span></div><div><b id="el1c">—</b><span>Change ($)</span></div><div><b id="el1p">—</b><span>Change (%)</span></div></div></div>
+      <div class="fig"><div class="ft" id="elT2">b · Price elastic demand</div><div id="elF2"></div>
+        <div class="sp-mini"><div><b id="el2o">—</b><span>Surplus before</span></div><div><b id="el2c">—</b><span>Change ($)</span></div><div><b id="el2p">—</b><span>Change (%)</span></div></div></div>
+    </div>
+    <div class="sp-say" id="elSay" style="margin-bottom:16px"></div>
+
+    <div class="foot-card" id="elNote">
+      <h3>Check this against the coursebook</h3>
+      <p>Section 11.1 and Figure 11.4 say that for the same price increase, the loss of consumer surplus is <b>bigger when demand is elastic</b>. Test that with the slider. When both curves start from the <b>same</b> price and quantity, the dollar loss is bigger when demand is <b>inelastic</b>: consumers keep buying, so they pay the higher price on almost every unit. The elastic case only loses more as a <b>percentage</b> of the consumer surplus it started with, because an elastic demand curve has a small triangle to begin with. The two diagrams in Figure 11.4 are drawn at different quantities, which is why they appear to show the opposite.</p>
+      <p>For producer surplus, the coursebook is right that a more elastic supply gains more from a price rise — in dollars and in percentage terms. (The printed text in section 11.2 says this is so “when demand is elastic”; it means supply.) In an exam, state which measure you are using: “in absolute terms…” or “as a proportion of the original surplus…”. That precision is itself an evaluation mark.</p>
+    </div>
+
+    <div class="sub-h">Three quick checks</div>
+    <div id="elQ"></div>
+    <div class="done-banner" id="elDone"></div>
+  </div>
+
+  <!-- ============ TAB 6 · FARE GAME ============ -->
+  <div class="panel" id="panel-fare">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Economics in context: airline tickets</div>
+      <h1>You run the airline. Turn consumer surplus into producer surplus.</h1>
+      <p>The coursebook opens Chapter 11 with PIA charging $612 for a Manchester–Islamabad return in September and $837 in October, while Airblue charged a fixed $240. Here is the same problem on a Bangkok–Chiang Mai flight with twelve seats and twelve possible passengers.</p>
+      <p>Each extra passenger costs the airline <b>฿1,000</b> (fuel, meals, airport fees) — its <b>minimum acceptable price</b>. Leisure travellers book weeks ahead and are price-sensitive; business travellers book late and will pay much more. Complete the three missions, then answer the coursebook’s “who gains?” question.</p>
+    </div>
+    <div class="sp-seg" id="frMode" style="margin-bottom:10px">
+      <button class="lvl active" data-v="one">① One fare for everyone</button>
+      <button class="lvl" data-v="two">② Two fare classes</button>
+      <button class="lvl" data-v="perf">③ Everyone pays their maximum</button>
+    </div>
+    <div class="sp-lab sp-lab-fare">
+      <div>
+        <div class="sp-cabin">
+          <div class="ch">🧳 Leisure — books three weeks ahead</div>
+          <div class="sp-seats" id="frLeis"></div>
+          <div class="ch">💼 Business — books the day before</div>
+          <div class="sp-seats" id="frBus"></div>
+        </div>
+      </div>
+      <div class="sp-ctrl">
+        <div id="frOneCtl" class="sp-row">
+          <div class="sp-name"><span>Fare for every seat</span><em id="frOneLab">฿2,000</em></div>
+          <input type="range" class="sp-sl" id="frOne" min="1000" max="5000" step="100" value="2000" aria-label="Single fare">
+        </div>
+        <div id="frTwoCtl" class="hidden">
+          <div class="sp-row">
+            <div class="sp-name"><span>Saver fare (book early, no changes)</span><em id="frSavLab">฿1,500</em></div>
+            <input type="range" class="sp-sl" id="frSav" min="1000" max="2000" step="100" value="1500" aria-label="Saver fare">
+          </div>
+          <div class="sp-row">
+            <div class="sp-name"><span>Flex fare (book any time)</span><em id="frFlxLab">฿3,500</em></div>
+            <input type="range" class="sp-sl" id="frFlx" min="1000" max="5000" step="100" value="3500" aria-label="Flex fare">
+          </div>
+        </div>
+        <div class="sp-res">
+          <div><b id="frPax">—</b><span>Passengers flying</span></div>
+          <div><b id="frEmpty">—</b><span>Empty seats</span></div>
+          <div class="cs"><b id="frCS">—</b><span>Consumer surplus</span></div>
+          <div class="ps"><b id="frPS">—</b><span>Producer surplus</span></div>
+          <div class="wide tot"><b id="frTot">—</b><span>Net benefit to society</span></div>
+        </div>
+        <div class="sp-say" id="frSay"></div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Missions <span class="score" id="frMisScore" style="font-size:13px">0 / 3</span></h4>
+      <div class="cgs">Each ticks itself when you reach it.</div>
+      <div class="sp-mis" id="frM1"><div class="bx">✓</div><div><b>Mission 1.</b> With one fare for everyone, find the fare that gives the airline the <b>most producer surplus</b>. (Producer surplus = fare − ฿1,000 on every seat sold.)</div></div>
+      <div class="sp-mis" id="frM2"><div class="bx">✓</div><div><b>Mission 2.</b> Switch to two fare classes and beat your best single-fare producer surplus. Find the best saver fare <b>and</b> the best flex fare.</div></div>
+      <div class="sp-mis" id="frM3"><div class="bx">✓</div><div><b>Mission 3.</b> Try mode ③, where every passenger pays exactly their maximum. Where has all the consumer surplus gone — and how many seats are empty now?</div></div>
+    </div>
+    <div class="sub-h">Who gains? The coursebook’s discussion questions</div>
+    <div class="sub-p">Write your answer in a sentence, then reveal ours.</div>
+    <div id="frDisc"></div>
+    <div class="done-banner" id="frDone"></div>
+    <p class="tip">Charging different groups different prices for the same product is <b>price discrimination</b>. You will study when it is possible in topic 7.6; for now, notice what it does to the two surplus areas — and that it only works if business travellers cannot buy the saver fare.</p>
+  </div>
+
+  <!-- ============ TAB 7 · AREA DETECTIVE ============ -->
+  <div class="panel" id="panel-area">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Reading surplus areas</div>
+      <h1>Click the areas — then calculate them</h1>
+      <p>Paper 1 regularly gives you a diagram with lettered areas and asks which ones make up a surplus, or a change in surplus. Part A is built on coursebook end-of-chapter question 3: supply shifts from S to S₁. For each question, <b>click the areas</b> on the diagram, then press <b>Check</b>.</p>
+      <p>Part B is coursebook question 4 style: calculate an area from the numbers on the axes. Every surplus on a straight-line diagram is a triangle (½ × base × height), a rectangle, or both.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Which areas? <span class="score" id="adScore" style="font-size:13px">Question 1 of 7</span></div>
+    <div class="sp-lab">
+      <div class="fig">
+        <div class="ft">The market for chocolate bars (coursebook question 3)</div>
+        <div id="adFig"></div>
+        <div class="sp-legend"><span><i style="background:#D63864"></i>Demand D</span><span><i style="background:#B8C9DA"></i>Original supply S</span><span><i style="background:#008BCC"></i>New supply S₁</span></div>
+      </div>
+      <div class="sp-ctrl">
+        <span class="sp-src" id="adTag">Question 1</span>
+        <div class="sp-cause" id="adQ"></div>
+        <div class="sp-picked" id="adPicked">Selected: none</div>
+        <div class="btn-row" style="margin-top:6px">
+          <button class="btn btn-primary" id="adCheck">Check</button>
+          <button class="btn btn-ghost" id="adClear">Clear</button>
+          <button class="btn btn-primary hidden" id="adNext">Next question ▶</button>
+        </div>
+        <div class="sp-say" id="adFb">Tap an area to select it; tap again to deselect.</div>
+      </div>
+    </div>
+    <div class="sub-h">Part B · Calculate the area <span class="score" id="acScore" style="font-size:13px">0 / 3 correct</span></div>
+    <div class="sub-p">Thai iced tea at a school canteen. Demand: willingness to pay starts at ฿70. Supply: the first cup is offered at ฿10. Type a number in baht (no symbols or commas needed).</div>
+    <div class="figrow">
+      <div class="fig"><div class="ft">Before: equilibrium at ฿30 and 400 cups a day</div><div id="acF1"></div></div>
+      <div class="fig"><div class="ft">After: supply increases and the price falls to ฿25</div><div id="acF2"></div></div>
+    </div>
+    <div id="acHost"></div>
+    <div class="done-banner" id="areaDone"></div>
+  </div>
+
+  <!-- ============ TAB 8 · ANALYSIS & EVALUATION ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 8 · Analysis and evaluation</div>
+      <h1>Build the chain, then test the claim</h1>
+      <p>Part A: analysis marks come from <b>linked</b> steps. Click the steps of each chain in causal order. Part B: evaluation marks come from judging whether a claim is always true. Decide <b>Agree</b>, <b>Disagree</b> or <b>It depends</b>, then read the reasoning.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Analysis chains</div>
+    <div id="chainHost"></div>
+    <div class="sub-h">Part B · Agree, disagree or it depends? <span class="score" id="judgeScore" style="font-size:13px"></span></div>
+    <div class="sub-p">Six claims you could meet in a 12-mark question — two of them taken from the coursebook itself. Watch for <b>always</b>, <b>must</b> and <b>at the expense of</b>.</div>
+    <div id="judgeHost"></div>
+    <div class="done-banner" id="chainDone"></div>
+  </div>
+
+  <!-- ============ TAB 9 · WRITE IT UP ============ -->
+  <div class="panel" id="panel-write">
+    <div class="intro">
+      <div class="kicker">Activity 9 · Paper 2 style</div>
+      <h1>Turn the shaded areas into written analysis and evaluation</h1>
+      <p>Two written tasks: an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis) and a 12-mark <b>discuss</b> answer (which also needs AO3 — evaluation). Type your answer first, then compare it with the model. Nothing you type is stored.</p>
+      <p>Coursebook tip for this chapter: draw a surplus diagram only when it helps, draw it accurately, and explain it in one or two sentences so you keep your writing time. Full command-word guidance is on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">With the help of a diagram, explain how an increase in demand for flights from Bangkok to Chiang Mai during Songkran affects producer surplus, and why the size of the change depends on the price elasticity of supply. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Plan before you write. Define producer surplus, shift demand, find the new equilibrium, then measure the change in producer surplus <b>along the unchanged supply curve</b>: a rectangle plus a triangle. Finish with PES. Activity 4 (the PIA flight) and activity 5 (producer surplus mode) are the models to copy.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:160px" placeholder="Producer surplus is the difference between..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> Producer surplus is the difference between the price a producer is willing to accept for a unit and the price it actually receives; on a diagram it is the area above the supply curve and below the price. Before Songkran, many people want to travel home to Chiang Mai at the same time, so the demand for seats rises at every fare and the demand curve shifts right from D to D₁. At the original fare P there is excess demand, so airlines raise the fare to P₁ and there is an extension of supply from Q to Q₁ as extra flights are added. Producer surplus rises from the area between P and the supply curve to the larger area between P₁ and the supply curve. The gain has two parts: a <b>rectangle</b> (P₁ − P) × Q, because every seat that was already being sold now earns more above the airline’s minimum acceptable price, and a <b>triangle</b> for the extra seats Q to Q₁, each sold above its minimum price. The size of the gain depends on the price elasticity of supply. Over Songkran, aircraft, crews and airport slots are largely fixed, so supply is price inelastic: most of the effect is a large rise in fare with few extra seats, and the gain comes mainly from the rectangle. If airlines can add flights easily, supply is more elastic, the fare rises less, more seats are sold and the triangle is larger. For a given rise in price, a more elastic supply gives a larger gain in producer surplus.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> it defines the term, shows the shift and the process (excess demand → higher fare → extension of supply), separates the rectangle from the triangle, and explains <b>how</b> PES changes the size of the effect rather than just saying it does.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 7 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
+        <div class="q-name">Discuss whether online shopping festivals, such as the 11.11 sales on Shopee and Lazada, increase consumer surplus at the expense of producers. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
+      <div class="q-stem">This is the coursebook’s ‘Think like an economist’ case on China’s Singles Day, brought to Thailand. A 12-mark <b>discuss</b> question needs two-sided analysis and a supported judgement. Plan it in note form — four or five bullet points — then compare with the model plan. Use what you learned in activities 4 and 6.</div>
+      <div class="write-lbl">Your plan</div>
+      <textarea class="write-box" id="w2" style="min-height:140px" placeholder="Case FOR (consumers gain, producers lose): ...&#10;Case AGAINST: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="w2btn">Compare with a model plan</button>
+      <div class="model" id="w2model">
+        <b>Model plan.</b><br>
+        <b>1 · Case for.</b> A one-day discount lowers the price. Consumers who would have bought anyway now pay less on every unit: that rectangle of surplus is transferred from producers to consumers. New buyers drawn in by the low price gain a triangle of consumer surplus as well. On units that would have sold at full price, sellers’ producer surplus clearly falls.<br>
+        <b>2 · Case against.</b> Sellers choose to take part, so they expect to gain. Extra units sold add a triangle of producer surplus, which can outweigh the rectangle given away if demand is price elastic. A sale is also a form of <b>price discrimination</b> (activity 6): price-sensitive shoppers wait for 11.11 while others pay full price the rest of the year, so sellers convert surplus they could not otherwise capture. Sales clear old stock that would earn nothing later. Some “original” prices are raised before the sale, so the real discount — and the gain to consumers — is smaller than it looks. Impulse buying may mean the measured consumer surplus overstates real benefit if buyers regret purchases.<br>
+        <b>3 · It depends on.</b> The price elasticity of demand for the products; whether 11.11 creates new spending or just moves spending from other months; the cost of the extra units (PES and capacity in delivery); and who the producers are — the platform earns commission on every sale, while small sellers may be pressured into discounts that hurt them.<br>
+        <b>4 · Judgement.</b> Consumers usually gain, but mostly not “at the expense of producers” overall: much of the gain comes from extra trade that creates new surplus for both sides. The clearest losers are small sellers with thin margins who feel they must discount to stay visible, while the platform gains in all cases. So the claim is true for some producers, not producers as a whole.
+        <div class="exam-line" style="margin-top:10px"><b>Evaluation sentence starters:</b> “This depends on how price elastic demand is…”, “The rectangle is a transfer, but the triangles are new surplus, so…”, “This assumes sellers did not raise prices before the sale…”, “On balance, consumers gain, but the cost falls mainly on…”</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 12-mark plan</h4>
+      <div class="cgs">The top band needs every one of these.</div>
+      <div id="w2checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w2bv">0 of 6 ticked</div>
+        <div class="bar"><i id="w2bar"></i></div>
+        <div class="bd" id="w2bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+    <div class="done-banner" id="writeDone">✓ Both tasks attempted. Redraft the 8-mark answer using anything you left unticked, then turn the 12-mark plan into full paragraphs and bring both to the next lesson.</div>
+  </div>
+
+  <!-- ============ TAB 10 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 10 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Ten Paper 1 style questions. The first five are the coursebook’s end-of-chapter questions, some with a Thai setting; the rest target the errors that cost the most marks in this topic. Then complete the coursebook’s self-evaluation checklist at the bottom.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone"></div>
+    <div class="check-group" style="margin-top:20px">
+      <h4>Self-evaluation checklist (end of Chapter 11)</h4>
+      <div class="cgs">Be honest. Anything marked “needs more work” links back to the activity that practises it.</div>
+      <div id="seHost"></div>
+      <div class="sp-say" id="seSay">Rate all five statements to see what to revisit.</div>
+    </div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 2.5</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 10 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+function goTab(name){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.tab===name));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active', x.id==='panel-'+name));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>goTab(t.dataset.tab)));
+function bringIntoView(el){
+  const top=document.querySelector('.tabbar').getBoundingClientRect().bottom+10;
+  const y=el.getBoundingClientRect().top;
+  if(y<top || y>window.innerHeight*0.45) window.scrollTo({top:window.scrollY+y-top, behavior:RM?'auto':'smooth'});
+}
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('2.5', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,wtp:false,lab:false,shift:false,elastic:false,fare:false,area:false,chain:false,write:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 2.5 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function num(n){ return Math.round(n).toLocaleString('en-GB'); }
+function baht(n){ return '฿'+num(n); }
+function usd(n){ return (n<0?'−':'')+'$'+num(Math.abs(n)); }
+function pct(n){ return (n>0?'+':(n<0?'−':''))+Math.abs(Math.round(n))+'%'; }
+
+/* Shared MCQ card builder (same markup as 1.4 / 1.5 / 1.6 / 2.1 / 2.4) */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+
+/* =====================================================================
+   ANIMATION HELPERS (same as 2.4)
+   play(owner, steps) runs a list of steps in order. Starting a new
+   play() on the same owner (or calling stop()) cancels the old one.
+   ===================================================================== */
+const RM=!!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+function play(owner, steps){
+  const id=(owner.run=(owner.run||0)+1); let i=0;
+  const alive=()=>owner.run===id;
+  const next=()=>{ if(!alive()||i>=steps.length) return; const s=steps[i++]; s(next, alive); };
+  next();
+}
+function stop(owner){ owner.run=(owner.run||0)+1; }
+function tw(dur, fn){
+  return (next, alive)=>{
+    if(RM){ fn(1); next(); return; }
+    const t0=performance.now();
+    (function f(){
+      if(!alive()) return;
+      const k=Math.min(1,Math.max(0,(performance.now()-t0)/dur));
+      fn(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2);
+      if(k<1) requestAnimationFrame(f); else next();
+    })();
+  };
+}
+function pause(ms){ return (next, alive)=>setTimeout(()=>{ if(alive()) next(); }, RM?0:ms); }
+function act(fn){ return (next)=>{ fn(); next(); }; }
+
+/* =====================================================================
+   SURPLUS MATHS
+   Straight-line curves in "price" form:
+     demand  D = {a,b}  :  P = a − bQ
+     supply  S = {c,k}  :  P = c + kQ   (if c < 0 the curve meets the
+                                         quantity axis at Q = −c/k)
+   Every surplus is a polygon; its area is found with the shoelace rule,
+   so the numbers on screen always match the shading.
+   ===================================================================== */
+function dP(D,q){ return D.a-D.b*q; }
+function dQ(D,p){ return Math.max(0,(D.a-p)/D.b); }
+function sP(S,q){ return Math.max(0,S.c+S.k*q); }
+function sQ(S,p){ return p>=Math.max(0,S.c) ? (p-S.c)/S.k : 0; }
+function eqOf(D,S){ const q=(D.a-S.c)/(D.b+S.k); return {q:q, p:D.a-D.b*q}; }
+function mkD(b,sh,pv){ pv=pv||{q:5,p:6}; return {a:pv.p+b*(pv.q+(sh||0)), b:b}; }
+function mkS(k,sh,pv){ pv=pv||{q:5,p:6}; return {c:pv.p-k*(pv.q+(sh||0)), k:k}; }
+function area(pts){ let s=0; for(let i=0;i<pts.length;i++){ const a=pts[i], b=pts[(i+1)%pts.length]; s+=a[0]*b[1]-b[0]*a[1]; } return Math.abs(s)/2; }
+function centroid(pts){ let x=0,y=0; pts.forEach(p=>{x+=p[0];y+=p[1];}); return [x/pts.length,y/pts.length]; }
+function csPoly(D,p,qt){ return [[0,p],[0,D.a],[qt,dP(D,qt)],[qt,p]]; }
+function psPoly(S,p,qt){
+  const pts=[[0,p],[qt,p],[qt,sP(S,qt)]];
+  if(S.c<0){ const q0=-S.c/S.k; if(qt>q0) pts.push([q0,0]); pts.push([0,0]); }
+  else pts.push([0,S.c]);
+  return pts;
+}
+function dwlPoly(D,S,qt,e){
+  const pts=[[qt,dP(D,qt)],[e.q,e.p]];
+  if(S.c<0 && qt<-S.c/S.k){ pts.push([-S.c/S.k,0]); pts.push([qt,0]); }
+  else pts.push([qt,sP(S,qt)]);
+  return pts;
+}
+/* Market outcome at a price p (null = the equilibrium price) */
+function outcome(D,S,p){
+  const e=eqOf(D,S); if(p==null) p=e.p;
+  const qd=dQ(D,p), qs=sQ(S,p), qt=Math.min(qd,qs);
+  const o={p:p, q:qt, qd:qd, qs:qs, qt:qt, e:e, cs:0, ps:0, dwl:0};
+  if(qt>1e-9){ o.csP=csPoly(D,p,qt); o.psP=psPoly(S,p,qt); o.cs=area(o.csP); o.ps=area(o.psP); }
+  if(qt<e.q-1e-6){ o.dwlP=dwlPoly(D,S,qt,e); o.dwl=area(o.dwlP); }
+  return o;
+}
+/* Change in surplus between two prices, measured along an UNCHANGED curve:
+   a rectangle (units bought/sold at both prices) plus a triangle (units
+   only bought/sold at the lower/higher price). */
+function csChange(D,p0,p1){
+  const hi=Math.max(p0,p1), lo=Math.min(p0,p1), qh=dQ(D,hi), ql=dQ(D,lo);
+  return {rect:[[0,lo],[qh,lo],[qh,hi],[0,hi]], tri:[[qh,hi],[qh,lo],[ql,lo]], ra:(hi-lo)*qh, ta:.5*(hi-lo)*(ql-qh)};
+}
+function psChange(S,p0,p1){
+  const hi=Math.max(p0,p1), lo=Math.min(p0,p1), ql=sQ(S,lo), qh=sQ(S,hi);
+  return {rect:[[0,lo],[ql,lo],[ql,hi],[0,hi]], tri:[[ql,lo],[ql,hi],[qh,hi]], ra:(hi-lo)*ql, ta:.5*(hi-lo)*(qh-ql)};
+}
+
+/* =====================================================================
+   THE SURPLUS DIAGRAM ENGINE
+   renderSP(M, uid, st) draws one diagram.
+   M  : axes {pmax, qmax, yName, xName, ticksP?, ticksQ?, fmtQ?, fmtP?}
+   st : {curves:[{t:'D'|'S', c, lab, ghost, col}], fills:[{pts, k}],
+         plines:[{p, lab}], marks:[{p,q,tp,tq,kind}], tags:[{q,p,txt,col}],
+         regions:[{id,pts}], arrows:[...], handleP, aria, note}
+   ===================================================================== */
+const VB={w:360,h:290,L:48,T:26,W:288,H:218};
+const CD='#D63864', CSU='#008BCC', CG='#B8C9DA', CO='#FF8F1C';
+const FONT='font-family="Lato,sans-serif"';
+const FILL={cs:'rgba(214,56,100,.24)', ps:'rgba(0,139,204,.24)', csf:'rgba(214,56,100,.10)', psf:'rgba(0,139,204,.10)'};
+function hatch(id,col){
+  return '<pattern id="'+id+'" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">'+
+    '<rect width="7" height="7" fill="'+col+'" fill-opacity=".13"/><line x1="0" y1="0" x2="0" y2="7" stroke="'+col+'" stroke-width="2.4" stroke-opacity=".8"/></pattern>';
+}
+function spread(items, gap){
+  items.sort((a,b)=>a.pos-b.pos);
+  const out=[];
+  items.forEach(it=>{
+    const last=out[out.length-1];
+    if(last && Math.abs(it.pos-last.raw)<1.5){
+      if(it.txt && last.txt!==it.txt) last.txt = it.old ? it.txt+' = '+last.txt : last.txt+' = '+it.txt;
+      last.old = last.old && it.old;
+      return;
+    }
+    const pos = last && it.pos-last.pos<gap ? last.pos+gap : it.pos;
+    out.push({pos:pos, raw:it.pos, txt:it.txt, old:it.old});
+  });
+  return out;
+}
+function renderSP(M, uid, st){
+  const X=q=>VB.L+q/M.qmax*VB.W, Y=p=>VB.T+(M.pmax-p)/M.pmax*VB.H;
+  const B=VB.T+VB.H, R=VB.L+VB.W;
+  const pth=pts=>'M'+pts.map(p=>X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)).join(' L')+' Z';
+  let o='<svg viewBox="0 0 '+VB.w+' '+VB.h+'" role="img" aria-label="'+(st.aria||'Demand and supply diagram with surplus areas')+'" xmlns="http://www.w3.org/2000/svg">';
+  o+='<defs><clipPath id="'+uid+'c"><rect x="'+VB.L+'" y="'+VB.T+'" width="'+VB.W+'" height="'+VB.H+'"/></clipPath>'+
+     '<marker id="'+uid+'a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="'+CO+'"/></marker>'+
+     hatch(uid+'gain','#28A745')+hatch(uid+'loss','#C0392B')+hatch(uid+'dwl','#6E7F91')+'</defs>';
+  /* numeric grid */
+  const mk=st.marks||[];
+  const clashP=y=>mk.some(m=>m.tp!=null && Math.abs(Y(m.p)-y)<10);
+  const clashQ=x=>mk.some(m=>m.tq!=null && Math.abs(X(m.q)-x)<16);
+  if(M.ticksP){
+    M.ticksP.forEach(p=>{ const y=Y(p);
+      o+='<line x1="'+VB.L+'" x2="'+R+'" y1="'+y+'" y2="'+y+'" stroke="#E4EDF5"/>';
+      if(!clashP(y)) o+='<text x="'+(VB.L-6)+'" y="'+(y+3.5)+'" font-size="9.5" text-anchor="end" fill="#8098B0" '+FONT+'>'+(M.fmtP?M.fmtP(p):p)+'</text>'; });
+  }
+  if(M.ticksQ){
+    M.ticksQ.forEach(q=>{ const x=X(q);
+      o+='<line x1="'+x+'" x2="'+x+'" y1="'+VB.T+'" y2="'+B+'" stroke="#E4EDF5"/>';
+      if(!clashQ(x)) o+='<text x="'+x+'" y="'+(B+13)+'" font-size="9.5" text-anchor="middle" fill="#8098B0" '+FONT+'>'+(M.fmtQ?M.fmtQ(q):q)+'</text>'; });
+  }
+  /* axes */
+  o+='<line x1="'+VB.L+'" y1="'+(VB.T-8)+'" x2="'+VB.L+'" y2="'+B+'" stroke="#456080" stroke-width="1.6"/>'+
+     '<line x1="'+VB.L+'" y1="'+B+'" x2="'+(R+8)+'" y2="'+B+'" stroke="#456080" stroke-width="1.6"/>'+
+     '<text x="'+(VB.L+6)+'" y="'+(VB.T-12)+'" font-size="11" font-weight="700" fill="#456080" '+FONT+'>'+M.yName+'</text>'+
+     '<text x="'+R+'" y="'+(B+(M.ticksQ?28:30))+'" font-size="11" font-weight="700" fill="#456080" text-anchor="end" '+FONT+'>'+M.xName+'</text>'+
+     ((M.ticksP||M.ticksQ)?'':'<text x="'+(VB.L-5)+'" y="'+(B+13)+'" font-size="10" fill="#8098B0" text-anchor="end" '+FONT+'>0</text>');
+
+  o+='<g clip-path="url(#'+uid+'c)"'+(st.regions?' style="pointer-events:none"':'')+'>';
+  /* shaded areas */
+  (st.fills||[]).forEach(f=>{
+    if(!f.pts || area(f.pts)<1e-6) return;
+    const fill = FILL[f.k] || ('url(#'+uid+f.k+')');
+    o+='<path d="'+pth(f.pts)+'" fill="'+fill+'"'+(f.edge?' stroke="'+f.edge+'" stroke-width="1.3" stroke-dasharray="4 3"':'')+'/>';
+  });
+  /* price lines */
+  (st.plines||[]).forEach(l=>{
+    o+='<line x1="'+VB.L+'" y1="'+Y(l.p)+'" x2="'+R+'" y2="'+Y(l.p)+'" stroke="'+(l.col||CO)+'" stroke-width="'+(l.w||1.7)+'" stroke-dasharray="5 4"/>';
+  });
+  /* curves */
+  const curveSeg=c=>{
+    if(c.t==='D') return [[0,c.c.a],[c.c.a/c.c.b,0]];
+    const far=M.qmax*1.3;
+    if(c.c.c>=0) return [[0,c.c.c],[far,c.c.c+c.c.k*far]];
+    return [[-c.c.c/c.c.k,0],[far,c.c.c+c.c.k*far]];
+  };
+  (st.curves||[]).forEach(c=>{
+    const g=curveSeg(c), col=c.ghost?CG:(c.col||(c.t==='D'?CD:CSU));
+    o+='<line x1="'+X(g[0][0])+'" y1="'+Y(g[0][1])+'" x2="'+X(g[1][0])+'" y2="'+Y(g[1][1])+'" stroke="'+col+'" stroke-width="'+(c.ghost?2:(c.w||2.6))+'" stroke-linecap="round"'+(c.ghost?' stroke-dasharray="6 5"':'')+'/>';
+  });
+  o+='</g>';
+
+  /* guides, axis labels and dots */
+  const marks=st.marks||[];
+  marks.forEach(m=>{ const x=X(m.q), y=Y(m.p), c=m.kind==='old'?CG:'#8098B0';
+    if(m.noguide) return;
+    o+='<line x1="'+VB.L+'" y1="'+y+'" x2="'+x+'" y2="'+y+'" stroke="'+c+'" stroke-width="1" stroke-dasharray="4 4"/>'+
+       '<line x1="'+x+'" y1="'+y+'" x2="'+x+'" y2="'+B+'" stroke="'+c+'" stroke-width="1" stroke-dasharray="4 4"/>'; });
+  spread(marks.filter(m=>m.tp!=null).map(m=>({pos:Y(m.p),txt:m.tp,old:m.kind==='old'})),13).forEach(l=>{
+    o+='<text x="'+(VB.L-6)+'" y="'+(l.pos+4)+'" font-size="'+(l.txt.length>4?10.5:12)+'" font-weight="900" text-anchor="end" fill="'+(l.old?'#8098B0':'#002F6C')+'" '+FONT+'>'+l.txt+'</text>'; });
+  spread(marks.filter(m=>m.tq!=null).map(m=>({pos:X(m.q),txt:m.tq,old:m.kind==='old'})),22).forEach(l=>{
+    o+='<text x="'+l.pos+'" y="'+(B+15)+'" font-size="'+(l.txt.length>4?10.5:12)+'" font-weight="900" text-anchor="middle" fill="'+(l.old?'#8098B0':'#002F6C')+'" '+FONT+'>'+l.txt+'</text>'; });
+  (st.arrows||[]).forEach(a=>{
+    if(a.axis==='p'){ const y1=Y(a.from), y2=Y(a.to); if(Math.abs(y2-y1)<12) return;
+      const dir=y2>y1?1:-1;
+      o+='<line x1="'+(VB.L+9)+'" y1="'+(y1+dir*4)+'" x2="'+(VB.L+9)+'" y2="'+(y2-dir*3)+'" stroke="'+CO+'" stroke-width="2.2" marker-end="url(#'+uid+'a)"/>';
+    } else { const x1=X(a.from), x2=X(a.to); if(Math.abs(x2-x1)<12) return;
+      const dir=x2>x1?1:-1;
+      o+='<line x1="'+(x1+dir*4)+'" y1="'+(B-9)+'" x2="'+(x2-dir*3)+'" y2="'+(B-9)+'" stroke="'+CO+'" stroke-width="2.2" marker-end="url(#'+uid+'a)"/>';
+    }
+  });
+  /* curve labels */
+  (st.curves||[]).forEach(c=>{
+    if(!c.lab) return;
+    let q,p;
+    if(c.t==='D'){ q=Math.min(dQ(c.c,M.pmax*0.05), M.qmax*0.93); p=dP(c.c,q); }
+    else { q=Math.min(sQ(c.c,M.pmax*0.95), M.qmax*0.92); p=sP(c.c,q); }
+    const col=c.ghost?'#8098B0':(c.col||(c.t==='D'?CD:CSU));
+    o+='<text x="'+(X(q)+5)+'" y="'+(c.t==='D'?Y(p)+4:Y(p)+10)+'" font-size="12.5" font-weight="900" fill="'+col+'" '+FONT+'>'+c.lab+'</text>';
+  });
+  /* clickable regions (Area Detective) */
+  (st.regions||[]).forEach(r=>{ o+='<path class="sp-reg" data-r="'+r.id+'" d="'+pth(r.pts)+'"/>'; });
+  /* area tags */
+  (st.tags||[]).forEach(t=>{
+    o+='<text x="'+X(t.q)+'" y="'+(Y(t.p)+4)+'" font-size="'+(t.size||11)+'" font-weight="900" text-anchor="'+(t.anchor||'middle')+'" fill="'+(t.col||'#002F6C')+'" stroke="#fff" stroke-width="3" paint-order="stroke" style="pointer-events:none" '+FONT+'>'+t.txt+'</text>';
+  });
+  /* dots */
+  marks.forEach(m=>{ if(m.kind==='old') o+='<circle cx="'+X(m.q)+'" cy="'+Y(m.p)+'" r="4.5" fill="'+CG+'" stroke="#fff" stroke-width="1.5"/>'; });
+  marks.forEach(m=>{ if(m.kind!=='old' && !m.nodot) o+='<circle cx="'+X(m.q)+'" cy="'+Y(m.p)+'" r="5.5" fill="'+CO+'" stroke="#fff" stroke-width="2"/>'; });
+  (st.plines||[]).forEach(l=>{ if(l.lab) o+='<text x="'+(R-4)+'" y="'+(Y(l.p)-5)+'" font-size="11" font-weight="900" text-anchor="end" fill="'+(l.col||CO)+'" stroke="#fff" stroke-width="3" paint-order="stroke" '+FONT+'>'+l.lab+'</text>'; });
+  if(st.handleP!=null){ const y=Y(st.handleP);
+    o+='<g class="sp-handle"><rect x="'+VB.L+'" y="'+(y-14)+'" width="'+VB.W+'" height="28" fill="transparent"/>'+
+       '<circle cx="'+(R-12)+'" cy="'+y+'" r="11" fill="'+CO+'" stroke="#fff" stroke-width="2"/>'+
+       '<path d="M'+(R-16)+' '+(y-2)+' l4 -5 l4 5 M'+(R-16)+' '+(y+2)+' l4 5 l4 -5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>';
+  }
+  if(st.note) o+='<text x="'+(VB.L+8)+'" y="'+(VB.T+12)+'" font-size="9.5" font-style="italic" fill="#8098B0" '+FONT+'>'+st.note+'</text>';
+  return o+'</svg>';
+}
+/* Drag a horizontal price line on any diagram (pointer events — iPad safe) */
+function priceDrag(host, pmax, onP){
+  let dragging=false;
+  const fromPtr=e=>{
+    const svg=host.querySelector('svg'); if(!svg) return;
+    const r=svg.getBoundingClientRect(), y=(e.clientY-r.top)/r.height*VB.h;
+    onP(pmax-(y-VB.T)/VB.H*pmax);
+  };
+  host.addEventListener('pointerdown',e=>{
+    if(!e.target.closest('.sp-handle')) return;
+    e.preventDefault(); dragging=true;
+    try{ host.setPointerCapture(e.pointerId); }catch(err){}
+    fromPtr(e);
+  });
+  host.addEventListener('pointermove',e=>{ if(dragging) fromPtr(e); });
+  ['pointerup','pointercancel','lostpointercapture'].forEach(t=>host.addEventListener(t,()=>{ dragging=false; }));
+}
+
+/* ================= TAB 1 — KEY TERMS (match) ================= */
+const TERMS=[
+ {id:'t1', term:'Consumer surplus',          def:'The difference between the price a consumer is willing to pay for a product and the market price they actually pay.'},
+ {id:'t2', term:'Producer surplus',          def:'The difference between the price a producer is willing to accept for a product and the market price it actually receives.'},
+ {id:'t3', term:'Willingness to pay',        def:'The highest price a consumer would pay for a unit, reflecting the satisfaction they expect from it.'},
+ {id:'t4', term:'Minimum acceptable price',  def:'The lowest price at which a producer would supply a unit — just enough to cover the extra cost of producing it.'},
+ {id:'t5', term:'Market price',              def:'The single price paid by every buyer and received by every seller, whatever their own valuation or cost.'},
+ {id:'t6', term:'Net benefit to society',    def:'Consumer surplus plus producer surplus: the total gain from trade in a market.'},
+ {id:'t7', term:'Transfer of surplus',       def:'Surplus that moves from one side of the market to the other when the price changes, without being lost to society.'},
+ {id:'t8', term:'Deadweight loss',           def:'Surplus that nobody receives because fewer units are traded than at the equilibrium.'},
+ {id:'t9', term:'Price discrimination',      def:'Charging different groups different prices for the same product, turning consumer surplus into producer surplus.'},
+ {id:'t10',term:'Efficiency (Key Concept)',  def:'Resources are allocated so that net benefit to society cannot be increased — in a free competitive market, at the equilibrium.'}
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); mark('terms'); }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* ================= TAB 2 — NIGHT MARKET (stepped curves) ================= */
+const NM={
+  buyers:[['Ploy',120],['Nat',105],['Beam',95],['Mint',85],['Ton',75],['Fah',60],['Arm',50],['Pim',40]],
+  sellers:[['Auntie Noi',30],['Lek',40],['Som',50],['Daeng',60],['Kung',65],['Joy',80],['Oat',95],['Bee',110]],
+  pmax:130, n:8, P:90
+};
+function nmOutcome(p){
+  const nb=NM.buyers.filter(b=>b[1]>=p).length, ns=NM.sellers.filter(s=>s[1]<=p).length, n=Math.min(nb,ns);
+  let cs=0, ps=0;
+  for(let i=0;i<n;i++){ cs+=NM.buyers[i][1]-p; ps+=p-NM.sellers[i][1]; }
+  return {nb:nb, ns:ns, n:n, cs:cs, ps:ps, tot:cs+ps};
+}
+const NM_MAX=nmOutcome(70).tot;
+const nmFig=document.getElementById('nmFig');
+function nmRender(p){
+  const X=i=>VB.L+i/NM.n*VB.W, Y=v=>VB.T+(NM.pmax-v)/NM.pmax*VB.H, B=VB.T+VB.H, R=VB.L+VB.W, O=nmOutcome(p);
+  let o='<svg viewBox="0 0 '+VB.w+' '+VB.h+'" role="img" aria-label="Stepped demand and supply for mango sticky rice with a price line you can drag" xmlns="http://www.w3.org/2000/svg">'+
+    '<defs>'+hatch('nmh1','#D63864')+hatch('nmh2','#008BCC')+'</defs>';
+  [20,40,60,80,100,120].forEach(v=>{ const y=Y(v);
+    o+='<line x1="'+VB.L+'" x2="'+R+'" y1="'+y+'" y2="'+y+'" stroke="#E4EDF5"/><text x="'+(VB.L-6)+'" y="'+(y+3.5)+'" font-size="9.5" text-anchor="end" fill="#8098B0" '+FONT+'>'+v+'</text>'; });
+  for(let i=1;i<=NM.n;i++) o+='<text x="'+(X(i)-VB.W/NM.n/2)+'" y="'+(B+13)+'" font-size="9.5" text-anchor="middle" fill="#8098B0" '+FONT+'>'+i+'</text>';
+  o+='<line x1="'+VB.L+'" y1="'+(VB.T-8)+'" x2="'+VB.L+'" y2="'+B+'" stroke="#456080" stroke-width="1.6"/>'+
+     '<line x1="'+VB.L+'" y1="'+B+'" x2="'+(R+8)+'" y2="'+B+'" stroke="#456080" stroke-width="1.6"/>'+
+     '<text x="'+(VB.L+6)+'" y="'+(VB.T-12)+'" font-size="11" font-weight="700" fill="#456080" '+FONT+'>Price (฿)</text>'+
+     '<text x="'+R+'" y="'+(B+28)+'" font-size="11" font-weight="700" fill="#456080" text-anchor="end" '+FONT+'>Portions</text>';
+  /* surplus blocks */
+  for(let i=0;i<NM.n;i++){
+    const w=NM.buyers[i][1], c=NM.sellers[i][1];
+    if(i<O.n){
+      o+='<rect x="'+X(i)+'" y="'+Y(w)+'" width="'+(X(i+1)-X(i))+'" height="'+(Y(p)-Y(w))+'" fill="'+FILL.cs+'"/>';
+      o+='<rect x="'+X(i)+'" y="'+Y(p)+'" width="'+(X(i+1)-X(i))+'" height="'+(Y(c)-Y(p))+'" fill="'+FILL.ps+'"/>';
+    } else {
+      if(i<O.nb) o+='<rect x="'+X(i)+'" y="'+Y(w)+'" width="'+(X(i+1)-X(i))+'" height="'+Math.max(0,Y(p)-Y(w))+'" fill="url(#nmh1)" opacity=".7"/>';
+      if(i<O.ns) o+='<rect x="'+X(i)+'" y="'+Y(p)+'" width="'+(X(i+1)-X(i))+'" height="'+Math.max(0,Y(c)-Y(p))+'" fill="url(#nmh2)" opacity=".7"/>';
+    }
+  }
+  /* steps */
+  let dp='M'+X(0)+' '+Y(NM.buyers[0][1]), sp='M'+X(0)+' '+Y(NM.sellers[0][1]);
+  for(let i=0;i<NM.n;i++){
+    dp+=' H'+X(i+1)+(i<NM.n-1?' V'+Y(NM.buyers[i+1][1]):'');
+    sp+=' H'+X(i+1)+(i<NM.n-1?' V'+Y(NM.sellers[i+1][1]):'');
+  }
+  o+='<path d="'+dp+'" fill="none" stroke="'+CD+'" stroke-width="2.6"/><path d="'+sp+'" fill="none" stroke="'+CSU+'" stroke-width="2.6"/>';
+  o+='<text x="'+(R+2)+'" y="'+(Y(NM.buyers[7][1])+4)+'" font-size="12.5" font-weight="900" fill="'+CD+'" '+FONT+'>D</text>'+
+     '<text x="'+(R+2)+'" y="'+(Y(NM.sellers[7][1])+4)+'" font-size="12.5" font-weight="900" fill="'+CSU+'" '+FONT+'>S</text>';
+  /* names on the demand steps for the first few buyers */
+  for(let i=0;i<NM.n;i++){
+    const w=NM.buyers[i][1];
+    o+='<text x="'+(X(i)+VB.W/NM.n/2)+'" y="'+(Y(w)-4)+'" font-size="8.6" font-weight="700" text-anchor="middle" fill="#A61E4D" '+FONT+'>'+NM.buyers[i][0]+'</text>';
+  }
+  /* price line + handle */
+  const y=Y(p);
+  o+='<line x1="'+VB.L+'" y1="'+y+'" x2="'+R+'" y2="'+y+'" stroke="'+CO+'" stroke-width="1.8" stroke-dasharray="5 4"/>'+
+     '<text x="'+(VB.L+5)+'" y="'+(y+14)+'" font-size="11.5" font-weight="900" fill="'+CO+'" stroke="#fff" stroke-width="3" paint-order="stroke" '+FONT+'>฿'+p+'</text>'+
+     '<g class="sp-handle"><rect x="'+VB.L+'" y="'+(y-14)+'" width="'+VB.W+'" height="28" fill="transparent"/>'+
+     '<circle cx="'+(R-12)+'" cy="'+y+'" r="11" fill="'+CO+'" stroke="#fff" stroke-width="2"/>'+
+     '<path d="M'+(R-16)+' '+(y-2)+' l4 -5 l4 5 M'+(R-16)+' '+(y+2)+' l4 5 l4 -5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>';
+  nmFig.innerHTML=o+'</svg>';
+}
+function nmDraw(){
+  const p=NM.P, O=nmOutcome(p);
+  nmRender(p);
+  document.getElementById('nmPlab').textContent='฿'+p;
+  document.getElementById('nmSlider').value=p;
+  document.getElementById('nmQd').textContent=O.nb;
+  document.getElementById('nmQs').textContent=O.ns;
+  document.getElementById('nmSold').textContent=O.n+' portion'+(O.n===1?'':'s')+' sold';
+  document.getElementById('nmSoldSub').textContent= O.nb===O.ns ? 'The market clears: everyone who wants to trade at this price can' :
+    (O.nb>O.ns ? 'Excess demand: '+(O.nb-O.ns)+' customer'+(O.nb-O.ns===1?'':'s')+' cannot get a portion' : 'Excess supply: '+(O.ns-O.nb)+' stall'+(O.ns-O.nb===1?'':'s')+' cannot sell');
+  document.getElementById('nmCS').textContent=baht(O.cs);
+  document.getElementById('nmPS').textContent=baht(O.ps);
+  document.getElementById('nmTot').textContent=baht(O.tot);
+  document.getElementById('nmTotSub').textContent= O.tot===NM_MAX ? 'The maximum possible — no gains from trade are missed' : baht(NM_MAX-O.tot)+' less than the maximum: some worthwhile trades do not happen';
+  const say=document.getElementById('nmSay');
+  if(O.nb===O.ns) say.innerHTML='At <b>฿'+p+'</b> the market clears with '+O.n+' portions. Consumers gain <b>'+baht(O.cs)+'</b> and stalls gain <b>'+baht(O.ps)+'</b>. Move the price anywhere between ฿65 and ฿75: the total stays at '+baht(NM_MAX)+' — only the <b>split</b> between buyers and sellers changes.';
+  else if(O.nb<O.ns) say.innerHTML='At <b>฿'+p+'</b> only '+O.nb+' customers will pay this much, so only '+O.n+' portions are sold. Stalls that would happily sell at this price are left with nothing to do (blue hatching). Lower the price and watch more trades happen.';
+  else say.innerHTML='At <b>฿'+p+'</b> only '+O.ns+' stalls will sell this cheaply, so only '+O.n+' portions are sold. Customers who would happily pay go without (pink hatching). Raise the price and more stalls join in.';
+  const bh=document.getElementById('nmBuyers'); bh.innerHTML='';
+  NM.buyers.forEach((b,i)=>{
+    const d=document.createElement('div');
+    let cls='out', st='Priced out';
+    if(i<O.n){ cls='buy'; st='Buys · surplus '+baht(b[1]-p); }
+    else if(b[1]>=p){ cls='wait'; st='Wants one — none left'; }
+    d.className='sp-pc '+cls; d.innerHTML='<div class="nm">'+b[0]+'</div><div class="v">pays up to '+baht(b[1])+'</div><div class="st">'+st+'</div>';
+    bh.appendChild(d);
+  });
+  const sh=document.getElementById('nmSellers'); sh.innerHTML='';
+  NM.sellers.forEach((s,i)=>{
+    const d=document.createElement('div');
+    let cls='out', st='Price too low';
+    if(i<O.n){ cls='sell'; st='Sells · surplus '+baht(p-s[1]); }
+    else if(s[1]<=p){ cls='wait'; st='Willing — no buyer'; }
+    d.className='sp-pc '+cls; d.innerHTML='<div class="nm">'+s[0]+'</div><div class="v">accepts '+baht(s[1])+'+</div><div class="st">'+st+'</div>';
+    sh.appendChild(d);
+  });
+}
+function nmSet(p){ NM.P=Math.max(20,Math.min(125,Math.round(p/5)*5)); nmDraw(); }
+document.getElementById('nmSlider').addEventListener('input',e=>nmSet(Number(e.target.value)));
+priceDrag(nmFig, NM.pmax, nmSet);
+nmDraw();
+const NM_Q=[
+ {id:'n1', icon:'1', bg:'#D63864', name:'Consumer surplus at the equilibrium',
+  stem:'Set the price to <b>฿70</b>. What is total consumer surplus?',
+  opts:['฿105','฿130','฿235','฿480'], ans:1,
+  fb:'Ploy 50 + Nat 35 + Beam 25 + Mint 15 + Ton 5 = ฿130.',
+  why:'฿105 is producer surplus at ฿70, and ฿480 is what the five buyers would have been willing to pay in total. Consumer surplus is willingness to pay <b>minus</b> the price, buyer by buyer.'},
+ {id:'n2', icon:'2', bg:'#008BCC', name:'A transfer, not a loss',
+  stem:'The price rises from <b>฿70</b> to <b>฿75</b>. Five portions are still sold. What happens to net benefit to society?',
+  opts:['It falls by ฿25','It rises by ฿25','It does not change: ฿25 of surplus moves from consumers to producers','It does not change, because consumer surplus is unchanged'], ans:2,
+  fb:'Each of the five buyers pays ฿5 more and each of the five stalls receives ฿5 more. ฿25 moves from consumers to producers; the total stays at ฿235.',
+  why:'This is the <b>rectangle</b> you will see on every price-change diagram: surplus transferred between the two sides of the market.'},
+ {id:'n3', icon:'3', bg:'#6E7F91', name:'Above the equilibrium',
+  stem:'Set the price to <b>฿90</b>. How many portions are sold, and what happens to net benefit to society?',
+  opts:['6 portions; it rises','3 portions; it falls by ฿35','3 portions; it does not change','6 portions; it falls by ฿35'], ans:1,
+  fb:'Only Ploy, Nat and Beam will pay ฿90, so 3 portions are sold. Total surplus falls from ฿235 to ฿200.',
+  why:'Mint and Ton would have paid more than the stalls Daeng and Kung need to accept. Those trades do not happen, and their surplus is lost to everyone — a <b>deadweight loss</b>.'},
+ {id:'n4', icon:'4', bg:'#FF8F1C', name:'The marginal buyer',
+  stem:'At <b>฿75</b>, which customer buys a portion but gets <b>no</b> consumer surplus?',
+  opts:['Ploy','Mint','Ton','Fah'], ans:2,
+  fb:'Ton values a portion at exactly ฿75, so he is just willing to buy: his surplus is zero.',
+  why:'The last buyer on the demand curve is the <b>marginal</b> buyer. Everyone to the left of them on the demand curve gains a surplus — which is why consumer surplus is a triangle on a smooth curve.'}
+];
+buildCards(document.getElementById('nmQ'), NM_Q, (right,total)=>{
+  const b=document.getElementById('nmDone');
+  b.innerHTML='✓ All four answered ('+right+'/'+total+' right first time). You have just shown the key results of the chapter with eight people: surplus is the gap between value and price, a price change <b>transfers</b> surplus, and trading less than the equilibrium quantity <b>destroys</b> it.';
+  b.classList.add('show'); trk('Night market', right+'/'+total+' correct'); mark('wtp');
+});
+
+/* ================= TAB 3 — SURPLUS LAB ================= */
+const LM={pmax:16, qmax:12, yName:'Price ($)', xName:'Quantity (thousands per week)',
+  ticksP:[4,8,12,16], ticksQ:[3,6,9,12], fmtQ:q=>q+'k'};
+const SLOPE={s:1.5, m:0.9, f:0.45};
+const LPV={q:6,p:6};
+const lab={dSh:0, sSh:0, dSl:'m', sSl:'m', mode:'mkt', P:8, base:null};
+const labFig=document.getElementById('labFig');
+function labCurves(st){ st=st||lab; return {D:mkD(SLOPE[st.dSl],st.dSh,LPV), S:mkS(SLOPE[st.sSl],st.sSh,LPV)}; }
+function labOut(st){ st=st||lab; const c=labCurves(st); return Object.assign(outcome(c.D,c.S,st.mode==='fix'?st.P:null),c); }
+const K=v=>usd(v*1000);
+function delta(v,b,isMoney){
+  if(b==null) return '';
+  const d=v-b; if(Math.abs(d)<(isMoney?0.0005:0.005)) return '= no change';
+  const s=isMoney?usd(Math.abs(d)*1000):(isMoney===false?num(Math.abs(d)*1000):'$'+Math.abs(d).toFixed(2));
+  return '<span class="'+(d>0?'sp-up':'sp-dn')+'">'+(d>0?'▲ ':'▼ ')+s+'</span>';
+}
+function labDraw(){
+  const O=labOut(), D=O.D, S=O.S, fix=lab.mode==='fix';
+  const st={curves:[], fills:[], marks:[], aria:'Demand and supply with consumer and producer surplus shaded'};
+  const dMoved=!!lab.base && (lab.base.dSh!==lab.dSh||lab.base.dSl!==lab.dSl);
+  const sMoved=!!lab.base && (lab.base.sSh!==lab.sSh||lab.base.sSl!==lab.sSl);
+  if(lab.base){
+    const b=labCurves(lab.base);
+    if(dMoved) st.curves.push({t:'D',c:b.D,ghost:true,lab:'D'});
+    if(sMoved) st.curves.push({t:'S',c:b.S,ghost:true,lab:'S'});
+  }
+  if(O.csP) st.fills.push({pts:O.csP,k:'cs'});
+  if(O.psP) st.fills.push({pts:O.psP,k:'ps'});
+  if(O.dwlP) st.fills.push({pts:O.dwlP,k:'dwl'});
+  st.curves.push({t:'D',c:D,lab:dMoved?'D₁':'D'});
+  st.curves.push({t:'S',c:S,lab:sMoved?'S₁':'S'});
+  if(fix){
+    st.plines=[{p:lab.P,lab:'Fixed price'}]; st.handleP=lab.P;
+    if(O.qt>0.01) st.marks.push({p:lab.P,q:O.qt,tq:'Q',kind:'new',nodot:true});
+    st.marks.push({p:O.e.p,q:O.e.q,kind:'old',noguide:true});
+  } else {
+    st.marks.push({p:O.p,q:O.qt,tp:'P',tq:'Q',kind:'new'});
+  }
+  if(O.csP && D.a>LM.pmax) st.note='▲ the consumer surplus triangle continues above the top of the diagram';
+  if(O.csP){ const c=centroid(O.csP); if(c[1]<LM.pmax-0.5) st.tags=[{q:c[0]*0.75,p:Math.min(c[1],LM.pmax-1),txt:'CS',col:'#A61E4D'}]; }
+  if(O.psP){ const c=centroid(O.psP); (st.tags=st.tags||[]).push({q:c[0]*0.75,p:c[1],txt:'PS',col:'#00618F'}); }
+  if(O.dwlP && O.dwl>0.4){ const c=centroid(O.dwlP); (st.tags=st.tags||[]).push({q:c[0],p:c[1],txt:'DWL',col:'#4A5A6C',size:9.5}); }
+  labFig.innerHTML=renderSP(LM,'lb',st);
+
+  const B=lab.base?labOut(lab.base):null;
+  document.getElementById('labPr').textContent='$'+O.p.toFixed(2);
+  document.getElementById('labQ').textContent=num(O.qt*1000);
+  document.getElementById('labCS').textContent=K(O.cs);
+  document.getElementById('labPS').textContent=K(O.ps);
+  document.getElementById('labTot').textContent=K(O.cs+O.ps);
+  document.getElementById('labDW').textContent=K(O.dwl);
+  document.getElementById('labPrD').innerHTML=B?delta(O.p,B.p):'';
+  document.getElementById('labQD').innerHTML=B?delta(O.qt,B.qt,false):'';
+  document.getElementById('labCSD').innerHTML=B?delta(O.cs,B.cs,true):'';
+  document.getElementById('labPSD').innerHTML=B?delta(O.ps,B.ps,true):'';
+  document.getElementById('labTotD').innerHTML=B?delta(O.cs+O.ps,B.cs+B.ps,true):'';
+  document.getElementById('labPlab').textContent='$'+lab.P.toFixed(2);
+  document.getElementById('labP').value=lab.P;
+  const lbl=v=>v===0?'No shift':(v>0?'Increase · right ':'Decrease · left ')+'×'+Math.abs(v);
+  document.getElementById('labDlab').textContent=lbl(lab.dSh);
+  document.getElementById('labSlab').textContent=lbl(lab.sSh);
+  const say=document.getElementById('labSay');
+  if(fix && O.qt<0.01) say.innerHTML='At this price nothing is traded at all, so there is no surplus for anyone.';
+  else if(fix && Math.abs(lab.P-O.e.p)>0.13){
+    const above=lab.P>O.e.p;
+    say.innerHTML='The price is fixed '+(above?'<b>above</b>':'<b>below</b>')+' equilibrium ($'+O.e.p.toFixed(2)+'), so only '+num(O.qt*1000)+' units are traded — the '+(above?'quantity demanded':'quantity supplied')+'. The grey triangle, <b>'+K(O.dwl)+'</b> a week, is surplus that nobody receives. '+
+      (above?'Producers keep a higher price on the units they do sell, so they may gain — but society as a whole loses.':'Consumers who do get the product pay less, so they may gain — but society as a whole loses.');
+  }
+  else {
+    const share=O.cs+O.ps>0?Math.round(O.cs/(O.cs+O.ps)*100):0;
+    say.innerHTML='At the market price, consumers receive <b>'+share+'%</b> of the net benefit and producers <b>'+(100-share)+'%</b>. '+
+      (share>55?'Demand is less elastic than supply here, so buyers value the product well above the price they pay.':share<45?'Supply is less elastic than demand here, so sellers receive well above their minimum price.':'The two curves have similar slopes, so the gain is shared roughly equally.')+
+      (lab.base?'':' Press <b>📌 Save as starting point</b>, then move a curve to see the changes.');
+  }
+}
+['labD','labS'].forEach(id=>document.getElementById(id).addEventListener('input',e=>{
+  lab[id==='labD'?'dSh':'sSh']=Number(e.target.value); labDraw();
+}));
+document.getElementById('labP').addEventListener('input',e=>{ lab.P=Number(e.target.value); labDraw(); });
+priceDrag(labFig, LM.pmax, p=>{ if(lab.mode!=='fix') return; lab.P=Math.max(0.5,Math.min(15.5,Math.round(p*4)/4)); labDraw(); });
+function segBind(id, fn){
+  document.querySelectorAll('#'+id+' .lvl').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#'+id+' .lvl').forEach(x=>x.classList.toggle('active',x===b)); fn(b.dataset.v);
+  }));
+}
+function segSet(id,v){ document.querySelectorAll('#'+id+' .lvl').forEach(x=>x.classList.toggle('active',x.dataset.v===v)); }
+segBind('labMode',v=>{ lab.mode=v; document.getElementById('labProw').classList.toggle('hidden',v!=='fix');
+  if(v==='fix'){ const e=labOut(Object.assign({},lab,{mode:'mkt'})); lab.P=Math.min(15.5,Math.round((e.p+2)*4)/4); } labDraw(); });
+segBind('labDs',v=>{ lab.dSl=v; labDraw(); });
+segBind('labSs',v=>{ lab.sSl=v; labDraw(); });
+document.getElementById('labBase').addEventListener('click',()=>{ lab.base=Object.assign({},lab,{base:null}); labDraw();
+  document.getElementById('labBase').textContent='📌 Starting point saved — save again to update'; });
+document.getElementById('labReset').addEventListener('click',()=>{
+  Object.assign(lab,{dSh:0,sSh:0,dSl:'m',sSl:'m',mode:'mkt',P:8,base:null});
+  ['labD','labS'].forEach(id=>document.getElementById(id).value=0);
+  segSet('labMode','mkt'); segSet('labDs','m'); segSet('labSs','m');
+  document.getElementById('labProw').classList.add('hidden');
+  document.getElementById('labBase').textContent='📌 Save as starting point';
+  labDraw();
+});
+labDraw();
+
+const LAB_CH=[
+ {id:'c1', icon:'⚖️', bg:'#D63864', name:'Who takes the bigger share?',
+  stem:'At the <b>market price</b>, make consumer surplus <b>more than twice</b> producer surplus. You may change slopes and shifts.',
+  test:(O,st)=>st.mode==='mkt' && O.cs>2*O.ps,
+  hint:(O,st)=>st.mode!=='mkt'?'Switch back to <b>Market price</b> first.':'Consumer surplus is '+Math.round(O.cs/Math.max(O.ps,1e-6)*10)/10+' × producer surplus. Try changing the <b>slopes</b> rather than the positions.',
+  ok:'Steep demand with flat supply does it. When demand is <b>less price elastic</b> than supply, consumers value the product far above the price, so they capture most of the net benefit. The less elastic side of the market always takes the larger share.'},
+ {id:'c2', icon:'📘', bg:'#002F6C', name:'Recreate coursebook Figure 11.3',
+  stem:'Save a starting point at the market price. Then make the market price <b>fall</b> while the demand curve stays exactly where it is, so that consumer surplus rises for existing <b>and</b> new consumers.',
+  test:(O,st)=>{ if(!st.base||st.mode!=='mkt'||st.base.mode!=='mkt') return false; const B=labOut(st.base); return st.dSh===st.base.dSh && st.dSl===st.base.dSl && O.p<B.p-0.01 && O.cs>B.cs; },
+  hint:(O,st)=>!st.base?'Press <b>📌 Save as starting point</b> first, at the market price.':((st.dSh!==st.base.dSh||st.dSl!==st.base.dSl)?'Leave the <b>demand</b> curve exactly as it was when you saved. Only supply should move.':'The price has not fallen yet. Which way must supply shift?'),
+  ok:'Supply increased, so price fell along an unchanged demand curve. Existing consumers pay less on every unit (the rectangle) and new consumers come into the market (the triangle). That is Figure 11.3 — and coursebook question 3.'},
+ {id:'c3', icon:'🔒', bg:'#6B4E9E', name:'A fixed price that helps producers',
+  stem:'Switch to <b>Fix the price</b>. Set a price <b>above</b> equilibrium that leaves producers with <b>more</b> surplus than they would get at the equilibrium.',
+  test:(O,st)=>st.mode==='fix' && st.P>O.e.p+0.1 && O.ps>outcome(O.D,O.S,null).ps+0.01,
+  hint:(O,st)=>st.mode!=='fix'?'Switch to <b>Fix the price</b> first.':(st.P<=O.e.p?'Your price is below the equilibrium. Drag it above.':'Producer surplus here is '+K(O.ps)+' against '+K(outcome(O.D,O.S,null).ps)+' at equilibrium. Try just a little above equilibrium, and try making demand <b>steep</b>.'),
+  ok:'With inelastic demand, a price a little above equilibrium loses few sales, so producers gain more on the units they still sell than they lose on the units they no longer sell. But the grey deadweight triangle shows society still loses. This is the logic of a <b>minimum price</b> in topic 3.2.'},
+ {id:'c4', icon:'📉', bg:'#6E7F91', name:'A big deadweight loss',
+  stem:'Fix a price <b>below</b> equilibrium that creates a deadweight loss of <b>more than $5,000</b> a week.',
+  test:(O,st)=>st.mode==='fix' && st.P<O.e.p-0.1 && O.dwl*1000>5000,
+  hint:(O,st)=>st.mode!=='fix'?'Switch to <b>Fix the price</b> first.':(st.P>=O.e.p?'Your price is above equilibrium. Drag it below.':'The deadweight loss is '+K(O.dwl)+'. Move the price further from equilibrium — or ask which slopes make the triangle bigger.'),
+  ok:'The further the price is from equilibrium, the bigger the triangle. And for the same gap in price, the triangle is bigger when the curves are <b>flatter</b> (more elastic), because more trades are lost. A maximum price in topic 3.2 works exactly like this.'}
+];
+const labSolved=new Set();
+(function(){
+  const host=document.getElementById('labChal');
+  LAB_CH.forEach(c=>{
+    const card=document.createElement('div'); card.className='q-card';
+    card.innerHTML='<div class="q-head"><div class="q-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="q-name">'+c.name+
+      '<span class="sp-pill" id="pill-'+c.id+'">Not solved</span></div></div><div class="q-stem">'+c.stem+'</div>'+
+      '<button class="mini-btn" style="margin-top:0">Check my diagram</button><div class="reveal"></div>';
+    card.querySelector('.mini-btn').addEventListener('click',()=>{
+      const O=labOut(), rev=card.querySelector('.reveal');
+      if(c.test(O,lab)){
+        rev.innerHTML='<span class="verdict v-good">Solved</span><br>'+c.ok; rev.classList.add('show');
+        const pill=document.getElementById('pill-'+c.id); pill.textContent='Solved ✓'; pill.classList.add('ok');
+        if(!labSolved.has(c.id)){
+          labSolved.add(c.id);
+          document.getElementById('labSolved').textContent=labSolved.size+' / '+LAB_CH.length+' solved';
+          if(labSolved.size===LAB_CH.length){ document.getElementById('labDone').classList.add('show'); trk('Surplus Lab','all 4 challenges solved'); mark('lab'); }
+        }
+      } else { rev.innerHTML='<span class="verdict v-bad">Not yet</span><br>'+c.hint(O,lab); rev.classList.add('show'); }
+    });
+    host.appendChild(card);
+  });
+})();
+
+/* ================= TAB 4 — SHIFT & MEASURE ================= */
+const SM={pmax:14, qmax:12, yName:'Price', xName:'Quantity'};
+const SHV={q:5,p:6};
+const SCEN=[
+ {id:'dur', icon:'🍈', chip:'Durian (Thailand)', src:'Thailand', th:true, K:'S', dir:-1, b:1.1, k:0.9,
+  market:'The market for Thai durian',
+  cause:'A drought in Chanthaburi and Rayong cuts the durian harvest.',
+  short:'Drought means less durian is offered at every price',
+  explain:'Supply shifts left, so the price rises along the unchanged demand curve. Consumers who still buy pay more on every durian — the <b>rectangle</b>, which is transferred to growers. Consumers priced out lose their whole surplus — the <b>triangle</b>, which no one gains.',
+  twist:'Do growers gain? They receive a higher price on the rectangle but sell less. On this diagram producer surplus also falls, because the shift is parallel. If the drought hits some farms but not others, the farmers who still have fruit can do very well — the effect on producer surplus <b>depends</b> on who is hit.'},
+ {id:'rice', icon:'🌾', chip:'Rice (Thailand)', src:'Thailand', th:true, K:'S', dir:1, b:1, k:0.8,
+  market:'The market for Thai jasmine rice',
+  cause:'A good monsoon and new high-yield seed varieties raise the rice harvest.',
+  short:'Good weather and better seeds raise supply',
+  explain:'Supply shifts right, so the price falls along the unchanged demand curve. Existing buyers pay less on every kilo (the rectangle), and the lower price brings new buyers into the market (the triangle). This is exactly coursebook Figure 11.3.',
+  twist:'Consumers gain for certain. Farmers may not: if demand for rice is price inelastic, the price falls a lot, and the rectangle they lose to consumers can be larger than the gain from selling more. A good harvest can be bad news for farmers (topic 2.2).'},
+ {id:'pia', icon:'✈️', chip:'PIA flights (coursebook)', src:'Coursebook · Economics in context', th:false, K:'D', dir:1, b:0.9, k:1.4,
+  market:'Manchester–Islamabad return flights',
+  cause:'Demand rises for October flights, when many passengers travel to Pakistan.',
+  short:'More passengers want to fly in October',
+  explain:'Demand shifts right, so the fare rises along the unchanged supply curve — from $612 to $837 in the coursebook. Every seat the airline was already selling now earns more above its minimum acceptable price (the <b>rectangle</b>), and extra seats sold add a <b>triangle</b>.',
+  twist:'Supply of seats is inelastic in the short run: aircraft and landing slots are fixed. So most of the gain comes through the rectangle — a higher fare — rather than more seats. Compare Airblue’s fixed $240 fare: by not raising its price, it leaves that surplus with its passengers.'},
+ {id:'chk', icon:'🐔', chip:'Chicken (Thailand)', src:'Thailand · links to 2.4', th:true, K:'D', dir:-1, b:0.8, k:0.8,
+  market:'The market for chicken in Thailand',
+  cause:'News of a bird flu outbreak makes consumers worried about eating chicken.',
+  short:'A health scare makes consumers avoid chicken',
+  explain:'Demand shifts left, so the price falls along the unchanged supply curve. Farmers lose on every bird they still sell (the rectangle, transferred to consumers who keep buying) and lose the surplus on birds no longer sold (the triangle).',
+  twist:'Consumers who keep buying gain from the lower price, but many consumers have stopped buying because they are worried — so on this diagram consumer surplus also falls. Whether consumers as a group gain <b>depends</b> on how the demand curve shifts.'},
+ {id:'fuel', icon:'⛽', chip:'Petrol (Thailand)', src:'Thailand · inelastic demand', th:true, K:'S', dir:-1, b:1.6, k:0.8,
+  market:'The market for petrol in Thailand',
+  cause:'Oil producers cut output, raising the cost of fuel to Thai refiners and retailers.',
+  short:'Higher costs reduce the supply of petrol',
+  explain:'Supply shifts left and the price rises along a <b>steep</b> demand curve. Drivers have few substitutes in the short run, so nearly all of them keep buying: the loss of consumer surplus is almost entirely the rectangle.',
+  twist:'Compare the percentage loss here with the phone market. Inelastic demand means a large loss in <b>baht</b> but a small one as a share of a very large original consumer surplus — activity 5 explains why.'},
+ {id:'ev', icon:'🚗', chip:'Electric cars (Thailand)', src:'Thailand · elastic demand', th:true, K:'S', dir:1, b:0.45, k:0.8,
+  market:'The market for electric cars in Thailand',
+  cause:'New factories in Thailand lower the cost of producing electric cars.',
+  short:'Lower costs raise the supply of electric cars',
+  explain:'Supply shifts right and the price falls along a <b>flat</b> demand curve. Because demand is price elastic, many new buyers enter the market, so a large part of the gain in consumer surplus is the <b>triangle</b> for new consumers.',
+  twist:'Buyers who bought before the price fell gain nothing — and may feel worse off because their car is now worth less second-hand. Consumer surplus measures the gain at the moment of purchase, not people’s feelings afterwards.'}
+];
+const sh={sc:{el:document.getElementById('shFig')}, i:null, stage:0, answers:{}, score:0, played:new Set()};
+const STG=['Stage 1 · Starting surplus','Stage 2 · The shift','Stage 3 · New equilibrium','Stage 4 · Measure the change'];
+function shModel(S){
+  const D0=mkD(S.b,0,SHV), S0=mkS(S.k,0,SHV), sh0=S.dir*3;
+  const D1=S.K==='D'?mkD(S.b,sh0,SHV):D0, S1=S.K==='S'?mkS(S.k,sh0,SHV):S0;
+  const O0=outcome(D0,S0,null), O1=outcome(D1,S1,null);
+  const ch=S.K==='S'?csChange(D0,O0.p,O1.p):psChange(S0,O0.p,O1.p);
+  return {D0,S0,D1,S1,O0,O1,ch,sh0};
+}
+function shState(n,x){
+  const S=SCEN[sh.i], m=sh.m, f=x==null?1:x;
+  const st={curves:[], fills:[], marks:[], aria:S.market+' — surplus diagram'};
+  if(n===0){
+    st.fills=[{pts:m.O0.csP,k:'cs'},{pts:m.O0.psP,k:'ps'}];
+    st.curves=[{t:'D',c:m.D0,lab:'D'},{t:'S',c:m.S0,lab:'S'}];
+    st.marks=[{p:m.O0.p,q:m.O0.q,tp:'P',tq:'Q',kind:'new'}];
+    st.tags=[{q:1.1,p:m.O0.p+(m.D0.a-m.O0.p)*0.28,txt:'CS',col:'#A61E4D'},{q:1.1,p:m.O0.p-(m.O0.p-Math.max(0,m.S0.c))*0.3,txt:'PS',col:'#00618F'}];
+    return st;
+  }
+  const isD=S.K==='D';
+  const Dn=isD?mkD(S.b,m.sh0*(n===1?f:1),SHV):m.D0, Sn=isD?m.S0:mkS(S.k,m.sh0*(n===1?f:1),SHV);
+  st.curves.push({t:S.K,c:isD?m.D0:m.S0,ghost:true,lab:S.K});
+  st.curves.push({t:'D',c:Dn,lab:isD?'D₁':'D'});
+  st.curves.push({t:'S',c:Sn,lab:isD?'S':'S₁'});
+  if(n===1){
+    st.fills=[{pts:m.O0.csP,k:'csf'},{pts:m.O0.psP,k:'psf'}];
+    st.marks=[{p:m.O0.p,q:m.O0.q,tp:'P',tq:'Q',kind:'old'}];
+    return st;
+  }
+  st.marks=[{p:m.O0.p,q:m.O0.q,tp:'P',tq:'Q',kind:'old'},{p:m.O1.p,q:m.O1.q,tp:'P₁',tq:'Q₁',kind:'new'}];
+  if(n===2){
+    st.fills=[{pts:m.O1.csP,k:'cs'},{pts:m.O1.psP,k:'ps'}];
+    st.arrows=[{axis:'p',from:m.O0.p,to:m.O1.p},{axis:'q',from:m.O0.q,to:m.O1.q}];
+    return st;
+  }
+  /* stage 4: the change, measured along the unchanged curve */
+  const gain = isD ? m.O1.p>m.O0.p : m.O1.p<m.O0.p;
+  st.fills=[{pts:m.O1.csP,k:'csf'},{pts:m.O1.psP,k:'psf'},{pts:m.ch.rect,k:gain?'gain':'loss'},{pts:m.ch.tri,k:gain?'gain':'loss',edge:'#002F6C'}];
+  const rc=centroid(m.ch.rect), tc=centroid(m.ch.tri), tmax=Math.max.apply(null,m.ch.tri.map(p=>p[0]));
+  const who=isD?['existing sales','new sales']:['existing buyers','new buyers'];
+  if(!gain) who[1]=isD?'lost sales':'buyers who leave';
+  const col=gain?'#155724':'#7A1F14';
+  st.tags=[{q:rc[0],p:rc[1],txt:who[0],size:9.5,col:col},{q:tmax+0.25,p:tc[1],txt:'◀ '+who[1],size:9.5,col:col,anchor:'start'}];
+  return st;
+}
+function shCap(n){
+  const S=SCEN[sh.i], m=sh.m, isD=S.K==='D', up=S.dir>0, pUp=m.O1.p>m.O0.p;
+  if(n===0) return 'The market starts in equilibrium at <b>P</b> and <b>Q</b>. The pink area is consumer surplus and the blue area is producer surplus. Together they are the net benefit to society.';
+  if(n===1) return S.short+'. <b>'+(isD?'Demand':'Supply')+(up?' increases':' decreases')+': '+S.K+' shifts '+(up?'right':'left')+' to '+S.K+'₁.</b>';
+  if(n===2){
+    const dcs=(m.O1.cs-m.O0.cs)/m.O0.cs*100, dps=(m.O1.ps-m.O0.ps)/m.O0.ps*100;
+    return 'New equilibrium: price '+(pUp?'rises':'falls')+' to <b>P₁</b> and quantity '+(m.O1.q>m.O0.q?'rises':'falls')+' to <b>Q₁</b>. The areas are redrawn: consumer surplus <b>'+pct(dcs)+'</b>, producer surplus <b>'+pct(dps)+'</b>.';
+  }
+  const tot=m.ch.ra+m.ch.ta, share=Math.round(m.ch.ra/tot*100);
+  if(!isD){
+    const base='Measure the change in <b>consumer surplus</b> along the demand curve, which has not moved. ';
+    return base+(pUp
+      ?'Buyers who still buy pay P₁ instead of P on every unit: the <b>rectangle</b>, transferred to producers. Buyers priced out lose the <b>triangle</b>. Consumer surplus falls by <b>'+Math.round(tot/m.O0.cs*100)+'%</b>; '+share+'% of the loss is the rectangle.'
+      :'Existing buyers pay less on every unit: the <b>rectangle</b>. New buyers who enter at the lower price gain the <b>triangle</b>. Consumer surplus rises by <b>'+Math.round(tot/m.O0.cs*100)+'%</b>; '+share+'% of the gain is the rectangle.');
+  }
+  const base='Measure the change in <b>producer surplus</b> along the supply curve, which has not moved. ';
+  return base+(pUp
+    ?'Every unit already sold now earns P₁ instead of P: the <b>rectangle</b>. Extra units sold add the <b>triangle</b>. Producer surplus rises by <b>'+Math.round(tot/m.O0.ps*100)+'%</b>; '+share+'% of the gain is the rectangle.'
+    :'Units still sold earn less: the <b>rectangle</b>, transferred to consumers. Units no longer sold lose the <b>triangle</b>. Producer surplus falls by <b>'+Math.round(tot/m.O0.ps*100)+'%</b>; '+share+'% of the loss is the rectangle.');
+}
+function shDrawStage(n,x){ sh.sc.el.innerHTML=renderSP(SM,'sh',shState(n,x)); }
+function shUI(){
+  document.getElementById('shStage').textContent=STG[sh.stage];
+  document.querySelectorAll('#shBar i').forEach((b,i)=>b.classList.toggle('on', i<sh.stage));
+  const cap=document.getElementById('shCap'); if(cap) cap.innerHTML=shCap(sh.stage);
+  const locked=!!sh.answers[SCEN[sh.i].id];
+  const step=document.getElementById('shStep'), all=document.getElementById('shAll');
+  if(step){ step.disabled=!locked||sh.stage>=3; all.disabled=!locked; all.textContent=sh.stage>=3?'↺ Replay':'▶ Play all'; }
+  if(sh.stage>=3) shExplain();
+}
+function shAnim(n){
+  if(n===1) return [tw(1100,x=>shDrawStage(1,x))];
+  return [act(()=>shDrawStage(n))];
+}
+function shLoad(i){
+  stop(sh);
+  sh.i=i; const S=SCEN[i]; sh.m=shModel(S);
+  sh.stage=0; shDrawStage(0);
+  document.getElementById('shTitle').textContent=S.market;
+  document.querySelectorAll('#shChips .sp-chip').forEach((c,j)=>c.classList.toggle('now',j===i));
+  document.getElementById('shOut').innerHTML='';
+  const A=sh.answers[S.id], focus=S.K==='S'?'Consumer surplus':'Producer surplus';
+  const row=(lbl,key,opts)=>'<div class="sp-plbl">'+lbl+'</div><div class="steppick sp-pred" data-k="'+key+'">'+
+     opts.map(o=>'<button class="lvl" data-v="'+o[0]+'"'+(A?' disabled':'')+'>'+o[1]+'</button>').join('')+'</div>';
+  document.getElementById('shPanel').innerHTML=
+    '<span class="sp-src'+(S.th?' th':'')+'">'+S.icon+' '+S.src+'</span>'+
+    '<div class="sp-cause">'+S.cause+'</div>'+
+    row('Prediction 1 · Which curve, which way?','c',[['dr','Demand → right'],['dl','Demand ← left'],['sr','Supply → right'],['sl','Supply ← left']])+
+    row('Prediction 2 · Equilibrium price','p',[['up','Rises'],['down','Falls']])+
+    row('Prediction 3 · '+focus,'s',[['up','Rises'],['down','Falls']])+
+    '<div class="btn-row" style="margin-top:6px">'+
+      (A?'':'<button class="btn btn-primary" id="shLock" disabled>Lock in predictions</button>')+
+      '<button class="btn btn-primary'+(A?'':' hidden')+'" id="shAll">▶ Play all</button>'+
+      '<button class="btn btn-ghost'+(A?'':' hidden')+'" id="shStep">Step ›</button>'+
+    '</div>'+
+    '<div class="sp-say" id="shCap"></div>';
+  const pick={};
+  document.querySelectorAll('#shPanel .sp-pred').forEach(r=>{
+    r.querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(sh.answers[S.id]) return;
+      r.querySelectorAll('.lvl').forEach(x=>x.classList.toggle('active',x===b));
+      pick[r.dataset.k]=b.dataset.v;
+      document.getElementById('shLock').disabled=Object.keys(pick).length<3;
+    }));
+  });
+  if(A) shMarks(A);
+  const lock=document.getElementById('shLock');
+  if(lock) lock.addEventListener('click',()=>{
+    sh.answers[S.id]=Object.assign({},pick);
+    sh.score+=shMarks(pick); sh.played.add(S.id);
+    document.querySelectorAll('#shChips .sp-chip')[i].classList.add('used');
+    lock.remove();
+    document.getElementById('shAll').classList.remove('hidden');
+    document.getElementById('shStep').classList.remove('hidden');
+    document.getElementById('shScore').textContent=sh.played.size+' / '+SCEN.length+' played · '+sh.score+' / '+(SCEN.length*3)+' predictions right';
+    if(window.innerWidth<=880) bringIntoView(document.getElementById('shStage').closest('.fig'));
+    shPlayAll();
+    if(sh.played.size===SCEN.length){
+      const b=document.getElementById('shDone');
+      b.innerHTML='✓ All six markets played — '+sh.score+' / 18 predictions right. The pattern: a <b>supply</b> shift changes consumer surplus in the <b>opposite</b> direction to price; a <b>demand</b> shift changes producer surplus in the <b>same</b> direction as price. And the rectangle is always a transfer between the two groups.';
+      b.classList.add('show');
+      trk('Shift & Measure', sh.score+'/18 predictions correct'); mark('shift');
+    }
+  });
+  document.getElementById('shAll').addEventListener('click',shPlayAll);
+  document.getElementById('shStep').addEventListener('click',()=>{
+    if(sh.stage>=3) return;
+    const n=sh.stage+1;
+    play(sh,[...shAnim(n), act(()=>{ sh.stage=n; shUI(); })]);
+  });
+  shUI();
+}
+function shMarks(A){
+  const S=SCEN[sh.i], m=sh.m, pUp=m.O1.p>m.O0.p;
+  const sUp=S.K==='S'?m.O1.p<m.O0.p:pUp;
+  const right={c:(S.K==='D'?'d':'s')+(S.dir>0?'r':'l'), p:pUp?'up':'down', s:sUp?'up':'down'};
+  let pts=0;
+  document.querySelectorAll('#shPanel .sp-pred').forEach(r=>{
+    const k=r.dataset.k;
+    r.querySelectorAll('.lvl').forEach(b=>{
+      b.disabled=true; b.classList.remove('active');
+      if(b.dataset.v===right[k]) b.classList.add('sp-ok');
+      else if(b.dataset.v===A[k]) b.classList.add('sp-no');
+    });
+    if(A[k]===right[k]) pts++;
+  });
+  return pts;
+}
+function shPlayAll(){
+  const steps=[];
+  if(sh.stage>=3){ sh.stage=0; shDrawStage(0); shUI(); steps.push(pause(500)); }
+  for(let n=sh.stage+1;n<=3;n++){
+    steps.push(...shAnim(n));
+    steps.push(act(()=>{ sh.stage=n; shUI(); }));
+    if(n<3) steps.push(pause(n===1?900:1500));
+  }
+  play(sh,steps);
+}
+function shExplain(){
+  const S=SCEN[sh.i], out=document.getElementById('shOut');
+  if(out.dataset.sid===S.id && out.innerHTML) return;
+  out.dataset.sid=S.id;
+  out.innerHTML='<div class="q-card"><div class="write-lbl">'+S.icon+' '+S.market+' — the analysis</div>'+
+    '<div class="q-stem" style="margin-bottom:0">'+S.explain+'</div>'+
+    '<div class="exam-line"><b>Evaluation twist:</b> '+S.twist+'</div></div>';
+}
+(function(){
+  const host=document.getElementById('shChips');
+  SCEN.forEach((S,i)=>{
+    const b=document.createElement('button'); b.type='button'; b.className='sp-chip';
+    b.textContent=S.icon+' '+S.chip; b.addEventListener('click',()=>shLoad(i)); host.appendChild(b);
+  });
+  const D=mkD(1,0,SHV), S=mkS(0.8,0,SHV), O=outcome(D,S,null);
+  sh.sc.el.innerHTML=renderSP(SM,'sh',{curves:[{t:'D',c:D,lab:'D'},{t:'S',c:S,lab:'S'}],fills:[{pts:O.csP,k:'cs'},{pts:O.psP,k:'ps'}],marks:[{p:O.p,q:O.q,tp:'P',tq:'Q',kind:'new'}]});
+})();
+
+/* ================= TAB 5 — ELASTICITY MATTERS ================= */
+const EM={pmax:12, qmax:12, yName:'Price ($)', xName:'Quantity (thousands)', ticksP:[2,4,6,8,10,12], ticksQ:[3,6,9,12], fmtQ:q=>q+'k'};
+const EPV={q:6,p:4};
+const EL={mode:'cs', r:1, visited:{cs:true,ps:false}};
+const EC={inD:mkD(1.3,0,EPV), elD:mkD(0.35,0,EPV), inS:mkS(1.3,0,EPV), elS:mkS(0.35,0,EPV)};
+function elOne(which){
+  const cs=EL.mode==='cs', p0=4, p1=4+EL.r;
+  const c=cs?(which==='in'?EC.inD:EC.elD):(which==='in'?EC.inS:EC.elS);
+  const st={curves:[{t:cs?'D':'S',c:c,lab:cs?'D':'S'}], fills:[], marks:[], aria:(which==='in'?'Inelastic':'Elastic')+(cs?' demand':' supply')+' with a price rise'};
+  let orig, chg, rect=0, tri=0;
+  if(cs){
+    orig=area(csPoly(c,p0,dQ(c,p0)));
+    st.fills.push({pts:csPoly(c,p0,dQ(c,p0)),k:'csf'});
+    if(EL.r>0){ const ch=csChange(c,p0,p1); st.fills.push({pts:ch.rect,k:'loss'},{pts:ch.tri,k:'loss',edge:'#002F6C'}); chg=-(ch.ra+ch.ta); rect=ch.ra; tri=ch.ta; } else chg=0;
+    st.marks.push({p:p0,q:dQ(c,p0),tp:'P',tq:'Q',kind:EL.r>0?'old':'new'});
+    if(EL.r>0) st.marks.push({p:p1,q:dQ(c,p1),tp:'P₁',tq:'Q₁',kind:'new'});
+    if(c.a>EM.pmax) st.note='▲ the triangle continues above the diagram';
+  } else {
+    orig=area(psPoly(c,p0,sQ(c,p0)));
+    st.fills.push({pts:psPoly(c,p0,sQ(c,p0)),k:'psf'});
+    if(EL.r>0){ const ch=psChange(c,p0,p1); st.fills.push({pts:ch.rect,k:'gain'},{pts:ch.tri,k:'gain',edge:'#002F6C'}); chg=ch.ra+ch.ta; rect=ch.ra; tri=ch.ta; } else chg=0;
+    st.marks.push({p:p0,q:sQ(c,p0),tp:'P',tq:'Q',kind:EL.r>0?'old':'new'});
+    if(EL.r>0) st.marks.push({p:p1,q:sQ(c,p1),tp:'P₁',tq:'Q₁',kind:'new'});
+  }
+  return {svg:renderSP(EM,'el'+which,st), orig:orig, chg:chg, rect:rect, tri:tri};
+}
+function elDraw(){
+  const a=elOne('in'), b=elOne('el'), cs=EL.mode==='cs';
+  document.getElementById('elF1').innerHTML=a.svg; document.getElementById('elF2').innerHTML=b.svg;
+  document.getElementById('elT1').textContent='a · Price inelastic '+(cs?'demand':'supply');
+  document.getElementById('elT2').textContent='b · Price elastic '+(cs?'demand':'supply');
+  document.getElementById('elRlab').textContent='$4.00 → $'+(4+EL.r).toFixed(2);
+  document.getElementById('elR').value=EL.r;
+  [[a,'1'],[b,'2']].forEach(([o,n])=>{
+    document.getElementById('el'+n+'o').textContent=K(o.orig);
+    document.getElementById('el'+n+'c').innerHTML=EL.r>0?'<span class="'+(o.chg>0?'sp-up':'sp-dn')+'">'+(o.chg>0?'+':'−')+K(Math.abs(o.chg))+'</span>':'—';
+    document.getElementById('el'+n+'p').innerHTML=EL.r>0?'<span class="'+(o.chg>0?'sp-up':'sp-dn')+'">'+pct(o.chg/o.orig*100)+'</span>':'—';
+  });
+  const say=document.getElementById('elSay');
+  if(EL.r===0){ say.innerHTML='Move the slider to raise the price.'; return; }
+  if(cs) say.innerHTML='For a $'+EL.r.toFixed(2)+' rise, consumers lose <b>'+K(-a.chg)+'</b> when demand is inelastic and <b>'+K(-b.chg)+'</b> when it is elastic. With inelastic demand nearly everyone keeps buying, so the loss is almost all <b>rectangle</b> — paid over to producers. With elastic demand many buyers leave, so more of the loss is the <b>triangle</b>. But look at the percentages: the elastic case loses <b>'+Math.round(-b.chg/b.orig*100)+'%</b> of its consumer surplus, the inelastic case only <b>'+Math.round(-a.chg/a.orig*100)+'%</b>.';
+  else say.innerHTML='For a $'+EL.r.toFixed(2)+' rise, producers gain <b>'+K(a.chg)+'</b> when supply is inelastic and <b>'+K(b.chg)+'</b> when it is elastic. Both gain the same kind of rectangle on existing sales, but elastic producers can expand output quickly, so they add a much bigger <b>triangle</b> of new sales. Elastic supply wins in dollars <b>and</b> in percentage terms.';
+}
+document.getElementById('elR').addEventListener('input',e=>{ EL.r=Number(e.target.value); elDraw(); });
+segBind('elMode',v=>{ EL.mode=v; EL.visited[v]=true; elDraw(); elCheckDone(); });
+elDraw();
+const EL_Q=[
+ {id:'q1', icon:'⛽', bg:'#D63864', name:'Who loses most?',
+  stem:'A tax raises the price of two products by ฿5. Demand for <b>petrol</b> is price inelastic; demand for one particular <b>brand of bubble tea</b> is price elastic. Both markets sold the same quantity before the tax. Which group of consumers loses more consumer surplus in baht?',
+  opts:['Bubble tea buyers, because demand is elastic','Petrol buyers, because most of them keep buying at the higher price','Both lose the same, because the price rise is the same','Neither, because the tax is paid by the producer'], ans:1,
+  fb:'Petrol buyers keep buying, so they pay the extra ฿5 on almost every litre — a large rectangle.',
+  why:'Bubble tea buyers switch to other brands. They lose a smaller amount in baht, though it may be a bigger share of the small surplus they had.'},
+ {id:'q2', icon:'🏭', bg:'#008BCC', name:'Which producers gain most?',
+  stem:'The price of two products rises by the same amount. Supply of <b>T-shirts</b> is price elastic; supply of <b>durian</b> is price inelastic in the short run. Which producers gain more producer surplus?',
+  opts:['Durian growers, because their supply is inelastic','T-shirt makers, because they can expand output and add a bigger triangle of new sales','Both gain equally, because the price change is the same','Neither: producer surplus only changes when supply shifts'], ans:1,
+  fb:'Both gain the rectangle on existing sales, but T-shirt makers can quickly produce more, adding a larger triangle.',
+  why:'D is the misconception from activity 4: producer surplus changes when the <b>price</b> changes along an unchanged supply curve.'},
+ {id:'q3', icon:'📐', bg:'#6B4E9E', name:'Reading coursebook Figure 11.4 critically',
+  stem:'A student writes: “For the same price rise, consumers always lose more surplus when demand is price elastic.” What is the best response?',
+  opts:['Agree — elastic demand means a bigger loss in every sense','Disagree — they lose more in absolute terms when demand is inelastic, though elastic demand loses a bigger share of its original surplus','Disagree — elasticity has no effect on the change in consumer surplus','Agree — but only if supply is also elastic'], ans:1,
+  fb:'From the same starting point, the dollar loss is bigger with inelastic demand. As a percentage of the original surplus, the elastic case loses more.',
+  why:'Saying which measure you mean — absolute or proportional — is the precision examiners reward.'}
+];
+let elQDone=false;
+buildCards(document.getElementById('elQ'), EL_Q, (right,total)=>{ elQDone=true; elQRight=right; elCheckDone(); });
+let elQRight=0;
+function elCheckDone(){
+  if(elQDone && EL.visited.cs && EL.visited.ps && !DONE.elastic){
+    const b=document.getElementById('elDone');
+    b.innerHTML='✓ Both modes explored and all three checks answered ('+elQRight+'/3). Exam rule: for a given price change, the surplus change is mostly a <b>rectangle</b> when the curve is inelastic and has a bigger <b>triangle</b> when it is elastic.';
+    b.classList.add('show'); trk('Elasticity Matters', elQRight+'/3 correct'); mark('elastic');
+  } else if(elQDone && !EL.visited.ps && !DONE.elastic){
+    const b=document.getElementById('elDone'); b.innerHTML='Nearly there: switch the diagrams to <b>Producer surplus (PES)</b> mode at the top of this activity.'; b.classList.add('show');
+  }
+}
+
+/* ================= TAB 6 — FARE GAME ================= */
+const FR={cost:1000,
+  leis:[['Ploy',1800],['Beam',1600],['Mint',1500],['Fah',1400],['Pim',1300],['Kla',1200]],
+  bus:[['Mr Somchai',4500],['Ms Nok',4000],['Dr Arun',3600],['Ms Jane',3200],['Mr Tan',2800],['Ms Aom',2400]],
+  mode:'one', one:2000, sav:1500, flx:3500, m:{1:false,2:false,3:false}, best1:0};
+function frOut(){
+  const res={pax:0, cs:0, ps:0, seats:{leis:[],bus:[]}};
+  const go=(list,fare,key)=>list.forEach(p=>{
+    const f = FR.mode==='perf' ? p[1] : fare;
+    const fly=p[1]>=f;
+    res.seats[key].push({name:p[0], wtp:p[1], fly:fly, fare:f});
+    if(fly){ res.pax++; res.cs+=p[1]-f; res.ps+=f-FR.cost; }
+  });
+  if(FR.mode==='one'){ go(FR.leis,FR.one,'leis'); go(FR.bus,FR.one,'bus'); }
+  else if(FR.mode==='two'){ go(FR.leis,FR.sav,'leis'); go(FR.bus,FR.flx,'bus'); }
+  else { go(FR.leis,0,'leis'); go(FR.bus,0,'bus'); }
+  return res;
+}
+const FR_BEST1=(function(){ let b=0; for(let f=1000;f<=5000;f+=100){ let ps=0; FR.leis.concat(FR.bus).forEach(p=>{ if(p[1]>=f) ps+=f-FR.cost; }); b=Math.max(b,ps); } return b; })();
+const FR_BEST2=(function(){ let bl=0,bb=0; for(let f=1000;f<=2000;f+=100){ let ps=0; FR.leis.forEach(p=>{ if(p[1]>=f) ps+=f-FR.cost; }); bl=Math.max(bl,ps); }
+  for(let f=1000;f<=5000;f+=100){ let ps=0; FR.bus.forEach(p=>{ if(p[1]>=f) ps+=f-FR.cost; }); bb=Math.max(bb,ps); } return bl+bb; })();
+function frDraw(){
+  const O=frOut();
+  ['leis','bus'].forEach(k=>{
+    const host=document.getElementById(k==='leis'?'frLeis':'frBus'); host.innerHTML='';
+    O.seats[k].forEach(s=>{
+      const d=document.createElement('div'); d.className='sp-seat '+(s.fly?'fly':'out');
+      d.innerHTML='<div class="ic">'+(s.fly?(k==='leis'?'🧳':'💼'):'💺')+'</div><div class="nm">'+s.name+'</div><div class="v">pays up to '+baht(s.wtp)+'</div>'+
+        '<div class="st">'+(s.fly?'Flies at '+baht(s.fare)+'<br>surplus '+baht(s.wtp-s.fare):'Stays home')+'</div>';
+      host.appendChild(d);
+    });
+  });
+  document.getElementById('frPax').textContent=O.pax+' / 12';
+  document.getElementById('frEmpty').textContent=12-O.pax;
+  document.getElementById('frCS').textContent=baht(O.cs);
+  document.getElementById('frPS').textContent=baht(O.ps);
+  document.getElementById('frTot').textContent=baht(O.cs+O.ps);
+  document.getElementById('frOneLab').textContent=baht(FR.one);
+  document.getElementById('frSavLab').textContent=baht(FR.sav);
+  document.getElementById('frFlxLab').textContent=baht(FR.flx);
+  const say=document.getElementById('frSay');
+  if(FR.mode==='one') say.innerHTML= O.ps>=FR_BEST1 ? '<b>That is the best single fare.</b> The airline earns '+baht(O.ps)+' of producer surplus — but '+(12-O.pax)+' seats fly empty, even though those passengers would have paid more than the ฿1,000 the seat costs.' :
+    'With one fare, a high price earns more on each business passenger but loses the leisure travellers; a low price fills the plane but gives business travellers a big consumer surplus. Find the fare that maximises producer surplus.';
+  else if(FR.mode==='two') say.innerHTML= O.ps>=FR_BEST2 ? '<b>Best possible with two fares.</b> Producer surplus '+baht(O.ps)+' — more than any single fare — and more passengers fly. The saver fare captures the leisure market; the flex fare captures business travellers’ high willingness to pay.' :
+    'The saver fare is only for passengers who book three weeks ahead, so business travellers cannot use it. Set each fare separately to make the most producer surplus from each group.';
+  else say.innerHTML='Every passenger pays exactly what the seat is worth to them. Consumer surplus is <b>zero</b>: all of it has become producer surplus. And every seat is full, so net benefit to society is at its maximum — but all of it goes to the airline.';
+  /* missions */
+  if(FR.mode==='one' && O.ps>=FR_BEST1) frMission(1);
+  if(FR.mode==='two' && O.ps>=FR_BEST2) frMission(2);
+  if(FR.mode==='perf') frMission(3);
+}
+function frMission(n){
+  if(FR.m[n]) return; FR.m[n]=true;
+  document.getElementById('frM'+n).classList.add('done');
+  const c=Object.values(FR.m).filter(Boolean).length;
+  document.getElementById('frMisScore').textContent=c+' / 3';
+  frCheckDone();
+}
+segBind('frMode',v=>{ FR.mode=v;
+  document.getElementById('frOneCtl').classList.toggle('hidden',v!=='one');
+  document.getElementById('frTwoCtl').classList.toggle('hidden',v!=='two');
+  frDraw(); });
+[['frOne','one'],['frSav','sav'],['frFlx','flx']].forEach(([id,k])=>document.getElementById(id).addEventListener('input',e=>{ FR[k]=Number(e.target.value); frDraw(); }));
+frDraw();
+const FR_DISC=[
+ {q:'Why does the price differ for the PIA flight in September and October?',
+  a:'Demand is higher in October (holidays and family visits), so demand shifts right and the fare rises along an inelastic supply of seats. Airlines also use <b>yield management</b>: fares rise as the flight fills and as the departure date gets closer, because late bookers tend to have urgent reasons to travel and a higher willingness to pay. Both turn consumer surplus into producer surplus.'},
+ {q:'Why is there no variation in price for the Airblue flight?',
+  a:'Airblue is a low-cost carrier competing on a short route. A simple fixed fare is part of its strategy: it attracts price-sensitive passengers and is cheap to run. It gives up the extra producer surplus it could earn from late bookers, leaving that surplus with its passengers.'},
+ {q:'Who gains — the passenger or the airline?',
+  a:'Mostly the airline: varying fares converts consumer surplus into producer surplus, as missions 1–3 showed. But not every passenger loses. Price-sensitive leisure travellers can fly on a cheap saver fare that would not exist under a single high fare, so some passengers gain and more seats are filled. Whether passengers as a group lose <b>depends</b> on how fares are set — the key evaluation point.'}
+];
+const frSeen=new Set();
+(function(){
+  const host=document.getElementById('frDisc');
+  FR_DISC.forEach((d,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML='<div class="q-head"><div class="q-icon" style="background:#002F6C">'+(i+1)+'</div><div class="q-name">'+d.q+'</div></div>'+
+      '<textarea class="write-box" placeholder="Your answer in one or two sentences..."></textarea>'+
+      '<button class="mini-btn">Reveal our answer</button><div class="model">'+d.a+'</div>';
+    const btn=c.querySelector('.mini-btn'), box=c.querySelector('textarea');
+    btn.addEventListener('click',()=>{
+      if(box.value.trim().length<15){ box.focus(); btn.textContent='Write your own answer first'; return; }
+      c.querySelector('.model').classList.add('show'); btn.textContent='Answer shown ✓'; btn.disabled=true;
+      frSeen.add(i); frCheckDone();
+    });
+    host.appendChild(c);
+  });
+})();
+function frCheckDone(){
+  if(Object.values(FR.m).every(Boolean) && frSeen.size===FR_DISC.length && !DONE.fare){
+    const b=document.getElementById('frDone');
+    b.innerHTML='✓ All three missions and all three discussion questions done. Exam line: “By charging different prices to groups with different willingness to pay, the airline converts consumer surplus into producer surplus; whether passengers lose overall depends on whether lower fares let new passengers travel.”';
+    b.classList.add('show'); trk('Fare Game','missions and discussion complete'); mark('fare');
+  }
+}
+
+/* ================= TAB 7 — AREA DETECTIVE ================= */
+/* Part A geometry (matches coursebook question 3):
+   D: P = 10 − Q    S: P = 4.5 + 0.375Q    S₁: P = 1.75 + 0.375Q
+   Equilibria: (Q, P) = (4, 6) and (Q₁, P₁) = (6, 4)                  */
+const AM={pmax:10.5, qmax:10, yName:'Price ($)', xName:'Quantity traded'};
+const AD={D:{a:10,b:1}, S:{c:4.5,k:0.375}, S1:{c:1.75,k:0.375}};
+const REG={
+  a:[[0,10],[4,6],[0,6]],
+  f:[[0,6],[4,6],[0,4.5]],
+  e:[[0,4.5],[4,6],[4,4],[0,4]],
+  b:[[4,6],[6,4],[4,4]],
+  c:[[4,4],[6,4],[4,3.25]],
+  d:[[0,4],[4,4],[4,3.25],[0,1.75]]
+};
+const AQ=[
+ {q:'Which area is the <b>original consumer surplus</b>, before supply shifts?', ans:'a',
+  fb:'Consumer surplus is above the price P and below the demand curve, up to Q: area <b>a</b>.'},
+ {q:'Which area is the <b>original producer surplus</b>?', ans:'f',
+  fb:'Producer surplus is below P and above the original supply curve S: area <b>f</b>.'},
+ {q:'Supply shifts to S₁. Which areas make up the <b>new consumer surplus</b>?', ans:'abef',
+  fb:'The new price is P₁, so consumer surplus is everything above P₁ and below D, up to Q₁: <b>a + b + e + f</b>.'},
+ {q:'Coursebook question 3: what is the <b>gain in consumer surplus</b>?', ans:'bef',
+  fb:'New consumer surplus (a + b + e + f) minus the old (a) = <b>b + e + f</b>. Answer B in the coursebook.'},
+ {q:'Which areas make up the <b>new producer surplus</b>, measured on S₁?', ans:'cd',
+  fb:'Below P₁ and above the new supply curve S₁, up to Q₁: <b>c + d</b>.'},
+ {q:'Which area was <b>producer surplus before</b> the shift but is <b>consumer surplus after</b> it — a transfer from producers to consumers?', ans:'f',
+  fb:'Area <b>f</b> lies between P and P₁ and above S. Before, producers received it; at the lower price P₁ it goes to consumers.'},
+ {q:'By how much does <b>net benefit to society</b> (CS + PS) increase?', ans:'bcde',
+  fb:'Before: a + f. After: (a + b + e + f) + (c + d). The increase is <b>b + c + d + e</b>. Area f is counted in both, because it was only transferred.'}
+];
+const ad={i:0, sel:new Set(), right:0, done:new Set(), checked:false};
+const adFig=document.getElementById('adFig');
+(function(){
+  const tags=Object.keys(REG).map(k=>{ const c=centroid(REG[k]); const nudge={a:[-0.35,0.3],f:[-0.4,0.1],e:[0.3,-0.05],b:[0.1,0.05],c:[0.1,0.05],d:[0.2,0]}[k]; return {q:c[0]+nudge[0],p:c[1]+nudge[1],txt:k,size:13}; });
+  adFig.innerHTML=renderSP(AM,'ad',{
+    curves:[{t:'D',c:AD.D,lab:'D'},{t:'S',c:AD.S,lab:'S',col:'#8098B0',w:2.2},{t:'S',c:AD.S1,lab:'S₁'}],
+    marks:[{p:6,q:4,tp:'P',tq:'Q',kind:'new',nodot:true},{p:4,q:6,tp:'P₁',tq:'Q₁',kind:'new',nodot:true}],
+    regions:Object.keys(REG).map(k=>({id:k,pts:REG[k]})), tags:tags,
+    aria:'Diagram with demand D, supply S and S1 and six lettered areas a to f'});
+  adFig.querySelectorAll('.sp-reg').forEach(r=>r.addEventListener('click',()=>{
+    if(ad.checked) return;
+    const id=r.dataset.r;
+    if(ad.sel.has(id)) ad.sel.delete(id); else ad.sel.add(id);
+    r.classList.toggle('on',ad.sel.has(id)); adPicked();
+  }));
+})();
+function adPicked(){ const s=[...ad.sel].sort(); document.getElementById('adPicked').textContent='Selected: '+(s.length?s.join(' + '):'none'); }
+function adLoad(){
+  const Q=AQ[ad.i]; ad.sel.clear(); ad.checked=false;
+  adFig.querySelectorAll('.sp-reg').forEach(r=>r.classList.remove('on','ok','no'));
+  document.getElementById('adTag').textContent='Question '+(ad.i+1)+' of '+AQ.length;
+  document.getElementById('adQ').innerHTML=Q.q;
+  document.getElementById('adFb').innerHTML='Tap an area to select it; tap again to deselect.';
+  document.getElementById('adNext').classList.add('hidden');
+  document.getElementById('adCheck').classList.remove('hidden');
+  document.getElementById('adClear').classList.remove('hidden');
+  document.getElementById('adScore').textContent='Question '+(ad.i+1)+' of '+AQ.length+' · '+ad.right+' right first time';
+  adPicked();
+}
+document.getElementById('adClear').addEventListener('click',()=>{ ad.sel.clear(); adFig.querySelectorAll('.sp-reg').forEach(r=>r.classList.remove('on')); adPicked(); });
+document.getElementById('adCheck').addEventListener('click',()=>{
+  const Q=AQ[ad.i], pick=[...ad.sel].sort().join('');
+  if(!pick){ document.getElementById('adFb').innerHTML='Select at least one area first.'; return; }
+  const ok=pick===Q.ans;
+  if(!ad.done.has(ad.i)){ ad.done.add(ad.i); if(ok) ad.right++; }
+  if(ok){
+    ad.checked=true;
+    adFig.querySelectorAll('.sp-reg').forEach(r=>{ r.classList.remove('on'); if(Q.ans.includes(r.dataset.r)) r.classList.add('ok'); });
+    document.getElementById('adFb').innerHTML='<span class="verdict v-good">Correct</span><br>'+Q.fb;
+    document.getElementById('adCheck').classList.add('hidden'); document.getElementById('adClear').classList.add('hidden');
+    if(ad.i<AQ.length-1) document.getElementById('adNext').classList.remove('hidden');
+    else { document.getElementById('adScore').textContent='All 7 done · '+ad.right+' / 7 right first time'; ad.finished=true; areaCheckDone(); }
+  } else {
+    adFig.querySelectorAll('.sp-reg').forEach(r=>{ if(ad.sel.has(r.dataset.r) && !Q.ans.includes(r.dataset.r)) r.classList.add('no'); });
+    setTimeout(()=>adFig.querySelectorAll('.sp-reg.no').forEach(r=>r.classList.remove('no')),900);
+    document.getElementById('adFb').innerHTML='<span class="verdict v-bad">Not yet</span><br>'+(pick.length<Q.ans.length?'You need more than that. ':pick.length>Q.ans.length?'You have included too much. ':'Not those areas. ')+'Find the price line and the curve that bound this area, then try again.';
+  }
+});
+document.getElementById('adNext').addEventListener('click',()=>{ ad.i++; adLoad(); });
+adLoad();
+
+/* Part B — calculations. D: P = 70 − 0.1Q ; S: P = 10 + 0.05Q ; S₁: P = 2.5 + 0.05Q */
+const CM1={pmax:80, qmax:700, yName:'Price (฿)', xName:'Cups per day', ticksP:[10,30,70], ticksQ:[400]};
+const CM2={pmax:40, qmax:600, yName:'Price (฿)', xName:'Cups per day', ticksP:[25,30], ticksQ:[400,450]};
+const CD1={a:70,b:0.1}, CS1={c:10,k:0.05}, CS2={c:2.5,k:0.05};
+(function(){
+  const o=outcome(CD1,CS1,null);
+  document.getElementById('acF1').innerHTML=renderSP(CM1,'ac1',{curves:[{t:'D',c:CD1,lab:'D'},{t:'S',c:CS1,lab:'S'}],
+    fills:[{pts:o.csP,k:'cs'},{pts:o.psP,k:'ps'}], marks:[{p:30,q:400,kind:'new'}], aria:'Iced tea market at 30 baht and 400 cups'});
+  const ch=csChange(CD1,30,25);
+  document.getElementById('acF2').innerHTML=renderSP(CM2,'ac2',{curves:[{t:'D',c:CD1,lab:'D'},{t:'S',c:CS1,ghost:true,lab:'S'},{t:'S',c:CS2,lab:'S₁'}],
+    fills:[{pts:ch.rect,k:'gain'},{pts:ch.tri,k:'gain',edge:'#002F6C'}],
+    marks:[{p:30,q:400,kind:'old'},{p:25,q:450,kind:'new'}], aria:'Price falls from 30 to 25 baht and quantity rises to 450 cups'});
+})();
+const CALC=[
+ {id:'k1', icon:'CS', bg:'#D63864', q:'Calculate <b>consumer surplus</b> at the original equilibrium (left diagram).', ans:8000,
+  work:'Triangle: ½ × base × height = ½ × 400 × (70 − 30) = ½ × 400 × 40 = <b>฿8,000</b> a day.'},
+ {id:'k2', icon:'PS', bg:'#008BCC', q:'Calculate <b>producer surplus</b> at the original equilibrium (left diagram).', ans:4000,
+  work:'Triangle: ½ × 400 × (30 − 10) = ½ × 400 × 20 = <b>฿4,000</b> a day. Same method as coursebook question 4.'},
+ {id:'k3', icon:'Δ', bg:'#28A745', q:'Supply increases and the price falls to ฿25, so 450 cups are sold (right diagram). Calculate the <b>gain in consumer surplus</b>.', ans:2125,
+  work:'Rectangle for existing buyers: (30 − 25) × 400 = ฿2,000. Triangle for new buyers: ½ × (450 − 400) × (30 − 25) = ฿125. Total gain <b>฿2,125</b> a day.'}
+];
+const calcOK=new Set();
+(function(){
+  const host=document.getElementById('acHost');
+  CALC.forEach(c=>{
+    const card=document.createElement('div'); card.className='q-card';
+    card.innerHTML='<div class="q-head"><div class="q-icon" style="background:'+c.bg+';font-size:14px">'+c.icon+'</div><div class="q-name">'+c.q+'<span class="sp-pill" id="pill-'+c.id+'">Not done</span></div></div>'+
+      '<div class="sp-calc"><span style="font-weight:900;color:var(--navy)">฿</span><input class="sp-in" inputmode="decimal" aria-label="Answer in baht"><button class="mini-btn" style="margin-top:0">Check</button></div><div class="reveal"></div>';
+    const inp=card.querySelector('.sp-in'), rev=card.querySelector('.reveal');
+    let tries=0;
+    card.querySelector('.mini-btn').addEventListener('click',()=>{
+      const v=Number(String(inp.value).replace(/[^0-9.]/g,''));
+      if(!inp.value.trim()){ inp.focus(); return; }
+      tries++;
+      if(Math.abs(v-c.ans)<0.5){
+        inp.className='sp-in ok'; rev.innerHTML='<span class="verdict v-good">Correct</span><br>'+c.work; rev.classList.add('show');
+        const pill=document.getElementById('pill-'+c.id); pill.textContent='Correct ✓'; pill.classList.add('ok');
+        if(!calcOK.has(c.id)){ calcOK.add(c.id); document.getElementById('acScore').textContent=calcOK.size+' / 3 correct'; areaCheckDone(); }
+      } else {
+        inp.className='sp-in no';
+        rev.innerHTML='<span class="verdict v-bad">Not yet</span><br>'+(tries>=2?c.work:(c.id==='k3'?'Split the shaded area into a rectangle and a triangle, and work out each one.':'Find the base (quantity) and the height (the gap between the price and where the curve meets the price axis). Did you remember the ½?'));
+        rev.classList.add('show');
+      }
+    });
+    host.appendChild(card);
+  });
+})();
+function areaCheckDone(){
+  if(ad.finished && calcOK.size===CALC.length && !DONE.area){
+    const b=document.getElementById('areaDone');
+    b.innerHTML='✓ Parts A and B complete ('+ad.right+'/7 areas right first time). Two habits to keep: name each area by the <b>price line and curve</b> that bound it, and split any change into a <b>rectangle plus a triangle</b>.';
+    b.classList.add('show'); trk('Area Detective', ad.right+'/7 first time; calculations complete'); mark('area');
+  }
+}
+
+/* ================= TAB 8 — ANALYSIS CHAINS + JUDGEMENTS ================= */
+const CHAINS=[
+ {id:'a', icon:'🍈', bg:'#FF8F1C', name:'Chain A: a drought and the consumer surplus of durian buyers',
+  steps:['A drought in eastern Thailand cuts the durian harvest',
+         'Supply shifts left from S to S₁: less durian is offered at every price',
+         'At the original price there is excess demand, so the price rises from P to P₁',
+         'Buyers who still buy pay more for every durian — a rectangle of consumer surplus is transferred to growers',
+         'Buyers who are priced out lose all their surplus — a triangle that nobody gains',
+         'Consumer surplus falls; in baht, the fall is bigger the more price inelastic demand is, because most buyers keep paying the higher price'],
+  done:'<h3>Rectangle, then triangle</h3><p>Steps 4 and 5 are where most answers lose marks: they say “consumer surplus falls” without saying <b>which</b> consumers lose and <b>where the surplus goes</b>. The last step is the bridge to evaluation.</p>'},
+ {id:'b', icon:'✈️', bg:'#008BCC', name:'Chain B: Songkran and the producer surplus of airlines',
+  steps:['Demand for Bangkok–Chiang Mai flights rises before Songkran',
+         'The demand curve shifts right, so at the original fare there is excess demand',
+         'Airlines raise fares, and the higher fare causes an extension of supply as extra flights are added',
+         'Every seat already being sold now earns more above the airline’s minimum acceptable price — a rectangle of extra producer surplus',
+         'The extra seats sold add a triangle of new producer surplus',
+         'With aircraft and slots fixed in the short run, supply is inelastic, so most of the gain comes from higher fares rather than more seats'],
+  done:'<h3>Measure along the curve that did not move</h3><p>Demand shifted, so the change in producer surplus is measured along the <b>supply</b> curve. Step 6 brings in PES, which turns a description into analysis of <b>how big</b> the effect is.</p>'}
+];
+const chainSolved={};
+function buildChain(ch){
+  const card=document.getElementById('chain-'+ch.id);
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s:s,i:i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary ch-check">Check chain</button>'+
+      '<button class="btn btn-ghost ch-reset">Reset</button>'+
+      '<span class="score"></span>'+
+    '</div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{
+    seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render();
+  }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{
+    seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render();
+  });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{
+      const ok=Number(el.dataset.idx)===pos;
+      el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+      if(ok) right++;
+    });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved[ch.id]){ chainSolved[ch.id]=true; trk('Chain: '+ch.name, 'correct'); chainCheckDone(); }
+    } else {
+      sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C';
+    }
+  });
+}
+(function(){
+  const host=document.getElementById('chainHost');
+  CHAINS.forEach(ch=>{ const c=document.createElement('div'); c.className='q-card'; c.id='chain-'+ch.id; host.appendChild(c); buildChain(ch); });
+})();
+const JUDGE=[
+ {t:'“Where there is consumer surplus or producer surplus, there is an inefficient allocation of resources.” (coursebook Key Concept link, section 11.2)', ans:'bad',
+  why:'Surplus is the <b>gain from trade</b>, not a sign of waste. In a free competitive market, the equilibrium makes consumer plus producer surplus as large as it can be (activities 2 and 3). Inefficiency shows up as surplus that is <b>lost</b> — the deadweight triangle when output is not at the equilibrium.',
+  exam:'“Net benefit to society is maximised where consumer plus producer surplus is greatest; an allocation is inefficient when trades that would create surplus do not happen.”'},
+ {t:'“A rise in price always transfers surplus from consumers to producers.”', ans:'both',
+  why:'Part of it is a transfer: the rectangle on units still bought. But the triangle from buyers who leave is lost to both sides. And if the price rose because costs rose (supply shifted left), producers can be worse off too.',
+  exam:'“Only the rectangle is a transfer; the triangle is a deadweight loss, and whether producers gain overall depends on why the price rose.”'},
+ {t:'“For the same rise in price, consumers lose more surplus in baht when demand is price inelastic.”', ans:'good',
+  why:'From the same starting point, inelastic demand means most buyers keep buying and pay the higher price on almost every unit. Coursebook Figure 11.4 appears to show the opposite because its two diagrams start at different quantities (activity 5).',
+  exam:'“In absolute terms the loss is larger when demand is inelastic, although as a proportion of the original consumer surplus the elastic case loses more.”'},
+ {t:'“A more price elastic supply means a larger gain in producer surplus when price rises.”', ans:'good',
+  why:'Producers gain the same rectangle on existing sales either way, but elastic supply lets them expand output, adding a larger triangle on new sales.',
+  exam:'“The size of the gain depends on PES, which is greater in the long run, so the gain in producer surplus grows over time.”'},
+ {t:'“Singles Day and 11.11 sales increase consumer surplus at the expense of producers.” (coursebook ‘Think like an economist’)', ans:'both',
+  why:'Consumers gain the rectangle on goods they would have bought anyway — that part is at producers’ expense. But extra sales create new surplus for both sides, sales can be a form of price discrimination, and some “original” prices are raised before the sale.',
+  exam:'“The claim holds for goods that would have been bought anyway, but not for the extra trade the sale creates; it depends on price elasticity of demand.”'},
+ {t:'“Consumer surplus can be measured precisely for any product.”', ans:'bad',
+  why:'Willingness to pay is not observed: people do not announce the most they would pay. Economists estimate demand curves from data, so consumer surplus is an estimate that rests on assumptions.',
+  exam:'“Consumer surplus is a useful way of comparing outcomes, but its size is an estimate based on an assumed demand curve.”'}
+];
+const judgeDone={}; let judgeRight=0;
+(function(){
+  const host=document.getElementById('judgeHost');
+  const LBL={good:'Agree',bad:'Disagree',both:'It depends'};
+  JUDGE.forEach((j,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML='<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(i+1)+'</div><div class="q-name">'+j.t+'</div></div>'+
+      '<div class="choice-row">'+['good','bad','both'].map(v=>'<div class="choice" data-v="'+v+'">'+LBL[v]+'</div>').join('')+'</div>'+
+      '<div class="reveal"></div>';
+    c.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+      if(judgeDone[i]) return;
+      judgeDone[i]=true;
+      const v=ch.dataset.v, ok=v===j.ans;
+      if(ok) judgeRight++;
+      ch.classList.add('sel-'+v);
+      const r=c.querySelector('.reveal');
+      r.innerHTML='<span class="verdict v-'+j.ans+'">'+(ok?'Yes — ':'The best answer: ')+LBL[j.ans]+'</span><br>'+j.why+'<div class="exam-line"><b>Evaluation line:</b> '+j.exam+'</div>';
+      r.classList.add('show');
+      const n=Object.keys(judgeDone).length;
+      document.getElementById('judgeScore').textContent=n+' / '+JUDGE.length+' answered · '+judgeRight+' right';
+      if(n===JUDGE.length){ trk('Agree / disagree / depends', judgeRight+'/'+JUDGE.length+' correct'); chainCheckDone(); }
+    }));
+    host.appendChild(c);
+  });
+})();
+function chainCheckDone(){
+  if(CHAINS.every(c=>chainSolved[c.id]) && Object.keys(judgeDone).length===JUDGE.length && !DONE.chain){
+    const b=document.getElementById('chainDone');
+    b.innerHTML='✓ Both chains built and all six claims judged ('+judgeRight+'/6). Notice that two of the claims came from the coursebook. Reading a source critically — and saying exactly when a claim holds — is what evaluation means.';
+    b.classList.add('show'); mark('chain');
+  }
+}
+
+/* ================= TAB 9 — WRITE IT UP ================= */
+const CHECKS={
+ w1:['I defined producer surplus accurately',
+     'I explained why demand for flights rises over Songkran and shifted demand to the right',
+     'I explained the process: excess demand at the old fare, the fare rises, extension of supply',
+     'I drew a diagram with D, D₁, S, P, P₁, Q, Q₁ and the change in producer surplus shaded',
+     'I split the gain into the rectangle (existing seats) and the triangle (extra seats)',
+     'I explained HOW PES affects the size of the gain, not just that it does',
+     'I applied PES to airlines (fixed aircraft, crews or slots in the short run)'],
+ w2:['I explained the case FOR: the rectangle transferred from producers to consumers',
+     'I explained the case AGAINST: new trade creates surplus for both sides, or sales as price discrimination',
+     'I used at least one diagram or described one precisely',
+     'I applied it to real sellers or platforms (Shopee, Lazada, small sellers) with evidence',
+     'I said what the answer depends on — PED, whether spending is new or just moved, which producers',
+     'I ended with a supported judgement, not just a summary']
+};
+const BANDS={
+ w1:on=>on<=2?'Lower band: some knowledge, little analysis. Add the process and the diagram.':
+        on<=4?'Middle band. The economics is there but the chain is incomplete — most often the missing step is the rectangle-and-triangle explanation.':
+        on<7?'Nearly a top-band answer. Add what you left unticked and redraft.':'Top band: defined, drawn, explained and applied. Now do it in 12 minutes.',
+ w2:on=>on<=2?'Lower band: one-sided or descriptive. Add the other side and an “it depends”.':
+        on<=4?'Middle band: two sides, but the evaluation is thin. Make the judgement follow from your “it depends”.':
+        on<6?'Nearly top band. The missing element is usually the final judgement.':'Top band: balanced, applied and judged. Write it out in full.'
+};
+['w1','w2'].forEach(k=>{
+  const host=document.getElementById(k+'checks');
+  CHECKS[k].forEach(txt=>{
+    const row=document.createElement('div');
+    row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{
+      row.classList.toggle('on');
+      const on=host.querySelectorAll('.chk.on').length, tot=CHECKS[k].length;
+      document.getElementById(k+'bv').textContent=on+' of '+tot+' ticked';
+      document.getElementById(k+'bar').style.width=(on/tot*100)+'%';
+      document.getElementById(k+'bd').textContent=BANDS[k](on);
+    });
+    host.appendChild(row);
+  });
+});
+const writeSeen={w1:false,w2:false};
+[['w1btn','w1model','w1'],['w2btn','w2model','w2']].forEach(([btn,mod,key])=>{
+  document.getElementById(btn).addEventListener('click',()=>{
+    const box=document.getElementById(key);
+    if(box.value.trim().length<40){
+      box.focus();
+      document.getElementById(btn).textContent='Write your own attempt first — then compare';
+      return;
+    }
+    document.getElementById(mod).classList.add('show');
+    document.getElementById(btn).textContent='Model shown ✓';
+    document.getElementById(btn).disabled=true;
+    writeSeen[key]=true;
+    if(writeSeen.w1 && writeSeen.w2){
+      document.getElementById('writeDone').classList.add('show');
+      trk('Write It Up', 'both written tasks attempted'); mark('write');
+    }
+  });
+});
+
+/* ================= TAB 10 — EXAM MCQ ================= */
+/* Q3 diagram: S: P = 1 + Q ; D: P = 9 − Q → (4,5) ; D₁: P = 11 − Q → (5,6) */
+const M3={pmax:10, qmax:8, yName:'Price ($)', xName:'Quantity traded'};
+const M3_FIG='<div class="fig" style="margin:10px 0 4px"><div class="ft">The market for bubble tea</div>'+
+  renderSP(M3,'m3',{curves:[{t:'D',c:{a:9,b:1},lab:'D'},{t:'D',c:{a:11,b:1},lab:'D₁'},{t:'S',c:{c:1,k:1},lab:'S'}],
+    marks:[{p:5,q:4,tp:'P',tq:'Q',kind:'new',nodot:true},{p:6,q:5,tp:'P₁',tq:'Q₁',kind:'new',nodot:true}],
+    tags:[{q:1,p:7,txt:'u',size:13},{q:1.5,p:5.5,txt:'r',size:13},{q:3.65,p:5.62,txt:'s',size:12},{q:4.3,p:5.65,txt:'t',size:12},{q:1.5,p:3.6,txt:'w',size:13}],
+    aria:'Demand shifts from D to D1 with lettered areas u, r, s, t and w'})+'</div>';
+/* Q4 diagram: S: P = 10 + 0.15Q ; D: P = 70 − 0.15Q → (200, 40) */
+const M4={pmax:80, qmax:400, yName:'Price (฿)', xName:'Plates per day', ticksP:[10,40], ticksQ:[200]};
+const M4_FIG='<div class="fig" style="margin:10px 0 4px"><div class="ft">Khao man gai at a food court</div>'+
+  renderSP(M4,'m4',{curves:[{t:'D',c:{a:70,b:0.15},lab:'D'},{t:'S',c:{c:10,k:0.15},lab:'S'}],marks:[{p:40,q:200,kind:'new'}],
+    aria:'Supply starts at 10 baht, equilibrium at 40 baht and 200 plates'})+'</div>';
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#D63864', name:'Paper 1 · Question 1 (coursebook Q1)',
+  stem:'Consumer surplus is when:',
+  opts:['a consumer has spare income to purchase more wants.','there is a difference in the price a consumer is willing to pay for a good and its market price.','consumers benefit from a decrease in the price of a good.','consumers buy too many goods to satisfy their needs.'], ans:1,
+  fb:'Consumer surplus is the gap between willingness to pay and the market price.',
+  why:'C describes a <b>change</b> in consumer surplus, not what it is. Learn the definition word for word — it earns an AO1 mark in almost every Paper 2 answer on this topic.'},
+ {id:'m2', icon:'2', bg:'#008BCC', name:'Paper 1 · Question 2 (coursebook Q2)',
+  stem:'Producer surplus is:',
+  opts:['when a producer becomes more efficient and produces more goods with the same amount of resources.','the profits left for an entrepreneur when all costs have been deducted.','the difference between what a producer is willing to accept and what is actually paid.','when the price of a good increases unexpectedly.'], ans:2,
+  fb:'Producer surplus is the gap between the minimum a producer will accept and the price it receives.',
+  why:'B is the trap: producer surplus is <b>not</b> profit. It ignores fixed costs, which do not affect the minimum price for one more unit.'},
+ {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3 (coursebook Q3, reversed)',
+  stem:'In the diagram, S is the supply curve for bubble tea. Demand increases from D to D₁.'+M3_FIG+'What is the <b>gain in producer surplus</b>?',
+  opts:['u + r','r + s + t','s + t','t'], ans:1,
+  fb:'Producer surplus rises from w (below P, above S) to w + r + s + t (below P₁, above S, up to Q₁). The gain is <b>r + s + t</b>.',
+  why:'Area r was consumer surplus before; at the higher price it goes to producers. Coursebook question 3 is the mirror image: a supply shift and the gain in consumer surplus (activity 7).'},
+ {id:'m4', icon:'4', bg:'#002F6C', name:'Paper 1 · Question 4 (coursebook Q4)',
+  stem:'From the diagram below, calculate the producer surplus.'+M4_FIG,
+  opts:['฿1,000','฿3,000','฿4,000','฿6,000'], ans:1,
+  fb:'½ × 200 × (40 − 10) = ½ × 200 × 30 = ฿3,000.',
+  why:'฿6,000 forgets the ½. ฿4,000 uses the price ฿40 as the height instead of the gap ฿40 − ฿10.'},
+ {id:'m5', icon:'5', bg:'#FF8F1C', name:'Paper 1 · Question 5 (coursebook Q5)',
+  stem:'How might a seller turn consumer surplus into producer surplus?',
+  opts:['through having a unique product','through restricting supply in the market','through identifying a group of consumers who are willing to pay higher prices for the same product','through identifying a group of consumers who are willing to pay lower prices for the same product'], ans:2,
+  fb:'Charging a higher price to the group with the higher willingness to pay captures surplus those consumers would otherwise keep.',
+  why:'This is what the flex fare did in activity 6. D also describes a group, but charging them less gives surplus <b>to</b> consumers.'},
+ {id:'m6', icon:'6', bg:'#28A745', name:'Paper 1 · Question 6',
+  stem:'The price of a product rises by $2 while its demand curve does not change. In which case will the loss of consumer surplus, in dollars, be greatest? (Each market starts at the same price and quantity.)',
+  opts:['Demand is perfectly elastic','Demand is price elastic','Demand is price inelastic','Demand is unit elastic'], ans:2,
+  fb:'With inelastic demand, almost all buyers keep buying, so they pay the extra $2 on nearly every unit.',
+  why:'With perfectly elastic demand, buyers had no consumer surplus to lose in the first place. This is the result activity 5 tests against coursebook Figure 11.4.'},
+ {id:'m7', icon:'7', bg:'#5B8C5A', name:'Paper 1 · Question 7',
+  stem:'In a free competitive market, net benefit to society (consumer surplus plus producer surplus) is greatest when:',
+  opts:['the price is as low as possible','the price is as high as possible','output is at the equilibrium quantity','producer surplus equals consumer surplus'], ans:2,
+  fb:'At the equilibrium every unit that someone values above its cost is traded, so no surplus is lost.',
+  why:'A low price may raise consumer surplus for those who buy, but fewer units are supplied. D is a coincidence of slopes, not an efficiency rule.'},
+ {id:'m8', icon:'8', bg:'#D63864', name:'Paper 1 · Question 8',
+  stem:'Demand does not change, but the price of a product rises. Which part of the consumer surplus that is lost is <b>not</b> gained by producers?',
+  opts:['The rectangle on units that consumers continue to buy','The triangle from units that consumers no longer buy','The whole of the loss','None of it: producers gain all of the loss'], ans:1,
+  fb:'The rectangle is a transfer. The triangle disappears: those units are no longer traded, so neither side receives that surplus.',
+  why:'Being able to say “transfer” for one part and “lost” for the other is a strong analysis point in a Paper 2 answer.'},
+ {id:'m9', icon:'9', bg:'#008BCC', name:'Paper 1 · Question 9',
+  stem:'The price of mangoes falls from ฿10 to ฿8 a kilo along an unchanged, straight-line demand curve, and the quantity bought rises from 100 kg to 140 kg. What is the gain in consumer surplus?',
+  opts:['฿40','฿200','฿240','฿280'], ans:2,
+  fb:'Rectangle: 2 × 100 = ฿200. Triangle: ½ × 2 × 40 = ฿40. Total ฿240.',
+  why:'฿280 uses 140 kg for the rectangle and double-counts. ฿200 forgets the new buyers.'},
+ {id:'m10', icon:'10', bg:'#8098B0', name:'Paper 1 · Question 10',
+  stem:'For one day only, an online retailer cuts the price of headphones by 40% and sells many more pairs than usual. Which is the most accurate conclusion?',
+  opts:['Consumer surplus falls, because the retailer has planned the sale.','Consumer surplus rises; producer surplus may rise or fall, depending on how many extra units are sold.','Producer surplus must rise, because more units are sold.','Neither surplus changes, because the sale lasts only one day.'], ans:1,
+  fb:'Buyers gain for certain. Producers lose the rectangle on units that would have sold at full price, but gain on extra units sold — the net effect depends on PED.',
+  why:'C ignores the rectangle given away. This is the analysis behind the 11.11 question in activity 9.'}
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  const b=document.getElementById('mcqDone');
+  b.innerHTML='✓ All ten attempted — '+right+' / '+total+'. Next: topic 3.2 uses these exact areas to show who gains and loses from taxes, subsidies and price controls.';
+  b.classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct'); mark('mcq');
+});
+
+/* Self-evaluation checklist from the end of Chapter 11 */
+const SELF=[
+ {t:'Explain the meaning of consumer surplus and its significance for consumers.', tab:'wtp', name:'Activity 2'},
+ {t:'Explain the meaning of producer surplus and its significance for producers.', tab:'wtp', name:'Activity 2'},
+ {t:'Analyse the causes of changes in consumer surplus and producer surplus.', tab:'shift', name:'Activity 4'},
+ {t:'Use diagrams to show how changes in consumer surplus and producer surplus can be represented.', tab:'area', name:'Activity 7'},
+ {t:'Consider how PED and PES may determine the extent of changes in consumer surplus and producer surplus.', tab:'elastic', name:'Activity 5'}
+];
+const seVal={};
+(function(){
+  const host=document.getElementById('seHost');
+  SELF.forEach((s,i)=>{
+    const row=document.createElement('div'); row.className='sp-se-row';
+    row.innerHTML='<div class="lbl">'+s.t+'</div><div class="choice-row">'+
+      [['bad','Needs more work'],['both','Almost there'],['good','Ready to move on']].map(x=>'<div class="choice" data-v="'+x[0]+'">'+x[1]+'</div>').join('')+'</div>';
+    row.querySelectorAll('.choice').forEach(c=>c.addEventListener('click',()=>{
+      row.querySelectorAll('.choice').forEach(x=>x.className='choice');
+      c.classList.add('sel-'+c.dataset.v); seVal[i]=c.dataset.v; seSummary();
+    }));
+    host.appendChild(row);
+  });
+})();
+function seSummary(){
+  const say=document.getElementById('seSay');
+  if(Object.keys(seVal).length<SELF.length){ say.innerHTML='Rated '+Object.keys(seVal).length+' of '+SELF.length+'. Rate all five to see what to revisit.'; return; }
+  const weak=SELF.filter((s,i)=>seVal[i]!=='good');
+  if(!weak.length){ say.innerHTML='<b>Ready to move on.</b> Test that confidence: do the 12-mark plan in activity 9 against the clock (20 minutes).'; return; }
+  const tabs=[...new Map(weak.map(s=>[s.tab,s])).values()];
+  say.innerHTML='<b>Revisit:</b> '+tabs.map(s=>'<span class="sp-golink" data-go="'+s.tab+'">'+s.name+'</span>').join(' · ')+'. Then rate yourself again.';
+  say.querySelectorAll('.sp-golink').forEach(a=>a.addEventListener('click',()=>goTab(a.dataset.go)));
+}
+</script>
+</body>
+</html>
