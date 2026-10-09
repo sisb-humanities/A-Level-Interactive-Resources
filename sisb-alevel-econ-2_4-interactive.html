@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2.4 The Interaction of Demand and Supply | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 2.4 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   New widgets use the eq- prefix (equilibrium lab) so nothing
+   collides with the shared CSS.
+   ===================================================================== */
+.hidden{display:none !important}
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.lvl:disabled{cursor:default}
+.btn:disabled{opacity:.45;cursor:default}
+.hintline{font-size:12.8px;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:8px 12px;margin:8px 0 4px;line-height:1.5}
+
+/* ---- lab layout: diagram left, controls right ---- */
+.eq-lab{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start;margin-bottom:18px}
+@media(max-width:880px){.eq-lab{grid-template-columns:1fr}}
+.eq-lab .fig{margin-bottom:0}
+.eq-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.eq-row{margin-bottom:16px}
+.eq-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.eq-name em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--blue);text-align:right}
+.eq-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:11px 0 3px}
+.eq-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.eq-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.eq-sl.d-sl::-webkit-slider-thumb{background:#D63864}
+.eq-sl.d-sl::-moz-range-thumb{background:#D63864}
+.eq-sl.s-sl::-webkit-slider-thumb{background:#008BCC}
+.eq-sl.s-sl::-moz-range-thumb{background:#008BCC}
+.eq-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.eq-res{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.eq-res div{background:var(--grey-bg);border-radius:8px;padding:10px 6px;text-align:center}
+.eq-res b{display:block;font-size:19px;font-weight:900;color:var(--navy);line-height:1.2}
+.eq-res span{font-size:10.8px;color:var(--text-3)}
+.eq-res .wide{grid-column:1 / -1}
+.eq-res .up b{color:var(--green)}
+.eq-res .dn b{color:var(--red)}
+.eq-res .ed b{color:#B35F00}
+.eq-res .es b{color:var(--purple)}
+.eq-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.eq-say b{color:var(--navy)}
+.eq-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:var(--text-2);margin-top:6px}
+.eq-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.eq-legend i.box{height:9px;opacity:.45}
+.eq-handle{cursor:ns-resize;touch-action:none}
+
+/* scenario chips */
+.eq-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.eq-chip{background:#fff;border:1.5px solid var(--grey-3);border-radius:8px;padding:9px 12px;font-size:12.6px;cursor:pointer;line-height:1.35;color:var(--text);transition:.12s;font-family:'Lato',sans-serif;text-align:left;font-weight:700}
+.eq-chip:hover{border-color:var(--blue)}
+.eq-chip.used{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.eq-chip.now{border-color:var(--orange);background:var(--orange-bg);color:var(--orange-txt)}
+
+/* stage pill above an animated diagram */
+.eq-stage{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:12px;padding:4px 11px;margin-bottom:6px}
+.eq-stagebar{display:flex;gap:4px;margin:2px 0 8px}
+.eq-stagebar i{flex:1;height:5px;border-radius:3px;background:var(--grey-2);transition:background .25s}
+.eq-stagebar i.on{background:var(--orange)}
+
+/* prediction rows */
+.eq-plbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-top:8px}
+.eq-pred .lvl{padding:7px 12px;font-size:12px}
+.eq-pred .lvl.eq-ok{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.eq-pred .lvl.eq-no{border-color:var(--red);background:var(--red-bg);color:var(--red-txt)}
+.eq-src{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:11px;background:#E1F1FA;color:#00618F;margin-bottom:7px}
+.eq-src.th{background:var(--orange-bg);color:var(--orange-txt)}
+.eq-cause{font-size:14px;font-weight:900;color:var(--navy);line-height:1.4;margin-bottom:4px}
+
+/* double-shift discovery grid */
+.eq-dgrid{display:grid;grid-template-columns:110px 1fr 1fr;gap:8px;margin-bottom:22px}
+@media(max-width:620px){.eq-dgrid{grid-template-columns:70px 1fr 1fr}}
+.eq-dgrid .h{font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;line-height:1.3}
+.eq-cell{background:#fff;border:2px dashed var(--grey-3);border-radius:var(--radius);padding:11px 12px;font-size:12.6px;color:var(--text-3);line-height:1.5;min-height:72px;transition:.2s}
+.eq-cell.found{border-style:solid;border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.eq-cell.now{box-shadow:0 0 0 3px rgba(255,143,28,.45)}
+.eq-cell b{color:var(--navy)}
+.eq-pill{display:inline-block;font-size:11px;font-weight:900;padding:3px 10px;border-radius:12px;background:var(--grey-bg);color:var(--text-3);margin-left:8px;vertical-align:middle;letter-spacing:.02em}
+.eq-pill.ok{background:var(--green-bg);color:var(--green-txt)}
+
+/* linked markets: two diagrams with a ripple arrow between */
+.eq-twin{display:grid;grid-template-columns:1fr 38px 1fr;gap:8px;align-items:center;margin:6px 0 12px}
+.eq-twin .fig{margin-bottom:0;padding:10px 10px 8px}
+.eq-arrow{font-size:28px;color:var(--grey-3);text-align:center;transition:color .25s,transform .25s;font-weight:900;line-height:1}
+.eq-arrow.on{color:var(--orange);transform:scale(1.35)}
+@media(max-width:760px){.eq-twin{grid-template-columns:1fr}.eq-arrow span{display:inline-block;transform:rotate(90deg)}}
+
+/* functions of price badges */
+.eq-badges{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 12px}
+.eq-badge{font-size:12px;font-weight:900;padding:6px 12px;border-radius:16px;border:1.5px dashed var(--grey-3);color:var(--text-3);background:#fff;transition:.2s}
+.eq-badge.on{border-style:solid;border-color:var(--orange);background:var(--orange-bg);color:var(--orange-txt)}
+
+/* self-evaluation rows */
+.eq-se-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--grey-bg)}
+.eq-se-row:first-of-type{border-top:none}
+@media(max-width:720px){.eq-se-row{grid-template-columns:1fr}}
+.eq-se-row .lbl{font-size:13.2px;color:var(--text-2);line-height:1.45}
+.eq-se-row .choice-row{margin:0;flex-wrap:nowrap}
+.eq-se-row .choice{min-width:0;padding:7px 10px;font-size:11.8px}
+.eq-golink{color:var(--blue);font-weight:700;cursor:pointer;text-decoration:underline}
+
+/* resources strip */
+.res-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}
+.res-links a{font-size:12.5px;font-weight:700;text-decoration:none;color:var(--navy);background:#fff;
+  border:1.5px solid var(--grey-3);border-radius:20px;padding:7px 14px}
+.res-links a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* sticky progress (same as 1.5 / 1.6 / 2.1) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 2.4 The Interaction of Demand and Supply</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="eq">⚖️ Equilibrium Lab</div>
+  <div class="tab" data-tab="adjust">🎬 Shift &amp; Adjust</div>
+  <div class="tab" data-tab="double">✖️ Double Shifts</div>
+  <div class="tab" data-tab="linked">🔗 Linked Markets</div>
+  <div class="tab" data-tab="price">🚦 Functions of Price</div>
+  <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
+  <div class="tab" data-tab="write">✍️ Write It Up</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Match each term to its meaning</h1>
+      <p>Twelve terms carry this topic. Three groups cost marks every year: <b>excess demand</b> versus <b>excess supply</b>, the four <b>relationships between markets</b>, and the <b>functions of price</b>. Read each meaning carefully before you drag.</p>
+      <p>Work through activities 1–8 after the lessons, then activity 9 as a timed test. Everything here follows Chapter 10 of the coursebook (sections 10.1–10.4): the Equilibrium Lab uses the PC market from Table 10.1, so your notes and the screen should agree.</p>
+      <div class="res-links">
+        <a href="sisb-alevel-exam-skills.html">📐 Exam Skills Toolkit</a>
+        <a href="sisb-alevel-econ-2_1-interactive.html">⬅️ 2.1 Demand and supply curves</a>
+        <a href="sisb-alevel-econ-2_3-interactive.html">⏱️ 2.3 Price elasticity of supply</a>
+        <a href="index.html">🗂️ All topics</a>
+        <!-- Paste this topic's video and notebook links here when they are ready:
+        <a href="VIDEO-URL-HERE" target="_blank" rel="noopener">▶️ Topic video</a>
+        <a href="NOTEBOOK-URL-HERE" target="_blank" rel="noopener">📓 Notebook</a>
+        <a href="QUIZ-URL-HERE" target="_blank" rel="noopener">✅ Quiz</a>
+        -->
+      </div>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+    <p class="tip">Excess demand and a shortage are the same thing; so are excess supply and a surplus. Use the economics term in an exam answer, and always say <b>at which price</b> the excess exists.</p>
+  </div>
+
+  <!-- ============ TAB 2 · EQUILIBRIUM LAB ============ -->
+  <div class="panel" id="panel-eq">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Equilibrium and disequilibrium</div>
+      <h1>Set the price yourself — then let the market take over</h1>
+      <p>This is the PC market from coursebook Table 10.1. <b>Drag the orange price line</b> on the diagram (or use the slider). At any price other than $1400 the plans of buyers and sellers do not match, and the shaded bar shows the gap.</p>
+      <p>Then press <b>Let the market adjust</b> and watch the price mechanism close the gap. Try it at both speeds. A factory product such as a PC adjusts in weeks; a farm product such as passion fruit can take seasons, because supply cannot respond quickly. That is the Key Concept link on <b>time</b> in section 10.1.</p>
+    </div>
+    <div class="eq-lab">
+      <div class="fig">
+        <div class="ft">The market for PCs (Table 10.1) — drag the price line</div>
+        <div id="eqFig"></div>
+        <div class="eq-legend">
+          <span><i style="background:#D63864"></i>Demand</span>
+          <span><i style="background:#008BCC"></i>Supply</span>
+          <span><i style="background:#FF8F1C"></i>Price set</span>
+          <span><i class="box" style="background:#FF8F1C"></i>Excess demand</span>
+          <span><i class="box" style="background:#6B4E9E"></i>Excess supply</span>
+        </div>
+      </div>
+      <div class="eq-ctrl">
+        <div class="eq-row">
+          <div class="eq-name"><span>Price of a standard PC</span><em id="eqPlab">$1800</em></div>
+          <input type="range" class="eq-sl" id="eqSlider" min="800" max="2000" step="10" value="1800" aria-label="Price of a PC in dollars">
+          <div class="eq-ends"><span>$800</span><span>$2000</span></div>
+        </div>
+        <div class="eq-res">
+          <div><b id="eqQd">2000</b><span>Quantity demanded</span></div>
+          <div><b id="eqQs">6000</b><span>Quantity supplied</span></div>
+          <div class="wide" id="eqGapBox"><b id="eqGap">Excess supply: 4000</b><span id="eqGapSub">Unsold PCs pile up each week</span></div>
+          <div><b id="eqTraded">2000</b><span>Actually bought and sold</span></div>
+          <div><b id="eqSpend">$3.6m</b><span>Total spending per week</span></div>
+        </div>
+        <div class="eq-plbl">Speed of adjustment</div>
+        <div class="steppick" id="eqSpeed">
+          <button class="lvl active" data-v="fast">⚡ Fast — like PCs (weeks)</button>
+          <button class="lvl" data-v="slow">🌱 Slow — like passion fruit (seasons)</button>
+        </div>
+        <div class="btn-row" style="margin-top:4px">
+          <button class="btn btn-primary" id="eqGo">▶ Let the market adjust</button>
+          <button class="btn btn-ghost" id="eqReset">Reset to $1800</button>
+        </div>
+        <div class="eq-say" id="eqSay"></div>
+      </div>
+    </div>
+
+    <div class="sub-h">The schedule behind the diagram</div>
+    <div class="sub-p">Coursebook Table 10.1, with the gap worked out for you. The highlighted row follows your price line.</div>
+    <div class="tscroll"><table class="dtable" id="eqTable"></table></div>
+
+    <div class="sub-h">Read the market</div>
+    <div class="sub-p">Use the diagram to find each answer before you choose. The last two need algebra: set Q<sub>d</sub> = Q<sub>s</sub> and solve.</div>
+    <div id="eqQ"></div>
+    <div class="done-banner" id="eqDone"></div>
+    <p class="tip">At a price above equilibrium, the quantity actually traded is the <b>quantity demanded</b>: firms cannot make anyone buy. Below equilibrium, it is the <b>quantity supplied</b>: buyers cannot buy what is not there. Trade happens on the short side of the market.</p>
+  </div>
+
+  <!-- ============ TAB 3 · SHIFT & ADJUST ============ -->
+  <div class="panel" id="panel-adjust">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Shifts, step by step</div>
+      <h1>Predict it, then watch the market adjust</h1>
+      <p>Eight real markets: the four case studies from coursebook Activity 10.6 and four from Thailand. For each one, make three predictions, lock them in, then watch the change happen in four stages: <b>the shift → disequilibrium at the old price → the price mechanism → the new equilibrium</b>.</p>
+      <p>Those four stages are exactly the analysis an examiner wants written down. Most weak answers jump from stage 1 to stage 4 and lose the marks in between.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Choose a market <span class="score" id="adjScore" style="font-size:13px">0 / 8 played · 0 / 24 predictions right</span></div>
+    <div class="eq-chips" id="adjChips"></div>
+    <div class="eq-lab">
+      <div class="fig">
+        <span class="eq-stage" id="adjStage">Choose a market above</span>
+        <div class="eq-stagebar" id="adjBar"><i></i><i></i><i></i><i></i></div>
+        <div class="ft" id="adjTitle">Demand and supply</div>
+        <div id="adjFig"></div>
+        <div class="eq-legend">
+          <span><i style="background:#D63864"></i>Demand</span>
+          <span><i style="background:#008BCC"></i>Supply</span>
+          <span><i style="background:#B8C9DA"></i>Original position</span>
+        </div>
+      </div>
+      <div class="eq-ctrl" id="adjPanel">
+        <div class="eq-say" style="margin-top:0">Pick one of the eight markets to begin. Predict first: your three predictions are scored before the animation plays.</div>
+      </div>
+    </div>
+    <div id="adjOut"></div>
+    <div class="done-banner" id="adjDone"></div>
+    <p class="tip">Coursebook tip: a shift is caused by a <b>non-price</b> factor; the price change that follows causes <b>movements along</b> the curves. In the stage 3 caption, notice that the shifted curve does not move again.</p>
+  </div>
+
+  <!-- ============ TAB 4 · DOUBLE SHIFTS ============ -->
+  <div class="panel" id="panel-double">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Both curves at once</div>
+      <h1>When demand and supply shift together, one answer is always “it depends”</h1>
+      <p>Move both sliders. Whenever both curves shift, one of price and quantity changes in a <b>definite</b> direction and the other is <b>uncertain</b>: it depends on which shift is bigger. Coursebook Figure 10.8 is the classic case — demand and supply both increase and price does not change at all.</p>
+      <p>First fill the discovery grid by trying all four combinations. Then solve the five challenges: each one is a real market you must recreate on the diagram.</p>
+    </div>
+    <div class="eq-lab">
+      <div class="fig">
+        <div class="ft">Shifting demand and supply together</div>
+        <div id="dblFig"></div>
+        <div class="eq-legend">
+          <span><i style="background:#D63864"></i>Demand</span>
+          <span><i style="background:#008BCC"></i>Supply</span>
+          <span><i style="background:#B8C9DA"></i>Original position</span>
+        </div>
+      </div>
+      <div class="eq-ctrl">
+        <div class="eq-row">
+          <div class="eq-name"><span>Demand</span><em id="dblDlab">No shift</em></div>
+          <input type="range" class="eq-sl d-sl" id="dblD" min="-3" max="3" step="1" value="0" aria-label="Shift demand left or right">
+          <div class="eq-ends"><span>← Decrease</span><span>Increase →</span></div>
+        </div>
+        <div class="eq-row">
+          <div class="eq-name"><span>Supply</span><em id="dblSlab">No shift</em></div>
+          <input type="range" class="eq-sl s-sl" id="dblS" min="-3" max="3" step="1" value="0" aria-label="Shift supply left or right">
+          <div class="eq-ends"><span>← Decrease</span><span>Increase →</span></div>
+        </div>
+        <div class="eq-res">
+          <div id="dblPbox"><b id="dblP">—</b><span>Equilibrium price</span></div>
+          <div id="dblQbox"><b id="dblQ">—</b><span>Equilibrium quantity</span></div>
+        </div>
+        <div class="eq-say" id="dblSay"></div>
+        <div class="btn-row" style="margin-top:14px"><button class="btn btn-ghost" id="dblReset">Reset both curves</button></div>
+      </div>
+    </div>
+    <div class="sub-h">Discovery grid <span class="score" id="dblFound" style="font-size:13px">0 / 4 discovered</span></div>
+    <div class="sub-p">Each cell fills in when you set that combination on the sliders. Copy the finished grid into your notes — it answers a Paper 1 question almost every series.</div>
+    <div class="eq-dgrid" id="dblGrid"></div>
+    <div class="sub-h">Five challenges <span class="score" id="dblSolved" style="font-size:13px">0 / 5 solved</span></div>
+    <div class="sub-p">Set the sliders, then press <b>Check my diagram</b>.</div>
+    <div id="dblChal"></div>
+    <div class="done-banner" id="dblDone">✓ All five solved. The rule to write in every answer with two shifts: <b>one variable is definite, the other depends on the relative size of the shifts</b>. Saying that — and saying what it depends on — is an evaluation mark.</div>
+  </div>
+
+  <!-- ============ TAB 5 · LINKED MARKETS ============ -->
+  <div class="panel" id="panel-linked">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Relationships between markets</div>
+      <h1>A change in one market ripples into another</h1>
+      <p>Section 10.3 of the coursebook links markets in four ways: <b>alternative demand</b> (substitutes), <b>joint demand</b> (complements), <b>derived demand</b> and <b>joint supply</b>. Each card below shows market A and market B side by side, following Figures 10.11–10.14.</p>
+      <p>Read the cause, predict what happens in <b>market B</b>, then press play. The key skill: in market B, work out <b>which curve</b> moves. It is not always demand.</p>
+    </div>
+    <div id="lkHost"></div>
+    <div class="done-banner" id="lkDone"></div>
+    <p class="tip">A quick test for joint supply versus derived demand: in <b>joint supply</b> the two goods come out of the same production process (sugar and molasses). In <b>derived demand</b> one is an input needed to make the other (hotel workers for hotel stays).</p>
+  </div>
+
+  <!-- ============ TAB 6 · FUNCTIONS OF PRICE ============ -->
+  <div class="panel" id="panel-price">
+    <div class="intro">
+      <div class="kicker">Activity 6 · The functions of price</div>
+      <h1>How price allocates resources — season by season</h1>
+      <p>Section 10.4: price <b>rations</b>, <b>signals</b> and provides <b>incentives</b>, and through all three it <b>transmits consumers’ preferences</b> to producers. Adam Smith called this the ‘invisible hand’.</p>
+      <p>Part A follows the Kenyan passion fruit story from the start of Chapter 10. At each step, name the function of price at work. Part B asks you to sort nine more examples, most of them from Thailand.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Kenyan passion fruit</div>
+    <div class="eq-badges" id="pfBadges">
+      <span class="eq-badge" data-f="r">Rationing</span>
+      <span class="eq-badge" data-f="s">Signalling</span>
+      <span class="eq-badge" data-f="i">Incentive</span>
+      <span class="eq-badge" data-f="t">Transmission of preferences</span>
+    </div>
+    <div class="eq-lab">
+      <div class="fig">
+        <span class="eq-stage" id="pfStage">Step 1 of 6</span>
+        <div class="ft">The market for Kenyan passion fruit</div>
+        <div id="pfFig"></div>
+        <div class="eq-legend">
+          <span><i style="background:#D63864"></i>Demand</span>
+          <span><i style="background:#008BCC"></i>Supply</span>
+          <span><i style="background:#B8C9DA"></i>Earlier position</span>
+        </div>
+      </div>
+      <div class="eq-ctrl">
+        <div class="eq-say" id="pfText" style="margin-top:0"></div>
+        <div id="pfAsk"></div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="btn btn-primary" id="pfNext">Next ▶</button>
+          <button class="btn btn-ghost" id="pfRestart">Start again</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-h">Part B · Which function of price?</div>
+    <div class="sub-p">Drag each example into the function of price it shows best. Some examples involve more than one function — choose the one the example is mainly about.</div>
+    <div class="sort-grid cols-3">
+      <div><div class="col-lbl">Examples</div><div class="drop-pool" id="pool-sort"></div></div>
+      <div class="bin" data-bin="r"><div class="bin-name"><span class="bin-dot" style="background:#D63864"></span>Rationing</div><div class="bin-desc">A high price limits who gets a scarce product</div><div class="bin-drop"></div></div>
+      <div class="bin" data-bin="s"><div class="bin-name"><span class="bin-dot" style="background:#008BCC"></span>Signalling</div><div class="bin-desc">A price change tells producers what consumers want</div><div class="bin-drop"></div></div>
+      <div class="bin" data-bin="i"><div class="bin-name"><span class="bin-dot" style="background:#FF8F1C"></span>Incentive</div><div class="bin-desc">A price change gives buyers or sellers a reason to act</div><div class="bin-drop"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkSort()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildSort()">Reset</button>
+      <span class="score" id="score-sort"></span>
+    </div>
+    <div id="sortFb"></div>
+    <div class="done-banner" id="priceDone">✓ Parts A and B complete. In an essay, name the function <b>and</b> show it working: “The rise in price signals to farmers that consumers want more, and the higher profit is an incentive to switch land into passion fruit.”</div>
+  </div>
+
+  <!-- ============ TAB 7 · ANALYSIS & EVALUATION ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Analysis and evaluation</div>
+      <h1>Build the chain, then test the claim</h1>
+      <p>Part A: analysis marks are earned by <b>linked</b> steps. Click the steps of each chain in causal order. Part B: evaluation marks are earned by judging whether a claim is always true. Decide <b>Agree</b>, <b>Disagree</b> or <b>It depends</b>, then read the reasoning.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Analysis chains</div>
+    <div id="chainHost"></div>
+    <div class="sub-h">Part B · Agree, disagree or it depends? <span class="score" id="judgeScore" style="font-size:13px"></span></div>
+    <div class="sub-p">Six claims you could meet in a 12-mark question. The words <b>always</b>, <b>must</b> and <b>instantly</b> are usually the evaluation hook.</div>
+    <div id="judgeHost"></div>
+    <div class="done-banner" id="chainDone"></div>
+  </div>
+
+  <!-- ============ TAB 8 · WRITE IT UP ============ -->
+  <div class="panel" id="panel-write">
+    <div class="intro">
+      <div class="kicker">Activity 8 · Paper 2 style</div>
+      <h1>Turn the diagrams into written analysis and evaluation</h1>
+      <p>Two written tasks: an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis) and a 12-mark <b>discuss</b> answer (which also needs AO3 — evaluation). Type your answer first, then compare it with the model. Nothing you type is stored.</p>
+      <p>Full command-word guidance and mark-scheme bands are on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">With the help of diagrams, explain how an increase in the number of tourists visiting Phuket is likely to affect the market for hotel workers. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Plan before you write. You need <b>two</b> diagrams: the market for hotel stays and the market for hotel workers. Name the relationship, then take each market from shift to new equilibrium. Activity 5, card 3, is the model to copy.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:160px" placeholder="The demand for hotel workers is a derived demand, which means..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> The demand for hotel workers is a <b>derived demand</b>: hotels employ cleaners, receptionists and chefs only because tourists want hotel stays. If more tourists visit Phuket, for example because new direct flights open, the demand for hotel stays increases and the demand curve shifts right from D to D₁. At the original price there is excess demand for rooms, so the price of a room-night rises and more room-nights are sold. To provide those extra room-nights, hotels need more workers at every wage, so the demand curve for hotel workers also shifts right from D to D₁. At the original wage W there is now excess demand for labour: hotels cannot fill their vacancies. The wage therefore rises to W₁. As it rises there is an extension of the supply of labour, a movement along the supply curve, as higher pay attracts people into hotel work from other jobs and other provinces. Employment rises from Q to Q₁. How much of the effect falls on wages rather than employment depends on how easily extra workers can be attracted: the more elastic the supply of labour, the smaller the rise in the wage.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> it defines derived demand and explains the link, uses two linked diagrams, takes <b>each</b> market through excess demand to a new equilibrium, separates the shift in labour demand from the movement along labour supply, and ends with a qualification. Two complete chains, not two assertions.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 7 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
+        <div class="q-name">Discuss whether the price mechanism can be relied upon to allocate resources effectively in agricultural markets such as coffee or durian. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
+      <div class="q-stem">A 12-mark <b>discuss</b> question needs two-sided analysis and a supported judgement. Plan it here in note form — four or five bullet points is enough — then compare with the model plan. Use the coffee case from ‘Think like an economist’ (Figure 10.15) and what you saw on the slow setting in activity 2.</div>
+      <div class="write-lbl">Your plan</div>
+      <textarea class="write-box" id="w2" style="min-height:140px" placeholder="Case FOR the price mechanism: ...&#10;Case AGAINST: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="w2btn">Compare with a model plan</button>
+      <div class="model" id="w2model">
+        <b>Model plan.</b><br>
+        <b>1 · Case for.</b> When Chinese demand for Thai durian rises, demand shifts right and price rises. The higher price <b>rations</b> the limited fruit to the buyers who value it most, <b>signals</b> to growers that consumers want more, and gives them an <b>incentive</b> to plant more trees. No government needs to know what consumers want: preferences are transmitted automatically. Kenyan passion fruit shows farmers switching crops in response.<br>
+        <b>2 · Case against.</b> Agricultural supply responds slowly. A new tree crop takes years to bear fruit, so supply is very price inelastic in the short run and the market can stay in disequilibrium for a long time, with prices overshooting. Weather shifts supply unpredictably, so prices are volatile: Figure 10.15 shows the world coffee price more than halving between 2011 and 2019. Small farmers are price takers on a global market, so the outcome may be efficient but leaves many growers in poverty — the allocation is not necessarily fair.<br>
+        <b>3 · It depends on.</b> The time period (short run versus long run); how quickly land can switch (passion fruit gives a first crop in its first season, durian and coffee take years); whether the product can be stored; and whether farmers have the information and credit to respond to the signal.<br>
+        <b>4 · Judgement.</b> The price mechanism moves resources in the right <b>direction</b>, but in tree-crop markets it does so slowly and with large swings in price and income. It can be relied on more for quick-response crops than for coffee or durian, which is why buffer stocks, fair-trade agreements and diversification schemes exist — the case for intervention you will meet in topic 3.2.
+        <div class="exam-line" style="margin-top:10px"><b>Evaluation sentence starters:</b> “This depends on how quickly…”, “In the short run… but in the long run…”, “This argument assumes farmers can respond, which may not hold because…”, “On balance, the stronger argument is… because…”</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 12-mark plan</h4>
+      <div class="cgs">The top band needs every one of these.</div>
+      <div id="w2checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w2bv">0 of 6 ticked</div>
+        <div class="bar"><i id="w2bar"></i></div>
+        <div class="bd" id="w2bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+    <div class="done-banner" id="writeDone">✓ Both tasks attempted. Redraft the 8-mark answer using anything you left unticked, then turn the 12-mark plan into full paragraphs and bring both to the next lesson.</div>
+  </div>
+
+  <!-- ============ TAB 9 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 9 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Ten Paper 1 style questions. Several are the coursebook’s own end-of-chapter questions with a Thai setting; the rest target the errors that cost the most marks in this topic. Then complete the coursebook’s self-evaluation checklist at the bottom.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone"></div>
+    <div class="check-group" style="margin-top:20px">
+      <h4>Self-evaluation checklist (end of Chapter 10)</h4>
+      <div class="cgs">Be honest. Anything marked “needs more work” links back to the activity that practises it.</div>
+      <div id="seHost"></div>
+      <div class="eq-say" id="seSay">Rate all seven statements to see what to revisit.</div>
+    </div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 2.4</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 9 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+function goTab(name){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active', x.dataset.tab===name));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active', x.id==='panel-'+name));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>goTab(t.dataset.tab)));
+function bringIntoView(el){
+  const top=document.querySelector('.tabbar').getBoundingClientRect().bottom+10;
+  const y=el.getBoundingClientRect().top;
+  if(y<top || y>window.innerHeight*0.45) window.scrollTo({top:window.scrollY+y-top, behavior:RM?'auto':'smooth'});
+}
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('2.4', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,eq:false,adjust:false,double:false,linked:false,price:false,chain:false,write:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 2.4 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function num(n){ return Math.round(n).toLocaleString('en-GB'); }
+
+/* Shared MCQ card builder (same markup as 1.4 / 1.5 / 1.6 / 2.1) */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+
+/* =====================================================================
+   ANIMATION HELPERS
+   play(owner, steps) runs a list of steps in order. Starting a new
+   play() on the same owner (or calling stop()) cancels the old one.
+   ===================================================================== */
+const RM=!!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+function play(owner, steps){
+  const id=(owner.run=(owner.run||0)+1); let i=0;
+  const alive=()=>owner.run===id;
+  const next=()=>{ if(!alive()||i>=steps.length) return; const s=steps[i++]; s(next, alive); };
+  next();
+}
+function stop(owner){ owner.run=(owner.run||0)+1; }
+function tw(dur, fn){
+  return (next, alive)=>{
+    if(RM){ fn(1); next(); return; }
+    const t0=performance.now();
+    (function f(){
+      if(!alive()) return;
+      const k=Math.min(1,Math.max(0,(performance.now()-t0)/dur));
+      fn(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2);
+      if(k<1) requestAnimationFrame(f); else next();
+    })();
+  };
+}
+function pause(ms){ return (next, alive)=>setTimeout(()=>{ if(alive()) next(); }, RM?0:ms); }
+function act(fn){ return (next)=>{ fn(); next(); }; }
+
+/* =====================================================================
+   THE MARKET DIAGRAM ENGINE
+   Every diagram on this page is drawn by renderMarket(). Curves are
+   straight lines q = a + b·p, so equilibrium is solved exactly.
+   A model M gives the demand and supply functions and the axes.
+   ===================================================================== */
+const VB={w:350,h:280,L:46,T:24,W:278,H:216};
+const CD='#D63864', CS='#008BCC', CG='#B8C9DA', CO='#FF8F1C', CPU='#6B4E9E';
+const FONT='font-family="Lato,sans-serif"';
+function lin(fn,sh){ const a=fn(0,sh); return {a:a, b:fn(1,sh)-a}; }
+function eqm(M,d,s){ const D=lin(M.qd,d||0), S=lin(M.qs,s||0); const p=(D.a-S.a)/(S.b-D.b); return {p:p, q:D.a+D.b*p}; }
+function seg(M,fn,sh){
+  const L=lin(fn,sh), pr=M.pmax-M.pmin, qr=M.qmax-M.qmin;
+  let lo=M.pmin+pr*.05, hi=M.pmax-pr*.04;
+  let p1=(M.qmin+qr*.03-L.a)/L.b, p2=(M.qmax-qr*.03-L.a)/L.b;
+  if(p1>p2){ const t=p1; p1=p2; p2=t; }
+  lo=Math.max(lo,p1); hi=Math.min(hi,p2);
+  return {ok:lo<hi, lo:{p:lo,q:L.a+L.b*lo}, hi:{p:hi,q:L.a+L.b*hi}};
+}
+function spread(items, gap){
+  /* items: [{pos, txt, old}] — merge labels at the same position, nudge near ones apart */
+  items.sort((a,b)=>a.pos-b.pos);
+  const out=[];
+  items.forEach(it=>{
+    const last=out[out.length-1];
+    if(last && Math.abs(it.pos-last.raw)<1.5){
+      if(it.txt && last.txt!==it.txt) last.txt = it.old ? it.txt+' = '+last.txt : last.txt+' = '+it.txt;
+      else if(it.txt && !last.txt) last.txt=it.txt;
+      last.old = last.old && it.old;
+      return;
+    }
+    const pos = last && it.pos-last.pos<gap ? last.pos+gap : it.pos;
+    out.push({pos:pos, raw:it.pos, txt:it.txt, old:it.old});
+  });
+  return out;
+}
+function renderMarket(M, uid, st){
+  const X=q=>VB.L+(q-M.qmin)/(M.qmax-M.qmin)*VB.W;
+  const Y=p=>VB.T+(M.pmax-p)/(M.pmax-M.pmin)*VB.H;
+  const B=VB.T+VB.H, R=VB.L+VB.W, d=st.d||0, s=st.s||0;
+  let o='<svg viewBox="0 0 '+VB.w+' '+VB.h+'" role="img" aria-label="'+(st.aria||'Demand and supply diagram')+'" xmlns="http://www.w3.org/2000/svg">';
+  o+='<defs><clipPath id="'+uid+'c"><rect x="'+VB.L+'" y="'+VB.T+'" width="'+VB.W+'" height="'+VB.H+'"/></clipPath>'+
+     '<marker id="'+uid+'a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="'+CO+'"/></marker></defs>';
+  /* numeric grid (Table 10.1 diagram only) */
+  if(M.ticksP){
+    M.ticksP.forEach(p=>{ const y=Y(p);
+      o+='<line x1="'+VB.L+'" x2="'+R+'" y1="'+y+'" y2="'+y+'" stroke="#E4EDF5"/>'+
+         '<text x="'+(VB.L-6)+'" y="'+(y+3.5)+'" font-size="9.5" text-anchor="end" fill="#8098B0" '+FONT+'>'+p+'</text>'; });
+    M.ticksQ.forEach(q=>{ const x=X(q);
+      o+='<line x1="'+x+'" x2="'+x+'" y1="'+VB.T+'" y2="'+B+'" stroke="#E4EDF5"/>'+
+         '<text x="'+x+'" y="'+(B+13)+'" font-size="9.5" text-anchor="middle" fill="#8098B0" '+FONT+'>'+M.fmtQ(q)+'</text>'; });
+  }
+  /* axes */
+  o+='<line x1="'+VB.L+'" y1="'+(VB.T-8)+'" x2="'+VB.L+'" y2="'+B+'" stroke="#456080" stroke-width="1.6"/>'+
+     '<line x1="'+VB.L+'" y1="'+B+'" x2="'+(R+8)+'" y2="'+B+'" stroke="#456080" stroke-width="1.6"/>'+
+     '<text x="'+(VB.L+6)+'" y="'+(VB.T-10)+'" font-size="11" font-weight="700" fill="#456080" '+FONT+'>'+M.yName+'</text>'+
+     '<text x="'+R+'" y="'+(B+(M.ticksP?28:30))+'" font-size="11" font-weight="700" fill="#456080" text-anchor="end" '+FONT+'>'+M.xName+'</text>'+
+     (M.ticksP?'':'<text x="'+(VB.L-5)+'" y="'+(B+13)+'" font-size="10" fill="#8098B0" text-anchor="end" '+FONT+'>0</text>');
+
+  const line=(fn,sh,col,w,dash)=>{ const g=seg(M,fn,sh); if(!g.ok) return '';
+    return '<line x1="'+X(g.lo.q)+'" y1="'+Y(g.lo.p)+'" x2="'+X(g.hi.q)+'" y2="'+Y(g.hi.p)+'" stroke="'+col+'" stroke-width="'+w+'" stroke-linecap="round"'+(dash?' stroke-dasharray="6 5"':'')+'/>'; };
+  const lab=(fn,sh,k,txt,col)=>{ const g=seg(M,fn,sh); if(!g.ok||!txt) return '';
+    const e=k==='D'?g.lo:g.hi, x=X(e.q), y=Y(e.p);
+    return '<text x="'+(x+5)+'" y="'+(k==='D'?y+4:y+9)+'" font-size="12.5" font-weight="900" fill="'+col+'" '+FONT+'>'+txt+'</text>'; };
+  const fnOf=k=>k==='D'?M.qd:M.qs;
+
+  o+='<g clip-path="url(#'+uid+'c)">';
+  /* excess band at the price line */
+  let bandTxt='';
+  if(st.pl!=null && st.band){
+    const qd=M.qd(st.pl,d), qs=M.qs(st.pl,s), y=Y(st.pl);
+    if(Math.abs(qd-qs)>(M.qmax-M.qmin)*0.012){
+      const ed=qd>qs, x1=X(Math.max(M.qmin,Math.min(qd,qs))), x2=X(Math.min(M.qmax,Math.max(qd,qs)));
+      o+='<rect x="'+x1+'" y="'+(y-6)+'" width="'+Math.max(0,x2-x1)+'" height="12" rx="3" fill="'+(ed?CO:CPU)+'" opacity=".3"/>';
+      const t=(ed?'Excess demand':'Excess supply')+(M.ticksP?': '+num(Math.abs(qd-qs)):'');
+      const cx=Math.max(VB.L+48,Math.min(R-48,(x1+x2)/2));
+      bandTxt='<text x="'+cx+'" y="'+(y-10)+'" font-size="10.5" font-weight="900" fill="'+(ed?'#B35F00':CPU)+'" stroke="#fff" stroke-width="3" paint-order="stroke" text-anchor="middle" '+FONT+'>'+t+'</text>';
+    }
+  }
+  /* ghost (earlier) curves, extra curves, current curves */
+  (st.ghosts||[]).forEach(g=>{ o+=line(fnOf(g.k),g.sh,CG,2,true); });
+  (st.extra||[]).forEach(g=>{ o+=line(fnOf(g.k),g.sh,g.k==='D'?'#EBA0B7':'#86C7E8',2); });
+  o+=line(M.qd,d,CD,st.hl==='D'?3.6:2.5);
+  o+=line(M.qs,s,CS,st.hl==='S'?3.6:2.5);
+  if(st.pl!=null) o+='<line x1="'+VB.L+'" y1="'+Y(st.pl)+'" x2="'+R+'" y2="'+Y(st.pl)+'" stroke="'+CO+'" stroke-width="1.7" stroke-dasharray="5 4"/>';
+  o+='</g>';
+  o+=bandTxt;
+
+  /* guides, axis labels and dots for each marked equilibrium */
+  const marks=st.marks||[];
+  marks.forEach(m=>{ const x=X(m.q), y=Y(m.p), c=m.kind==='old'?CG:'#8098B0';
+    o+='<line x1="'+VB.L+'" y1="'+y+'" x2="'+x+'" y2="'+y+'" stroke="'+c+'" stroke-width="1" stroke-dasharray="4 4"/>'+
+       '<line x1="'+x+'" y1="'+y+'" x2="'+x+'" y2="'+B+'" stroke="'+c+'" stroke-width="1" stroke-dasharray="4 4"/>'; });
+  spread(marks.filter(m=>m.tp!=null).map(m=>({pos:Y(m.p),txt:m.tp,old:m.kind==='old'})),13).forEach(l=>{
+    o+='<text x="'+(VB.L-6)+'" y="'+(l.pos+4)+'" font-size="'+(l.txt.length>4?10.5:12)+'" font-weight="900" text-anchor="end" fill="'+(l.old?'#8098B0':'#002F6C')+'" '+FONT+'>'+l.txt+'</text>'; });
+  spread(marks.filter(m=>m.tq!=null).map(m=>({pos:X(m.q),txt:m.tq,old:m.kind==='old'})),22).forEach(l=>{
+    o+='<text x="'+l.pos+'" y="'+(B+15)+'" font-size="'+(l.txt.length>4?10.5:12)+'" font-weight="900" text-anchor="middle" fill="'+(l.old?'#8098B0':'#002F6C')+'" '+FONT+'>'+l.txt+'</text>'; });
+
+  /* arrows along the axes showing the direction of change */
+  (st.arrows||[]).forEach(a=>{
+    if(a.axis==='p'){ const y1=Y(a.from), y2=Y(a.to); if(Math.abs(y2-y1)<12) return;
+      const dir=y2>y1?1:-1;
+      o+='<line x1="'+(VB.L+9)+'" y1="'+(y1+dir*4)+'" x2="'+(VB.L+9)+'" y2="'+(y2-dir*3)+'" stroke="'+CO+'" stroke-width="2.2" marker-end="url(#'+uid+'a)"/>';
+    } else { const x1=X(a.from), x2=X(a.to); if(Math.abs(x2-x1)<12) return;
+      const dir=x2>x1?1:-1;
+      o+='<line x1="'+(x1+dir*4)+'" y1="'+(B-9)+'" x2="'+(x2-dir*3)+'" y2="'+(B-9)+'" stroke="'+CO+'" stroke-width="2.2" marker-end="url(#'+uid+'a)"/>';
+    }
+  });
+  /* a movement along a curve (used in the passion fruit story) */
+  if(st.trail){ const t=st.trail;
+    o+='<line x1="'+X(t.from.q)+'" y1="'+Y(t.from.p)+'" x2="'+X(t.to.q)+'" y2="'+Y(t.to.p)+'" stroke="'+CO+'" stroke-width="3" marker-end="url(#'+uid+'a)" opacity=".9"/>'; }
+
+  /* curve labels */
+  (st.ghosts||[]).forEach(g=>{ o+=lab(fnOf(g.k),g.sh,g.k,g.lab,'#8098B0'); });
+  (st.extra||[]).forEach(g=>{ o+=lab(fnOf(g.k),g.sh,g.k,g.lab,g.k==='D'?CD:CS); });
+  o+=lab(M.qd,d,'D',st.labD||'D',CD);
+  o+=lab(M.qs,s,'S',st.labS||'S',CS);
+
+  /* dots */
+  marks.forEach(m=>{ if(m.kind==='old') o+='<circle cx="'+X(m.q)+'" cy="'+Y(m.p)+'" r="4.5" fill="'+CG+'" stroke="#fff" stroke-width="1.5"/>'; });
+  marks.forEach(m=>{ if(m.kind!=='old') o+='<circle cx="'+X(m.q)+'" cy="'+Y(m.p)+'" r="6" fill="'+CO+'" stroke="#fff" stroke-width="2"/>'; });
+  if(st.pl!=null){
+    const qd=M.qd(st.pl,d), qs=M.qs(st.pl,s), y=Y(st.pl);
+    if(Math.abs(qd-qs)<(M.qmax-M.qmin)*0.004) o+='<circle cx="'+X(qd)+'" cy="'+y+'" r="6" fill="'+CO+'" stroke="#fff" stroke-width="2"/>';
+    else{
+      if(qd>=M.qmin&&qd<=M.qmax) o+='<circle cx="'+X(qd)+'" cy="'+y+'" r="5.5" fill="'+CD+'" stroke="#fff" stroke-width="2"/>';
+      if(qs>=M.qmin&&qs<=M.qmax) o+='<circle cx="'+X(qs)+'" cy="'+y+'" r="5.5" fill="'+CS+'" stroke="#fff" stroke-width="2"/>';
+    }
+    if(st.plLabel) o+='<text x="'+(VB.L+5)+'" y="'+(y+15)+'" font-size="11.5" font-weight="900" fill="'+CO+'" '+FONT+'>'+st.plLabel+'</text>';
+  }
+  (st.pts||[]).forEach(pt=>{
+    o+='<circle cx="'+X(pt.q)+'" cy="'+Y(pt.p)+'" r="4.5" fill="#002F6C"/>'+
+       '<text x="'+(X(pt.q)+9)+'" y="'+(Y(pt.p)+4.5)+'" font-size="13" font-weight="900" fill="#002F6C" stroke="#fff" stroke-width="3.5" paint-order="stroke" '+FONT+'>'+pt.lab+'</text>'; });
+  /* drag handle for the price line */
+  if(st.handleP!=null){ const y=Y(st.handleP);
+    o+='<g class="eq-handle"><rect x="'+VB.L+'" y="'+(y-14)+'" width="'+VB.W+'" height="28" fill="transparent"/>'+
+       '<circle cx="'+(R-12)+'" cy="'+y+'" r="11" fill="'+CO+'" stroke="#fff" stroke-width="2"/>'+
+       '<path d="M'+(R-16)+' '+(y-2)+' l4 -5 l4 5 M'+(R-16)+' '+(y+2)+' l4 5 l4 -5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>';
+  }
+  return o+'</svg>';
+}
+
+/* Market models */
+const G={qd:(p,d)=>10-p+(d||0), qs:(p,s)=>p+(s||0), pmin:0,pmax:10,qmin:0,qmax:10, yName:'Price', xName:'Quantity'};
+const LM=Object.assign({},G,{yName:'Wage', xName:'Quantity of labour'});
+function makeScene(id,M,uid){
+  const sc={el:document.getElementById(id), M:M, uid:uid, st:{}};
+  sc.draw=()=>{ sc.el.innerHTML=renderMarket(M,uid,sc.st); };
+  return sc;
+}
+
+/* A "plan" describes one shift and the four-stage adjustment that follows:
+   0 starting equilibrium · 1 the shift · 2 excess at the old price ·
+   3 price adjusts (movements along) · 4 new equilibrium            */
+function makePlan(M,K,sh,o){
+  o=o||{};
+  const d0=o.d0||0, s0=o.s0||0, e0=eqm(M,d0,s0);
+  const d1=K==='D'?d0+sh:d0, s1=K==='S'?s0+sh:s0, e1=eqm(M,d1,s1);
+  const lab0={D:o.labD||'D', S:o.labS||'S'}, newLab=o.newLab||(K+'₁');
+  const baseMarks=o.marks||[{p:e0.p,q:e0.q,tp:o.tp0||'P',tq:o.tq0||'Q'}];
+  function st(n,x){
+    const f=(x==null?1:x);
+    const S={d:d0,s:s0,ghosts:(o.ghosts||[]).slice(),labD:lab0.D,labS:lab0.S,aria:o.aria};
+    if(n===0){ S.marks=baseMarks.map((m,i)=>Object.assign({},m,{kind:i===baseMarks.length-1?'new':'old'})); return S; }
+    S.ghosts.push({k:K, sh:K==='D'?d0:s0, lab:lab0[K]});
+    if(K==='D'){ S.d=d0+sh*(n===1?f:1); S.labD=newLab; } else { S.s=s0+sh*(n===1?f:1); S.labS=newLab; }
+    S.hl=K;
+    S.marks=baseMarks.map(m=>Object.assign({},m,{kind:'old'}));
+    if(n===2){ S.pl=e0.p; S.band=true; }
+    if(n===3){ S.pl=e0.p+(e1.p-e0.p)*f; S.band=true; }
+    if(n===4){ S.hl=null; S.marks.push({p:e1.p,q:e1.q,tp:o.tp1||'P₁',tq:o.tq1||'Q₁',kind:'new'});
+      S.arrows=[{axis:'p',from:e0.p,to:e1.p},{axis:'q',from:e0.q,to:e1.q}]; }
+    return S;
+  }
+  function anim(sc,n,dur){
+    dur=dur||900;
+    if(n===1||n===3) return [tw(dur, x=>{ sc.st=st(n,x); sc.draw(); })];
+    return [act(()=>{ sc.st=st(n); sc.draw(); })];
+  }
+  return {e0:e0, e1:e1, st:st, anim:anim, K:K, sh:sh};
+}
+
+/* ================= TAB 2 — EQUILIBRIUM LAB (Table 10.1) =================
+   Demand: Qd = 11000 − 5P   Supply: Qs = 5P − 3000   →  P* = $1400, Q* = 4000 */
+const PCM={qd:(p,d)=>11000-5*p+(d||0), qs:(p,s)=>5*p-3000+(s||0), pmin:600,pmax:2200,qmin:0,qmax:10000,
+  ticksP:[800,1000,1200,1400,1600,1800,2000], ticksQ:[0,2000,4000,6000,8000,10000], fmtQ:q=>(q/1000)+'k',
+  yName:'Price ($)', xName:'Quantity of PCs per week'};
+const eqS={P:1800, speed:'fast', run:0};
+const eqFigEl=document.getElementById('eqFig');
+function money(v){ return v>=1e6 ? '$'+(v/1e6).toFixed(1)+'m' : '$'+num(v); }
+function drawEq(sayToo){
+  const P=eqS.P, Pr=Math.round(P/10)*10, qd=PCM.qd(P), qs=PCM.qs(P), atEq=Math.abs(P-1400)<0.6;
+  eqFigEl.innerHTML=renderMarket(PCM,'pc',{
+    pl:atEq?null:P, band:true, plLabel:atEq?'':'$'+num(Pr), handleP:P,
+    marks:atEq?[{p:1400,q:4000,kind:'new'}]:[], aria:'Demand and supply for PCs with a price line you can drag'});
+  document.getElementById('eqPlab').textContent='$'+num(Pr);
+  document.getElementById('eqQd').textContent=num(qd);
+  document.getElementById('eqQs').textContent=num(qs);
+  const traded=Math.min(qd,qs);
+  document.getElementById('eqTraded').textContent=num(traded);
+  document.getElementById('eqSpend').textContent=money(P*traded);
+  const box=document.getElementById('eqGapBox'), gap=document.getElementById('eqGap'), sub=document.getElementById('eqGapSub');
+  if(atEq||Math.abs(qd-qs)<30){ box.className='wide up'; gap.textContent='Market clears'; sub.textContent='Quantity demanded = quantity supplied'; }
+  else if(qd>qs){ box.className='wide ed'; gap.textContent='Excess demand: '+num(qd-qs); sub.textContent='A shortage — orders go unmet each week'; }
+  else { box.className='wide es'; gap.textContent='Excess supply: '+num(qs-qd); sub.textContent='A surplus — unsold PCs pile up each week'; }
+  document.getElementById('eqSlider').value=Pr;
+  document.querySelectorAll('#eqTable tr[data-p]').forEach(r=>{
+    const on=Number(r.dataset.p)===Pr;
+    r.style.background=on?'#FFF5E6':''; r.style.boxShadow=on?'inset 4px 0 0 #FF8F1C':'';
+  });
+  if(sayToo) eqSayStatic();
+}
+function eqSayStatic(){
+  const P=Math.round(eqS.P/10)*10, qd=PCM.qd(P), qs=PCM.qs(P), say=document.getElementById('eqSay');
+  if(P===1400) say.innerHTML='At <b>$1400</b> the plans of consumers and suppliers match: 4000 PCs bought and sold. The market <b>clears</b> — there is no pressure on price to change, ceteris paribus. Total spending is <b>$5.6m</b> a week.';
+  else if(qs>qd) say.innerHTML='At <b>$'+num(P)+'</b> firms plan to sell '+num(qs)+' but consumers only plan to buy '+num(qd)+'. That is <b>excess supply of '+num(qs-qd)+'</b>. Only '+num(qd)+' are actually sold; the rest build up as unplanned stock. What will rational firms do? Press <b>Let the market adjust</b>.';
+  else say.innerHTML='At <b>$'+num(P)+'</b> consumers plan to buy '+num(qd)+' but firms only plan to sell '+num(qs)+'. That is <b>excess demand of '+num(qd-qs)+'</b>. Firms run out of stock and orders go unmet. What will profit-seeking firms do? Press <b>Let the market adjust</b>.';
+}
+function setEqP(p){ stop(eqS); eqS.P=p; drawEq(true); }
+document.getElementById('eqSlider').addEventListener('input',e=>setEqP(Number(e.target.value)));
+document.getElementById('eqReset').addEventListener('click',()=>setEqP(1800));
+document.querySelectorAll('#eqSpeed .lvl').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#eqSpeed .lvl').forEach(x=>x.classList.toggle('active',x===b));
+  eqS.speed=b.dataset.v;
+}));
+/* drag the price line directly on the diagram (pointer events — iPad safe) */
+let eqDragging=false;
+function eqFromPointer(e){
+  const svg=eqFigEl.querySelector('svg'); if(!svg) return;
+  const r=svg.getBoundingClientRect(), y=(e.clientY-r.top)/r.height*VB.h;
+  let p=PCM.pmax-(y-VB.T)/VB.H*(PCM.pmax-PCM.pmin);
+  p=Math.max(800,Math.min(2000,Math.round(p/10)*10));
+  setEqP(p);
+}
+eqFigEl.addEventListener('pointerdown',e=>{
+  if(!e.target.closest('.eq-handle')) return;
+  e.preventDefault(); eqDragging=true;
+  try{ eqFigEl.setPointerCapture(e.pointerId); }catch(err){}
+  eqFromPointer(e);
+});
+eqFigEl.addEventListener('pointermove',e=>{ if(eqDragging) eqFromPointer(e); });
+['pointerup','pointercancel','lostpointercapture'].forEach(t=>eqFigEl.addEventListener(t,()=>{ eqDragging=false; }));
+
+document.getElementById('eqGo').addEventListener('click',()=>{
+  const fast=eqS.speed==='fast', k=fast?0.06:0.03, dur=fast?380:620, unit=fast?'Week':'Season';
+  let P=eqS.P;
+  if(Math.abs(P-1400)<1){ document.getElementById('eqSay').innerHTML='The market is already in equilibrium. Drag the price line away from $1400 first.'; return; }
+  const path=[];
+  while(Math.abs(P-1400)>8 && path.length<30){ P=P+k*(14000-10*P); path.push(P); }
+  path.push(1400);
+  const steps=[]; let cur=eqS.P;
+  path.forEach((np,i)=>{
+    const from=cur; cur=np;
+    steps.push(act(()=>eqNarrate(i+1, from, np, unit, fast)));
+    steps.push(tw(dur, x=>{ eqS.P=from+(np-from)*x; drawEq(false); }));
+    steps.push(pause(fast?90:220));
+  });
+  steps.push(act(()=>{
+    const n=path.length, say=document.getElementById('eqSay');
+    say.innerHTML='<b>Equilibrium restored after '+n+' '+unit.toLowerCase()+'s.</b> The market clears at $1400 with 4000 PCs traded and total spending of $5.6m a week. '+
+      (fast?'Now switch to the <b>slow</b> setting and run it again from the same price.'
+           :'Same destination, a much longer journey. Farmers can only change what they grow between seasons, so the market stays in disequilibrium far longer. How long depends on the <b>price elasticity of supply</b> (topic 2.3).');
+  }));
+  play(eqS, steps);
+});
+function eqNarrate(n, from, to, unit, fast){
+  const qd=PCM.qd(from), qs=PCM.qs(from), say=document.getElementById('eqSay');
+  const lead='<b>'+unit+' '+n+'.</b> ';
+  const farm=fast?'':' (Farmers can only adjust what they plant between seasons, so each step is small.)';
+  if(qs>qd) say.innerHTML=lead+'Excess supply of '+num(qs-qd)+'. Unsold stock piles up, so firms cut the price to <b>$'+num(Math.round(to/10)*10)+'</b>. Some buyers are attracted back (<b>extension of demand</b>) and firms produce less (<b>contraction of supply</b>).'+farm;
+  else say.innerHTML=lead+'Excess demand of '+num(qd-qs)+'. Orders go unmet, so firms raise the price to <b>$'+num(Math.round(to/10)*10)+'</b>. Some buyers drop out (<b>contraction of demand</b>) and firms produce more (<b>extension of supply</b>).'+farm;
+}
+(function(){
+  let h='<tr><th>Price of a standard PC ($)</th><th>Quantity supplied per week</th><th>Quantity demanded per week</th><th>Situation</th></tr>';
+  for(let p=800;p<=2000;p+=200){
+    const qs=PCM.qs(p), qd=PCM.qd(p);
+    const sit=qd===qs?'<b style="color:#155724">Equilibrium</b>':(qd>qs?'Excess demand of '+num(qd-qs):'Excess supply of '+num(qs-qd));
+    h+='<tr data-p="'+p+'"><td>'+num(p)+'</td><td>'+num(qs)+'</td><td>'+num(qd)+'</td><td>'+sit+'</td></tr>';
+  }
+  document.getElementById('eqTable').innerHTML=h;
+})();
+drawEq(true);
+
+const EQ_Q=[
+ {id:'e1', icon:'1', bg:'#6B4E9E', name:'Section 10.1 · Above equilibrium',
+  stem:'Set the price to <b>$1600</b>. What is the situation in the market?',
+  opts:['Excess demand of 2000 PCs per week','Excess supply of 2000 PCs per week','Excess supply of 3000 PCs per week','The market clears'], ans:1,
+  fb:'At $1600 firms plan to supply 5000 but consumers plan to buy only 3000, so there is excess supply of 2000 a week.',
+  why:'Excess supply means the price is too high to clear the market. The coursebook’s response: firms cut prices and reduce the quantity they supply.'},
+ {id:'e2', icon:'2', bg:'#6B4E9E', name:'The short side of the market',
+  stem:'At <b>$1600</b>, how many PCs are actually bought and sold each week?',
+  opts:['3000','4000','5000','8000'], ans:0,
+  fb:'Only 3000 are sold: firms cannot make consumers buy. The other 2000 become unplanned stock.',
+  why:'When the market is not in equilibrium, trade takes place on the <b>short side</b> — the smaller of quantity demanded and quantity supplied.'},
+ {id:'e3', icon:'3', bg:'#FF8F1C', name:'Section 10.1 · Below equilibrium',
+  stem:'Set the price to <b>$1200</b>. Which statement describes how the market responds?',
+  opts:['Excess supply of 2000, so firms cut the price.',
+        'Excess demand of 2000, so the price rises; quantity supplied extends and quantity demanded contracts.',
+        'Excess demand of 2000, so the demand curve shifts left until the market clears.',
+        'Excess demand of 2000, so the supply curve shifts right until the market clears.'], ans:1,
+  fb:'At $1200 consumers want 5000 but firms supply 3000. Unmet orders push the price up until the market clears at $1400.',
+  why:'C and D are the classic error. Disequilibrium is closed by <b>movements along</b> the curves. Neither curve shifts, because nothing other than the product’s own price has changed.'},
+ {id:'e4', icon:'4', bg:'#008BCC', name:'Total expenditure',
+  stem:'What is total consumer expenditure — which is also firms’ total revenue — at the equilibrium?',
+  opts:['$4.0 million a week','$5.6 million a week','$6.4 million a week','$14 million a week'], ans:1,
+  fb:'$1400 × 4000 = $5 600 000 a week.',
+  why:'Total expenditure = price × quantity traded. The coursebook uses this figure in section 10.1.'},
+ {id:'e5', icon:'5', bg:'#002F6C', name:'Coursebook end-of-chapter question 3',
+  stem:'A demand curve is Q<sub>d</sub> = 100 − 5p and the supply curve is Q<sub>s</sub> = −20 + 10p, where p is the price in dollars. What is the equilibrium price?',
+  opts:['$5','$8','$16','$24'], ans:1,
+  fb:'Set Q<sub>d</sub> = Q<sub>s</sub>: 100 − 5p = −20 + 10p, so 120 = 15p and p = 8. Equilibrium quantity is 100 − 40 = 60.',
+  why:'Always check your answer by substituting back into both equations: Q<sub>d</sub> = 60 and Q<sub>s</sub> = −20 + 80 = 60.'},
+ {id:'e6', icon:'6', bg:'#28A745', name:'Algebra · a Bangkok night market',
+  stem:'At a night market in Bangkok, demand for mango sticky rice is Q<sub>d</sub> = 600 − 4P and supply is Q<sub>s</sub> = 2P − 60, where P is the price in baht. What are the equilibrium price and quantity?',
+  opts:['฿90 and 240 portions','฿110 and 160 portions','฿120 and 120 portions','฿110 and 180 portions'], ans:1,
+  fb:'600 − 4P = 2P − 60, so 660 = 6P and P = 110. Then Q = 600 − 440 = 160, and 2(110) − 60 = 160 confirms it.',
+  why:'At ฿90 quantity demanded is 240 but quantity supplied is only 120: excess demand of 120. Option A gives one side of the market, not the equilibrium.'},
+ {id:'e7', icon:'7', bg:'#8098B0', name:'Why equilibrium still matters',
+  stem:'The coursebook says real-world markets are usually in disequilibrium. Why is equilibrium still a useful idea?',
+  opts:['Because governments set prices at the equilibrium level',
+        'Because the plans of buyers and sellers always push the market towards it',
+        'Because markets reach equilibrium instantly',
+        'Because disequilibrium only happens in agricultural markets'], ans:1,
+  fb:'There is always a <b>tendency</b> to move towards equilibrium, because that is where the plans of consumers and suppliers are driving the market.',
+  why:'C is the misconception the coursebook tip warns about: a time lag is always involved, and it can be a long one.'}
+];
+buildCards(document.getElementById('eqQ'), EQ_Q, (right,total)=>{
+  const b=document.getElementById('eqDone');
+  b.innerHTML='✓ All '+total+' answered ('+right+'/'+total+' right first time). Every gap you saw was closed by <b>movements along</b> the curves. In activity 3 the curves themselves move — and the market has to find a new equilibrium.';
+  b.classList.add('show');
+  trk('Equilibrium Lab', right+'/'+total+' correct'); mark('eq');
+});
+
+/* ================= TAB 3 — SHIFT & ADJUST ================= */
+const SCEN=[
+ {id:'avo', icon:'🥑', chip:'Avocados (world)', src:'Coursebook Activity 10.6', th:false, K:'D', dir:1,
+  market:'The world market for avocados',
+  cause:'Growing awareness of the health benefits of this “superfood” raises demand in the USA, China and Europe.',
+  short:'Health awareness makes consumers keener on avocados',
+  explain:'A change in <b>taste and attitudes</b> — one of the three non-price determinants of demand — means consumers want more avocados at every price, so demand shifts right. At the old price there is a shortage, the price rises, and the higher price brings an extension of supply.',
+  twist:'Kenya plans large investments in avocado farms. If that new supply arrives in a few years, supply shifts right and some of the price rise is reversed. The investment is risky: it only pays if the health trend lasts.'},
+ {id:'bisc', icon:'🍪', chip:'Biscuits (India)', src:'Coursebook Activity 10.6', th:false, K:'S', dir:-1,
+  market:'The market for biscuits in India',
+  cause:'The Goods and Services Tax on Parle’s lower-priced biscuits rises from 5% to 18%.',
+  short:'A higher indirect tax raises the cost of selling each packet',
+  explain:'An indirect tax acts like a <b>cost increase</b>: firms want a higher price for every quantity, so supply shifts left. At the old price there is a shortage, so price rises and quantity falls — which is why Parle cut production and job losses were feared.',
+  twist:'How much of the tax reaches consumers depends on the price elasticity of demand. If demand for cheap biscuits is price elastic, price rises only a little and the fall in quantity — and jobs — is large.'},
+ {id:'cocoa', icon:'🍫', chip:'Cocoa (West Africa)', src:'Coursebook Activity 10.6', th:false, K:'S', dir:1,
+  market:'The world market for cocoa',
+  cause:'Thousands of small producers in Côte d’Ivoire and Ghana expand output, and the market becomes oversupplied.',
+  short:'More producers and more output raise supply',
+  explain:'The <b>size of the industry</b> has grown, so more cocoa is offered at every price: supply shifts right. At the old price there is a surplus, the world price falls, and cocoa stops being the route out of poverty it once was for farmers.',
+  twist:'Demand for cocoa is also growing at around 4% a year. Price still fell, so supply must have grown faster than demand — a double shift (activity 4). The 2018 crop diversification plan aims to slow the growth of supply.'},
+ {id:'car', icon:'🚗', chip:'Cars (Pakistan)', src:'Coursebook Activity 10.6', th:false, K:'D', dir:-1,
+  market:'The market for new cars in Pakistan',
+  cause:'Higher interest rates make car loans expensive, and people who have not filed a tax return are banned from buying new cars.',
+  short:'Dearer loans and the ban cut buyers’ ability to buy',
+  explain:'Both causes reduce the <b>ability to pay</b>: credit is more expensive and some buyers are excluded altogether. Fewer cars are demanded at every price, so demand shifts left, creating a surplus at the old price. Price and quantity both fall.',
+  twist:'Two causes, one curve. The size of the shift depends on how many buyers rely on loans; if most pay cash, the interest rate rise matters far less than the ban.'},
+ {id:'durian', icon:'🍈', chip:'Durian (Thailand)', src:'Thailand', th:true, K:'D', dir:1,
+  market:'The market for Thai durian exports',
+  cause:'Rising incomes and changing tastes in China increase demand for Thai durian.',
+  short:'Chinese consumers want more Thai durian at every price',
+  explain:'Higher incomes (durian is a normal good) and changing tastes shift demand right. At the old price there is excess demand, so the price rises, rationing the fruit and drawing more onto the export market (extension of supply).',
+  twist:'A durian tree takes several years to fruit, so supply is very inelastic in the short run and most of the effect falls on <b>price</b>. Over time, farmers in eastern Thailand plant more trees and supply shifts right — the incentive function of price (activity 6).'},
+ {id:'chick', icon:'🐔', chip:'Chicken (Thailand)', src:'Coursebook Activity 10.5', th:true, K:'D', dir:-1,
+  market:'The market for chicken in Thailand',
+  cause:'News of a bird flu outbreak makes consumers worried about eating chicken.',
+  short:'A health scare makes consumers avoid chicken',
+  explain:'A health scare is a change in <b>attitudes</b>: fewer consumers want chicken at every price, so demand shifts left. At the old price there is a surplus, so price falls and quantity falls.',
+  twist:'The scare also shifts demand for close substitutes such as pork and duck to the right — a linked-market effect (activity 5). If the scare fades quickly, demand shifts back and the effect is temporary.'},
+ {id:'rice', icon:'🌾', chip:'Rice (Thailand)', src:'Thailand', th:true, K:'S', dir:1,
+  market:'The market for Thai rice',
+  cause:'A good monsoon and new high-yield seed varieties raise the rice harvest.',
+  short:'Good weather and better technology raise output',
+  explain:'Better <b>technology</b> and favourable weather lower the cost of each tonne, so supply shifts right. At the old price there is a surplus, the price falls and the quantity traded rises.',
+  twist:'If demand for rice is price inelastic, the price falls proportionately more than quantity rises, so farmers’ total revenue can fall. A good harvest can be bad news for farmers — a link to topic 2.2.'},
+ {id:'sugar', icon:'🍬', chip:'Sugar (Thailand)', src:'Thailand', th:true, K:'S', dir:-1,
+  market:'The market for Thai sugar',
+  cause:'Drought cuts the sugar cane crop.',
+  short:'Drought reduces the amount of cane that can be crushed',
+  explain:'Weather is a key supply factor in agriculture. Less cane means less sugar at every price, so supply shifts left. At the old price there is a shortage, so price rises and quantity falls.',
+  twist:'Governments sometimes release stocks to calm prices after a poor harvest (section 10.2). And because sugar and molasses are in joint supply, the supply of molasses falls too (activity 5).'}
+];
+const adj={sc:makeScene('adjFig',G,'ad'), i:null, stage:0, plan:null, answers:{}, score:0, played:new Set()};
+const STAGE_NAMES=['Stage 0 · Starting equilibrium','Stage 1 · The shift','Stage 2 · Disequilibrium at the old price','Stage 3 · The price mechanism','Stage 4 · New equilibrium'];
+function adjInfo(S){
+  const D=S.K==='D', up=S.dir>0, pUp=D?up:!up;
+  return {D:D, up:up, pUp:pUp, qUp:up, ed:pUp,
+    curve:(D?'d':'s')+(up?'r':'l'), dn:D?'D₁':'D', sn:D?'S':'S₁'};
+}
+function adjCap(S,n){
+  const I=adjInfo(S);
+  if(n===0) return 'The market starts in equilibrium at price <b>P</b> and quantity <b>Q</b>: the plans of buyers and sellers match.';
+  if(n===1) return S.short+'. <b>'+(I.D?'Demand':'Supply')+(I.up?' increases':' decreases')+': '+(I.D?'D':'S')+' shifts '+(I.up?'right':'left')+' to '+(I.D?'D₁':'S₁')+'.</b> This is a shift, because the cause is not the price of the product itself.';
+  if(n===2) return 'At the old price P there is now <b>'+(I.ed?'excess demand — a shortage.</b> Buyers want more than firms are offering.':'excess supply — a surplus.</b> Firms are offering more than buyers want.');
+  if(n===3) return (I.ed?'The shortage pushes the price <b>up</b>':'The surplus pushes the price <b>down</b>')+'. As it '+(I.pUp?'rises':'falls')+' there is '+
+    (I.pUp?'a <b>contraction of demand</b> along '+I.dn+' and an <b>extension of supply</b> along '+I.sn
+          :'an <b>extension of demand</b> along '+I.dn+' and a <b>contraction of supply</b> along '+I.sn)+'. These are movements along the curves, not more shifts.';
+  return '<b>New equilibrium.</b> Price '+(I.pUp?'rises':'falls')+' from P to P₁ and quantity '+(I.qUp?'rises':'falls')+' from Q to Q₁. The market has cleared again.';
+}
+function adjStageUI(){
+  document.getElementById('adjStage').textContent=STAGE_NAMES[adj.stage];
+  document.querySelectorAll('#adjBar i').forEach((b,i)=>b.classList.toggle('on', i<adj.stage));
+  const cap=document.getElementById('adjCap'); if(cap) cap.innerHTML=adjCap(SCEN[adj.i],adj.stage);
+  const locked=!!adj.answers[SCEN[adj.i].id];
+  const step=document.getElementById('adjStep'), all=document.getElementById('adjAll');
+  if(step){ step.disabled=!locked||adj.stage>=4; all.disabled=!locked; all.textContent=adj.stage>=4?'↺ Replay':'▶ Play all'; }
+  if(adj.stage>=4) adjExplain();
+}
+function adjLoad(i){
+  stop(adj);
+  adj.i=i; const S=SCEN[i];
+  adj.plan=makePlan(G,S.K,S.dir*3,{aria:S.market+' — demand and supply diagram'});
+  adj.stage=0; adj.sc.st=adj.plan.st(0); adj.sc.draw();
+  document.getElementById('adjTitle').textContent=S.market;
+  document.querySelectorAll('#adjChips .eq-chip').forEach((c,j)=>c.classList.toggle('now',j===i));
+  document.getElementById('adjOut').innerHTML='';
+  const A=adj.answers[S.id];
+  const row=(lbl,key,opts)=>'<div class="eq-plbl">'+lbl+'</div><div class="steppick eq-pred" data-k="'+key+'">'+
+     opts.map(o=>'<button class="lvl" data-v="'+o[0]+'"'+(A?' disabled':'')+'>'+o[1]+'</button>').join('')+'</div>';
+  document.getElementById('adjPanel').innerHTML=
+    '<span class="eq-src'+(S.th?' th':'')+'">'+S.icon+' '+S.src+'</span>'+
+    '<div class="eq-cause">'+S.cause+'</div>'+
+    row('Prediction 1 · Which curve, which way?','c',[['dr','Demand → right'],['dl','Demand ← left'],['sr','Supply → right'],['sl','Supply ← left']])+
+    row('Prediction 2 · Equilibrium price','p',[['up','Rises'],['down','Falls']])+
+    row('Prediction 3 · Equilibrium quantity','q',[['up','Rises'],['down','Falls']])+
+    '<div class="btn-row" style="margin-top:6px">'+
+      (A?'':'<button class="btn btn-primary" id="adjLock" disabled>Lock in predictions</button>')+
+      '<button class="btn btn-primary'+(A?'':' hidden')+'" id="adjAll">▶ Play all</button>'+
+      '<button class="btn btn-ghost'+(A?'':' hidden')+'" id="adjStep">Step ›</button>'+
+    '</div>'+
+    '<div class="eq-say" id="adjCap"></div>';
+  const pick={};
+  document.querySelectorAll('#adjPanel .eq-pred').forEach(r=>{
+    r.querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(adj.answers[S.id]) return;
+      r.querySelectorAll('.lvl').forEach(x=>x.classList.toggle('active',x===b));
+      pick[r.dataset.k]=b.dataset.v;
+      document.getElementById('adjLock').disabled=Object.keys(pick).length<3;
+    }));
+  });
+  if(A) adjShowMarks(A);
+  const lock=document.getElementById('adjLock');
+  if(lock) lock.addEventListener('click',()=>{
+    adj.answers[S.id]=Object.assign({},pick);
+    const pts=adjShowMarks(pick);
+    adj.score+=pts; adj.played.add(S.id);
+    document.querySelectorAll('#adjChips .eq-chip')[i].classList.add('used');
+    lock.remove();
+    document.getElementById('adjAll').classList.remove('hidden');
+    document.getElementById('adjStep').classList.remove('hidden');
+    document.getElementById('adjScore').textContent=adj.played.size+' / '+SCEN.length+' played · '+adj.score+' / '+(SCEN.length*3)+' predictions right';
+    if(window.innerWidth<=880) bringIntoView(document.getElementById('adjStage').closest('.fig'));
+    adjPlayAll();
+    if(adj.played.size===SCEN.length){
+      const b=document.getElementById('adjDone');
+      b.innerHTML='✓ All eight markets played — '+adj.score+' / 24 predictions right. The pattern: a demand shift moves price and quantity in the <b>same</b> direction; a supply shift moves them in <b>opposite</b> directions. Learn that and you can check any answer in seconds.';
+      b.classList.add('show');
+      trk('Shift & Adjust', adj.score+'/24 predictions correct'); mark('adjust');
+    }
+  });
+  document.getElementById('adjAll').addEventListener('click',adjPlayAll);
+  document.getElementById('adjStep').addEventListener('click',()=>{
+    if(adj.stage>=4) return;
+    const n=adj.stage+1;
+    play(adj,[...adj.plan.anim(adj.sc,n), act(()=>{ adj.stage=n; adjStageUI(); })]);
+  });
+  adjStageUI();
+}
+function adjShowMarks(A){
+  const I=adjInfo(SCEN[adj.i]), right={c:I.curve,p:I.pUp?'up':'down',q:I.qUp?'up':'down'};
+  let pts=0;
+  document.querySelectorAll('#adjPanel .eq-pred').forEach(r=>{
+    const k=r.dataset.k;
+    r.querySelectorAll('.lvl').forEach(b=>{
+      b.disabled=true; b.classList.remove('active');
+      if(b.dataset.v===right[k]) b.classList.add('eq-ok');
+      else if(b.dataset.v===A[k]) b.classList.add('eq-no');
+    });
+    if(A[k]===right[k]) pts++;
+  });
+  return pts;
+}
+function adjPlayAll(){
+  const steps=[];
+  if(adj.stage>=4){ adj.stage=0; adj.sc.st=adj.plan.st(0); adj.sc.draw(); adjStageUI(); steps.push(pause(500)); }
+  for(let n=adj.stage+1;n<=4;n++){
+    steps.push(...adj.plan.anim(adj.sc,n,1000));
+    steps.push(act(()=>{ adj.stage=n; adjStageUI(); }));
+    if(n<4) steps.push(pause(n===2?1500:1100));
+  }
+  play(adj,steps);
+}
+function adjExplain(){
+  const S=SCEN[adj.i], out=document.getElementById('adjOut');
+  if(out.dataset.sid===S.id && out.innerHTML) return;
+  out.dataset.sid=S.id;
+  out.innerHTML='<div class="q-card"><div class="write-lbl">'+S.icon+' '+S.market+' — the analysis</div>'+
+    '<div class="q-stem" style="margin-bottom:0">'+S.explain+'</div>'+
+    '<div class="exam-line"><b>Evaluation twist:</b> '+S.twist+'</div></div>';
+}
+(function(){
+  const host=document.getElementById('adjChips');
+  SCEN.forEach((S,i)=>{
+    const b=document.createElement('button'); b.type='button'; b.className='eq-chip';
+    b.textContent=S.icon+' '+S.chip; b.addEventListener('click',()=>adjLoad(i)); host.appendChild(b);
+  });
+  adj.sc.st={marks:[{p:5,q:5,tp:'P',tq:'Q',kind:'new'}]}; adj.sc.draw();
+})();
+
+/* ================= TAB 4 — DOUBLE SHIFTS ================= */
+const dbl={sc:makeScene('dblFig',G,'db'), d:0, s:0, cd:0, cs:0, found:new Set(), solved:new Set()};
+function dblState(d,s){
+  const e=eqm(G,d,s), moved=Math.abs(d)>1e-6||Math.abs(s)>1e-6, st={d:d,s:s,ghosts:[],labD:'D',labS:'S',aria:'Demand and supply both shifting'};
+  if(Math.abs(d)>1e-6){ st.ghosts.push({k:'D',sh:0,lab:'D'}); st.labD='D₁'; }
+  if(Math.abs(s)>1e-6){ st.ghosts.push({k:'S',sh:0,lab:'S'}); st.labS='S₁'; }
+  st.marks=moved?[{p:5,q:5,tp:'P',tq:'Q',kind:'old'},{p:e.p,q:e.q,tp:'P₁',tq:'Q₁',kind:'new'}]:[{p:5,q:5,tp:'P',tq:'Q',kind:'new'}];
+  if(moved) st.arrows=[{axis:'p',from:5,to:e.p},{axis:'q',from:5,to:e.q}];
+  return st;
+}
+function dblLabel(v){ return v===0?'No shift':(v>0?'Increase · shift right ':'Decrease · shift left ')+'×'+Math.abs(v); }
+function dblUpdate(){
+  const d=dbl.d, s=dbl.s, e=eqm(G,d,s), dp=e.p-5, dq=e.q-5;
+  document.getElementById('dblDlab').textContent=dblLabel(d);
+  document.getElementById('dblSlab').textContent=dblLabel(s);
+  const word=v=>Math.abs(v)<1e-6?'= Unchanged':(v>0?'▲ Rises':'▼ Falls');
+  document.getElementById('dblP').textContent=d===0&&s===0?'P':word(dp);
+  document.getElementById('dblQ').textContent=d===0&&s===0?'Q':word(dq);
+  document.getElementById('dblPbox').className=dp>1e-6?'up':(dp<-1e-6?'dn':'');
+  document.getElementById('dblQbox').className=dq>1e-6?'up':(dq<-1e-6?'dn':'');
+  const say=document.getElementById('dblSay');
+  if(d===0&&s===0) say.innerHTML='Both curves are in their original position. Move <b>both</b> sliders to see a double shift.';
+  else if(d===0||s===0) say.innerHTML='Only one curve has moved, so both price and quantity change in a definite direction. Now move the other slider too.';
+  else {
+    const same=(d>0)===(s>0);
+    const definite=same?'quantity':'price', uncertain=same?'price':'quantity';
+    const bigger=Math.abs(d)===Math.abs(s)?'The shifts are <b>equal</b>, so they cancel out and '+uncertain+' is unchanged.'
+      :('The <b>'+(Math.abs(d)>Math.abs(s)?'demand':'supply')+'</b> shift is bigger, so it decides which way '+uncertain+' moves.');
+    say.innerHTML='Both curves shifted '+(same?'the <b>same</b> way':'in <b>opposite</b> directions')+'. '+
+      'The direction of '+definite+' is <b>definite</b>; '+uncertain+' depends on the relative size of the shifts. '+bigger;
+    const key=(d>0?'D+':'D-')+(s>0?'S+':'S-');
+    if(!dbl.found.has(key)){ dbl.found.add(key); }
+    dblGrid(key);
+  }
+  if(d===0||s===0) dblGrid(null);
+}
+const DGRID={
+  'D+S+':'<b>Quantity ▲ rises</b> — both shifts add to it.<br>Price <b>?</b> depends on which shift is bigger.',
+  'D+S-':'<b>Price ▲ rises</b> — both shifts push it up.<br>Quantity <b>?</b> depends on which shift is bigger.',
+  'D-S+':'<b>Price ▼ falls</b> — both shifts push it down.<br>Quantity <b>?</b> depends on which shift is bigger.',
+  'D-S-':'<b>Quantity ▼ falls</b> — both shifts cut it.<br>Price <b>?</b> depends on which shift is bigger.'};
+function dblGrid(now){
+  const g=document.getElementById('dblGrid');
+  const cell=k=>'<div class="eq-cell'+(dbl.found.has(k)?' found':'')+(now===k?' now':'')+'">'+(dbl.found.has(k)?DGRID[k]:'? Set this combination on the sliders to discover it.')+'</div>';
+  g.innerHTML='<div></div><div class="h">Supply increases<br>(S shifts right)</div><div class="h">Supply decreases<br>(S shifts left)</div>'+
+    '<div class="h">Demand increases</div>'+cell('D+S+')+cell('D+S-')+
+    '<div class="h">Demand decreases</div>'+cell('D-S+')+cell('D-S-');
+  document.getElementById('dblFound').textContent=dbl.found.size+' / 4 discovered';
+}
+function dblAnimate(){
+  const fd=dbl.cd, fs=dbl.cs, td=dbl.d, ts=dbl.s;
+  play(dbl,[tw(380,x=>{ dbl.cd=fd+(td-fd)*x; dbl.cs=fs+(ts-fs)*x; dbl.sc.st=dblState(dbl.cd,dbl.cs); dbl.sc.draw(); }),
+            act(()=>{ dbl.cd=td; dbl.cs=ts; dbl.sc.st=dblState(td,ts); dbl.sc.draw(); })]);
+  dblUpdate();
+}
+['dblD','dblS'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{
+  dbl.d=Number(document.getElementById('dblD').value); dbl.s=Number(document.getElementById('dblS').value); dblAnimate();
+}));
+document.getElementById('dblReset').addEventListener('click',()=>{
+  document.getElementById('dblD').value=0; document.getElementById('dblS').value=0; dbl.d=0; dbl.s=0; dblAnimate();
+});
+const CHAL=[
+ {id:'c1', icon:'📘', bg:'#002F6C', name:'Recreate coursebook Figure 10.8',
+  stem:'Demand rises because a substitute has become dearer; at the same time supply rises because raw material and energy costs fall. Show the equilibrium price staying <b>exactly the same</b> while quantity rises.',
+  test:(d,s,e)=>d>0&&s>0&&d===s,
+  ok:'Equal shifts in the same direction cancel out on price. Quantity rises on both counts — exactly the coursebook’s Figure 10.8.'},
+ {id:'c2', icon:'✈️', bg:'#008BCC', name:'Songkran flights to Chiang Mai',
+  stem:'Over Songkran, demand for Bangkok–Chiang Mai flights jumps, and airlines add extra flights. Fares still go <b>up</b>. Show it: both curves shift right, and the price rises.',
+  test:(d,s,e)=>d>0&&s>0&&d>s,
+  ok:'Supply increased, but demand increased by more, so the fare rose. In a written answer: “the effect on price depends on the relative size of the shifts; here the demand shift dominates.”'},
+ {id:'c3', icon:'🍈', bg:'#FF8F1C', name:'Durian: rising demand, poor harvest',
+  stem:'Chinese demand for Thai durian rises while a drought cuts the harvest. Show the price rising with quantity <b>unchanged</b>.',
+  test:(d,s,e)=>d>0&&s<0&&d===-s,
+  ok:'Opposite shifts both push price up, so the price rise is definite. Quantity is pulled up by demand and down by supply; with equal shifts it does not change at all.'},
+ {id:'c4', icon:'🏨', bg:'#6B4E9E', name:'Bangkok hotels in the pandemic',
+  stem:'Demand for Bangkok hotel rooms collapsed and some hotels closed. Using <b>both</b> curves, show the room price and the number of room-nights <b>both falling</b>.',
+  test:(d,s,e)=>d<0&&s<0&&e.p<5-1e-6,
+  ok:'Both curves shifted left, so quantity fell for certain. Price fell because the collapse in demand was bigger than the fall in supply.'},
+ {id:'c5', icon:'📱', bg:'#28A745', name:'Last year’s phone model',
+  stem:'A new model launches, so demand for last year’s phone falls; at the same time its factory costs fall. Show price falling while quantity stays <b>exactly the same</b>.',
+  test:(d,s,e)=>d<0&&s>0&&d===-s,
+  ok:'Opposite shifts that both push price down: the fall in price is definite. Equal shifts leave quantity unchanged.'}
+];
+function dblHint(d,s,e){
+  if(d===0&&s===0) return 'Both curves are still in their original position. Move both sliders.';
+  if(d===0||s===0) return 'This challenge needs <b>both</b> curves to shift.';
+  const pw=Math.abs(e.p-5)<1e-6?'unchanged':(e.p>5?'rising':'falling'), qw=Math.abs(e.q-5)<1e-6?'unchanged':(e.q>5?'rising':'falling');
+  return 'Not yet: on your diagram price is <b>'+pw+'</b> and quantity is <b>'+qw+'</b>. Check the direction of each shift, then whether one should be bigger than the other or equal.';
+}
+(function(){
+  const host=document.getElementById('dblChal');
+  CHAL.forEach(c=>{
+    const card=document.createElement('div'); card.className='q-card';
+    card.innerHTML='<div class="q-head"><div class="q-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="q-name">'+c.name+
+      '<span class="eq-pill" id="pill-'+c.id+'">Not solved</span></div></div><div class="q-stem">'+c.stem+'</div>'+
+      '<button class="mini-btn" style="margin-top:0">Check my diagram</button><div class="reveal"></div>';
+    card.querySelector('.mini-btn').addEventListener('click',()=>{
+      const d=dbl.d, s=dbl.s, e=eqm(G,d,s), rev=card.querySelector('.reveal');
+      if(c.test(d,s,e)){
+        rev.innerHTML='<span class="verdict v-good">Solved</span><br>'+c.ok; rev.classList.add('show');
+        const pill=document.getElementById('pill-'+c.id); pill.textContent='Solved ✓'; pill.classList.add('ok');
+        if(!dbl.solved.has(c.id)){
+          dbl.solved.add(c.id);
+          document.getElementById('dblSolved').textContent=dbl.solved.size+' / '+CHAL.length+' solved';
+          if(dbl.solved.size===CHAL.length){ document.getElementById('dblDone').classList.add('show'); trk('Double Shifts','all 5 challenges solved'); mark('double'); }
+        }
+      } else { rev.innerHTML='<span class="verdict v-bad">Not yet</span><br>'+dblHint(d,s,e); rev.classList.add('show'); }
+    });
+    host.appendChild(card);
+  });
+  dbl.sc.st=dblState(0,0); dbl.sc.draw(); dblUpdate(); dblGrid(null);
+})();
+
+/* ================= TAB 5 — LINKED MARKETS ================= */
+const PAIRS=[
+ {id:'sub', icon:'🌶️', bg:'#D63864', name:'Alternative demand — substitutes', fig:'Coursebook Figure 10.11',
+  A:{M:G, title:'Market A · A well-known brand of sweet chilli sauce', K:'S', sh:-3},
+  B:{M:G, title:'Market B · A supermarket’s own-label sauce', K:'D', sh:3},
+  trigger:'Workers at the well-known brand’s factory win a large pay rise, raising its costs.',
+  ans:{c:'dr', p:'up'},
+  capA:'Market A: higher costs shift the brand’s supply left (S → S₁). Its price rises from P to P₁.',
+  link:'The two sauces are <b>substitutes</b>: alternative demand. The brand is now relatively dearer, so some shoppers switch.',
+  capB:'Market B: demand for the own-label sauce shifts right (D → D₁). Its price and quantity both rise.',
+  explain:'Notice which curve moved in market B: <b>demand</b>, not supply. Nothing happened to the own-label firm’s costs. A change in the price of a substitute is a non-price determinant of demand.',
+  exam:'Write: “Because the goods are substitutes, the rise in the price of A makes B relatively cheaper, so demand for B increases at every price…”',
+  rev:{A:{K:'S',sh:3}, B:{K:'D',sh:-3}, trigger:'Reverse it: the brand’s costs <b>fall</b> instead.',
+       capA:'Market A: supply of the brand increases and its price falls.', capB:'Market B: shoppers switch back to the brand, so demand for the own-label sauce shifts left. Its price and quantity fall.'}},
+ {id:'comp', icon:'⚽', bg:'#008BCC', name:'Joint demand — complements', fig:'Coursebook Figure 10.12',
+  A:{M:G, title:'Market A · Thailand replica football shirts', K:'S', sh:3},
+  B:{M:G, title:'Market B · Matching football shorts', K:'D', sh:3},
+  trigger:'New, cheaper machinery increases the supply of replica Thailand national team shirts.',
+  ans:{c:'dr', p:'up'},
+  capA:'Market A: supply of shirts shifts right (S → S₁). The price of shirts falls and more are bought.',
+  link:'Shirts and shorts are <b>complements</b>: joint demand. More fans buying shirts means more want the shorts that go with them.',
+  capB:'Market B: demand for shorts shifts right (D → D₁). The price and quantity of shorts both rise.',
+  explain:'The fall in the price of shirts caused an <b>extension</b> of demand for shirts (a movement along) but a <b>shift</b> of demand for shorts. Same event, different language for each market.',
+  exam:'Write: “As the goods are in joint demand, the lower price of shirts increases the quantity of shirts demanded and so increases the demand for shorts at every price…”',
+  rev:{A:{K:'S',sh:-3}, B:{K:'D',sh:-3}, trigger:'Reverse it: a cotton shortage <b>cuts</b> the supply of shirts.',
+       capA:'Market A: supply of shirts falls, their price rises and fewer are bought.', capB:'Market B: fewer shirt buyers means demand for shorts shifts left. Price and quantity of shorts fall.'}},
+ {id:'der', icon:'🏨', bg:'#FF8F1C', name:'Derived demand', fig:'Coursebook Figure 10.13',
+  A:{M:G, title:'Market A · Hotel stays in Phuket', K:'D', sh:3},
+  B:{M:LM, title:'Market B · Hotel workers in Phuket', K:'D', sh:3, tp0:'W', tp1:'W₁'},
+  trigger:'More international tourists visit Phuket as new direct flights open.',
+  ans:{c:'dr', p:'up'},
+  capA:'Market A: demand for hotel stays shifts right (D → D₁). More room-nights are sold at a higher price.',
+  link:'Hotel workers are a <b>derived demand</b>: hotels hire cleaners, chefs and receptionists only because tourists want to stay.',
+  capB:'Market B: demand for hotel workers shifts right (D → D₁). The wage rises from W to W₁ and employment rises from Q to Q₁.',
+  explain:'Labour is a factor of production, so the demand for it is derived from the demand for what it produces. The labour market behaves like any other market: the “price” is the wage.',
+  exam:'Write: “Since the demand for hotel workers is derived from the demand for hotel stays, the increase in tourism shifts the demand for labour to the right…”',
+  rev:{A:{K:'D',sh:-3}, B:{K:'D',sh:-3}, trigger:'Reverse it: a pandemic stops international travel.',
+       capA:'Market A: demand for hotel stays collapses. Price and room-nights fall.', capB:'Market B: demand for hotel workers shifts left. Wages and employment fall.'}},
+ {id:'joint', icon:'🍬', bg:'#28A745', name:'Joint supply', fig:'Coursebook Figure 10.14',
+  A:{M:G, title:'Market A · Thai sugar', K:'D', sh:3},
+  B:{M:G, title:'Market B · Molasses (left over from making sugar)', K:'S', sh:3},
+  trigger:'Demand for Thai sugar rises as exports to the rest of Asia grow.',
+  ans:{c:'sr', p:'down'},
+  capA:'Market A: demand for sugar shifts right. Price and quantity rise, so mills crush more sugar cane.',
+  link:'Sugar and molasses are in <b>joint supply</b>: crushing cane for sugar automatically produces molasses too.',
+  capB:'Market B: the supply of molasses shifts right (S → S₁). Its price falls from P to P₁ while the quantity traded rises.',
+  explain:'This is the one that catches people out: in market B it is <b>supply</b> that shifts, and the price moves the <b>opposite</b> way to market A. The coursebook’s example is soya beans for people and soya animal feed.',
+  exam:'Write: “Because sugar and molasses are in joint supply, the increase in sugar output raises the supply of molasses at every price, so its price falls…”',
+  rev:{A:{K:'D',sh:-3}, B:{K:'S',sh:-3}, trigger:'Reverse it: demand for sugar <b>falls</b> after a new sugar tax.',
+       capA:'Market A: demand for sugar falls, so mills crush less cane.', capB:'Market B: less molasses is produced at every price. Supply shifts left and its price rises.'}}
+];
+const lk={};
+function lkPlans(P,rev){
+  const a=rev?P.rev.A:P.A, b=rev?P.rev.B:P.B;
+  return {
+    A:makePlan(P.A.M,a.K,a.sh,{aria:P.A.title}),
+    B:makePlan(P.B.M,b.K,b.sh,{aria:P.B.title, tp0:P.B.tp0, tp1:P.B.tp1})
+  };
+}
+function lkReset(P,rev){
+  const o=lk[P.id]; stop(o);
+  o.plans=lkPlans(P,rev);
+  o.A.st=o.plans.A.st(0); o.A.draw(); o.B.st=o.plans.B.st(0); o.B.draw();
+}
+function lkRun(P,rev){
+  const o=lk[P.id]; lkReset(P,rev);
+  const cap=document.getElementById('lkcap-'+P.id), arrow=document.getElementById('lkarr-'+P.id);
+  const pa=o.plans.A, pb=o.plans.B;
+  const say=h=>act(()=>{ cap.innerHTML=h; });
+  play(o,[
+    say((rev?P.rev.trigger+' ':'')+(rev?P.rev.capA:P.capA)), pause(300),
+    ...pa.anim(o.A,1,850), pause(250), ...pa.anim(o.A,2), pause(600), ...pa.anim(o.A,3,850), ...pa.anim(o.A,4), pause(500),
+    act(()=>{ arrow.classList.add('on'); cap.innerHTML=P.link; }), pause(1700),
+    act(()=>{ arrow.classList.remove('on'); cap.innerHTML=rev?P.rev.capB:P.capB; }), pause(300),
+    ...pb.anim(o.B,1,850), pause(250), ...pb.anim(o.B,2), pause(600), ...pb.anim(o.B,3,850), ...pb.anim(o.B,4),
+    act(()=>{
+      document.getElementById('lkex-'+P.id).classList.add('show');
+      document.getElementById('lkrev-'+P.id).classList.remove('hidden');
+      document.getElementById('lkplay-'+P.id).classList.remove('hidden');
+      if(!o.played){ o.played=true; lkCheckDone(); }
+    })
+  ]);
+}
+let lkScore=0;
+function lkCheckDone(){
+  const n=PAIRS.filter(P=>lk[P.id].played).length;
+  if(n===PAIRS.length){
+    const b=document.getElementById('lkDone');
+    b.innerHTML='✓ All four relationships played — '+lkScore+' / 8 predictions right. Summary for your notes: substitutes and complements change <b>demand</b> in market B; derived demand changes <b>demand</b> for the input; joint supply changes <b>supply</b> of the by-product.';
+    b.classList.add('show'); trk('Linked Markets', lkScore+'/8 predictions correct'); mark('linked');
+  }
+}
+(function(){
+  const host=document.getElementById('lkHost');
+  PAIRS.forEach((P,idx)=>{
+    const card=document.createElement('div'); card.className='q-card';
+    const yb=P.B.M===LM?'Wage in market B':'Price in market B';
+    card.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+P.bg+'">'+P.icon+'</div><div class="q-name">'+(idx+1)+' · '+P.name+
+        ' <span style="color:var(--text-3);font-weight:400;font-size:12.5px">('+P.fig+')</span></div></div>'+
+      '<div class="q-stem"><b>The cause:</b> '+P.trigger+'</div>'+
+      '<div class="eq-twin">'+
+        '<div class="fig"><div class="ft">'+P.A.title+'</div><div id="lkA-'+P.id+'"></div></div>'+
+        '<div class="eq-arrow" id="lkarr-'+P.id+'"><span>➜</span></div>'+
+        '<div class="fig"><div class="ft">'+P.B.title+'</div><div id="lkB-'+P.id+'"></div></div>'+
+      '</div>'+
+      '<div class="eq-plbl">Predict market B · Which curve, which way?</div>'+
+      '<div class="steppick eq-pred" data-k="c">'+[['dr','Demand → right'],['dl','Demand ← left'],['sr','Supply → right'],['sl','Supply ← left']].map(x=>'<button class="lvl" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+'</div>'+
+      '<div class="eq-plbl">Predict market B · '+yb+'</div>'+
+      '<div class="steppick eq-pred" data-k="p"><button class="lvl" data-v="up">Rises</button><button class="lvl" data-v="down">Falls</button></div>'+
+      '<div class="btn-row" style="margin-top:4px">'+
+        '<button class="btn btn-primary" id="lklock-'+P.id+'" disabled>Lock in and play ▶</button>'+
+        '<button class="btn btn-primary hidden" id="lkplay-'+P.id+'">↺ Replay</button>'+
+        '<button class="btn btn-ghost hidden" id="lkrev-'+P.id+'">⇄ Run the opposite case</button>'+
+        '<span class="score" id="lksc-'+P.id+'" style="font-size:13px"></span>'+
+      '</div>'+
+      '<div class="eq-say" id="lkcap-'+P.id+'">Make both predictions, then lock them in.</div>'+
+      '<div class="reveal" id="lkex-'+P.id+'"><strong>Why.</strong> '+P.explain+'<div class="exam-line"><b>Exam line:</b> '+P.exam+'</div></div>';
+    host.appendChild(card);
+    lk[P.id]={A:makeScene('lkA-'+P.id,P.A.M,'la'+idx), B:makeScene('lkB-'+P.id,P.B.M,'lb'+idx), played:false};
+    lkReset(P,false);
+    const pick={}, lock=document.getElementById('lklock-'+P.id);
+    card.querySelectorAll('.eq-pred').forEach(r=>r.querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(lock.classList.contains('hidden')) return;
+      r.querySelectorAll('.lvl').forEach(x=>x.classList.toggle('active',x===b));
+      pick[r.dataset.k]=b.dataset.v; lock.disabled=Object.keys(pick).length<2;
+    })));
+    lock.addEventListener('click',()=>{
+      lock.classList.add('hidden');
+      let pts=0;
+      card.querySelectorAll('.eq-pred').forEach(r=>{ const k=r.dataset.k;
+        r.querySelectorAll('.lvl').forEach(b=>{ b.disabled=true; b.classList.remove('active');
+          if(b.dataset.v===P.ans[k]) b.classList.add('eq-ok'); else if(b.dataset.v===pick[k]) b.classList.add('eq-no'); });
+        if(pick[k]===P.ans[k]) pts++; });
+      lkScore+=pts;
+      document.getElementById('lksc-'+P.id).textContent=pts+' / 2 predictions right';
+      bringIntoView(card.querySelector('.eq-twin'));
+      lkRun(P,false);
+    });
+    document.getElementById('lkplay-'+P.id).addEventListener('click',()=>lkRun(P,false));
+    document.getElementById('lkrev-'+P.id).addEventListener('click',()=>{ bringIntoView(card.querySelector('.eq-twin')); lkRun(P,true); });
+  });
+})();
+
+/* ================= TAB 6 — FUNCTIONS OF PRICE ================= */
+const pf={sc:makeScene('pfFig',G,'pf'), step:0, first:{}, waiting:false};
+const pfP1=makePlan(G,'D',3,{aria:'Passion fruit market'});
+const pfP2=makePlan(G,'S',2,{d0:3, labD:'D₁', ghosts:[{k:'D',sh:0,lab:'D'}],
+  marks:[{p:5,q:5,tp:'P',tq:'Q'},{p:6.5,q:6.5,tp:'P₁',tq:'Q₁'}], tp1:'P₂', tq1:'Q₂', aria:'Passion fruit market a season later'});
+const PF=[
+ {txt:'<b>The starting point.</b> Kenya’s horticulture exports — green beans, roses and now passion fruit — go mainly to the EU and the UK. The market for passion fruit is in equilibrium at P and Q. Press <b>Next</b>.',
+  run:()=>[act(()=>{ pf.sc.st=pfP1.st(0); pf.sc.draw(); })]},
+ {txt:'<b>Demand rises.</b> European and UK consumers want more passion fruit, so demand shifts right to D₁. At the old price P the coursebook reports that demand <b>outstrips supply</b>: there is a shortage.',
+  run:()=>[...pfP1.anim(pf.sc,1,1000), pause(300), ...pfP1.anim(pf.sc,2)]},
+ {txt:'<b>Price rises to P₁.</b> Exporters raise the price. Only buyers willing and able to pay P₁ now get the fruit, and the shortage disappears as some buyers drop out.',
+  run:()=>[...pfP1.anim(pf.sc,3,1100), ...pfP1.anim(pf.sc,4)],
+  q:'Which function of price is at work here?', ans:'r',
+  fb:{r:'Right. The higher price <b>rations</b> the limited supply, so quantity demanded falls back into line with what is available.',
+      s:'Not quite. Signalling is about the message the price sends to producers. Here the focus is on who gets the scarce fruit.',
+      i:'Not quite. Incentive is about the reason to change behaviour. Here the focus is on limiting who gets the scarce fruit.'}},
+ {txt:'<b>The message reaches farmers.</b> Existing growers see the price of passion fruit rise against other crops, and pick and sell more of what they have: an <b>extension of supply</b> along S (the orange arrow).',
+  run:()=>[act(()=>{ const s=pfP1.st(4); s.hl='S'; s.trail={from:{p:5,q:5},to:{p:6.5,q:6.5}}; pf.sc.st=s; pf.sc.draw(); })],
+  q:'The rising price tells farmers what consumers want. Which function?', ans:'s',
+  fb:{s:'Right. The price <b>signals</b> to producers that consumers want more passion fruit.',
+      r:'Not quite. Rationing limits who gets the fruit. This step is about the information the price gives producers.',
+      i:'Close, but this step is about the <b>information</b> in the price change. The reason to act — profit — comes next.'}},
+ {txt:'<b>A season later.</b> Passion fruit is now the most profitable fruit crop to grow. Little capital is needed and a first crop is possible in the first season, so farmers switch land into it. Supply shifts right to S₁ and the price eases back to P₂.',
+  run:()=>[...pfP2.anim(pf.sc,1,1100), pause(300), ...pfP2.anim(pf.sc,2), pause(700), ...pfP2.anim(pf.sc,3,1000), ...pfP2.anim(pf.sc,4)],
+  q:'Why did farmers plant passion fruit trees?', ans:'i',
+  fb:{i:'Right. Higher profits are an <b>incentive</b> for producers to move resources into the product.',
+      r:'Not quite. Rationing was the earlier step. This is about the reason farmers changed what they grow.',
+      s:'Close: the signal told farmers what consumers wanted. But the <b>reason</b> they acted was the higher profit — the incentive.'}},
+ {txt:'<b>Transmission of preferences.</b> Consumers in Europe wanted more passion fruit, and without any instruction from government, land and labour in Kenya moved into growing it. Compare P₂ and Q₂ with where the story began: more fruit at a price only a little above the original. This is Adam Smith’s ‘invisible hand’. <br><br><b>Evaluation:</b> it worked smoothly here because passion fruit can be switched into within a season. For tree crops such as coffee or durian, the same process can take years.',
+  run:()=>[act(()=>{ pf.sc.st=pfP2.st(4); pf.sc.draw(); })]}
+];
+function pfBadge(f){ const b=document.querySelector('#pfBadges .eq-badge[data-f="'+f+'"]'); if(b) b.classList.add('on'); }
+function pfShow(i){
+  pf.step=i; const S=PF[i];
+  document.getElementById('pfStage').textContent='Step '+(i+1)+' of '+PF.length;
+  document.getElementById('pfText').innerHTML=S.txt;
+  const ask=document.getElementById('pfAsk'), next=document.getElementById('pfNext');
+  ask.innerHTML='';
+  next.disabled=true;
+  play(pf,[...S.run(), act(()=>{
+    if(S.q){
+      ask.innerHTML='<div class="eq-plbl">'+S.q+'</div><div class="steppick eq-pred">'+
+        [['r','Rationing'],['s','Signalling'],['i','Incentive']].map(x=>'<button class="lvl" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+
+        '</div><div class="hintline hidden" id="pfFb"></div>';
+      ask.querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>{
+        if(b.disabled) return;
+        const v=b.dataset.v, ok=v===S.ans, fb=document.getElementById('pfFb');
+        if(!(i in pf.first)) pf.first[i]=ok;
+        fb.innerHTML=S.fb[v]; fb.classList.remove('hidden');
+        b.classList.add(ok?'eq-ok':'eq-no');
+        if(ok){ ask.querySelectorAll('.lvl').forEach(x=>x.disabled=true); pfBadge(S.ans); next.disabled=i>=PF.length-1; }
+      }));
+    } else {
+      next.disabled=i>=PF.length-1;
+      if(i===PF.length-1){ pfBadge('t'); pf.storyDone=true; priceCheckDone(); }
+    }
+  })]);
+}
+document.getElementById('pfNext').addEventListener('click',()=>{ if(pf.step<PF.length-1) pfShow(pf.step+1); });
+document.getElementById('pfRestart').addEventListener('click',()=>{ pf.first={}; document.querySelectorAll('#pfBadges .eq-badge').forEach(b=>b.classList.remove('on')); pfShow(0); });
+pfShow(0);
+
+const SORT_ITEMS=[
+ {t:'Resale prices for a sold-out concert at Rajamangala Stadium jump, so only the fans most willing and able to pay get in.', b:'r'},
+ {t:'Early-season Monthong durian sells at a premium, so the first small harvest goes to the buyers who will pay most.', b:'r'},
+ {t:'A luxury sports car is priced so high that demand stays in line with the small number produced.', b:'r'},
+ {t:'The price of bubble tea rises across Bangkok, telling shop owners that customers want more of it.', b:'s'},
+ {t:'Sales of a new phone model slump and its price is cut — the makers learn that consumers do not like it.', b:'s'},
+ {t:'The world price of rubber falls, telling growers that the world wants less of their product.', b:'s'},
+ {t:'High profits from durian lead farmers in eastern Thailand to replace rubber trees with durian trees.', b:'i'},
+ {t:'A 50%-off sale at a Siam Square shop persuades shoppers to buy more than they planned.', b:'i'},
+ {t:'Coffee prices stay low for years, so some small farmers stop growing coffee altogether.', b:'i'}
+];
+const SORT_WHY={r:'Rationing: the high price limits who gets a scarce product.', s:'Signalling: the price change carries information about what consumers want.', i:'Incentive: the price change gives buyers or sellers a reason to change what they do.'};
+function buildSort(){
+  const pool=document.getElementById('pool-sort'); pool.innerHTML='';
+  document.querySelectorAll('#panel-price .bin-drop').forEach(b=>b.innerHTML='');
+  shuffle(SORT_ITEMS.map((x,i)=>Object.assign({i:i},x))).forEach(x=>{
+    const d=document.createElement('div'); d.className='item-card'; d.dataset.bin=x.b; d.style.fontWeight='400'; d.textContent=x.t; pool.appendChild(d);
+  });
+  document.getElementById('score-sort').textContent=''; document.getElementById('sortFb').innerHTML='';
+}
+let sortSolved=false;
+function checkSort(){
+  let placed=0, right=0;
+  document.querySelectorAll('#panel-price .bin').forEach(bin=>{
+    bin.querySelectorAll('.item-card').forEach(it=>{ placed++; const ok=it.dataset.bin===bin.dataset.bin;
+      it.classList.toggle('correct',ok); it.classList.toggle('wrong',!ok); if(ok) right++; });
+  });
+  const sc=document.getElementById('score-sort'), tot=SORT_ITEMS.length;
+  if(placed<tot){ sc.textContent='Place all '+tot+' first ('+placed+'/'+tot+' placed)'; sc.style.color='#FF8F1C'; return; }
+  if(right===tot){
+    sc.textContent='🎉 All '+tot+' correct!'; sc.style.color='#28A745';
+    document.getElementById('sortFb').innerHTML='<div class="foot-card"><h3>Notice the overlap</h3><p>Most real examples involve all three functions at once. The durian farmers switching crops were first <b>signalled</b> by the price, then acted on the <b>incentive</b>; the high price also <b>rationed</b> the fruit. In an essay, say which function you are illustrating and why.</p></div>';
+    if(!sortSolved){ sortSolved=true; trk('Sort: functions of price', tot+'/'+tot+' correct'); priceCheckDone(); }
+  } else {
+    sc.textContent=right+' / '+tot+' correct — move the pink ones'; sc.style.color='#002F6C';
+    document.getElementById('sortFb').innerHTML='<div class="hintline">'+SORT_WHY.r+'<br>'+SORT_WHY.s+'<br>'+SORT_WHY.i+'</div>';
+  }
+}
+function priceCheckDone(){
+  if(pf.storyDone && sortSolved && !DONE.price){
+    const firstRight=Object.values(pf.first).filter(Boolean).length;
+    document.getElementById('priceDone').classList.add('show');
+    trk('Functions of Price', 'story '+firstRight+'/3 first time; sort complete'); mark('price');
+  }
+}
+buildSort();
+
+/* ================= TAB 1 — KEY TERMS (match) ================= */
+const TERMS=[
+ {id:'t1', term:'Equilibrium',                 def:'A situation where quantity demanded equals quantity supplied, so there is no tendency for price to change, ceteris paribus.'},
+ {id:'t2', term:'Disequilibrium',              def:'An imbalance in a market where quantity demanded and quantity supplied are not equal, so change will happen.'},
+ {id:'t3', term:'Excess demand',               def:'Quantity demanded is greater than quantity supplied at the current price: a shortage.'},
+ {id:'t4', term:'Excess supply',               def:'Quantity supplied is greater than quantity demanded at the current price: a surplus.'},
+ {id:'t5', term:'Joint demand',                def:'Two goods consumed together, such as football shirts and shorts: complements.'},
+ {id:'t6', term:'Alternative demand',          def:'Two goods that satisfy the same want, so consumers choose one or the other: substitutes.'},
+ {id:'t7', term:'Derived demand',              def:'Demand for something that is wanted because it is needed to produce another good or service.'},
+ {id:'t8', term:'Joint supply',                def:'Two goods produced together from one process, so producing more of one automatically produces more of the other.'},
+ {id:'t9', term:'Rationing function',          def:'A high price limits consumption so that the quantity demanded matches the limited quantity available.'},
+ {id:'t10',term:'Signalling function',         def:'A price change tells producers what is happening in the market — a rise tells them to put more onto the market.'},
+ {id:'t11',term:'Incentive function',          def:'A price change gives buyers and sellers a reason to change what they do — higher prices encourage firms to produce more.'},
+ {id:'t12',term:'Transmission of preferences', def:'The automatic process by which consumers’ wants are made known to producers through what they buy.'}
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); mark('terms'); }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+
+/* ================= TAB 7 — ANALYSIS CHAINS + JUDGEMENTS ================= */
+const CHAINS=[
+ {id:'a', icon:'🍈', bg:'#FF8F1C', name:'Chain A: Chinese demand for Thai durian (short run to long run)',
+  steps:['Rising incomes and changing tastes in China increase demand for Thai durian',
+         'The demand curve shifts to the right, from D to D₁',
+         'At the original price there is excess demand — a shortage',
+         'The price rises, rationing the limited fruit to the buyers most willing and able to pay',
+         'The higher price signals that consumers want more and makes durian more profitable to grow',
+         'Farmers respond to the incentive: supply extends now, and over several years new trees shift supply to the right',
+         'A new equilibrium is reached with more durian traded, as land and labour move into durian farming'],
+  done:'<h3>Short run, then long run</h3><p>Steps 1–4 are the four-stage adjustment from activity 3. Steps 5–7 add the functions of price from activity 6 — and the time dimension. The word “over several years” in step 6 is where an evaluation point grows: how long, and what happens to farmers in the meantime?</p>'},
+ {id:'b', icon:'🍬', bg:'#28A745', name:'Chain B: sugar and molasses (joint supply)',
+  steps:['Demand for Thai sugar rises as exports grow',
+         'The price of sugar rises, so mills crush more sugar cane',
+         'Crushing more cane automatically produces more molasses — the two are in joint supply',
+         'The supply curve of molasses shifts to the right',
+         'At the original price there is excess supply of molasses',
+         'The price of molasses falls and the quantity traded rises'],
+  done:'<h3>The link is the production process</h3><p>Step 3 is the step most answers skip. Without it, the examiner cannot see why a change in the sugar market affects molasses at all. Name the relationship <b>and</b> explain it.</p>'}
+];
+const chainSolved={};
+function buildChain(ch){
+  const card=document.getElementById('chain-'+ch.id);
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s:s,i:i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary ch-check">Check chain</button>'+
+      '<button class="btn btn-ghost ch-reset">Reset</button>'+
+      '<span class="score"></span>'+
+    '</div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{
+    seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render();
+  }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{
+    seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render();
+  });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{
+      const ok=Number(el.dataset.idx)===pos;
+      el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+      if(ok) right++;
+    });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved[ch.id]){ chainSolved[ch.id]=true; trk('Chain: '+ch.name, 'correct'); chainCheckDone(); }
+    } else {
+      sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C';
+    }
+  });
+}
+(function(){
+  const host=document.getElementById('chainHost');
+  CHAINS.forEach(ch=>{ const c=document.createElement('div'); c.className='q-card'; c.id='chain-'+ch.id; host.appendChild(c); buildChain(ch); });
+})();
+
+const JUDGE=[
+ {t:'“An increase in demand always raises the equilibrium price.”', ans:'both',
+  why:'True if nothing else changes. But if supply increases by the same amount at the same time, price does not change at all (Figure 10.8), and if supply increases by more, price falls.',
+  exam:'“This is only certain ceteris paribus. If supply also increases, the effect on price depends on the relative size of the two shifts.”'},
+ {t:'“Markets adjust to a new equilibrium almost instantly.”', ans:'bad',
+  why:'The coursebook calls this a common misconception: a time lag is always involved. It is usually shorter for a change in demand than for a change in supply, and in agriculture it can last seasons.',
+  exam:'“The speed of adjustment depends on the price elasticity of supply, which is low in the short run for crops such as durian.”'},
+ {t:'“When demand and supply both increase, the equilibrium quantity must rise.”', ans:'good',
+  why:'Both shifts push quantity up, so the rise in quantity is certain. It is <b>price</b> that is uncertain.',
+  exam:'“Quantity rises unambiguously; the effect on price depends on which shift is larger.”'},
+ {t:'“Most real-world markets are in equilibrium most of the time.”', ans:'bad',
+  why:'The coursebook says real-world markets are invariably in disequilibrium, because demand and supply conditions keep changing. What matters is the <b>tendency</b> to move towards equilibrium.',
+  exam:'“Equilibrium is better seen as the point the market is moving towards than as a state it is usually in.”'},
+ {t:'“A fall in the price of a complement will increase the equilibrium price and quantity of the other good.”', ans:'good',
+  why:'Cheaper shirts mean more shirts are bought, so demand for shorts shifts right. With an upward-sloping supply curve, both price and quantity of shorts rise.',
+  exam:'“The size of the effect depends on how closely the goods are linked — how strong the complementarity is.”'},
+ {t:'“The price mechanism always produces a fair outcome for producers.”', ans:'bad',
+  why:'The price mechanism allocates resources according to willingness and ability to pay, not fairness. The coursebook’s coffee case shows small farmers, who cannot influence the world price, losing out as prices fall.',
+  exam:'“An outcome can be efficient without being equitable. Whether intervention is justified depends on how far society values fairness.”'}
+];
+const judgeDone={}; let judgeRight=0;
+(function(){
+  const host=document.getElementById('judgeHost');
+  const LBL={good:'Agree',bad:'Disagree',both:'It depends'};
+  JUDGE.forEach((j,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML='<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(i+1)+'</div><div class="q-name">'+j.t+'</div></div>'+
+      '<div class="choice-row">'+['good','bad','both'].map(v=>'<div class="choice" data-v="'+v+'">'+LBL[v]+'</div>').join('')+'</div>'+
+      '<div class="reveal"></div>';
+    c.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+      if(judgeDone[i]) return;
+      judgeDone[i]=true;
+      const v=ch.dataset.v, ok=v===j.ans;
+      if(ok) judgeRight++;
+      ch.classList.add('sel-'+v);
+      const r=c.querySelector('.reveal');
+      r.innerHTML='<span class="verdict v-'+j.ans+'">'+(ok?'Yes — ':'The best answer: ')+LBL[j.ans]+'</span><br>'+j.why+'<div class="exam-line"><b>Evaluation line:</b> '+j.exam+'</div>';
+      r.classList.add('show');
+      const n=Object.keys(judgeDone).length;
+      document.getElementById('judgeScore').textContent=n+' / '+JUDGE.length+' answered · '+judgeRight+' right';
+      if(n===JUDGE.length){ trk('Agree / disagree / depends', judgeRight+'/'+JUDGE.length+' correct'); chainCheckDone(); }
+    }));
+    host.appendChild(c);
+  });
+})();
+function chainCheckDone(){
+  if(CHAINS.every(c=>chainSolved[c.id]) && Object.keys(judgeDone).length===JUDGE.length && !DONE.chain){
+    const b=document.getElementById('chainDone');
+    b.innerHTML='✓ Both chains built and all six claims judged ('+judgeRight+'/6). Use the evaluation lines in your next 12-mark answer — one well-supported “it depends” is worth more than three unsupported ones.';
+    b.classList.add('show'); mark('chain');
+  }
+}
+
+/* ================= TAB 8 — WRITE IT UP ================= */
+const CHECKS={
+ w1:['I named derived demand and explained what it means here',
+     'I explained why more tourists means hotels need more workers',
+     'I drew the market for hotel stays with the shift and both equilibria labelled',
+     'I drew the labour market with W, W₁, Q, Q₁ and the shift of demand for labour labelled',
+     'I explained the process: excess demand for labour at the old wage, so the wage rises',
+     'I separated the shift in labour demand from the movement along labour supply',
+     'I reached the effect on the wage AND employment'],
+ w2:['I gave a case FOR the price mechanism, using the functions of price',
+     'I gave a case AGAINST, using time lags or price volatility',
+     'I used at least one diagram or described one precisely',
+     'I applied it to a real market (coffee, durian, passion fruit…) with evidence',
+     'I said what the answer depends on — short run versus long run, or how fast supply can respond',
+     'I ended with a supported judgement, not just a summary']
+};
+const BANDS={
+ w1:on=>on<=2?'Lower band: some knowledge, little analysis. Add the second market and the linked reasoning.':
+        on<=4?'Middle band. The economics is there but a chain is incomplete — most often the missing step is the process in the labour market.':
+        on<7?'Nearly a top-band answer. Add what you left unticked and redraft.':'Top band: two linked markets, both diagrams, both chains complete. Now do it in 12 minutes.',
+ w2:on=>on<=2?'Lower band: one-sided or descriptive. Add the other side and an “it depends”.':
+        on<=4?'Middle band: two sides, but the evaluation is thin. Make the judgement follow from your “it depends”.':
+        on<6?'Nearly top band. The missing element is usually the final judgement.':'Top band: balanced, applied and judged. Write it out in full.'
+};
+['w1','w2'].forEach(k=>{
+  const host=document.getElementById(k+'checks');
+  CHECKS[k].forEach(txt=>{
+    const row=document.createElement('div');
+    row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{
+      row.classList.toggle('on');
+      const on=host.querySelectorAll('.chk.on').length, tot=CHECKS[k].length;
+      document.getElementById(k+'bv').textContent=on+' of '+tot+' ticked';
+      document.getElementById(k+'bar').style.width=(on/tot*100)+'%';
+      document.getElementById(k+'bd').textContent=BANDS[k](on);
+    });
+    host.appendChild(row);
+  });
+});
+const writeSeen={w1:false,w2:false};
+[['w1btn','w1model','w1'],['w2btn','w2model','w2']].forEach(([btn,mod,key])=>{
+  document.getElementById(btn).addEventListener('click',()=>{
+    const box=document.getElementById(key);
+    if(box.value.trim().length<40){
+      box.focus();
+      document.getElementById(btn).textContent='Write your own attempt first — then compare';
+      return;
+    }
+    document.getElementById(mod).classList.add('show');
+    document.getElementById(btn).textContent='Model shown ✓';
+    document.getElementById(btn).disabled=true;
+    writeSeen[key]=true;
+    if(writeSeen.w1 && writeSeen.w2){
+      document.getElementById('writeDone').classList.add('show');
+      trk('Write It Up', 'both written tasks attempted'); mark('write');
+    }
+  });
+});
+
+/* ================= TAB 9 — EXAM MCQ ================= */
+const KD_FIG='<div class="fig" style="margin:10px 0 4px"><div class="ft">The market for Krating Daeng</div>'+
+  renderMarket(G,'kd',{labD:'D',labS:'S',
+    extra:[{k:'D',sh:2,lab:'D₁'},{k:'D',sh:-2,lab:'D₂'},{k:'S',sh:2,lab:'S₁'},{k:'S',sh:-2,lab:'S₂'}],
+    pts:[{p:5,q:5,lab:'X'},{p:7,q:5,lab:'A'},{p:5,q:3,lab:'B'},{p:3,q:5,lab:'C'},{p:5,q:7,lab:'D'}],
+    aria:'Diagram with three demand curves and three supply curves and points A, B, C, D and X'})+'</div>';
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1 (coursebook Q1)',
+  stem:'A good monsoon raises Thailand’s rice harvest. Demand for rice does not change. How does this affect the market for rice?',
+  opts:['Equilibrium price rises and equilibrium quantity stays the same.','Equilibrium price falls and equilibrium quantity rises.','There is no change in the equilibrium position.','Equilibrium price falls and equilibrium quantity falls.'], ans:1,
+  fb:'Supply shifts right. At the old price there is excess supply, so price falls and quantity demanded extends.',
+  why:'A supply shift always moves price and quantity in <b>opposite</b> directions. That rules out D straight away.'},
+ {id:'m2', icon:'2', bg:'#FF8F1C', name:'Paper 1 · Question 2 (coursebook Q2)',
+  stem:'Demand for bubble tea increases at the same time as a rise in the price of tapioca pearls, an ingredient, reduces its supply. What happens to the equilibrium price and quantity of bubble tea?',
+  opts:['Price rises and quantity rises.','Price rises; quantity may rise, fall or stay the same.','Price may rise or fall; quantity rises.','Price falls; quantity may rise, fall or stay the same.'], ans:1,
+  fb:'Demand shifts right and supply shifts left. Both push price up, so the rise in price is certain. Demand pulls quantity up and supply pulls it down, so quantity depends on which shift is bigger.',
+  why:'Opposite shifts → price is definite. Same-direction shifts → quantity is definite. Check it on the activity 4 sliders.'},
+ {id:'m3', icon:'3', bg:'#6B4E9E', name:'Paper 1 · Question 3 (extends coursebook Q3)',
+  stem:'The demand curve for a product is Q<sub>d</sub> = 100 − 5p and the supply curve is Q<sub>s</sub> = −20 + 10p. A tax shifts supply so that Q<sub>s</sub> = −50 + 10p. What is the new equilibrium price?',
+  opts:['$8','$10','$12','$15'], ans:1,
+  fb:'100 − 5p = −50 + 10p, so 150 = 15p and p = $10. Quantity falls from 60 to 50.',
+  why:'Before the tax the price was $8 (activity 2, question 5). Supply shifted left, so price rose and quantity fell — as it should.'},
+ {id:'m4', icon:'4', bg:'#002F6C', name:'Paper 1 · Question 4 (coursebook Q4)',
+  stem:'The market for Krating Daeng energy drink is in equilibrium at X, where D and S cross.'+KD_FIG+'Production costs of Krating Daeng fall, and the price of Carabao Dang, another energy drink, rises. Which point is the new equilibrium?',
+  opts:['Point A','Point B','Point C','Point D'], ans:3,
+  fb:'Lower costs shift supply right to S₁. A dearer substitute shifts demand right to D₁. The new equilibrium is where S₁ meets D₁: point D.',
+  why:'Point D has the same price as X but a higher quantity — the Figure 10.8 case again. A is S₂ with D₁; C is S₁ with D₂.'},
+ {id:'m5', icon:'5', bg:'#D63864', name:'Paper 1 · Question 5 (coursebook Q5)',
+  stem:'A market is in disequilibrium when',
+  opts:['there is excess supply in the market.','consumers’ wants are being satisfied.','prices are almost stable.','sellers have more control over the market than buyers.'], ans:0,
+  fb:'Disequilibrium means quantity demanded and quantity supplied are not equal — excess supply or excess demand.',
+  why:'D describes market power, which is a different idea (topic 7.6). A market with powerful sellers can still be in equilibrium.'},
+ {id:'m6', icon:'6', bg:'#28A745', name:'Paper 1 · Question 6 (coursebook Q6)',
+  stem:'Thailand is one of the world’s largest producers of natural rubber latex, much of which is used to make rubber gloves. What is the relationship between latex and rubber gloves?',
+  opts:['substitutes','complements','joint supply','derived demand'], ans:3,
+  fb:'Latex is wanted because it is needed to produce gloves, so the demand for latex is <b>derived</b> from the demand for gloves.',
+  why:'Joint supply would mean the two came out of the same process — like sugar and molasses. Gloves are made <i>from</i> latex.'},
+ {id:'m7', icon:'7', bg:'#5B8C5A', name:'Paper 1 · Question 7 (coursebook Q7)',
+  stem:'A daily BTS Skytrain journey to the office is an example of derived demand because',
+  opts:['it is the only way of making the journey.','it is the cheapest way of making the journey.','it is needed in order to get to work.','it is preferred to other means of transport.'], ans:2,
+  fb:'The journey is not wanted for itself: it is wanted because it is needed to get to work. That is what makes the demand derived.',
+  why:'A, B and D are reasons to choose the BTS over a substitute — they describe alternative demand, not derived demand.'},
+ {id:'m8', icon:'8', bg:'#8098B0', name:'Paper 1 · Question 8',
+  stem:'Beef and leather are in joint supply. Demand for beef rises. What happens in the market for <b>leather</b>?',
+  opts:['Demand for leather shifts right and its price rises.','Supply of leather shifts right and its price falls.','Supply of leather shifts left and its price rises.','There is an extension of supply of leather and its price rises.'], ans:1,
+  fb:'More cattle are slaughtered for beef, so more hides are produced at every price: supply of leather shifts right and its price falls.',
+  why:'In joint supply, the second market sees a <b>supply</b> shift and its price moves the opposite way to the first. A is the trap.'},
+ {id:'m9', icon:'9', bg:'#D63864', name:'Paper 1 · Question 9',
+  stem:'Tickets for a Thailand v Vietnam football match sell out. On resale sites the price rises until the number of people still wanting tickets matches the number available. Which function of price does this show?',
+  opts:['Rationing','Signalling','The incentive to supply more','Transmission of preferences to the government'], ans:0,
+  fb:'The fixed number of seats is allocated to those most willing and able to pay: price <b>rations</b> the scarce tickets.',
+  why:'The stadium cannot add seats, so there is no supply response for price to signal or encourage.'},
+ {id:'m10', icon:'10', bg:'#008BCC', name:'Paper 1 · Question 10',
+  stem:'At ฿40 a cup, the school canteen’s daily quantity demanded of iced coffee is 500 and quantity supplied is 300. Which is correct?',
+  opts:['There is excess supply of 200, and price will tend to fall.','There is excess demand of 200, and price will tend to rise.','There is excess demand of 800, and price will tend to rise.','The market is in equilibrium at 300 cups.'], ans:1,
+  fb:'Quantity demanded exceeds quantity supplied by 200, so there is a shortage and upward pressure on price.',
+  why:'D confuses the quantity traded (300 — the short side) with equilibrium. Trade happens at 300, but the market has not cleared.'}
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  const b=document.getElementById('mcqDone');
+  b.innerHTML='✓ All ten attempted — '+right+' / '+total+'. Next: topic 2.5 measures who gains from the equilibrium you have been finding — consumer and producer surplus.';
+  b.classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct'); mark('mcq');
+});
+
+/* Self-evaluation checklist from the end of Chapter 10 */
+const SELF=[
+ {t:'I understand the difference between a market in equilibrium and one in disequilibrium.', tab:'eq', name:'Activity 2'},
+ {t:'I can analyse the effects of shifts in demand and supply on equilibrium price and quantity.', tab:'adjust', name:'Activity 3'},
+ {t:'I can explain the causes of shifts in the market demand curve.', tab:'adjust', name:'Activity 3'},
+ {t:'I can explain the causes of shifts in the market supply curve.', tab:'adjust', name:'Activity 3'},
+ {t:'I can analyse what happens when demand and supply shift together.', tab:'double', name:'Activity 4'},
+ {t:'I can analyse how a change in the price of a complement or substitute affects another market, and I understand derived demand and joint supply.', tab:'linked', name:'Activity 5'},
+ {t:'I can analyse the functions of price in resource allocation: rationing, signalling, incentives and the transmission of preferences.', tab:'price', name:'Activity 6'}
+];
+const seVal={};
+(function(){
+  const host=document.getElementById('seHost');
+  SELF.forEach((s,i)=>{
+    const row=document.createElement('div'); row.className='eq-se-row';
+    row.innerHTML='<div class="lbl">'+s.t+'</div><div class="choice-row">'+
+      [['bad','Needs more work'],['both','Almost there'],['good','Ready to move on']].map(x=>'<div class="choice" data-v="'+x[0]+'">'+x[1]+'</div>').join('')+'</div>';
+    row.querySelectorAll('.choice').forEach(c=>c.addEventListener('click',()=>{
+      row.querySelectorAll('.choice').forEach(x=>x.className='choice');
+      c.classList.add('sel-'+c.dataset.v); seVal[i]=c.dataset.v; seSummary();
+    }));
+    host.appendChild(row);
+  });
+})();
+function seSummary(){
+  const say=document.getElementById('seSay');
+  if(Object.keys(seVal).length<SELF.length){ say.innerHTML='Rated '+Object.keys(seVal).length+' of '+SELF.length+'. Rate all seven to see what to revisit.'; return; }
+  const weak=SELF.filter((s,i)=>seVal[i]!=='good');
+  if(!weak.length){ say.innerHTML='<b>Ready to move on.</b> Test that confidence: do the 12-mark plan in activity 8 against the clock (20 minutes).'; return; }
+  const tabs=[...new Map(weak.map(s=>[s.tab,s])).values()];
+  say.innerHTML='<b>Revisit:</b> '+tabs.map(s=>'<span class="eq-golink" data-go="'+s.tab+'">'+s.name+'</span>').join(' · ')+'. Then rate yourself again.';
+  say.querySelectorAll('.eq-golink').forEach(a=>a.addEventListener('click',()=>goTab(a.dataset.go)));
+}
+</script>
+</body>
+</html>
