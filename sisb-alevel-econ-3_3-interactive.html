@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3.3 Addressing Income and Wealth Inequality | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 3.3 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   Diagram-lab widgets keep the gi- names used on 3.1/3.2 so the pages
+   look identical; widgets new to this page use the prefix iq-.
+   ===================================================================== */
+.hidden{display:none !important}
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.btn:disabled,.mini-btn:disabled{opacity:.45;cursor:default}
+.lvl.gm-on,.lvl.gm-on:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.tab{padding:13px 12px}
+.gi-res div:last-child:nth-child(odd){grid-column:1/-1}
+
+/* ---- Diagram labs (same as 3.1 / 3.2) ---- */
+.gi-lab{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:start;margin-bottom:16px}
+@media(max-width:860px){.gi-lab{grid-template-columns:1fr}}
+.gi-lab .fig{margin-bottom:0;position:sticky;top:118px}
+@media(max-width:860px){.gi-lab .fig{position:static}}
+.gi-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.gi-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px}
+.gi-name:first-child{margin-top:0}
+.gi-name em{font-style:normal;font-size:12px;font-weight:700;color:var(--blue);text-align:right}
+.gi-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:10px 0 4px}
+.gi-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-sl.blue::-webkit-slider-thumb{background:var(--blue)}.gi-sl.blue::-moz-range-thumb{background:var(--blue)}
+.gi-sl.pink::-webkit-slider-thumb{background:var(--red)}.gi-sl.pink::-moz-range-thumb{background:var(--red)}
+.gi-sl.navy::-webkit-slider-thumb{background:var(--navy)}.gi-sl.navy::-moz-range-thumb{background:var(--navy)}
+.gi-sl.green::-webkit-slider-thumb{background:var(--green)}.gi-sl.green::-moz-range-thumb{background:var(--green)}
+.gi-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.gi-res{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.gi-res div{background:var(--grey-bg);border-radius:8px;padding:10px 6px;text-align:center}
+.gi-res b{display:block;font-size:16px;font-weight:900;color:var(--navy);line-height:1.2}
+.gi-res small{display:block;font-size:11px;font-weight:700;color:var(--text-2);margin-top:1px}
+.gi-res span{font-size:10.8px;color:var(--text-3)}
+.gi-res .hot{background:var(--navy)}.gi-res .hot b,.gi-res .hot small{color:#fff}.gi-res .hot span{color:#CADCFC}
+.gi-res .warn{background:var(--orange-bg)}.gi-res .warn b{color:var(--orange-txt)}
+.gi-res .ok{background:var(--green-bg)}.gi-res .ok b{color:var(--green-txt)}
+.gi-res .bad{background:var(--red-bg)}.gi-res .bad b{color:var(--red-txt)}
+.gi-res .cool{background:#E1F1FA}.gi-res .cool b{color:#00618F}
+.gi-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.gi-say b{color:var(--navy)}
+.gi-goals{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+.gi-goal{font-size:12px;font-weight:700;border:1.5px dashed var(--grey-3);background:#fff;color:var(--text-3);border-radius:18px;padding:6px 12px;transition:.2s}
+.gi-goal.met{border-style:solid;border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.gi-handle{cursor:ns-resize;touch-action:none}
+.gi-legend{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:var(--text-2);margin-top:6px}
+.gi-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.gi-legend i.blk{height:10px}
+.gm-mode{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.gm-presets{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 2px}
+.gm-presets .lvl{font-size:12px;padding:7px 12px}
+.gm-hint{font-size:11.5px;color:var(--text-3);margin-top:6px;line-height:1.45}
+
+/* ---- New on 3.3 ---- */
+.iq-group{border-top:1px solid var(--grey-2);margin-top:14px;padding-top:12px}
+.iq-group:first-child{border-top:none;margin-top:0;padding-top:0}
+.iq-gh{font-size:10.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:2px}
+.iq-cover{margin-top:12px}
+.iq-cover .lbl{font-size:11.5px;font-weight:700;color:var(--navy);margin-bottom:5px;display:flex;justify-content:space-between}
+.iq-cover .track{height:16px;border-radius:8px;overflow:hidden;display:flex;background:var(--grey-2)}
+.iq-cover .track i{display:block;height:100%;transition:width .35s}
+.iq-cover .track i.f{background:var(--blue)}
+.iq-cover .track i.n{background:repeating-linear-gradient(45deg,#C8D8E8 0 6px,#E4EDF5 6px 12px)}
+.iq-cover .key{display:flex;gap:14px;font-size:10.8px;color:var(--text-3);margin-top:4px}
+.iq-cover .key b{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:4px}
+.iq-bars svg{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+.iq-bars{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px 12px;margin:18px 0 16px}
+.iq-bars .ft{font-size:12.5px;font-weight:900;color:var(--navy);text-align:center;margin-bottom:2px}
+.iq-bars .figcap{font-size:12px;color:var(--text-3);text-align:center;margin-top:6px;line-height:1.5}
+.iq-bar{cursor:pointer}
+.iq-bar:hover rect{opacity:.8}
+.iq-tag{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;background:var(--purple-bg);color:var(--purple-txt);border-radius:10px;padding:2px 8px;vertical-align:2px;margin-left:6px}
+.iq-stack .fig+.fig{margin-top:14px}
+#bins-pol{align-items:start}
+#bins-pol .bin{min-height:120px}
+.iq-twofig{display:flex;flex-direction:column;gap:14px;position:sticky;top:118px}
+@media(max-width:860px){.iq-twofig{position:static}}
+.iq-twofig .fig{position:static}
+.q-fig{max-width:330px;margin:0 auto 12px;background:#FBFDFF;border:1px solid var(--grey-2);border-radius:8px;padding:6px}
+.q-fig svg{display:block;width:100%;height:auto}
+.dtable{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:13px;background:#fff;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden}
+.dtable th{background:var(--navy);color:#fff;font-size:12px;font-weight:700;text-align:left;padding:8px 11px}
+.dtable td{padding:8px 11px;border-top:1px solid var(--grey-2);color:var(--text-2)}
+.dtable td:first-child{font-weight:700;color:var(--navy)}
+
+/* sticky progress (same as 1.5 / 1.6 / 3.1 / 3.2) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (max-width:560px){.topbar{padding:0 14px}.tb-title{font-size:11.5px}.tab{padding:11px 10px;font-size:12px}
+  .tabbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 3.3 Addressing Income and Wealth Inequality</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="gini">📊 Gini Explorer</div>
+  <div class="tab" data-tab="minw">⚖️ Minimum Wage Lab</div>
+  <div class="tab" data-tab="sim">🏛️ Redistribution Simulator</div>
+  <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
+  <div class="tab" data-tab="write">✍️ Write It Up</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Income is a flow, wealth is a stock</h1>
+      <p>Coursebook Chapter 14 is the last AS microeconomics chapter. It asks three questions: how do we <b>measure</b> inequality (the Gini coefficient), <b>why</b> does it exist, and what can governments <b>do</b> about it — minimum wages, transfer payments, progressive taxes, inheritance and capital taxes, and state provision of essential goods and services.</p>
+      <p>Match each term to its meaning, then sort ten items into income or wealth. The coursebook Tip warns that students often use “wealth” when they mean “income”; this is where you stop doing that.</p>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+
+    <div class="sub-h">Flow or stock? Sort each item</div>
+    <div class="sub-p">Income is a flow of payments to factors of production <b>over a period of time</b>. Wealth is the stock of assets built up <b>at a point in time</b>. Many items come in pairs: the asset is wealth, what it earns is income.</div>
+    <div class="sort-grid cols-2">
+      <div><div class="col-lbl">Drag from here</div><div class="drop-pool" id="pool-fs"></div></div>
+      <div class="bin" data-bin="inc"><div class="bin-name"><span class="bin-dot" style="background:#008BCC"></span>Income (flow)</div><div class="bin-desc">So much per month or per year</div><div class="bin-drop"></div></div>
+      <div class="bin" data-bin="wea"><div class="bin-name"><span class="bin-dot" style="background:#6B4E9E"></span>Wealth (stock)</div><div class="bin-desc">An asset owned at a point in time</div><div class="bin-drop"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkFS()">Check sort</button>
+      <button class="btn btn-ghost" onclick="buildFS()">Reset</button>
+      <span class="score" id="score-fs"></span>
+    </div>
+    <div class="done-banner" id="termsDone"></div>
+
+    <div class="sub-h">Economics in context · The richest and poorest in Asia</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">🌏</div>
+        <div class="q-name">The coursebook reports that India’s richest 1% own 73% of the country’s wealth, while the poorest 50% own just 1%.</div></div>
+      <div class="q-stem">The coursebook asks you to discuss two questions about <b>your own country</b>. Jot your ideas about Thailand, then compare.
+        <br><b>1</b> To what extent is there inequality of income and wealth in Thailand? <b>2</b> How could the government do more to reduce it?</div>
+      <textarea class="write-box" id="ctxBox" placeholder="1 ... 2 ..."></textarea>
+      <button class="mini-btn" id="ctxBtn">Show suggested points</button>
+      <div class="model" id="ctxModel">
+        <b>1 · How unequal?</b> The World Bank put Thailand’s <b>income</b> Gini at 43.3 in 2021 — the highest in the East Asia and Pacific region — and found that in 2019 the top 1% received about 21% of national income while the bottom half received about 14%. Gaps run between Bangkok and the regions (especially the Northeast and the South) and between formal and informal workers: just over half of Thai workers are informal, and many of them work in agriculture on much lower incomes. <b>Wealth</b> is more unequal still — land, shares and family businesses are concentrated in a small number of families, and Thailand lacks good data on wealth.<br>
+        <b>2 · What more could be done?</b> Use the coursebook’s list: raise and enforce minimum wages (but they only reach formal workers); extend social insurance and transfers to informal workers; make income tax more progressive and widen the tax base; strengthen the inheritance tax and the Land and Buildings Tax; and improve the quality of state schools and health care outside Bangkok. The World Bank’s own advice focused on skills, education and regional development — the causes in coursebook section 14.3.
+      </div>
+    </div>
+    <p class="tip">Watch the measure: Thailand’s Gini is about 43 when it is calculated from household <b>income</b>, but about 34 when it is calculated from household <b>spending</b> (World Bank, 2023). Both are “Thailand’s Gini”. Always say which one you are using.</p>
+  </div>
+
+  <!-- ============ TAB 2 · GINI EXPLORER ============ -->
+  <div class="panel" id="panel-gini">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Gini Explorer</div>
+      <h1>See what a Gini coefficient actually measures</h1>
+      <p>The Gini coefficient runs from <b>0</b> (everyone has the same income) to <b>1</b> (one person has all of it). The coursebook’s Table 14.2 writes it as a percentage, so 0.45 and 45% mean the same thing. It comes from a <b>Lorenz curve</b>: the share of total income received by the poorest x% of the population. The further the curve sags below the diagonal, the bigger the orange area A, and Gini = A ÷ (A + B).</p>
+      <p>Move the slider or <b>drag the orange handle</b> on the curve, then click any country in the chart below to load its Gini. Hit the five targets. <span class="iq-tag">Lorenz curve = A Level 8.2</span> At AS you need to interpret the Gini number; the curve shows you where the number comes from.</p>
+    </div>
+    <div class="gi-goals" id="goalsGini"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft" id="lzTitle">A Lorenz curve</div><div id="figLZ"></div>
+        <div class="gi-legend"><span><i style="background:#8098B0"></i>Line of perfect equality</span><span><i style="background:#002F6C"></i>Lorenz curve</span><span><i class="blk" style="background:rgba(255,143,28,.45)"></i>Area A</span><span><i class="blk" style="background:rgba(0,139,204,.25)"></i>Area B</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gi-name">Gini coefficient <em id="lzGv"></em></div>
+        <input type="range" class="gi-sl" id="lzG" min="0" max="70" step="1" value="35" aria-label="Gini coefficient">
+        <div class="gi-ends"><span>Perfect equality</span><span>Very unequal</span></div>
+        <div class="write-lbl" style="margin-top:14px">Load Thailand (World Bank)</div>
+        <div class="gm-presets" id="lzThai">
+          <button class="lvl" data-g="43.3">🇹🇭 Income Gini · 2021</button>
+          <button class="lvl" data-g="33.5">🇹🇭 Spending Gini · 2023</button>
+        </div>
+        <div class="gi-res" id="lzRes"></div>
+        <div class="gi-say" id="lzSay"></div>
+      </div>
+    </div>
+
+    <div class="iq-bars">
+      <div class="ft">Coursebook Table 14.2 · Selected Gini coefficients (%) — click a bar to load it</div>
+      <div id="figBars"></div>
+      <div class="btn-row" style="justify-content:center;margin-top:8px"><button class="lvl" id="benchBtn">Show the 45% benchmark</button></div>
+      <div class="figcap">Data from various dates, as in the coursebook. The two Thailand bars are World Bank figures added for comparison.</div>
+    </div>
+
+    <div class="sub-h">Coursebook Activity 14.1</div>
+    <div id="act141"></div>
+
+    <div class="sub-h">Reading the number · True, false or can’t tell? <span class="score" id="readScore" style="font-size:13px"></span></div>
+    <div class="sub-p">Paper 1 loves this trap: a Gini tells you how income is <b>shared</b>, not how <b>much</b> there is.</div>
+    <div id="readHost"></div>
+    <div class="done-banner" id="giniDone"></div>
+  </div>
+
+  <!-- ============ TAB 3 · MINIMUM WAGE LAB ============ -->
+  <div class="panel" id="panel-minw">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Minimum Wage Lab</div>
+      <h1>Set the minimum wage — then judge what it really does</h1>
+      <p>Coursebook Figure 14.3, made interactive. A minimum wage is a <b>minimum price</b> in the labour market: set above the equilibrium wage W, it raises pay to W<sub>1</sub>, employers contract the labour they demand to Q<sub>1</sub>, more people want to work (Q<sub>2</sub>), and the gap Q<sub>1</sub>Q<sub>2</sub> is unemployment. That is the critics’ case. Your job is to find out <b>when it holds, and when it doesn’t</b>.</p>
+      <p>Drag the orange line or use the slider. Try Thailand’s real rates: Nonthaburi is ฿372 a day and Bangkok ฿400 (since July 2025), and the government has talked of ฿600. The market here is illustrative: an equilibrium of ฿340 a day for 400,000 low-paid workers in one province.</p>
+    </div>
+    <div class="gi-goals" id="goalsMW"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft" id="mwTitle">The market for low-paid labour</div><div id="figMW"></div>
+        <div class="gi-legend" id="mwLegend"></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gm-mode" id="mwMode">
+          <button class="lvl active" data-m="comp">Competitive market</button>
+          <button class="lvl" data-m="mono">Monopsony employer <span style="opacity:.7;font-weight:400">· A Level</span></button>
+        </div>
+        <div class="write-lbl">Market</div>
+        <div class="gm-presets" id="mwPre"></div>
+        <div class="gi-name">Minimum wage <em id="mwPv"></em></div>
+        <input type="range" class="gi-sl" id="mwP" min="30" max="90" step="0.5" value="60" aria-label="Minimum wage">
+        <div class="gi-ends"><span>Low</span><span>High</span></div>
+        <div class="gm-presets" id="mwReal">
+          <button class="lvl" data-w="372">฿372 Nonthaburi</button>
+          <button class="lvl" data-w="400">฿400 Bangkok</button>
+          <button class="lvl" data-w="600">฿600 target</button>
+        </div>
+        <div class="gi-name">Price elasticity of demand for labour <em id="mwDv"></em></div>
+        <input type="range" class="gi-sl pink" id="mwD" min="0" max="100" step="1" value="50" aria-label="Elasticity of demand for labour">
+        <div class="gi-ends"><span>Inelastic (steep)</span><span>Elastic (flat)</span></div>
+        <div class="gi-name">Elasticity of labour supply <em id="mwSv"></em></div>
+        <input type="range" class="gi-sl blue" id="mwS" min="0" max="100" step="1" value="50" aria-label="Elasticity of labour supply">
+        <div class="gi-ends"><span>Inelastic (steep)</span><span>Elastic (flat)</span></div>
+        <div class="write-lbl" style="margin-top:14px">Evaluation switches</div>
+        <div class="steppick" id="mwSw">
+          <button class="lvl" data-x="gain">🟩 Show winners &amp; losers</button>
+          <button class="lvl" data-x="prod">📈 Productivity effect</button>
+        </div>
+        <div class="gi-name">Share of low-paid work that is informal <em id="mwIv"></em></div>
+        <input type="range" class="gi-sl navy" id="mwI" min="0" max="80" step="5" value="0" aria-label="Informal share">
+        <div class="gi-ends"><span>None</span><span>80%</span></div>
+        <div class="iq-cover hidden" id="mwCover"></div>
+        <div class="gi-res" id="mwRes"></div>
+        <div class="gi-say" id="mwSay"></div>
+      </div>
+    </div>
+    <div class="sub-h">Check your understanding</div>
+    <div id="mwQ"></div>
+    <div class="done-banner" id="mwDone"></div>
+  </div>
+
+  <!-- ============ TAB 4 · REDISTRIBUTION SIMULATOR ============ -->
+  <div class="panel" id="panel-sim">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Redistribution Simulator</div>
+      <h1>You are the finance minister of a lower middle-income country</h1>
+      <p>Part A is coursebook Activity 14.2 for Thailand: name the tool behind each real policy. Part B hands you the tools. Ten households stand for the ten tenths (deciles) of the population, from the poorest to the richest. Change taxes, transfers, state provision and the minimum wage, and watch the Lorenz curve, the Gini coefficient and the budget respond.</p>
+      <p>This is exactly the setting of end-of-unit <b>Essay 3(b)</b>: <i>Discuss the ways in which a government can redistribute income in a lower middle-income country.</i> The model is deliberately simple and the numbers are invented, but every rule in it comes from coursebook section 14.4.</p>
+    </div>
+
+    <div class="sub-h" style="margin-top:0">Part A · Which tool is it? (Activity 14.2 for Thailand)</div>
+    <div class="sub-p">Sort eleven policies — nine Thai, two from the coursebook — into the five types of policy in section 14.4.</div>
+    <div class="fop-grid">
+      <div><div class="col-lbl">Drag from here</div><div class="drop-pool" id="pool-pol"></div></div>
+      <div class="fop-bins" id="bins-pol"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkPol()">Check sort</button>
+      <button class="btn btn-ghost" onclick="buildPol()">Reset</button>
+      <span class="score" id="score-pol"></span>
+    </div>
+
+    <div class="sub-h">Part B · The simulator</div>
+    <div class="sub-p">Each household’s <b>market income</b> is what it earns before the government acts. <b>Final income</b> is after income tax and VAT are taken off, cash transfers are added, and free public services are counted at what they cost to provide. Complete the six missions.</div>
+    <div class="gi-goals" id="goalsSim"></div>
+    <div class="gi-lab">
+      <div class="iq-twofig">
+        <div class="fig"><div class="ft">Lorenz curves · market income vs final income</div><div id="figSimLZ"></div>
+          <div class="gi-legend"><span><i style="background:#8098B0"></i>Equality</span><span><i style="background:#C8A0A0;height:3px"></i>Market income</span><span><i style="background:#002F6C"></i>Final income</span></div></div>
+        <div class="fig"><div class="ft">Change in each household’s income · market → final</div><div id="figSimBars"></div></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="iq-group">
+          <div class="iq-gh">The economy</div>
+          <div class="gi-name">Informal economy <em id="smInfV"></em></div>
+          <input type="range" class="gi-sl navy" id="smInf" min="0" max="6" step="1" value="4" aria-label="Informal deciles">
+          <div class="gi-ends"><span>All formal</span><span>Poorest 60% informal</span></div>
+        </div>
+        <div class="iq-group">
+          <div class="iq-gh">Taxes</div>
+          <div class="gi-name">Tax-free allowance <em id="smAV"></em></div>
+          <input type="range" class="gi-sl" id="smA" min="100" max="600" step="50" value="300" aria-label="Tax-free allowance">
+          <div class="gi-name">Income tax rate up to $1,000 <em id="smRV"></em></div>
+          <input type="range" class="gi-sl" id="smR" min="0" max="30" step="1" value="10" aria-label="Basic rate">
+          <div class="gi-name">Top rate on income over $1,000 <em id="smTV"></em></div>
+          <input type="range" class="gi-sl" id="smT" min="0" max="70" step="1" value="25" aria-label="Top rate">
+          <div class="gi-name">VAT (sales tax) <em id="smVV"></em></div>
+          <input type="range" class="gi-sl pink" id="smV" min="0" max="20" step="1" value="7" aria-label="VAT">
+          <div class="steppick"><button class="lvl" id="smEx">🍚 Exempt basic food from VAT</button></div>
+        </div>
+        <div class="iq-group">
+          <div class="iq-gh">Spending</div>
+          <div class="gi-name">Cash transfer per household <em id="smXV"></em></div>
+          <input type="range" class="gi-sl green" id="smX" min="0" max="150" step="10" value="0" aria-label="Cash transfer">
+          <div class="steppick" id="smTg"><button class="lvl active" data-t="bottom">Poorest 30% only</button><button class="lvl" data-t="all">Every household</button></div>
+          <div class="gi-name">Free schools &amp; clinics per household <em id="smPV"></em></div>
+          <input type="range" class="gi-sl green" id="smP" min="0" max="100" step="10" value="20" aria-label="State provision">
+        </div>
+        <div class="iq-group">
+          <div class="iq-gh">Labour market</div>
+          <div class="gi-name">Minimum wage <em id="smMwV"></em></div>
+          <input type="range" class="gi-sl blue" id="smMw" min="0" max="500" step="25" value="0" aria-label="Minimum wage">
+        </div>
+        <div class="gi-res" id="smRes"></div>
+        <div class="gi-say" id="smSay"></div>
+        <div class="btn-row" style="margin-top:12px"><button class="btn btn-ghost" id="smReset">Reset to the starting policies</button></div>
+      </div>
+    </div>
+    <div class="sub-h">What did the simulator show?</div>
+    <div id="simQ"></div>
+    <div class="done-banner" id="simDone"></div>
+  </div>
+
+  <!-- ============ TAB 5 · ANALYSIS & EVALUATION ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Analysis and evaluation</div>
+      <h1>Build the chain, then test the claim</h1>
+      <p>Part A: analysis marks come from <b>linked</b> steps. Click the steps of each chain in causal order. Part B: evaluation marks come from judging whether a claim is always true. Decide <b>Agree</b>, <b>Disagree</b> or <b>It depends</b>, then read the reasoning and the evaluation line you could use in an essay. Part C is the coursebook’s “Think like an economist” on Malaysia.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Analysis chains</div>
+    <div id="chainHost"></div>
+    <div class="sub-h">Part B · Agree, disagree or it depends? <span class="score" id="judgeScore" style="font-size:13px"></span></div>
+    <div class="sub-p">Six claims you could meet in a 12-mark question. Watch for <b>always</b>, <b>best</b> and <b>necessary</b>.</div>
+    <div id="judgeHost"></div>
+    <div class="sub-h">Part C · Think like an economist: inequality in Malaysia</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">🇲🇾</div>
+        <div class="q-name">Consider whether it is better for Malaysia to have a more inclusive but slower rate of economic growth.</div></div>
+      <div class="q-stem">Reducing inequality has been a Malaysian policy aim for 50 years. The Gini fell from well over 0.5 in 1970 to 0.4 in 2018, and fewer than 1% of people are in absolute poverty — but the earnings gap between the top 20% and the rest has nearly doubled since 2000, pushing more people into <b>relative</b> poverty. Some economists argue that inequality is not a bad thing, because it gives people and firms an incentive to work, take risks and become more efficient. Plan a two-sided answer with a judgement.</div>
+      <textarea class="write-box" id="myBox" style="min-height:110px" placeholder="For more inclusive growth: ...&#10;For faster growth: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="myBtn">Show suggested points</button>
+      <div class="model" id="myModel">
+        <b>For more inclusive growth.</b> Extra income matters more to a poor household than to a rich one, so a more equal spread of the same income can raise total welfare. Coursebook section 14.3 says inequality is a <b>barrier</b> to growth: poor households cannot afford education, health care or credit, so human capital and enterprise are wasted. Large gaps also cause social and political tension, which deters investment.<br>
+        <b>For faster growth.</b> The incentive argument: rewards for skill, effort and risk drive entrepreneurship and efficiency. Faster growth creates jobs and the tax revenue that pays for transfers and public services. With absolute poverty already below 1%, the priority might be raising everyone’s income rather than narrowing the gap.<br>
+        <b>It depends on.</b> <i>How</i> inclusion is achieved — spending on education and health can raise both equality and long-run growth, whereas very high tax rates may slow growth; how big the growth sacrifice really is; and whether rising <b>relative</b> poverty is causing social problems.<br>
+        <b>Judgement.</b> The choice is partly false: well-designed inclusion (better schools, health care and access to credit) supports growth over time, so Malaysia does not have to choose. It would be wrong to sacrifice much growth for equality only where redistribution relies on heavy taxes that damage incentives.
+      </div>
+    </div>
+    <div class="done-banner" id="chainDone"></div>
+  </div>
+
+  <!-- ============ TAB 6 · WRITE IT UP ============ -->
+  <div class="panel" id="panel-write">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Paper 2 style</div>
+      <h1>The Unit 3 end-of-unit essay, step by step</h1>
+      <p>Both tasks come from the coursebook’s Unit 3 end-of-unit questions (Essay 3). Part (a) is an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis). Part (b) is a 12-mark <b>discuss</b> answer, which also needs AO3 — evaluation. Type your answer first, then compare it with the model. Nothing you type is stored.</p>
+      <p>Full command-word guidance is on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">3(a) Explain the difference between a progressive direct tax and a regressive indirect tax. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Plan before you write. There are <b>two</b> differences to explain: <b>direct vs indirect</b> (what is taxed and who pays the government) and <b>progressive vs regressive</b> (what happens to the <b>percentage</b> of income paid as income rises). Use numbers: Thailand’s income tax runs from 0% to 35%, and its VAT is 7%.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:160px" placeholder="A direct tax is..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> A <b>direct tax</b> is a tax on income or wealth, paid straight to the government by the person who bears it — for example personal income tax. An <b>indirect tax</b> is a tax on spending on goods and services, such as VAT; it is collected by sellers, who pass much of it on to buyers in higher prices.<br>
+        A tax is <b>progressive</b> when the <b>average rate</b> — tax paid as a percentage of income — rises as income rises. Thailand’s personal income tax is progressive: the first ฿150,000 of net income is tax-free and the marginal rate then rises in steps from 5% to 35%. Someone with ฿300,000 of net income pays ฿7,500, an average rate of 2.5%; someone with ฿1,000,000 pays ฿115,000, an average rate of 11.5%. Because the rich pay a larger <b>share</b> of their income, the tax narrows the gap between post-tax incomes.<br>
+        A tax is <b>regressive</b> when the average rate <b>falls</b> as income rises. VAT is charged at the same 7% on almost everything, but it is regressive in relation to <b>income</b>, because low-income households spend almost all of their income while high-income households save a larger share. A household earning ฿15,000 a month that spends it all pays about ฿980 in VAT — roughly 6.5% of its income. A household earning ฿150,000 that spends ฿80,000 pays about ฿5,230 — more baht, but only about 3.5% of its income.<br>
+        So the two taxes differ in what they tax (income vs spending), in who hands the money to the government (the earner vs the seller), and in their effect on distribution: the progressive direct tax reduces inequality, the regressive indirect tax increases it.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> all four terms are defined; “progressive” is defined by the <b>average rate</b>, avoiding the coursebook Tip’s classic mistake (“the rich pay more tax” is also true of a proportional tax); both taxes are illustrated with calculated numbers; the answer ends by linking each tax to inequality.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 7 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
+        <div class="q-name">3(b) Discuss the ways in which a government can redistribute income in a lower middle-income country. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
+      <div class="q-stem">Take note of the context: <b>lower middle-income</b>. Thailand is classified by the World Bank as <b>upper</b> middle-income, so use countries such as Pakistan or Bangladesh (the coursebook’s examples), or India. Analyse three or four policies, evaluate each one <b>in that context</b>, then make a judgement about which works best. Plan in note form first. The Redistribution Simulator is your evidence.</div>
+      <div class="write-lbl">Your plan</div>
+      <textarea class="write-box" id="w2" style="min-height:140px" placeholder="Policy 1: ... but ...&#10;Policy 2: ... but ...&#10;Policy 3: ... but ...&#10;What it depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="w2btn">Compare with a model plan</button>
+      <div class="model" id="w2model">
+        <b>Model plan.</b><br>
+        <b>0 · Context.</b> In a lower middle-income country the informal economy is large, only a small share of people pay direct taxes, and tax evasion and corruption are common (coursebook 14.4). Every policy below is judged against that.<br>
+        <b>1 · Minimum wage.</b> Raises the pay of low-paid formal workers, cutting poverty among them. <i>But</i> it does not reach the informal sector, the self-employed or family businesses — in South Africa about 47% of workers were paid below the new minimum in 2019 — and if demand for labour is elastic it may cause unemployment (Figure 14.3).<br>
+        <b>2 · Transfer payments.</b> Pensions, child benefits and cash transfers move income to those who cannot work or earn least, and can be targeted. <i>But</i> they depend on tax revenue and on a reliable register of who is poor; in Pakistan, pensions cover only the formal sector. Targeted cash schemes that pay through ID cards or mobile phones, such as Pakistan’s Benazir Income Support Programme, are one answer. Benefits withdrawn as earnings rise may discourage work.<br>
+        <b>3 · Progressive income tax, inheritance and capital taxes.</b> A rising average rate narrows post-tax incomes and funds the other policies. <i>But</i> the tax base is narrow, so revenue is small; high top rates encourage avoidance, evasion and emigration; inheritance and capital taxes have only a small overall impact.<br>
+        <b>4 · State provision.</b> Free primary education and basic health care are worth the same to every family, so they are worth far more as a share of a poor family’s income. They also build human capital, tackling a cause of inequality (14.3). <i>But</i> they are expensive, and quality is often poor in rural areas.<br>
+        <b>5 · Judgement.</b> In a lower middle-income country, state provision of education and health care, together with well-targeted cash transfers, is likely to be the most effective, because these reach informal workers whom the minimum wage and income tax miss. Progressive taxes matter mainly as a way to fund these policies — and that depends on widening the tax base and reducing corruption over time.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> every policy is analysed <b>and</b> evaluated in the stated context; the evidence is specific (South Africa, Pakistan); the judgement says which policies work best and <b>why in this kind of economy</b>, rather than listing them all as equally good.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 12-mark plan</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w2checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w2bv">0 of 6 ticked</div>
+        <div class="bar"><i id="w2bar"></i></div>
+        <div class="bd" id="w2bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+    <div class="done-banner" id="writeDone">✓ Both written tasks attempted. Redraft whichever one has the most unticked boxes, then write 3(b) in full in 25 minutes.</div>
+  </div>
+
+  <!-- ============ TAB 7 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Questions 1–6 are the coursebook’s own end-of-chapter questions. Questions 7–13 test the same ideas in Paper 1 wording, including a minimum wage diagram and a tax calculation. Read the explanation after every answer, including the ones you get right.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone"></div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 3.3 · Coursebook Chapter 14</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 7 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('3.3', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,gini:false,minw:false,sim:false,chain:false,write:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 3.3 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function fmt(n,dp){ dp=dp===undefined?0:dp; return Number(n).toLocaleString('en-GB',{minimumFractionDigits:dp,maximumFractionDigits:dp}); }
+function sgn(n,dp){ return (n>=0?'+':'−')+fmt(Math.abs(n),dp); }
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+/* ================= DIAGRAM ENGINE (same as 3.2) =================
+   Every diagram uses a 0–100 quantity axis and a 0–100 price axis.
+   A straight line is stored as {m, c}:  P = 50 + m(Q − 50) + c          */
+const FONT='font-family="Lato,sans-serif"';
+const C={D:'#D63864',S:'#008BCC',S1:'#002F6C',ctrl:'#FF8F1C',gap:'#6B4E9E',sub:'#28A745',ink:'#1A2B3C',guide:'#8098B0'};
+function clip(m,c){
+  const f=q=>50+m*(q-50)+c, pts=[];
+  [0,100].forEach(q=>{ const p=f(q); if(p>=-1e-9&&p<=100+1e-9) pts.push([q,p]); });
+  if(Math.abs(m)>1e-9) [0,100].forEach(p=>{ const q=50+(p-50-c)/m; if(q>=-1e-9&&q<=100+1e-9) pts.push([q,p]); });
+  if(pts.length<2) return null;
+  pts.sort((a,b)=>a[0]-b[0]);
+  return [pts[0],pts[pts.length-1]];
+}
+function frame(w,h,pl,pr,pt,pb){
+  const F={w:w,h:h,pl:pl,pb:pb};
+  F.X=q=>pl+(w-pl-pr)*q/100;
+  F.Y=p=>h-pb-(h-pt-pb)*p/100;
+  F.pOf=(svg,clientY)=>{ const r=svg.getBoundingClientRect(); const sy=(clientY-r.top)*(h/r.height); return (h-pb-sy)/(h-pt-pb)*100; };
+  F.axes=(xn,yn,fs)=>{ fs=fs||12;
+    return '<line x1="'+pl+'" y1="'+pt+'" x2="'+pl+'" y2="'+(h-pb)+'" stroke="'+C.ink+'" stroke-width="1.6"/>'+
+    '<line x1="'+pl+'" y1="'+(h-pb)+'" x2="'+(w-pr)+'" y2="'+(h-pb)+'" stroke="'+C.ink+'" stroke-width="1.6"/>'+
+    '<text x="'+(pl-8)+'" y="'+(h-pb+14)+'" font-size="'+fs+'" text-anchor="end" fill="'+C.ink+'" '+FONT+'>O</text>'+
+    (xn?'<text x="'+((pl+w-pr)/2)+'" y="'+(h-5)+'" font-size="'+fs+'" text-anchor="middle" fill="#456080" '+FONT+'>'+xn+'</text>':'')+
+    (yn?'<text x="'+(fs+3)+'" y="'+((pt+h-pb)/2)+'" font-size="'+fs+'" text-anchor="middle" fill="#456080" transform="rotate(-90 '+(fs+3)+' '+((pt+h-pb)/2)+')" '+FONT+'>'+yn+'</text>':'');
+  };
+  F.line=(m,c,col,sw,extra)=>{ const s=clip(m,c); if(!s) return '';
+    return '<line x1="'+F.X(s[0][0])+'" y1="'+F.Y(s[0][1])+'" x2="'+F.X(s[1][0])+'" y2="'+F.Y(s[1][1])+'" stroke="'+col+'" stroke-width="'+(sw||2.6)+'" stroke-linecap="round"'+(extra||'')+'/>'; };
+  F.end=(m,c)=>{ const s=clip(m,c); return s?s[1]:[100,50]; };
+  F.start=(m,c)=>{ const s=clip(m,c); return s?s[0]:[0,50]; };
+  F.dash=(q1,p1,q2,p2,col)=>'<line x1="'+F.X(q1)+'" y1="'+F.Y(p1)+'" x2="'+F.X(q2)+'" y2="'+F.Y(p2)+'" stroke="'+(col||C.guide)+'" stroke-dasharray="4 4"/>';
+  F.rect=(qa,qb,pa,pb2,fill)=>{ const x1=F.X(Math.min(qa,qb)), x2=F.X(Math.max(qa,qb)), y1=F.Y(Math.max(pa,pb2)), y2=F.Y(Math.min(pa,pb2));
+    return '<rect x="'+x1+'" y="'+y1+'" width="'+Math.max(0,x2-x1)+'" height="'+Math.max(0,y2-y1)+'" fill="'+fill+'"/>'; };
+  F.poly=(pts,fill,extra)=>'<polygon points="'+pts.map(p=>F.X(p[0])+','+F.Y(p[1])).join(' ')+'" fill="'+fill+'"'+(extra||'')+'/>';
+  F.path=(pts,col,sw,extra)=>'<polyline points="'+pts.map(p=>F.X(p[0])+','+F.Y(p[1])).join(' ')+'" fill="none" stroke="'+col+'" stroke-width="'+(sw||2.6)+'" stroke-linejoin="round" stroke-linecap="round"'+(extra||'')+'/>';
+  F.dot=(q,p,col,r)=>'<circle cx="'+F.X(q)+'" cy="'+F.Y(p)+'" r="'+(r||4.5)+'" fill="'+(col||C.S1)+'"/>';
+  F.ring=(q,p,col)=>'<circle cx="'+F.X(q)+'" cy="'+F.Y(p)+'" r="5" fill="#fff" stroke="'+(col||C.guide)+'" stroke-width="2"/>';
+  F.pLbl=(p,t,col)=>lbl(pl-6,F.Y(p)+4,t,{a:'end',c:col,s:11.5});
+  F.qLbl=(q,t,col,dy)=>lbl(F.X(q),h-pb+15+(dy||0),t,{c:col,s:11.5});
+  return F;
+}
+function lbl(x,y,t,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" font-size="'+(o.s||12)+'" text-anchor="'+(o.a||'middle')+'" fill="'+(o.c||C.ink)+'" font-weight="'+(o.w||700)+'" '+FONT+(o.extra||'')+'>'+t+'</text>'; }
+/* stack axis labels so they never overlap: arr = [[value,text,colour]] */
+function yLabels(F,arr){ let s='';
+  arr.map(a=>({y:F.Y(a[0])+4,t:a[1],c:a[2]})).sort((a,b)=>a.y-b.y).forEach((o,i,all)=>{ if(i>0 && o.y-all[i-1].y<12) o.y=all[i-1].y+12; s+=lbl(F.pl-6,o.y,o.t,{a:'end',s:11.5,c:o.c}); });
+  return s; }
+function xLabels(F,arr){ let s='';
+  arr.map(a=>({x:Math.max(F.X(0)+14,F.X(a[0])),t:a[1],c:a[2]})).sort((a,b)=>a.x-b.x).forEach((o,i,all)=>{ if(i>0 && o.x-all[i-1].x<20) o.x=all[i-1].x+20; s+=lbl(o.x,F.h-F.pb+15,o.t,{s:11.5,c:o.c}); });
+  return s; }
+const FB=frame(520,340,58,26,20,50);   /* big lab diagrams */
+const FM=frame(300,206,28,14,12,24);   /* mini / question diagrams */
+
+const RM=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TW={};
+function tween(key,ms,fn,done){
+  if(TW[key]) TW[key].stop=true;
+  const h={stop:false}; TW[key]=h;
+  if(RM||ms<=0){ fn(1); if(done) done(); return; }
+  const t0=performance.now();
+  function step(now){
+    if(h.stop) return;
+    const k=Math.min(1,(now-t0)/ms), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    fn(e);
+    if(k<1) requestAnimationFrame(step); else if(done) done();
+  }
+  requestAnimationFrame(step);
+}
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+(q.fig?'<div class="q-fig">'+q.fig+'</div>':'')+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{ el.classList.add('locked'); if(i===q.ans) el.classList.add('right'); });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+function goalTags(id,list,state){
+  document.getElementById(id).innerHTML=list.map(g=>'<span class="gi-goal'+(state[g.k]?' met':'')+'">'+(state[g.k]?'✓ ':'○ ')+g.t+'</span>').join('');
+}
+/* judgement cards: three labelled choices mapped to good / bad / both */
+function buildJudges(host, list, labels, onAnswer){
+  const done={}; let right=0;
+  list.forEach((j,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML='<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(j.icon||(i+1))+'</div><div class="q-name">'+j.t+'</div></div>'+
+      (j.stem?'<div class="q-stem">'+j.stem+'</div>':'')+
+      '<div class="choice-row">'+['good','bad','both'].map(v=>'<div class="choice" data-v="'+v+'">'+labels[v]+'</div>').join('')+'</div>'+
+      '<div class="reveal"></div>';
+    c.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+      if(done[i]) return; done[i]=true;
+      const v=ch.dataset.v, ok=v===j.ans; if(ok) right++;
+      ch.classList.add('sel-'+v);
+      const r=c.querySelector('.reveal');
+      r.innerHTML='<span class="verdict v-'+j.ans+'">'+(ok?'Yes — ':'The best answer: ')+labels[j.ans]+'</span><br>'+j.why+(j.exam?'<div class="exam-line"><b>Evaluation line:</b> '+j.exam+'</div>':'');
+      r.classList.add('show');
+      onAnswer(Object.keys(done).length, right, list.length);
+    }));
+    host.appendChild(c);
+  });
+}
+/* generic drag-sort checker (bins with data-bin, cards with data-bin) */
+function checkSort(container, poolId, scoreId, total){
+  let correct=0, placed=0;
+  container.querySelectorAll('.bin').forEach(bin=>{
+    bin.querySelectorAll('.item-card').forEach(el=>{
+      placed++; const ok=el.dataset.bin===bin.dataset.bin;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok); if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById(scoreId);
+  if(placed<total){ sc.textContent='Sort all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; return false; }
+  if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; return true; }
+  sc.textContent=correct+' / '+total+' correct — move the pink ones'; sc.style.color='#002F6C'; return false;
+}
+
+/* ================= TAB 1 — KEY TERMS ================= */
+const TERMS=[
+ {id:'t1', term:'Income',            def:'A flow of payments to the owners of factors of production over a period of time — wages, rent, interest and profit.'},
+ {id:'t2', term:'Wealth',            def:'The stock of assets built up over time, such as property, shares, businesses and gold.'},
+ {id:'t3', term:'Gini coefficient',  def:'A number from 0 to 1 that measures how unequally income is distributed in an economy.'},
+ {id:'t4', term:'Minimum wage',      def:'The lowest rate of pay per hour (or per day) that an employer is legally allowed to pay a worker.'},
+ {id:'t5', term:'Transfer payment',  def:'A payment from tax revenue to groups such as the elderly or unemployed, for which nothing is produced in return.'},
+ {id:'t6', term:'Progressive tax',   def:'A tax whose average rate rises as income rises, so higher earners pay a larger percentage of their income.'},
+ {id:'t7', term:'Regressive tax',    def:'A tax that takes a larger percentage of income from people on low incomes than from people on high incomes.'},
+ {id:'t8', term:'Inheritance tax',   def:'A tax paid on wealth passed on when someone dies, above a certain value.'},
+ {id:'t9', term:'Capital tax',       def:'A tax on the financial gain made while an asset, such as property or shares, has been owned.'},
+ {id:'t10',term:'Informal economy',  def:'Economic activity that is not registered or taxed, and is largely outside labour laws.'},
+ {id:'t11',term:'Tax evasion',       def:'Deliberately and illegally not paying tax that is owed.'},
+ {id:'t12',term:'Equity',            def:'Fairness in how income and wealth are distributed — which is not the same as everyone having equal shares.'},
+];
+let termsOK=false, fsOK=false;
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{ const d=document.createElement('div'); d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def; pool.appendChild(d); });
+  TERMS.forEach(t=>{ const s=document.createElement('div'); s.className='aim-slot'; s.dataset.aim=t.id; s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>'; slots.appendChild(s); });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++; const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok); if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; if(!termsOK){ termsOK=true; trk('Match: Key terms', correct+'/'+total+' correct'); termsCheck(); } }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+const FS=[
+ {t:'A monthly salary',b:'inc'},{t:'Rent received each month from a shophouse',b:'inc'},{t:'Dividends paid this year on shares',b:'inc'},
+ {t:'Interest earned on savings over a year',b:'inc'},{t:'This year’s profit from a family business',b:'inc'},{t:'A year-end bonus',b:'inc'},
+ {t:'A shophouse in Nonthaburi',b:'wea'},{t:'A portfolio of shares on the Stock Exchange of Thailand',b:'wea'},{t:'The balance in a savings account today',b:'wea'},
+ {t:'The family business itself',b:'wea'},{t:'A plot of inherited land in Isan',b:'wea'},{t:'A gold necklace',b:'wea'}
+];
+function buildFS(){
+  document.querySelectorAll('#panel-terms .bin .bin-drop').forEach(b=>b.innerHTML='');
+  const pool=document.getElementById('pool-fs'); pool.innerHTML='';
+  shuffle([...FS]).forEach(x=>{ const d=document.createElement('div'); d.className='item-card'; d.dataset.bin=x.b; d.textContent=x.t; pool.appendChild(d); });
+  document.getElementById('score-fs').textContent='';
+}
+function checkFS(){
+  if(checkSort(document.getElementById('panel-terms'),'pool-fs','score-fs',FS.length) && !fsOK){ fsOK=true; trk('Sort: income or wealth', FS.length+'/'+FS.length+' correct'); termsCheck(); }
+}
+function termsCheck(){
+  if(termsOK && fsOK && !DONE.terms){
+    const b=document.getElementById('termsDone');
+    b.innerHTML='✓ Both done. The pairs to remember: the shophouse is wealth, the rent it earns is income; the shares are wealth, the dividends are income. Taxing the flow (income tax) and taxing the stock (inheritance and property taxes) are different policies — you will sort them in Activity 4.';
+    b.classList.add('show'); mark('terms');
+  }
+}
+buildTerms(); buildFS();
+document.getElementById('ctxBtn').addEventListener('click',()=>{
+  const box=document.getElementById('ctxBox'), b=document.getElementById('ctxBtn');
+  if(box.value.trim().length<25){ box.focus(); b.textContent='Jot your own ideas first — then compare'; return; }
+  document.getElementById('ctxModel').classList.add('show'); b.textContent='Suggested points shown ✓'; b.disabled=true;
+});
+
+/* ================= TAB 2 — GINI EXPLORER ================= */
+/* Lorenz curve of a lognormal income distribution: L(x) = Φ(Φ⁻¹(x) − σ),  Gini = 2Φ(σ/√2) − 1.
+   Real income distributions are close to lognormal, so the shares it gives are realistic. */
+function erf(x){ const s=x<0?-1:1; x=Math.abs(x); const t=1/(1+0.3275911*x);
+  return s*(1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x)); }
+const Phi=z=>0.5*(1+erf(z/Math.SQRT2));
+function PhiInv(p){ /* Acklam's rational approximation */
+  const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.3577518672690,-30.66479806614716,2.506628277459239],
+        b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],
+        c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],
+        d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416];
+  const pl=0.02425; let q,r;
+  if(p<pl){ q=Math.sqrt(-2*Math.log(p)); return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1); }
+  if(p>1-pl){ q=Math.sqrt(-2*Math.log(1-p)); return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1); }
+  q=p-0.5; r=q*q; return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+const FL=frame(380,360,56,20,16,48);
+const LZ={g:0.35,drag:false,thai:{}};
+const lzGoals={eq:false,hi:false,half:false,drag:false,thai:false};
+const GOALS_LZ=[{k:'eq',t:'Make income perfectly equal'},{k:'hi',t:'Push the Gini to 0.60+ (Lesotho territory)'},{k:'half',t:'Poorest half gets under 20%'},{k:'drag',t:'Drag the curve'},{k:'thai',t:'Load both Thailand figures'}];
+const pOfG=g=>g<1e-4?0:Math.SQRT2*PhiInv((g+1)/2);   /* σ of the lognormal for a given Gini */
+const share=(x,s)=>x<=0?0:x>=1?1:(s<1e-6?x:Phi(PhiInv(x)-s));   /* share of income received by the poorest fraction x */
+const GDATA=[
+ {grp:'Low income economies',col:'#D63864',rows:[['Lesotho',63.2],['South Africa',62.5],['Nigeria',48.8],['Kenya',48.5],['Sri Lanka',39.2],['Bangladesh',32.1]]},
+ {grp:'Emerging economies',col:'#FF8F1C',rows:[['China',46.5],['Malaysia',46.2],['Indonesia',36.8],['Mauritius',35.9],['India',35.2],['Pakistan',30.7]]},
+ {grp:'Developed economies',col:'#008BCC',rows:[['Hong Kong',53.9],['USA',45.0],['Russia',41.2],['New Zealand',36.2],['UK',32.4],['Australia',30.3]]},
+ {grp:'Thailand (World Bank)',col:'#6B4E9E',rows:[['Thailand · income 2021',43.3],['Thailand · spending 2023',33.5]]}
+];
+let benchOn=false, lzName='';
+function nearestCountry(g){
+  let best=null,d=9;
+  GDATA.forEach(G=>G.rows.forEach(r=>{ const dd=Math.abs(r[1]/100-g); if(dd<d){ d=dd; best=r[0]; } }));
+  return d<=0.012?best:null;
+}
+function drawLZ(){
+  const F=FL, g=LZ.g, p=pOfG(g);
+  const curve=[]; for(let x=0;x<=100;x+=2) curve.push([x,100*share(x/100,p)]);
+  let s='<svg viewBox="0 0 380 360" id="svgLZ" role="img" aria-label="Lorenz curve with Gini '+g.toFixed(2)+'">';
+  s+=F.poly([[0,0],[100,100]].concat(curve.slice().reverse()),'rgba(255,143,28,.32)');
+  s+=F.poly(curve.concat([[100,0]]),'rgba(0,139,204,.20)');
+  /* grid ticks */
+  [20,40,60,80,100].forEach(v=>{
+    s+='<line x1="'+F.X(v)+'" y1="'+F.Y(0)+'" x2="'+F.X(v)+'" y2="'+(F.Y(0)+4)+'" stroke="'+C.ink+'"/>'+lbl(F.X(v),F.Y(0)+15,v,{s:10,w:400,c:'#456080'});
+    s+='<line x1="'+(F.X(0)-4)+'" y1="'+F.Y(v)+'" x2="'+F.X(0)+'" y2="'+F.Y(v)+'" stroke="'+C.ink+'"/>'+lbl(F.X(0)-7,F.Y(v)+4,v,{s:10,w:400,c:'#456080',a:'end'});
+  });
+  s+=F.axes('Cumulative % of population (poorest first)','Cumulative % of income',11.5);
+  s+='<line x1="'+F.X(0)+'" y1="'+F.Y(0)+'" x2="'+F.X(100)+'" y2="'+F.Y(100)+'" stroke="'+C.guide+'" stroke-width="2"/>';
+  s+=lbl(F.X(60)-8,F.Y(60)-8,'Line of equality',{s:10.5,c:'#456080',a:'end',extra:' transform="rotate(-43 '+(F.X(60)-8)+' '+(F.Y(60)-8)+')"'});
+  if(g>0.004) s+=F.path(curve,C.S1,3);
+  /* area labels */
+  const yA=(70+100*share(.7,p))/2;
+  if(g>0.08) s+=lbl(F.X(70),F.Y(yA)+4,'A',{s:15,c:'#7A3D00',w:900});
+  s+=lbl(F.X(80),F.Y(100*share(.8,p)/2.4)+4,'B',{s:15,c:'#00618F',w:900});
+  /* bottom-half guide */
+  const h=100*share(.5,p);
+  s+=F.dash(50,0,50,h,'#456080')+F.dash(0,h,50,h,'#456080');
+  s+=lbl(F.X(0)+5,F.Y(h)-5,'poorest 50% get '+fmt(h,1)+'%',{s:10.5,c:'#002F6C',a:'start'});
+  /* drag handle on the curve */
+  s+='<circle cx="'+F.X(50)+'" cy="'+F.Y(h)+'" r="18" fill="transparent" class="gi-handle" data-h="lz"/>';
+  s+='<circle cx="'+F.X(50)+'" cy="'+F.Y(h)+'" r="11" fill="'+C.ctrl+'" stroke="#fff" stroke-width="3" class="gi-handle" data-h="lz"/>';
+  s+='<text x="'+F.X(50)+'" y="'+(F.Y(h)+4)+'" font-size="11" text-anchor="middle" fill="#fff" font-weight="900" pointer-events="none" '+FONT+'>↕</text>';
+  s+='</svg>';
+  document.getElementById('figLZ').innerHTML=s;
+  document.querySelectorAll('#svgLZ [data-h]').forEach(el=>el.addEventListener('pointerdown',e=>{ LZ.drag=true; e.preventDefault(); }));
+
+  const nm=lzName||nearestCountry(g);
+  document.getElementById('lzTitle').textContent='A Lorenz curve'+(nm?' · '+nm:'');
+  document.getElementById('lzGv').textContent=g.toFixed(2)+'  ('+fmt(g*100,1)+'%)';
+  const b20=share(.2,p)*100, b50=share(.5,p)*100, t20=100-share(.8,p)*100, t10=100-share(.9,p)*100;
+  document.getElementById('lzRes').innerHTML=
+    '<div class="hot"><b>'+g.toFixed(2)+'</b><span>Gini = A ÷ (A + B)</span></div>'+
+    '<div><b>'+fmt(b20,1)+'%</b><span>Income of the poorest 20%</span></div>'+
+    '<div><b>'+fmt(b50,1)+'%</b><span>Income of the poorest 50%</span></div>'+
+    '<div class="warn"><b>'+fmt(t20,1)+'%</b><span>Income of the richest 20%</span></div>'+
+    '<div class="warn"><b>'+fmt(t10,1)+'%</b><span>Income of the richest 10%</span></div>'+
+    '<div class="cool"><b>'+(b20>0.05?fmt(t20/b20,1)+'×':'–')+'</b><span>Richest 20% ÷ poorest 20%</span></div>';
+  let say;
+  if(g<0.005) say='<b>Perfect equality.</b> The curve lies on the diagonal: the poorest 20% get 20% of income, the poorest 50% get 50%. Area A has vanished, so Gini = 0. No real economy is here.';
+  else if(g<0.30) say='A Gini of '+g.toFixed(2)+' is <b>low</b> by world standards — typical of Nordic and some Central European countries after taxes and transfers.';
+  else if(g<0.40) say='A Gini of '+g.toFixed(2)+' is <b>moderate</b>: the UK, India and Thailand’s spending-based figure sit here. The richest 20% still receive about '+fmt(t20/b20,1)+' times as much as the poorest 20%.';
+  else if(g<0.50) say='A Gini of '+g.toFixed(2)+' is <b>high</b>: China, Malaysia, the USA and Thailand’s income-based figure. The poorest half of the population receives only '+fmt(b50,1)+'% of income.';
+  else say='A Gini of '+g.toFixed(2)+' is <b>very high</b>: Lesotho and South Africa in Table 14.2. The richest 10% receive about '+fmt(t10,0)+'% of all income.';
+  say+=' <span style="color:var(--text-3)">(Shares come from a smooth curve, so they are approximate — real Lorenz curves have kinks.)</span>';
+  document.getElementById('lzSay').innerHTML=say;
+  document.getElementById('lzG').value=Math.round(g*100);
+  if(g<0.005) lzGoals.eq=true;
+  if(g>=0.6-1e-9) lzGoals.hi=true;
+  if(b50<20) lzGoals.half=true;
+  goalTags('goalsGini',GOALS_LZ,lzGoals); giniCheck();
+}
+function lzTo(g,name){
+  const from=LZ.g; lzName=name||'';
+  tween('lz',800,f=>{ LZ.g=from+(g-from)*f; drawLZ(); });
+}
+document.getElementById('lzG').addEventListener('input',e=>{ LZ.g=Number(e.target.value)/100; lzName=''; drawLZ(); });
+document.querySelectorAll('#lzThai .lvl').forEach(b=>b.addEventListener('click',()=>{
+  const g=Number(b.dataset.g); LZ.thai[g]=true; b.classList.add('active');
+  if(Object.keys(LZ.thai).length>=2) lzGoals.thai=true;
+  lzTo(g/100, g===43.3?'Thailand, income 2021':'Thailand, spending 2023');
+}));
+window.addEventListener('pointermove',e=>{
+  if(!LZ.drag) return;
+  const svg=document.getElementById('svgLZ'); if(!svg) return;
+  const y=clamp(FL.pOf(svg,e.clientY),3,50)/100, sig=y>=0.4999?0:-PhiInv(y);
+  LZ.g=clamp(2*Phi(sig/Math.SQRT2)-1,0,0.7); lzName=''; drawLZ();
+});
+function lzEnd(){ if(LZ.drag){ LZ.drag=false; lzGoals.drag=true; drawLZ(); } }
+window.addEventListener('pointerup',lzEnd); window.addEventListener('pointercancel',lzEnd);
+
+function drawBars(){
+  const W=520, x0=150, x1=500, rh=17, scale=v=>x0+(x1-x0)*v/70;
+  let rows=[]; GDATA.forEach(G=>{ rows.push({h:G.grp,col:G.col}); G.rows.forEach(r=>rows.push({n:r[0],v:r[1],col:G.col})); });
+  const H=rows.length*rh+30;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Bar chart of Gini coefficients from Table 14.2">';
+  [0,10,20,30,40,50,60,70].forEach(v=>{ s+='<line x1="'+scale(v)+'" y1="4" x2="'+scale(v)+'" y2="'+(H-22)+'" stroke="#E4EDF5"/>'+lbl(scale(v),H-8,v,{s:10,w:400,c:'#8098B0'}); });
+  rows.forEach((r,i)=>{
+    const y=6+i*rh;
+    if(r.h){ s+=lbl(6,y+12,r.h,{a:'start',s:11,c:r.col,w:900}); return; }
+    const above=benchOn && r.v>=45;
+    s+='<g class="iq-bar" data-g="'+r.v+'" data-n="'+r.n+'"><rect x="'+x0+'" y="'+(y+2)+'" width="'+(scale(r.v)-x0)+'" height="'+(rh-5)+'" rx="3" fill="'+r.col+'" fill-opacity="'+(benchOn&&!above?.35:.85)+'"/>'+
+       lbl(x0-6,y+12,r.n,{a:'end',s:11,w:400,c:'#1A2B3C'})+lbl(scale(r.v)+4,y+12,fmt(r.v,1),{a:'start',s:10.5,c:'#456080'})+
+       '<rect x="0" y="'+y+'" width="'+W+'" height="'+rh+'" fill="transparent"/></g>';
+  });
+  if(benchOn) s+='<line x1="'+scale(45)+'" y1="2" x2="'+scale(45)+'" y2="'+(H-22)+'" stroke="#002F6C" stroke-width="2" stroke-dasharray="6 4"/>'+lbl(scale(45)+4,14,'45% benchmark',{a:'start',s:10.5,c:'#002F6C'});
+  s+='</svg>';
+  document.getElementById('figBars').innerHTML=s;
+  document.querySelectorAll('#figBars .iq-bar').forEach(b=>b.addEventListener('click',()=>{
+    const g=Number(b.dataset.g), n=b.dataset.n;
+    if(n.indexOf('Thailand')===0){ LZ.thai[g]=true; if(Object.keys(LZ.thai).length>=2) lzGoals.thai=true; }
+    lzTo(g/100,n);
+    document.getElementById('figLZ').scrollIntoView({behavior:'smooth',block:'center'});
+  }));
+}
+document.getElementById('benchBtn').addEventListener('click',e=>{ benchOn=!benchOn; e.target.classList.toggle('gm-on',benchOn); e.target.textContent=benchOn?'Hide the 45% benchmark':'Show the 45% benchmark'; drawBars(); });
+drawBars(); drawLZ();
+
+let a141Done=false, readN=0, readTotal=0, readRight=0;
+buildJudges(document.getElementById('act141'),[{
+  icon:'14.1',
+  t:'Some economists argue that low-income and emerging economies have a more unequal distribution of income than developed economies, using 0.45 (45%) as a benchmark. Does the data in Table 14.2 support this view?',
+  stem:'Switch on the 45% benchmark above and count the bars on each side of the line in each group.',
+  ans:'both',
+  why:'<b>Low income:</b> 4 of 6 are above 45 (Lesotho, South Africa, Nigeria, Kenya). <b>Emerging:</b> only 2 of 6 (China, Malaysia). <b>Developed:</b> Hong Kong (53.9) is above and the USA is exactly 45.0. So the view fits the low-income group, does not fit the emerging group, and is undermined by Hong Kong and the USA.<br><b>Evaluate the data too:</b> six countries per group is a tiny sample; the figures come from different years; the groups are odd (South Africa is classed by the World Bank as upper middle-income, and Hong Kong is a city); and many lower-income countries, including India, Pakistan and Bangladesh, measure inequality from <b>spending</b> rather than income, which gives a lower Gini — compare the two Thailand bars.',
+  exam:'“The data partly supports the view: most of the low-income economies exceed 45%, but most emerging economies do not and two developed economies reach it, and the comparison is weakened by small samples, different years and different survey methods.”'
+}],{good:'Supports the view',bad:'Does not support it',both:'Partly supports it'},()=>{ a141Done=true; trk('Activity 14.1 judgement','answered'); giniCheck(); });
+
+const READ=[
+ {t:'“Botswana’s Gini is 60.5 and Tanzania’s is 37.6, so poverty must be more widespread in Botswana.”', ans:'both',
+  why:'A Gini tells you how income is <b>shared</b>, not how much there is. Botswana’s average income is several times Tanzania’s, so it may well have less poverty despite the higher Gini. This is the trap in coursebook MCQ 2, option D.'},
+ {t:'“If a country’s Gini falls from 34.0 to 32.4, its income has become more equally distributed.”', ans:'good',
+  why:'A lower Gini means a smaller area A: the Lorenz curve has moved towards the line of equality.'},
+ {t:'“Thailand’s income Gini of 43.3 means the richest 43.3% of people receive all the income.”', ans:'bad',
+  why:'The Gini is a summary of the whole distribution, not a share of people. At 0.43, the poorest half still receives roughly a fifth of income on a smooth curve.'},
+ {t:'“Thailand’s Gini was 43.3 in 2021 and 33.5 in 2023, so inequality fell by almost a quarter in two years.”', ans:'bad',
+  why:'They are different measures: 43.3 is based on household <b>income</b>, 33.5 on household <b>spending</b>. Spending is more equal than income because rich households save more, so the two cannot be compared as a trend.'},
+ {t:'“A country’s income Gini also tells you how unequally its wealth is distributed.”', ans:'bad',
+  why:'Income is a flow and wealth is a stock. Wealth is usually far more unequal than income — the coursebook’s India example has the richest 1% owning 73% of wealth. A wealth Gini is a separate calculation.'}
+];
+readTotal=READ.length;
+buildJudges(document.getElementById('readHost'),READ,{good:'True',bad:'False',both:'Can’t tell from the Gini'},(n,r)=>{
+  readN=n; readRight=r;
+  document.getElementById('readScore').textContent=n+' / '+READ.length+' answered · '+r+' right';
+  if(n===READ.length) trk('Reading the Gini', r+'/'+READ.length+' correct');
+  giniCheck();
+});
+function giniCheck(){
+  if(Object.values(lzGoals).every(Boolean) && a141Done && readN===readTotal && !DONE.gini){
+    const b=document.getElementById('giniDone');
+    b.innerHTML='✓ Every target hit, Activity 14.1 judged and all five statements read ('+readRight+'/5). Two exam habits: say whether a Gini is for <b>income</b>, <b>spending</b> or <b>wealth</b>, and never use it to make claims about poverty or average income.';
+    b.classList.add('show'); mark('gini');
+  }
+}
+
+/* ================= TAB 3 — MINIMUM WAGE LAB ================= */
+/* Labour demand: W = 50 − b(L − 50) + u     Labour supply: W = 50 + d(L − 50)
+   Monopsony: MCL = c + 2dL where c = 50 − 50d;  hires where MCL = D (MRP)
+   Scale: 1 wage unit = ฿6.8 a day (equilibrium ฿340); 1 labour unit = 8,000 workers */
+const slopeOf=e=>3*Math.pow(0.4/3,e/100);
+const elWord=e=>e<20?'very inelastic':e<42?'inelastic':e<=58?'middling':e<80?'elastic':'very elastic';
+const WK=6.8, LK=8;
+const MWPRE={
+ fig:{icon:'📘',name:'Coursebook Fig 14.3',eD:50,eS:50},
+ gar:{icon:'🏭',name:'Export garment factories',eD:86,eS:55},
+ hos:{icon:'🏥',name:'Hospital support staff',eD:10,eS:40}
+};
+const MW={mode:'comp',p:60,eD:50,eS:50,pre:'fig',gain:false,prod:false,pf:0,inf:0,drag:false};
+const mwGoals={none:false,u100:false,bill:false,prod:false,mono:false,inf:false};
+const GOALS_MW=[{k:'none',t:'Set a minimum wage that has no effect'},{k:'u100',t:'Cause 100,000+ unemployment'},{k:'bill',t:'Cut jobs but raise total wages'},{k:'prod',t:'Shrink job losses with the productivity effect'},{k:'mono',t:'A Level: raise employment with a minimum wage'},{k:'inf',t:'Make half of low-paid work informal'}];
+function mwCalc(){
+  const b=slopeOf(MW.eD), d=slopeOf(MW.eS), u=12*MW.pf, p=MW.p;
+  const Ls=w=>50+(w-50)/d, Ld=w=>50+(u-(w-50))/b;
+  const Lst=50+u/(b+d), Wst=50+d*u/(b+d);
+  const c0=50-50*d, mono=(uu)=>{ const L=(50+50*b+uu-c0)/(b+2*d); return {L:L,W:c0+d*L}; };
+  const M=mono(u), M0=mono(0);
+  let r={b:b,d:d,u:u,p:p,Lst:Lst,Wst:Wst,M:M,Ls:Ls,Ld:Ld};
+  if(MW.mode==='comp'){
+    r.refL=50; r.refW=50;
+    if(p<=Wst+1e-9){ r.bind=false; r.emp=Lst; r.wage=Wst; r.sup=Lst; }
+    else { r.bind=true; r.emp=clamp(Ld(p),0,100); r.sup=clamp(Ls(p),0,100); r.wage=p; }
+  } else {
+    r.refL=M0.L; r.refW=M0.W;
+    if(p<=M.W+1e-9){ r.bind=false; r.emp=M.L; r.wage=M.W; r.sup=M.L; r.zone=0; }
+    else if(p<=Wst+1e-9){ r.bind=true; r.emp=Ls(p); r.sup=r.emp; r.wage=p; r.zone=1; }
+    else { r.bind=true; r.emp=clamp(Ld(p),0,100); r.sup=clamp(Ls(p),0,100); r.wage=p; r.zone=2; }
+  }
+  r.unemp=Math.max(0,r.sup-r.emp);
+  r.bill=r.wage*WK*r.emp*LK/1000; r.bill0=r.refW*WK*r.refL*LK/1000;
+  return r;
+}
+function drawMW(){
+  const r=mwCalc(), F=FB, mono=MW.mode==='mono';
+  let s='<svg viewBox="0 0 520 340" id="svgMW" role="img" aria-label="Labour market with a minimum wage">';
+  /* winners and losers */
+  if(MW.gain && r.bind){
+    if(r.wage>r.refW+0.2) s+=F.rect(0,Math.min(r.emp,r.refL),r.refW,r.wage,'rgba(40,167,69,.30)');
+    if(r.emp<r.refL-0.2) s+=F.rect(r.emp,r.refL,0,r.refW,'rgba(214,56,100,.25)');
+    if(r.emp>r.refL+0.2) s+=F.rect(r.refL,r.emp,0,r.wage,'rgba(40,167,69,.18)');
+  }
+  s+=F.axes('Quantity of labour (thousand workers)','Wage rate (฿ per day)');
+  /* curves */
+  const showD1=MW.pf>0.02;
+  s+=F.line(-r.b,0,C.D,2.6,showD1?' stroke-opacity=".35"':'');
+  let e=F.end(-r.b,0); s+=lbl(F.X(e[0])-4,F.Y(e[1])-7,mono?'D = MRP':'D',{c:C.D,a:'end'});
+  if(showD1){ s+=F.line(-r.b,r.u,C.S1,2.8); e=F.end(-r.b,r.u); s+=lbl(F.X(e[0])-4,F.Y(e[1])-7,'D₁',{c:C.S1,a:'end'}); }
+  s+=F.line(r.d,0,C.S,2.6); e=F.end(r.d,0); s+=lbl(F.X(e[0])+(e[0]>97?-6:5),F.Y(e[1])+(e[1]>97?14:4),'S',{c:C.S,a:e[0]>97?'end':'start'});
+  if(mono){ s+=F.line(2*r.d,50*r.d,C.gap,2.4,' stroke-dasharray="8 5"'); e=F.end(2*r.d,50*r.d); s+=lbl(F.X(e[0])+(e[0]>97?-6:5),F.Y(e[1])+(e[1]>97?14:4),'MCL',{c:C.gap,a:e[0]>97?'end':'start'}); }
+  /* labels and guides */
+  const yl=[], xl=[];
+  if(!mono){
+    s+=F.ring(r.Lst,r.Wst,C.S1)+F.dash(0,r.Wst,r.Lst,r.Wst)+F.dash(r.Lst,r.Wst,r.Lst,0);
+    yl.push([r.Wst,'W']); xl.push([r.Lst,'Q']);
+  } else {
+    const ML=r.M.L, MWg=r.M.W, mrp=50-r.b*(ML-50)+r.u;
+    s+=F.dash(ML,mrp,ML,0)+F.dash(0,MWg,ML,MWg)+F.dot(ML,MWg,C.gap,4.5)+F.ring(ML,mrp,C.gap);
+    s+=F.ring(r.Lst,r.Wst,C.guide);
+    yl.push([MWg,'Wm',C.gap]); xl.push([ML,'Qm',C.gap]);
+  }
+  if(r.bind){
+    yl.push([r.p,'W₁','#7A3D00']);
+    s+=F.dash(r.emp,r.p,r.emp,0,C.S1)+F.dot(r.emp,r.p,C.S1,5);
+    xl.push([r.emp,'Q₁',C.S1]);
+    if(r.unemp>0.4){
+      s+=F.dash(r.sup,r.p,r.sup,0,C.gap);
+      s+='<line x1="'+F.X(r.emp)+'" y1="'+F.Y(r.p)+'" x2="'+F.X(r.sup)+'" y2="'+F.Y(r.p)+'" stroke="'+C.gap+'" stroke-width="7" stroke-opacity=".55"/>';
+      if(F.X(r.sup)-F.X(r.emp)>60) s+=lbl((F.X(r.emp)+F.X(r.sup))/2,F.Y(r.p)-10,'Unemployment',{c:'#3E2A66',s:11.5});
+      xl.push([r.sup,'Q₂',C.gap]);
+    }
+  }
+  s+=yLabels(F,yl)+xLabels(F,xl);
+  if(MW.gain && r.bind){
+    if(r.wage>r.refW+3 && r.emp>14) s+=lbl(F.X(Math.min(r.emp,r.refL)/2),(F.Y(r.refW)+F.Y(r.wage))/2+4,'pay rise',{c:'#155724',s:11});
+    if(r.emp<r.refL-6) s+=lbl((F.X(r.emp)+F.X(r.refL))/2,F.Y(r.refW/2)+4,'lost',{c:'#7A0830',s:11});
+  }
+  /* minimum wage line + handle */
+  const p=r.p;
+  s+='<line x1="'+F.X(0)+'" y1="'+F.Y(p)+'" x2="'+F.X(100)+'" y2="'+F.Y(p)+'" stroke="'+C.ctrl+'" stroke-width="3"'+(r.bind?'':' stroke-dasharray="8 5"')+'/>';
+  const mwRightBusy=r.bind && r.unemp>0.4 && F.X(r.sup)>F.X(100)-200;
+  s+=lbl(F.X(100)-28,F.Y(p)+(mwRightBusy?18:-8),'Minimum wage ฿'+fmt(p*WK),{c:'#7A3D00',a:'end',s:11.5});
+  s+='<rect x="'+F.X(0)+'" y="'+(F.Y(p)-14)+'" width="'+(F.X(100)-F.X(0))+'" height="28" fill="transparent" class="gi-handle" data-h="mw"/>';
+  s+='<circle cx="'+(F.X(100)-10)+'" cy="'+F.Y(p)+'" r="11" fill="'+C.ctrl+'" stroke="#fff" stroke-width="3" class="gi-handle" data-h="mw"/>';
+  s+='<text x="'+(F.X(100)-10)+'" y="'+(F.Y(p)+4)+'" font-size="11" text-anchor="middle" fill="#fff" font-weight="900" pointer-events="none" '+FONT+'>↕</text>';
+  s+='</svg>';
+  document.getElementById('figMW').innerHTML=s;
+  document.querySelectorAll('#svgMW [data-h]').forEach(h=>h.addEventListener('pointerdown',ev=>{ MW.drag=true; ev.preventDefault(); }));
+  document.getElementById('mwTitle').textContent='The market for low-paid labour'+(mono?' · one dominant employer':'')+' · '+MWPRE[MW.pre].name;
+  document.getElementById('mwLegend').innerHTML='<span><i style="background:#D63864"></i>'+(mono?'Demand (MRP)':'Demand for labour')+'</span><span><i style="background:#008BCC"></i>Supply of labour</span>'+(mono?'<span><i style="background:#6B4E9E"></i>Marginal cost of labour</span>':'')+(showD1?'<span><i style="background:#002F6C"></i>D₁ after productivity rises</span>':'')+'<span><i style="background:#FF8F1C"></i>Minimum wage</span>'+(MW.gain?'<span><i class="blk" style="background:rgba(40,167,69,.4)"></i>Gain</span><span><i class="blk" style="background:rgba(214,56,100,.35)"></i>Wages lost</span>':'');
+  document.getElementById('mwPv').textContent='฿'+fmt(p*WK)+' a day';
+  document.getElementById('mwDv').textContent=elWord(MW.eD);
+  document.getElementById('mwSv').textContent=elWord(MW.eS);
+  document.getElementById('mwIv').textContent=MW.inf+'%';
+
+  /* readouts */
+  const dEmp=(r.emp-r.refL)*LK, billPct=(r.bill/r.bill0-1)*100, refWb=r.refW*WK;
+  document.getElementById('mwRes').innerHTML=
+    '<div class="'+(r.bind?'ok':'warn')+'"><b>'+(r.bind?'Binding':'No effect')+'</b><small>'+(r.bind?sgn((p-r.refW)/r.refW*100,0)+'% vs ฿'+fmt(refWb):'below the market wage')+'</small><span>Does it bite?</span></div>'+
+    '<div><b>'+fmt(r.emp*LK,0)+'k</b><small>'+sgn(dEmp,0)+'k</small><span>Workers employed</span></div>'+
+    '<div class="hot"><b>'+(r.unemp>0.05?fmt(r.unemp*LK,0)+'k':'None')+'</b><span>Unemployment (Q₂ − Q₁)</span></div>'+
+    '<div class="'+(billPct>=0?'cool':'bad')+'"><b>฿'+fmt(r.bill,0)+'m</b><small>'+sgn(billPct,1)+'%</small><span>Total wages paid a day</span></div>';
+  const cov=document.getElementById('mwCover');
+  if(MW.inf>0){
+    cov.classList.remove('hidden');
+    cov.innerHTML='<div class="lbl"><span>Who does the law reach?</span><span>'+(100-MW.inf)+'% covered</span></div><div class="track"><i class="f" style="width:'+(100-MW.inf)+'%"></i><i class="n" style="width:'+MW.inf+'%"></i></div><div class="key"><span><b style="background:#008BCC"></b>Formal jobs — covered</span><span><b style="background:#C8D8E8"></b>Informal — not covered</span></div>';
+  } else cov.classList.add('hidden');
+
+  /* commentary */
+  let say='';
+  if(!mono){
+    if(!r.bind) say='At ฿'+fmt(p*WK)+' the minimum wage is <b>at or below the equilibrium wage</b> of ฿'+fmt(r.Wst*WK)+', so employers already pay more. It has no effect. A minimum wage only bites when it is set <b>above</b> equilibrium.';
+    else {
+      say='At ฿'+fmt(p*WK)+' employers contract the labour they demand to Q₁ ('+fmt(r.emp*LK)+'k) while Q₂ ('+fmt(r.sup*LK)+'k) people now want work: <b>unemployment of '+fmt(r.unemp*LK)+'k</b>, the coursebook’s Q₁Q₂. ';
+      if(r.emp*LK<60) say+='That is '+fmt((p-r.refW)/r.refW*100)+'% above the market wage, and almost every job in this market disappears — employers automate, cut output or move production elsewhere. Real minimum wages are rarely set this far above the market wage for exactly this reason; the <b>level</b> matters as much as the policy.';
+      else if(r.b>1.3) say+='Demand for this labour is <b>inelastic</b> — there are few substitutes for these workers and they are a small share of costs — so jobs fall only a little and the total wage bill <b>rises</b> by '+fmt(billPct,1)+'%. Most low-paid workers gain.';
+      else if(r.b<0.8) say+='Demand for this labour is <b>elastic</b> — factories can automate or move to lower-wage countries such as Cambodia or Vietnam — so many jobs go and total wages '+(billPct<0?'<b>fall</b> by '+fmt(-billPct,1)+'%':'barely rise')+'.';
+      else say+='Total wages change by '+sgn(billPct,1)+'%. Whether low-paid workers as a group gain depends on the elasticity of demand for their labour.';
+    }
+  } else {
+    if(r.zone===0) say='A <b>monopsony</b> is a single dominant buyer of labour — one factory or plantation in a town. To hire one more worker it must raise pay for everyone, so its marginal cost of labour (MCL) lies above supply. It hires where MCL = MRP: only Qm ('+fmt(r.M.L*LK)+'k) at a low wage Wm (฿'+fmt(r.M.W*WK)+'). This minimum wage is below Wm, so it has no effect.';
+    else if(r.zone===1) say='The minimum wage makes the cost of an extra worker <b>flat at W₁</b> — hiring more no longer pushes up everyone’s pay. The employer now hires along the supply curve, so employment <b>rises</b> from Qm to Q₁ ('+sgn(dEmp)+'k) <b>and</b> the wage rises. There is no unemployment. This is the strongest theoretical case for a minimum wage.';
+    else say='Set too high, even a monopsony employer cuts jobs: above ฿'+fmt(r.Wst*WK)+' the demand (MRP) curve decides employment and unemployment appears. The <b>level</b> of the minimum wage matters.';
+  }
+  if(MW.gain && r.bind) say+=' <b>Green</b> is the extra pay of workers who keep their jobs; <b>red</b> is the wages lost by those who lose them. Poverty falls only if the green outweighs the red — and if the losers are not the poorest.';
+  if(MW.pf>0.99 && r.bind) say+=' <b>Productivity effect:</b> better-paid workers may be more motivated, quit less and be worth training, so their MRP rises and demand shifts to D₁. Fewer jobs are lost — but this is a possibility, not a certainty.';
+  if(MW.inf>0) say+=' With <b>'+MW.inf+'%</b> of low-paid work informal, the law reaches only '+(100-MW.inf)+'% of these workers: street vendors, farm labourers and family helpers are not covered at all. Just over half of all Thai workers are informal (NSO), and in South Africa 47% were paid below the new minimum in 2019.';
+  document.getElementById('mwSay').innerHTML=say;
+
+  /* goals */
+  if(!r.bind) mwGoals.none=true;
+  if(r.unemp*LK>=100) mwGoals.u100=true;
+  if(!mono && r.bind && r.bill>r.bill0+0.5 && r.emp<r.refL-0.5) mwGoals.bill=true;
+  if(MW.pf>0.99 && r.bind) mwGoals.prod=true;
+  if(mono && r.bind && r.emp>r.refL+1) mwGoals.mono=true;
+  if(MW.inf>=50 && r.bind) mwGoals.inf=true;
+  goalTags('goalsMW',GOALS_MW,mwGoals); mwCheck();
+}
+function mwPresetBtns(){
+  document.getElementById('mwPre').innerHTML=Object.keys(MWPRE).map(k=>{ const p=MWPRE[k]; return '<button class="lvl'+(MW.pre===k?' active':'')+'" data-p="'+k+'">'+p.icon+' '+p.name+'</button>'; }).join('');
+  document.querySelectorAll('#mwPre .lvl').forEach(b=>b.addEventListener('click',()=>{
+    MW.pre=b.dataset.p; mwPresetBtns();
+    const from={d:MW.eD,s:MW.eS}, to=MWPRE[MW.pre];
+    tween('mwel',900,f=>{ MW.eD=from.d+(to.eD-from.d)*f; MW.eS=from.s+(to.eS-from.s)*f; document.getElementById('mwD').value=MW.eD; document.getElementById('mwS').value=MW.eS; drawMW(); });
+  }));
+}
+function mwSetP(v){ MW.p=clamp(v,30,90); document.getElementById('mwP').value=MW.p; drawMW(); }
+document.getElementById('mwP').addEventListener('input',e=>mwSetP(Number(e.target.value)));
+document.getElementById('mwD').addEventListener('input',e=>{ MW.eD=Number(e.target.value); drawMW(); });
+document.getElementById('mwS').addEventListener('input',e=>{ MW.eS=Number(e.target.value); drawMW(); });
+document.getElementById('mwI').addEventListener('input',e=>{ MW.inf=Number(e.target.value); drawMW(); });
+document.querySelectorAll('#mwReal .lvl').forEach(b=>b.addEventListener('click',()=>{
+  const from=MW.p, to=Number(b.dataset.w)/WK;
+  tween('mwp',700,f=>mwSetP(from+(to-from)*f));
+}));
+document.querySelectorAll('#mwMode .lvl').forEach(b=>b.addEventListener('click',()=>{
+  MW.mode=b.dataset.m;
+  document.querySelectorAll('#mwMode .lvl').forEach(x=>x.classList.toggle('active',x===b));
+  const from=MW.p, to=MW.mode==='mono'?46:60;
+  tween('mwp',700,f=>mwSetP(from+(to-from)*f));
+}));
+document.querySelectorAll('#mwSw .lvl').forEach(b=>b.addEventListener('click',()=>{
+  const x=b.dataset.x; MW[x]=!MW[x]; b.classList.toggle('gm-on',MW[x]);
+  if(x==='prod'){ const from=MW.pf, to=MW.prod?1:0; tween('mwpf',1000,f=>{ MW.pf=from+(to-from)*f; drawMW(); }); }
+  else drawMW();
+}));
+window.addEventListener('pointermove',e=>{
+  if(!MW.drag) return;
+  const svg=document.getElementById('svgMW'); if(!svg) return;
+  const v=Math.round(FB.pOf(svg,e.clientY)*2)/2;
+  if(v!==MW.p) mwSetP(v);
+});
+window.addEventListener('pointerup',()=>{ MW.drag=false; });
+window.addEventListener('pointercancel',()=>{ MW.drag=false; });
+let mwQDone=false, mwQRight=0;
+function mwCheck(){
+  if(Object.values(mwGoals).every(Boolean) && mwQDone && !DONE.minw){
+    const b=document.getElementById('mwDone');
+    b.innerHTML='✓ Every target hit and all four questions answered ('+mwQRight+'/4 right first time). Your evaluation toolkit for any minimum wage question: <b>how far above equilibrium</b> it is set, the <b>elasticity of demand for labour</b>, possible <b>productivity</b> gains, <b>monopsony</b> employers, and how much work is <b>informal</b>.';
+    b.classList.add('show'); trk('Minimum Wage Lab','targets hit; '+mwQRight+'/4 check questions'); mark('minw');
+  }
+}
+function lmFig(){
+  const F=FM;
+  let s='<svg viewBox="0 0 300 206" role="img" aria-label="Labour market with a minimum wage">'+F.axes('Quantity of labour','Wage rate',10);
+  s+=F.line(-1,0,C.D,2.2)+lbl(F.X(96),F.Y(4)-6,'D',{c:C.D,a:'end',s:10});
+  s+=F.line(1,0,C.S,2.2)+lbl(F.X(97),F.Y(97)+12,'S',{c:C.S,a:'end',s:10});
+  s+='<line x1="'+F.X(0)+'" y1="'+F.Y(68)+'" x2="'+F.X(100)+'" y2="'+F.Y(68)+'" stroke="'+C.ctrl+'" stroke-width="2.2"/>';
+  s+=F.dash(0,50,50,50)+F.dash(32,68,32,0)+F.dash(50,50,50,0)+F.dash(68,68,68,0);
+  s+=F.pLbl(68,'W₁')+F.pLbl(50,'W')+F.qLbl(32,'J')+F.qLbl(50,'K')+F.qLbl(68,'L');
+  return s+'</svg>';
+}
+const MWQ=[
+ {id:'w1', icon:'?', bg:'#FF8F1C', name:'Reading Figure 14.3',
+  stem:'In the diagram, a minimum wage is set at W<sub>1</sub>. Which distance shows the unemployment it creates?', fig:lmFig(),
+  opts:['OJ','JK','JL','KL'], ans:2,
+  fb:'At W<sub>1</sub> employers want only J workers but L people want work. The excess supply of labour, JL, is unemployment — the coursebook’s Q<sub>1</sub>Q<sub>2</sub>.',
+  why:'JK is only the jobs lost (contraction of demand). KL is the extra people attracted into the labour market (extension of supply). Unemployment is both together.'},
+ {id:'w2', icon:'?', bg:'#D63864', name:'Elasticity',
+  stem:'In which case is a new minimum wage likely to cause the <b>most</b> unemployment?',
+  opts:['Demand for labour is price inelastic because there are no machines that can do the work','Demand for labour is price elastic because firms can automate or relocate abroad','The minimum wage is set below the equilibrium wage','Labour supply is perfectly inelastic'], ans:1,
+  fb:'If firms can easily replace workers or move production, a higher wage causes a large contraction in the labour they demand.',
+  why:'C has no effect at all. With perfectly inelastic supply (D) no extra people seek work, so unemployment is only the jobs lost.'},
+ {id:'w3', icon:'?', bg:'#008BCC', name:'The wage bill',
+  stem:'A minimum wage is introduced above equilibrium. When will the <b>total earnings</b> of low-paid workers rise?',
+  opts:['When demand for labour is price elastic','When demand for labour is price inelastic','Only when no worker loses a job','When the supply of labour is elastic'], ans:1,
+  fb:'Just as with total revenue and PED: if demand for labour is inelastic, the percentage fall in jobs is smaller than the percentage rise in the wage, so total wages rise.',
+  why:'C is too strong: total earnings can rise even when some jobs are lost — try the hospital preset. That is why the policy can still reduce poverty overall.'},
+ {id:'w4', icon:'?', bg:'#002F6C', name:'Low-income economies',
+  stem:'Why is a minimum wage often less effective at reducing poverty in a low-income economy than in a high-income one?',
+  opts:['Workers in low-income economies do not want higher wages','A large share of workers are informal, self-employed or in family businesses, so the law does not cover them','The minimum wage must be set below equilibrium in low-income economies','Employers in low-income economies are always monopsonies'], ans:1,
+  fb:'This is the coursebook’s main point: the law only reaches formal employees, and in many low-income countries most work is informal.',
+  why:'Evaluate it further: the minimum wage is also hard to enforce where inspectors are few, and it can push firms to hire informally to avoid it.'}
+];
+buildCards(document.getElementById('mwQ'), MWQ, r=>{ mwQDone=true; mwQRight=r; mwCheck(); });
+mwPresetBtns(); drawMW();
+
+/* ================= TAB 4 — REDISTRIBUTION SIMULATOR ================= */
+const POL_BINS=[
+ {k:'mw', n:'Minimum wage', col:'#008BCC', d:'A legal floor on pay'},
+ {k:'tr', n:'Transfer payments', col:'#28A745', d:'Money from taxes, nothing produced in return'},
+ {k:'tax',n:'Progressive income tax', col:'#FF8F1C', d:'Average rate rises with income'},
+ {k:'wea',n:'Inheritance, capital & property taxes', col:'#6B4E9E', d:'Taxes on the stock of wealth'},
+ {k:'pro',n:'State provision', col:'#D63864', d:'Essential services, often free'}
+];
+const POL=[
+ {t:'🇹🇭 Daily minimum wages set province by province, from ฿337 to ฿400',b:'mw'},
+ {t:'🇿🇦 South Africa’s national minimum wage of R20 an hour (2019)',b:'mw'},
+ {t:'🇹🇭 A monthly old-age allowance for people aged 60 and over',b:'tr'},
+ {t:'🇹🇭 The State Welfare Card: monthly credit for groceries and bills for registered low-income holders',b:'tr'},
+ {t:'🇹🇭 A monthly child support grant for young children in low-income households',b:'tr'},
+ {t:'🇹🇭 Personal income tax: the first ฿150,000 tax-free, then rates rising in steps from 5% to 35%',b:'tax'},
+ {t:'🇹🇭 A tax on inheritances worth more than ฿100 million (since 2016)',b:'wea'},
+ {t:'🇹🇭 The Land and Buildings Tax, paid each year on the value of property owned',b:'wea'},
+ {t:'🇹🇭 The Universal Coverage Scheme — the “30-baht” health care scheme',b:'pro'},
+ {t:'🇹🇭 Fifteen years of free basic education in state schools',b:'pro'},
+ {t:'🇵🇰 Pakistan’s state pensions — paid only to people who worked in the formal sector',b:'tr'}
+];
+let polOK=false;
+function buildPol(){
+  const bins=document.getElementById('bins-pol');
+  bins.innerHTML=POL_BINS.map(b=>'<div class="bin" data-bin="'+b.k+'"><div class="bin-name"><span class="bin-dot" style="background:'+b.col+'"></span>'+b.n+'</div><div class="bin-desc">'+b.d+'</div><div class="bin-drop"></div></div>').join('');
+  const pool=document.getElementById('pool-pol'); pool.innerHTML='';
+  shuffle([...POL]).forEach(x=>{ const d=document.createElement('div'); d.className='item-card'; d.dataset.bin=x.b; d.textContent=x.t; pool.appendChild(d); });
+  document.getElementById('score-pol').textContent='';
+}
+function checkPol(){
+  if(checkSort(document.getElementById('bins-pol').parentElement,'pool-pol','score-pol',POL.length) && !polOK){ polOK=true; trk('Sort: Thai redistribution policies', POL.length+'/'+POL.length+' correct'); simCheck(); }
+}
+buildPol();
+
+/* The model — ten households, one per decile, monthly market income in $ */
+const MKT=[60,110,150,200,260,330,420,560,820,1900];
+const SPEND=[1.0,0.98,0.95,0.92,0.9,0.86,0.82,0.76,0.68,0.5];     /* share of income spent */
+const FOOD =[0.5,0.45,0.42,0.38,0.34,0.3,0.26,0.22,0.16,0.08];    /* share of income spent on basic food */
+const CORE=30;     /* other public spending ($ per household per month) that must be paid for first */
+const REACH=0.6;   /* share of informal households that manage to register for cash transfers */
+const SIM0={inf:4,A:300,r:10,T:25,v:7,ex:false,X:0,tg:'bottom',P:20,mw:0};
+let SIM=Object.assign({},SIM0);
+const simGoals={m1:false,m2:false,m3:false,m4:false,m5:false,m6:false};
+const GOALS_SIM=[{k:'m1',t:'Cut the Gini below 0.40 with no deficit'},{k:'m2',t:'Raise VAT to 15%+ (food not exempt)'},{k:'m3',t:'Exempt basic food from VAT'},{k:'m4',t:'Set a top rate of 60%+'},{k:'m5',t:'Make the minimum wage reach the poorest'},{k:'m6',t:'Poorest 60% informal: still get below 0.42, no deficit'}];
+function gini(a){ const x=[...a].sort((p,q)=>p-q), t=x.reduce((s,v)=>s+v,0); let c=0,prev=0,sum=0; x.forEach(v=>{ c+=v/t; sum+=(c+prev)/x.length; prev=c; }); return 1-sum; }
+function lorenzPts(a){ const x=[...a].sort((p,q)=>p-q), t=x.reduce((s,v)=>s+v,0); let c=0; const pts=[[0,0]]; x.forEach((v,i)=>{ c+=v; pts.push([(i+1)*10,c/t*100]); }); return pts; }
+function simRun(P){
+  const r=P.r/100, T=P.T/100, v=P.v/100;
+  let itx=0, vat=0, tr=0, hidden=0, mwHit=0, rows=[];
+  MKT.forEach((m,i)=>{
+    const formal=i>=P.inf;
+    let e=m, job=0;
+    if(formal && P.mw>m){ job=Math.min(0.7,0.35*(P.mw/m-1)); e=(1-job)*P.mw+job*0.5*m; mwHit++; }
+    let tax=0;
+    if(formal){
+      const h=Math.min(0.9,1.6*Math.max(0,T-0.3))*Math.max(0,e-1000); hidden+=h;
+      const rep=e-h; tax=r*Math.max(0,Math.min(rep,1000)-P.A)+T*Math.max(0,rep-1000);
+    }
+    let t=0; if(P.tg==='all'||i<3) t=P.X*(formal?1:REACH);
+    const disp=e-tax+t;
+    const va=v*(P.ex?(SPEND[i]-FOOD[i]):SPEND[i])*disp;
+    const fin=disp-va+P.P;
+    itx+=tax; vat+=va; tr+=t;
+    rows.push({m:m,e:e,tax:tax,t:t,vat:va,fin:fin,formal:formal,job:job});
+  });
+  const fin=rows.map(x=>x.fin);
+  return {rows:rows,g0:gini(MKT),g:gini(fin),itx:itx/10,vat:vat/10,tr:tr/10,prov:P.P,
+          bal:(itx+vat-CORE*10-P.P*10-tr)/10,hidden:hidden,mwHit:mwHit,fin:fin};
+}
+const FSL=frame(380,330,52,16,14,44);
+function drawSim(){
+  const R=simRun(SIM), F=FSL;
+  /* Lorenz curves */
+  const lm=lorenzPts(MKT), lf=lorenzPts(R.fin);
+  let s='<svg viewBox="0 0 380 330" role="img" aria-label="Lorenz curves for market and final income">';
+  s+=F.poly([[0,0],[100,100]].concat(lf.slice().reverse()),'rgba(255,143,28,.28)');
+  [20,40,60,80,100].forEach(v=>{ s+=lbl(F.X(v),F.Y(0)+15,v,{s:10,w:400,c:'#456080'})+lbl(F.X(0)-7,F.Y(v)+4,v,{s:10,w:400,c:'#456080',a:'end'}); });
+  s+=F.axes('Cumulative % of households','Cumulative % of income',11);
+  s+='<line x1="'+F.X(0)+'" y1="'+F.Y(0)+'" x2="'+F.X(100)+'" y2="'+F.Y(100)+'" stroke="'+C.guide+'" stroke-width="2"/>';
+  s+=F.path(lm,'#C8A0A0',2.4,' stroke-dasharray="6 4"');
+  s+=F.path(lf,C.S1,3);
+  lf.forEach((p,i)=>{ if(i>0) s+=F.dot(p[0],p[1],C.S1,3); });
+  s+=lbl(F.X(4),F.Y(92),'Market Gini '+R.g0.toFixed(3),{a:'start',s:11.5,c:'#8A5A5A'});
+  s+=lbl(F.X(4),F.Y(84),'Final Gini '+R.g.toFixed(3),{a:'start',s:12.5,c:C.S1,w:900});
+  s+='</svg>';
+  document.getElementById('figSimLZ').innerHTML=s;
+  /* bars: % change by decile */
+  const ch=R.rows.map(x=>(x.fin/x.m-1)*100);
+  const mx=Math.max(40,...ch.map(Math.abs)), W=380, H=180, y0=H/2+4, sc=(H/2-26)/mx;
+  let b='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Percentage change in income by decile">';
+  b+='<line x1="30" y1="'+y0+'" x2="'+(W-6)+'" y2="'+y0+'" stroke="#1A2B3C" stroke-width="1.2"/>';
+  ch.forEach((v,i)=>{
+    const x=36+i*34, h=Math.abs(v)*sc, inf=!R.rows[i].formal;
+    b+='<rect x="'+x+'" y="'+(v>=0?y0-h:y0)+'" width="24" height="'+Math.max(1,h)+'" rx="2" fill="'+(v>=0?'#28A745':'#D63864')+'" fill-opacity=".85"/>';
+    b+=lbl(x+12,v>=0?y0-h-4:y0+h+11,sgn(v,0)+'%',{s:9.5,c:v>=0?'#155724':'#7A0830'});
+    b+=lbl(x+12,H-16,'D'+(i+1),{s:9.5,c:'#456080',w:inf?400:700});
+    if(inf) b+=lbl(x+12,H-5,'inf.',{s:8.5,c:'#8098B0',w:400});
+  });
+  b+=lbl(4,14,'Poorest',{a:'start',s:10,c:'#8098B0',w:400})+lbl(W-4,14,'Richest',{a:'end',s:10,c:'#8098B0',w:400});
+  b+='</svg>';
+  document.getElementById('figSimBars').innerHTML=b;
+
+  /* labels on controls */
+  const S=SIM;
+  document.getElementById('smInfV').textContent=S.inf===0?'none':'poorest '+(S.inf*10)+'%';
+  document.getElementById('smAV').textContent='$'+S.A+' a month';
+  document.getElementById('smRV').textContent=S.r+'%';
+  document.getElementById('smTV').textContent=S.T+'%';
+  document.getElementById('smVV').textContent=S.v+'%';
+  document.getElementById('smXV').textContent=S.X?'$'+S.X+' a month':'none';
+  document.getElementById('smPV').textContent='$'+S.P+' a month';
+  document.getElementById('smMwV').textContent=S.mw?'$'+S.mw+' a month':'none';
+
+  const r1=R.rows[0], r10=R.rows[9];
+  document.getElementById('smRes').innerHTML=
+    '<div><b>'+R.g0.toFixed(3)+'</b><span>Gini · market income</span></div>'+
+    '<div class="hot"><b>'+R.g.toFixed(3)+'</b><small>'+sgn((R.g-R.g0)*100,1)+' points</small><span>Gini · final income</span></div>'+
+    '<div class="'+(R.bal>=0?'ok':'bad')+'"><b>'+(R.bal>=0?'+':'−')+'$'+fmt(Math.abs(R.bal),1)+'</b><span>Budget balance per household</span></div>'+
+    '<div class="cool"><b>$'+fmt(R.itx,1)+' + $'+fmt(R.vat,1)+'</b><span>Income tax + VAT per household</span></div>'+
+    '<div><b>$'+fmt(r1.m)+' → $'+fmt(r1.fin)+'</b><span>Poorest tenth</span></div>'+
+    '<div class="warn"><b>$'+fmt(r10.m)+' → $'+fmt(r10.fin)+'</b><span>Richest tenth</span></div>';
+
+  let say=[];
+  if(S.inf>0) say.push('The poorest <b>'+(S.inf*10)+'%</b> work informally: they pay no income tax, the minimum wage does not reach them, and only '+(REACH*100)+'% of them manage to register for cash transfers.');
+  if(S.mw>0){
+    if(R.mwHit===0) say.push('Your minimum wage of $'+S.mw+' <b>reaches no one</b>: every household earning less than that works informally.');
+    else say.push('The minimum wage raises pay for '+R.mwHit+' formal household'+(R.mwHit>1?'s':'')+' earning under $'+S.mw+', but some of their workers lose jobs and fall back to informal work at half pay.');
+  }
+  if(S.v>0){ const v1=r1.vat/r1.m*100, v10=r10.vat/r10.m*100; say.push('VAT takes <b>'+fmt(v1,1)+'%</b> of the poorest tenth’s income but only <b>'+fmt(v10,1)+'%</b> of the richest tenth’s — it is <b>regressive</b>'+(S.ex?', although exempting basic food softens it':'')+'.'); }
+  if(S.T>30) say.push('At a top rate of '+S.T+'%, the richest households hide <b>$'+fmt(R.hidden)+'</b> of their income over $1,000 through avoidance, evasion and moving money abroad — so a higher rate can raise <b>less</b> revenue.');
+  if(S.P>0) say.push('Free schools and clinics worth $'+S.P+' add '+fmt(S.P/MKT[0]*100)+'% to the poorest household’s income but only '+fmt(S.P/MKT[9]*100,1)+'% to the richest’s.');
+  if(R.bal<0) say.push('<b>Deficit:</b> you are spending $'+fmt(-R.bal,1)+' per household more than you raise. You must borrow, raise taxes or cut spending.');
+  document.getElementById('smSay').innerHTML=say.join(' ');
+
+  if(R.g<0.40 && R.bal>=0) simGoals.m1=true;
+  if(S.v>=15 && !S.ex) simGoals.m2=true;
+  if(S.ex) simGoals.m3=true;
+  if(S.T>=60) simGoals.m4=true;
+  if(S.inf===0 && S.mw>MKT[0] && R.mwHit>0) simGoals.m5=true;
+  if(S.inf>=6 && R.g<0.42 && R.bal>=0) simGoals.m6=true;
+  goalTags('goalsSim',GOALS_SIM,simGoals); simCheck();
+}
+const SIMSL={smInf:'inf',smA:'A',smR:'r',smT:'T',smV:'v',smX:'X',smP:'P',smMw:'mw'};
+Object.keys(SIMSL).forEach(id=>document.getElementById(id).addEventListener('input',e=>{ SIM[SIMSL[id]]=Number(e.target.value); drawSim(); }));
+document.getElementById('smEx').addEventListener('click',e=>{ SIM.ex=!SIM.ex; e.target.classList.toggle('gm-on',SIM.ex); drawSim(); });
+document.querySelectorAll('#smTg .lvl').forEach(b=>b.addEventListener('click',()=>{ SIM.tg=b.dataset.t; document.querySelectorAll('#smTg .lvl').forEach(x=>x.classList.toggle('active',x===b)); drawSim(); }));
+function simSync(){
+  Object.keys(SIMSL).forEach(id=>document.getElementById(id).value=SIM[SIMSL[id]]);
+  document.getElementById('smEx').classList.toggle('gm-on',SIM.ex);
+  document.querySelectorAll('#smTg .lvl').forEach(x=>x.classList.toggle('active',x.dataset.t===SIM.tg));
+}
+document.getElementById('smReset').addEventListener('click',()=>{ SIM=Object.assign({},SIM0); simSync(); drawSim(); });
+const SIMQ=[
+ {id:'s1', icon:'?', bg:'#008BCC', name:'The minimum wage',
+  stem:'With the poorest 40% working informally, a minimum wage of $250 a month made no difference to the poorest households. Why?',
+  opts:['The minimum wage was set below their market income','Informal workers are not covered by minimum wage law','The poorest households pay too much VAT','Minimum wages only affect the richest households'], ans:1,
+  fb:'The law only reaches formal employees. Set the informal economy to zero and the same minimum wage lifts the bottom households — at the cost of some jobs.',
+  why:'This is the coursebook’s point about low-income and lower middle-income countries, and the 47% of South African workers paid below the new minimum.'},
+ {id:'s2', icon:'?', bg:'#D63864', name:'VAT',
+  stem:'Raising VAT increased the Gini coefficient on final income. Which explanation is correct?',
+  opts:['VAT is a direct tax on income','Low-income households spend a larger share of their income, so VAT takes a larger percentage of it','High-income households pay less VAT in total','VAT revenue is spent on the richest households'], ans:1,
+  fb:'VAT is regressive in relation to income: the poorest tenth spends all its income, the richest tenth only half.',
+  why:'C is false — the rich pay more VAT in total (more dollars), but a smaller <b>percentage</b> of income. Exempting basic food helps because food is a big share of poor households’ spending (coursebook MCQ 3).'},
+ {id:'s3', icon:'?', bg:'#FF8F1C', name:'The top rate',
+  stem:'Raising the top rate from 45% to 70% <b>reduced</b> income tax revenue in the simulator. What assumption caused this?',
+  opts:['High earners respond to very high rates by hiding, shifting or moving income','The tax-free allowance rises automatically','Informal workers stop paying income tax','VAT revenue rises instead'], ans:0,
+  fb:'The model assumes that above 30% top earners increasingly avoid or evade tax. Beyond a point, each rise in the rate shrinks the taxable income more than it raises the rate.',
+  why:'For evaluation: how strongly people actually respond is disputed, and it depends on enforcement and on how easy it is to move money or people abroad (coursebook 14.4).'}
+];
+let simQDone=false, simQRight=0;
+buildCards(document.getElementById('simQ'), SIMQ, r=>{ simQDone=true; simQRight=r; simCheck(); });
+function simCheck(){
+  if(polOK && Object.values(simGoals).every(Boolean) && simQDone && !DONE.sim){
+    const b=document.getElementById('simDone');
+    b.innerHTML='✓ Policies sorted, all six missions complete and three questions answered ('+simQRight+'/3). The lesson for Essay 3(b): where much of the economy is informal, the tools that reach everyone — <b>state provision</b> and well-targeted <b>transfers</b> — do most of the work, and taxes matter mainly as a way to <b>pay</b> for them.';
+    b.classList.add('show'); trk('Redistribution Simulator','6 missions; '+simQRight+'/3 questions'); mark('sim');
+  }
+}
+drawSim();
+
+/* ================= TAB 5 — ANALYSIS CHAINS + JUDGEMENTS ================= */
+const CHAINS=[
+ {id:'a', icon:'⚖️', bg:'#008BCC', name:'Chain A: why critics say a minimum wage causes unemployment',
+  steps:['The government sets a minimum wage above the equilibrium wage',
+         'Labour becomes more expensive, so employers contract the quantity of labour they demand',
+         'The higher wage attracts more people to look for work, so the quantity of labour supplied extends',
+         'The quantity of labour supplied exceeds the quantity demanded: there is unemployment (Q₁Q₂)',
+         'Workers who keep their jobs earn more, but those who lose their jobs earn nothing',
+         'So the effect on poverty depends on the elasticity of demand for labour and on who loses the jobs'],
+  done:'<h3>Two-sided by construction</h3><p>Steps 1–4 are Figure 14.3. Step 5 is the analysis that most answers miss: there are winners <b>and</b> losers. Step 6 turns it into evaluation by naming the condition — exactly what you explored in the lab.</p>'},
+ {id:'b', icon:'💰', bg:'#FF8F1C', name:'Chain B: how a progressive income tax redistributes income',
+  steps:['Higher slices of income are taxed at higher marginal rates',
+         'So the average rate of tax rises as income rises',
+         'High earners lose a larger percentage of their income than low earners',
+         'The gap between post-tax incomes is narrower than the gap between pre-tax incomes',
+         'The revenue can also fund transfer payments to the lowest-income households',
+         'But very high top rates may encourage avoidance, evasion or emigration, reducing the revenue raised'],
+  done:'<h3>Average, not amount</h3><p>Step 2 is the coursebook Tip: a progressive tax is defined by a rising <b>average rate</b>, not by the rich paying more dollars. Step 6 is the evaluation you saw when the top rate passed 60% in the simulator.</p>'},
+ {id:'c', icon:'🏫', bg:'#D63864', name:'Chain C: why free primary schooling reduces inequality',
+  steps:['The government provides primary education free of charge, financed by taxation',
+         'Every family receives a service worth roughly the same amount',
+         'That amount is a much larger percentage of a poor family’s income than of a rich family’s',
+         'So the distribution of final income becomes more equal straight away',
+         'Children from low-income families also gain skills — human capital — they could not otherwise afford',
+         'Their future earnings rise, narrowing inequality in the next generation, if schools are good and children stay in school'],
+  done:'<h3>Short run and long run</h3><p>Steps 1–4 are the immediate effect (coursebook: those on the lowest incomes gain most as a percentage of income). Steps 5–6 tackle a <b>cause</b> of inequality from section 14.3 — lack of investment in education — and end with the condition that makes it evaluation.</p>'}
+];
+const chainSolved={};
+function buildChain(ch){
+  const card=document.getElementById('chain-'+ch.id);
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s:s,i:i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row"><button class="btn btn-primary ch-check">Check chain</button><button class="btn btn-ghost ch-reset">Reset</button><span class="score"></span></div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{ seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render(); }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{ seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render(); });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{ const ok=Number(el.dataset.idx)===pos; el.classList.toggle('ok',ok); el.classList.toggle('no',!ok); if(ok) right++; });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved[ch.id]){ chainSolved[ch.id]=true; trk('Chain: '+ch.name,'correct'); chainCheckDone(); }
+    } else { sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C'; }
+  });
+}
+(function(){ const host=document.getElementById('chainHost'); CHAINS.forEach(ch=>{ const c=document.createElement('div'); c.className='q-card'; c.id='chain-'+ch.id; host.appendChild(c); buildChain(ch); }); })();
+const JUDGE=[
+ {t:'“A minimum wage always causes unemployment.”', ans:'both',
+  why:'Only if it is set above equilibrium <b>and</b> the market is competitive. The job losses are small when demand for labour is inelastic, can be offset by higher productivity, and with a monopsony employer a minimum wage can even <b>raise</b> employment.',
+  exam:'“Whether a minimum wage causes unemployment depends on how far above equilibrium it is set, the elasticity of demand for labour and the structure of the labour market.”'},
+ {t:'“A minimum wage is an effective way to reduce poverty in a low-income country.”', ans:'bad',
+  why:'Most of the poorest people in low-income countries are informal, self-employed or working in family businesses, so the law does not cover them; enforcement is weak; and it may push firms to hire informally. It helps low-paid formal workers, who are often not the poorest.',
+  exam:'“In a low-income economy a minimum wage mainly helps formal-sector workers; where most of the poor work informally, transfers and state provision reach them more directly.”'},
+ {t:'“Transfer payments reduce people’s incentive to work.”', ans:'both',
+  why:'Unemployment benefits that are withdrawn as soon as someone earns can discourage work (the coursebook’s opposing argument). But pensions, disability and child benefits go mostly to people who cannot or are not expected to work, and benefits can be designed to taper off gradually.',
+  exam:'“Transfer payments only weaken work incentives when they go to people able to work and are withdrawn sharply as earnings rise; for the elderly, disabled and children this concern hardly applies.”'},
+ {t:'“A progressive tax is one where people with higher incomes pay more tax.”', ans:'bad',
+  why:'That is also true of a proportional tax — 10% of ฿1 m is more than 10% of ฿100,000. The coursebook Tip: a progressive tax is one where the <b>rate</b> (the percentage of income) rises as income rises.',
+  exam:'“A tax is progressive when the average rate of tax rises as income rises, so that higher earners pay a larger proportion of their income.”'},
+ {t:'“Inheritance tax is the best way to reduce inequality of wealth.”', ans:'both',
+  why:'It targets the <b>stock</b> of wealth passed between generations, which income tax misses. But the coursebook notes that the overall impact of such taxes is small: thresholds are high (Thailand’s starts at ฿100 m), wealth can be given away before death or held in trusts and companies, and assets such as land are hard to value. Annual property taxes may raise more.',
+  exam:'“Inheritance tax tackles wealth inequality at its source, but high thresholds and avoidance mean its impact is small unless it is combined with taxes on property and capital gains.”'},
+ {t:'“Some inequality is necessary for economic growth.”', ans:'both',
+  why:'The incentive argument in the Malaysia box: rewards for effort, skill and risk encourage enterprise and efficiency. But section 14.3 says inequality is a <b>barrier</b> to growth when the poor cannot afford education, health care or credit. Both can be true: some differences in reward motivate, extreme inequality wastes talent.',
+  exam:'“A degree of inequality provides incentives, but beyond a point it holds back growth by denying the poor the education, health and credit they need to be productive.”'}
+];
+let judgeN=0, judgeRight=0;
+buildJudges(document.getElementById('judgeHost'),JUDGE,{good:'Agree',bad:'Disagree',both:'It depends'},(n,r)=>{
+  judgeN=n; judgeRight=r;
+  document.getElementById('judgeScore').textContent=n+' / '+JUDGE.length+' answered · '+r+' right';
+  if(n===JUDGE.length){ trk('Agree / disagree / depends', r+'/'+JUDGE.length+' correct'); chainCheckDone(); }
+});
+function chainCheckDone(){
+  if(CHAINS.every(c=>chainSolved[c.id]) && judgeN===JUDGE.length && !DONE.chain){
+    const b=document.getElementById('chainDone');
+    b.innerHTML='✓ All three chains built and all six claims judged ('+judgeRight+'/6). In this topic the “it depends” is nearly always one of four things: <b>elasticity</b>, the size of the <b>informal economy</b>, <b>how a policy is designed</b> (targeting, thresholds, tapering), and <b>how people respond</b> to taxes and benefits.';
+    b.classList.add('show'); mark('chain');
+  }
+}
+document.getElementById('myBtn').addEventListener('click',()=>{
+  const box=document.getElementById('myBox'), b=document.getElementById('myBtn');
+  if(box.value.trim().length<40){ box.focus(); b.textContent='Plan your own answer first — then compare'; return; }
+  document.getElementById('myModel').classList.add('show'); b.textContent='Suggested points shown ✓'; b.disabled=true;
+  trk('Think like an economist: Malaysia','plan written');
+});
+
+/* ================= TAB 6 — WRITE IT UP ================= */
+const CHECKS={
+ w1:['I defined a direct tax (on income or wealth, paid straight to the government)',
+     'I defined an indirect tax (on spending, collected by sellers)',
+     'I defined progressive by the AVERAGE RATE rising with income — not “the rich pay more”',
+     'I defined regressive by the average rate falling as income rises',
+     'I used numbers to show income tax taking a larger percentage from higher earners',
+     'I explained WHY VAT is regressive: low-income households spend a larger share of their income',
+     'I linked each tax to its effect on the distribution of income'],
+ w2:['I set the context: large informal economy, narrow tax base, evasion and corruption',
+     'I analysed at least three policies from section 14.4',
+     'I evaluated EACH policy in the context of a lower middle-income country',
+     'I used specific evidence (South Africa’s minimum wage, Pakistan’s pensions or cash transfers, the simulator)',
+     'I said what effectiveness depends on (targeting, coverage, tax revenue, administration)',
+     'I ended with a supported judgement on which policies work best, and why']
+};
+const BANDS={
+ w1:on=>on<=2?'Lower band: some knowledge. Add precise definitions of all four terms.':
+        on<=4?'Middle band. Definitions are there, but the explanation of WHY VAT is regressive or the numbers are missing.':
+        on<7?'Nearly a top-band answer. Add what you left unticked and redraft.':'Top band: defined, illustrated and explained. Now do it in 12 minutes.',
+ w2:on=>on<=2?'Lower band: a list of policies. Analyse how each one changes the distribution.':
+        on<=4?'Middle band: analysis is there, but the evaluation ignores the lower middle-income context.':
+        on<6?'Nearly top band. The missing element is usually the final judgement or the evidence.':'Top band: analysed, evaluated in context and judged. Write it out in full.'
+};
+['w1','w2'].forEach(k=>{
+  const host=document.getElementById(k+'checks');
+  CHECKS[k].forEach(txt=>{
+    const row=document.createElement('div');
+    row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{
+      row.classList.toggle('on');
+      const on=host.querySelectorAll('.chk.on').length, tot=CHECKS[k].length;
+      document.getElementById(k+'bv').textContent=on+' of '+tot+' ticked';
+      document.getElementById(k+'bar').style.width=(on/tot*100)+'%';
+      document.getElementById(k+'bd').textContent=BANDS[k](on);
+    });
+    host.appendChild(row);
+  });
+});
+const writeSeen={w1:false,w2:false};
+[['w1btn','w1model','w1'],['w2btn','w2model','w2']].forEach(([btn,mod,key])=>{
+  document.getElementById(btn).addEventListener('click',()=>{
+    const box=document.getElementById(key);
+    if(box.value.trim().length<40){ box.focus(); document.getElementById(btn).textContent='Write your own attempt first — then compare'; return; }
+    document.getElementById(mod).classList.add('show');
+    document.getElementById(btn).textContent='Model shown ✓';
+    document.getElementById(btn).disabled=true;
+    writeSeen[key]=true;
+    if(writeSeen.w1 && writeSeen.w2){ document.getElementById('writeDone').classList.add('show'); trk('Write It Up','both written tasks attempted'); mark('write'); }
+  });
+});
+
+/* ================= TAB 7 — EXAM MCQ ================= */
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1 (coursebook Q1)',
+  stem:'What is a Gini coefficient?',
+  opts:['a measure of the extent of wealth inequality in a country','a measure of the extent of income inequality in a country','the difference in income between the rich and poor in a country','the difference between a country’s average income and the international poverty line'], ans:1,
+  fb:'The coursebook defines it as a numerical measure of the extent of <b>income</b> inequality, from 0 (equal) to 1 (one person has everything).',
+  why:'C describes a gap or ratio between two groups; the Gini summarises the <b>whole</b> distribution. A Gini can be calculated for wealth, but that is not the standard meaning.'},
+ {id:'m2', icon:'2', bg:'#6B4E9E', name:'Paper 1 · Question 2 (coursebook Q2)',
+  stem:'The table shows Gini coefficients for four countries in Sub-Saharan Africa. Which statement is correct?<table class="dtable" style="max-width:380px;margin-top:8px"><tr><th>Country</th><th>Gini coefficient</th></tr><tr><td>Botswana</td><td>60.5</td></tr><tr><td>Zambia</td><td>57.5</td></tr><tr><td>Central African Republic</td><td>43.6</td></tr><tr><td>Tanzania</td><td>37.6</td></tr></table>',
+  opts:['The income distribution is more equal in Botswana than Zambia.','Tanzania has the lowest income in the group.','The income distribution is more equal in Tanzania than in the Central African Republic.','Poverty is more widespread in Botswana than in Tanzania.'], ans:2,
+  fb:'Tanzania’s Gini (37.6) is lower than the Central African Republic’s (43.6), so its income is more equally distributed.',
+  why:'A gets the direction wrong. B and D are the trap: a Gini says nothing about <b>levels</b> of income or poverty.'},
+ {id:'m3', icon:'3', bg:'#FF8F1C', name:'Paper 1 · Question 3 (coursebook Q3)',
+  stem:'A middle-income country wants a more equal distribution of income. Currently no income tax is paid on earnings below $5,000 a year; the tax rate rises more than in proportion to income above $5,000; there is a 5% general sales tax; and necessities are exempt from sales tax. Which combination will help?',
+  opts:['Increase the tax-free allowance · increase the sales tax rate','Lower the tax-free allowance · increase the number of exempt goods','Increase the top rate of income tax · lower the sales tax rate','Lower the top rate of income tax · reduce the number of exempt goods'], ans:2,
+  fb:'A higher top rate makes income tax more progressive, and a lower sales tax reduces a regressive tax. Both changes push in the same direction.',
+  why:'A and B each mix one helpful change with one harmful one. D makes both taxes less fair. You can test all four in the simulator.'},
+ {id:'m4', icon:'4', bg:'#D63864', name:'Paper 1 · Question 4 (coursebook Q4)',
+  stem:'Which of these policies would be most effective in achieving a more equal distribution of <b>wealth</b>?',
+  opts:['a progressive income tax system','an increase in the minimum wage rate','providing universal benefits','a new tax on property ownership'], ans:3,
+  fb:'Wealth is a stock of assets. Only D taxes the stock itself; A, B and C all act on the <b>flow</b> of income.',
+  why:'Watch the word in bold in every Paper 1 question: income and wealth need different policies.'},
+ {id:'m5', icon:'5', bg:'#28A745', name:'Paper 1 · Question 5 (coursebook Q5)',
+  stem:'The state provision of which of these services is <b>most</b> likely to lead to an improvement in the distribution of income in a lower middle-income country?',
+  opts:['free primary education up to 11 years','free university education','free child vaccinations','free meals for the elderly'], ans:0,
+  fb:'Almost every family, including the poorest, uses primary schools, so the benefit is worth most as a share of low incomes — and it raises the future earnings of poor children.',
+  why:'B mostly benefits better-off families, whose children are far more likely to reach university, so it can widen inequality. C and D help specific groups but do less for the distribution of income as a whole.'},
+ {id:'m6', icon:'6', bg:'#002F6C', name:'Paper 1 · Question 6 (coursebook Q6)',
+  stem:'A more equitable distribution of income and wealth is likely to lead to which of the following consequences for an economy?',
+  opts:['Rich people will leave the country.','A budget deficit is required to pay for additional government spending.','Workers will be able to retire earlier.','People will be better motivated to work harder to improve the standard of living.'], ans:3,
+  fb:'Section 14.3: inequality is a barrier to growth. When more people have a fair chance — education, health, access to credit — they have more reason to work to improve their living standards.',
+  why:'A is a possible side effect of very high tax rates, not of equity itself. B does not follow: redistribution can be financed by taxes. Notice the counter-argument in the Malaysia box — some economists say equality weakens incentives — which is why this is “likely”, not certain.'},
+ {id:'m7', icon:'7', bg:'#8098B0', name:'Paper 1 · Question 7',
+  stem:'Which of the following is an example of <b>wealth</b> rather than income?',
+  opts:['the rent received each month from a shophouse','the dividends paid this year on a holding of shares','a portfolio of shares on the Stock Exchange of Thailand','a year-end bonus'], ans:2,
+  fb:'The portfolio is a stock of assets owned at a point in time. The other three are flows received over a period.',
+  why:'A and B are the income that wealth generates — rent from property, dividends from shares.'},
+ {id:'m8', icon:'8', bg:'#FF8F1C', name:'Paper 1 · Question 8 · calculation',
+  stem:'Which tax schedule is progressive?',
+  opts:['Income $10,000 → tax $1,000; income $50,000 → tax $5,000','Income $10,000 → tax $1,000; income $50,000 → tax $4,000','Income $10,000 → tax $1,000; income $50,000 → tax $10,000','Income $10,000 → tax $2,000; income $50,000 → tax $5,000'], ans:2,
+  fb:'Average rates: A 10% → 10% (proportional); B 10% → 8% (regressive); C 10% → 20% (progressive); D 20% → 10% (regressive).',
+  why:'In every option the higher earner pays more dollars — that is exactly why “pays more tax” is not the definition.'},
+ {id:'m9', icon:'9', bg:'#6B4E9E', name:'Paper 1 · Question 9',
+  stem:'In the diagram, a minimum wage is set at W<sub>1</sub>. What is the change in employment?', fig:lmFig(),
+  opts:['a fall of JK','a fall of JL','a rise of KL','no change, because the wage is fixed by law'], ans:0,
+  fb:'Employment falls from K (equilibrium) to J, the quantity of labour employers demand at W<sub>1</sub>.',
+  why:'JL is <b>unemployment</b>, which also includes the KL extra people now looking for work. Distinguish “jobs lost” from “unemployment” in written answers too.'},
+ {id:'m10', icon:'10', bg:'#D63864', name:'Paper 1 · Question 10',
+  stem:'Why is a sales tax such as VAT usually regressive in relation to income?',
+  opts:['The tax rate is higher on goods bought by low-income households','Low-income households spend a larger proportion of their income','High-income households pay less sales tax in total','Sales taxes are paid directly to the government by consumers'], ans:1,
+  fb:'The rate is the same for everyone, but the poor spend almost all of their income, so the tax takes a larger percentage of it.',
+  why:'C is false: the rich pay more in total but a smaller <b>proportion</b>. D describes a direct tax.'},
+ {id:'m11', icon:'11', bg:'#28A745', name:'Paper 1 · Question 11',
+  stem:'Which of these is a transfer payment?',
+  opts:['the salary of a teacher in a state school','an old-age allowance paid to people aged over 60','rent paid by a shop to its landlord','the profit earned by a family business'], ans:1,
+  fb:'A transfer payment comes from tax revenue and is not a reward for producing anything in return.',
+  why:'A, C and D are all incomes paid to factors of production for a service (labour, land, enterprise).'},
+ {id:'m12', icon:'12', bg:'#002F6C', name:'Paper 1 · Question 12',
+  stem:'In a lower middle-income economy, more than half of workers are in the informal sector. Which policy is <b>least</b> likely to improve the incomes of the poorest households?',
+  opts:['free primary health care','a targeted cash transfer paid through mobile phones','an increase in the minimum wage','free school meals'], ans:2,
+  fb:'Minimum wage law covers formal employees only, so it misses the informal workers who make up most of the poorest households.',
+  why:'A, B and D can all reach informal households directly — the conclusion of the Redistribution Simulator.'},
+ {id:'m13', icon:'13', bg:'#7A0830', name:'Paper 1 · Question 13',
+  stem:'A government raises its top rate of income tax from 40% to 75%. Which outcome is <b>least</b> likely?',
+  opts:['some high earners move to countries with lower taxes','tax avoidance and evasion increase','income tax revenue from high earners rises in proportion to the rise in the rate','the distribution of post-tax income becomes more equal'], ans:2,
+  fb:'High earners respond: some reduce taxable income, avoid or evade tax, or leave. Revenue rises by much less than the rate — it may even fall.',
+  why:'A and B are the coursebook’s disincentive effects. D is likely in some form, even if the gain is smaller than expected.'}
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  const b=document.getElementById('mcqDone');
+  b.innerHTML='✓ All thirteen attempted — '+right+' / '+total+' right first time. That completes AS microeconomics: Unit 4 moves on to the macroeconomy.';
+  b.classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
+  mark('mcq');
+});
+</script>
+</body>
+</html>
