@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3.2 Methods and Effects of Government Intervention | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 3.2 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   Diagram-lab widgets keep the gi- names used on 3.1 so the two pages
+   look identical; widgets new to this page use the prefix gm-.
+   ===================================================================== */
+.hidden{display:none !important}
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.lvl:disabled{cursor:default}
+.btn:disabled,.mini-btn:disabled{opacity:.45;cursor:default}
+.lvl.gi-ok{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.lvl.gi-no{border-color:var(--red);background:var(--red-bg);color:var(--red-txt)}
+.lvl.gm-on,.lvl.gm-on:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.tab{padding:13px 12px}
+.gi-res div:last-child:nth-child(odd){grid-column:1/-1}
+
+/* ---- Diagram labs (same as 3.1) ---- */
+.gi-lab{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:start;margin-bottom:16px}
+@media(max-width:860px){.gi-lab{grid-template-columns:1fr}}
+.gi-lab .fig{margin-bottom:0;position:sticky;top:118px}
+@media(max-width:860px){.gi-lab .fig{position:static}}
+.gi-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.gi-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px}
+.gi-name:first-child{margin-top:0}
+.gi-name em{font-style:normal;font-size:12px;font-weight:700;color:var(--blue);text-align:right}
+.gi-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:10px 0 4px}
+.gi-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-sl.blue::-webkit-slider-thumb{background:var(--blue)}.gi-sl.blue::-moz-range-thumb{background:var(--blue)}
+.gi-sl.pink::-webkit-slider-thumb{background:var(--red)}.gi-sl.pink::-moz-range-thumb{background:var(--red)}
+.gi-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.gi-res{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.gi-res div{background:var(--grey-bg);border-radius:8px;padding:10px 6px;text-align:center}
+.gi-res b{display:block;font-size:16px;font-weight:900;color:var(--navy);line-height:1.2}
+.gi-res small{display:block;font-size:11px;font-weight:700;color:var(--text-2);margin-top:1px}
+.gi-res span{font-size:10.8px;color:var(--text-3)}
+.gi-res .hot{background:var(--navy)}.gi-res .hot b,.gi-res .hot small{color:#fff}.gi-res .hot span{color:#CADCFC}
+.gi-res .warn{background:var(--orange-bg)}.gi-res .warn b{color:var(--orange-txt)}
+.gi-res .ok{background:var(--green-bg)}.gi-res .ok b{color:var(--green-txt)}
+.gi-res .cool{background:#E1F1FA}.gi-res .cool b{color:#00618F}
+.gi-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.gi-say b{color:var(--navy)}
+.gi-goals{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+.gi-goal{font-size:12px;font-weight:700;border:1.5px dashed var(--grey-3);background:#fff;color:var(--text-3);border-radius:18px;padding:6px 12px;transition:.2s}
+.gi-goal.met{border-style:solid;border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.gi-handle{cursor:ns-resize;touch-action:none}
+.gi-legend{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:var(--text-2);margin-top:6px}
+.gi-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.gi-legend i.blk{height:10px}
+
+/* ---- New on 3.2 ---- */
+.gm-mode{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.gm-presets{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 2px}
+.gm-presets .lvl{font-size:12px;padding:7px 12px}
+.gm-hint{font-size:11.5px;color:var(--text-3);margin-top:6px;line-height:1.45}
+.gm-play{font-family:'Lato',sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:20px;border:1.5px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer}
+.gm-play:hover{background:#003d8a}
+.gm-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+
+/* buffer stock game */
+.gm-season{border-left:5px solid var(--blue)}
+.gm-season.dry{border-left-color:var(--orange)}
+.gm-season.wet{border-left-color:var(--green)}
+.gm-stamp{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;background:var(--grey-bg);color:var(--text-2);border-radius:12px;padding:3px 10px;margin-bottom:6px}
+.gm-ware{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;font-weight:700;color:var(--navy)}
+.gm-ware .track{flex:1;height:16px;background:var(--grey-2);border-radius:8px;overflow:hidden;position:relative}
+.gm-ware .track i{display:block;height:100%;background:linear-gradient(90deg,#C9A227,#E8C547);transition:width .6s}
+.gm-ware .track.full i{background:linear-gradient(90deg,var(--red),#F07A9A)}
+.gm-hist{margin-top:12px}
+.gm-hist svg{display:block;width:100%;height:auto}
+
+/* shift predictor */
+.gm-case{border-left:5px solid var(--navy)}
+.gm-case .gm-pair{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start}
+@media(max-width:760px){.gm-case .gm-pair{grid-template-columns:1fr}}
+.gm-mini{background:#FBFDFF;border:1px solid var(--grey-2);border-radius:8px;padding:6px}
+.gm-mini svg{display:block;width:100%;height:auto}
+.gm-mini .cap{font-size:11px;color:var(--text-3);text-align:center;margin-top:3px}
+.gm-tally{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.gm-tally div{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px 8px;text-align:center}
+.gm-tally b{display:block;font-size:20px;font-weight:900;color:var(--navy)}
+.gm-tally span{font-size:11.2px;color:var(--text-3)}
+
+.q-fig{max-width:330px;margin:0 auto 12px;background:#FBFDFF;border:1px solid var(--grey-2);border-radius:8px;padding:6px}
+.q-fig svg{display:block;width:100%;height:auto}
+.explain .reveal{display:block;background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);padding:12px 14px;margin-top:8px}
+
+/* sticky progress (same as 1.5 / 1.6 / 3.1) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (max-width:560px){.topbar{padding:0 14px}.tb-title{font-size:11.5px}.tab{padding:11px 10px;font-size:12px}
+  .tabbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 3.2 Methods and Effects of Government Intervention</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="tax">💰 Tax &amp; Subsidy Lab</div>
+  <div class="tab" data-tab="ctrl">🎯 Price Controls</div>
+  <div class="tab" data-tab="buffer">🌾 Buffer Stock Game</div>
+  <div class="tab" data-tab="shift">🔀 Shift Predictor</div>
+  <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
+  <div class="tab" data-tab="write">✍️ Write It Up</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>The government’s toolkit</h1>
+      <p>Topic 3.1 asked <b>why</b> governments intervene. Coursebook Chapter 13 asks <b>how</b> — indirect taxes, subsidies, direct provision, maximum and minimum prices, buffer stocks and information — and <b>what each method does</b> to price, quantity, consumers, producers and the government’s budget.</p>
+      <p>Match each term to its meaning first. Every lab on this page uses these words, and so do the mark schemes.</p>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+
+    <div class="sub-h">Economics in context · India taxes vegetable oil imports</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#FF8F1C">🛢️</div>
+        <div class="q-name">India plans an extra 5% tax on vegetable oil imports, using the revenue for a fund that helps its own farmers grow more oilseed.</div></div>
+      <div class="q-stem">Demand for vegetable oil in India has trebled in 20 years; home output has risen by less than a third, so imports now cost close to $10 bn a year. Discuss with a partner, jot your ideas, then compare.
+        <br><b>1</b> What micro and macro issues lie behind the plan? <b>2</b> If it works, who wins and who loses? <b>3</b> What could make it fail?</div>
+      <textarea class="write-box" id="ctxBox" placeholder="1 ... 2 ... 3 ..."></textarea>
+      <button class="mini-btn" id="ctxBtn">Show suggested points</button>
+      <div class="model" id="ctxModel">
+        <b>1 · Issues.</b> Micro: the tax is <b>ad valorem</b> (5% of the price), so it shifts the supply of imported oil up and raises the price in India. Cooking oil is a staple with price-inelastic demand, so most of the tax is likely to be passed on to consumers. Macro: a large import bill worsens the current account, and relying on a few foreign suppliers is a food-security risk.<br>
+        <b>2 · Winners and losers.</b> Winners: Indian oilseed farmers (higher demand for a close substitute, plus help from the fund) and the government (revenue). Losers: Indian households, especially low-income ones, who pay more for a necessity; food businesses; exporters in Indonesia, Malaysia, Latin America and the Black Sea region.<br>
+        <b>3 · Why it might fail.</b> Oilseed supply is price inelastic in the short run — land, seeds and yields take years to change. Demand keeps rising with population and incomes. The fund could be poorly targeted or misused, and supplier countries could retaliate. Meanwhile consumers pay more, adding to inflation.
+      </div>
+    </div>
+    <p class="tip">Keep the two kinds of indirect tax apart: a <b>specific</b> tax is a fixed amount per unit (฿ per litre), an <b>ad valorem</b> tax is a percentage of the price (Thailand’s 7% VAT, India’s 5% import tax). The Tax &amp; Subsidy Lab shows why they shift supply differently.</p>
+  </div>
+
+  <!-- ============ TAB 2 · TAX & SUBSIDY LAB ============ -->
+  <div class="panel" id="panel-tax">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Tax &amp; Subsidy Lab</div>
+      <h1>Shift the supply curve and see who really pays</h1>
+      <p>Coursebook Figures 13.2–13.5, made interactive. Choose a tax or a subsidy, set its size with the slider <b>or drag the dark S<sub>1</sub> curve</b> on the diagram, then swing the demand and supply curves with the elasticity sliders. Watch the orange (consumers) and blue (producers) shares change.</p>
+      <p>Hit all five targets (the dashed tags turn green), then answer the four check questions below the lab. Figures are illustrative.</p>
+    </div>
+    <div class="gi-goals" id="goalsTax"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft" id="txTitle">The market for sugary drinks</div><div id="figTax"></div>
+        <div class="gi-legend"><span><i style="background:#D63864"></i>Demand</span><span><i style="background:#008BCC"></i>S (before)</span><span><i style="background:#002F6C"></i>S<sub>1</sub> (after)</span><span><i class="blk" style="background:rgba(255,143,28,.45)"></i>Consumers’ share</span><span><i class="blk" style="background:rgba(0,139,204,.35)"></i>Producers’ share</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gm-mode" id="txMode">
+          <button class="lvl active" data-m="spec">Specific tax</button>
+          <button class="lvl" data-m="adv">Ad valorem tax</button>
+          <button class="lvl" data-m="sub">Subsidy</button>
+        </div>
+        <div class="write-lbl">Market (coursebook figure)</div>
+        <div class="gm-presets" id="txPre"></div>
+        <div class="gi-name"><span id="txVlbl">Tax per unit</span> <em id="txVv"></em></div>
+        <input type="range" class="gi-sl" id="txV" min="0" max="40" step="1" value="20" aria-label="Size of tax or subsidy">
+        <div class="gi-ends"><span>None</span><span>Large</span></div>
+        <div class="gi-name">Price elasticity of demand <em id="txDv"></em></div>
+        <input type="range" class="gi-sl pink" id="txD" min="0" max="100" step="1" value="52" aria-label="Price elasticity of demand">
+        <div class="gi-ends"><span>Inelastic (steep)</span><span>Elastic (flat)</span></div>
+        <div class="gi-name">Price elasticity of supply <em id="txSv"></em></div>
+        <input type="range" class="gi-sl blue" id="txS" min="0" max="100" step="1" value="45" aria-label="Price elasticity of supply">
+        <div class="gi-ends"><span>Inelastic (steep)</span><span>Elastic (flat)</span></div>
+        <div class="gm-row">
+          <button class="gm-play" id="txPlay">▶ Replay the shift</button>
+          <button class="lvl" id="txDwl">Show deadweight loss</button>
+        </div>
+        <div class="gi-res" id="txRes"></div>
+        <div class="gi-say" id="txSay"></div>
+      </div>
+    </div>
+    <div class="sub-h">Check your understanding</div>
+    <div id="taxQ"></div>
+    <div class="done-banner" id="taxDone"></div>
+  </div>
+
+  <!-- ============ TAB 3 · PRICE CONTROL LAB ============ -->
+  <div class="panel" id="panel-ctrl">
+    <div class="intro">
+      <div class="kicker">Activity 3 · Price Control Lab</div>
+      <h1>Cap the price, then deal with what happens next</h1>
+      <p>Topic 3.1 showed that a maximum price only bites <b>below</b> equilibrium and a minimum price only bites <b>above</b> it. Here you go further: who gets the scarce cooking oil (coursebook Figure 13.7), and who buys the surplus rice (Figure 13.9)? Drag the orange line on the diagram or use the slider, then try each follow-up policy.</p>
+      <p>Thailand’s Commerce Ministry keeps a list of “controlled goods” whose prices it monitors and can cap — cooking oil is a classic example. Figures are illustrative.</p>
+    </div>
+    <div class="gi-goals" id="goalsPC"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft" id="pcTitle">The market for cooking oil</div><div id="figPC"></div>
+        <div class="gi-legend"><span><i style="background:#D63864"></i>Demand</span><span><i style="background:#008BCC"></i>Supply</span><span><i style="background:#FF8F1C"></i>Price control</span><span><i style="background:#28A745"></i>S with subsidy</span><span><i style="background:#6B4E9E;height:6px"></i>Shortage / surplus</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gm-mode" id="pcMode">
+          <button class="lvl active" data-m="max">Maximum price · cooking oil</button>
+          <button class="lvl" data-m="min">Minimum price · rice</button>
+        </div>
+        <div class="gi-name"><span id="pcLbl">Maximum price</span> <em id="pcPv"></em></div>
+        <input type="range" class="gi-sl" id="pcP" min="10" max="90" step="1" value="36" aria-label="Controlled price">
+        <div class="gi-ends"><span>Low</span><span>High</span></div>
+        <div class="write-lbl" style="margin-top:14px">What happens next?</div>
+        <div class="steppick" id="pcExtras"></div>
+        <div class="gi-res" id="pcRes"></div>
+        <div class="gi-say" id="pcSay"></div>
+      </div>
+    </div>
+    <div class="sub-h">Check your understanding</div>
+    <div id="pcQ"></div>
+    <div class="done-banner" id="pcDone"></div>
+  </div>
+
+  <!-- ============ TAB 4 · BUFFER STOCK GAME ============ -->
+  <div class="panel" id="panel-buffer">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Buffer Stock Game</div>
+      <h1>Run Thailand’s Hom Mali rice buffer stock for eight seasons</h1>
+      <p>A buffer stock scheme combines a minimum and a maximum price (coursebook 13.5). Your agency wants the farm-gate price of jasmine rice to stay between a <b>floor of ฿12,000</b> and a <b>ceiling of ฿18,000</b> a tonne — the green band. Each season the weather shifts the supply curve. You decide: <b>buy</b> rice into the warehouse, <b>sell</b> rice from it, or <b>do nothing</b>.</p>
+      <p>The warehouse holds 3.0 m tonnes, storage costs ฿500 a tonne each season, and the agency starts with a ฿20 bn fund and 1.0 m tonnes in store. Watch what happens when the weather repeats itself. Figures are illustrative.</p>
+    </div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft">The market for Hom Mali rice</div><div id="figBS"></div>
+        <div class="gi-legend"><span><i style="background:#D63864"></i>Demand</span><span><i style="background:#008BCC"></i>Supply (harvest)</span><span><i style="background:#002F6C"></i>Supply reaching the market</span><span><i class="blk" style="background:rgba(40,167,69,.2)"></i>Target band</span></div>
+      </div>
+      <div>
+        <div class="q-card gm-season" id="bsCard"></div>
+        <div class="gi-ctrl">
+          <div class="gm-ware"><span>Warehouse</span><div class="track" id="bsTrack"><i id="bsBar"></i></div><span id="bsStock"></span></div>
+          <div class="gi-res" id="bsRes"></div>
+          <div class="gm-hist"><div class="write-lbl" style="margin-top:12px">Price history · grey = free market, navy = with the scheme</div><div id="bsHist"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="done-banner" id="bsDone"></div>
+    <div id="bsDebrief"></div>
+  </div>
+
+  <!-- ============ TAB 5 · SHIFT PREDICTOR ============ -->
+  <div class="panel" id="panel-shift">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Shift Predictor</div>
+      <h1>Name the method, predict the shift, watch it happen</h1>
+      <p>Nine real policies — seven from Thailand, two from the coursebook. For each, <b>step 1</b>: which method is the government using? <b>Step 2</b>: what happens on the diagram? Once you answer, the mini-diagram animates the correct shift, so you can check your picture against it.</p>
+      <p>This is the skill Paper 2 rewards: turning a news story into the right curve moving the right way.</p>
+    </div>
+    <div class="gm-tally">
+      <div><b id="spDone">0 / 9</b><span>Policies done</span></div>
+      <div><b id="spPts">0</b><span>Points (max 18)</span></div>
+      <div><b id="spAcc">–</b><span>Method accuracy</span></div>
+    </div>
+    <div id="spList"></div>
+    <div class="done-banner" id="spBanner"></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="buildShift()">Start again</button></div>
+  </div>
+
+  <!-- ============ TAB 6 · ANALYSIS & EVALUATION ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Analysis and evaluation</div>
+      <h1>Build the chain, then test the claim</h1>
+      <p>Part A: analysis marks come from <b>linked</b> steps. Click the steps of each chain in causal order. Part B: evaluation marks come from judging whether a claim is always true. Decide <b>Agree</b>, <b>Disagree</b> or <b>It depends</b>, then read the reasoning and the evaluation line you could use in an essay.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Analysis chains</div>
+    <div id="chainHost"></div>
+    <div class="sub-h">Part B · Agree, disagree or it depends? <span class="score" id="judgeScore" style="font-size:13px"></span></div>
+    <div class="sub-p">Six claims you could meet in a 12-mark question. Watch for <b>always</b>, <b>only</b> and <b>best</b>.</div>
+    <div id="judgeHost"></div>
+    <div class="done-banner" id="chainDone"></div>
+  </div>
+
+  <!-- ============ TAB 7 · WRITE IT UP ============ -->
+  <div class="panel" id="panel-write">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Paper 2 style</div>
+      <h1>Turn the diagrams into written analysis and evaluation</h1>
+      <p>Two written tasks: an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis) and a 12-mark <b>discuss</b> answer (which also needs AO3 — evaluation). Type your answer first, then compare it with the model. Nothing you type is stored.</p>
+      <p>Full command-word guidance is on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">With the help of a diagram, explain how the price elasticity of demand for a product affects the incidence of a specific indirect tax. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Plan before you write. Define a specific tax and incidence, show the shift of supply, then compare an <b>inelastic</b> case (fuel) with an <b>elastic</b> case. Use the Tax &amp; Subsidy Lab presets for Figures 13.3a and 13.3b as your two diagrams.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:160px" placeholder="A specific tax is..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> A specific tax is a fixed amount charged on each unit sold, such as ฿5 a litre on diesel. The <b>incidence</b> of the tax is how its burden is shared between consumers and producers. Because the seller must pay the tax to the government, the supply curve shifts vertically upwards by the amount of the tax, from S to S<sub>1</sub>, and the two curves are parallel. The market price rises from P to P<sub>1</sub>, but by less than the tax; the producer keeps only P<sub>2</sub>, which is P<sub>1</sub> minus the tax. Consumers bear P<sub>1</sub> − P per unit and producers bear P − P<sub>2</sub>. How the burden is split depends on price elasticity of demand. When demand is <b>price inelastic</b>, as for diesel, buyers have few substitutes and keep buying as the price rises, so sellers can pass most of the tax on: P<sub>1</sub> rises almost by the full tax, quantity falls only a little and consumers bear most of the burden (Figure 13.3a). When demand is <b>price elastic</b>, as for one brand of bubble tea, consumers switch away when the price rises, so sellers cannot raise the price much without losing sales; they absorb most of the tax and the quantity falls sharply (Figure 13.3b). This explains why governments tax goods with inelastic demand, such as fuel and tobacco: the quantity falls little, so tax revenue is large and fairly predictable.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> both terms are defined; the diagram is described in the text (S, S<sub>1</sub>, P, P<sub>1</sub>, P<sub>2</sub>); the shares are identified precisely; the explanation says <b>why</b> elasticity matters (substitutes, switching), not just that it does; it compares two contrasting cases and ends with an applied point about revenue.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 7 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
+        <div class="q-name">Discuss whether a subsidy is a better way than a maximum price for a government to keep an essential good, such as diesel or cooking oil, affordable. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
+      <div class="q-stem">A 12-mark <b>discuss</b> question needs two-sided analysis and a supported judgement. Plan in note form — four or five bullet points — then compare with the model plan. The Price Control Lab’s “clear the shortage with a subsidy” button is the diagram for this question.</div>
+      <div class="write-lbl">Your plan</div>
+      <textarea class="write-box" id="w2" style="min-height:140px" placeholder="Case for a subsidy: ...&#10;Case for a maximum price: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
+      <button class="mini-btn" id="w2btn">Compare with a model plan</button>
+      <div class="model" id="w2model">
+        <b>Model plan.</b><br>
+        <b>1 · Maximum price.</b> Set below equilibrium, it lowers the price at no direct cost to the budget, so buyers who obtain the good gain. But quantity demanded extends while quantity supplied contracts: a shortage (Figure 13.7). The good must be allocated by queues or rationing, and an informal market develops at prices above the ceiling, so many low-income households may not benefit at all.<br>
+        <b>2 · Subsidy.</b> Paid to producers, it lowers their costs and shifts supply to the right, so the price falls <b>and</b> the quantity rises — there is no shortage. Set at the right size, it can deliver the same low price as a ceiling while clearing the market (the combination in coursebook MCQ 1). The benefit is shared between consumers and producers.<br>
+        <b>3 · Costs of the subsidy.</b> It is paid from tax revenue, so it has an opportunity cost, and it is a “blanket” payment: rich households that use more diesel or oil gain more in total. It removes the incentive for inefficient producers to cut costs. Evidence: Thailand’s Oil Fuel Fund held diesel prices down in 2022 and ran up a deficit of more than ฿100 bn.<br>
+        <b>4 · It depends on.</b> The government’s budget and its other spending priorities; the price elasticities (the more elastic demand is, the more of a subsidy goes to producers); whether the price rise is temporary or permanent; whether low-income households can be targeted directly instead.<br>
+        <b>5 · Judgement.</b> A subsidy is better than a maximum price for a <b>temporary</b> price shock to an essential good, because it keeps supply flowing and avoids shortages and informal markets. For a permanent rise it becomes a large, poorly targeted drain on the budget, and a targeted cash transfer to low-income households is likely to be better than either.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> each method is analysed with its diagram; the costs are specific (shortage, informal market, opportunity cost, poor targeting); the evidence is real; the judgement says <b>when</b> each method wins rather than sitting on the fence.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 12-mark plan</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w2checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w2bv">0 of 6 ticked</div>
+        <div class="bar"><i id="w2bar"></i></div>
+        <div class="bd" id="w2bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+    <div class="done-banner" id="writeDone">✓ Both written tasks attempted. Redraft whichever one has the most unticked boxes, then try writing the 12-mark answer in full in 20 minutes.</div>
+  </div>
+
+  <!-- ============ TAB 8 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 8 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Questions 1–6 are the coursebook’s own end-of-chapter questions, with their diagrams. Questions 7–11 test the same ideas in Paper 1 wording, including two calculations. Read the explanation after every answer, including the ones you get right.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone"></div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 3.2 · Coursebook Chapter 13</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 8 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('3.2', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,tax:false,ctrl:false,buffer:false,shift:false,chain:false,write:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 3.2 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function fmt(n,dp){ dp=dp===undefined?0:dp; return Number(n).toLocaleString('en-GB',{minimumFractionDigits:dp,maximumFractionDigits:dp}); }
+function sgn(n,dp){ return (n>=0?'+':'−')+fmt(Math.abs(n),dp); }
+
+/* ================= DIAGRAM ENGINE =================
+   Every diagram uses a 0–100 quantity axis and a 0–100 price axis.
+   A straight line is stored as {m, c}:  P = 50 + m(Q − 50) + c
+   so every market starts at equilibrium Q = 50, P = 50 and the
+   elasticity sliders swing the curves around that point.          */
+const FONT='font-family="Lato,sans-serif"';
+const C={D:'#D63864',S:'#008BCC',S1:'#002F6C',ctrl:'#FF8F1C',gap:'#6B4E9E',sub:'#28A745',ink:'#1A2B3C',guide:'#8098B0'};
+function clip(m,c){
+  const f=q=>50+m*(q-50)+c, pts=[];
+  [0,100].forEach(q=>{ const p=f(q); if(p>=-1e-9&&p<=100+1e-9) pts.push([q,p]); });
+  if(Math.abs(m)>1e-9) [0,100].forEach(p=>{ const q=50+(p-50-c)/m; if(q>=-1e-9&&q<=100+1e-9) pts.push([q,p]); });
+  if(pts.length<2) return null;
+  pts.sort((a,b)=>a[0]-b[0]);
+  return [pts[0],pts[pts.length-1]];
+}
+function frame(w,h,pl,pr,pt,pb){
+  const F={w:w,h:h};
+  F.X=q=>pl+(w-pl-pr)*q/100;
+  F.Y=p=>h-pb-(h-pt-pb)*p/100;
+  F.pOf=(svg,clientY)=>{ const r=svg.getBoundingClientRect(); const sy=(clientY-r.top)*(h/r.height); return (h-pb-sy)/(h-pt-pb)*100; };
+  F.axes=(xn,yn,fs)=>{ fs=fs||12;
+    return '<line x1="'+pl+'" y1="'+pt+'" x2="'+pl+'" y2="'+(h-pb)+'" stroke="'+C.ink+'" stroke-width="1.6"/>'+
+    '<line x1="'+pl+'" y1="'+(h-pb)+'" x2="'+(w-pr)+'" y2="'+(h-pb)+'" stroke="'+C.ink+'" stroke-width="1.6"/>'+
+    '<text x="'+(pl-8)+'" y="'+(h-pb+14)+'" font-size="'+fs+'" text-anchor="end" fill="'+C.ink+'" '+FONT+'>O</text>'+
+    (xn?'<text x="'+((pl+w-pr)/2)+'" y="'+(h-5)+'" font-size="'+fs+'" text-anchor="middle" fill="#456080" '+FONT+'>'+xn+'</text>':'')+
+    (yn?'<text x="'+(fs+3)+'" y="'+((pt+h-pb)/2)+'" font-size="'+fs+'" text-anchor="middle" fill="#456080" transform="rotate(-90 '+(fs+3)+' '+((pt+h-pb)/2)+')" '+FONT+'>'+yn+'</text>':'');
+  };
+  F.line=(m,c,col,sw,extra)=>{ const s=clip(m,c); if(!s) return '';
+    return '<line x1="'+F.X(s[0][0])+'" y1="'+F.Y(s[0][1])+'" x2="'+F.X(s[1][0])+'" y2="'+F.Y(s[1][1])+'" stroke="'+col+'" stroke-width="'+(sw||2.6)+'" stroke-linecap="round"'+(extra||'')+'/>'; };
+  F.end=(m,c)=>{ const s=clip(m,c); return s?s[1]:[100,50]; };
+  F.dash=(q1,p1,q2,p2,col)=>'<line x1="'+F.X(q1)+'" y1="'+F.Y(p1)+'" x2="'+F.X(q2)+'" y2="'+F.Y(p2)+'" stroke="'+(col||C.guide)+'" stroke-dasharray="4 4"/>';
+  F.rect=(qa,qb,pa,pb,fill)=>{ const x1=F.X(Math.min(qa,qb)), x2=F.X(Math.max(qa,qb)), y1=F.Y(Math.max(pa,pb)), y2=F.Y(Math.min(pa,pb));
+    return '<rect x="'+x1+'" y="'+y1+'" width="'+Math.max(0,x2-x1)+'" height="'+Math.max(0,y2-y1)+'" fill="'+fill+'"/>'; };
+  F.poly=(pts,fill)=>'<polygon points="'+pts.map(p=>F.X(p[0])+','+F.Y(p[1])).join(' ')+'" fill="'+fill+'"/>';
+  F.dot=(q,p,col,r)=>'<circle cx="'+F.X(q)+'" cy="'+F.Y(p)+'" r="'+(r||4.5)+'" fill="'+(col||C.S1)+'"/>';
+  F.ring=(q,p,col)=>'<circle cx="'+F.X(q)+'" cy="'+F.Y(p)+'" r="5" fill="#fff" stroke="'+(col||C.guide)+'" stroke-width="2"/>';
+  F.pLbl=(p,t,col)=>lbl(pl-6,F.Y(p)+4,t,{a:'end',c:col,s:11.5});
+  F.qLbl=(q,t,col,dy)=>lbl(F.X(q),h-pb+15+(dy||0),t,{c:col,s:11.5});
+  return F;
+}
+function lbl(x,y,t,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" font-size="'+(o.s||12)+'" text-anchor="'+(o.a||'middle')+'" fill="'+(o.c||C.ink)+'" font-weight="'+(o.w||700)+'" '+FONT+(o.extra||'')+'>'+t+'</text>'; }
+const FB=frame(520,340,58,26,20,50);   /* big lab diagrams */
+const FM=frame(300,206,28,14,12,24);   /* mini diagrams    */
+
+/* smooth animation helper — one running tween per key */
+const RM=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TW={};
+function tween(key,ms,fn,done){
+  if(TW[key]) TW[key].stop=true;
+  const h={stop:false}; TW[key]=h;
+  if(RM||ms<=0){ fn(1); if(done) done(); return; }
+  const t0=performance.now();
+  function step(now){
+    if(h.stop) return;
+    const k=Math.min(1,(now-t0)/ms), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    fn(e);
+    if(k<1) requestAnimationFrame(step); else if(done) done();
+  }
+  requestAnimationFrame(step);
+}
+
+/* Shared MCQ card builder (same markup as 3.1, plus optional figure) */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+(q.fig?'<div class="q-fig">'+q.fig+'</div>':'')+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{
+        el.classList.add('locked');
+        if(i===q.ans) el.classList.add('right');
+      });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+function goalTags(id,list,state){
+  document.getElementById(id).innerHTML=list.map(g=>'<span class="gi-goal'+(state[g.k]?' met':'')+'">'+(state[g.k]?'✓ ':'○ ')+g.t+'</span>').join('');
+}
+
+/* ================= TAB 1 — KEY TERMS (match) ================= */
+const TERMS=[
+ {id:'t1', term:'Indirect tax',          def:'A tax on spending on goods and services, collected from sellers, which they try to pass on in higher prices.'},
+ {id:'t2', term:'Specific tax',          def:'A fixed amount charged on each unit sold, such as so many baht per litre or per packet.'},
+ {id:'t3', term:'Ad valorem tax',        def:'A tax charged as a percentage of the price, such as VAT or GST.'},
+ {id:'t4', term:'Incidence of a tax',    def:'The extent to which the burden of a tax is borne by consumers, by producers, or shared between them.'},
+ {id:'t5', term:'Subsidy',               def:'A payment by the government to producers that lowers their costs and shifts supply to the right.'},
+ {id:'t6', term:'Direct provision',      def:'The government supplies a good or service itself, free at the point of use and financed through taxation.'},
+ {id:'t7', term:'Maximum price',         def:'A legal ceiling, set below the equilibrium price, that sellers may not exceed — it causes a shortage.'},
+ {id:'t8', term:'Minimum price',         def:'A legal floor, set above the equilibrium price, below which the price may not fall — it causes a surplus.'},
+ {id:'t9', term:'Buffer stock scheme',   def:'An agency buys a product when its price is low and sells from storage when it is high, to keep the price within a band.'},
+ {id:'t10',term:'Informal market',       def:'Illegal trading at prices above a maximum price (or below a minimum price), by people the controlled market leaves unsatisfied.'},
+ {id:'t11',term:'Provision of information', def:'Warnings, labels and campaigns that correct information failure and so shift demand for merit or demerit goods.'},
+];
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{
+    const d=document.createElement('div');
+    d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def;
+    pool.appendChild(d);
+  });
+  TERMS.forEach(t=>{
+    const s=document.createElement('div');
+    s.className='aim-slot'; s.dataset.aim=t.id;
+    s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>';
+    slots.appendChild(s);
+  });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++;
+      const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+      if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; trk('Match: Key terms', correct+'/'+total+' correct'); mark('terms'); }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+buildTerms();
+document.getElementById('ctxBtn').addEventListener('click',()=>{
+  const box=document.getElementById('ctxBox'), b=document.getElementById('ctxBtn');
+  if(box.value.trim().length<25){ box.focus(); b.textContent='Jot your own ideas first — then compare'; return; }
+  document.getElementById('ctxModel').classList.add('show'); b.textContent='Suggested points shown ✓'; b.disabled=true;
+});
+
+/* ================= TAB 2 — TAX & SUBSIDY LAB ================= */
+/* slope from an elasticity slider: 0 = very inelastic (steep), 100 = very elastic (flat) */
+const slopeOf=e=>3*Math.pow(0.4/3,e/100);
+const elWord=e=>e<20?'very inelastic':e<42?'inelastic':e<=58?'middling':e<80?'elastic':'very elastic';
+const PRE={
+ diesel:{icon:'⛽',name:'Diesel',fig:'Fig 13.3a',eD:10,eS:82,title:'The market for diesel',k:0.6,unitP:'a litre',qk:1.2,unitQ:'m litres a day',rev:'฿ m a day',yName:'Price (฿ per litre)',xName:'Quantity (million litres a day)',good:'diesel'},
+ tea:{icon:'🧋',name:'Bubble tea',fig:'Fig 13.3b',eD:88,eS:14,title:'The market for one bubble-tea brand',k:1,unitP:'a cup',qk:0.4,unitQ:'k cups a day',rev:'฿ k a day',yName:'Price (฿ per cup)',xName:'Quantity (thousand cups a day)',good:'bubble tea'},
+ drink:{icon:'🥤',name:'Sugary drinks',fig:'Fig 13.2',eD:55,eS:45,title:'The market for sugary drinks',k:0.4,unitP:'a bottle',qk:0.2,unitQ:'m bottles a week',rev:'฿ m a week',yName:'Price (฿ per bottle)',xName:'Quantity (million bottles a week)',good:'sugary drinks'}
+};
+const TX={mode:'spec',v:20,eD:55,eS:45,pre:'drink',f:1,dwl:false,dragQ:null,drag:false};
+const txGoals={cons:false,prod:false,adv:false,sub:false,drag:false};
+const GOALS_TX=[{k:'cons',t:'A tax where consumers bear 75%+'},{k:'prod',t:'A tax where producers bear 75%+'},{k:'adv',t:'An ad valorem tax of 30%+'},{k:'sub',t:'Give a subsidy'},{k:'drag',t:'Drag S₁ on the diagram'}];
+function txCap(b,d){
+  if(TX.mode==='adv'){ const den=50-40*d; return den>0?Math.min(0.8,40*(b+d)/den):0.8; }
+  return Math.min(40,40*(b+d));
+}
+function txLine(size,d){
+  if(TX.mode==='spec') return {m:d,c:size};
+  if(TX.mode==='adv')  return {m:(1+size)*d,c:50*size};
+  return {m:d,c:-size};
+}
+function txCalc(){
+  const b=slopeOf(TX.eD), d=slopeOf(TX.eS), cap=txCap(b,d);
+  const want=TX.mode==='adv'?TX.v/100:TX.v;
+  const full=Math.min(want,cap), size=full*TX.f, L=txLine(size,d);
+  const x=-L.c/(b+L.m), Q1=50+x, P1=50-b*x;
+  const P2=TX.mode==='spec'?P1-size:TX.mode==='adv'?P1/(1+size):P1+size;
+  const per=Math.abs(P1-P2);
+  const cs=per>1e-6?Math.abs(P1-50)/per:0, ps=per>1e-6?Math.abs(50-P2)/per:0;
+  return {b:b,d:d,cap:cap,want:want,full:full,size:size,L:L,Q1:Q1,P1:P1,P2:P2,per:per,cs:cs,ps:ps,capped:want>cap+1e-9};
+}
+function txHandleQ(L){
+  for(const tp of [76,62,46]){
+    const q=50+(tp-50-L.c)/L.m;
+    if(q>=10&&q<=94) return q;
+  }
+  return Math.max(10,Math.min(94,50+(70-50-L.c)/L.m));
+}
+function drawTax(){
+  const c=txCalc(), pr=PRE[TX.pre], F=FB, k=pr.k, tax=TX.mode!=='sub';
+  const S1=c.L, sz=c.size;
+  let s='<svg viewBox="0 0 520 340" id="svgTax" role="img" aria-label="'+pr.title+' with a '+(tax?'tax':'subsidy')+'">';
+  if(c.per>0.05){
+    if(tax){
+      s+=F.rect(0,c.Q1,50,c.P1,'rgba(255,143,28,.30)');
+      s+=F.rect(0,c.Q1,c.P2,50,'rgba(0,139,204,.25)');
+    } else {
+      s+=F.rect(0,c.Q1,c.P1,50,'rgba(255,143,28,.30)');
+      s+=F.rect(0,c.Q1,50,c.P2,'rgba(0,139,204,.25)');
+    }
+    if(TX.dwl){
+      s+= tax ? F.poly([[c.Q1,c.P1],[c.Q1,c.P2],[50,50]],'rgba(107,78,158,.45)')
+              : F.poly([[50,50],[c.Q1,c.P2],[c.Q1,c.P1]],'rgba(107,78,158,.45)');
+    }
+    const hC=Math.abs(F.Y(c.P1)-F.Y(50)), hP=Math.abs(F.Y(c.P2)-F.Y(50)), wd=F.X(c.Q1)-F.X(0);
+    if(hC>15&&wd>110) s+=lbl(F.X(c.Q1*0.42),(F.Y(c.P1)+F.Y(50))/2+4,'Consumers’ share',{c:'#7A3D00',s:11});
+    if(hP>15&&wd>110) s+=lbl(F.X(c.Q1*0.42),(F.Y(c.P2)+F.Y(50))/2+4,'Producers’ share',{c:'#00618F',s:11});
+  }
+  s+=F.axes(pr.xName,pr.yName);
+  /* curves */
+  s+=F.line(-c.b,0,C.D,2.6);
+  const eD=F.end(-c.b,0); s+=lbl(F.X(eD[0])-4,F.Y(eD[1])-7,'D',{c:C.D,a:'end'});
+  s+=F.line(c.d,0,C.S,2.6, sz>0.3?' stroke-opacity=".75"':'');
+  const eS=F.end(c.d,0); s+=lbl(F.X(eS[0])+(eS[0]>97?-6:5),F.Y(eS[1])+(eS[1]>97?14:4),'S',{c:C.S,a:eS[0]>97?'end':'start'});
+  if(sz>0.05){
+    s+=F.line(S1.m,S1.c,C.S1,2.8);
+    const e1=F.end(S1.m,S1.c);
+    s+=lbl(F.X(e1[0])+(e1[0]>97?-6:5),F.Y(e1[1])+(e1[1]>97?14:4),'S₁',{c:C.S1,a:e1[0]>97?'end':'start'});
+  }
+  /* guides and labels */
+  s+=F.dash(0,50,50,50)+F.dash(50,50,50,0);
+  if(c.per>0.05){
+    s+=F.dash(0,c.P1,c.Q1,c.P1)+F.dash(0,c.P2,c.Q1,c.P2)+F.dash(c.Q1,Math.max(c.P1,c.P2),c.Q1,0);
+    /* the vertical gap = tax or subsidy per unit */
+    s+='<line x1="'+F.X(c.Q1)+'" y1="'+F.Y(c.P1)+'" x2="'+F.X(c.Q1)+'" y2="'+F.Y(c.P2)+'" stroke="'+C.ctrl+'" stroke-width="4" stroke-linecap="round"/>';
+    if(Math.abs(F.Y(c.P1)-F.Y(c.P2))>16) s+=lbl(F.X(c.Q1)+7,(F.Y(c.P1)+F.Y(c.P2))/2+4,tax?'tax':'subsidy',{c:'#7A3D00',a:'start',s:11});
+    s+=F.dot(c.Q1,c.P1,C.S1);
+  }
+  s+=F.ring(50,50,C.S1);
+  /* price labels on the axis, nudged apart so they never overlap */
+  const yl=[[50,'P']];
+  if(c.per>0.05){ yl.push([c.P1,'P₁']); yl.push([c.P2,'P₂']); }
+  yl.map(a=>({y:F.Y(a[0])+4,t:a[1]})).sort((a,b)=>a.y-b.y).forEach((o,i,arr)=>{
+    if(i>0 && o.y-arr[i-1].y<12) o.y=arr[i-1].y+12;
+    s+=lbl(52,o.y,o.t,{a:'end',s:11.5});
+  });
+  s+=F.qLbl(50,'Q');
+  if(Math.abs(c.Q1-50)>=4) s+=F.qLbl(c.Q1,'Q₁');
+  /* drag handle on S1 */
+  const hq=TX.dragQ!==null?TX.dragQ:txHandleQ(S1), hp=50+S1.m*(hq-50)+S1.c;
+  if(hp>=0&&hp<=100){
+    s+='<circle cx="'+F.X(hq)+'" cy="'+F.Y(hp)+'" r="18" fill="transparent" class="gi-handle" data-h="tx" data-q="'+hq+'"/>';
+    s+='<circle cx="'+F.X(hq)+'" cy="'+F.Y(hp)+'" r="11" fill="'+C.ctrl+'" stroke="#fff" stroke-width="3" class="gi-handle" data-h="tx" data-q="'+hq+'"/>';
+    s+='<text x="'+F.X(hq)+'" y="'+(F.Y(hp)+4)+'" font-size="11" text-anchor="middle" fill="#fff" font-weight="900" pointer-events="none" '+FONT+'>↕</text>';
+  }
+  s+='</svg>';
+  document.getElementById('figTax').innerHTML=s;
+  document.getElementById('txTitle').textContent=pr.title+(TX.mode==='spec'?' · specific tax':TX.mode==='adv'?' · ad valorem tax':' · subsidy');
+  document.getElementById('svgTax').querySelectorAll('[data-h]').forEach(h=>h.addEventListener('pointerdown',e=>{ TX.drag=true; TX.dragQ=Number(h.dataset.q); e.preventDefault(); }));
+
+  /* control labels */
+  const vl=document.getElementById('txVlbl'), vv=document.getElementById('txVv');
+  if(TX.mode==='adv'){ vl.textContent='Tax rate'; vv.textContent=Math.round(c.full*100)+'%'+(c.capped?' (max here)':''); }
+  else { vl.textContent=tax?'Tax per unit':'Subsidy per unit'; vv.textContent='฿'+fmt(c.full*k,1)+' '+pr.unitP+(c.capped?' (max here)':''); }
+  document.getElementById('txDv').textContent=elWord(TX.eD);
+  document.getElementById('txSv').textContent=elWord(TX.eS);
+
+  /* readouts */
+  const P=50*k, pay=c.P1*k, keep=c.P2*k, q=c.Q1*pr.qk, perB=c.per*k, money=perB*q;
+  document.getElementById('txRes').innerHTML=
+    '<div><b>฿'+fmt(pay,1)+'</b><small>'+sgn(pay-P,1)+'</small><span>Price consumers pay</span></div>'+
+    '<div><b>฿'+fmt(keep,1)+'</b><small>'+sgn(keep-P,1)+'</small><span>'+(tax?'Price producers keep':'Price producers receive')+'</span></div>'+
+    '<div><b>'+fmt(q,1)+'</b><small>'+sgn((c.Q1-50)/50*100,0)+'%</small><span>Quantity ('+pr.unitQ+')</span></div>'+
+    '<div class="hot"><b>'+fmt(money,1)+'</b><small>'+pr.rev+'</small><span>'+(tax?'Tax revenue':'Cost to government')+'</span></div>'+
+    '<div class="warn"><b>'+(c.per>0.05?Math.round(c.cs*100)+'%':'–')+'</b><span>Consumers’ share</span></div>'+
+    '<div class="cool"><b>'+(c.per>0.05?Math.round(c.ps*100)+'%':'–')+'</b><span>Producers’ share</span></div>';
+
+  /* commentary */
+  let why;
+  if(c.b>c.d*1.25) why=(tax?'Demand is <b>less elastic</b> than supply, so buyers keep buying as the price rises and sellers can pass most of the tax on.':'Demand is <b>less elastic</b> than supply, so most of the subsidy is passed on to buyers as a lower price.');
+  else if(c.d>c.b*1.25) why=(tax?'Demand is <b>more elastic</b> than supply: buyers switch away if the price rises, so producers have to absorb most of the tax.':'Demand is <b>more elastic</b> than supply, so producers keep most of the subsidy as a higher price received.');
+  else why='Demand and supply are similarly elastic, so the burden is shared fairly evenly.';
+  let say;
+  if(c.per<0.05) say='No '+(tax?'tax':'subsidy')+' yet. Move the top slider, or drag the orange handle on S<sub>1</sub>.';
+  else if(tax){
+    say='The '+(TX.mode==='adv'?'ad valorem':'specific')+' tax adds <b>฿'+fmt(perB,1)+'</b> per unit at the new output. Consumers pay ฿'+fmt(pay-P,1)+' more and producers keep ฿'+fmt(P-keep,1)+' less: consumers bear <b>'+Math.round(c.cs*100)+'%</b>, producers <b>'+Math.round(c.ps*100)+'%</b>. '+why+
+      (TX.mode==='adv'?' Because the tax is a <b>percentage</b>, the gap between S and S<sub>1</sub> widens as price rises — S<sub>1</sub> pivots instead of shifting in parallel (Activity 13.1).':' A specific tax shifts S up by the same amount at every output, so S<sub>1</sub> is parallel to S.')+
+      (TX.dwl?' The purple triangle is the <b>deadweight loss</b> — surplus lost on the units no longer traded (Topic 2.5).':'');
+  } else {
+    say='A subsidy of <b>฿'+fmt(perB,1)+'</b> per unit shifts supply right. Consumers pay ฿'+fmt(P-pay,1)+' less and producers receive ฿'+fmt(keep-P,1)+' more (price plus subsidy): consumers gain <b>'+Math.round(c.cs*100)+'%</b>, producers <b>'+Math.round(c.ps*100)+'%</b>. '+why+' The whole bill — subsidy × Q<sub>1</sub> — comes from tax revenue, so it has an <b>opportunity cost</b>.'+
+      (TX.dwl?' The purple triangle is the <b>deadweight loss</b>: extra units cost more to make than buyers value them.':'');
+  }
+  if(c.capped) say+=' <span style="color:var(--text-3)">(The size is capped here so the market does not disappear off the diagram.)</span>';
+  document.getElementById('txSay').innerHTML=say;
+
+  /* targets (only when the curve has finished moving) */
+  if(TX.f>=0.999 && c.per>0.3){
+    if(tax && c.cs>=0.75) txGoals.cons=true;
+    if(tax && c.ps>=0.75) txGoals.prod=true;
+    if(TX.mode==='adv' && c.full>=0.3-1e-9) txGoals.adv=true;
+    if(TX.mode==='sub') txGoals.sub=true;
+  }
+  goalTags('goalsTax',GOALS_TX,txGoals); taxCheck();
+}
+function txPlay(){ tween('tx',1100,f=>{ TX.f=f; drawTax(); }); }
+function txPresetBtns(){
+  document.getElementById('txPre').innerHTML=Object.keys(PRE).map(key=>{
+    const p=PRE[key]; return '<button class="lvl'+(TX.pre===key?' active':'')+'" data-p="'+key+'">'+p.icon+' '+p.name+' <span style="opacity:.7;font-weight:400">· '+p.fig+'</span></button>';
+  }).join('');
+  document.querySelectorAll('#txPre .lvl').forEach(b=>b.addEventListener('click',()=>{
+    TX.pre=b.dataset.p; txPresetBtns();
+    const from={d:TX.eD,s:TX.eS}, to=PRE[TX.pre];
+    TX.f=1;
+    tween('txel',900,f=>{
+      TX.eD=from.d+(to.eD-from.d)*f; TX.eS=from.s+(to.eS-from.s)*f;
+      document.getElementById('txD').value=TX.eD; document.getElementById('txS').value=TX.eS;
+      drawTax();
+    });
+  }));
+}
+document.getElementById('txV').addEventListener('input',e=>{ TX.v=Number(e.target.value); TX.f=1; drawTax(); });
+document.getElementById('txD').addEventListener('input',e=>{ TX.eD=Number(e.target.value); TX.f=1; drawTax(); });
+document.getElementById('txS').addEventListener('input',e=>{ TX.eS=Number(e.target.value); TX.f=1; drawTax(); });
+document.getElementById('txPlay').addEventListener('click',txPlay);
+document.getElementById('txDwl').addEventListener('click',e=>{ TX.dwl=!TX.dwl; e.target.classList.toggle('gm-on',TX.dwl); e.target.textContent=TX.dwl?'Hide deadweight loss':'Show deadweight loss'; drawTax(); });
+document.querySelectorAll('#txMode .lvl').forEach(b=>b.addEventListener('click',()=>{
+  TX.mode=b.dataset.m;
+  document.querySelectorAll('#txMode .lvl').forEach(x=>x.classList.toggle('active',x===b));
+  const sl=document.getElementById('txV');
+  if(TX.mode==='adv'){ sl.max=80; TX.v=40; } else { sl.max=40; TX.v=20; }
+  sl.value=TX.v; txPlay();
+}));
+window.addEventListener('pointermove',e=>{
+  if(!TX.drag) return;
+  const svg=document.getElementById('svgTax'); if(!svg) return;
+  const p=FB.pOf(svg,e.clientY), d=slopeOf(TX.eS), base=50+d*(TX.dragQ-50);
+  let v;
+  if(TX.mode==='spec') v=p-base;
+  else if(TX.mode==='sub') v=base-p;
+  else v=base>1?(p/base-1)*100:0;
+  v=Math.max(0,Math.min(Number(document.getElementById('txV').max),Math.round(v)));
+  if(v!==TX.v){ TX.v=v; document.getElementById('txV').value=v; TX.f=1; drawTax(); }
+});
+function txEnd(){ if(TX.drag){ TX.drag=false; TX.dragQ=null; txGoals.drag=true; drawTax(); } }
+window.addEventListener('pointerup',txEnd);
+window.addEventListener('pointercancel',txEnd);
+
+let taxQDone=false, taxQRight=0;
+function taxCheck(){
+  if(Object.values(txGoals).every(Boolean) && taxQDone && !DONE.tax){
+    const b=document.getElementById('taxDone');
+    b.innerHTML='✓ Every target hit and all four questions answered ('+taxQRight+'/4 right first time). The one idea to carry into every answer: <b>the curve that is less elastic carries more of the burden</b> — of a tax or, in reverse, the larger share of a subsidy’s benefit.';
+    b.classList.add('show'); trk('Tax & Subsidy Lab','targets hit; '+taxQRight+'/4 check questions'); mark('tax');
+  }
+}
+const TAXQ=[
+ {id:'x1', icon:'?', bg:'#FF8F1C', name:'Specific vs ad valorem',
+  stem:'Why is S<sub>1</sub> parallel to S for a specific tax but not for an ad valorem tax?',
+  opts:['An ad valorem tax is only paid by consumers','A specific tax adds the same amount at every price; a percentage tax adds more at higher prices','A specific tax shifts demand as well as supply','An ad valorem tax is set below the equilibrium price'], ans:1,
+  fb:'A fixed ฿ amount per unit shifts every point on S up by the same distance. A percentage adds more baht to a ฿100 item than to a ฿10 one, so the gap widens as price rises.',
+  why:'This is coursebook Activity 13.1. In the exam, draw the ad valorem S<sub>1</sub> starting close to S at low output and diverging.'},
+ {id:'x2', icon:'?', bg:'#FF8F1C', name:'Incidence',
+  stem:'Which market is most likely to have <b>most</b> of a specific tax passed on to consumers?',
+  opts:['A market with price-elastic demand and price-inelastic supply','A market with perfectly elastic demand','A market with price-inelastic demand and price-elastic supply','Any market, because the tax is paid by the seller'], ans:2,
+  fb:'Buyers with few substitutes keep buying as the price rises, so sellers can pass the tax on. That is Figure 13.3a — and the diesel preset.',
+  why:'D confuses who <b>pays the government</b> (the seller) with who <b>bears the burden</b> — the definition of incidence.'},
+ {id:'x3', icon:'?', bg:'#28A745', name:'Subsidies',
+  stem:'A subsidy of ฿10 per unit is paid to producers. The market price falls by ฿3. What do producers gain per unit?',
+  opts:['฿3','฿7','฿10','฿13'], ans:1,
+  fb:'Producers receive the new market price plus the subsidy: (P − 3) + 10 = P + 7. So producers gain ฿7 and consumers ฿3.',
+  why:'Students often answer C. The subsidy is paid to producers, but competition passes part of it on to consumers as a lower price.'},
+ {id:'x4', icon:'?', bg:'#002F6C', name:'Revenue',
+  stem:'Why do governments raise most indirect-tax revenue from goods such as fuel and tobacco?',
+  opts:['Demand is price inelastic, so quantity falls little and revenue stays high','These goods have very elastic supply','The tax burden falls entirely on producers','These goods are merit goods'], ans:0,
+  fb:'Revenue = tax per unit × quantity after the tax. When demand is inelastic, quantity barely falls, so revenue is large and predictable.',
+  why:'The flip side for evaluation: if the aim is to <b>cut consumption</b> of a demerit good, inelastic demand makes the tax less effective.'},
+];
+buildCards(document.getElementById('taxQ'), TAXQ, r=>{ taxQDone=true; taxQRight=r; taxCheck(); });
+txPresetBtns(); drawTax();
+
+/* ================= TAB 3 — PRICE CONTROL LAB ================= */
+/* D: P = 100 − Q   S: P = Q   (equilibrium Q = 50, P = 50) */
+const PCM={
+ max:{title:'The market for cooking oil',ctrl:'Maximum price',line:'Maximum price',k:1.1,unitP:'a litre',qk:0.6,unitQ:'m litres',per:'a month',yName:'Price (฿ per litre)',xName:'Quantity (million litres a month)',start:36},
+ min:{title:'The market for rice',ctrl:'Minimum price',line:'Minimum price',k:240,unitP:'a tonne',qk:0.4,unitQ:'m tonnes',per:'a year',yName:'Price (฿ per tonne)',xName:'Quantity (million tonnes a year)',start:64}
+};
+const PC={mode:'max',p:36,black:false,fix:false,ff:0,buy:false,drag:false};
+const pcGoals={maxEff:false,black:false,fix:false,minEff:false,buy:false};
+const GOALS_PC=[{k:'maxEff',t:'Cause a shortage'},{k:'black',t:'Reveal the informal-market price'},{k:'fix',t:'Clear the shortage with a subsidy'},{k:'minEff',t:'Cause a surplus'},{k:'buy',t:'Government buys the surplus'}];
+function pcExtras(){
+  const host=document.getElementById('pcExtras');
+  host.innerHTML = PC.mode==='max'
+    ? '<button class="lvl'+(PC.black?' gm-on':'')+'" data-x="black">🕶️ Show informal-market price</button><button class="lvl'+(PC.fix?' gm-on':'')+'" data-x="fix">💸 Clear the shortage with a subsidy</button>'
+    : '<button class="lvl'+(PC.buy?' gm-on':'')+'" data-x="buy">🏬 Government buys the surplus</button>';
+  host.querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>{
+    const x=b.dataset.x;
+    if(x==='fix'){
+      PC.fix=!PC.fix;
+      const from=PC.ff, to=PC.fix?1:0;
+      tween('pcfix',1200,f=>{ PC.ff=from+(to-from)*f; drawPC(true); });
+    } else { PC[x]=!PC[x]; drawPC(true); }
+    pcExtras();
+  }));
+}
+function drawPC(rec){
+  const m=PCM[PC.mode], F=FB, p=PC.p, k=m.k;
+  const isMax=PC.mode==='max', eff=isMax?p<50:p>50;
+  const Qd=100-p, Qs0=p;
+  const sNeed=isMax&&eff?100-2*p:0, sNow=sNeed*PC.ff;     /* subsidy that shifts S right until it meets D at the ceiling */
+  const Qs=isMax&&eff?Math.min(Qd,Qs0+sNow):Qs0;
+  const traded=eff?(isMax?Qs:Qd):50, price=eff?p:50;
+  let s='<svg viewBox="0 0 520 340" id="svgPC" role="img" aria-label="'+m.title+' with a '+m.ctrl.toLowerCase()+'">';
+  /* government purchase of the surplus */
+  if(!isMax && eff && PC.buy) s+=F.rect(Qd,Qs0,0,p,'rgba(107,78,158,.18)');
+  s+=F.axes(m.xName,m.yName);
+  s+=F.line(-1,0,C.D,2.6)+lbl(F.X(97),F.Y(3)-8,'D',{c:C.D,a:'end'});
+  s+=F.line(1,0,C.S,2.6, sNow>0.3?' stroke-opacity=".55"':'')+lbl(F.X(98)+2,F.Y(98)+14,'S',{c:C.S,a:'end'});
+  if(sNow>0.3){
+    s+=F.line(1,-sNow,'#28A745',2.8);
+    const e=F.end(1,-sNow); s+=lbl(F.X(e[0])-4,F.Y(e[1])+16,'S₁ (with subsidy)',{c:'#1C7A33',a:'end',s:11});
+  }
+  /* equilibrium */
+  s+=F.dash(0,50,50,50)+F.dash(50,50,50,0)+F.ring(50,50,C.S1);
+  s+=F.pLbl(50,'Pe'); s+=F.qLbl(50,'Qe');
+  if(eff){
+    const q1=Math.min(Qd,Qs), q2=Math.max(Qd,Qs);
+    if(q2-q1>0.4){
+      s+=F.dash(q1,p,q1,0,C.gap)+F.dash(q2,p,q2,0,C.gap);
+      s+='<line x1="'+F.X(q1)+'" y1="'+F.Y(p)+'" x2="'+F.X(q2)+'" y2="'+F.Y(p)+'" stroke="'+C.gap+'" stroke-width="7" stroke-opacity=".55"/>';
+      const lo=isMax?['Qs','Qd']:['Qd','Qs'];
+      if(q2-q1>6){ s+=F.qLbl(q1,lo[0],C.gap,14); s+=F.qLbl(q2,lo[1],C.gap,14); }
+      s+=lbl((F.X(q1)+F.X(q2))/2,F.Y(p)+(isMax?20:-12),isMax?'Shortage':'Surplus',{c:'#3E2A66',s:12});
+    } else if(isMax){ s+=F.dot(Qd,p,'#28A745',5); }
+    if(isMax && PC.black && q2-q1>0.4){
+      const pb=100-Qs;
+      s+=F.dash(Qs,p,Qs,pb,'#7A0830')+F.dash(0,pb,Qs,pb,'#7A0830');
+      s+=F.dot(Qs,pb,'#7A0830',5);
+      s+=lbl(F.X(Qs)+8,F.Y(pb)-6,'Informal-market price',{c:'#7A0830',a:'start',s:11});
+    }
+    if(!isMax && PC.buy) s+=lbl((F.X(Qd)+F.X(Qs0))/2,F.Y(p/2)+4,'Bought by govt',{c:'#3E2A66',s:11});
+  }
+  /* the control line + handle */
+  s+='<line x1="'+F.X(0)+'" y1="'+F.Y(p)+'" x2="'+F.X(100)+'" y2="'+F.Y(p)+'" stroke="'+C.ctrl+'" stroke-width="3"'+(eff?'':' stroke-dasharray="8 5"')+'/>';
+  s+=lbl(F.X(2),F.Y(p)-7,m.line,{c:'#7A3D00',a:'start',s:11.5});
+  s+='<rect x="'+F.X(0)+'" y="'+(F.Y(p)-14)+'" width="'+(F.X(100)-F.X(0))+'" height="28" fill="transparent" class="gi-handle" data-h="pc"/>';
+  s+='<circle cx="'+(F.X(100)-10)+'" cy="'+F.Y(p)+'" r="11" fill="'+C.ctrl+'" stroke="#fff" stroke-width="3" class="gi-handle" data-h="pc"/>';
+  s+='<text x="'+(F.X(100)-10)+'" y="'+(F.Y(p)+4)+'" font-size="11" text-anchor="middle" fill="#fff" font-weight="900" pointer-events="none" '+FONT+'>↕</text>';
+  s+='</svg>';
+  document.getElementById('figPC').innerHTML=s;
+  document.getElementById('svgPC').querySelectorAll('[data-h]').forEach(h=>h.addEventListener('pointerdown',e=>{ PC.drag=true; e.preventDefault(); }));
+  document.getElementById('pcTitle').textContent=m.title;
+  document.getElementById('pcLbl').textContent=m.ctrl;
+  document.getElementById('pcPv').textContent='฿'+fmt(p*k)+' '+m.unitP+' (equilibrium ฿'+fmt(50*k)+')';
+
+  const gap=eff?Math.abs(Qd-Qs):0;
+  let extra='';
+  if(isMax){
+    if(PC.fix && eff) extra='<div class="ok"><b>฿'+fmt(sNeed*k,1)+'</b><span>Subsidy per litre · bill ฿'+fmt(sNow*k*Qd*m.qk)+' m '+m.per+'</span></div>';
+    else if(PC.black && eff && gap>0.4) extra='<div class="warn"><b>฿'+fmt((100-Qs)*k)+'</b><span>Informal-market price</span></div>';
+    else extra='<div><b>'+(eff?'Below Pe':'At or above Pe')+'</b><span>Where is the ceiling?</span></div>';
+  } else {
+    if(PC.buy && eff) extra='<div class="warn"><b>฿'+fmt(p*k*gap*m.qk/1000,1)+' bn</b><span>Cost of buying the surplus '+m.per+'</span></div>';
+    else extra='<div><b>'+(eff?'Above Pe':'At or below Pe')+'</b><span>Where is the floor?</span></div>';
+  }
+  document.getElementById('pcRes').innerHTML=
+    '<div class="'+(eff?'ok':'warn')+'"><b>'+(eff?'Binding':'No effect')+'</b><span>Is the control effective?</span></div>'+
+    '<div><b>฿'+fmt(price*k)+'</b><span>Legal price paid</span></div>'+
+    '<div><b>'+fmt(traded*m.qk,1)+' '+m.unitQ+'</b><span>Quantity '+(!isMax&&PC.buy&&eff?'sold to consumers':'traded')+'</span></div>'+
+    '<div class="hot"><b>'+(eff&&gap>0.4?fmt(gap*m.qk,1)+' '+m.unitQ:'None')+'</b><span>'+(isMax?'Shortage (Qd − Qs)':'Surplus (Qs − Qd)')+'</span></div>'+
+    extra;
+
+  let say;
+  if(isMax){
+    if(!eff) say='A ceiling of ฿'+fmt(p*k)+' is at or above the equilibrium, so the market price is already lower and the ceiling changes nothing. <b>A maximum price must be set below equilibrium to be effective</b> (coursebook Tip).';
+    else if(PC.fix && PC.ff>0.99) say='A subsidy of ฿'+fmt(sNeed*k,1)+' a litre lowers producers’ costs and shifts supply right until it cuts demand <b>at the ceiling</b>. The shortage disappears: more oil is sold at the low price, with no queues and no informal market. This is coursebook MCQ 1 — but the bill of ฿'+fmt(sNeed*k*Qd*m.qk)+' m '+m.per+' comes from tax revenue, so there is an <b>opportunity cost</b>.';
+    else {
+      say='The ceiling is binding. Quantity demanded extends to Qd while producers cut supply to Qs: a <b>shortage</b> of '+fmt(gap*m.qk,1)+' '+m.unitQ+'. Price cannot rise to ration the oil, so it is allocated by <b>queues</b>, <b>first come, first served</b> or official <b>rationing</b>. ';
+      say+= PC.black ? 'Buyers left without oil would pay up to <b>฿'+fmt((100-Qs)*k)+'</b> a litre for the limited supply — so an <b>informal market</b> grows at prices far above the ceiling, defeating the aim of helping low-income families.'
+                     : 'Who gets the scarce oil? Press “Show informal-market price”.';
+    }
+  } else {
+    if(!eff) say='A floor of ฿'+fmt(p*k)+' is at or below the equilibrium, so the market price is already higher and the floor changes nothing. <b>A minimum price must be set above equilibrium to be effective.</b>';
+    else {
+      say='The floor is binding. Consumers pay more and cut purchases to Qd, while farmers extend output to Qs: a <b>surplus</b> of '+fmt(gap*m.qk,1)+' '+m.unitQ+'. ';
+      say+= PC.buy ? 'To stop the price falling, a government agency buys the whole surplus at the floor price — ฿'+fmt(p*k*gap*m.qk/1000,1)+' bn '+m.per+' (the shaded rectangle = price × surplus). Farmers’ incomes are protected, but the rice must be stored or dumped, and high-cost farmers have no incentive to become more efficient. Thailand’s 2011–14 rice scheme built up huge stockpiles this way.'
+                   : 'Unsold rice would push the price back down. In agricultural markets the government is expected to buy the excess — press “Government buys the surplus”.';
+    }
+  }
+  document.getElementById('pcSay').innerHTML=say;
+  if(rec!==false){
+    if(isMax && eff) pcGoals.maxEff=true;
+    if(!isMax && eff) pcGoals.minEff=true;
+  }
+  if(isMax && eff && PC.black && gap>0.4) pcGoals.black=true;
+  if(isMax && eff && PC.fix && PC.ff>0.99) pcGoals.fix=true;
+  if(!isMax && eff && PC.buy) pcGoals.buy=true;
+  goalTags('goalsPC',GOALS_PC,pcGoals); pcCheck();
+}
+document.getElementById('pcP').addEventListener('input',e=>{ PC.p=Number(e.target.value); drawPC(true); });
+document.querySelectorAll('#pcMode .lvl').forEach(b=>b.addEventListener('click',()=>{
+  PC.mode=b.dataset.m; PC.black=false; PC.fix=false; PC.ff=0; PC.buy=false;
+  document.querySelectorAll('#pcMode .lvl').forEach(x=>x.classList.toggle('active',x===b));
+  /* glide the price line to its starting point */
+  const from=PC.p, to=PCM[PC.mode].start;
+  pcExtras();
+  tween('pcp',700,f=>{ PC.p=Math.round(from+(to-from)*f); document.getElementById('pcP').value=PC.p; drawPC(false); });
+}));
+window.addEventListener('pointermove',e=>{
+  if(!PC.drag) return;
+  const svg=document.getElementById('svgPC'); if(!svg) return;
+  const p=Math.max(10,Math.min(90,Math.round(FB.pOf(svg,e.clientY))));
+  if(p!==PC.p){ PC.p=p; document.getElementById('pcP').value=p; if(PC.fix) PC.ff=1; drawPC(true); }
+});
+window.addEventListener('pointerup',()=>{ PC.drag=false; });
+window.addEventListener('pointercancel',()=>{ PC.drag=false; });
+let pcQDone=false, pcQRight=0;
+function pcCheck(){
+  if(Object.values(pcGoals).every(Boolean) && pcQDone && !DONE.ctrl){
+    const b=document.getElementById('pcDone');
+    b.innerHTML='✓ Every target hit and all four questions answered ('+pcQRight+'/4 right first time). A price control never makes the underlying shortage or surplus go away — something else (queues, an informal market, a subsidy, government purchases) has to absorb it. Naming that “something else” is the evaluation.';
+    b.classList.add('show'); trk('Price Control Lab','targets hit; '+pcQRight+'/4 check questions'); mark('ctrl');
+  }
+}
+const PCQ=[
+ {id:'c1', icon:'?', bg:'#FF8F1C', name:'Shortage',
+  stem:'In coursebook Figure 13.7, a maximum price P<sub>1</sub> is set for cooking oil. What is the extent of the shortage?',
+  opts:['OQ<sub>1</sub>','Q<sub>2</sub> − Q<sub>1</sub>, the gap between quantity demanded and quantity supplied at P<sub>1</sub>','Q − Q<sub>1</sub>, the fall in quantity supplied','P − P<sub>1</sub>'], ans:1,
+  fb:'At the ceiling, buyers want Q<sub>2</sub> but sellers offer only Q<sub>1</sub>. The shortage is the horizontal gap between them.',
+  why:'C is only the contraction of supply. The shortage also includes the extension of demand (Q to Q<sub>2</sub>).'},
+ {id:'c2', icon:'?', bg:'#7A0830', name:'Informal markets',
+  stem:'Why does a binding maximum price often lead to an informal (black) market?',
+  opts:['Producers want to sell more than consumers want to buy','Some buyers who cannot obtain the good are willing to pay more than the legal maximum','The government buys up the surplus','Demand falls when the price is lowered'], ans:1,
+  fb:'With only Q<sub>1</sub> available, the last unit is valued at the price on the demand curve above Q<sub>1</sub> — far above the ceiling. That gap is the informal-market opportunity.',
+  why:'A describes a surplus, which comes with a <b>minimum</b> price.'},
+ {id:'c3', icon:'?', bg:'#28A745', name:'Combining policies',
+  stem:'How can a government keep a maximum price on rice without a shortage?',
+  opts:['Raise the maximum price above equilibrium','Ration rice so each household gets the same amount','Pay producers a subsidy large enough to shift supply until it meets demand at the maximum price','Run a campaign telling people to eat more rice'], ans:2,
+  fb:'The subsidy shifts S right until the new equilibrium is at the ceiling: the low price and enough supply. You did this in the lab.',
+  why:'B only shares out the shortage; it does not remove it. D would make the shortage worse by shifting demand right.'},
+ {id:'c4', icon:'?', bg:'#6B4E9E', name:'Minimum prices',
+  stem:'A minimum price for an agricultural product is set at ฿20 per kg. At that price, 900 tonnes are supplied and 600 tonnes demanded. The government buys the surplus. What does this cost?',
+  opts:['฿6 m','฿12 m','฿18 m','฿6,000'], ans:0,
+  fb:'Surplus = 900 − 600 = 300 tonnes = 300,000 kg. Cost = 300,000 × ฿20 = ฿6 m.',
+  why:'B prices all 600 tonnes demanded; C prices all 900 tonnes supplied. Only the surplus is bought. D forgets to convert tonnes to kg.'},
+];
+buildCards(document.getElementById('pcQ'), PCQ, r=>{ pcQDone=true; pcQRight=r; pcCheck(); });
+pcExtras(); drawPC(false);
+
+/* ================= TAB 4 — BUFFER STOCK GAME ================= */
+/* D: P = 100 − Q.   Harvest supply: P = Q − sh  (sh > 0 = bumper harvest, shifts S right).
+   Free-market price = (100 − sh)/2.  Band: floor 40, ceiling 60.
+   Scale: price × 300 = ฿ per tonne; quantity × 0.1 = million tonnes.            */
+const BSK=300, BSQ=0.1, FLOOR=40, CEIL=60, CAP=30;
+const SEASONS=[
+ {sh:0,   kind:'',   head:'Normal monsoon',  text:'Rain arrives on time across Isan and the North. The harvest is close to average.'},
+ {sh:34,  kind:'wet', head:'Bumper harvest', text:'Ideal rain in the Thung Kula Ronghai plain, home of the best Hom Mali. Yields are the highest for years.'},
+ {sh:28,  kind:'wet', head:'Another good year', text:'Good rain again, and farmers planted more after last year’s price support. The warehouse is filling up.'},
+ {sh:6,   kind:'',   head:'Close to normal', text:'A slightly better than average harvest. Prices settle near last year’s levels.'},
+ {sh:-32, kind:'dry', head:'El Niño drought', text:'Rainfall is well below average and reservoirs in the Northeast run low. Many fields are left unplanted.'},
+ {sh:-30, kind:'dry', head:'Floods in the Central Plains', text:'Late-season floods wash out fields just before harvest. Supply falls sharply again.'},
+ {sh:-40, kind:'dry', head:'Second El Niño year', text:'The worst drought in a decade follows straight on from the floods. How much rice is left in store?'},
+ {sh:36,  kind:'wet', head:'La Niña — record harvest', text:'Heavy, well-timed rain brings a record crop. Prices threaten to collapse.'},
+];
+let BS;
+function bsReset(){
+  BS={i:0,phase:'shift',stock:10,fund:20,score:0,shDisp:0,effDisp:0,hist:[],last:null};
+  document.getElementById('bsDone').classList.remove('show');
+  document.getElementById('bsDebrief').innerHTML='';
+  bsSeason();
+}
+function bsEq(sh,delta){ /* delta: extra supply reaching market (+ sold, − bought) */
+  const Q=(100+sh+delta)/2; return {Q:Q,P:100-Q};
+}
+function bsNeed(sh){
+  const P=(100-sh)/2;
+  if(P<FLOOR-1e-9) return {act:'buy',need:sh-20,P:P};
+  if(P>CEIL+1e-9)  return {act:'sell',need:-20-sh,P:P};
+  return {act:'none',need:0,P:P};
+}
+function drawBS(){
+  const F=FB, sh=BS.shDisp, eff=BS.effDisp;
+  let s='<svg viewBox="0 0 520 340" role="img" aria-label="Rice market with a buffer stock band">';
+  s+='<rect x="'+F.X(0)+'" y="'+F.Y(CEIL)+'" width="'+(F.X(100)-F.X(0))+'" height="'+(F.Y(FLOOR)-F.Y(CEIL))+'" fill="rgba(40,167,69,.14)"/>';
+  s+='<line x1="'+F.X(0)+'" y1="'+F.Y(CEIL)+'" x2="'+F.X(100)+'" y2="'+F.Y(CEIL)+'" stroke="#28A745" stroke-width="1.6" stroke-dasharray="6 4"/>';
+  s+='<line x1="'+F.X(0)+'" y1="'+F.Y(FLOOR)+'" x2="'+F.X(100)+'" y2="'+F.Y(FLOOR)+'" stroke="#28A745" stroke-width="1.6" stroke-dasharray="6 4"/>';
+  s+=lbl(F.X(99),F.Y(CEIL)+14,'Ceiling ฿18,000',{c:'#1C7A33',a:'end',s:11});
+  s+=lbl(F.X(99),F.Y(FLOOR)-6,'Floor ฿12,000',{c:'#1C7A33',a:'end',s:11});
+  s+=F.axes('Quantity (million tonnes a season)','Price (฿ per tonne)');
+  s+=F.line(-1,0,C.D,2.6)+lbl(F.X(97),F.Y(3)-8,'D',{c:C.D,a:'end'});
+  s+=F.line(1,-sh,C.S,2.8);
+  const e=F.end(1,-sh); s+=lbl(F.X(e[0])+(e[0]>97?-6:5),F.Y(e[1])+(e[1]>97?14:4),'S harvest',{c:C.S,a:e[0]>97?'end':'start',s:11});
+  const fm=bsEq(sh,0);
+  s+=F.ring(fm.Q,fm.P,C.guide);
+  if(Math.abs(eff)>0.3){
+    s+=F.line(1,-sh-eff,C.S1,2.8,' stroke-dasharray="9 5"');
+    /* horizontal arrow from the harvest curve to the curve after buying/selling, labelled at its head */
+    const pa=sh>0?25:75, qa=pa+sh, qb=pa+sh+eff;
+    if(Math.abs(qb-qa)>4 && qa>=0 && qa<=100 && qb>=0 && qb<=100){
+      s+='<line x1="'+F.X(qa)+'" y1="'+F.Y(pa)+'" x2="'+F.X(qb)+'" y2="'+F.Y(pa)+'" stroke="'+C.ctrl+'" stroke-width="3" marker-end="url(#bsArr)"/>';
+      s+=lbl(F.X(qb)+(eff>0?8:-8),F.Y(pa)+16,eff>0?'S + sales':'S − purchases',{c:C.S1,a:eff>0?'start':'end',s:11});
+    }
+  }
+  const fin=bsEq(sh,eff);
+  s+=F.dash(0,fin.P,fin.Q,fin.P)+F.dash(fin.Q,fin.P,fin.Q,0);
+  s+=F.dot(fin.Q,fin.P,C.S1,5.5);
+  s+=lbl(F.X(1)+2,F.Y(fin.P)-5,'฿'+fmt(fin.P*BSK)+' a tonne',{a:'start',s:11,c:C.S1});
+  s+='<defs><marker id="bsArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="'+C.ctrl+'"/></marker></defs>';
+  s+='</svg>';
+  document.getElementById('figBS').innerHTML=s;
+}
+function bsPanel(){
+  const pct=BS.stock/CAP*100;
+  document.getElementById('bsBar').style.width=pct+'%';
+  document.getElementById('bsTrack').classList.toggle('full',BS.stock>=CAP-1e-9);
+  document.getElementById('bsStock').textContent=fmt(BS.stock*BSQ,1)+' / '+fmt(CAP*BSQ,1)+' m t';
+  document.getElementById('bsRes').innerHTML=
+    '<div class="'+(BS.fund<0?'warn':'hot')+'"><b>฿'+fmt(BS.fund,1)+' bn</b><span>Agency fund'+(BS.fund<0?' (needs a top-up from taxes)':'')+'</span></div>'+
+    '<div><b>'+BS.score+' / '+SEASONS.length+'</b><span>Right decisions</span></div>';
+  /* history mini chart */
+  const w=360,h=120,pl=34,pr=8,pt=8,pb=18, n=SEASONS.length;
+  const x=i=>pl+(w-pl-pr)*(i+0.5)/n, y=p=>h-pb-(h-pt-pb)*(p-20)/60;
+  let s='<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Price history">';
+  s+='<rect x="'+pl+'" y="'+y(CEIL)+'" width="'+(w-pl-pr)+'" height="'+(y(FLOOR)-y(CEIL))+'" fill="rgba(40,167,69,.14)"/>';
+  s+='<line x1="'+pl+'" y1="'+(h-pb)+'" x2="'+(w-pr)+'" y2="'+(h-pb)+'" stroke="#C8D8E8"/>';
+  [FLOOR,CEIL].forEach(p=>{ s+=lbl(pl-4,y(p)+4,'฿'+(p*BSK/1000)+'k',{a:'end',s:9.5,c:'#456080'}); });
+  for(let i=0;i<n;i++) s+=lbl(x(i),h-5,'S'+(i+1),{s:9.5,c:'#8098B0'});
+  BS.hist.forEach((hh,i)=>{
+    s+='<line x1="'+x(i)+'" y1="'+y(Math.max(20,Math.min(80,hh.free)))+'" x2="'+x(i)+'" y2="'+y(hh.fin)+'" stroke="#C8D8E8" stroke-width="2"/>';
+    s+='<circle cx="'+x(i)+'" cy="'+y(Math.max(20,Math.min(80,hh.free)))+'" r="4" fill="#B0BFD0"/>';
+    s+='<circle cx="'+x(i)+'" cy="'+y(hh.fin)+'" r="4.5" fill="'+(hh.fin<FLOOR-0.5||hh.fin>CEIL+0.5?'#D63864':'#002F6C')+'"/>';
+  });
+  s+='</svg>';
+  document.getElementById('bsHist').innerHTML=s;
+}
+function bsSeason(){
+  const sea=SEASONS[BS.i], from=BS.shDisp, fromEff=BS.effDisp;
+  BS.phase='shift';
+  const card=document.getElementById('bsCard');
+  card.className='q-card gm-season '+sea.kind;
+  card.innerHTML='<span class="gm-stamp">Season '+(BS.i+1)+' of '+SEASONS.length+'</span>'+
+    '<div class="q-name" style="margin-bottom:6px">'+sea.head+'</div><div class="q-stem">'+sea.text+'</div>'+
+    '<div class="gi-say" id="bsMsg">Watch the harvest shift the supply curve…</div>';
+  bsPanel();
+  tween('bs',1200,f=>{ BS.shDisp=from+(sea.sh-from)*f; BS.effDisp=fromEff*(1-f); drawBS(); },()=>{
+    const n=bsNeed(sea.sh);
+    BS.phase='choose';
+    document.getElementById('bsMsg').innerHTML='Free-market price: <b>฿'+fmt(n.P*BSK)+'</b> a tonne (the grey ring). Your band is ฿12,000–฿18,000. What should the agency do?';
+    const row=document.createElement('div'); row.className='steppick'; row.style.marginTop='10px';
+    row.innerHTML='<button class="lvl" data-a="buy">🏬 Buy rice into store</button><button class="lvl" data-a="sell">🚚 Sell rice from store</button><button class="lvl" data-a="none">✋ Do nothing</button>';
+    card.appendChild(row);
+    row.querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>bsChoose(b.dataset.a,row)));
+  });
+}
+function bsChoose(a,row){
+  if(BS.phase!=='choose') return;
+  BS.phase='result';
+  const sea=SEASONS[BS.i], n=bsNeed(sea.sh), ok=a===n.act;
+  if(ok) BS.score++;
+  row.querySelectorAll('.lvl').forEach(b=>{ b.disabled=true; if(b.dataset.a===n.act) b.classList.add('gi-ok'); });
+  if(!ok) row.querySelector('[data-a="'+a+'"]').classList.add('gi-no');
+  /* the scheme carries out the correct action, limited by stock and warehouse space */
+  let delta=0, note='', amt=0;
+  if(n.act==='buy'){ amt=Math.min(n.need,CAP-BS.stock); delta=-amt; }
+  if(n.act==='sell'){ amt=Math.min(n.need,BS.stock); delta=amt; }
+  const fin=bsEq(sea.sh,delta), price=fin.P*BSK;
+  if(n.act==='buy'){ BS.stock+=amt; BS.fund-=price*amt*BSQ/1000; }
+  if(n.act==='sell'){ BS.stock-=amt; BS.fund+=price*amt*BSQ/1000; }
+  const storage=BS.stock*BSQ*0.5;   /* ฿500 a tonne a season, in ฿bn */
+  BS.fund-=storage;
+  BS.hist.push({free:n.P,fin:fin.P});
+  const short=amt<n.need-1e-9;
+  if(n.act==='none') note='The price is already inside the band, so the agency does nothing — intervening would push it out again.';
+  else if(n.act==='buy') note= short
+     ? 'The agency should buy '+fmt(n.need*BSQ,1)+' m tonnes, but the warehouse has room for only '+fmt(amt*BSQ,1)+' m. It buys what it can at ฿'+fmt(price)+' a tonne and <b>the price still falls below the floor</b>. Two good years in a row have filled the store.'
+     : 'Price is below the floor, so the agency <b>buys '+fmt(amt*BSQ,1)+' m tonnes</b>. Less rice reaches the market, the dashed supply curve shifts left, and the price rises back to the floor of ฿12,000. Cost: ฿'+fmt(price*amt*BSQ/1000,1)+' bn.';
+  else note= short
+     ? 'The agency should sell '+fmt(n.need*BSQ,1)+' m tonnes but has only '+fmt(amt*BSQ,1)+' m left. It sells everything and <b>the price still rises above the ceiling</b>, to ฿'+fmt(price)+'. Three poor harvests in a row have emptied the store.'
+     : 'Price is above the ceiling, so the agency <b>sells '+fmt(amt*BSQ,1)+' m tonnes</b> from store. More rice reaches the market, the dashed supply curve shifts right, and the price falls back to the ceiling of ฿18,000. Revenue: ฿'+fmt(price*amt*BSQ/1000,1)+' bn.';
+  const msg=document.getElementById('bsMsg');
+  msg.innerHTML='<span class="verdict '+(ok?'v-good':'v-bad')+'">'+(ok?'Right call':'Not this time')+'</span><br>'+note+' <span style="color:var(--text-3)">Storage this season: ฿'+fmt(storage,1)+' bn.</span>';
+  const fromEff=BS.effDisp;
+  tween('bs',1000,f=>{ BS.effDisp=fromEff+(delta-fromEff)*f; drawBS(); });
+  bsPanel();
+  const nb=document.createElement('div'); nb.className='btn-row';
+  nb.innerHTML=BS.i<SEASONS.length-1?'<button class="btn btn-primary">Next season →</button>':'<button class="btn btn-primary">See the verdict →</button>';
+  document.getElementById('bsCard').appendChild(nb);
+  nb.querySelector('button').addEventListener('click',()=>{
+    if(BS.i<SEASONS.length-1){ BS.i++; bsSeason(); } else bsFinish();
+  });
+}
+function bsFinish(){
+  const inBand=BS.hist.filter(h=>h.fin>=FLOOR-0.5&&h.fin<=CEIL+0.5).length;
+  const freeIn=BS.hist.filter(h=>h.free>=FLOOR-0.5&&h.free<=CEIL+0.5).length;
+  const b=document.getElementById('bsDone');
+  b.innerHTML='✓ Eight seasons done — '+BS.score+' / 8 right decisions. With the scheme the price stayed in the band in <b>'+inBand+' of 8</b> seasons; the free market managed only '+freeIn+'. The agency finished with ฿'+fmt(BS.fund,1)+' bn and '+fmt(BS.stock*BSQ,1)+' m tonnes in store.';
+  b.classList.add('show');
+  document.getElementById('bsDebrief').innerHTML=
+    '<div class="foot-card"><h3>What the game shows — use these as evaluation points</h3>'+
+    '<p><b>1 · It works for one-off shocks.</b> A good year followed by a bad year is exactly what a buffer stock smooths: buy cheap, store, sell dear.</p>'+
+    '<p><b>2 · Runs of bad luck break it.</b> Two good years filled the warehouse (season 3); three poor years emptied it (season 7). The scheme only works if good and bad harvests roughly cancel out.</p>'+
+    '<p><b>3 · Setting the band is hard.</b> If the floor is set above the long-run average price, the agency buys more than it sells, year after year — the stockpiles of the EU’s Common Agricultural Policy and Thailand’s 2011–14 rice scheme.</p>'+
+    '<p><b>4 · It costs money even when it works.</b> Storage, wastage (rice deteriorates in store) and administration must be funded, and the agency may need taxpayers to top up its fund — an opportunity cost.</p>'+
+    '<p><b>5 · It suits storable goods only.</b> Rice, wheat and coffee can be stored; durian, fresh fish and flowers cannot.</p></div>'+
+    '<div class="btn-row"><button class="btn btn-ghost" id="bsAgain">Play again</button></div>';
+  document.getElementById('bsAgain').addEventListener('click',()=>{ BS.shDisp=0; BS.effDisp=0; bsReset(); });
+  trk('Buffer Stock Game', BS.score+'/8 decisions; '+inBand+'/8 seasons in band'); mark('buffer');
+}
+bsReset();
+
+/* ================= TAB 5 — SHIFT PREDICTOR ================= */
+const METHODS=[
+ {id:'tax',  name:'Indirect tax'},
+ {id:'sub',  name:'Subsidy'},
+ {id:'max',  name:'Maximum price'},
+ {id:'min',  name:'Minimum price'},
+ {id:'buf',  name:'Buffer stock'},
+ {id:'dir',  name:'Direct provision'},
+ {id:'info', name:'Information'},
+];
+const DIAG={
+ Sleft:'Supply shifts left (up), parallel to the old curve',
+ Spivot:'Supply shifts left (up), the gap widening as price rises',
+ Sright:'Supply shifts right (down)',
+ Dleft:'Demand shifts left',
+ Dright:'Demand shifts right',
+ ceil:'A horizontal price line below the equilibrium price',
+ floor:'A horizontal price line above the equilibrium price',
+ govt:'A vertical supply line at the quantity the government provides',
+ buy:'The supply reaching the market shifts left as stock is bought'
+};
+const SP=[
+ {id:'s1', src:'Thailand', title:'The sugar tax on sweet drinks',
+  text:'Since 2017 Thailand has charged an excise tax on sweetened drinks set as an amount per litre, rising with the grams of sugar in each 100 ml, and phased up in stages.',
+  method:'tax', diag:'Sleft', opts:['Sleft','Spivot','Dleft','Sright'],
+  fb:'A fixed amount per litre is a <b>specific</b> tax, so supply shifts up by the same amount at every output — a parallel shift. Many brands responded by cutting the sugar in their recipes to fall into a lower band: the tax changed products as well as prices, which is a strong evaluation point.'},
+ {id:'s2', src:'Coursebook · India', title:'An extra 5% tax on vegetable oil imports',
+  text:'India adds 5% to the price of imported palm, soy and sunflower oil, and uses the revenue to fund its own oilseed farmers (Economics in Context, Chapter 13).',
+  method:'tax', diag:'Spivot', opts:['Spivot','Sleft','floor','Dleft'],
+  fb:'5% of the price is an <b>ad valorem</b> tax. It adds more baht (or rupees) to each unit as the price rises, so S<sub>1</sub> diverges from S rather than running parallel to it — coursebook Activity 13.1.'},
+ {id:'s3', src:'Thailand', title:'Money off electric cars',
+  text:'Under the EV 3.0 scheme, the government paid carmakers up to ฿150,000 per electric car, on condition they cut the price to buyers and agreed to build EVs in Thailand.',
+  method:'sub', diag:'Sright', opts:['Sright','Dright','Sleft','ceil'],
+  fb:'A payment to producers lowers their costs, so supply shifts right (down) by the amount of the subsidy. The price falls and quantity rises. How much of the subsidy reaches buyers depends on the price elasticities.'},
+ {id:'s4', src:'Thailand', title:'Graphic warnings and plain packs',
+  text:'Cigarette packs in Thailand must carry large graphic health warnings, and since 2020 packs have been plain, with no brand colours or logos.',
+  method:'info', diag:'Dleft', opts:['Dleft','Sleft','Dright','floor'],
+  fb:'Warnings correct <b>information failure</b>: smokers underestimate the harm (Topic 3.1). Better information lowers the value people place on cigarettes, so <b>demand</b> shifts left — not supply.'},
+ {id:'s5', src:'Thailand', title:'The ฿20 flat fare',
+  text:'Since late 2023 any journey on Bangkok’s Purple Line and the SRT Red Line has cost a flat ฿20, well below the old distance-based fares. The government compensates the operators.',
+  method:'max', diag:'ceil', opts:['ceil','floor','Sright','Dright'],
+  fb:'A cap on the fare is a <b>maximum price</b>, drawn below equilibrium. The coursebook lists transport fares as a typical case “especially where a subsidy is being paid” — the compensation stops operators cutting services, which would otherwise cause a shortage (crowding).'},
+ {id:'s6', src:'Thailand', title:'The daily minimum wage',
+  text:'Thailand sets a legal minimum daily wage for each province. Employers may not pay less, even if some workers would accept less.',
+  method:'min', diag:'floor', opts:['floor','ceil','Dleft','Sright'],
+  fb:'A minimum wage is a <b>minimum price</b> in the labour market, drawn above equilibrium. If it binds, more people want to work than employers want to hire — an excess supply of labour, i.e. unemployment. How much depends on how elastic the demand for labour is.'},
+ {id:'s7', src:'Thailand', title:'Fifteen years of free schooling',
+  text:'Thai children are entitled to fifteen years of free basic education in state schools, from kindergarten to the end of upper secondary, financed through taxation.',
+  method:'dir', diag:'govt', opts:['govt','Sright','ceil','Dright'],
+  fb:'This is <b>direct provision</b> of a merit good, free at the point of use. The government decides the quantity, so supply is drawn as a vertical line at that quantity (Topic 3.1, Figure 12.2). The coursebook’s justification is <b>equity</b>: access regardless of income.'},
+ {id:'s8', src:'Coursebook · rice', title:'An agency buys up a bumper harvest',
+  text:'After a record crop, rice prices fall below the agency’s floor. It buys rice from farmers and stores it, ready to sell when a poor harvest comes.',
+  method:'buf', diag:'buy', opts:['buy','Dleft','Sright','ceil'],
+  fb:'Buying for storage is the <b>buffer stock</b> at work: rice bought by the agency never reaches the market, so the supply available to consumers shifts left and the price rises back to the floor — your Buffer Stock Game.'},
+ {id:'s9', src:'Thailand', title:'The “Healthier Choice” logo',
+  text:'Food and drink products that meet limits on sugar, fat and sodium can carry Thailand’s green “Healthier Choice” logo on the pack.',
+  method:'info', diag:'Dright', opts:['Dright','Dleft','Sright','Sleft'],
+  fb:'Another form of <b>information</b> — this time for the healthier product. Shoppers who value health now know which products qualify, so demand for those products shifts <b>right</b>. Information can shift demand either way.'},
+];
+function mini(diag,f){
+  const F=FM;
+  let s='<svg viewBox="0 0 300 206" role="img" aria-label="Mini diagram">';
+  s+=F.axes('Q','P',10);
+  const dD=diag==='Dleft'?-18*f:diag==='Dright'?18*f:0;
+  if(diag!=='govt'){
+    s+=F.line(-1,0,C.D,2.2, dD?' stroke-opacity=".35"':'')+lbl(F.X(96),F.Y(4)-6,'D',{c:C.D,a:'end',s:10});
+    s+=F.line(1,0,C.S,2.2, (diag==='Sleft'||diag==='Spivot'||diag==='Sright'||diag==='buy')&&f>0.02?' stroke-opacity=".35"':'')+lbl(F.X(97),F.Y(97)+12,'S',{c:C.S,a:'end',s:10});
+  } else {
+    s+=F.line(-1,0,C.D,2.2)+lbl(F.X(96),F.Y(4)-6,'D',{c:C.D,a:'end',s:10});
+    s+=F.line(1,0,C.S,2.2,' stroke-opacity=".35"');
+  }
+  s+=F.ring(50,50,C.guide);
+  let nQ=50,nP=50,show=f>0.02;
+  if(diag==='Sleft'||diag==='buy'){ s+=show?F.line(1,18*f,C.S1,2.6,diag==='buy'?' stroke-dasharray="7 4"':''):''; nQ=50-9*f; nP=50+9*f; }
+  if(diag==='Spivot'){ const r=0.45*f; s+=show?F.line(1+r,50*r,C.S1,2.6):''; const x=-50*r/(2+r); nQ=50+x; nP=50-x; }
+  if(diag==='Sright'){ s+=show?F.line(1,-18*f,C.S1,2.6):''; nQ=50+9*f; nP=50-9*f; }
+  if(diag==='Dleft'||diag==='Dright'){ s+=show?F.line(-1,dD,C.S1,2.6):''; nQ=50+dD/2; nP=50+dD/2; }
+  if(diag==='ceil'||diag==='floor'){
+    const p=diag==='ceil'?50-16*f:50+16*f;
+    if(show){
+      s+='<line x1="'+F.X(0)+'" y1="'+F.Y(p)+'" x2="'+F.X(100)+'" y2="'+F.Y(p)+'" stroke="'+C.ctrl+'" stroke-width="2.6" stroke-opacity="'+f+'"/>';
+      const q1=Math.min(100-p,p), q2=Math.max(100-p,p);
+      s+='<line x1="'+F.X(q1)+'" y1="'+F.Y(p)+'" x2="'+F.X(q2)+'" y2="'+F.Y(p)+'" stroke="'+C.gap+'" stroke-width="6" stroke-opacity="'+(0.55*f)+'"/>';
+      if(f>0.95) s+=lbl((F.X(q1)+F.X(q2))/2,F.Y(p)+(diag==='ceil'?15:-8),diag==='ceil'?'shortage':'surplus',{c:'#3E2A66',s:10});
+    }
+    nQ=null;
+  }
+  if(diag==='govt'){
+    const q=50+22*f;
+    s+='<line x1="'+F.X(q)+'" y1="'+F.Y(0)+'" x2="'+F.X(q)+'" y2="'+F.Y(96)+'" stroke="'+C.S1+'" stroke-width="2.6" stroke-opacity="'+Math.max(.2,f)+'"/>';
+    if(f>0.95) s+=lbl(F.X(q)+4,F.Y(88),'S govt',{c:C.S1,a:'start',s:10});
+    nQ=null;
+  }
+  if(nQ!==null&&show) s+=F.dot(nQ,nP,C.S1,4);
+  s+='</svg>';
+  return s;
+}
+let spState={};
+function buildShift(){
+  const host=document.getElementById('spList'); host.innerHTML='';
+  spState={done:0,pts:0,m1:0};
+  document.getElementById('spBanner').classList.remove('show');
+  spTally();
+  shuffle(SP.map((_,i)=>i)).forEach((ci,pos)=>{
+    const d=SP[ci];
+    const c=document.createElement('div'); c.className='q-card gm-case';
+    const opts=shuffle([...d.opts]);
+    c.innerHTML='<span class="gm-stamp">Policy '+String(pos+1).padStart(2,'0')+' · '+d.src+'</span>'+
+      '<div class="gm-pair"><div>'+
+        '<div class="q-name" style="margin-bottom:6px">'+d.title+'</div><div class="q-stem">'+d.text+'</div>'+
+        '<div class="write-lbl">STEP 1 — Which method is the government using?</div>'+
+        '<div class="steppick s1">'+METHODS.map(m=>'<button class="lvl" data-v="'+m.id+'">'+m.name+'</button>').join('')+'</div>'+
+        '<div class="s2 hidden"><div class="write-lbl">STEP 2 — What happens on the diagram?</div>'+
+          '<div class="opts">'+opts.map((o,i)=>'<div class="opt" data-k="'+o+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+DIAG[o]+'</span></div>').join('')+'</div></div>'+
+      '</div><div class="gm-mini"><div class="mm">'+mini(d.diag,0)+'</div><div class="cap">Answer both steps to see the shift</div></div></div>'+
+      '<div class="reveal"></div>';
+    host.appendChild(c);
+    let r1=null,r2=null;
+    c.querySelectorAll('.s1 .lvl').forEach(b=>b.addEventListener('click',()=>{
+      if(r1!==null) return; r1=b.dataset.v;
+      c.querySelectorAll('.s1 .lvl').forEach(x=>{ x.disabled=true; if(x.dataset.v===d.method) x.classList.add('gi-ok'); });
+      if(r1!==d.method) b.classList.add('gi-no'); else spState.m1++;
+      c.querySelector('.s2').classList.remove('hidden');
+    }));
+    c.querySelectorAll('.s2 .opt').forEach(o=>o.addEventListener('click',()=>{
+      if(r2!==null||r1===null) return; r2=o.dataset.k;
+      c.querySelectorAll('.s2 .opt').forEach(el=>{ el.classList.add('locked'); if(el.dataset.k===d.diag) el.classList.add('right'); });
+      if(r2!==d.diag) o.classList.add('wrongpick');
+      const pts=(r1===d.method?1:0)+(r2===d.diag?1:0);
+      spState.pts+=pts; spState.done++;
+      const meth=METHODS.find(m=>m.id===d.method).name;
+      const rev=c.querySelector('.reveal');
+      rev.innerHTML='<span class="verdict v-'+(pts===2?'good':pts===1?'both':'bad')+'">'+(pts===2?'Both right (+2)':pts===1?'One step right (+1)':'Neither step right')+'</span><br><strong>Method: '+meth+'.</strong> '+d.fb;
+      rev.classList.add('show');
+      const mm=c.querySelector('.mm'); c.querySelector('.cap').textContent=DIAG[d.diag];
+      tween('sp'+d.id,1300,f=>{ mm.innerHTML=mini(d.diag,f); });
+      spTally();
+      if(spState.done===SP.length){
+        const b=document.getElementById('spBanner');
+        b.innerHTML='✓ All nine policies done — '+spState.pts+' / 18 points. Notice the pattern: taxes and subsidies move <b>supply</b>, information moves <b>demand</b>, price controls add a <b>horizontal line</b>, and direct provision fixes the <b>quantity</b>.';
+        b.classList.add('show');
+        trk('Shift Predictor: 9 policies', spState.pts+'/18 points'); mark('shift');
+      }
+    }));
+  });
+}
+function spTally(){
+  document.getElementById('spDone').textContent=spState.done+' / '+SP.length;
+  document.getElementById('spPts').textContent=spState.pts;
+  document.getElementById('spAcc').textContent=spState.done?Math.round(spState.m1/spState.done*100)+'%':'–';
+}
+buildShift();
+
+/* ================= TAB 6 — ANALYSIS CHAINS + JUDGEMENTS ================= */
+const CHAINS=[
+ {id:'a', icon:'⛽', bg:'#FF8F1C', name:'Chain A: who pays a tax on diesel?',
+  steps:['The government adds a specific tax of a fixed amount per litre of diesel',
+         'Sellers must pay the tax, so the supply curve shifts up by the full amount of the tax',
+         'Demand for diesel is price inelastic: trucks, buses and farm machinery have few substitutes',
+         'Sellers can raise the price by most of the tax without losing many sales',
+         'Quantity falls only a little, so consumers bear most of the burden and tax revenue is large',
+         'But diesel moves almost everything, so costs rise across the economy and low-income households are hit hardest'],
+  done:'<h3>Elasticity is the hinge</h3><p>Step 3 is where the analysis happens: without it, step 4 is an assertion. Step 6 is ready-made evaluation — the tax is effective at raising revenue but <b>regressive</b> and feeds into inflation.</p>'},
+ {id:'b', icon:'🍳', bg:'#7A0830', name:'Chain B: what a maximum price on cooking oil really does',
+  steps:['The government sets a maximum price for cooking oil below the equilibrium price',
+         'At the lower price, quantity demanded extends while producers cut quantity supplied',
+         'Quantity demanded exceeds quantity supplied: there is a shortage',
+         'Because the price cannot rise, the oil is allocated by queues, first come first served, or rationing',
+         'Buyers who miss out would pay well above the legal maximum for the limited supply',
+         'An informal market grows at prices above the ceiling, undermining the aim of helping low-income families'],
+  done:'<h3>From intention to unintended consequence</h3><p>Steps 1–3 are the textbook diagram. Steps 4–6 are what lift an answer into the top band: they explain <b>why</b> the policy may fail its own aim (coursebook Key Concept: equality and equity).</p>'},
+ {id:'c', icon:'🚗', bg:'#28A745', name:'Chain C: who gains from a subsidy on electric cars?',
+  steps:['The government pays carmakers a fixed subsidy for each electric car sold',
+         'This works like a fall in costs, so supply shifts right (down) by the amount of the subsidy',
+         'The market price falls and the quantity bought rises',
+         'Consumers gain a lower price; producers gain a higher price received — market price plus subsidy',
+         'The split depends on elasticity: the more price-elastic demand is, the more of the subsidy producers keep',
+         'The subsidy is paid from tax revenue, so it has an opportunity cost — and high-cost producers have less reason to become efficient'],
+  done:'<h3>The incidence of a subsidy</h3><p>Step 4 corrects the most common error — “the subsidy goes to producers, so only producers gain”. Step 5 reverses the tax rule: the <b>less</b> elastic side gains <b>more</b>.</p>'}
+];
+const chainSolved={};
+function buildChain(ch){
+  const card=document.getElementById('chain-'+ch.id);
+  const shuffled=shuffle(ch.steps.map((s,i)=>({s:s,i:i})));
+  card.innerHTML=
+    '<div class="q-head"><div class="q-icon" style="background:'+ch.bg+'">'+ch.icon+'</div><div class="q-name">'+ch.name+'</div></div>'+
+    '<div class="write-lbl">Click the steps in causal order</div>'+
+    '<div class="chain-src">'+shuffled.map(o=>'<button class="chain-chip" data-i="'+o.i+'">'+o.s+'</button>').join('')+'</div>'+
+    '<div class="write-lbl">Your chain</div>'+
+    '<div class="chain-seq"><div class="chain-empty">Nothing added yet — click a step above to begin.</div></div>'+
+    '<div class="btn-row">'+
+      '<button class="btn btn-primary ch-check">Check chain</button>'+
+      '<button class="btn btn-ghost ch-reset">Reset</button>'+
+      '<span class="score"></span>'+
+    '</div>'+
+    '<div class="chain-note"></div>';
+  let seq=[];
+  const seqEl=card.querySelector('.chain-seq'), sc=card.querySelector('.score');
+  function render(){
+    if(!seq.length){ seqEl.innerHTML='<div class="chain-empty">Nothing added yet — click a step above to begin.</div>'; return; }
+    seqEl.innerHTML=seq.map((idx,pos)=>'<div class="chain-step" data-idx="'+idx+'"><div class="n">'+(pos+1)+'</div><div>'+ch.steps[idx]+'</div></div>').join('');
+  }
+  card.querySelectorAll('.chain-chip').forEach(b=>b.addEventListener('click',()=>{
+    seq.push(Number(b.dataset.i)); b.classList.add('used'); sc.textContent=''; render();
+  }));
+  card.querySelector('.ch-reset').addEventListener('click',()=>{
+    seq=[]; card.querySelectorAll('.chain-chip').forEach(c=>c.classList.remove('used')); sc.textContent=''; render();
+  });
+  card.querySelector('.ch-check').addEventListener('click',()=>{
+    if(seq.length<ch.steps.length){ sc.textContent='Add all '+ch.steps.length+' steps first ('+seq.length+'/'+ch.steps.length+')'; sc.style.color='#FF8F1C'; return; }
+    let right=0;
+    seqEl.querySelectorAll('.chain-step').forEach((el,pos)=>{
+      const ok=Number(el.dataset.idx)===pos;
+      el.classList.toggle('ok',ok); el.classList.toggle('no',!ok);
+      if(ok) right++;
+    });
+    if(right===ch.steps.length){
+      sc.textContent='🎉 Correct!'; sc.style.color='#28A745';
+      const note=card.querySelector('.chain-note');
+      if(!note.innerHTML){ note.className='chain-note foot-card'; note.innerHTML=ch.done; }
+      if(!chainSolved[ch.id]){ chainSolved[ch.id]=true; trk('Chain: '+ch.name, 'correct'); chainCheckDone(); }
+    } else {
+      sc.textContent=right+' / '+ch.steps.length+' in the right place — press Reset and try again'; sc.style.color='#002F6C';
+    }
+  });
+}
+(function(){
+  const host=document.getElementById('chainHost');
+  CHAINS.forEach(ch=>{ const c=document.createElement('div'); c.className='q-card'; c.id='chain-'+ch.id; host.appendChild(c); buildChain(ch); });
+})();
+const JUDGE=[
+ {t:'“An indirect tax is always paid mainly by consumers.”', ans:'both',
+  why:'The seller pays the government, but who <b>bears</b> the tax depends on elasticity. With inelastic demand (diesel, cigarettes) consumers bear most of it; with elastic demand and inelastic supply (one café brand among many) producers do — Figures 13.3a and 13.3b.',
+  exam:'“The incidence of an indirect tax depends on the relative price elasticities of demand and supply: the less elastic side bears the larger share.”'},
+ {t:'“A subsidy only benefits producers, because it is paid to them.”', ans:'bad',
+  why:'Supply shifts right, so the market price falls: consumers gain too. In Figure 13.5 the benefit is split between consumers (lower price) and producers (higher price received). The split depends on elasticity.',
+  exam:'“Although a subsidy is paid to producers, part of it is passed on to consumers as a lower price; the more inelastic demand is, the larger the consumers’ share.”'},
+ {t:'“A maximum price set below equilibrium makes an essential good affordable for everyone.”', ans:'bad',
+  why:'It makes the good cheaper for those who <b>obtain</b> it. The shortage means others go without, queue, or pay informal-market prices above the ceiling — often the low-income households the policy was meant to help.',
+  exam:'“A maximum price helps the consumers who obtain the good at the lower price, but not those left without it, so its effect on equity depends on how the shortage is rationed.”'},
+ {t:'“Taxing sugary drinks is the most effective way to reduce sugar consumption.”', ans:'both',
+  why:'If demand is price inelastic, quantity falls little — revenue rises but consumption does not. But Thailand’s tax was tiered by sugar content, and many firms cut sugar to drop into a lower band, so the tax worked through <b>reformulation</b> as well as price. Information campaigns and labels work on demand instead.',
+  exam:'“A sugar tax is most effective when demand is price elastic or when it is designed to reward reformulation; with inelastic demand it raises revenue more than it cuts consumption.”'},
+ {t:'“A buffer stock scheme can keep prices stable indefinitely.”', ans:'bad',
+  why:'Only if good and bad harvests cancel out. A run of good harvests fills the warehouses; a run of bad ones empties them. If the floor is set too high, the agency buys more than it sells, year after year, at a growing cost (the EU’s CAP).',
+  exam:'“A buffer stock smooths short-term fluctuations, but only if the target band matches the long-run average price and the agency has the funds and storage to cope with runs of good or bad harvests.”'},
+ {t:'“Providing information is the cheapest and best way to cut consumption of demerit goods.”', ans:'both',
+  why:'It is relatively cheap and tackles the cause — information failure — directly, without the regressive effect of a tax. But habits and addiction mean some consumers ignore warnings, the effect is slow and hard to measure, and it raises no revenue. It often works best alongside a tax.',
+  exam:'“Information provision addresses the root cause of over-consumption at low cost, but where consumption is habitual it works slowly and is likely to need a tax alongside it.”'}
+];
+const judgeDone={}; let judgeRight=0;
+(function(){
+  const host=document.getElementById('judgeHost');
+  const LBL={good:'Agree',bad:'Disagree',both:'It depends'};
+  JUDGE.forEach((j,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML='<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(i+1)+'</div><div class="q-name">'+j.t+'</div></div>'+
+      '<div class="choice-row">'+['good','bad','both'].map(v=>'<div class="choice" data-v="'+v+'">'+LBL[v]+'</div>').join('')+'</div>'+
+      '<div class="reveal"></div>';
+    c.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+      if(judgeDone[i]) return;
+      judgeDone[i]=true;
+      const v=ch.dataset.v, ok=v===j.ans;
+      if(ok) judgeRight++;
+      ch.classList.add('sel-'+v);
+      const r=c.querySelector('.reveal');
+      r.innerHTML='<span class="verdict v-'+j.ans+'">'+(ok?'Yes — ':'The best answer: ')+LBL[j.ans]+'</span><br>'+j.why+'<div class="exam-line"><b>Evaluation line:</b> '+j.exam+'</div>';
+      r.classList.add('show');
+      const n=Object.keys(judgeDone).length;
+      document.getElementById('judgeScore').textContent=n+' / '+JUDGE.length+' answered · '+judgeRight+' right';
+      if(n===JUDGE.length){ trk('Agree / disagree / depends', judgeRight+'/'+JUDGE.length+' correct'); chainCheckDone(); }
+    }));
+    host.appendChild(c);
+  });
+})();
+function chainCheckDone(){
+  if(CHAINS.every(c=>chainSolved[c.id]) && Object.keys(judgeDone).length===JUDGE.length && !DONE.chain){
+    const b=document.getElementById('chainDone');
+    b.innerHTML='✓ All three chains built and all six claims judged ('+judgeRight+'/6). Every method in this topic has an “it depends” — usually on <b>elasticity</b>, <b>cost to the government</b> or <b>how a shortage or surplus is dealt with</b>. Name the condition and you are evaluating.';
+    b.classList.add('show'); mark('chain');
+  }
+}
+
+/* ================= TAB 7 — WRITE IT UP ================= */
+const CHECKS={
+ w1:['I defined a specific tax accurately (a fixed amount per unit)',
+     'I defined incidence — how the burden is shared between consumers and producers',
+     'I showed (or described precisely) supply shifting up by the tax, with S, S<sub>1</sub>, P, P<sub>1</sub> and P<sub>2</sub>',
+     'I identified the consumers’ share (P<sub>1</sub> − P) and the producers’ share (P − P<sub>2</sub>)',
+     'I explained WHY inelastic demand lets sellers pass the tax on (few substitutes, buyers keep buying)',
+     'I contrasted it with elastic demand, where producers bear more and quantity falls further',
+     'I applied it to real examples (diesel, cigarettes, a café brand) or to tax revenue'],
+ w2:['I analysed the maximum price with its diagram: shortage, rationing, informal market',
+     'I analysed the subsidy with its diagram: supply shifts right, price falls and quantity rises',
+     'I explained the costs of a subsidy: opportunity cost, poor targeting, weaker incentive to cut costs',
+     'I used specific evidence, such as Thailand’s Oil Fuel Fund and diesel in 2022',
+     'I said what the answer depends on — budget, elasticity, temporary or permanent shock, targeting',
+     'I ended with a supported judgement that says when each method is better']
+};
+const BANDS={
+ w1:on=>on<=2?'Lower band: some knowledge, little analysis. Add the diagram and the elasticity reasoning.':
+        on<=4?'Middle band. The diagram is there, but the “why” is thin — most often the missing step is explaining substitutes and switching.':
+        on<7?'Nearly a top-band answer. Add what you left unticked and redraft.':'Top band: defined, drawn, explained and applied. Now do it in 12 minutes.',
+ w2:on=>on<=2?'Lower band: one-sided or descriptive. Analyse both methods.':
+        on<=4?'Middle band: two sides, but the evaluation is thin. Make the judgement follow from your “it depends”.':
+        on<6?'Nearly top band. The missing element is usually the final judgement or the evidence.':'Top band: balanced, applied and judged. Write it out in full.'
+};
+['w1','w2'].forEach(k=>{
+  const host=document.getElementById(k+'checks');
+  CHECKS[k].forEach(txt=>{
+    const row=document.createElement('div');
+    row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{
+      row.classList.toggle('on');
+      const on=host.querySelectorAll('.chk.on').length, tot=CHECKS[k].length;
+      document.getElementById(k+'bv').textContent=on+' of '+tot+' ticked';
+      document.getElementById(k+'bar').style.width=(on/tot*100)+'%';
+      document.getElementById(k+'bd').textContent=BANDS[k](on);
+    });
+    host.appendChild(row);
+  });
+});
+const writeSeen={w1:false,w2:false};
+[['w1btn','w1model','w1'],['w2btn','w2model','w2']].forEach(([btn,mod,key])=>{
+  document.getElementById(btn).addEventListener('click',()=>{
+    const box=document.getElementById(key);
+    if(box.value.trim().length<40){
+      box.focus();
+      document.getElementById(btn).textContent='Write your own attempt first — then compare';
+      return;
+    }
+    document.getElementById(mod).classList.add('show');
+    document.getElementById(btn).textContent='Model shown ✓';
+    document.getElementById(btn).disabled=true;
+    writeSeen[key]=true;
+    if(writeSeen.w1 && writeSeen.w2){
+      document.getElementById('writeDone').classList.add('show');
+      trk('Write It Up', 'both written tasks attempted'); mark('write');
+    }
+  });
+});
+
+/* ================= TAB 8 — EXAM MCQ ================= */
+/* coursebook MCQ diagrams, redrawn */
+function qfig(kind){
+  const F=FM;
+  let s='<svg viewBox="0 0 300 206" role="img" aria-label="Question diagram">'+F.axes('Quantity','Price ($)',10);
+  if(kind==='min'){
+    s+=F.line(-1,0,C.D,2.2)+lbl(F.X(96),F.Y(4)-6,'D',{c:C.D,a:'end',s:10});
+    s+=F.line(1,0,C.S,2.2)+lbl(F.X(97),F.Y(97)+12,'S',{c:C.S,a:'end',s:10});
+    s+='<line x1="'+F.X(0)+'" y1="'+F.Y(68)+'" x2="'+F.X(100)+'" y2="'+F.Y(68)+'" stroke="'+C.ctrl+'" stroke-width="2.2"/>'+lbl(F.X(99),F.Y(68)-5,'Minimum price',{a:'end',s:9.5,c:'#7A3D00'});
+    s+=F.dash(0,50,50,50)+F.dash(32,68,32,0)+F.dash(50,50,50,0)+F.dash(68,68,68,0);
+    s+=F.pLbl(68,'P₁')+F.pLbl(50,'P')+F.qLbl(32,'K')+F.qLbl(50,'L')+F.qLbl(68,'R');
+  }
+  if(kind==='inc'){
+    s+=F.line(-0.3,0,C.D,2.2)+lbl(F.X(98),F.Y(35)-6,'D',{c:C.D,a:'end',s:10});
+    s+=F.line(3,0,C.S,2.2)+lbl(F.X(66)+4,F.Y(97)+10,'S',{c:C.S,a:'start',s:10});
+  }
+  if(kind==='area'){
+    s+=F.line(-1,0,C.D,2.2)+lbl(F.X(96),F.Y(4)-6,'D',{c:C.D,a:'end',s:10});
+    s+=F.line(1,0,C.S,2.2)+lbl(F.X(97),F.Y(97)+12,'S',{c:C.S,a:'end',s:10});
+    s+=F.line(1,24,C.S1,2.2)+lbl(F.X(76)+4,F.Y(100)+10,'S₁',{c:C.S1,a:'start',s:10});
+    s+=F.dash(0,62,38,62)+F.dash(0,50,50,50)+F.dash(0,38,38,38)+F.dash(38,62,38,0)+F.dash(50,50,50,0);
+    s+=F.pLbl(62,'P₁')+F.pLbl(50,'P')+F.pLbl(38,'P₂')+F.qLbl(38,'Q₁')+F.qLbl(50,'Q');
+    s+=lbl(F.X(38)-6,F.Y(62)-4,'Y',{s:10,a:'end'})+lbl(F.X(38)+7,F.Y(50)-3,'W',{s:10,a:'start'})+lbl(F.X(50)+7,F.Y(50)+4,'X',{s:10,a:'start'})+lbl(F.X(38)+6,F.Y(38)+11,'Z',{s:10,a:'start'});
+  }
+  return s+'</svg>';
+}
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1 (coursebook Q1)',
+  stem:'The government wants to impose a maximum on the price of rice. There are three possible ways in which this can be achieved, individually or in combination: <b>1</b> give a subsidy to rice producers; <b>2</b> provide more information on the health benefits of eating more rice and less meat; <b>3</b> ration the amount of rice each person is allowed. Which is the best way for the government to impose a maximum price?',
+  opts:['1','3','1 and 3 combined','2 and 3 combined'], ans:0,
+  fb:'A subsidy shifts supply right until the market clears at the maximum price, so there is no shortage to ration.',
+  why:'Rationing (3) only shares out a shortage, so adding it to a subsidy that has already removed the shortage achieves nothing extra. Information (2) shifts demand <b>right</b>, making a shortage worse.'},
+ {id:'m2', icon:'2', bg:'#6B4E9E', name:'Paper 1 · Question 2 (coursebook Q2)',
+  stem:'The diagram shows the market when a minimum price P<sub>1</sub> has been imposed on a demerit good. What should the government do to maintain the minimum price at P<sub>1</sub>?',
+  fig:qfig('min'),
+  opts:['buy KL','buy KR','sell LR','sell KR'], ans:1,
+  fb:'At P<sub>1</sub> consumers buy only K but producers supply R. The surplus KR must be bought, or the price will fall.',
+  why:'KL and LR are each only part of the surplus — the contraction of demand and the extension of supply.'},
+ {id:'m3', icon:'3', bg:'#FF8F1C', name:'Paper 1 · Question 3 (coursebook Q3)',
+  stem:'The diagram shows demand and supply for a product on which the government has imposed a new specific indirect tax. What will be the outcome of the tax?',
+  fig:qfig('inc'),
+  opts:['There will be a new demand curve parallel to and above D.','Most of the incidence of the tax will fall on the producer.','Most of the incidence of the tax will fall on the consumer.','The quantity traded will remain the same.'], ans:1,
+  fb:'Demand is very elastic (flat) and supply very inelastic (steep): sellers cannot raise the price much, so they bear most of the tax — Figure 13.3b.',
+  why:'A: a tax on producers shifts <b>supply</b>, not demand. D: quantity only stays the same if demand or supply is perfectly inelastic.'},
+ {id:'m4', icon:'4', bg:'#D63864', name:'Paper 1 · Question 4 (coursebook Q4)',
+  stem:'In the diagram, the government imposes a specific indirect tax on a product. Which area represents the amount of tax paid by consumers?',
+  fig:qfig('area'),
+  opts:['YWX','P<sub>1</sub>YXP','P<sub>1</sub>YWP','P<sub>1</sub>YZP<sub>2</sub>'], ans:2,
+  fb:'Consumers pay P<sub>1</sub> − P more on each of the OQ<sub>1</sub> units: the rectangle P<sub>1</sub>YWP.',
+  why:'D is the <b>total</b> tax revenue (consumers plus producers). A is part of the deadweight loss.'},
+ {id:'m5', icon:'5', bg:'#28A745', name:'Paper 1 · Question 5 (coursebook Q5)',
+  stem:'A new subsidy is paid to farmers who grow corn (maize). Which of these is the most likely consequence?',
+  opts:['More corn is produced at a higher price to consumers.','More corn is produced at a lower price to consumers.','More corn is produced at a price to consumers that is determined by market demand and supply.','There will be a decrease in the price of corn oil for consumers.'], ans:1,
+  fb:'Supply shifts right: quantity rises and the market price falls.',
+  why:'D may happen later, in a related market, but it is not the <b>most likely</b> direct consequence. C ignores that the subsidy changes supply.'},
+ {id:'m6', icon:'6', bg:'#002F6C', name:'Paper 1 · Question 6 (coursebook Q6)',
+  stem:'Suppose the government uses a buffer stock scheme to reduce the market price of wheat. Which is the best way in which this can be achieved?',
+  opts:['by increasing the supply of wheat in the market','by buying supplies of wheat in the market','by providing a subsidy for farmers to produce more wheat','by a campaign to get consumers to buy less wheat'], ans:0,
+  fb:'To lower the price, the agency sells wheat from its stock, adding to supply in the market.',
+  why:'B would <b>raise</b> the price. C and D might lower it, but they are not buffer stock actions.'},
+ {id:'m7', icon:'7', bg:'#8098B0', name:'Paper 1 · Question 7',
+  stem:'A government replaces a specific tax on a good with an ad valorem tax that raises the same revenue at the current price. How does the new supply curve compare with the old one?',
+  opts:['It is parallel to the original supply curve','It is steeper than the original supply curve, diverging from it as price rises','It is flatter than the original supply curve','It is vertical'], ans:1,
+  fb:'A percentage adds more to higher prices, so the vertical gap widens as price rises: S<sub>1</sub> is steeper and diverges.',
+  why:'A describes a <b>specific</b> tax — try both in the Tax &amp; Subsidy Lab.'},
+ {id:'m8', icon:'8', bg:'#FF8F1C', name:'Paper 1 · Question 8 · calculation',
+  stem:'A specific tax of $2 per unit is imposed. The market price rises from $10 to $11.50. What share of the tax is borne by producers?',
+  opts:['25%','50%','75%','100%'], ans:0,
+  fb:'Consumers pay $1.50 more (75%). Producers now keep $11.50 − $2 = $9.50, $0.50 less than before: 25%.',
+  why:'C is the consumers’ share. A high consumer share tells you demand is relatively inelastic.'},
+ {id:'m9', icon:'9', bg:'#6B4E9E', name:'Paper 1 · Question 9 · calculation',
+  stem:'A minimum price of $4 is set for a crop. At $4, 100 tonnes are supplied and 60 tonnes are demanded. The government buys the surplus at the minimum price. How much does it spend?',
+  opts:['$160','$240','$400','$640'], ans:0,
+  fb:'Surplus = 100 − 60 = 40 tonnes. Spending = 40 × $4 = $160.',
+  why:'B is consumers’ spending (60 × $4) and C is farmers’ total revenue (100 × $4).'},
+ {id:'m10', icon:'10', bg:'#5B8C5A', name:'Paper 1 · Question 10',
+  stem:'A government campaign successfully persuades people that energy drinks are harmful. What is the effect in the market for energy drinks?',
+  opts:['Supply shifts left; price rises','Demand shifts left; price and quantity both fall','Demand contracts along the curve; price rises','Supply shifts right; price falls'], ans:1,
+  fb:'Information changes how much consumers value the good at every price, so demand shifts left. Equilibrium price and quantity both fall.',
+  why:'C mixes up a shift with a movement along the curve — a contraction happens only when the good’s own price changes.'},
+ {id:'m11', icon:'11', bg:'#7A0830', name:'Paper 1 · Question 11',
+  stem:'A maximum price below equilibrium is enforced for petrol. Which group is most clearly made better off?',
+  opts:['All consumers of petrol','Petrol producers','Consumers who still manage to buy petrol at the controlled price','Consumers who buy from the informal market'], ans:2,
+  fb:'Only those who obtain petrol at the lower legal price gain. Others go without or pay informal-market prices above the ceiling.',
+  why:'A is the classic over-claim: the shortage means not every consumer can buy at the controlled price.'},
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  const b=document.getElementById('mcqDone');
+  b.innerHTML='✓ All eleven attempted — '+right+' / '+total+' right first time. Topic 3.3 moves from markets to people: how governments address <b>inequality</b> of income and wealth.';
+  b.classList.add('show');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
+  mark('mcq');
+});
+</script>
+</body>
+</html>
