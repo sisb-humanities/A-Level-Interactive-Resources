@@ -33,7 +33,8 @@ body{font-family:'Lato',sans-serif;background:var(--grey-bg);color:var(--text);m
 .hero .kicker{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8FCBEA;margin-bottom:8px}
 .hero h1{font-size:26px;font-weight:900;margin-bottom:10px;line-height:1.2}
 .hero p{font-size:14.5px;line-height:1.6;color:#CADCFC;max-width:680px}
-.hero .hero-note{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border-radius:24px;padding:8px 16px;font-size:12.5px;font-weight:700;margin-top:16px}
+.hero .hero-note{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border-radius:24px;padding:8px 16px;font-size:12.5px;font-weight:700;margin-top:16px;color:#fff;text-decoration:none}
+.hero a.hero-note:hover{background:rgba(255,255,255,.2)}
 
 /* feature tiles */
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
@@ -106,8 +107,8 @@ body{font-family:'Lato',sans-serif;background:var(--grey-bg);color:var(--text);m
   <div class="hero">
     <div class="kicker">Cambridge International AS &amp; A Level Economics 9708</div>
     <h1>Everything for your course, topic by topic</h1>
-    <p>Pick a syllabus section, then a topic. Each one links to a video, a Gemini/NotebookLM notebook and — as they are built — an interactive activity that goes with what we've covered in class. AS candidates study topics 1.1–6.5; A Level candidates study all topics 1.1–11.6.</p>
-    <div class="hero-note">👤 The first activity you open asks for your name once — after that your progress is remembered automatically.</div>
+    <p>Pick a syllabus section, then a topic. For each one: watch the video and do its quiz, then launch the interactive activity that goes with what we've covered in class. AS candidates study topics 1.1–6.5; A Level candidates study all topics 1.1–11.6.</p>
+    <a class="hero-note" id="loginNote" href="https://sisb-humanities.github.io/SISB-Econ/">👤 Log in once on SISB Economics — your quizzes and activities are then saved automatically.</a>
   </div>
 
   <div class="tiles">
@@ -154,6 +155,10 @@ body{font-family:'Lato',sans-serif;background:var(--grey-bg);color:var(--text);m
    Leave a field null and the page shows nothing / "Coming soon".
    The auto-detect block at the bottom will also find activity
    files for you if they follow the naming rule.
+
+   VIDEO & QUIZ LINKS are automatic: any topic marked visible
+   (TRUE) in the A Level Econ Quiz Catalogue gets a "Video & quiz"
+   button that opens that quiz in SISB Economics.
    ============================================================ */
 const SECTIONS = [
   { num:1, level:'as', title:'Basic economic ideas and resource allocation', topics:[
@@ -166,15 +171,15 @@ const SECTIONS = [
   ]},
   { num:2, level:'as', title:'The price system and the microeconomy', topics:[
     {code:'2.1', name:'Demand and supply curves', video:null, notebook:null, activity:'sisb-alevel-econ-2_1-interactive.html'},
-    {code:'2.2', name:'Price, income and cross elasticity of demand', video:null, notebook:null, activity:null},
-    {code:'2.3', name:'Price elasticity of supply', video:null, notebook:null, activity:null},
-    {code:'2.4', name:'The interaction of demand and supply', video:null, notebook:null, activity:null},
-    {code:'2.5', name:'Consumer and producer surplus', video:null, notebook:null, activity:null},
+    {code:'2.2', name:'Price, income and cross elasticity of demand', video:null, notebook:null, activity:'sisb-alevel-econ-2_2-interactive.html'},
+    {code:'2.3', name:'Price elasticity of supply', video:null, notebook:null, activity:'sisb-alevel-econ-2_3-interactive.html'},
+    {code:'2.4', name:'The interaction of demand and supply', video:null, notebook:null, activity:'sisb-alevel-econ-2_4-interactive.html'},
+    {code:'2.5', name:'Consumer and producer surplus', video:null, notebook:null, activity:'sisb-alevel-econ-2_5-interactive.html'},
   ]},
   { num:3, level:'as', title:'Government microeconomic intervention', topics:[
-    {code:'3.1', name:'Reasons for government intervention in markets', video:null, notebook:null, activity:null},
-    {code:'3.2', name:'Methods and effects of government intervention in markets', video:null, notebook:null, activity:null},
-    {code:'3.3', name:'Addressing income and wealth inequality', video:null, notebook:null, activity:null},
+    {code:'3.1', name:'Reasons for government intervention in markets', video:null, notebook:null, activity:'sisb-alevel-econ-3_1-interactive.html'},
+    {code:'3.2', name:'Methods and effects of government intervention in markets', video:null, notebook:null, activity:'sisb-alevel-econ-3_2-interactive.html'},
+    {code:'3.3', name:'Addressing income and wealth inequality', video:null, notebook:null, activity:'sisb-alevel-econ-3_3-interactive.html'},
   ]},
   { num:4, level:'as', title:'The macroeconomy', topics:[
     {code:'4.1', name:'National income statistics', video:null, notebook:null, activity:null},
@@ -233,6 +238,12 @@ const SECTIONS = [
   ]},
 ];
 
+/* SISB Economics (video + quiz app) and the shared login it saves */
+const QUIZ_APP = 'https://sisb-humanities.github.io/SISB-Econ/';
+const QUIZ_CATALOGUE_CSV = 'https://docs.google.com/spreadsheets/d/1_lk12ve7rzt-jWd7j5gulij6z937hQ83ETbGP9EfPYg/export?format=csv&gid=0';
+const LOGIN_KEY = 'sisb_econ_student';
+let liveQuizzes = new Set();
+
 let currentLevel = 'all';
 let currentQuery = '';
 
@@ -276,7 +287,9 @@ function build(){
             '<div class="topic-code">' + t.code + '</div>' +
             '<div class="topic-name">' + esc(t.name) + '</div>' +
             '<div class="topic-links">' +
-              (t.video ? '<a class="pill pill-video" href="' + esc(t.video) + '" target="_blank" rel="noopener">▶ Video</a>' : '') +
+              (liveQuizzes.has(t.code)
+                ? '<a class="pill pill-video" href="' + esc(QUIZ_APP + '?quiz=' + encodeURIComponent(t.code)) + '">▶ Video &amp; quiz</a>'
+                : (t.video ? '<a class="pill pill-video" href="' + esc(t.video) + '" target="_blank" rel="noopener">▶ Video</a>' : '')) +
               (t.notebook ? '<a class="pill pill-note" href="' + esc(t.notebook) + '" target="_blank" rel="noopener">📓 Notebook</a>' : '') +
               (t.activity
                 ? '<a class="pill pill-launch" href="' + esc(t.activity) + '">Launch activity →</a>'
@@ -316,6 +329,51 @@ document.getElementById('q').addEventListener('input', e => {
 build();
 
 /* ============================================================
+   LOGIN NOTE — shows who is logged in, if anyone, on this device
+   ============================================================ */
+(function showLogin(){
+  try{
+    const s = JSON.parse(localStorage.getItem(LOGIN_KEY) || 'null');
+    if (s && s.nickname){
+      const n = document.getElementById('loginNote');
+      n.textContent = '👤 Logged in as ' + s.nickname + ' (' + s.class + ') — your quizzes and activities are saved automatically.';
+    }
+  }catch(e){ /* storage blocked — keep the default note */ }
+})();
+
+/* ============================================================
+   VIDEO & QUIZ LINKS — read which quizzes are live from the
+   A Level Econ Quiz Catalogue (visible = TRUE)
+   ============================================================ */
+async function loadLiveQuizzes(){
+  try{
+    const res = await fetch(QUIZ_CATALOGUE_CSV);
+    if(!res.ok) return;
+    const lines = (await res.text()).trim().split('\n');
+    // quote-aware split: some quiz titles contain commas
+    const cells = l => {
+      const out = []; let cur = '', inQ = false;
+      for (const ch of l.replace(/\r$/, '')) {
+        if (ch === '"') inQ = !inQ;
+        else if (ch === ',' && !inQ) { out.push(cur.trim()); cur = ''; }
+        else cur += ch;
+      }
+      out.push(cur.trim());
+      return out;
+    };
+    const head = cells(lines[0]).map(h => h.toLowerCase());
+    const iId = head.indexOf('quiz_id'), iVis = head.indexOf('visible');
+    if(iId < 0 || iVis < 0) return;
+    lines.slice(1).forEach(l => {
+      const c = cells(l);
+      if (String(c[iVis]).toUpperCase() === 'TRUE' && c[iId]) liveQuizzes.add(c[iId]);
+    });
+    if (liveQuizzes.size) build();
+  }catch(e){ /* offline — topics still show activities */ }
+}
+loadLiveQuizzes();
+
+/* ============================================================
    AUTO-DETECT ACTIVITY FILES FROM THE GITHUB REPO
    ------------------------------------------------------------
    Naming rule: for topic "X.Y" the activity file must be named
@@ -327,8 +385,6 @@ build();
    Upload a file with that exact name to the repo root and it
    appears here automatically on the next page load — no need
    to edit this file at all.
-
-   >>> EDIT THESE TWO LINES ONCE THE REPO EXISTS <<<
    ============================================================ */
 const REPO_OWNER = 'sisb-humanities';
 const REPO_NAME  = 'A-Level-Interactive-Resources';
