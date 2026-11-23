@@ -71,6 +71,17 @@
 
 .explain .reveal{display:block;background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);padding:12px 14px;margin-top:8px}
 
+/* ---- Sugar Tax Lab (Activity 2) and Free Rider (Activity 4) ---- */
+.gi-tsp{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;min-height:20px}
+.gi-tsp i{width:17px;height:17px;border-radius:4px;background:#fff;border:2px solid var(--orange);box-shadow:inset 0 -4px 0 #FFD9B0}
+.gi-tsp i.half{width:9px}
+.gi-res .tax b{font-size:20px}
+.gi-src{font-size:11.5px;color:var(--text-3);line-height:1.5;margin-top:8px}
+.gi-rules{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 18px;margin-bottom:16px;font-size:13.5px;color:var(--text-2);line-height:1.6}
+.gi-rules b{color:var(--navy)}
+.gi-rules ul{margin:4px 0 0 18px}
+.gi-round{font-size:13px;font-weight:700;color:var(--navy);margin-top:10px;min-height:20px}
+
 /* sticky progress (same as 1.5 / 1.6) */
 .pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
 .pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
@@ -89,7 +100,9 @@
 </div>
 <div class="tabbar">
   <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="sugar">🥤 Sugar Tax Lab</div>
   <div class="tab" data-tab="cases">🗂️ Policy Desk</div>
+  <div class="tab" data-tab="rider">💡 Free Rider</div>
   <div class="tab" data-tab="lab">📐 Diagram Lab</div>
   <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
   <div class="tab" data-tab="write">✍️ Write It Up</div>
@@ -118,10 +131,57 @@
     <p class="tip">Market failure does not mean the market has collapsed. It means the price mechanism has produced an <b>inefficient allocation of resources</b> — too much of one thing, too little (or none) of another.</p>
   </div>
 
-  <!-- ============ TAB 2 · POLICY DESK ============ -->
+  <!-- ============ TAB 2 · SUGAR TAX LAB (added Nov 2026) ============ -->
+  <div class="panel" id="panel-sugar">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Sugar Tax Lab</div>
+      <h1>You run a drinks firm. How much sugar tax will you pay?</h1>
+      <p>Sugary drinks are a <b>demerit good</b>. People drink more than is good for them because they do not see the full health cost (<b>information failure</b>). Since 2017 Thailand has taxed drinks by how much sugar they contain. Choose a recipe and a pack size, and see what the tax costs your firm.</p>
+    </div>
+    <div class="gi-goals" id="goalsS"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft">Sugar tax by sugar content (baht per litre)</div><div id="figS"></div>
+        <div class="gi-legend"><span><i style="background:#C8D8E8;height:10px"></i>Phase 3 (Apr 2023 – Mar 2025)</span><span><i style="background:#008BCC;height:10px"></i>Phase 4 (from 1 Apr 2025)</span><span><i style="background:#FF8F1C;height:10px"></i>Your recipe</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gi-name">Sugar per 100 ml <em id="sGv">12 g</em></div>
+        <input type="range" class="gi-sl" id="sG" min="0" max="20" step="0.5" value="12" aria-label="Grams of sugar per 100 ml">
+        <div class="gi-ends"><span>No sugar</span><span>Very sweet</span></div>
+        <div class="write-lbl" style="margin-top:12px">Pack size</div>
+        <div class="steppick" id="sPack">
+          <button class="lvl active" data-ml="330">Can · 330 ml</button>
+          <button class="lvl" data-ml="500">Bottle · 500 ml</button>
+          <button class="lvl" data-ml="1500">Bottle · 1.5 L</button>
+        </div>
+        <div class="write-lbl">Tax rates</div>
+        <div class="steppick" id="sPhase">
+          <button class="lvl active" data-p="4">Phase 4 (now)</button>
+          <button class="lvl" data-p="3">Phase 3 (2023–25)</button>
+        </div>
+        <div class="gi-res" id="sRes"></div>
+        <div class="gi-tsp" id="sTsp" aria-hidden="true"></div>
+        <div class="gi-say" id="sSay"></div>
+      </div>
+    </div>
+
+    <div class="sub-h">What did drinks firms do?</div>
+    <div class="sub-p">The tax gives firms a reason to cut sugar. The chart counts the drinks registered in each sugar band in 2018 and in 2023.</div>
+    <div class="fig" style="max-width:640px"><div class="ft">Number of drinks in each band (g of sugar per 100 ml)</div><div id="figR"></div>
+      <div class="gi-legend"><span><i style="background:#C8D8E8;height:10px"></i>2018</span><span><i style="background:#008BCC;height:10px"></i>2023</span></div>
+      <div class="figcap">The source gives no figures for 8–10 g.</div>
+    </div>
+
+    <div class="sub-h">Check your understanding</div>
+    <div id="sugarQ"></div>
+    <div class="done-banner" id="sugarDone"></div>
+    <p class="gi-src">Rates: Thai Excise Department, as reported by the Bangkok Post, The Nation and The Thaiger. Drink counts: Excise Department figures reported by The Thaiger (2025). Only the sugar part of the excise tax is shown; band edges are simplified. 1 teaspoon ≈ 4 g of sugar.</p>
+    <p class="tip">This activity is about <b>why</b> Thailand taxes sugary drinks. <b>How</b> an indirect tax works, with the full supply and demand diagram, is Topic 3.2.</p>
+  </div>
+
+  <!-- ============ TAB 3 · POLICY DESK ============ -->
   <div class="panel" id="panel-cases">
     <div class="intro">
-      <div class="kicker">Activity 2 · Policy Desk</div>
+      <div class="kicker">Activity 3 · Policy Desk</div>
       <h1>You are a policy adviser. Diagnose each case.</h1>
       <p>Eight real interventions — six from Thailand, two from the coursebook. For each one, decide <b>which reason</b> the government has for intervening, then <b>why the free market gets it wrong</b>. Each correct step scores 1.</p>
       <p>The policy board at the bottom fills in as you go. Every case is filed under its <b>correct</b> reason, whatever you answered, so the finished board is safe to copy into your notes.</p>
@@ -140,10 +200,51 @@
     <p class="tip">The diesel and rice cases are about <b>why</b> governments control prices. <b>How</b> they do it — and the full diagrams of shortages and surpluses — is Topic 3.2.</p>
   </div>
 
-  <!-- ============ TAB 3 · DIAGRAM LAB ============ -->
+  <!-- ============ TAB 4 · FREE RIDER (added Nov 2026) ============ -->
+  <div class="panel" id="panel-rider">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Free Rider</div>
+      <h1>Will your soi get a street light?</h1>
+      <p>Ten households live in one soi. They all want a street light, but who will pay? Play the game to see why the free market does not provide <b>public goods</b>. The numbers are made up to show the idea.</p>
+    </div>
+    <div class="gi-rules"><b>The rules</b>
+      <ul>
+        <li>The light costs <b>500 ฿</b>. Each household that pays gives <b>100 ฿</b>.</li>
+        <li>The light is built only if at least <b>5 households</b> pay. If not, everyone gets their money back.</li>
+        <li>Once it is built, <b>every</b> household gets light worth <b>300 ฿</b> to them, whether they paid or not.</li>
+      </ul>
+    </div>
+    <div class="gi-goals" id="goalsR"></div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft">Your soi</div><div id="figSoi"></div>
+        <div class="gi-legend"><span><i style="background:#008BCC;height:10px"></i>Pays 100 ฿</span><span><i style="background:#C8D8E8;height:10px"></i>Free rides</span><span><i style="background:#FF8F1C;height:10px"></i>Light is on</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gi-name">Households that pay <em id="rNv">10</em></div>
+        <input type="range" class="gi-sl" id="rN" min="0" max="10" step="1" value="10" aria-label="Households that pay">
+        <div class="gi-ends"><span>Nobody</span><span>Everyone</span></div>
+        <div class="gi-res" id="rRes"></div>
+        <div class="gi-say" id="rSay"></div>
+        <div class="write-lbl" style="margin-top:14px">Play it forward</div>
+        <div class="sub-p" style="margin-bottom:8px">Each round, 3 in every 10 payers see that free riders do better and stop paying.</div>
+        <div class="btn-row" style="margin-top:0">
+          <button class="btn btn-primary" id="rNext">Next round</button>
+          <button class="btn btn-ghost" id="rRestart">Restart</button>
+        </div>
+        <div class="gi-round" id="rRound" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Check your understanding</div>
+    <div id="riderQ"></div>
+    <div class="done-banner" id="riderDone"></div>
+    <p class="tip">Examiners want the two features explained <b>separately</b>: “non-excludable because…” and “non-rival because…”. Blending them into one sentence loses the marks. The Chao Phraya flood walls in the Policy Desk are the same problem on a bigger scale.</p>
+  </div>
+
+  <!-- ============ TAB 5 · DIAGRAM LAB ============ -->
   <div class="panel" id="panel-lab">
     <div class="intro">
-      <div class="kicker">Activity 3 · Diagram Lab</div>
+      <div class="kicker">Activity 5 · Diagram Lab</div>
       <h1>Close the healthcare gap, then set a price control</h1>
       <p>Part A is coursebook <b>Figure 12.2</b>, the under-production of a merit good, made interactive. Part B shows why a maximum price only matters <b>below</b> equilibrium and a minimum price only matters <b>above</b> it. Hit every target (the dashed tags turn green), then answer the four check questions.</p>
     </div>
@@ -194,10 +295,10 @@
     <div class="done-banner" id="labDone"></div>
   </div>
 
-  <!-- ============ TAB 4 · ANALYSIS & EVALUATION ============ -->
+  <!-- ============ TAB 6 · ANALYSIS & EVALUATION ============ -->
   <div class="panel" id="panel-chain">
     <div class="intro">
-      <div class="kicker">Activity 4 · Analysis and evaluation</div>
+      <div class="kicker">Activity 6 · Analysis and evaluation</div>
       <h1>Build the chain, then test the claim</h1>
       <p>Part A: analysis marks come from <b>linked</b> steps. Click the steps of each chain in causal order. Part B: evaluation marks come from judging whether a claim is always true. Decide <b>Agree</b>, <b>Disagree</b> or <b>It depends</b>, then read the reasoning and the evaluation line you could use in an essay.</p>
     </div>
@@ -212,7 +313,7 @@
   <!-- ============ TAB 5 · WRITE IT UP ============ -->
   <div class="panel" id="panel-write">
     <div class="intro">
-      <div class="kicker">Activity 5 · Paper 2 style</div>
+      <div class="kicker">Activity 7 · Paper 2 style</div>
       <h1>Turn the reasons into written analysis and evaluation</h1>
       <p>Two written tasks: an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis) and a 12-mark <b>discuss</b> answer (which also needs AO3 — evaluation). Type your answer first, then compare it with the model. Nothing you type is stored.</p>
       <p>Full command-word guidance is on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
@@ -221,7 +322,7 @@
     <div class="q-card">
       <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
         <div class="q-name">With the help of a diagram, explain why healthcare may be under-provided by the free market and how a government could correct this. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
-      <div class="q-stem">Plan before you write. Define a merit good, give the <b>two</b> reasons it is under-consumed (information failure and ability to pay), use Figure 12.2 to show OX and OY, then explain the government’s two options. Activity 3, Part A is the model to copy.</div>
+      <div class="q-stem">Plan before you write. Define a merit good, give the <b>two</b> reasons it is under-consumed (information failure and ability to pay), use Figure 12.2 to show OX and OY, then explain the government’s two options. Activity 5, Part A is the model to copy.</div>
       <div class="write-lbl">Your answer</div>
       <textarea class="write-box" id="w1" style="min-height:160px" placeholder="A merit good is..."></textarea>
       <button class="mini-btn" id="w1btn">Compare with a model answer</button>
@@ -245,7 +346,7 @@
     <div class="q-card">
       <div class="q-head"><div class="q-icon" style="background:#6B4E9E">12</div>
         <div class="q-name">Discuss whether governments should set minimum prices for agricultural products such as rice. <span style="color:var(--text-3);font-weight:400">[12]</span></div></div>
-      <div class="q-stem">A 12-mark <b>discuss</b> question needs two-sided analysis and a supported judgement. Plan it in note form — four or five bullet points — then compare with the model plan. Use Chain B from activity 4 and Part B of the Diagram Lab. Thailand’s 2011–14 rice scheme is ideal evidence.</div>
+      <div class="q-stem">A 12-mark <b>discuss</b> question needs two-sided analysis and a supported judgement. Plan it in note form — four or five bullet points — then compare with the model plan. Use Chain B from activity 6 and Part B of the Diagram Lab. Thailand’s 2011–14 rice scheme is ideal evidence.</div>
       <div class="write-lbl">Your plan</div>
       <textarea class="write-box" id="w2" style="min-height:140px" placeholder="Case FOR a minimum price: ...&#10;Case AGAINST: ...&#10;It depends on: ...&#10;Judgement: ..."></textarea>
       <button class="mini-btn" id="w2btn">Compare with a model plan</button>
@@ -275,7 +376,7 @@
   <!-- ============ TAB 6 · EXAM PRACTICE ============ -->
   <div class="panel" id="panel-mcq">
     <div class="intro">
-      <div class="kicker">Activity 6 · Paper 1 style</div>
+      <div class="kicker">Activity 8 · Paper 1 style</div>
       <h1>Exam-style multiple choice</h1>
       <p>Questions 1–5 are the coursebook’s own end-of-chapter questions. Questions 6–9 test the same ideas in Paper 1 wording. Read the explanation after every answer, including the ones you get right.</p>
     </div>
@@ -289,7 +390,7 @@
 <div class="pwrap">
   <span>Progress</span>
   <div class="track"><i id="pbar"></i></div>
-  <span class="pill" id="pscore">0 / 6 activities</span>
+  <span class="pill" id="pscore">0 / 8 activities</span>
 </div>
 
 <script src="sisb-tracker.js"></script>
@@ -308,7 +409,7 @@ document.querySelectorAll('.tab').forEach(t=>{
 function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('3.1', activity, detail); }
 
 /* ================= PROGRESS ================= */
-const DONE={terms:false,cases:false,lab:false,chain:false,write:false,mcq:false};
+const DONE={terms:false,sugar:false,cases:false,rider:false,lab:false,chain:false,write:false,mcq:false};
 const TOTAL=Object.keys(DONE).length;
 let allLogged=false;
 function mark(k){
@@ -453,7 +554,7 @@ const CASES=[
   text:'Rice prices swing with the monsoon and the world market. Between 2011 and 2014 the Thai government guaranteed farmers a price for their rice well above the market price.',
   q:'What was the government trying to achieve?',
   opts:['To protect low-income consumers from high rice prices','To protect farmers’ incomes from unpredictable prices and safeguard future food supplies','To reduce over-consumption of rice'], ans:1,
-  fb:'This is a <b>minimum price</b> (price floor), set above the equilibrium. It protects farmers’ incomes and makes future food supplies more secure. The downside: consumers pay more, a smaller quantity is bought, and the government may be left holding a surplus. Thailand’s scheme built up huge, costly stockpiles — evidence you can use in the 12-mark question in activity 5.',
+  fb:'This is a <b>minimum price</b> (price floor), set above the equilibrium. It protects farmers’ incomes and makes future food supplies more secure. The downside: consumers pay more, a smaller quantity is bought, and the government may be left holding a surplus. Thailand’s scheme built up huge, costly stockpiles — evidence you can use in the 12-mark question in activity 7.',
   exam:'“A minimum price above equilibrium raises and stabilises farmers’ incomes, but at the cost of higher prices for consumers and a surplus the government may have to buy.”'},
  {id:'c8', src:'th', where:'Thailand', tag:'Diesel price cap', reason:'price',
   title:'Holding down the price of diesel',
@@ -978,6 +1079,193 @@ buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
   trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
   mark('mcq');
 });
+</script>
+<script>
+/* =====================================================================
+   ACTIVITY 2 — SUGAR TAX LAB   and   ACTIVITY 4 — FREE RIDER
+   Added Nov 2026. Uses DONE / mark() / trk() / buildCards() / F
+   from the main script above.
+   ===================================================================== */
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const fmt=(n,d)=>n.toLocaleString('en-US',{minimumFractionDigits:d||0,maximumFractionDigits:d||0});
+const T=(x,y,t,o)=>{o=o||{};return '<text x="'+x+'" y="'+y+'" font-size="'+(o.s||12)+'" text-anchor="'+(o.a||'middle')+'" fill="'+(o.c||'#1A2B3C')+'" font-weight="'+(o.w||700)+'" '+F+'>'+t+'</text>';};
+
+/* ---------------- Sugar Tax Lab ---------------- */
+const BANDS=[{lab:'0–6 g',lo:-1,hi:6},{lab:'6–8 g',lo:6,hi:8},{lab:'8–10 g',lo:8,hi:10},{lab:'10–14 g',lo:10,hi:14},{lab:'Over 14 g',lo:14,hi:99}];
+const RATE={4:[0,1,3,5,5],3:[0,0.3,1,3,5]};
+let ml=330, phase=4;
+const sGoal={zero:false,top:false,phase:false};
+const bandOf=g=>{for(let i=0;i<BANDS.length;i++){if(g>BANDS[i].lo&&g<=BANDS[i].hi)return i}return 0;};
+function drawS(active){
+  const W=520,H=300,L=52,R=16,Tp=20,B=46,ih=H-Tp-B,max=6,gw=(W-L-R)/5;
+  const y=v=>H-B-ih*v/max;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Sugar tax rates by band for Phase 3 and Phase 4">';
+  for(let v=0;v<=6;v++){s+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+(W-R)+'" y2="'+y(v)+'" stroke="'+(v?'#E4EDF5':'#1A2B3C')+'" stroke-width="'+(v?1:1.6)+'"/>'+T(L-8,y(v)+4,v,{a:'end',w:400,c:'#456080',s:11});}
+  s+=T(14,(Tp+H-B)/2,'฿ per litre',{c:'#456080',w:400,s:11}).replace('<text','<text transform="rotate(-90 14 '+((Tp+H-B)/2)+')"');
+  BANDS.forEach((b,i)=>{
+    const x0=L+i*gw+gw*0.16,bw=gw*0.32;
+    const v3=RATE[3][i],v4=RATE[4][i],on=i===active;
+    const c3=on&&phase===3?'#FF8F1C':'#C8D8E8', c4=on&&phase===4?'#FF8F1C':'#008BCC';
+    s+='<rect x="'+x0+'" y="'+y(v3)+'" width="'+bw+'" height="'+(H-B-y(v3))+'" fill="'+c3+'" rx="2"/>';
+    s+='<rect x="'+(x0+bw+3)+'" y="'+y(v4)+'" width="'+bw+'" height="'+(H-B-y(v4))+'" fill="'+c4+'" rx="2"/>';
+    s+=T(x0+bw/2,y(v3)-5,v3===0?'0':fmt(v3,v3%1?1:0),{s:10.5,c:'#456080'});
+    s+=T(x0+bw*1.5+3,y(v4)-5,v4===0?'0':fmt(v4,0),{s:10.5,c:'#002F6C'});
+    s+=T(L+i*gw+gw/2,H-B+18,b.lab,{s:12,c:on?'#7A3D00':'#002F6C',w:on?900:700});
+    if(i===0)s+=T(L+i*gw+gw/2,H-B+33,'tax-free',{s:10.5,c:'#28A745'});
+  });
+  s+='</svg>'; $('figS').innerHTML=s;
+}
+function drawReform(){
+  const W=600,H=290,L=56,R=16,Tp=26,B=40,ih=H-Tp-B,max=5000,data=[['0–6 g',90,4736],['6–8 g',758,2900],['10–14 g',2993,524],['Over 14 g',819,0]],gw=(W-L-R)/4;
+  const y=v=>H-B-ih*v/max;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Number of drinks in each sugar band, 2018 and 2023">';
+  for(let v=0;v<=max;v+=1000){s+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+(W-R)+'" y2="'+y(v)+'" stroke="'+(v?'#E4EDF5':'#1A2B3C')+'" stroke-width="'+(v?1:1.6)+'"/>'+T(L-8,y(v)+4,fmt(v),{a:'end',w:400,c:'#456080',s:11});}
+  data.forEach((d,i)=>{
+    const x0=L+i*gw+gw*0.18,bw=gw*0.3;
+    [[d[1],'#C8D8E8','#456080'],[d[2],'#008BCC','#002F6C']].forEach((v,j)=>{
+      const bx=x0+j*(bw+4),h=Math.max(H-B-y(v[0]),v[0]?1.5:0);
+      s+='<rect x="'+bx+'" y="'+(H-B-h)+'" width="'+bw+'" height="'+h+'" fill="'+v[1]+'" rx="2"/>'+T(bx+bw/2,H-B-h-5,fmt(v[0]),{s:11,c:v[2]});
+    });
+    s+=T(L+i*gw+gw/2,H-B+18,d[0],{s:12,c:'#002F6C'});
+  });
+  s+='</svg>'; $('figR').innerHTML=s;
+}
+function updS(){
+  const g=Number($('sG').value), bi=bandOf(g), rate=RATE[phase][bi];
+  const grams=g*ml/100, tsp=grams/4, tax=rate*ml/1000;
+  $('sGv').textContent=g+' g';
+  if(bi===0)sGoal.zero=true;
+  if(rate===5&&phase===4)sGoal.top=true;
+  drawS(bi);
+  $('sRes').innerHTML=
+    '<div><b>'+fmt(grams,grams%1?1:0)+' g</b><span>Sugar in the pack</span></div>'+
+    '<div><b>'+fmt(tsp,1).replace(/\.0$/,'')+'</b><span>Teaspoons of sugar</span></div>'+
+    '<div class="tax '+(tax===0?'ok':'warn')+'"><b>'+fmt(tax,2)+' ฿</b><span>Sugar tax per pack</span></div>'+
+    '<div class="hot"><b>'+(tax===0?'0 ฿':fmt(tax,2)+' m ฿')+'</b><span>Tax on 1 million packs</span></div>';
+  let t='';const whole=Math.floor(tsp);for(let i=0;i<Math.min(whole,40);i++)t+='<i></i>';if(tsp-whole>=.5&&whole<40)t+='<i class="half"></i>';$('sTsp').innerHTML=t;
+  let say;
+  if(bi===0)say='<b>No sugar tax.</b> This recipe is at or under 6 g per 100 ml. Thousands of drinks were changed to sit in this band.';
+  else say='This recipe is in the <b>'+BANDS[bi].lab+'</b> band: '+fmt(rate,rate%1?1:0)+' ฿ per litre. Cut the sugar to 6 g and the tax on each pack falls from '+fmt(tax,2)+' ฿ to 0. On a million packs, your firm saves '+fmt(tax,2)+' million baht.';
+  if(phase===3&&bi>0)say+=' Now switch to Phase 4 to see how much the rate rose in April 2025.';
+  $('sSay').innerHTML=say;
+  goalsS();
+}
+function goalsS(){
+  const G=[{k:'zero',t:'Find a recipe with no sugar tax'},{k:'top',t:'Find the top Phase 4 rate (5 ฿ per litre)'},{k:'phase',t:'Compare Phase 3 with Phase 4'}];
+  $('goalsS').innerHTML=G.map(g=>'<span class="gi-goal'+(sGoal[g.k]?' met':'')+'">'+(sGoal[g.k]?'✓ ':'○ ')+g.t+'</span>').join('');
+  sugarCheck();
+}
+let sugarQDone=false,sugarQRight=0;
+function sugarCheck(){
+  if(sGoal.zero&&sGoal.top&&sGoal.phase&&sugarQDone&&!DONE.sugar){
+    const b=$('sugarDone');
+    b.innerHTML='✓ All targets hit and all three questions answered ('+sugarQRight+'/3 right first time). Sugary drinks are a demerit good: information failure means they are over-consumed, so the government steps in. The tiered tax gives firms a reason to cut sugar without banning sweet drinks.';
+    b.classList.add('show');
+    trk('Sugar Tax Lab','targets hit; '+sugarQRight+'/3 check questions'); mark('sugar');
+  }
+}
+$('sG').addEventListener('input',updS);
+$('sPack').querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>{
+  $('sPack').querySelectorAll('.lvl').forEach(x=>x.classList.remove('active'));b.classList.add('active');ml=Number(b.dataset.ml);updS();}));
+$('sPhase').querySelectorAll('.lvl').forEach(b=>b.addEventListener('click',()=>{
+  $('sPhase').querySelectorAll('.lvl').forEach(x=>x.classList.remove('active'));b.classList.add('active');phase=Number(b.dataset.p);
+  if(phase===3)sGoal.phase=true;updS();}));
+const SUGARQ=[
+ {id:'s1',icon:'?',bg:'#FF8F1C',name:'Why is it a demerit good?',
+  stem:'Why does the free market provide too many sugary drinks?',
+  opts:['Sugary drinks are non-excludable, so shops cannot charge for them','Consumers do not see the full long-term harm, so they buy more than is good for them','Firms cannot make a profit from selling drinks','Sugary drinks are under-consumed'],ans:1,
+  fb:'This is <b>information failure</b>. Consumers underestimate the harm, so demand is higher than it would be with full information. A demerit good is <b>over-consumed</b>.'},
+ {id:'s2',icon:'?',bg:'#008BCC',name:'Why a tiered tax?',
+  stem:'Why does Thailand tax a drink with 12 g of sugar per 100 ml but not one with 5 g?',
+  opts:['To raise the same amount of tax from every drink','Drinks with 5 g are imported','To target the harm: the more sugar, the more tax, so firms have a reason to cut sugar','Because drinks with 5 g are merit goods'],ans:2,
+  fb:'The tax rises with the sugar content and is <b>zero at or below 6 g</b>. People can still choose sweet drinks, but the sweetest ones cost more, and firms can avoid the tax by reformulating.'},
+ {id:'s3',icon:'?',bg:'#6B4E9E',name:'Observation or inference?',
+  stem:'By 2023 no drinks were registered above 14 g. What does this chart <b>prove</b>?',
+  opts:['Thai people now eat less sugar','Firms changed their recipes, but on its own the chart does not prove people consume less sugar','The tax has failed','Sugary drinks are now merit goods'],ans:1,
+  fb:'The chart <b>observes</b> product counts. Less sugar consumed is an <b>inference</b>: people might drink more cans, or eat sugar elsewhere. You would need data on actual sugar intake.'}
+];
+buildCards($('sugarQ'),SUGARQ,(right)=>{sugarQDone=true;sugarQRight=right;sugarCheck();});
+drawReform(); updS(); sGoal.top=false; goalsS();
+
+/* ---------------- Free Rider ---------------- */
+const rGoal={built:false,notBuilt:false,rounds:false};
+let rp=10,rounds=0;
+function house(x,pay){
+  const c=pay?'#008BCC':'#C8D8E8', roof=pay?'#002F6C':'#8098B0';
+  return '<polygon points="'+(x)+',152 '+(x+20)+',134 '+(x+40)+',152" fill="'+roof+'"/>'+
+    '<rect x="'+(x+4)+'" y="151" width="32" height="26" rx="2" fill="'+c+'"/>'+
+    '<rect x="'+(x+16)+'" y="161" width="8" height="16" fill="#fff" opacity=".85"/>'+
+    '<text x="'+(x+20)+'" y="194" font-size="10" text-anchor="middle" fill="'+(pay?'#002F6C':'#8098B0')+'" font-weight="700" '+F+'>'+(pay?'pays':'free ride')+'</text>';
+}
+function drawSoi(p){
+  const built=p*100>=500,W=520,H=210;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+p+' of 10 households pay; the light is '+(built?'built':'not built')+'">';
+  s+='<rect x="0" y="178" width="'+W+'" height="6" fill="#E4EDF5"/>';
+  if(built){s+='<ellipse cx="260" cy="40" rx="150" ry="38" fill="#FF8F1C" opacity=".12"/><ellipse cx="260" cy="40" rx="70" ry="22" fill="#FF8F1C" opacity=".22"/>';}
+  s+='<rect x="257" y="38" width="6" height="140" fill="#002F6C"/><path d="M236 40 Q260 14 284 40 Z" fill="#002F6C"/>';
+  s+='<circle cx="260" cy="43" r="9" fill="'+(built?'#FF8F1C':'#C8D8E8')+'"/>';
+  s+=T(260,112,built?'LIGHT ON':'NO LIGHT',{s:12,c:built?'#7A3D00':'#8098B0',w:900}).replace('<text','<text paint-order="stroke" stroke="#fff" stroke-width="4"');
+  const xs=[6,52,98,144,190, 290,336,382,428,474];
+  for(let i=0;i<10;i++)s+=house(xs[i],i<p);
+  s+='</svg>'; $('figSoi').innerHTML=s;
+}
+function updR(p){
+  $('rNv').textContent=p; drawSoi(p);
+  const built=p*100>=500;
+  if(built)rGoal.built=true; else rGoal.notBuilt=true;
+  $('rRes').innerHTML=
+    '<div><b>'+(p*100)+' ฿</b><span>Money collected</span></div>'+
+    '<div class="'+(built?'ok':'warn')+'"><b>'+(built?'Yes':'No')+'</b><span>Light built?</span></div>'+
+    '<div><b>'+(built?'+200 ฿':'0')+'</b><span>Gain if you pay</span></div>'+
+    '<div class="hot"><b>'+(built?'+300 ฿':'0')+'</b><span>Gain if you free ride</span></div>';
+  let say;
+  if(built&&p===10)say='Everyone pays and the light is built. But look at the dark box: a household that stops paying gains <b>300 ฿</b> instead of 200 ฿ and still gets the light. <b>Every</b> household has a reason to stop paying.';
+  else if(built)say='The light is still built, and the '+(10-p)+' free rider'+(10-p>1?'s are':' is')+' better off than the payers. This is the <b>free rider problem</b>: people enjoy a public good without paying towards its cost.';
+  else say=(p===0?'Nobody pays':'Only '+p+' household'+(p===1?' pays':'s pay'))+', fewer than the 5 needed. The light is not built, so <b>nobody</b> gets it. The free market fails to provide the good at all. That is why the government provides it and pays from tax.';
+  $('rSay').innerHTML=say;
+  goalsR();
+}
+function goalsR(){
+  const G=[{k:'built',t:'Get the light built'},{k:'notBuilt',t:'Find where it is not built'},{k:'rounds',t:'Play rounds until nobody pays'}];
+  $('goalsR').innerHTML=G.map(g=>'<span class="gi-goal'+(rGoal[g.k]?' met':'')+'">'+(rGoal[g.k]?'✓ ':'○ ')+g.t+'</span>').join('');
+  riderCheck();
+}
+let riderQDone=false,riderQRight=0;
+function riderCheck(){
+  if(rGoal.built&&rGoal.notBuilt&&rGoal.rounds&&riderQDone&&!DONE.rider){
+    const b=$('riderDone');
+    b.innerHTML='✓ All targets hit and all three questions answered ('+riderQRight+'/3 right first time). A public good is non-excludable and non-rival. Each person does better by free riding, so no firm can make a profit and the market provides none. The government steps in and pays from tax, with an opportunity cost.';
+    b.classList.add('show');
+    trk('Free Rider','targets hit; '+riderQRight+'/3 check questions'); mark('rider');
+  }
+}
+function restartR(){rp=10;rounds=0;$('rN').value=10;$('rNext').disabled=false;$('rRound').textContent='Round 0: all 10 households pay.';updR(10);}
+$('rN').addEventListener('input',function(){updR(Number(this.value));});
+$('rNext').addEventListener('click',function(){
+  if(rp<=0)return; rp=Math.floor(rp*0.7); rounds++; $('rN').value=rp; updR(rp);
+  $('rRound').textContent='Round '+rounds+': '+rp+' household'+(rp===1?' pays':'s pay')+'. '+(rp*100>=500?'The light is still built.':'Below 500 ฿, so no light for anyone.');
+  if(rp<=0){this.disabled=true;$('rRound').textContent+=' Nobody pays any more.';rGoal.rounds=true;goalsR();}
+});
+$('rRestart').addEventListener('click',restartR);
+const RIDERQ=[
+ {id:'r1',icon:'1',bg:'#002F6C',name:'Non-excludable',
+  stem:'Which sentence explains why the street light is <b>non-excludable</b>?',
+  opts:['One more person using the light does not make it dimmer for anyone else','Once the light is on, nobody in the soi can be stopped from using it, even if they did not pay','The light is provided by the government','People do not realise how useful the light is'],ans:1,
+  fb:'Non-excludable means non-payers <b>cannot be stopped</b> from using it. Option A is a different feature: non-rival.'},
+ {id:'r2',icon:'2',bg:'#008BCC',name:'Non-rival',
+  stem:'Which sentence explains why the street light is <b>non-rival</b>?',
+  opts:['One household using the light leaves just as much light for every other household','Non-payers cannot be stopped from using it','It is free to use','Only one household can use it at a time'],ans:0,
+  fb:'Non-rival means one person’s use <b>does not reduce</b> what is left for others. Explain this separately from non-excludable.'},
+ {id:'r3',icon:'3',bg:'#FF8F1C',name:'Who pays?',
+  stem:'The private market will not provide the light. What does the government do, and what is the cost?',
+  opts:['It bans street lights','It charges each household 300 ฿ to use the light','It sets a minimum price for electricity','It provides the light and pays from tax revenue. The opportunity cost is what else that money could have paid for'],ans:3,
+  fb:'Public goods are provided by the government and paid for from tax. The <b>opportunity cost</b> is the next best use of that money, such as schools or hospitals.'}
+];
+buildCards($('riderQ'),RIDERQ,(right)=>{riderQDone=true;riderQRight=right;riderCheck();});
+restartR(); rGoal.built=false; goalsR();
+})();
 </script>
 </body>
 </html>
