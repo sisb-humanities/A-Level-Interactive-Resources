@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4.1 National Income Statistics | SISB AS &amp; A Level Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sisb-alevel-styles.css">
+<style>
+/* =====================================================================
+   TOPIC 4.1 — page-local additions only.
+   Everything else comes from sisb-alevel-styles.css.
+   Slider/result widgets keep the gi- names used on 3.1–3.3 so the pages
+   look identical; widgets new to this page use the prefix ni-.
+   ===================================================================== */
+.hidden{display:none !important}
+.steppick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.btn:disabled,.mini-btn:disabled{opacity:.45;cursor:default}
+.tab{padding:13px 12px}
+.sort-grid.cols-2{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:860px){.sort-grid.cols-2{grid-template-columns:1fr}}
+
+/* ---- slider labs (same as 3.1 / 3.2 / 3.3) ---- */
+.gi-lab{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:start;margin-bottom:16px}
+@media(max-width:860px){.gi-lab{grid-template-columns:1fr}}
+.gi-lab .fig{margin-bottom:0;position:sticky;top:118px}
+@media(max-width:860px){.gi-lab .fig{position:static}}
+.gi-ctrl{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.gi-name{font-size:13px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px}
+.gi-name:first-child{margin-top:0}
+.gi-name em{font-style:normal;font-size:12px;font-weight:700;color:var(--blue);text-align:right}
+.gi-sl{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:5px;background:var(--grey-2);outline:none;margin:10px 0 4px}
+.gi-sl::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-sl::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,47,108,.35);cursor:pointer}
+.gi-sl.blue::-webkit-slider-thumb{background:var(--blue)}.gi-sl.blue::-moz-range-thumb{background:var(--blue)}
+.gi-sl.pink::-webkit-slider-thumb{background:var(--red)}.gi-sl.pink::-moz-range-thumb{background:var(--red)}
+.gi-sl.navy::-webkit-slider-thumb{background:var(--navy)}.gi-sl.navy::-moz-range-thumb{background:var(--navy)}
+.gi-sl.green::-webkit-slider-thumb{background:var(--green)}.gi-sl.green::-moz-range-thumb{background:var(--green)}
+.gi-ends{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.gi-say{font-size:13px;line-height:1.55;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:12px}
+.gi-say b{color:var(--navy)}
+.gi-goals{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+.gi-goal{font-size:12px;font-weight:700;border:1.5px dashed var(--grey-3);background:#fff;color:var(--text-3);border-radius:18px;padding:6px 12px;transition:.2s}
+.gi-goal.met{border-style:solid;border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.dtable{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:13px;background:#fff;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden}
+.dtable th{background:var(--navy);color:#fff;font-size:12px;font-weight:700;text-align:left;padding:8px 11px}
+.dtable td{padding:8px 11px;border-top:1px solid var(--grey-2);color:var(--text-2)}
+.dtable td:first-child{font-weight:700;color:var(--navy)}
+.dtable td.num,.dtable th.num{text-align:right}
+.dtable tr.tot td{background:var(--grey-bg);font-weight:900;color:var(--navy)}
+.q-fig{max-width:360px;margin:0 auto 12px;background:#FBFDFF;border:1px solid var(--grey-2);border-radius:8px;padding:6px}
+
+/* ---- New on 4.1 ---- */
+.ni-in{font-family:'Lato',sans-serif;font-size:14px;font-weight:700;color:var(--navy);width:92px;padding:6px 8px;border:1.5px solid var(--grey-3);border-radius:7px;text-align:right;background:#fff}
+.ni-in:focus{outline:none;border-color:var(--blue)}
+.ni-in.ok{border-color:var(--green);background:var(--green-bg);color:var(--green-txt)}
+.ni-in.no{border-color:var(--red);background:var(--red-bg);color:var(--red-txt)}
+.ni-sel{font-family:'Lato',sans-serif;font-size:13px;font-weight:700;color:var(--navy);padding:6px 8px;border:1.5px solid var(--grey-3);border-radius:7px;background:#fff;min-width:140px}
+.ni-sel.ok{border-color:var(--green);background:var(--green-bg)}
+.ni-sel.no{border-color:var(--red);background:var(--red-bg)}
+.ni-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:4px 0 14px}
+@media(max-width:860px){.ni-chain{grid-template-columns:1fr 1fr}}
+.ni-stage{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 14px 12px;position:relative}
+.ni-stage .n{position:absolute;top:-10px;left:12px;background:var(--orange);color:#fff;font-weight:900;font-size:12px;border-radius:12px;padding:2px 9px}
+.ni-stage .who{font-size:14px;font-weight:900;color:var(--navy);margin:4px 0 2px}
+.ni-stage .what{font-size:12.2px;color:var(--text-2);line-height:1.45;min-height:52px}
+.ni-stage .row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--text-2);margin-top:7px;gap:6px}
+.ni-stage .row b{color:var(--navy);font-size:14px}
+.ni-sum{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px}
+@media(max-width:700px){.ni-sum{grid-template-columns:1fr}}
+.ni-sum div{border-radius:var(--radius);padding:12px 14px;text-align:center}
+.ni-sum .bad{background:var(--red-bg);color:var(--red-txt)}
+.ni-sum .good{background:var(--green-bg);color:var(--green-txt)}
+.ni-sum b{display:block;font-size:24px;font-weight:900}
+.ni-sum small{font-size:12px;font-weight:700}
+.ni-three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+@media(max-width:980px){.ni-three{grid-template-columns:1fr}}
+.ni-panel{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 14px 10px;display:flex;flex-direction:column}
+.ni-panel h3{font-size:14.5px;font-weight:900;color:#fff;border-radius:8px;padding:8px 12px;margin-bottom:10px}
+.ni-panel .hint{font-size:11.8px;color:var(--text-3);line-height:1.45;margin-bottom:8px}
+.ni-line{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-top:1px solid var(--grey-bg);font-size:12.6px;color:var(--text-2);line-height:1.35}
+.ni-line:first-of-type{border-top:none}
+.ni-line .amt{font-weight:900;color:var(--navy);white-space:nowrap}
+.ni-tog{font-family:'Lato',sans-serif;font-size:11.5px;font-weight:900;border-radius:14px;padding:5px 10px;border:1.5px solid var(--grey-3);background:#fff;color:var(--text-3);cursor:pointer;white-space:nowrap}
+.ni-tog.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.ni-total{margin-top:auto;border-radius:8px;padding:10px 12px;background:var(--grey-bg);display:flex;justify-content:space-between;align-items:center;font-weight:900;color:var(--navy);font-size:14px}
+.ni-total.match{background:var(--green-bg);color:var(--green-txt)}
+.ni-total span{font-size:20px}
+.ni-tags{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+@media(max-width:860px){.ni-tags{grid-template-columns:1fr}}
+.ni-tag{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px}
+.ni-tag .lbl{display:inline-block;background:var(--orange);color:#fff;font-weight:900;font-size:20px;border-radius:8px 8px 8px 0;padding:6px 14px;margin-bottom:8px}
+.ni-tag p{font-size:13px;color:var(--text-2);line-height:1.5;margin-bottom:8px}
+.ni-tag .ans{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--navy);flex-wrap:wrap}
+.ni-ladder svg{display:block;width:100%;height:auto}
+.ni-steps{font-size:13px;line-height:1.7;color:var(--text-2);background:var(--grey-bg);border-radius:8px;padding:10px 12px;margin-top:10px}
+.ni-steps b{color:var(--navy)}
+.ni-prob{background:#fff;border:1px solid var(--grey-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.ni-prob .stem{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:10px}
+.ni-prob .stem b{color:var(--navy)}
+.ni-prob table{margin:6px 0 12px;max-width:440px}
+.ni-work{display:none;margin-top:12px;background:var(--grey-bg);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 12px;font-size:13px;line-height:1.75;color:var(--text-2)}
+.ni-work.show{display:block}
+.ni-work b{color:var(--navy)}
+.ni-counter{display:flex;gap:6px;margin:8px 0 2px}
+.ni-counter i{width:22px;height:8px;border-radius:4px;background:var(--grey-2)}
+.ni-counter i.on{background:var(--green)}
+.ni-bars svg{display:block;width:100%;height:auto;max-width:560px;margin:0 auto}
+.ni-check{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ni-msg{font-size:13px;font-weight:700}
+.ni-ctx{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:760px){.ni-ctx{grid-template-columns:1fr}}
+
+/* sticky progress (same as 1.5 / 1.6 / 3.1 / 3.2 / 3.3) */
+.pwrap{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--navy);padding:9px 18px;display:flex;align-items:center;gap:14px;font-size:12.5px;font-weight:700;color:var(--navy);z-index:180;margin-top:auto}
+.pwrap .track{flex:1;height:9px;background:var(--grey-2);border-radius:6px;overflow:hidden}
+.pwrap .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .4s}
+.pwrap .pill{background:var(--navy);color:#fff;border-radius:20px;padding:4px 12px}
+@media (max-width:560px){.topbar{padding:0 14px}.tb-title{font-size:11.5px}.tab{padding:11px 10px;font-size:12px}
+  .tabbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-logo">S<span class="logo-i"></span>SB</div>
+  <div class="tb-div"></div>
+  <div class="tb-title">AS &amp; A Level Economics (9708) · 4.1 National Income Statistics</div>
+  <a class="tb-home" href="index.html">← All topics</a>
+</div>
+<div class="tabbar">
+  <div class="tab active" data-tab="terms">📖 Key Terms</div>
+  <div class="tab" data-tab="size">📈 Size &amp; Growth</div>
+  <div class="tab" data-tab="gni">🌏 GDP or GNI?</div>
+  <div class="tab" data-tab="three">🔁 Three Methods</div>
+  <div class="tab" data-tab="conv">🔄 Measure Converter</div>
+  <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
+  <div class="tab" data-tab="mcq">📝 Exam Practice</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1 · KEY TERMS ============ -->
+  <div class="panel active" id="panel-terms">
+    <div class="intro">
+      <div class="kicker">Activity 1 · Key terms</div>
+      <h1>Output = income = expenditure</h1>
+      <p>Coursebook Chapter 15 is the first macroeconomics chapter. National income is a country’s <b>total output</b>. People earn an <b>income</b> from producing that output, and the income is then <b>spent</b> on it. So there are three ways to measure the same thing — and economists add the words <b>gross</b> or <b>net</b>, <b>domestic</b> or <b>national</b>, and <b>market prices</b> or <b>basic prices</b> to say exactly what they measured.</p>
+      <p>Match each term to its meaning, then decide whether each item is counted in Thailand’s GDP.</p>
+    </div>
+    <div class="match-grid">
+      <div><div class="col-lbl">Drag these meanings</div><div class="drop-pool" id="pool-terms"></div></div>
+      <div><div class="col-lbl">Onto the matching term</div><div id="slots-terms"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkTerms()">Check answers</button>
+      <button class="btn btn-ghost" onclick="buildTerms()">Reset</button>
+      <span class="score" id="score-terms"></span>
+    </div>
+
+    <div class="sub-h">Counted in Thailand’s GDP or not? Sort each item</div>
+    <div class="sub-p">GDP counts the value of <b>new output</b> produced in Thailand this year. Leave out anything that is <b>not new output</b> (second-hand sales, buying shares), anything <b>counted already</b> inside something else (intermediate goods) and <b>transfer payments</b>, where nothing is produced in return.</div>
+    <div class="sort-grid cols-2">
+      <div><div class="col-lbl">Drag from here</div><div class="drop-pool" id="pool-gdp"></div></div>
+      <div class="bin" data-bin="in"><div class="bin-name"><span class="bin-dot" style="background:#28A745"></span>Counted in GDP</div><div class="bin-desc">New output produced in Thailand this year</div><div class="bin-drop"></div></div>
+      <div class="bin" data-bin="out"><div class="bin-name"><span class="bin-dot" style="background:#D63864"></span>Not counted</div><div class="bin-desc">Not new output, counted already, or a transfer</div><div class="bin-drop"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkGDP()">Check sort</button>
+      <button class="btn btn-ghost" onclick="buildGDP()">Reset</button>
+      <span class="score" id="score-gdp"></span>
+    </div>
+    <div class="done-banner" id="termsDone"></div>
+
+    <div class="sub-h">Economics in context · Nigeria’s output grew 90% overnight</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#28A745">🇳🇬</div>
+        <div class="q-name">On 5 April 2013, Nigeria’s statisticians changed the way they measured output. Overnight, the figure rose by about 90%.</div></div>
+      <div class="q-stem">They started counting industries that had been left out or underestimated, such as the Nollywood film industry and telecommunications. Average income appeared to rise from $1,500 to $2,688, and Nigeria seemed to overtake South Africa as Africa’s largest economy. In 2018 Nigeria’s output was $398 bn and South Africa’s $368 bn — but average income was about three times higher in South Africa.
+        <br><b>1</b> Why do governments measure their country’s output? <b>2</b> Were Nigerians richer on 5 April 2013 than on 4 April 2013? <b>3</b> How can total output be higher in Nigeria but average income three times higher in South Africa?</div>
+      <textarea class="write-box" id="ctxBox" placeholder="1 ... 2 ... 3 ..."></textarea>
+      <button class="mini-btn" id="ctxBtn">Show suggested points</button>
+      <div class="model" id="ctxModel">
+        <b>1 · Why measure output?</b> To judge how well the economy is performing (is output growing at a steady, sustainable rate?), to compare with last year and with other countries, and to decide policy — if output is growing more slowly than the economy is capable of, the government may act to stimulate it. International organisations such as the United Nations and the World Bank use the figures to compare countries.<br>
+        <b>2 · Richer overnight?</b> No. Nothing more was produced on 5 April than on 4 April: the <b>measurement</b> changed, not the output. Nigerians’ real living standards were the same. The lesson: national income figures are <b>estimates</b>, and a change in method can move them a long way.<br>
+        <b>3 · Total vs average.</b> Average income = total output ÷ population. Nigeria had far more people — about 196 million in 2018 against South Africa’s 58 million — so its larger total is shared between many more people: about $2,000 each, against about $6,300 in South Africa. (The coursebook prints Nigeria’s population as 96m; the 2018 figure was nearer 196m, which is what makes South Africa’s average about three times higher.)
+      </div>
+    </div>
+    <p class="tip">Remember the coursebook Tip: the words in the name of a measure tell you what it includes. “Gross” = total (including the investment that only replaces worn-out capital), “domestic” = produced inside the country, “national” = earned by the country’s residents, “product” = output.</p>
+  </div>
+
+  <!-- ============ TAB 2 · SIZE & GROWTH ============ -->
+  <div class="panel" id="panel-size">
+    <div class="intro">
+      <div class="kicker">Activity 2 · Size and growth</div>
+      <h1>How big? How fast?</h1>
+      <p>Economists look at two things: the <b>level</b> of a country’s output (how big is it?) and its <b>rate of growth</b> (how fast is it getting bigger?). A huge economy can add more dollars of output in a year while growing more slowly in percentage terms, because it starts from a larger base. Part A uses the coursebook’s own example, Part B is Activity 15.1, and Part C asks a Thai question with two right answers.</p>
+    </div>
+
+    <div class="sub-h" style="margin-top:0">Part A · Malaysia and the USA (coursebook 15.1)</div>
+    <div class="sub-p">Work out the absolute increase and the percentage increase for each country. Percentage change = (new − old) ÷ old × 100. Round percentages to 1 decimal place.</div>
+    <table class="dtable">
+      <tr><th>Country</th><th class="num">Output 2018</th><th class="num">Output 2019</th><th class="num">Absolute increase ($ bn)</th><th class="num">% increase</th></tr>
+      <tr><td>Malaysia</td><td class="num">$319 bn</td><td class="num">$354 bn</td><td class="num"><input class="ni-in" id="gMyA" inputmode="decimal"></td><td class="num"><input class="ni-in" id="gMyP" inputmode="decimal"></td></tr>
+      <tr><td>USA</td><td class="num">$19,520 bn</td><td class="num">$20,580 bn</td><td class="num"><input class="ni-in" id="gUsA" inputmode="decimal"></td><td class="num"><input class="ni-in" id="gUsP" inputmode="decimal"></td></tr>
+    </table>
+    <div class="ni-check"><button class="btn btn-primary" id="gCheck">Check</button><span class="ni-msg" id="gMsg"></span></div>
+    <div class="model" id="gModel"><b>Malaysia:</b> +$35 bn, +11.0%. <b>USA:</b> +$1,060 bn ($1.06 trillion), +5.4%. The USA added about <b>30 times</b> as many dollars of output, but grew at <b>half</b> Malaysia’s rate, because it started from a base more than 60 times larger. When a question asks you to compare growth, say which you mean: the absolute change or the percentage change.</div>
+
+    <div class="sub-h">Part B · Activity 15.1: the world’s top ten economies</div>
+    <table class="dtable" style="max-width:620px">
+      <tr><th>Rank</th><th>1991</th><th>2018</th><th>2050 (predicted)</th></tr>
+      <tr><td>1</td><td>USA</td><td>USA</td><td>China</td></tr>
+      <tr><td>2</td><td>Japan</td><td>China</td><td>India</td></tr>
+      <tr><td>3</td><td>Germany</td><td>Japan</td><td>USA</td></tr>
+      <tr><td>4</td><td>France</td><td>Germany</td><td>Indonesia</td></tr>
+      <tr><td>5</td><td>Italy</td><td>UK</td><td>Brazil</td></tr>
+      <tr><td>6</td><td>UK</td><td>France</td><td>Russia</td></tr>
+      <tr><td>7</td><td>Canada</td><td>India</td><td>Mexico</td></tr>
+      <tr><td>8</td><td>Brazil</td><td>Italy</td><td>Japan</td></tr>
+      <tr><td>9</td><td>Spain</td><td>Brazil</td><td>Germany</td></tr>
+      <tr><td>10</td><td>Russia</td><td>Canada</td><td>UK</td></tr>
+    </table>
+    <div class="sub-p">Coursebook Table 15.1. Answer the four questions. The coursebook asks you to make a wall chart with arrows in pairs; this checks what your chart should show.</div>
+    <div id="topList"></div>
+
+    <div class="sub-h">Part C · Is Thailand ASEAN’s 2nd or 3rd largest economy?</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#FF8F1C">🇹🇭</div>
+        <div class="q-name">By the IMF’s estimates of <b>GDP</b> for 2025, Singapore’s economy was slightly larger than Thailand’s, so Thailand came 3rd in ASEAN. By the World Bank’s <b>GNI</b> figures for 2025, Thailand came 2nd, behind Indonesia.</div></div>
+      <div class="q-stem">How can both be true? Think about what GDP measures and what GNI measures. <b>Hint:</b> many foreign multinational companies have factories, banks and regional offices in Singapore.</div>
+      <textarea class="write-box" id="aseanBox" placeholder="GDP measures ... GNI measures ... In Singapore ..."></textarea>
+      <button class="mini-btn" id="aseanBtn">Show suggested answer</button>
+      <div class="model" id="aseanModel">GDP measures output produced <b>inside</b> a country, whoever owns the firms. GNI measures the income of the country’s <b>residents</b>, wherever it is earned. Singapore hosts a very large number of foreign multinationals; their output counts in Singapore’s GDP, but the profits they send home to their owners abroad are taken away to get GNI. Historically Singapore’s GNI has been lower than its GDP. So on a GDP ranking Singapore can be ahead of Thailand, and on a GNI ranking behind it. The ranking depends on the measure — always say which one you are using. You will meet this again in Activity 3.</div>
+    </div>
+    <div class="done-banner" id="sizeDone"></div>
+  </div>
+
+  <!-- ============ TAB 3 · GDP OR GNI? ============ -->
+  <div class="panel" id="panel-gni">
+    <div class="intro">
+      <div class="kicker">Activity 3 · GDP or GNI?</div>
+      <h1>Made here, or earned by us?</h1>
+      <p><b>GDP</b> is the value of output produced by factors of production based in a country, whoever owns them. <b>GNI</b> changes the focus to the income earned by the country’s residents and firms, wherever they earn it:</p>
+      <p style="margin-top:6px"><b>GNI = GDP + net income from abroad</b> — mainly net property income (profits, interest and dividends) plus net compensation of employees (wages of residents working abroad for short periods, such as seasonal and cross-border workers).</p>
+    </div>
+
+    <div class="sub-h" style="margin-top:0">Part A · Activity 15.3: which country is which?</div>
+    <table class="dtable" style="max-width:680px">
+      <tr><th>Country (2018)</th><th class="num">GDP ($ million)</th><th class="num">GNI ($ million)</th><th class="num">GNI − GDP</th><th class="num">as % of GDP</th></tr>
+      <tr><td>Japan</td><td class="num">4,970,915</td><td class="num">5,159,764</td><td class="num diffcell">?</td><td class="num diffcell">?</td></tr>
+      <tr><td>Philippines</td><td class="num">330,910</td><td class="num">397,063</td><td class="num diffcell">?</td><td class="num diffcell">?</td></tr>
+      <tr><td>Qatar</td><td class="num">192,009</td><td class="num">188,264</td><td class="num diffcell">?</td><td class="num diffcell">?</td></tr>
+      <tr><td>US</td><td class="num">20,494,100</td><td class="num">20,738,399</td><td class="num diffcell">?</td><td class="num diffcell">?</td></tr>
+    </table>
+    <div class="btn-row" style="margin-top:0"><button class="mini-btn" id="diffBtn">Work out the differences for me</button></div>
+    <div class="sub-p">Coursebook Table 15.2. Choose the country that best fits each description.</div>
+    <div class="q-card">
+      <div class="ni-line"><span><b>a</b> A relatively high percentage of its people work in other countries.</span><select class="ni-sel" data-ans="Philippines"><option value="">Choose…</option><option>Japan</option><option>Philippines</option><option>Qatar</option><option>US</option></select></div>
+      <div class="ni-line"><span><b>b</b> Its multinationals earn more profit abroad than foreign multinationals earn in the country.</span><select class="ni-sel" data-ans="Japan"><option value="">Choose…</option><option>Japan</option><option>Philippines</option><option>Qatar</option><option>US</option></select></div>
+      <div class="ni-line"><span><b>c</b> A relatively high percentage of foreign workers work in the country.</span><select class="ni-sel" data-ans="Qatar"><option value="">Choose…</option><option>Japan</option><option>Philippines</option><option>Qatar</option><option>US</option></select></div>
+      <div class="ni-check" style="margin-top:10px"><button class="btn btn-primary" id="a153Check">Check</button><span class="ni-msg" id="a153Msg"></span></div>
+      <div class="model" id="a153Model"><b>a · Philippines.</b> Its GNI is 20% bigger than its GDP: millions of Filipinos work abroad as seafarers, nurses and domestic workers and send income home.<br><b>b · Japan.</b> GNI is 3.8% above GDP: Japanese firms such as Toyota, Honda and Panasonic own factories all over Asia, including in Thailand, and their profits flow back to Japan.<br><b>c · Qatar.</b> The only one with GNI <b>below</b> GDP (−2.0%): most of its workforce comes from abroad, and their earnings, along with the profits of foreign energy firms, flow out. The US is the closest to zero (+1.2%): big flows in both directions roughly cancel.</div>
+    </div>
+
+    <div class="sub-h">Part B · Thailand’s flows: in or out?</div>
+    <div class="sub-p">Each item is income that crosses Thailand’s border. Does it <b>add to</b> Thailand’s GNI compared with its GDP, or <b>subtract from</b> it? Ask: is a Thai resident earning it from abroad, or is a foreigner earning it from Thailand?</div>
+    <div class="sort-grid cols-2">
+      <div><div class="col-lbl">Drag from here</div><div class="drop-pool" id="pool-flow"></div></div>
+      <div class="bin" data-bin="plus"><div class="bin-name"><span class="bin-dot" style="background:#28A745"></span>Adds to GNI (+)</div><div class="bin-desc">Thai residents earn it abroad</div><div class="bin-drop"></div></div>
+      <div class="bin" data-bin="minus"><div class="bin-name"><span class="bin-dot" style="background:#D63864"></span>Subtracts from GNI (−)</div><div class="bin-desc">Foreigners earn it in Thailand</div><div class="bin-drop"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkFlow()">Check sort</button>
+      <button class="btn btn-ghost" onclick="buildFlow()">Reset</button>
+      <span class="score" id="score-flow"></span>
+    </div>
+
+    <div class="sub-h">Part C · So which is bigger in Thailand?</div>
+    <div class="figrow">
+      <div class="fig ni-bars"><div class="ft">Thailand, 2024 (US$ billion, World Bank)</div><div id="thBars"></div>
+        <div class="figcap">GDP about <b>$527 bn</b>; GNI about <b>$512 bn</b>. Rounded.</div></div>
+      <div class="q-card" style="margin-bottom:0">
+        <div class="q-stem"><b>1</b> Is Thailand’s net income from abroad positive or negative? About how big is it, as a % of GDP?<br><b>2</b> Use Part B to explain why.</div>
+        <textarea class="write-box" id="thBox" placeholder="1 ... 2 ..."></textarea>
+        <button class="mini-btn" id="thBtn">Show suggested answer</button>
+        <div class="model" id="thModel"><b>1</b> Negative: about −$15 bn, roughly 3% of GDP. Thailand’s GNI is smaller than its GDP.<br><b>2</b> Thailand has attracted a great deal of foreign direct investment — Japanese car makers, electronics firms and foreign-owned banks and hotels. Their output counts in Thailand’s GDP, but the profits, dividends and interest they pay to owners abroad are larger than the income Thai firms and workers earn abroad. Thailand is like Ireland in the coursebook: foreign investment raises GDP but also leads to a net outflow of profits.</div>
+      </div>
+    </div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#6B4E9E">💸</div>
+        <div class="q-name">Money sent home: GNI or something else?</div></div>
+      <div class="q-stem">Thai workers abroad sent home about <b>฿268 billion</b> in 2024 (Ministry of Labour), and more than 3.6 million registered migrant workers from Myanmar, Cambodia and Laos work in Thailand, many sending money home to their families. The coursebook says governments also measure <b>gross national disposable income</b>. Where does money sent home to relatives belong?</div>
+      <div class="choice-row" id="gndiRow"><div class="choice" data-v="gdp">In GDP</div><div class="choice" data-v="gni">In GNI</div><div class="choice" data-v="gndi">In gross national disposable income</div></div>
+      <div class="reveal" id="gndiRev"></div>
+    </div>
+    <div class="done-banner" id="gniDone"></div>
+  </div>
+
+  <!-- ============ TAB 4 · THREE METHODS ============ -->
+  <div class="panel" id="panel-three">
+    <div class="intro">
+      <div class="kicker">Activity 4 · Three methods</div>
+      <h1>Three ways to measure GDP — one answer</h1>
+      <p>The <b>output</b> method adds up the value added by every industry. The <b>income</b> method adds up the wages, rent, interest and profit earned producing that output. The <b>expenditure</b> method adds up spending on it: <b>C + I + G + (X − M)</b>, including changes in stocks. Each should give the same total, because they measure the same circular flow. Part A shows the trap in the output method; Part B lets you prove the three methods agree.</p>
+    </div>
+
+    <div class="sub-h" style="margin-top:0">Part A · From latex to gloves: avoid double counting</div>
+    <div class="sub-p">Thailand is one of the world’s biggest producers of natural rubber and rubber gloves. Follow one box of gloves through four firms (prices per box, made up but realistic). Type the <b>value added</b> by each firm: the price it sells for minus what it paid other firms.</div>
+    <div class="ni-chain" id="chainVA"></div>
+    <div class="ni-check"><button class="btn btn-primary" id="vaCheck">Check value added</button><span class="ni-msg" id="vaMsg"></span></div>
+    <div class="ni-sum hidden" id="vaSum">
+      <div class="bad"><small>Add up every sale</small><b>฿460</b><small>counts the latex three times and the gloves twice</small></div>
+      <div class="good"><small>Add up the value added</small><b>฿200</b><small>= the price of the finished box</small></div>
+    </div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">📺</div><div class="q-name">Coursebook check: a TV firm buys components for $280,000 and sells the TVs for $350,000.</div></div>
+      <div class="q-stem">How much does this firm add to GDP? <input class="ni-in" id="tvIn" inputmode="decimal" placeholder="$"> <button class="mini-btn" id="tvBtn">Check</button> <span class="ni-msg" id="tvMsg"></span></div>
+    </div>
+
+    <div class="sub-h">Part B · Koh Kaew: one island, three methods</div>
+    <div class="sub-p">Koh Kaew is a tiny made-up island economy with five producers: a rice farm, a noodle shop, a boat yard, a resort and a state school. Complete all three panels. When you get it right, the three totals match.</div>
+    <div class="ni-three">
+      <div class="ni-panel"><h3 style="background:#008BCC">1 · Output method</h3>
+        <div class="hint">Value added = sales (including output added to stock) − bought from other firms.</div>
+        <div id="outHost"></div>
+        <div class="ni-total" id="outTot">Total <span>฿0</span></div></div>
+      <div class="ni-panel"><h3 style="background:#FF8F1C">2 · Income method</h3>
+        <div class="hint">Switch ON only payments to factors of production for producing something.</div>
+        <div id="incHost"></div>
+        <div class="ni-total" id="incTot">Total <span>฿0</span></div></div>
+      <div class="ni-panel"><h3 style="background:#002F6C">3 · Expenditure method</h3>
+        <div class="hint">Label each item C, I, G, X or M, or “not counted”. Imports (M) are taken away.</div>
+        <div id="expHost"></div>
+        <div class="ni-total" id="expTot">Total <span>฿0</span></div></div>
+    </div>
+    <div class="gi-say" id="islandSay">Start with any panel. The totals update as you go.</div>
+
+    <div class="sub-h">Part C · Activity 15.4: what goes into the income method?</div>
+    <div class="sub-p">The coursebook’s five items, plus three from Thailand. Include only payments received in return for providing a good or service.</div>
+    <div class="sort-grid cols-2">
+      <div><div class="col-lbl">Drag from here</div><div class="drop-pool" id="pool-inc"></div></div>
+      <div class="bin" data-bin="in"><div class="bin-name"><span class="bin-dot" style="background:#28A745"></span>Include</div><div class="bin-desc">A factor income: wages, rent, interest or profit</div><div class="bin-drop"></div></div>
+      <div class="bin" data-bin="out"><div class="bin-name"><span class="bin-dot" style="background:#D63864"></span>Leave out</div><div class="bin-desc">A transfer payment: nothing produced in return</div><div class="bin-drop"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkInc()">Check sort</button>
+      <button class="btn btn-ghost" onclick="buildInc()">Reset</button>
+      <span class="score" id="score-inc"></span>
+    </div>
+    <div class="done-banner" id="threeDone"></div>
+  </div>
+
+  <!-- ============ TAB 5 · MEASURE CONVERTER ============ -->
+  <div class="panel" id="panel-conv">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Measure converter</div>
+      <h1>Market or basic? Gross or net? Domestic or national?</h1>
+      <p>Every measure is a step on the same ladder. <b>Market prices → basic prices:</b> take away taxes on products (indirect taxes) and add subsidies. <b>Domestic → national:</b> add net income from abroad. <b>Gross → net:</b> take away depreciation (capital consumption), the capital goods worn out or out of date this year. Examiners report that fewer than 40% of candidates got a question like Part C right in November 2024 — usually because of the <b>order</b> or the <b>sign</b> of a step.</p>
+    </div>
+
+    <div class="sub-h" style="margin-top:0">Part A · Price tags (coursebook 15.4)</div>
+    <div class="ni-tags">
+      <div class="ni-tag"><div class="lbl">$12</div><p>A product sells for <b>$12</b>. It has a <b>$4</b> tax on it.</p><div class="ans">Basic price: $<input class="ni-in" data-ans="8" style="width:70px"></div></div>
+      <div class="ni-tag"><div class="lbl">$15 → ?</div><p>A producer would sell a product for <b>$15</b>, but it is subsidised at <b>$2</b> a unit.</p><div class="ans">Market price: $<input class="ni-in" data-ans="13" style="width:70px"></div></div>
+      <div class="ni-tag"><div class="lbl">฿107</div><p>A restaurant bill in Nonthaburi is <b>฿107</b>, including Thailand’s 7% VAT.</p><div class="ans">Basic price: ฿<input class="ni-in" data-ans="100" style="width:70px"></div></div>
+    </div>
+    <div class="ni-check"><button class="btn btn-primary" id="tagCheck">Check prices</button><span class="ni-msg" id="tagMsg"></span></div>
+    <p class="tip">Careful with the ฿107 bill: VAT is 7% of the price <b>before</b> tax, so the tax is ฿7, not 7% of ฿107.</p>
+
+    <div class="sub-h">Part B · The ladder</div>
+    <div class="sub-p">An economy’s GDP at market prices is $1,000 bn. Move the sliders and watch every other measure change. Complete the four missions.</div>
+    <div class="gi-goals" id="goalsLad"></div>
+    <div class="gi-lab">
+      <div class="fig ni-ladder"><div class="ft">From GDP at market prices to NNI at basic prices ($ bn)</div><div id="ladFig"></div></div>
+      <div class="gi-ctrl">
+        <div class="gi-name">Taxes on products (indirect taxes) <em id="lTV"></em></div>
+        <input type="range" class="gi-sl pink" id="lT" min="0" max="150" step="5" value="80" aria-label="Indirect taxes">
+        <div class="gi-name">Subsidies on products <em id="lSV"></em></div>
+        <input type="range" class="gi-sl green" id="lS" min="0" max="150" step="5" value="20" aria-label="Subsidies">
+        <div class="gi-name">Net income from abroad <em id="lNV"></em></div>
+        <input type="range" class="gi-sl blue" id="lN" min="-100" max="100" step="5" value="-30" aria-label="Net income from abroad">
+        <div class="gi-ends"><span>Pays out more</span><span>Earns in more</span></div>
+        <div class="gi-name">Depreciation (capital consumption) <em id="lDV"></em></div>
+        <input type="range" class="gi-sl navy" id="lD" min="0" max="200" step="5" value="120" aria-label="Depreciation">
+        <div class="ni-steps" id="lSteps"></div>
+        <div class="btn-row" style="margin-top:12px"><button class="btn btn-ghost" id="lReset">Reset</button></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Part C · Converter practice</div>
+    <div class="sub-p">The first problem is coursebook Activity 15.5. Then you get new problems of every type. Get <b>five</b> right to complete the activity. Type your answer in $ billion.</div>
+    <div class="ni-prob">
+      <div class="ni-counter" id="probCount"></div>
+      <div class="stem" id="probStem"></div>
+      <div class="ni-check"><input class="ni-in" id="probIn" inputmode="decimal" placeholder="$ bn" style="width:110px"><button class="btn btn-primary" id="probCheck">Check</button><button class="btn btn-ghost" id="probShow">Show working</button><button class="btn btn-ghost" id="probNext">New problem →</button><span class="ni-msg" id="probMsg"></span></div>
+      <div class="ni-work" id="probWork"></div>
+    </div>
+    <div class="done-banner" id="convDone"></div>
+  </div>
+
+  <!-- ============ TAB 6 · ANALYSIS & EVALUATION ============ -->
+  <div class="panel" id="panel-chain">
+    <div class="intro">
+      <div class="kicker">Activity 6 · Analysis and evaluation</div>
+      <h1>What do the numbers really tell us?</h1>
+      <p>National income figures are used everywhere — in the news, by the Bank of Thailand, by investors and by the World Bank. Part A tests six claims you could meet in an exam. Part B is the coursebook’s “Think like an economist”. Part C is a Paper 2 style 8-mark answer.</p>
+    </div>
+    <div class="sub-h" style="margin-top:0">Part A · Agree, disagree or it depends? <span class="score" id="judgeScore" style="font-size:13px"></span></div>
+    <div class="sub-p">Watch for <b>always</b>, <b>richer</b> and <b>higher living standards</b>.</div>
+    <div id="judgeHost"></div>
+
+    <div class="sub-h">Part B · Think like an economist: Vietnam and Laos</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">🇻🇳</div>
+        <div class="q-name">“National income data indicated that economic activity was greater in Vietnam than in Laos in 2019.”</div></div>
+      <div class="q-stem"><b>1</b> What national income data would you need to check this statement, and where would you find it? <b>2</b> Apart from comparing economic activity between countries, how else can national income data be used?</div>
+      <textarea class="write-box" id="vlBox" style="min-height:110px" placeholder="1 Data: ... Sources: ...&#10;2 Other uses: ..."></textarea>
+      <button class="mini-btn" id="vlBtn">Show suggested points</button>
+      <div class="model" id="vlModel">
+        <b>1 · Data.</b> GDP for both countries in the same year and the <b>same currency</b> (usually US$); GNI as well, because foreign-owned firms and workers abroad can make GDP and GNI differ; <b>population</b>, so you can compare output and income <b>per head</b> — the statement also claims people in Vietnam had a higher <b>average</b> income; and ideally figures adjusted for prices (real, or purchasing power parity), because the same dollar buys more in a lower-cost country. <b>Sources:</b> the World Bank’s World Development Indicators, the IMF, each country’s statistics office, the CIA World Factbook, The Economist <i>Pocket World in Figures</i>.<br>
+        <b>2 · Other uses.</b> To measure <b>growth over time</b> (this year vs last year, or 50 years ago — the Key Concept “Time”); to guide <b>policy</b> — if output is growing more slowly than it could, the government or the Bank of Thailand may act to stimulate it; to help <b>firms</b> plan investment; to <b>classify</b> countries — the World Bank groups countries by GNI per head, and the UN’s Human Development Index uses GNI per head; and to judge <b>living standards</b> — with care, because the figures leave out the informal economy and say nothing about how income is shared.
+      </div>
+    </div>
+
+    <div class="sub-h">Part C · Write it up: an 8-mark explain answer</div>
+    <div class="q-card">
+      <div class="q-head"><div class="q-icon" style="background:#008BCC">8</div>
+        <div class="q-name">Explain what is meant by gross domestic product (GDP) and gross national income (GNI), and why a country’s GNI may be higher or lower than its GDP. <span style="color:var(--text-3);font-weight:400">[8]</span></div></div>
+      <div class="q-stem">Paper 2 style. Define both terms precisely, show the link between them, then explain the flows that make them differ — <b>in both directions</b> — with an example of each.</div>
+      <div class="write-lbl">Your answer</div>
+      <textarea class="write-box" id="w1" style="min-height:160px" placeholder="GDP is..."></textarea>
+      <button class="mini-btn" id="w1btn">Compare with a model answer</button>
+      <div class="model" id="w1model">
+        <b>Model answer.</b> <b>Gross domestic product</b> is the total value of output produced by the factors of production based in a country in a year, whoever owns them. “Gross” means total, “domestic” means inside the home economy and “product” means output. So Thailand’s GDP includes the cars made in Rayong by Japanese-owned firms.<br>
+        <b>Gross national income</b> changes the focus from where output is produced to who earns the income. It is the total income earned by a country’s residents and firms, wherever they earn it. GNI = GDP + net income from abroad.<br>
+        Net income from abroad is mainly <b>net property income</b> — profits, interest and dividends received from abroad minus those paid to foreigners — plus net <b>compensation of employees</b>, the wages of residents working abroad for short periods, such as seasonal workers.<br>
+        GNI is <b>higher</b> than GDP when residents earn more from abroad than foreigners earn in the country. Japan’s multinationals own factories all over Asia and their profits flow home, so Japan’s GNI was about 4% above its GDP in 2018; the Philippines’ was 20% higher, mainly because many Filipinos work abroad.<br>
+        GNI is <b>lower</b> than GDP when foreign multinationals and foreign workers contribute a large part of output, so more income flows out than in. Qatar depends on foreign workers; Ireland and Thailand have attracted a lot of foreign investment, and the profits paid to the foreign owners make GNI smaller than GDP.
+        <div class="exam-line" style="margin-top:10px"><b>Why this scores:</b> both terms are defined precisely, the link between them is stated as a formula, the components of net income from abroad are named, and both directions are explained with a real example each.</div>
+      </div>
+    </div>
+    <div class="check-group">
+      <h4>Self-mark your 8-mark answer</h4>
+      <div class="cgs">Tick honestly. Anything unticked is the redraft.</div>
+      <div id="w1checks"></div>
+      <div class="band" style="margin-top:14px">
+        <div class="bt">Self-assessment</div>
+        <div class="bv" id="w1bv">0 of 7 ticked</div>
+        <div class="bar"><i id="w1bar"></i></div>
+        <div class="bd" id="w1bd">Tick each element you actually included.</div>
+      </div>
+    </div>
+    <div class="done-banner" id="chainDone"></div>
+  </div>
+
+  <!-- ============ TAB 7 · EXAM PRACTICE ============ -->
+  <div class="panel" id="panel-mcq">
+    <div class="intro">
+      <div class="kicker">Activity 7 · Paper 1 style</div>
+      <h1>Exam-style multiple choice</h1>
+      <p>Questions 1–10 are the coursebook’s own end-of-chapter questions. Questions 11–14 test the same ideas in Paper 1 wording, including the kind of calculation that fewer than 40% of candidates got right in November 2024. Write down each step before you choose. Read the explanation after every answer, including the ones you get right.</p>
+    </div>
+    <div id="mcqList"></div>
+    <div class="done-banner" id="mcqDone"></div>
+  </div>
+
+  <div class="foot-note">SISB Nonthaburi · Cambridge AS &amp; A Level Economics (9708) · Topic 4.1 · Coursebook Chapter 15</div>
+</div>
+
+<div class="pwrap">
+  <span>Progress</span>
+  <div class="track"><i id="pbar"></i></div>
+  <span class="pill" id="pscore">0 / 7 activities</span>
+</div>
+
+<script src="sisb-tracker.js"></script>
+<script src="sisb-dragdrop.js"></script>
+<script>
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('4.1', activity, detail); }
+
+/* ================= PROGRESS ================= */
+const DONE={terms:false,size:false,gni:false,three:false,conv:false,chain:false,mcq:false};
+const TOTAL=Object.keys(DONE).length;
+let allLogged=false;
+function mark(k){
+  if(DONE[k]) return;
+  DONE[k]=true;
+  const n=Object.values(DONE).filter(Boolean).length;
+  document.getElementById('pbar').style.width=(n/TOTAL*100)+'%';
+  document.getElementById('pscore').textContent=n+' / '+TOTAL+' activities'+(n===TOTAL?' ✓':'');
+  if(n===TOTAL && !allLogged){ allLogged=true; trk('Topic 4.1 complete', TOTAL+'/'+TOTAL+' activities'); }
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function fmt(n,dp){ dp=dp===undefined?0:dp; return Number(n).toLocaleString('en-GB',{minimumFractionDigits:dp,maximumFractionDigits:dp}); }
+function sgn(n){ return (n>=0?'+':'−')+fmt(Math.abs(n)); }
+function num(v){ const x=parseFloat(String(v).replace(/[^0-9.\-−]/g,'').replace('−','-')); return isNaN(x)?null:x; }
+const rint=(a,b,step)=>{ step=step||1; return a+step*Math.floor(Math.random()*((b-a)/step+1)); };
+function showBanner(id,html){ const b=document.getElementById(id); if(html) b.innerHTML=html; b.classList.add('show'); }
+
+/* ================= SHARED WIDGETS (same as 3.3) ================= */
+function buildCards(host, bank, onDone){
+  host.innerHTML='';
+  bank.forEach(q=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML=
+      '<div class="q-head"><div class="q-icon" style="background:'+q.bg+'">'+q.icon+'</div><div class="q-name">'+q.name+'</div></div>'+
+      '<div class="q-stem">'+q.stem+'</div>'+(q.fig?'<div class="q-fig">'+q.fig+'</div>':'')+
+      '<div class="opts">'+q.opts.map((o,i)=>
+        '<div class="opt" data-q="'+q.id+'" data-i="'+i+'"><span class="lt">'+'ABCD'[i]+'</span><span>'+o+'</span></div>').join('')+
+      '</div>'+
+      '<div class="fb" id="fb-'+q.id+'"><strong>Answer: '+'ABCD'[q.ans]+'.</strong> '+q.fb+(q.why?'<div class="why">'+q.why+'</div>':'')+'</div>';
+    host.appendChild(c);
+  });
+  const answered=new Set(); let right=0;
+  host.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const qid=o.dataset.q;
+      if(answered.has(qid)) return;
+      answered.add(qid);
+      const q=bank.find(x=>x.id===qid);
+      [...o.parentElement.children].forEach((el,i)=>{ el.classList.add('locked'); if(i===q.ans) el.classList.add('right'); });
+      if(Number(o.dataset.i)!==q.ans) o.classList.add('wrongpick'); else right++;
+      document.getElementById('fb-'+qid).classList.add('show');
+      if(answered.size===bank.length && onDone) onDone(right, bank.length);
+    });
+  });
+}
+function goalTags(id,list,state){
+  document.getElementById(id).innerHTML=list.map(g=>'<span class="gi-goal'+(state[g.k]?' met':'')+'">'+(state[g.k]?'✓ ':'○ ')+g.t+'</span>').join('');
+}
+function buildJudges(host, list, labels, onAnswer){
+  const done={}; let right=0;
+  list.forEach((j,i)=>{
+    const c=document.createElement('div'); c.className='q-card';
+    c.innerHTML='<div class="q-head"><div class="q-icon" style="background:var(--navy)">'+(j.icon||(i+1))+'</div><div class="q-name">'+j.t+'</div></div>'+
+      (j.stem?'<div class="q-stem">'+j.stem+'</div>':'')+
+      '<div class="choice-row">'+['good','bad','both'].map(v=>'<div class="choice" data-v="'+v+'">'+labels[v]+'</div>').join('')+'</div>'+
+      '<div class="reveal"></div>';
+    c.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+      if(done[i]) return; done[i]=true;
+      const v=ch.dataset.v, ok=v===j.ans; if(ok) right++;
+      ch.classList.add('sel-'+v);
+      const r=c.querySelector('.reveal');
+      r.innerHTML='<span class="verdict v-'+j.ans+'">'+(ok?'Yes — ':'The best answer: ')+labels[j.ans]+'</span><br>'+j.why+(j.exam?'<div class="exam-line"><b>Evaluation line:</b> '+j.exam+'</div>':'');
+      r.classList.add('show');
+      onAnswer(Object.keys(done).length, right, list.length);
+    }));
+    host.appendChild(c);
+  });
+}
+function checkSort(container, poolId, scoreId, total){
+  let correct=0, placed=0;
+  container.querySelectorAll('.bin').forEach(bin=>{
+    bin.querySelectorAll('.item-card').forEach(el=>{
+      placed++; const ok=el.dataset.bin===bin.dataset.bin;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok); if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById(scoreId);
+  if(placed<total){ sc.textContent='Sort all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; return false; }
+  if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; return true; }
+  sc.textContent=correct+' / '+total+' correct — move the pink ones'; sc.style.color='#002F6C'; return false;
+}
+function buildSortPool(panelId,poolId,items,scoreId){
+  document.querySelectorAll('#'+panelId+' .bin').forEach(b=>{ if(b.closest('.sort-grid').querySelector('#'+poolId)) b.querySelector('.bin-drop').innerHTML=''; });
+  const pool=document.getElementById(poolId); pool.innerHTML='';
+  shuffle([...items]).forEach(x=>{ const d=document.createElement('div'); d.className='item-card'; d.dataset.bin=x.b; d.textContent=x.t; pool.appendChild(d); });
+  document.getElementById(scoreId).textContent='';
+}
+function modelButton(btnId,boxId,modelId,minLen,label,onShow){
+  document.getElementById(btnId).addEventListener('click',()=>{
+    const box=document.getElementById(boxId), b=document.getElementById(btnId);
+    if(box.value.trim().length<minLen){ box.focus(); b.textContent='Write your own ideas first — then compare'; return; }
+    document.getElementById(modelId).classList.add('show'); b.textContent=label||'Suggested points shown ✓'; b.disabled=true;
+    if(onShow) onShow();
+  });
+}
+function flag(el,ok){ el.classList.toggle('ok',ok); el.classList.toggle('no',!ok); }
+
+/* ================= TAB 1 — KEY TERMS ================= */
+const TERMS=[
+ {id:'t1', term:'National income',      def:'A country’s total output, which equals the total income earned producing it and the total spent on it.'},
+ {id:'t2', term:'Gross domestic product (GDP)', def:'The total value of output produced by the factors of production based in a country in a year, whoever owns them.'},
+ {id:'t3', term:'Gross national income (GNI)',  def:'GDP plus net income from abroad: the income earned by a country’s residents and firms, wherever they earn it.'},
+ {id:'t4', term:'Net national income (NNI)',    def:'GNI minus depreciation.'},
+ {id:'t5', term:'Net property income from abroad', def:'Profits, interest and dividends earned abroad by residents, minus those paid to foreigners.'},
+ {id:'t6', term:'Compensation of employees', def:'Wages earned by residents who work abroad for short periods, such as seasonal and cross-border workers.'},
+ {id:'t7', term:'Value added',          def:'The price a firm sells its product for minus what it paid other firms for the goods and services it bought.'},
+ {id:'t8', term:'Double counting',      def:'Counting the same output more than once — for example, adding the value of tyres to the value of the cars they are fitted to.'},
+ {id:'t9', term:'Transfer payment',     def:'A payment of income for which nothing is produced in return, such as a state pension. It is left out of GDP.'},
+ {id:'t10',term:'Market prices',        def:'The prices consumers actually pay: they include taxes on products and have subsidies taken off.'},
+ {id:'t11',term:'Basic prices (factor cost)', def:'Prices without taxes on products or subsidies; they equal the income paid to the factors of production.'},
+ {id:'t12',term:'Depreciation (capital consumption)', def:'The value of capital goods that wear out or become out of date during the year.'},
+];
+let termsOK=false, gdpOK=false;
+function buildTerms(){
+  const pool=document.getElementById('pool-terms'), slots=document.getElementById('slots-terms');
+  pool.innerHTML=''; slots.innerHTML='';
+  shuffle([...TERMS]).forEach(t=>{ const d=document.createElement('div'); d.className='scenario'; d.dataset.aim=t.id; d.textContent=t.def; pool.appendChild(d); });
+  TERMS.forEach(t=>{ const s=document.createElement('div'); s.className='aim-slot'; s.dataset.aim=t.id; s.innerHTML='<div class="aim-name">'+t.term+'</div><div class="dropped"></div>'; slots.appendChild(s); });
+  document.getElementById('score-terms').textContent='';
+}
+function checkTerms(){
+  let correct=0, placed=0;
+  document.querySelectorAll('#slots-terms .aim-slot').forEach(slot=>{
+    [...slot.querySelector('.dropped').children].forEach(el=>{
+      placed++; const ok=el.dataset.aim===slot.dataset.aim;
+      el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok); if(ok) correct++;
+    });
+  });
+  const sc=document.getElementById('score-terms'), total=TERMS.length;
+  if(placed<total){ sc.textContent='Place all '+total+' first ('+placed+'/'+total+' placed)'; sc.style.color='#FF8F1C'; }
+  else if(correct===total){ sc.textContent='🎉 All '+total+' correct!'; sc.style.color='#28A745'; if(!termsOK){ termsOK=true; trk('Match: Key terms', correct+'/'+total+' correct'); termsCheck(); } }
+  else { sc.textContent=correct+' / '+total+' correct — drag the pink ones to a different term'; sc.style.color='#002F6C'; }
+}
+const GDPI=[
+ {t:'The salary of a nurse at a state hospital in Nonthaburi',b:'in'},
+ {t:'The profit made by 7-Eleven stores in Thailand this year',b:'in'},
+ {t:'A new robot arm bought by a car factory in Rayong',b:'in'},
+ {t:'Hotel rooms in Phuket sold to foreign tourists',b:'in'},
+ {t:'Profit made in Thailand by Japanese-owned Toyota Motor Thailand',b:'in'},
+ {t:'New pickup trucks made this year but not yet sold (added to stock)',b:'in'},
+ {t:'The old-age allowance of ฿600 a month paid by the government',b:'out'},
+ {t:'Tyres a factory sells to a car maker, which fits them to new cars',b:'out'},
+ {t:'A second-hand Honda Wave bought from a neighbour',b:'out'},
+ {t:'Ang pao money your grandparents give you at Chinese New Year',b:'out'},
+ {t:'Unemployment benefit paid by the Social Security Office',b:'out'},
+ {t:'Shares in PTT bought on the Stock Exchange of Thailand',b:'out'}
+];
+function buildGDP(){ buildSortPool('panel-terms','pool-gdp',GDPI,'score-gdp'); }
+function checkGDP(){
+  if(checkSort(document.querySelector('#pool-gdp').closest('.sort-grid'),'pool-gdp','score-gdp',GDPI.length) && !gdpOK){ gdpOK=true; trk('Sort: counted in GDP?', GDPI.length+'/'+GDPI.length+' correct'); termsCheck(); }
+}
+function termsCheck(){
+  if(termsOK && gdpOK && !DONE.terms){
+    showBanner('termsDone','✓ Both done. The two traps to remember: the <b>tyres</b> are already inside the value of the car (double counting), and <b>Toyota Motor Thailand’s profit</b> is in Thailand’s GDP because it is produced here — even though it is not Thai income. That difference between GDP and GNI is Activity 3.');
+    mark('terms');
+  }
+}
+buildTerms(); buildGDP();
+modelButton('ctxBtn','ctxBox','ctxModel',25,null,()=>trk('Economics in context: Nigeria','ideas written'));
+
+/* ================= TAB 2 — SIZE & GROWTH ================= */
+let growthOK=false, topOK=false;
+document.getElementById('gCheck').addEventListener('click',()=>{
+  const T=[['gMyA',35,0.5],['gMyP',10.97,0.1],['gUsA',1060,5],['gUsP',5.43,0.1]];
+  let r=0;
+  T.forEach(([id,a,tol])=>{ const el=document.getElementById(id), v=num(el.value); const ok=v!==null && Math.abs(v-a)<=tol; flag(el,ok); if(ok) r++; });
+  const m=document.getElementById('gMsg');
+  if(r===4){ m.textContent='🎉 All four correct.'; m.style.color='#28A745'; document.getElementById('gModel').classList.add('show'); if(!growthOK){ growthOK=true; trk('Level vs growth: Malaysia and USA','4/4 correct'); sizeCheck(); } }
+  else { m.textContent=r+' / 4 correct. Absolute = new − old. % = (new − old) ÷ old × 100.'; m.style.color='#002F6C'; }
+});
+const TOP=[
+ {id:'k1', icon:'↗', bg:'#28A745', name:'Quick check 1', stem:'Which two countries are predicted to be in the top ten in 2050 but were in <b>neither</b> the 1991 nor the 2018 list?',
+  opts:['India and China','Indonesia and Mexico','Brazil and Russia','Indonesia and Russia'], ans:1,
+  fb:'Indonesia (4th) and Mexico (7th) are new. China and India were in the 2018 list; Brazil and Russia were in the 1991 list.', why:'Read across all three columns, not just 2018 and 2050.'},
+ {id:'k2', icon:'↘', bg:'#D63864', name:'Quick check 2', stem:'Which countries in the 2018 top ten are predicted to <b>drop out</b> by 2050?',
+  opts:['France, Italy and Canada','Japan, Germany and the UK','France, Spain and Canada','Italy, Brazil and Canada'], ans:0,
+  fb:'France, Italy and Canada leave. Japan, Germany and the UK stay in but fall to 8th, 9th and 10th.', why:'Spain was in the 1991 list, not 2018. Brazil is predicted to rise to 5th.'},
+ {id:'k3', icon:'👥', bg:'#008BCC', name:'Quick check 3', stem:'What do most of the countries that rise in the 2050 list have in common?',
+  opts:['They are all in Europe','They have large populations and are emerging economies','They have the highest income per head','They all export oil'], ans:1,
+  fb:'China, India, Indonesia, Brazil and Mexico all have large and growing populations and are emerging economies catching up. Most are in Asia or Latin America.',
+  why:'C is the trap: a large <b>total</b> output does not mean a high output <b>per head</b> — remember Nigeria and South Africa.'},
+ {id:'k4', icon:'🇯🇵', bg:'#6B4E9E', name:'Quick check 4', stem:'Japan moves from 2nd (1991) to 3rd (2018) to 8th (2050). Which statement must be true?',
+  opts:['Japan’s output will fall between 2018 and 2050','Japan’s output is predicted to grow more slowly than the output of the countries that overtake it','Japan’s living standards will fall','Japan will have the smallest population in the top ten'], ans:1,
+  fb:'A rank only compares countries. Japan can keep growing and still fall down the table if others grow faster.',
+  why:'Nothing in a ranking tells you about living standards or population directly — you would need data per head.'}
+];
+buildCards(document.getElementById('topList'), TOP, (right,total)=>{ topOK=true; trk('Activity 15.1 quick checks', right+'/'+total+' correct'); sizeCheck(); });
+modelButton('aseanBtn','aseanBox','aseanModel',25,'Suggested answer shown ✓',()=>trk('Thailand 2nd or 3rd in ASEAN','answer written'));
+function sizeCheck(){
+  if(growthOK && topOK && !DONE.size){
+    showBanner('sizeDone','✓ Done. Two habits from this activity: say whether a change is <b>absolute</b> or a <b>percentage</b>, and say which <b>measure</b> (GDP or GNI, total or per head) you are comparing.');
+    mark('size');
+  }
+}
+
+/* ================= TAB 3 — GDP OR GNI? ================= */
+const A153=[[4970915,5159764],[330910,397063],[192009,188264],[20494100,20738399]];
+document.getElementById('diffBtn').addEventListener('click',()=>{
+  const cells=[...document.querySelectorAll('#panel-gni .diffcell')];
+  A153.forEach((r,i)=>{ const d=r[1]-r[0]; cells[i*2].textContent=sgn(d); cells[i*2+1].textContent=(d>=0?'+':'−')+fmt(Math.abs(d/r[0]*100),1)+'%';
+    cells[i*2].style.color=cells[i*2+1].style.color=d>=0?'#155724':'#7A0830'; cells[i*2].style.fontWeight=cells[i*2+1].style.fontWeight='900'; });
+  document.getElementById('diffBtn').disabled=true;
+});
+let a153OK=false, flowOK=false, gndiDone=false;
+document.getElementById('a153Check').addEventListener('click',()=>{
+  let r=0; const sels=[...document.querySelectorAll('#panel-gni .ni-sel')];
+  sels.forEach(s=>{ const ok=s.value===s.dataset.ans; flag(s,ok); if(ok) r++; });
+  const m=document.getElementById('a153Msg');
+  if(r===3){ m.textContent='🎉 All three correct.'; m.style.color='#28A745'; document.getElementById('a153Model').classList.add('show'); if(!a153OK){ a153OK=true; trk('Activity 15.3: GDP vs GNI','3/3 correct'); gniCheck(); } }
+  else { m.textContent=r+' / 3 correct. Tip: work out GNI − GDP as a % of GDP first.'; m.style.color='#002F6C'; }
+});
+const FLOW=[
+ {t:'Profits Minor International earns from the hotels it owns abroad',b:'plus'},
+ {t:'Dividends CP Group receives from its businesses in China',b:'plus'},
+ {t:'Wages a Thai berry picker earns during one summer in Finland',b:'plus'},
+ {t:'Interest a Thai bank earns on a loan to a company in Laos',b:'plus'},
+ {t:'Wages of a Thai engineer on a three-month contract in Taiwan',b:'plus'},
+ {t:'Profits Toyota Motor Thailand sends to its owners in Japan',b:'minus'},
+ {t:'Dividends PTT pays to foreign investors who own its shares',b:'minus'},
+ {t:'Wages of Cambodian cross-border workers in the Chanthaburi fruit harvest',b:'minus'},
+ {t:'Interest the Thai government pays on bonds owned by foreign banks',b:'minus'},
+ {t:'Profits a Singapore-owned bank makes from its branches in Thailand',b:'minus'}
+];
+function buildFlow(){ buildSortPool('panel-gni','pool-flow',FLOW,'score-flow'); }
+function checkFlow(){
+  if(checkSort(document.querySelector('#pool-flow').closest('.sort-grid'),'pool-flow','score-flow',FLOW.length) && !flowOK){ flowOK=true; trk('Sort: Thailand’s income flows', FLOW.length+'/'+FLOW.length+' correct'); gniCheck(); }
+}
+buildFlow();
+(function(){
+  const W=520,H=170, x0=70, sc=(W-x0-70)/560;
+  const bar=(y,v,col,lab)=>'<rect x="'+x0+'" y="'+y+'" width="'+(v*sc)+'" height="42" rx="5" fill="'+col+'"/>'+
+    '<text x="'+(x0-10)+'" y="'+(y+27)+'" text-anchor="end" font-size="15" font-weight="900" fill="#002F6C">'+lab+'</text>'+
+    '<text x="'+(x0+v*sc+8)+'" y="'+(y+27)+'" font-size="15" font-weight="900" fill="#002F6C">$'+v+' bn</text>';
+  document.getElementById('thBars').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" font-family="Lato,sans-serif">'+
+    bar(20,527,'#008BCC','GDP')+bar(80,512,'#FF8F1C','GNI')+
+    '<line x1="'+(x0+512*sc)+'" y1="140" x2="'+(x0+527*sc)+'" y2="140" stroke="#D63864" stroke-width="3"/>'+
+    '<text x="'+(x0+519*sc)+'" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="#7A0830">gap ≈ $15 bn</text></svg>';
+})();
+modelButton('thBtn','thBox','thModel',20,'Suggested answer shown ✓',()=>trk('Thailand GDP vs GNI','answer written'));
+document.querySelectorAll('#gndiRow .choice').forEach(ch=>ch.addEventListener('click',()=>{
+  if(gndiDone) return; gndiDone=true;
+  const ok=ch.dataset.v==='gndi'; ch.classList.add(ok?'sel-good':'sel-bad');
+  const r=document.getElementById('gndiRev');
+  r.innerHTML='<span class="verdict v-good">'+(ok?'Yes — ':'The best answer: ')+'gross national disposable income</span><br>The coursebook: governments also measure <b>gross national disposable income</b>, which includes income sent home to relatives by people working abroad, minus income sent abroad by foreign workers to their relatives. Money sent to a family is a transfer — nothing is produced in return — so it is not part of GDP. (The <b>wages</b> a Thai seasonal worker earns abroad are compensation of employees, which is in GNI. What she later sends to her parents is the disposable-income adjustment.)';
+  r.classList.add('show'); trk('Remittances: which measure?', ok?'correct':'incorrect'); gniCheck();
+}));
+function gniCheck(){
+  if(a153OK && flowOK && gndiDone && !DONE.gni){
+    showBanner('gniDone','✓ Done. The one-line test: <b>where</b> was it produced (GDP) versus <b>who</b> earned it (GNI). Thailand, Ireland and Qatar: GNI &lt; GDP. Japan and the Philippines: GNI &gt; GDP.');
+    mark('gni');
+  }
+}
+
+/* ================= TAB 4 — THREE METHODS ================= */
+const VA=[
+ {who:'Rubber farmer',where:'Surat Thani',what:'Taps latex from her trees and sells it to a processing plant.',sell:40,buy:0},
+ {who:'Processing plant',where:'Hat Yai',what:'Turns the latex into concentrated latex and sells it to a glove factory.',sell:70,buy:40},
+ {who:'Glove factory',where:'Songkhla',what:'Makes a box of rubber gloves and sells it to a pharmacy.',sell:150,buy:70},
+ {who:'Pharmacy',where:'Nonthaburi',what:'Sells the box of gloves to a customer.',sell:200,buy:150}
+];
+document.getElementById('chainVA').innerHTML=VA.map((s,i)=>
+  '<div class="ni-stage"><span class="n">Stage '+(i+1)+'</span><div class="who">'+s.who+'</div><div class="what">'+s.what+' <i>('+s.where+')</i></div>'+
+  '<div class="row">Sells for <b>฿'+s.sell+'</b></div><div class="row">Paid other firms <b>฿'+s.buy+'</b></div>'+
+  '<div class="row">Value added ฿<input class="ni-in va-in" data-ans="'+(s.sell-s.buy)+'" inputmode="decimal" style="width:70px"></div></div>').join('');
+let vaOK=false, islandOK=false, incOK=false;
+document.getElementById('vaCheck').addEventListener('click',()=>{
+  let r=0; document.querySelectorAll('.va-in').forEach(el=>{ const ok=num(el.value)===Number(el.dataset.ans); flag(el,ok); if(ok) r++; });
+  const m=document.getElementById('vaMsg');
+  if(r===4){ m.textContent='🎉 40 + 30 + 80 + 50 = ฿200 — the price of the finished box.'; m.style.color='#28A745'; document.getElementById('vaSum').classList.remove('hidden'); if(!vaOK){ vaOK=true; trk('Value added chain: gloves','4/4 correct'); threeCheck(); } }
+  else { m.textContent=r+' / 4 correct. Value added = sells for − paid other firms.'; m.style.color='#002F6C'; }
+});
+document.getElementById('tvBtn').addEventListener('click',()=>{
+  const el=document.getElementById('tvIn'), v=num(el.value), ok=v===70000; flag(el,ok);
+  const m=document.getElementById('tvMsg'); m.textContent=ok?'✓ $350,000 − $280,000 = $70,000. The $280,000 of components was counted at earlier stages.':'Not quite: take what it pays other firms away from what it sells for.'; m.style.color=ok?'#28A745':'#7A0830';
+});
+/* Koh Kaew island */
+const OUT=[
+ {n:'Rice farm',d:'Rice to the noodle shop ฿200 and to families ฿100',sales:300,buy:0},
+ {n:'Noodle shop',d:'Noodles to families ฿600 and tourists ฿200. Buys rice ฿200 and imported spices ฿50',sales:800,buy:250},
+ {n:'Boat yard',d:'One boat sold to the resort ฿400; one unsold boat added to stock ฿100',sales:500,buy:0},
+ {n:'Resort',d:'Rooms sold to foreign tourists',sales:900,buy:0},
+ {n:'State school',d:'Teaching paid for by the government (valued at cost)',sales:350,buy:0}
+];
+const INC=[
+ {t:'Wages paid by the four firms',a:1250,inc:true},
+ {t:'Teachers’ salaries paid by the government',a:350,inc:true},
+ {t:'Rent paid to landowners',a:350,inc:true},
+ {t:'Interest on the noodle shop’s bank loan',a:50,inc:true},
+ {t:'Profits of the four firms',a:600,inc:true},
+ {t:'State pensions paid to retired fishers',a:120,inc:false},
+ {t:'Unemployment benefit',a:30,inc:false},
+ {t:'Money a resort worker sends to her parents',a:40,inc:false}
+];
+const EXP=[
+ {t:'Families buy rice from the farm',a:100,k:'C'},
+ {t:'Families buy noodles',a:600,k:'C'},
+ {t:'Foreign tourists buy noodles',a:200,k:'X'},
+ {t:'Foreign tourists pay for resort rooms',a:900,k:'X'},
+ {t:'The resort buys a new boat',a:400,k:'I'},
+ {t:'The unsold boat added to the boat yard’s stock',a:100,k:'I'},
+ {t:'The government pays for the state school',a:350,k:'G'},
+ {t:'The noodle shop buys imported spices',a:50,k:'M'},
+ {t:'The noodle shop buys rice from the farm',a:200,k:'N'},
+ {t:'The government pays state pensions',a:120,k:'N'},
+ {t:'A family buys a second-hand motorbike',a:60,k:'N'}
+];
+const KLAB={C:'C · consumption',I:'I · investment',G:'G · government',X:'X · exports',M:'M · imports (−)',N:'Not counted'};
+document.getElementById('outHost').innerHTML=OUT.map((o,i)=>'<div class="ni-line"><span><b>'+o.n+'</b><br><small>'+o.d+'</small><br><small>Output ฿'+o.sales+' · bought from firms ฿'+o.buy+'</small></span><input class="ni-in out-in" data-i="'+i+'" inputmode="decimal" style="width:74px" placeholder="VA"></div>').join('');
+document.getElementById('incHost').innerHTML=INC.map((o,i)=>'<div class="ni-line"><span>'+o.t+'</span><span class="amt">฿'+o.a+'</span><button class="ni-tog" data-i="'+i+'">OFF</button></div>').join('');
+document.getElementById('expHost').innerHTML=EXP.map((o,i)=>'<div class="ni-line"><span>'+o.t+' <span class="amt">฿'+o.a+'</span></span><select class="ni-sel exp-sel" data-i="'+i+'" style="min-width:120px"><option value="">Choose…</option>'+Object.keys(KLAB).map(k=>'<option value="'+k+'">'+KLAB[k]+'</option>').join('')+'</select></div>').join('');
+const incOn=INC.map(()=>false);
+document.querySelectorAll('#incHost .ni-tog').forEach(b=>b.addEventListener('click',()=>{ const i=+b.dataset.i; incOn[i]=!incOn[i]; b.classList.toggle('on',incOn[i]); b.textContent=incOn[i]?'ON':'OFF'; island(); }));
+document.querySelectorAll('.out-in').forEach(el=>el.addEventListener('input',island));
+document.querySelectorAll('.exp-sel').forEach(el=>el.addEventListener('change',island));
+function island(){
+  let out=0, outRight=0, outFilled=0;
+  document.querySelectorAll('.out-in').forEach(el=>{ const v=num(el.value), o=OUT[+el.dataset.i]; if(v!==null){ out+=v; outFilled++; const ok=v===o.sales-o.buy; if(ok) outRight++; el.classList.toggle('ok',ok); el.classList.toggle('no',!ok); } else { el.classList.remove('ok','no'); } });
+  let inc=0, incRight=0; INC.forEach((o,i)=>{ if(incOn[i]) inc+=o.a; if(incOn[i]===o.inc) incRight++; });
+  let exp=0, expRight=0, expFilled=0;
+  document.querySelectorAll('.exp-sel').forEach(el=>{ const o=EXP[+el.dataset.i], k=el.value; if(!k){ el.classList.remove('ok','no'); return; } expFilled++;
+    if(k==='M') exp-=o.a; else if(k!=='N') exp+=o.a; if(k===o.k) expRight++; });
+  const set=(id,v,ok)=>{ const e=document.getElementById(id); e.querySelector('span').textContent='฿'+fmt(v); e.classList.toggle('match',ok); };
+  const oOK=outRight===OUT.length, iOK=incRight===INC.length, eOK=expRight===EXP.length;
+  set('outTot',out,oOK); set('incTot',inc,iOK); set('expTot',exp,eOK);
+  const say=document.getElementById('islandSay');
+  if(oOK && iOK && eOK){
+    say.innerHTML='🎉 <b>All three methods give ฿2,600.</b> Output = income = expenditure. Look at what you left out: the rice the noodle shop bought (already inside the noodles), pensions, benefits and money sent home (transfers), and the second-hand motorbike (not new output). Imported spices were taken away, and the unsold boat counted as investment in stocks.';
+    if(!islandOK){ islandOK=true; trk('Koh Kaew: three methods','all three = 2,600'); threeCheck(); }
+  } else {
+    const tips=[];
+    if(outFilled===OUT.length && !oOK) tips.push('Output: one value added is wrong (red). Did you take the rice <b>and</b> the spices off the noodle shop’s sales?');
+    if(!iOK && INC.some((o,i)=>incOn[i]&&!o.inc)) tips.push('Income: a transfer payment is switched ON. Nothing is produced in return for it.');
+    if(expFilled===EXP.length && !eOK) tips.push('Expenditure: at least one label is wrong. Is the rice bought by the noodle shop a final good? Where does the unsold boat go?');
+    say.innerHTML=tips.length?tips.join('<br>'):'Keep going. The totals update as you work: output ฿'+fmt(out)+' · income ฿'+fmt(inc)+' · expenditure ฿'+fmt(exp)+'.';
+  }
+}
+island();
+const INC154=[
+ {t:'Government subsidies to farmers',b:'out'},{t:'The pay of civil servants',b:'in'},{t:'The pay of nurses',b:'in'},{t:'Profits of firms',b:'in'},{t:'State pensions',b:'out'},
+ {t:'Rent a landlord receives for a shophouse in Bangkok',b:'in'},{t:'Interest a bank receives on a loan to a factory',b:'in'},{t:'Thailand’s old-age allowance (฿600–1,000 a month)',b:'out'}
+];
+function buildInc(){ buildSortPool('panel-three','pool-inc',INC154,'score-inc'); }
+function checkInc(){
+  if(checkSort(document.querySelector('#pool-inc').closest('.sort-grid'),'pool-inc','score-inc',INC154.length) && !incOK){ incOK=true; trk('Activity 15.4: income method', INC154.length+'/'+INC154.length+' correct'); threeCheck(); }
+}
+buildInc();
+function threeCheck(){
+  if(vaOK && islandOK && incOK && !DONE.three){
+    showBanner('threeDone','✓ All three parts done. The three rules: count <b>value added</b>, not every sale; count <b>factor incomes</b>, not transfers; count spending on <b>new final</b> output, and take imports away.');
+    mark('three');
+  }
+}
+
+/* ================= TAB 5 — MEASURE CONVERTER ================= */
+let tagsOK=false;
+document.getElementById('tagCheck').addEventListener('click',()=>{
+  let r=0; document.querySelectorAll('.ni-tag .ni-in').forEach(el=>{ const ok=num(el.value)===Number(el.dataset.ans); flag(el,ok); if(ok) r++; });
+  const m=document.getElementById('tagMsg');
+  if(r===3){ m.textContent='🎉 All three: $8, $13 and ฿100. Basic price = market price − tax + subsidy.'; m.style.color='#28A745'; if(!tagsOK){ tagsOK=true; trk('Price tags: market and basic','3/3 correct'); convCheck(); } }
+  else { m.textContent=r+' / 3 correct. To get the basic price, take the tax off and add the subsidy back.'; m.style.color='#002F6C'; }
+});
+/* ladder */
+const LG=[{k:'sub',t:'GDP at basic prices bigger than at market prices'},{k:'pos',t:'GNI bigger than GDP'},{k:'eq',t:'NNI at basic prices exactly equal to GDP at market prices'},{k:'dep',t:'Depreciation over $150 bn'}];
+const lState={sub:false,pos:false,eq:false,dep:false};
+const LDEF={T:80,S:20,N:-30,D:120};
+function ladder(){
+  const T=+lT.value,S=+lS.value,N=+lN.value,D=+lD.value;
+  document.getElementById('lTV').textContent='$'+T+' bn'; document.getElementById('lSV').textContent='$'+S+' bn';
+  document.getElementById('lNV').textContent=(N>=0?'+':'−')+'$'+Math.abs(N)+' bn'; document.getElementById('lDV').textContent='$'+D+' bn';
+  const mp=1000, bp=mp-T+S, gni=bp+N, nni=gni-D;
+  const rows=[['GDP at market prices',mp,'#8098B0',''],['GDP at basic prices',bp,'#008BCC','− taxes '+T+' + subsidies '+S],['GNI at basic prices',gni,'#FF8F1C',(N>=0?'+ ':'− ')+'net income from abroad '+Math.abs(N)],['NNI at basic prices',nni,'#002F6C','− depreciation '+D]];
+  const W=520,H=300,x0=150,sc=(W-x0-60)/1300;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" font-family="Lato,sans-serif">';
+  rows.forEach((r,i)=>{ const y=14+i*72;
+    const nm=r[0].split(' at ');
+    s+='<text y="'+(y+15)+'" text-anchor="end" font-size="12.5" font-weight="900" fill="#002F6C"><tspan x="'+(x0-10)+'">'+nm[0]+'</tspan><tspan x="'+(x0-10)+'" dy="15" font-weight="700" fill="#456080">at '+nm[1]+'</tspan></text>';
+    s+='<rect x="'+x0+'" y="'+y+'" width="'+(r[1]*sc)+'" height="34" rx="5" fill="'+r[2]+'"/>';
+    s+='<text x="'+(x0+r[1]*sc+6)+'" y="'+(y+23)+'" font-size="15" font-weight="900" fill="#002F6C">'+fmt(r[1])+'</text>';
+    if(r[3]) s+='<text x="'+x0+'" y="'+(y-3)+'" font-size="11" font-weight="700" fill="#7A3D00">'+r[3]+'</text>';
+  });
+  s+='<line x1="'+(x0+1000*sc)+'" y1="8" x2="'+(x0+1000*sc)+'" y2="'+(H-6)+'" stroke="#8098B0" stroke-dasharray="4 4"/></svg>';
+  document.getElementById('ladFig').innerHTML=s;
+  document.getElementById('lSteps').innerHTML='<b>GDP at market prices</b> 1,000 − taxes '+T+' + subsidies '+S+' = <b>GDP at basic prices '+fmt(bp)+'</b><br>'+fmt(bp)+' '+(N>=0?'+ ':'− ')+Math.abs(N)+' net income from abroad = <b>GNI at basic prices '+fmt(gni)+'</b><br>'+fmt(gni)+' − depreciation '+D+' = <b>NNI at basic prices '+fmt(nni)+'</b>';
+  if(S>T) lState.sub=true; if(N>0) lState.pos=true; if(nni===mp) lState.eq=true; if(D>150) lState.dep=true;
+  goalTags('goalsLad',LG,lState);
+  if(Object.values(lState).every(Boolean) && !ladDone){ ladDone=true; trk('Ladder missions','4/4'); convCheck(); }
+}
+let ladDone=false;
+const lT=document.getElementById('lT'),lS=document.getElementById('lS'),lN=document.getElementById('lN'),lD=document.getElementById('lD');
+[lT,lS,lN,lD].forEach(e=>e.addEventListener('input',ladder));
+document.getElementById('lReset').addEventListener('click',()=>{ lT.value=LDEF.T; lS.value=LDEF.S; lN.value=LDEF.N; lD.value=LDEF.D; ladder(); });
+ladder();
+/* practice generator */
+const tbl=rows=>'<table class="dtable">'+rows.map(r=>'<tr><td>'+r[0]+'</td><td class="num">'+r[1]+'</td></tr>').join('')+'</table>';
+function makeProb(type){
+  if(type==='a155') return {stem:'<b>Coursebook Activity 15.5.</b> A country’s NNI at basic prices is $980 bn. Its net property income from abroad is $60 bn, depreciation is $30 bn, taxes on products (indirect taxes) are $40 bn and subsidies on production are $15 bn. What is the country’s <b>GDP at market prices</b>?',
+    ans:975, work:'Work backwards up the ladder.<br>NNI at basic prices 980 <b>+ depreciation</b> 30 = GNI at basic prices <b>1,010</b><br>1,010 <b>− net income from abroad</b> 60 = GDP at basic prices <b>950</b><br>950 <b>+ indirect taxes</b> 40 <b>− subsidies</b> 15 = GDP at market prices <b>$975 bn</b>'};
+  if(type==='a'){ const g=rint(400,1500,10),T=rint(20,120,5),S=rint(5,60,5);
+    return {stem:'GDP at market prices is $'+fmt(g)+' bn. Taxes on products are $'+T+' bn and subsidies are $'+S+' bn. What is <b>GDP at basic prices</b>?', ans:g-T+S,
+      work:'Market prices include taxes and have subsidies taken off, so reverse both.<br>'+fmt(g)+' <b>− taxes</b> '+T+' <b>+ subsidies</b> '+S+' = <b>$'+fmt(g-T+S)+' bn</b>'}; }
+  if(type==='b'){ const g=rint(400,1500,10),N=rint(-60,60,5)||25;
+    return {stem:'GDP at basic prices is $'+fmt(g)+' bn. Net income from abroad is <b>'+(N>=0?'':'−')+'$'+Math.abs(N)+' bn</b>. What is <b>GNI at basic prices</b>?', ans:g+N,
+      work:'GNI = GDP + net income from abroad.<br>'+fmt(g)+' '+(N>=0?'+ ':'− ')+Math.abs(N)+' = <b>$'+fmt(g+N)+' bn</b>'+(N<0?'<br>Net income from abroad is negative, so GNI is smaller than GDP.':'')}; }
+  if(type==='c'){ const g=rint(400,1500,10),N=rint(-40,40,5),D=rint(30,150,5);
+    return {stem:'A country’s GDP at market prices is $'+fmt(g)+' bn, net income from abroad is '+(N>=0?'':'−')+'$'+Math.abs(N)+' bn and depreciation is $'+D+' bn. What is its <b>NNI at market prices</b>?', ans:g+N-D,
+      work:'Stay at market prices (no tax or subsidy step).<br>'+fmt(g)+' '+(N>=0?'+ ':'− ')+Math.abs(N)+' net income from abroad = GNI at market prices <b>'+fmt(g+N)+'</b><br>'+fmt(g+N)+' <b>− depreciation</b> '+D+' = <b>$'+fmt(g+N-D)+' bn</b>'}; }
+  if(type==='d'){ const n=rint(400,1400,10),N=rint(-50,70,5),D=rint(20,120,5),T=rint(20,90,5),S=rint(5,40,5); const gni=n+D,gdpb=gni-N,gdpm=gdpb+T-S;
+    return {stem:'NNI at basic prices is $'+fmt(n)+' bn. Net income from abroad is '+(N>=0?'':'−')+'$'+Math.abs(N)+' bn, depreciation is $'+D+' bn, taxes on products are $'+T+' bn and subsidies are $'+S+' bn. What is <b>GDP at market prices</b>?', ans:gdpm,
+      work:'Work backwards up the ladder, reversing every step.<br>'+fmt(n)+' <b>+ depreciation</b> '+D+' = GNI at basic prices <b>'+fmt(gni)+'</b><br>'+fmt(gni)+' <b>'+(N>=0?'− ':'+ ')+'</b>'+Math.abs(N)+' (take net income from abroad back out) = GDP at basic prices <b>'+fmt(gdpb)+'</b><br>'+fmt(gdpb)+' <b>+ taxes</b> '+T+' <b>− subsidies</b> '+S+' = <b>$'+fmt(gdpm)+' bn</b>'}; }
+  if(type==='e'){ const g=rint(400,1500,10),T=rint(20,90,5),S=rint(5,40,5),b=g-T+S;
+    return {stem:'GDP at market prices is $'+fmt(g)+' bn, subsidies are $'+S+' bn and GDP at basic prices is $'+fmt(b)+' bn. How much is raised in <b>taxes on products</b>?', ans:T,
+      work:'Use the formula: GDP at basic prices = GDP at market prices − taxes + subsidies.<br>'+fmt(b)+' = '+fmt(g)+' − taxes + '+S+'<br>taxes = '+fmt(g)+' + '+S+' − '+fmt(b)+' = <b>$'+T+' bn</b><br>This is the November 2024 Paper 1 trap: many candidates got the <b>order</b> of the steps wrong.'}; }
+  if(type==='f'){ const C=rint(300,800,10),I=rint(80,250,10),G=rint(80,200,10),NX=rint(-60,40,10),T=rint(20,60,5),S=rint(5,25,5),D=rint(50,200,10),TR=rint(20,60,5); const mp=C+I+G+NX,bp=mp-T+S;
+    return {stem:'Use the data to find <b>GDP at basic prices</b>.'+tbl([['Consumer expenditure','$'+C+' bn'],['Total investment','$'+I+' bn'],['Government spending on goods and services','$'+G+' bn'],['Net exports',(NX<0?'−':'')+'$'+Math.abs(NX)+' bn'],['Taxes on products','$'+T+' bn'],['Subsidies','$'+S+' bn'],['Depreciation','$'+D+' bn'],['Transfer payments (pensions, benefits)','$'+TR+' bn']]), ans:bp,
+      work:'Expenditure method first: C + I + G + (X − M) = '+C+' + '+I+' + '+G+' '+(NX<0?'− ':'+ ')+Math.abs(NX)+' = GDP at market prices <b>'+fmt(mp)+'</b><br>Then to basic prices: '+fmt(mp)+' − '+T+' + '+S+' = <b>$'+fmt(bp)+' bn</b><br>Depreciation is not needed (it is for <i>net</i> measures) and transfer payments are never counted.'}; }
+}
+const PTYPES=['a','b','c','d','e','f'];
+let prob=null, probRight=0, probAnswered=false, probQueue=[];
+function nextProb(first){
+  if(first){ prob=makeProb('a155'); }
+  else { if(!probQueue.length) probQueue=shuffle([...PTYPES]); prob=makeProb(probQueue.pop()); }
+  probAnswered=false;
+  document.getElementById('probStem').innerHTML=prob.stem;
+  const inp=document.getElementById('probIn'); inp.value=''; inp.classList.remove('ok','no');
+  document.getElementById('probMsg').textContent=''; const w=document.getElementById('probWork'); w.classList.remove('show'); w.innerHTML=prob.work;
+}
+function probCounter(){ document.getElementById('probCount').innerHTML=[0,1,2,3,4].map(i=>'<i class="'+(i<probRight?'on':'')+'"></i>').join(''); }
+document.getElementById('probCheck').addEventListener('click',()=>{
+  const inp=document.getElementById('probIn'), v=num(inp.value), m=document.getElementById('probMsg');
+  if(v===null){ m.textContent='Type a number first.'; m.style.color='#FF8F1C'; return; }
+  const ok=v===prob.ans; flag(inp,ok);
+  if(ok){ m.textContent='✓ Correct: $'+fmt(prob.ans)+' bn.'; m.style.color='#28A745'; document.getElementById('probWork').classList.add('show');
+    if(!probAnswered){ probAnswered=true; probRight++; probCounter(); if(probRight>=5 && !probDone){ probDone=true; trk('Converter practice','5 correct'); convCheck(); } } }
+  else { m.textContent='Not yet. Check the order and the sign of each step, or press “Show working”.'; m.style.color='#7A0830'; probAnswered=true; }
+});
+let probDone=false;
+document.getElementById('probShow').addEventListener('click',()=>{ document.getElementById('probWork').classList.add('show'); probAnswered=true; });
+document.getElementById('probNext').addEventListener('click',()=>nextProb(false));
+nextProb(true); probCounter();
+function convCheck(){
+  if(tagsOK && ladDone && probDone && !DONE.conv){
+    showBanner('convDone','✓ Converter mastered. Memorise the ladder in this order: <b>market → basic</b> (− taxes + subsidies), <b>domestic → national</b> (+ net income from abroad), <b>gross → net</b> (− depreciation). Going the other way, reverse every sign.');
+    mark('conv');
+  }
+}
+
+/* ================= TAB 6 — ANALYSIS & EVALUATION ================= */
+const JUDGE=[
+ {t:'“On 5 April 2013, Nigerians became 90% richer.”', ans:'bad',
+  why:'Nothing extra was produced overnight. Statisticians started counting industries they had missed before, such as Nollywood and telecoms. The <b>measured</b> figure rose; real output and living standards did not change that day.',
+  exam:'“A revision in how output is measured changes the statistic, not the quantity of goods and services people can enjoy.”'},
+ {t:'“The country with the larger GDP has the higher living standards.”', ans:'both',
+  why:'Total GDP must be divided by population: in 2018 Nigeria’s output was larger than South Africa’s, but average income was about three times higher in South Africa. Prices, how income is shared and what is produced matter too.',
+  exam:'“Comparing living standards requires real GDP per head, and even then says little about the distribution of income or the quality of life.”'},
+ {t:'“A country’s GNI is always larger than its GDP.”', ans:'bad',
+  why:'It depends on the direction of net income from abroad. Japan and the Philippines have GNI &gt; GDP; Qatar, Ireland and Thailand have GNI &lt; GDP because more income flows out to foreign owners and workers than flows in.',
+  exam:'“Whether GNI exceeds GDP depends on whether the country’s residents earn more from abroad than foreigners earn from the country.”'},
+ {t:'“State pensions should be added when GDP is measured by the income method.”', ans:'bad',
+  why:'Pensions are <b>transfer payments</b>: nothing is produced in return. Adding them would count income that has already been counted (as the taxes or wages that paid for them).',
+  exam:'“Only factor incomes — wages, rent, interest and profit earned in production — are included in the income method.”'},
+ {t:'“High gross investment means a country’s capacity to produce is growing.”', ans:'both',
+  why:'Gross investment includes capital that only <b>replaces</b> worn-out or out-of-date machines (depreciation). Only <b>net</b> investment adds to capacity. If depreciation is as large as gross investment, capacity stays the same.',
+  exam:'“Net investment, not gross investment, indicates whether the economy’s productive capacity is increasing.”'},
+ {t:'“GDP at market prices is always larger than GDP at basic prices.”', ans:'both',
+  why:'Market prices = basic prices + taxes on products − subsidies. In most countries taxes are bigger than subsidies, so market prices are higher. But a country with very large subsidies (for example on fuel) could have GDP at basic prices above GDP at market prices.',
+  exam:'“The difference depends on whether taxes on products exceed subsidies.”'}
+];
+let judgeN=0, judgeRight=0, writeSeen=false;
+buildJudges(document.getElementById('judgeHost'),JUDGE,{good:'Agree',bad:'Disagree',both:'It depends'},(n,r)=>{
+  judgeN=n; judgeRight=r;
+  document.getElementById('judgeScore').textContent=n+' / '+JUDGE.length+' answered · '+r+' right';
+  if(n===JUDGE.length){ trk('Agree / disagree / depends', r+'/'+JUDGE.length+' correct'); chainCheckDone(); }
+});
+modelButton('vlBtn','vlBox','vlModel',40,null,()=>trk('Think like an economist: Vietnam and Laos','plan written'));
+const CHECKS=['I defined GDP as output produced within the country, whoever owns the factors of production',
+ 'I defined GNI as income earned by the country’s residents, wherever it is earned',
+ 'I stated the link: GNI = GDP + net income from abroad',
+ 'I named net property income (profits, interest, dividends) and compensation of employees',
+ 'I explained why GNI can be HIGHER than GDP, with an example',
+ 'I explained why GNI can be LOWER than GDP, with an example',
+ 'I used precise words: “produced”, “earned”, “residents”, “net”'];
+(function(){
+  const host=document.getElementById('w1checks');
+  CHECKS.forEach(txt=>{
+    const row=document.createElement('div'); row.className='chk'; row.innerHTML='<div class="box">✓</div><div class="lbl">'+txt+'</div>';
+    row.addEventListener('click',()=>{
+      row.classList.toggle('on');
+      const on=host.querySelectorAll('.chk.on').length, tot=CHECKS.length;
+      document.getElementById('w1bv').textContent=on+' of '+tot+' ticked';
+      document.getElementById('w1bar').style.width=(on/tot*100)+'%';
+      document.getElementById('w1bd').textContent=on<=2?'Lower band: some knowledge. Add precise definitions of both terms.':on<=4?'Middle band. The definitions are there, but the reasons for the difference need explaining in both directions.':on<7?'Nearly a top-band answer. Add what you left unticked and redraft.':'Top band: defined, linked and explained both ways. Now do it in 12 minutes.';
+    });
+    host.appendChild(row);
+  });
+})();
+document.getElementById('w1btn').addEventListener('click',()=>{
+  const box=document.getElementById('w1'), b=document.getElementById('w1btn');
+  if(box.value.trim().length<40){ box.focus(); b.textContent='Write your own attempt first — then compare'; return; }
+  document.getElementById('w1model').classList.add('show'); b.textContent='Model shown ✓'; b.disabled=true;
+  writeSeen=true; trk('Write it up: GDP and GNI','attempted'); chainCheckDone();
+});
+function chainCheckDone(){
+  if(judgeN===JUDGE.length && writeSeen && !DONE.chain){
+    showBanner('chainDone','✓ All six claims judged ('+judgeRight+'/6) and the 8-mark answer attempted. In this topic, “it depends” is nearly always about <b>which measure</b> (GDP or GNI, gross or net, market or basic prices), <b>per head or total</b>, and <b>how good the data are</b>.');
+    mark('chain');
+  }
+}
+
+/* ================= TAB 7 — EXAM MCQ ================= */
+const dt=(rows,head)=>'<table class="dtable" style="max-width:380px;margin-top:8px">'+(head?'<tr><th></th><th class="num">'+head+'</th></tr>':'')+rows.map(r=>'<tr><td>'+r[0]+'</td><td class="num">'+r[1]+'</td></tr>').join('')+'</table>';
+const MCQ=[
+ {id:'m1', icon:'1', bg:'#008BCC', name:'Paper 1 · Question 1 (coursebook Q1)', stem:'What <b>cannot</b> be measured to find a country’s GDP?',
+  opts:['expenditure','income','output','wealth'], ans:3,
+  fb:'GDP is measured by the output, income or expenditure method. Wealth is a <b>stock</b> of assets, not a flow of output in a year.', why:'Topic 3.3 link: income is a flow, wealth is a stock.'},
+ {id:'m2', icon:'2', bg:'#6B4E9E', name:'Paper 1 · Question 2 (coursebook Q2)', stem:'What is included in net property income from abroad?',
+  opts:['compensation of employees','interest','subsidies','taxes'], ans:1,
+  fb:'Net property income from abroad is profits, interest and dividends.', why:'Compensation of employees is also part of net income from abroad, but it is wages, not property income. Taxes and subsidies are the market/basic price adjustment.'},
+ {id:'m3', icon:'3', bg:'#FF8F1C', name:'Paper 1 · Question 3 (coursebook Q3)', stem:'What must be zero if GDP at market prices is equal to GNI at market prices?',
+  opts:['indirect taxes','net property income','subsidies','transfer payments'], ans:1,
+  fb:'GNI = GDP + net income from abroad. If the two are equal, net income from abroad must be zero.', why:'Indirect taxes and subsidies affect both GDP and GNI at market prices equally, so they cannot explain a difference between them.'},
+ {id:'m4', icon:'4', bg:'#D63864', name:'Paper 1 · Question 4 (coursebook Q4)', stem:'The table shows some national income statistics. What is GDP at market prices?'+dt([['GNI at basic prices','500'],['Indirect taxes','40'],['Net income from abroad','20'],['Subsidies','10'],['Unemployment benefits','30']],'$ billion'),
+  opts:['$450bn','$480bn','$510bn','$550bn'], ans:2,
+  fb:'GDP at basic prices = 500 − 20 = 480. GDP at market prices = 480 + 40 − 10 = <b>510</b>.', why:'Unemployment benefits are transfer payments: ignore them. B stops half way, at basic prices.'},
+ {id:'m5', icon:'5', bg:'#28A745', name:'Paper 1 · Question 5 (coursebook Q5)', stem:'What would it mean if GDP at basic prices is of a higher value than GNI at basic prices?',
+  opts:['capital goods exceed consumer goods','net exports are negative','net income from abroad is negative','taxation on products exceeds subsidies'], ans:2,
+  fb:'GNI = GDP + net income from abroad. GNI is smaller only if net income from abroad is negative — as in Thailand.', why:'B is the most common wrong answer: net exports are part of GDP itself (expenditure method), not the gap between GDP and GNI.'},
+ {id:'m6', icon:'6', bg:'#002F6C', name:'Paper 1 · Question 6 (coursebook Q6)', stem:'Five people lose their jobs. Each was paid $40,000 a year. One gains a new job paying $45,000, another a job paying $38,000 and a third a job paying $25,000. Two do not get another job: one retires on a state pension of $12,000 and the other receives unemployment benefit of $8,000. What is the resulting change in GDP?',
+  opts:['minus $108,000','minus $92,000','minus $72,000','minus $20,000'], ans:1,
+  fb:'Before: 5 × 40,000 = 200,000. After: 45,000 + 38,000 + 25,000 = 108,000. Change = <b>−$92,000</b>.', why:'The pension and benefit are transfer payments, so they do not count. Option C wrongly adds them back in.'},
+ {id:'m7', icon:'7', bg:'#8098B0', name:'Paper 1 · Question 7 (coursebook Q7)', stem:'An economy’s GDP is $640bn. Its consumer expenditure is $490bn, its government spending is $100bn, its investment is $80bn and its exports are $50bn. What is the value of its imports?',
+  opts:['$20bn','$30bn','$50bn','$80bn'], ans:3,
+  fb:'640 = 490 + 80 + 100 + 50 − M, so M = 720 − 640 = <b>$80bn</b>.', why:'C ($50bn) assumes trade balances. Always write the full formula C + I + G + (X − M) first.'},
+ {id:'m8', icon:'8', bg:'#FF8F1C', name:'Paper 1 · Question 8 (coursebook Q8)', stem:'How would NNI at basic prices be converted to GDP at market prices?'+
+  '<table class="dtable" style="margin-top:8px"><tr><th></th><th>depreciation</th><th>indirect taxes</th><th>net income from abroad</th><th>subsidies</th></tr><tr><td>A</td><td>add</td><td>add</td><td>deduct</td><td>deduct</td></tr><tr><td>B</td><td>add</td><td>deduct</td><td>add</td><td>add</td></tr><tr><td>C</td><td>deduct</td><td>add</td><td>deduct</td><td>deduct</td></tr><tr><td>D</td><td>deduct</td><td>deduct</td><td>add</td><td>add</td></tr></table>',
+  opts:['A','B','C','D'], ans:0,
+  fb:'Going up the ladder reverses every step down it: add back depreciation (net → gross), deduct net income from abroad (national → domestic), add indirect taxes and deduct subsidies (basic → market).', why:'D is the conversion in the opposite direction, from GDP at market prices to NNI at basic prices.'},
+ {id:'m9', icon:'9', bg:'#6B4E9E', name:'Paper 1 · Question 9 (coursebook Q9)', stem:'The table shows information on a country. What is GDP at basic prices?'+dt([['Consumer expenditure','700'],['Total investment','200'],['Government spending','100'],['Net exports','−50'],['Net property income from abroad','10'],['Other net income from abroad','5'],['Indirect taxes','30'],['Subsidies','15'],['Depreciation','250']],'$ billion'),
+  opts:['$685bn','$715bn','$935bn','$960bn'], ans:2,
+  fb:'GDP at market prices = 700 + 200 + 100 − 50 = 950. At basic prices: 950 − 30 + 15 = <b>$935bn</b>.', why:'Income from abroad (GNI) and depreciation (net) are not needed for GDP at basic prices — they are there to catch you. A is 935 − 250 (NDP).'},
+ {id:'m10', icon:'10', bg:'#D63864', name:'Paper 1 · Question 10 (coursebook Q10)', stem:'Why may the output of image processors used in the production of smartphones in a country not be included in the calculation of its GDP?',
+  opts:['The production of image processors is more likely to be in the private sector than in the public sector.','The production of image processors is in the same sector as the production of smartphones.','The value of image processors is included in the value of the smartphones produced.','The value of image processors is too low to be included.'], ans:2,
+  fb:'Image processors are intermediate goods. Counting them and the phones would be double counting.', why:'Exactly like the latex in the gloves, or the tyres on the cars.'},
+ {id:'m11', icon:'11', bg:'#28A745', name:'Paper 1 · Question 11 · calculation', stem:'An economy’s GDP at market prices is $600bn, subsidies are $10bn and GDP at basic prices is $570bn. What is the value of taxes on products?',
+  opts:['$20bn','$30bn','$40bn','$50bn'], ans:2,
+  fb:'570 = 600 − taxes + 10, so taxes = 610 − 570 = <b>$40bn</b>.', why:'B ($30bn) ignores the subsidy; A takes it the wrong way. This is the type of question fewer than 40% answered correctly in November 2024.'},
+ {id:'m12', icon:'12', bg:'#002F6C', name:'Paper 1 · Question 12', stem:'Which of these is included in Thailand’s <b>GDP</b> but <b>not</b> in Thailand’s <b>GNI</b>?',
+  opts:['profits a Thai hotel group earns from its hotels in the Maldives','profits Japanese-owned Toyota Motor Thailand earns in Thailand and sends to Japan','the old-age allowance paid to Thai pensioners','wages a Thai engineer earns on a three-month contract in Taiwan'], ans:1,
+  fb:'The output is produced in Thailand (GDP), but the profit is income of a foreign owner, so it is taken away to get GNI.', why:'A and D are in Thailand’s GNI but not its GDP. C is a transfer payment and is in neither.'},
+ {id:'m13', icon:'13', bg:'#FF8F1C', name:'Paper 1 · Question 13', stem:'A rubber farmer sells latex for ฿40. A processing plant turns it into concentrated latex and sells it for ฿70. A factory makes gloves from it and sells them for ฿150. A pharmacy sells the gloves for ฿200. How much do these four firms add to GDP?',
+  opts:['฿150','฿200','฿260','฿460'], ans:1,
+  fb:'Value added: 40 + 30 + 80 + 50 = <b>฿200</b>, the final price.', why:'D adds every sale (double counting). C adds the first three sales: still double counting.'},
+ {id:'m14', icon:'14', bg:'#6B4E9E', name:'Paper 1 · Question 14', stem:'What is the difference between gross national income and net national income?',
+  opts:['depreciation','indirect taxes minus subsidies','net income from abroad','transfer payments'], ans:0,
+  fb:'NNI = GNI − depreciation (capital consumption).', why:'B is the gap between market and basic prices; C is the gap between GDP and GNI. Transfer payments are never part of national income.'}
+];
+buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
+  showBanner('mcqDone','✓ All fourteen attempted — '+right+' / '+total+' right first time. Next: Topic 4.2 puts these flows into the circular flow of income.');
+  trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
+  mark('mcq');
+});
+</script>
+</body>
+</html>
