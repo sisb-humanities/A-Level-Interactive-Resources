@@ -117,6 +117,7 @@
   <div class="tab" data-tab="tax">💰 Tax &amp; Subsidy Lab</div>
   <div class="tab" data-tab="ctrl">🎯 Price Controls</div>
   <div class="tab" data-tab="buffer">🌾 Buffer Stock Game</div>
+  <div class="tab" data-tab="prov">🏥 Free or Inform?</div>
   <div class="tab" data-tab="shift">🔀 Shift Predictor</div>
   <div class="tab" data-tab="chain">🧠 Analysis &amp; Evaluation</div>
   <div class="tab" data-tab="write">✍️ Write It Up</div>
@@ -260,10 +261,57 @@
     <div id="bsDebrief"></div>
   </div>
 
-  <!-- ============ TAB 5 · SHIFT PREDICTOR ============ -->
+  <!-- ============ TAB 5 · FREE OR INFORM? ============ -->
+  <div class="panel" id="panel-prov">
+    <div class="intro">
+      <div class="kicker">Activity 5 · Free or Inform?</div>
+      <h1>Make it free, or change what people know?</h1>
+      <p>Two methods from coursebook 13.3 and 13.6 that the other labs do not cover. <b>Lab A:</b> the government provides hospital visits directly and decides what to charge, from free (like Thailand’s Universal Coverage “30-baht” scheme) up to the full cost. <b>Lab B:</b> the health ministry wants fewer sugary drinks sold. Hit the same target with a tax, then with an information campaign, and compare what happens to the price and the budget.</p>
+      <p>Hit all five targets, then answer the four check questions. Figures are illustrative.</p>
+    </div>
+    <div class="gi-goals" id="goalsPV"></div>
+
+    <div class="sub-h" style="margin-top:4px">Lab A · Direct provision: what should a hospital visit cost the patient?</div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft">Government-provided hospital visits</div><div id="figDP"></div>
+        <div class="gi-legend"><span><i style="background:#D63864"></i>Demand</span><span><i style="background:#008BCC"></i>Cost of a visit</span><span><i style="background:#FF8F1C"></i>Charge to patient</span><span><i class="blk" style="background:rgba(0,139,204,.18)"></i>Paid from tax</span><span><i class="blk" style="background:rgba(255,143,28,.35)"></i>Visits worth less than they cost</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gi-name">Charge per visit <em id="dpPv"></em></div>
+        <input type="range" class="gi-sl" id="dpP" min="0" max="50" step="1" value="50" aria-label="Charge per visit">
+        <div class="gi-ends"><span>Free</span><span>Full cost (฿600)</span></div>
+        <div class="gi-res" id="dpRes"></div>
+        <div class="gi-say" id="dpSay"></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Lab B · Tax or information? Cut sugary-drink sales from 50 to 40 million bottles</div>
+    <div class="gi-lab">
+      <div class="fig"><div class="ft">The market for sugary drinks</div><div id="figIN"></div>
+        <div class="gi-legend"><span><i style="background:#D63864"></i>Demand</span><span><i style="background:#008BCC"></i>Supply</span><span><i class="blk" style="background:rgba(255,143,28,.3)"></i>Tax revenue</span><span><i class="blk" style="background:rgba(40,167,69,.9);height:3px"></i>Target: 40 m</span></div>
+      </div>
+      <div class="gi-ctrl">
+        <div class="gi-name">Sugar tax per bottle <em id="inTv"></em></div>
+        <input type="range" class="gi-sl" id="inT" min="0" max="40" step="2" value="0" aria-label="Sugar tax per bottle">
+        <div class="gi-ends"><span>None</span><span>฿16</span></div>
+        <div class="gi-name" style="margin-top:12px">Information campaign <em id="inIv"></em></div>
+        <input type="range" class="gi-sl" id="inI" min="0" max="40" step="2" value="0" aria-label="Strength of information campaign">
+        <div class="gi-ends"><span>None</span><span>Labels, warnings, adverts</span></div>
+        <div class="btn-row" style="margin:10px 0 0"><button class="btn btn-ghost" id="inReset">Reset both</button></div>
+        <div class="gi-res" id="inRes"></div>
+        <div class="gi-say" id="inSay"></div>
+      </div>
+    </div>
+    <div id="inCompare"></div>
+
+    <div class="sub-h">Check your understanding</div>
+    <div id="pvQ"></div>
+    <div class="done-banner" id="pvDone"></div>
+  </div>
+  <!-- ============ TAB 6 · SHIFT PREDICTOR ============ -->
   <div class="panel" id="panel-shift">
     <div class="intro">
-      <div class="kicker">Activity 5 · Shift Predictor</div>
+      <div class="kicker">Activity 6 · Shift Predictor</div>
       <h1>Name the method, predict the shift, watch it happen</h1>
       <p>Nine real policies — seven from Thailand, two from the coursebook. For each, <b>step 1</b>: which method is the government using? <b>Step 2</b>: what happens on the diagram? Once you answer, the mini-diagram animates the correct shift, so you can check your picture against it.</p>
       <p>This is the skill Paper 2 rewards: turning a news story into the right curve moving the right way.</p>
@@ -278,10 +326,10 @@
     <div class="btn-row"><button class="btn btn-ghost" onclick="buildShift()">Start again</button></div>
   </div>
 
-  <!-- ============ TAB 6 · ANALYSIS & EVALUATION ============ -->
+  <!-- ============ TAB 7 · ANALYSIS & EVALUATION ============ -->
   <div class="panel" id="panel-chain">
     <div class="intro">
-      <div class="kicker">Activity 6 · Analysis and evaluation</div>
+      <div class="kicker">Activity 7 · Analysis and evaluation</div>
       <h1>Build the chain, then test the claim</h1>
       <p>Part A: analysis marks come from <b>linked</b> steps. Click the steps of each chain in causal order. Part B: evaluation marks come from judging whether a claim is always true. Decide <b>Agree</b>, <b>Disagree</b> or <b>It depends</b>, then read the reasoning and the evaluation line you could use in an essay.</p>
     </div>
@@ -293,10 +341,10 @@
     <div class="done-banner" id="chainDone"></div>
   </div>
 
-  <!-- ============ TAB 7 · WRITE IT UP ============ -->
+  <!-- ============ TAB 8 · WRITE IT UP ============ -->
   <div class="panel" id="panel-write">
     <div class="intro">
-      <div class="kicker">Activity 7 · Paper 2 style</div>
+      <div class="kicker">Activity 8 · Paper 2 style</div>
       <h1>Turn the diagrams into written analysis and evaluation</h1>
       <p>Two written tasks: an 8-mark <b>explain</b> answer (AO1 and AO2 — knowledge and analysis) and a 12-mark <b>discuss</b> answer (which also needs AO3 — evaluation). Type your answer first, then compare it with the model. Nothing you type is stored.</p>
       <p>Full command-word guidance is on the <a href="sisb-alevel-exam-skills.html" style="color:var(--blue);font-weight:700">Exam Skills Toolkit</a> page.</p>
@@ -357,10 +405,10 @@
     <div class="done-banner" id="writeDone">✓ Both written tasks attempted. Redraft whichever one has the most unticked boxes, then try writing the 12-mark answer in full in 20 minutes.</div>
   </div>
 
-  <!-- ============ TAB 8 · EXAM PRACTICE ============ -->
+  <!-- ============ TAB 9 · EXAM PRACTICE ============ -->
   <div class="panel" id="panel-mcq">
     <div class="intro">
-      <div class="kicker">Activity 8 · Paper 1 style</div>
+      <div class="kicker">Activity 9 · Paper 1 style</div>
       <h1>Exam-style multiple choice</h1>
       <p>Questions 1–6 are the coursebook’s own end-of-chapter questions, with their diagrams. Questions 7–11 test the same ideas in Paper 1 wording, including two calculations. Read the explanation after every answer, including the ones you get right.</p>
     </div>
@@ -374,7 +422,7 @@
 <div class="pwrap">
   <span>Progress</span>
   <div class="track"><i id="pbar"></i></div>
-  <span class="pill" id="pscore">0 / 8 activities</span>
+  <span class="pill" id="pscore">0 / 9 activities</span>
 </div>
 
 <script src="sisb-tracker.js"></script>
@@ -393,7 +441,7 @@ document.querySelectorAll('.tab').forEach(t=>{
 function trk(activity, detail){ if(window.SISB_TRACKER) SISB_TRACKER.log('3.2', activity, detail); }
 
 /* ================= PROGRESS ================= */
-const DONE={terms:false,tax:false,ctrl:false,buffer:false,shift:false,chain:false,write:false,mcq:false};
+const DONE={terms:false,tax:false,ctrl:false,buffer:false,prov:false,shift:false,chain:false,write:false,mcq:false};
 const TOTAL=Object.keys(DONE).length;
 let allLogged=false;
 function mark(k){
@@ -1105,7 +1153,7 @@ function bsFinish(){
 }
 bsReset();
 
-/* ================= TAB 5 — SHIFT PREDICTOR ================= */
+/* ================= TAB 6 — SHIFT PREDICTOR ================= */
 const METHODS=[
  {id:'tax',  name:'Indirect tax'},
  {id:'sub',  name:'Subsidy'},
@@ -1258,7 +1306,7 @@ function spTally(){
 }
 buildShift();
 
-/* ================= TAB 6 — ANALYSIS CHAINS + JUDGEMENTS ================= */
+/* ================= TAB 7 — ANALYSIS CHAINS + JUDGEMENTS ================= */
 const CHAINS=[
  {id:'a', icon:'⛽', bg:'#FF8F1C', name:'Chain A: who pays a tax on diesel?',
   steps:['The government adds a specific tax of a fixed amount per litre of diesel',
@@ -1388,7 +1436,7 @@ function chainCheckDone(){
   }
 }
 
-/* ================= TAB 7 — WRITE IT UP ================= */
+/* ================= TAB 8 — WRITE IT UP ================= */
 const CHECKS={
  w1:['I defined a specific tax accurately (a fixed amount per unit)',
      'I defined incidence — how the burden is shared between consumers and producers',
@@ -1447,7 +1495,7 @@ const writeSeen={w1:false,w2:false};
   });
 });
 
-/* ================= TAB 8 — EXAM MCQ ================= */
+/* ================= TAB 9 — EXAM MCQ ================= */
 /* coursebook MCQ diagrams, redrawn */
 function qfig(kind){
   const F=FM;
@@ -1540,6 +1588,130 @@ buildCards(document.getElementById('mcqList'), MCQ, (right,total)=>{
   trk('Exam-style MCQ (Paper 1)', right+'/'+total+' correct');
   mark('mcq');
 });
+
+/* ================= TAB 5 — FREE OR INFORM? ================= */
+const GOALS_PV=[{k:'free',t:'Make visits free'},{k:'mkt',t:'Charge the full cost'},{k:'half',t:'Halve the tax bill, still beat the market'},{k:'tax',t:'Hit 40 m with the tax only'},{k:'info',t:'Hit 40 m with information only'}];
+const pvGoals={free:false,mkt:false,half:false,tax:false,info:false};
+const DP={p:50}, IN={t:0,i:0,taxRes:null,infoRes:null};
+function drawDP(rec){
+  const F=FB, p=DP.p, Qd=100-p, k=12, bill=(50-p)*Qd*1.2/1000;   /* ฿ bn a month */
+  let s='<svg viewBox="0 0 520 340" id="svgDP" role="img" aria-label="Hospital visits with a charge of ฿'+fmt(p*k)+'">';
+  if(p<50){
+    s+=F.rect(0,Qd,p,50,'rgba(0,139,204,.18)');
+    s+=F.poly([[50,50],[Qd,50],[Qd,p]],'rgba(255,143,28,.35)');
+  }
+  s+=F.axes('Hospital visits a month','Price / cost per visit (฿)');
+  s+=F.line(-1,0,C.D,2.6)+lbl(F.X(97),F.Y(3)-8,'D',{c:C.D,a:'end'});
+  s+=F.line(0,0,C.S,2.6)+lbl(F.X(2),F.Y(50)-8,'Cost of a visit (฿600)',{c:C.S,a:'start',s:11.5});
+  s+=F.dash(50,50,50,0)+F.qLbl(50,'Qe')+F.pLbl(50,'฿600');
+  if(p<50){
+    s+='<line x1="'+F.X(0)+'" y1="'+F.Y(p)+'" x2="'+F.X(Math.min(100,Qd+6))+'" y2="'+F.Y(p)+'" stroke="'+C.ctrl+'" stroke-width="3"/>';
+    if(p>3) s+=F.pLbl(p,'฿'+fmt(p*k),'#7A3D00');
+    s+=F.dash(Qd,p,Qd,0,C.gap)+F.dot(Qd,p,C.ctrl,5.5);
+    if(Qd-50>8) s+=F.qLbl(Qd,'Q used',C.gap);
+    if(Qd-50>14) s+=lbl(F.X(50)+(F.X(Qd)-F.X(50))*0.62,F.Y(50)+16,'Worth less than cost',{c:'#7A3D00',s:10.5});
+    s+=lbl(F.X(Qd/2),F.Y((50+p)/2)+4,'Paid from tax',{c:'#004A70',s:12});
+  } else s+=F.dot(50,50,C.ctrl,5.5);
+  s+='</svg>';
+  document.getElementById('figDP').innerHTML=s;
+  document.getElementById('dpPv').textContent=p===0?'free (฿0)':'฿'+fmt(p*k);
+  document.getElementById('dpRes').innerHTML=
+    '<div><b>'+fmt(Qd/10,1)+' m</b><span>Visits used a month</span></div>'+
+    '<div class="'+(bill>0?'hot':'')+'"><b>฿'+fmt(bill,1)+' bn</b><span>Tax bill a month</span></div>'+
+    '<div class="'+(Qd>50?'warn':'ok')+'"><b>'+fmt((Qd-50)/10,1)+' m</b><span>Visits worth less to users than they cost</span></div>'+
+    '<div class="'+(Qd>50?'ok':'warn')+'"><b>'+fmt((Qd-50)/10,1)+' m</b><span>Extra visits compared with the free market</span></div>';
+  let say;
+  if(p===50) say='At the full cost of ฿600 this is the <b>free-market outcome</b>: 5.0 m visits, no tax needed. Everyone who cannot or will not pay ฿600 goes without, and those are mostly <b>low-income households</b>. Healthcare is a merit good, so the coursebook says the case for free provision rests on <b>equity</b>: everyone should have access regardless of income.';
+  else if(p===0) say='Free at the point of use: demand extends until the last visit is worth almost nothing to the patient, so <b>10.0 m visits</b> are used and the whole cost, <b>฿6.0 bn a month</b>, comes from tax. Low-income households gain most as a share of their income. The coursebook’s criticism: with no charge the service is <b>over-provided</b>, shown by the orange triangle, so resources are not allocated efficiently.';
+  else say='A charge of ฿'+fmt(p*k)+' cuts the visits used to '+fmt(Qd/10,1)+' m. Look at what fell first: the visits worth least to patients. The tax bill falls to ฿'+fmt(bill,1)+' bn. The coursebook’s point: <b>if a charge is introduced, demand is likely to fall</b>, and many patients could afford a small charge, freeing tax money for other uses. Is that fair to the poorest patients?';
+  document.getElementById('dpSay').innerHTML=say;
+  if(rec!==false){
+    if(p===0) pvGoals.free=true;
+    if(p===50) pvGoals.mkt=true;
+    if(p<50 && bill<=3.0+1e-9) pvGoals.half=true;
+  }
+  goalTags('goalsPV',GOALS_PV,pvGoals); pvCheck();
+}
+function drawIN(rec){
+  const F=FB, t=IN.t, i=IN.i, k=0.4;
+  const Q=(100-i-t)/2, Pc=Q+t, Pp=Q;
+  let s='<svg viewBox="0 0 520 340" id="svgIN" role="img" aria-label="Sugary drinks market with a tax of ฿'+fmt(t*k)+' and an information campaign">';
+  if(t>0) s+=F.rect(0,Q,Pp,Pc,'rgba(255,143,28,.3)');
+  s+=F.axes('Bottles a month','Price per bottle (฿)');
+  s+='<line x1="'+F.X(40)+'" y1="'+F.Y(0)+'" x2="'+F.X(40)+'" y2="'+F.Y(96)+'" stroke="#28A745" stroke-width="2.2" stroke-dasharray="6 4"/>'+lbl(F.X(40)+4,F.Y(92),'Target 40 m',{c:'#1C7A33',a:'start',s:11});
+  if(i>0) s+=F.line(-1,0,C.D,2,' stroke-opacity=".3"');
+  if(t>0) s+=F.line(1,0,C.S,2,' stroke-opacity=".3"');
+  s+=F.line(-1,-i,C.D,2.6); { const e=F.end(-1,-i); s+=lbl(F.X(e[0])-2,F.Y(e[1])-8,i>0?'D₁':'D',{c:C.D,a:'end'}); }
+  s+=F.line(1,t,C.S,2.6); s+=lbl(F.X(Math.min(98,100-t))+2,F.Y(98)+14,t>0?'S₁':'S',{c:C.S,a:'end'});
+  s+=F.dash(0,Pc,Q,Pc)+F.dash(Q,Pc,Q,0)+F.ring(50,50,C.guide)+F.dot(Q,Pc,C.S1,5);
+  s+=F.pLbl(Pc,'฿'+fmt(Pc*k));
+  if(t>0) s+=F.dash(0,Pp,Q,Pp)+F.pLbl(Pp,'฿'+fmt(Pp*k),'#7A3D00');
+  if(Math.abs(Q-50)>4) s+=F.qLbl(Q,fmt(Q)+' m');
+  s+='</svg>';
+  document.getElementById('figIN').innerHTML=s;
+  document.getElementById('inTv').textContent=t?'฿'+fmt(t*k,1):'none';
+  document.getElementById('inIv').textContent=i?['','weak','weak','medium','medium','strong'][Math.min(5,Math.ceil(i/8))]:'none';
+  const rev=t*k*Q;
+  const hit=Math.abs(Q-40)<0.01;
+  document.getElementById('inRes').innerHTML=
+    '<div class="'+(hit?'ok':'')+'"><b>'+fmt(Q,0)+' m</b><span>Bottles sold a month</span></div>'+
+    '<div><b>฿'+fmt(Pc*k,1)+'</b><span>Price paid by consumers (was ฿20)</span></div>'+
+    '<div><b>฿'+fmt(Pp*k,1)+'</b><span>Price firms keep</span></div>'+
+    '<div class="'+(rev>0?'hot':'')+'"><b>฿'+fmt(rev,0)+' m</b><span>Tax revenue a month</span></div>'+
+    '<div class="'+(i>0?'warn':'')+'"><b>'+(i>0?'Costs money':'None')+'</b><span>Information campaign</span></div>';
+  let say;
+  if(t===0&&i===0) say='No intervention yet: 50 m bottles a month at ฿20. Move <b>one</b> slider until sales hit the green target line.';
+  else if(i===0) say='The tax shifts <b>supply</b> up by ฿'+fmt(t*k,1)+'. Consumers pay ฿'+fmt(Pc*k,1)+', firms keep ฿'+fmt(Pp*k,1)+', and the government collects ฿'+fmt(rev,0)+' m. Demand has not changed: people still <b>want</b> the drinks as much, they just buy fewer at the higher price.';
+  else if(t===0) say='The campaign shifts <b>demand</b> left: people now know more about the harm, so they want fewer drinks at every price. Sales fall <b>and the price falls</b> to ฿'+fmt(Pc*k,1)+', so firms lose out. No tax revenue: the campaign is spending. Information tackles the <b>cause</b>, information failure, but it can take years and some people ignore it.';
+  else say='Both together: supply shifts up and demand shifts left. Reset and try each one on its own to compare them fairly.';
+  document.getElementById('inSay').innerHTML=say;
+  if(rec!==false && hit){
+    if(i===0 && t>0){ pvGoals.tax=true; IN.taxRes={Pc:Pc*k,rev:rev}; }
+    if(t===0 && i>0){ pvGoals.info=true; IN.infoRes={Pc:Pc*k}; }
+  }
+  if(IN.taxRes && IN.infoRes){
+    document.getElementById('inCompare').innerHTML='<div class="q-card"><div class="q-head"><div class="q-icon" style="background:#002F6C">⚖️</div><div class="q-name">Same target, different side of the market</div></div>'+
+      '<div class="q-stem"><b>Tax:</b> 40 m bottles at ฿'+fmt(IN.taxRes.Pc,1)+', and ฿'+fmt(IN.taxRes.rev,0)+' m a month of revenue. <b>Information:</b> 40 m bottles at ฿'+fmt(IN.infoRes.Pc,1)+', no revenue, and the campaign must be paid for.<br>'+
+      '<b>Evaluate:</b> the tax works quickly and raises money, but it falls hardest on low-income drinkers. Information corrects the information failure itself and leaves people free to choose, but its effect is uncertain and slow. Many governments, Thailand included, use <b>both</b>: the sugar tax and the “Healthier Choice” logo.</div></div>';
+  }
+  goalTags('goalsPV',GOALS_PV,pvGoals); pvCheck();
+}
+let pvQDone=false, pvQRight=0;
+function pvCheck(){
+  if(Object.values(pvGoals).every(Boolean) && pvQDone && !DONE.prov){
+    const b=document.getElementById('pvDone');
+    b.innerHTML='✓ Every target hit and all four questions answered ('+pvQRight+'/4 right first time). Direct provision trades a tax bill and over-use for equity of access; information shifts demand at the source but works slowly. In an essay, say <b>which</b> failure each method fixes, and what it costs.';
+    b.classList.add('show'); trk('Free or Inform?','targets hit; '+pvQRight+'/4 check questions'); mark('prov');
+  }
+}
+const PVQ=[
+ {id:'v1', icon:'?', bg:'#008BCC', name:'Free at the point of use',
+  stem:'When hospital visits are free, why does the quantity used rise to where the demand curve meets the quantity axis?',
+  opts:['Because the government supplies as many visits as it can afford','Because patients keep using visits until the last one is worth almost nothing to them','Because the cost of a visit falls to zero','Because supply becomes perfectly elastic'], ans:1,
+  fb:'With a zero price, people use the service until the extra benefit to them is zero. That is where D meets the axis.',
+  why:'The cost of each visit is still ฿600: it is paid from tax instead of by the patient.'},
+ {id:'v2', icon:'?', bg:'#FF8F1C', name:'The case for free provision',
+  stem:'According to the coursebook, what is the main justification for providing healthcare and education free to consumers?',
+  opts:['Market failure in healthcare and education','Equity: everyone should have access regardless of income','It is cheaper than a market','Free provision is always efficient'], ans:1,
+  fb:'The coursebook says the market failures “do not justify free provision”. The justification must be on the grounds of equity.',
+  why:'A is a reason to intervene, not necessarily to make the service free. D is the opposite of the main criticism.'},
+ {id:'v3', icon:'?', bg:'#7A0830', name:'Information as a policy',
+  stem:'Thailand requires large graphic health warnings on cigarette packs. If they work, what happens in the cigarette market?',
+  opts:['Supply shifts left; price rises','Demand shifts left; price and quantity fall','Demand shifts right; quantity rises','Nothing changes because cigarettes are addictive'], ans:1,
+  fb:'Better information reduces the quantity consumers want at every price, so demand shifts left. Both price and quantity fall.',
+  why:'D is an evaluation point (demand is price and information inelastic for addicted smokers), but the intended effect is a leftward shift of demand.'},
+ {id:'v4', icon:'?', bg:'#002F6C', name:'Tax or information?',
+  stem:'A tax and an information campaign each cut sales of sugary drinks to the same quantity. Compared with the tax, the campaign…',
+  opts:['raises the price more','lowers the price and raises no revenue','raises more revenue','shifts the supply curve'], ans:1,
+  fb:'Information shifts demand left, so the price falls. A tax shifts supply up, so the price rises and the government gains revenue.',
+  why:'This is why governments often combine them: the tax works fast and pays for the campaign.'},
+];
+document.getElementById('dpP').addEventListener('input',e=>{ DP.p=Number(e.target.value); drawDP(true); });
+document.getElementById('inT').addEventListener('input',e=>{ IN.t=Number(e.target.value); drawIN(true); });
+document.getElementById('inI').addEventListener('input',e=>{ IN.i=Number(e.target.value); drawIN(true); });
+document.getElementById('inReset').addEventListener('click',()=>{ IN.t=0; IN.i=0; document.getElementById('inT').value=0; document.getElementById('inI').value=0; drawIN(false); });
+buildCards(document.getElementById('pvQ'), PVQ, r=>{ pvQDone=true; pvQRight=r; pvCheck(); });
+drawDP(false); drawIN(false);
 </script>
 </body>
 </html>
